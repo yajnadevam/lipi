@@ -1,0 +1,184 @@
+<template>
+  <v-card>
+    <v-layout>
+      <v-navigation-drawer
+        v-model="drawer"
+        location="right"
+        temporary
+      >
+        <v-list-item
+          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
+          title="Indus Script"
+        ></v-list-item>
+        <v-fab @click.stop="drawer = !drawer"
+        :key="activeFab.icon"
+        :color="activeFab.color"
+        :icon="activeFab.icon"
+        class="ms-4 mb-4"
+        location="top right"
+        size="40"
+        absolute
+        app
+        appear
+      ></v-fab>
+
+
+        <v-divider></v-divider>
+
+        <v-list density="compact" nav>
+          <!-- <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
+          <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item> -->
+          <Schar value="अ"></Schar><Schar value="अयुग"></Schar><Ichar value="&#xE001;" />
+        </v-list>
+      </v-navigation-drawer>
+      <v-main>
+        <div class="d-flex justify-center align-center h-100">
+  <v-data-table
+    v-model:expanded="expanded"
+    :headers="headers"
+    :items="items"
+    item-value="id"
+    show-expand
+  >
+    <template v-slot:top>
+      <v-toolbar flat>
+        <v-toolbar-title>Indus Valley Civilization Inscriptions</v-toolbar-title>
+      </v-toolbar>
+    </template>
+    <template v-slot:expanded-row="{ columns, item }">
+      <tr>
+        <!-- <td :colspan="columns.length">
+          More info about {{ item.description }}
+        </td> -->
+        <td></td><td>{{ item.xlit }}</td><td>{{ item.skt }}</td>
+      </tr>
+    </template>
+  </v-data-table>
+        <v-fab @click.stop="drawer = !drawer"
+        :key="activeFab.icon"
+        :color="activeFab.color"
+        :icon="activeFab.icon"
+        class="ms-4 mb-4"
+        location="top right"
+        size="40"
+        absolute
+        app
+        appear
+      ></v-fab>
+        </div>
+      </v-main>
+    </v-layout>
+  </v-card>
+  <!-- <v-bottom-sheet>
+  <template v-slot:activator="{ props }">
+    <v-btn v-bind="props" text="Click Me"></v-btn>
+  </template>
+
+  <v-card
+    title="Bottom Sheet"
+    text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, eos? Nulla aspernatur odio rem, culpa voluptatibus eius debitis dolorem perspiciatis asperiores sed consectetur praesentium! Delectus et iure maxime eaque exercitationem!"
+  ></v-card>
+</v-bottom-sheet> -->
+</template>
+
+<script>
+  import Ichar from '../components/ichar.vue'
+  import Schar from '../components/schar.vue'
+  import inx from '../assets/data/inscriptions.json'
+
+  const xlitmap = {
+    '740': 'an',
+    '390': 'ra',
+    '590': 'va',
+    '033': 'ja',
+    '125': 'a-da',
+    '368': 'na',
+    '904': 'a',
+    '033': 'ja',
+    '705': 'an',
+    '235': 'ama',
+  }
+
+  inx.forEach(el => {
+    el.xlit = xlitize(el.inscription)
+    el.inscription = jsize(el.inscription)
+  })
+
+  export default {
+    components: { Ichar, Schar },
+    data () {
+      return {
+        drawer: null,
+        expanded: [],
+        headers: [
+          { title: 'Seal ID', key: 'id' },
+          { title: 'Inscription', key: 'inscription', cellProps: { class: 'indus' } },
+          { title: 'Transliteration', key: 'description' },
+          { title: '', key: 'data-table-expand' },
+        ],
+        items: inx,
+        // [
+        //   {
+        //     id: 'Ad-1',
+        //     inscription: jsize('740-390-590'),
+        //     xlit: xlitize('740-390-590'),
+        //     description: 'varNa',
+        //   },
+        //   {
+        //     id: 'Ad-2',
+        //     inscription: jsize('368-390-125-033'),
+        //     xlit: xlitize('368-390-125-033'),
+        //     description: 'jaDAraNa',
+        //   },
+        //   {
+        //     id: 'Ad-3',
+        //     inscription: jsize('740-904-033-705-235'),
+        //     xlit: xlitize('740-904-033-705-235'),
+        //     description: 'ama anjana',
+        //   },
+        // ],
+
+      }
+    },
+    computed: {
+      activeFab () {
+        return this.drawer ? { color: 'lightgrey', icon: 'mdi-chevron-right' }
+          : { color: 'lightgrey', icon: 'mdi-chevron-left' }
+      },
+    },
+  }
+
+  function jsize (inscription) {
+    const re = /(\d+)/g
+    const results = inscription.match(re)
+    let str = ''
+    results.forEach(row => {
+      str += '\\u' + (0xE000 + parseInt(row)).toString(16)
+    })
+    return JSON.parse('"' + str + '"')
+  }
+
+  function xlitize(inscription) {
+    const re = /(\d+)/g
+    const results = inscription.match(re)
+    let str = xlitmap[results[0]]
+    results.shift()
+    results.forEach(row => {
+      str += '-' + xlitmap[row]
+    })
+    return str
+  }
+</script>
+
+<style>
+        @font-face {
+        font-family: 'indus_scriptregular';
+        src: url('../assets/fonts/indus-font.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-size: 24pt;
+        }
+        .indus {
+            font-family: indus_scriptregular; font-size: 24pt;
+        }
+</style>
