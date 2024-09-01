@@ -82,26 +82,37 @@
 </template>
 
 <script>
+  import { csv2json } from 'json-2-csv'
   import Ichar from '../components/ichar.vue'
   import Schar from '../components/schar.vue'
-  import inx from '../assets/data/inscriptions.json'
+  import incx from '../assets/data/inscriptions.csv?raw'
+  import xlits from '../assets/data/xlits.csv?raw'
 
-  const xlitmap = {
-    '740': 'an',
-    '390': 'ra',
-    '590': 'va',
-    '033': 'ja',
-    '125': 'a-da',
-    '368': 'na',
-    '904': 'a',
-    '033': 'ja',
-    '705': 'an',
-    '235': 'ama',
-  }
+  const inx = csv2json(incx, { keys: ['id', 'text'] })
+  const xlitarray = csv2json(xlits)
+
+  const xlitmap = {}; const xregmap = {}
+  xlitarray.forEach(element => {
+    xlitmap[element.sign] = element.xlit
+    xregmap[element.sign] = element.regex
+  })
+
+  // const xlitmap = {
+  //   '740': 'an',
+  //   '390': 'ra',
+  //   '590': 'va',
+  //   '033': 'ja',
+  //   '125': 'a-da',
+  //   '368': 'na',
+  //   '904': 'a',
+  //   '033': 'ja',
+  //   '705': 'an',
+  //   '235': 'ama',
+  // }
 
   inx.forEach(el => {
-    el.xlit = xlitize(el.inscription)
-    el.inscription = jsize(el.inscription)
+    el.xlit = xlitize(el.text)
+    el.text = jsize(el.text)
   })
 
   export default {
@@ -112,32 +123,11 @@
         expanded: [],
         headers: [
           { title: 'Seal ID', key: 'id' },
-          { title: 'Inscription', key: 'inscription', cellProps: { class: 'indus' } },
+          { title: 'Inscription', key: 'text', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description' },
           { title: '', key: 'data-table-expand' },
         ],
         items: inx,
-        // [
-        //   {
-        //     id: 'Ad-1',
-        //     inscription: jsize('740-390-590'),
-        //     xlit: xlitize('740-390-590'),
-        //     description: 'varNa',
-        //   },
-        //   {
-        //     id: 'Ad-2',
-        //     inscription: jsize('368-390-125-033'),
-        //     xlit: xlitize('368-390-125-033'),
-        //     description: 'jaDAraNa',
-        //   },
-        //   {
-        //     id: 'Ad-3',
-        //     inscription: jsize('740-904-033-705-235'),
-        //     xlit: xlitize('740-904-033-705-235'),
-        //     description: 'ama anjana',
-        //   },
-        // ],
-
       }
     },
     computed: {
@@ -148,9 +138,9 @@
     },
   }
 
-  function jsize (inscription) {
+  function jsize (text) {
     const re = /(\d+)/g
-    const results = inscription.match(re)
+    const results = text.match(re)
     let str = ''
     results.forEach(row => {
       str += '\\u' + (0xE000 + parseInt(row)).toString(16)
@@ -158,9 +148,9 @@
     return JSON.parse('"' + str + '"')
   }
 
-  function xlitize(inscription) {
+  function xlitize(text) {
     const re = /(\d+)/g
-    const results = inscription.match(re)
+    const results = text.match(re)
     let str = xlitmap[results[0]]
     results.shift()
     results.forEach(row => {
