@@ -6,6 +6,7 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Vue from '@vitejs/plugin-vue'
 import VueRouter from 'unplugin-vue-router/vite'
 import Vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+import liveReload from 'vite-plugin-live-reload'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -17,13 +18,14 @@ export default defineConfig({
     VueRouter({
       dts: 'src/typed-router.d.ts',
     }),
+    liveReload('src/**'),
     Layouts(),
     AutoImport({
       imports: [
         'vue',
         {
           'vue-router/auto': ['useRoute', 'useRouter'],
-        }
+        },
       ],
       dts: 'src/auto-imports.d.ts',
       eslintrc: {

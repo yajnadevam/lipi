@@ -88,27 +88,22 @@
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'text'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'text'] })
   const xlitarray = csv2json(xlits)
 
-  const xlitmap = {}; const xregmap = {}
+  const xlitmap = {}
   xlitarray.forEach(element => {
-    xlitmap[element.sign] = element.xlit
-    xregmap[element.sign] = element.regex
+    xlitmap[element.sign] = {}
+    xlitmap[element.sign].xlit = element.xlit
+    xlitmap[element.sign].canonical = element.canonical
+    xlitmap[element.sign].regex = element.regex || element.xlit
   })
 
-  // const xlitmap = {
-  //   '740': 'an',
-  //   '390': 'ra',
-  //   '590': 'va',
-  //   '033': 'ja',
-  //   '125': 'a-da',
-  //   '368': 'na',
-  //   '904': 'a',
-  //   '033': 'ja',
-  //   '705': 'an',
-  //   '235': 'ama',
-  // }
+  xlitarray.forEach(element => {
+    // xlitmap[element.sign].xlit = 
+    mkregex(xlitmap[element.sign])
+    // xlitmap[element.sign].xlit = 
+  })
 
   inx.forEach(el => {
     el.xlit = xlitize(el.text)
@@ -123,6 +118,7 @@
         expanded: [],
         headers: [
           { title: 'Seal ID', key: 'id' },
+          { title: 'CISI ID', key: 'cisi' },
           { title: 'Inscription', key: 'text', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description' },
           { title: '', key: 'data-table-expand' },
@@ -148,13 +144,41 @@
     return JSON.parse('"' + str + '"')
   }
 
-  function xlitize(text) {
+  function mkregex (element) {
+    if (element.sign == 235) {
+      console.log(235)
+    }
+    if (!element.canonical || !(typeof (element.canonical) === 'string')) return element.xlit
+
+    const list = element.canonical.split('-').reverse()
+    let regex = ''; let lit = ''
+    list.forEach(item => {
+      if (xlitmap[item]) {
+        lit += xlitmap[item].xlit
+        regex += (xlitmap[item].regex || xlitmap[item].xlit)
+      } else {
+        console.log('no xlit for', item)
+      }
+    })
+    element.xlit = element.xlit || lit
+    element.regex = element.regex || regex
+    return regex
+  }
+
+  function xlitize (text) {
     const re = /(\d+)/g
     const results = text.match(re)
-    let str = xlitmap[results[0]]
+    if (xlitmap[results[0]] === undefined) {
+      return console.log('No entry for', results[0])
+    }
+    let str = xlitmap[results[0]].xlit
     results.shift()
     results.forEach(row => {
-      str += '-' + xlitmap[row]
+      if (xlitmap[row]) {
+        str += '-' + xlitmap[row].xlit
+      } else {
+        console.log('Missing row', row)
+      }
     })
     return str
   }

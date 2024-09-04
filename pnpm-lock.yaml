@@ -87,6 +87,9 @@ importers:
       vite:
         specifier: ^5.3.3
         version: 5.4.2(@types/node@20.16.2)(sass@1.77.6)
+      vite-plugin-live-reload:
+        specifier: ^3.0.3
+        version: 3.0.3(vite@5.4.2(@types/node@20.16.2)(sass@1.77.6))
       vite-plugin-vue-layouts:
         specifier: ^0.11.0
         version: 0.11.0(vite@5.4.2(@types/node@20.16.2)(sass@1.77.6))(vue-router@4.4.3(vue@3.4.38(typescript@5.5.4)))(vue@3.4.38(typescript@5.5.4))
@@ -1737,6 +1740,11 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
+
+  vite-plugin-live-reload@3.0.3:
+    resolution: {integrity: sha512-ce1ygNPmfVdiO6SyjpephroZiK+X5+BFetkceD/FFOYZEPoVSydJRfKT2JPaL4/D3C3NwqJvtPjnla1GSa264A==}
+    peerDependencies:
+      vite: ^4.0.0 || ^5.0.0
 
   vite-plugin-vue-layouts@0.11.0:
     resolution: {integrity: sha512-uh6NW7lt+aOXujK4eHfiNbeo55K9OTuB7fnv+5RVc4OBn/cZull6ThXdYH03JzKanUfgt6QZ37NbbtJ0og59qw==}
@@ -3699,6 +3707,12 @@ snapshots:
       punycode: 2.3.1
 
   util-deprecate@1.0.2: {}
+
+  vite-plugin-live-reload@3.0.3(vite@5.4.2(@types/node@20.16.2)(sass@1.77.6)):
+    dependencies:
+      chokidar: 3.6.0
+      picocolors: 1.0.1
+      vite: 5.4.2(@types/node@20.16.2)(sass@1.77.6)
 
   vite-plugin-vue-layouts@0.11.0(vite@5.4.2(@types/node@20.16.2)(sass@1.77.6))(vue-router@4.4.3(vue@3.4.38(typescript@5.5.4)))(vue@3.4.38(typescript@5.5.4)):
     dependencies:
