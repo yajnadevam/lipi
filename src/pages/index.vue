@@ -50,7 +50,7 @@
         <!-- <td :colspan="columns.length">
           More info about {{ item.description }}
         </td> -->
-        <td></td><td>{{ item.xlit }}</td><td>{{ item.skt }}</td>
+        <td></td><td>{{ item.site }}</td><td>{{ item.xlit }}</td><td>{{ item.skt }}</td>
       </tr>
     </template>
   </v-data-table>
@@ -88,7 +88,7 @@
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'cisi', 'text'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'text'] })
   const xlitarray = csv2json(xlits)
 
   const xlitmap = {}
@@ -100,13 +100,11 @@
   })
 
   xlitarray.forEach(element => {
-    // xlitmap[element.sign].xlit = 
     mkregex(xlitmap[element.sign])
-    // xlitmap[element.sign].xlit = 
   })
 
   inx.forEach(el => {
-    el.xlit = xlitize(el.text)
+    el.description = xlitize(el.text)
     el.text = jsize(el.text)
   })
 
@@ -145,10 +143,14 @@
   }
 
   function mkregex (element) {
-    if (element.sign == 235) {
-      console.log(235)
+    if (!element.canonical || !(typeof (element.canonical) === 'string')) {
+      if (!xlitmap[element.canonical]) {
+        return console.log('No xlit for', element, element.canonical)
+      }
+      element.xlit = xlitmap[element.canonical].xlit
+      element.regex = element.xlit
+      return
     }
-    if (!element.canonical || !(typeof (element.canonical) === 'string')) return element.xlit
 
     const list = element.canonical.split('-').reverse()
     let regex = ''; let lit = ''
@@ -167,7 +169,7 @@
 
   function xlitize (text) {
     const re = /(\d+)/g
-    const results = text.match(re)
+    const results = text.match(re).reverse()
     if (xlitmap[results[0]] === undefined) {
       return console.log('No entry for', results[0])
     }
