@@ -38,7 +38,7 @@
     :custom-filter="filterInscriptions"
     :headers="headers"
     item-value="id"
-    :items="items"
+    :items="filtered"
     :search="search"
     show-expand
   >
@@ -221,6 +221,9 @@
         return this.drawer ? { color: 'lightgrey', icon: 'mdi-chevron-right' }
           : { color: 'lightgrey', icon: 'mdi-chevron-left' }
       },
+      filtered () {
+        return this.items.filter(e => e.complete === 'Y')
+      },
     },
 
     methods: {
@@ -230,11 +233,15 @@
           query != null &&
           item.raw.complete === 'Y' &&
           typeof value === 'string' &&
-          value.toString().indexOf(query) !== -1
+          value.toString().toLocaleLowerCase().indexOf(query) !== -1
         )
       },
     },
   }
+
+  const filtered = computed(() =>
+    data.value.filter(e => e.raw.complete === 'Y')
+  )
 
 </script>
 
