@@ -96,6 +96,7 @@
   import Schar from '../components/schar.vue'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
+  import mw from '../assets/data/mw.txt?raw'
 
   const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text'] })
   const xlitarray = csv2json(xlits)
@@ -117,8 +118,13 @@
   })
 
   inx.forEach(el => {
-    el.description = xlitize(el.text)
+    const analyzed = xlitize(el.text)
+    el.description = analyzed.str
+    el.regex = analyzed.regex
     el.text = jsize(el.text)
+    const regex = new RegExp('^' + el.regex + '$', 'smg')
+    const matches = mw.match(regex)
+    el.best = matches === null ? '' : matches[0]
   })
 
   function jsize (text) {
@@ -177,26 +183,29 @@
     const re = /(\d+)/g
     const results = text.match(re).reverse()
     if (xlitmap[results[0]] === undefined) {
-      return console.log('No entry for', results[0])
+      return console.log('Warning: Missing sign', results[0])
     }
     let str = xlitmap[results[0]].xlit
+    let regex = str
     results.shift()
     results.forEach(row => {
       const sign = xlitmap[row]
       if (sign) {
-        if (str === 'u') {
-          console.log('u')
-        }
         if (str.match(/^.*([iu]|an|as)$/) == null && sign.xlit.match(/^[aiu]$/) == null && !str.endsWith('.')) {
           str += 'a'
+          regex += 'a?'
         }
         str += '-' + sign.xlit
+        regex += sign.xlit
       } else {
-        console.log('Missing row', row)
+        console.log('Warning: Missing sign', row)
       }
     })
-    if (str.match(/.*([iu]|an|as)$/) === null) str += 'a'
-    return str
+    if (str.match(/.*([iu]|an|as)$/) === null) {
+      str += 'a'
+      regex += 'a?'
+    }
+    return { str, regex }
   }
 
   export default {
@@ -211,6 +220,8 @@
           { title: 'CISI ID', key: 'cisi' },
           { title: 'Inscription', key: 'text', align: 'end', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description' },
+          // { title: 'Regex', key: 'regex' },
+          { title: 'Match', key: 'best' },
           { title: '', key: 'data-table-expand' },
         ],
         items: inx,
