@@ -35,16 +35,25 @@
         <div class="d-flex justify-center align-center h-100">
   <v-data-table
     v-model:expanded="expanded"
+    :custom-filter="filterInscriptions"
     :headers="headers"
-    :items="items"
     item-value="id"
+    :items="items"
+    :search="search"
     show-expand
   >
     <template v-slot:top>
-      <v-toolbar flat>
-        <v-toolbar-title>Indus Valley Civilization Inscriptions</v-toolbar-title>
-      </v-toolbar>
+      <v-text-field
+        v-model="search"
+        class="pa-2"
+        label="Search Indus valley inscriptions"
+      ></v-text-field>
     </template>
+    <!-- <template v-slot:item="props">
+      <template v-if="!props.item.show">
+      </template>
+    </template> -->
+
     <template v-slot:expanded-row="{ columns, item }">
       <tr>
         <!-- <td :colspan="columns.length">
@@ -88,8 +97,12 @@
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'text'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text'] })
   const xlitarray = csv2json(xlits)
+  const borders = {
+    L: { ']': '\uE3E5', '+': '\uE3E3' },
+    R: { '[': '\uE3E6', '+': '\uE3E4' },
+  }
 
   const xlitmap = {}
   xlitarray.forEach(element => {
@@ -108,31 +121,23 @@
     el.text = jsize(el.text)
   })
 
-  export default {
-    components: { Ichar, Schar },
-    data () {
-      return {
-        drawer: null,
-        expanded: [],
-        headers: [
-          { title: 'Seal ID', key: 'id' },
-          { title: 'CISI ID', key: 'cisi' },
-          { title: 'Inscription', key: 'text', cellProps: { class: 'indus' } },
-          { title: 'Transliteration', key: 'description' },
-          { title: '', key: 'data-table-expand' },
-        ],
-        items: inx,
-      }
-    },
-    computed: {
-      activeFab () {
-        return this.drawer ? { color: 'lightgrey', icon: 'mdi-chevron-right' }
-          : { color: 'lightgrey', icon: 'mdi-chevron-left' }
-      },
-    },
+  function jsize (text) {
+    text = text.trim()
+    const slices = text.split(/\//).reverse()
+    if (slices === null) return ''
+    const jslices = slices.map($item => { return jsizepart($item) })
+    const L = borders.L[text.charAt(0)]
+    const R = borders.R[text.charAt(text.length - 1)]
+    if (R === undefined) {
+      console.log(text)
+    }
+
+    if (jslices[0]) jslices[0] = L + jslices[0]
+    if (jslices[jslices.length - 1]) jslices[jslices.length - 1] += R
+    return jslices.join('\n')
   }
 
-  function jsize (text) {
+  function jsizepart (text) {
     const re = /(\d+)/g
     const results = text.match(re)
     let str = ''
@@ -155,9 +160,10 @@
     const list = element.canonical.split('-').reverse()
     let regex = ''; let lit = ''
     list.forEach(item => {
-      if (xlitmap[item]) {
-        lit += xlitmap[item].xlit
-        regex += (xlitmap[item].regex || xlitmap[item].xlit)
+      const sign = xlitmap[item]
+      if (sign) {
+        lit += sign.xlit
+        regex += (sign.regex || sign.xlit)
       } else {
         console.log('no xlit for', item)
       }
@@ -176,14 +182,60 @@
     let str = xlitmap[results[0]].xlit
     results.shift()
     results.forEach(row => {
-      if (xlitmap[row]) {
-        str += '-' + xlitmap[row].xlit
+      const sign = xlitmap[row]
+      if (sign) {
+        if (str === 'u') {
+          console.log('u')
+        }
+        if (str.match(/^.*([iu]|an|as)$/) == null && sign.xlit.match(/^[aiu]$/) == null && !str.endsWith('.')) {
+          str += 'a'
+        }
+        str += '-' + sign.xlit
       } else {
         console.log('Missing row', row)
       }
     })
+    if (str.match(/.*([iu]|an|as)$/) === null) str += 'a'
     return str
   }
+
+  export default {
+    components: { Ichar, Schar },
+    data () {
+      return {
+        search: '',
+        drawer: null,
+        expanded: [],
+        headers: [
+          { title: 'Seal ID', key: 'id' },
+          { title: 'CISI ID', key: 'cisi' },
+          { title: 'Inscription', key: 'text', align: 'end', cellProps: { class: 'indus' } },
+          { title: 'Transliteration', key: 'description' },
+          { title: '', key: 'data-table-expand' },
+        ],
+        items: inx,
+      }
+    },
+    computed: {
+      activeFab () {
+        return this.drawer ? { color: 'lightgrey', icon: 'mdi-chevron-right' }
+          : { color: 'lightgrey', icon: 'mdi-chevron-left' }
+      },
+    },
+
+    methods: {
+      filterInscriptions (value, query, item) {
+        return (
+          value != null &&
+          query != null &&
+          item.raw.complete === 'Y' &&
+          typeof value === 'string' &&
+          value.toString().indexOf(query) !== -1
+        )
+      },
+    },
+  }
+
 </script>
 
 <style>
@@ -196,5 +248,6 @@
         }
         .indus {
             font-family: indus_scriptregular; font-size: 24pt;
+            white-space: pre;
         }
 </style>
