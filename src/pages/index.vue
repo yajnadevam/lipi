@@ -94,6 +94,7 @@
   import { csv2json } from 'json-2-csv'
   import Ichar from '../components/ichar.vue'
   import Schar from '../components/schar.vue'
+  import sanskrittransliterate from 'devanagari-transliterate'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
   // import mw from '../assets/data/mw.txt?raw'
@@ -122,7 +123,9 @@
     el.description = analyzed.str
     el.regex = analyzed.regex
     el.text = jsize(el.text)
-    const regex = new RegExp('^' + el.regex + '$', 'smg')
+    el.sanskrit = sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
+              + '\n' + sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
+    // const regex = new RegExp('^' + el.regex + '$', 'smg')
     // const matches = mw.match(regex)
     // el.best = matches === null ? '' : matches[0]
   })
@@ -221,7 +224,8 @@
           { title: 'Inscription', key: 'text', align: 'end', cellProps: { class: 'indus' } },
           // { title: 'Transliteration', key: 'description' },
           // { title: 'Regex', key: 'regex' },
-          { title: 'Sanskrit', key: 'sanskrit' },
+          { title: 'Sanskrit', key: 'sanskrit', cellProps: { class: 'sanskrit' } },
+          // { title: 'IAST', key: 'iast' },
           { title: 'Translation', key: 'translation' },
           { title: '', key: 'data-table-expand' },
         ],
@@ -267,6 +271,9 @@
         }
         .indus {
             font-family: indus_scriptregular; font-size: 24pt;
+            white-space: pre;
+        }
+        .sanskrit {
             white-space: pre;
         }
 </style>

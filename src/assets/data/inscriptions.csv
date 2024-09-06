@@ -48,11 +48,11 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 47.1,B-32,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,ZN,1,1,,,,0,0,0,+234+,naman,saluting[√नम् + शतृँ]
 48.1,B-35,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2,1,,,,0,0,0,+700-000+
 49.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,-,None,MISC,1,Poor,N,T/B,??,3,0,,,,0,0,0,+000-000-000+
-50.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Buff,None,SEAL:S,1,Fine,Y,L/R,PN,3,3,,,,21,20,0,+390-003-003+
-51.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Goat:3,S390,SEAL:S,1,Good,Y,NR,NU,1,1,,,,18,18,0,+006+
-52.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Bull1,RAN,SEAL:S,1,Good,Y,R/L,SP,3,3,,,,0,0,0,+236-002-820+
+50.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Buff,None,SEAL:S,1,Fine,Y,L/R,PN,3,3,,,,21,20,0,+390-003-003+,jajara,you went[√जृ लिट् 2p.]
+51.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Goat:3,S390,SEAL:S,1,Good,Y,NR,NU,1,1,,,,18,18,0,+006+,ha,Verily[Ved]
+52.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Bull1,RAN,SEAL:S,1,Good,Y,R/L,SP,3,3,,,,0,0,0,+236-002-820+,ravanAman,Roarer's(Rudra)[√रु + अच्] sign[RV]
 53.1,Ch-1,Eastern Headwaters,Chandigarh,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,N,-,??,5,4,,,,0,0,0,+220-000-740-550-705+
-54.1,Ch-2,Eastern Headwaters,Chandigarh,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Good,Y,R/L,SC,3,3,,,,0,0,0,+740-050-705+
+54.1,Ch-2,Eastern Headwaters,Chandigarh,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Good,Y,R/L,SC,3,3,,,,0,0,0,+740-050-705+,ana-hAna,Cessation[VS] of breath[ŚBr]
 55.1,Ch-4,Eastern Headwaters,Chandigarh,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,N,-,??,3+?,1,,,,0,0,0,+000-000-492[
 56.1,C-88,Lower Indus,Chanhu-daro,--,--,loc. 182sq. 8/F,CH 1954 (2)Pl. LII:35,-,-,-,+10.8 ft,NN,Faience,Yellow,rectangular,-,complete,None,None,TAB:B,1,Fair,Y,-,SC,3,3,0.75,0.47,0.25,19.1,11.9,6.4,+031-705-167+
 57.1,C-87,Lower Indus,Chanhu-daro,--,--,loc. 215sq. 9/D,-Pl. LII:35,-,-,-,+9.5 ft,-,Clay,-,circular,-,complete,None,None,TAG:P,1,Fair,Y,R/L,SS,2,2,0.8,0.8,0.31,0,0,7.9,+740-405+

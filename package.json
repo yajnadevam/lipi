@@ -12,6 +12,7 @@
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
     "core-js": "^3.37.1",
+    "devanagari-transliterate": "^1.0.0",
     "roboto-fontface": "*",
     "vue": "^3.4.31",
     "vuetify": "^3.6.11"

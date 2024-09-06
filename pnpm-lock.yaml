@@ -20,6 +20,9 @@ importers:
       core-js:
         specifier: ^3.37.1
         version: 3.38.1
+      devanagari-transliterate:
+        specifier: ^1.0.0
+        version: 1.0.0
       roboto-fontface:
         specifier: '*'
         version: 0.10.0
@@ -840,6 +843,9 @@ packages:
   define-properties@1.2.1:
     resolution: {integrity: sha512-8QmQKqEASLd5nx0U1B1okLElbUuuttJ/AnYmRXbbbGDWh6uS208EjD4Xqq/I9wK7u0v6O08XhTWnt5XtEbR6Dg==}
     engines: {node: '>= 0.4'}
+
+  devanagari-transliterate@1.0.0:
+    resolution: {integrity: sha512-fD4RbS29+tPC+WtO2ulmrvurr1+PN9af1Xj1pGL/P/S28QPDmm9bp6c/8wQfZthLxhHdYBUA+g1gvUJO9UoImQ==}
 
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -2634,6 +2640,8 @@ snapshots:
       define-data-property: 1.1.4
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
+
+  devanagari-transliterate@1.0.0: {}
 
   dir-glob@3.0.1:
     dependencies:
