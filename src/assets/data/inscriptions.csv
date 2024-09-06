@@ -1,51 +1,51 @@
-id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,period,phase,depth,boss,material,color,shape,cross-section,preservation,symbol,cult,type,sides,condition,complete,dir.,class,text length,signs,h,v,th,horizontal(mm),vertical(mm),thickness(mm),text
-1.1,Agr-1,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+
-2.1,Agr-2,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+
-3.1,Agr-3,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,SC,2,2,,,,0,0,0,+405-017+
-4.1,-,Lower Indus,Allahdino,--,J6E1/2,--,AD73-157,-,-,-,-125 cm,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2,1,2.5cm,3.0cm,0.6cm,25,30,6,+220-000+
-5.1,-,Lower Indus,Allahdino,--,H5E1/2,--,AD73-157,-,-,-,-0.35 m,-,Clay,Red,-,-,chipped,Bull,-,TAG,1,Poor,Y,R/L,SS,2,2,3.7cm,4.4cm,1.2cm,37,44,12,+740-235+
-6.1,Ad-1,Lower Indus,Allahdino,--,J7SW Quad,--,AD74-147,-,-,-,-0-20  cm,-,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,SS,3,3,2.85cm,2.3cm,2.8cm,28.5,23,28,+740-390-590+
-7.1,Ad-2,Lower Indus,Allahdino,--,Test 6B-,--,AD74-32,-,-,-,-10 cm,-,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,SC,4,4,2.3cm,2.5cm,1.4cm,23,25,14,+368-390-125-033+
-8.1,Ad-3,Lower Indus,Allahdino,--,E4SW Quad,--,AD74-177,-,-,-,-90 cm,-,Steatite,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Fair,Y,R/L,MT,5,5,2cm,2.1cm,1.3cm,20,21,13,+740-904-033-705-235+
-9.1,Ad-4,Lower Indus,Allahdino,--,H6-,--,AD74-105,-,-,-,-15 cm,-,Steatite,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Fair,Y,R/L,LP,6,6,2.1cm,2.1cm,0.6cm,21,21,6,+740-017-495-235-741-066+
-10.1,Ad-5,Lower Indus,Allahdino,--,C6NW Quad,--,AD74-123,-,-,-,-34 cm,-,Steatite,-,square,-,complete,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,SS,3,3,1.7cm,1.8cm,0.5cm,17,18,5,+156-460-510+
-11.1,Ad-6,Lower Indus,Allahdino,--,E6NW Quad,--,AD74-164,-,-,-,-110 cm,-,Steatite,-,square,-,complete,Rhin,Trough,SEAL:S,1,Fair,Y,R/L,SC,5,5,2.0cm,2.1cm,1.6cm,20,21,16,+072-170-740-840-013+
+id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,period,phase,depth,boss,material,color,shape,cross-section,preservation,symbol,cult,type,sides,condition,complete,dir.,class,text length,signs,h,v,th,horizontal(mm),vertical(mm),thickness(mm),text,sanskrit,translation
+1.1,Agr-1,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+,hara,Destroyer[MBh]
+2.1,Agr-2,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+,hara,Destroyer[MBh]
+3.1,Agr-3,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,SC,2,2,,,,0,0,0,+405-017+,hara,Destroyer[MBh]
+4.1,-,Lower Indus,Allahdino,--,J6E1/2,--,AD73-157,-,-,-,-125 cm,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2,1,2.5cm,3.0cm,0.6cm,25,30,6,+220-000+,
+5.1,-,Lower Indus,Allahdino,--,H5E1/2,--,AD73-157,-,-,-,-0.35 m,-,Clay,Red,-,-,chipped,Bull,-,TAG,1,Poor,Y,R/L,SS,2,2,3.7cm,4.4cm,1.2cm,37,44,12,+740-235+,aman,Roarer[√अम् + शतृँ]
+6.1,Ad-1,Lower Indus,Allahdino,--,J7SW Quad,--,AD74-147,-,-,-,-0-20  cm,-,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,SS,3,3,2.85cm,2.3cm,2.8cm,28.5,23,28,+740-390-590+,varAn,blessings[RV]
+7.1,Ad-2,Lower Indus,Allahdino,--,Test 6B-,--,AD74-32,-,-,-,-10 cm,-,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,SC,4,4,2.3cm,2.5cm,1.4cm,23,25,14,+368-390-125-033+,jaqa-arRa,cold[Pañcat] stream[RV]
+8.1,Ad-3,Lower Indus,Allahdino,--,E4SW Quad,--,AD74-177,-,-,-,-90 cm,-,Steatite,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Fair,Y,R/L,MT,5,5,2cm,2.1cm,1.3cm,20,21,13,+740-904-033-705-235+,aman jAna,Roarer[√अम् + शतृँ] The Origin[RV]
+9.1,Ad-4,Lower Indus,Allahdino,--,H6-,--,AD74-105,-,-,-,-15 cm,-,Steatite,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Fair,Y,R/L,LP,6,6,2.1cm,2.1cm,0.6cm,21,21,6,+740-017-495-235-741-066+,Gana-ama-Ahan,Destroyer[RV] O powerful[RV] killer[RV]
+10.1,Ad-5,Lower Indus,Allahdino,--,C6NW Quad,--,AD74-123,-,-,-,-34 cm,-,Steatite,-,square,-,complete,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,SS,3,3,1.7cm,1.8cm,0.5cm,17,18,5,+156-460-510+,udaya,Rising Sun[ŚBr]
+11.1,Ad-6,Lower Indus,Allahdino,--,E6NW Quad,--,AD74-164,-,-,-,-110 cm,-,Steatite,-,square,-,complete,Rhin,Trough,SEAL:S,1,Fair,Y,R/L,SC,5,5,2.0cm,2.1cm,1.6cm,20,21,16,+072-170-740-840-013+,tadanna-DAma,the delight[AV] of regular food[RV]
 12.1,Ad-7,Lower Indus,Allahdino,--,H7SW Quad,--,AD74-126,-,-,-,-20 cm,-,Steatite,-,square,-,partly damaged,None,None,SEAL:S,1,Poor,N,R/L,??,6,3,0.9cm,0.9cm,0.4cm,9,9,4,+740-142-000/000-388-000+
 13.1,Ad-8,Lower Indus,Allahdino,--,G6SE Quad,--,AD74-67,-,-,-,-0.20 cm,-,Clay,-,square,-,complete,Elep,SAN,MISC,1,Fair,N,R/L,??,6,5,3.2cm,3.3cm,0.7cm,32,33,7,+740-440-503-002-861-000+
 14.1,Ad-9,Lower Indus,Allahdino,--,--,--,AD74-E5 ,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,3+?,2,,,,0,0,0,]000-004-455+
 15.1,Ad-11,Lower Indus,Allahdino,--,J6E1/2,--,AD73-94,-,-,-,-125 cm,-,Clay,Red,-,-,fragment,None,None,MISC,1,Poor,N,-,??,2+?,1,4.4cm,4.5cm,2.3cm,44,45,23,]000-415+
-16.1,Alt-90,Central Asia,Altyn Depe,-exc. 9,--,105-,-,-,-,-,- -,PBRF,Soft stone,White,square,-,complete,None,None,SEAL:S,1,Good,Y,L/R,PN,2,2,,,,14,15,4 - 7,+390-415+
-17.1,Ai-7,Lower Indus,Amri,--,--,--,AI-23(10b),-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Good,Y,L/R,PN,2,2,,,,0,0,0,+390-034+
-18.1,-,Lower Indus,Bakkar Buthi,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,R/L,IM,6,6,,,,0,0,0,+405-844-032-840-002-861+
-19.1,Blk-1,Lower Indus,Bala-kot,--,--,--,2 BLK-165,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1,-,SEAL:S,1,Poor,Y,R/L,LC,7,7,,,,42,0,0,+226-003-002-297-350-125-413+
-20.1,Blk-2,Lower Indus,Bala-kot,--,--,--,BLK-104,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1,R,SEAL:S,1,Poor,Y,R/L,LC,6,6,,,,30.5,31,0,+390-717-061-002-368-634+
-21.1,Blk-3,Lower Indus,Bala-kot,--,--,--,3 BLK-1975,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1:II,SAN,SEAL:S,1,Poor,N,R/L,??,5,2,,,,25,25,0,+000-388-233-000-000+
-22.1,Blk-4,Lower Indus,Bala-kot,--,--,--,2 BLK- 222,-,-,-,- -,-,-,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Poor,Y,R/L,SC,5,5,,,,27,27,0,+527-554-298-368-634+
-23.1,Blk-6,Lower Indus,Bala-kot,--,--,--,3 BLK- 189,-,-,-,- -,-,-,Red,-,-,complete,None,None,BNGL,1,Poor,Y,R/L,SC,2,2,,,,0,0,0,+750-798+
-24.1,Blk-5,Lower Indus,Bala-kot,--,--,--,4 BLK- 21,-,-,-,- -,PBVF,-,-,square,rectangular,complete,Bull3,S520,SEAL:S,1,Good,Y,NR,NU,1,1,,,,21,20.5,3 - 10,+415+
+16.1,Alt-90,Central Asia,Altyn Depe,-exc. 9,--,105-,-,-,-,-,- -,PBRF,Soft stone,White,square,-,complete,None,None,SEAL:S,1,Good,Y,L/R,PN,2,2,,,,14,15,4 - 7,+390-415+,tara,Transcender[=Shiva;MBh]
+17.1,Ai-7,Lower Indus,Amri,--,--,--,AI-23(10b),-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Good,Y,L/R,PN,2,2,,,,0,0,0,+390-034+,cara,Wanderer[=Shiva;RV:√चर् + अच्],
+18.1,-,Lower Indus,Bakkar Buthi,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,R/L,IM,6,6,,,,0,0,0,+405-844-032-840-002-861+,rava dasa-dara,Roarer[√रु + अच्] destroyer[RV] of Dasa[RV:6.21.11]
+19.1,Blk-1,Lower Indus,Bala-kot,--,--,--,2 BLK-165,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1,-,SEAL:S,1,Poor,Y,R/L,LC,7,7,,,,42,0,0,+226-003-002-297-350-125-413+,idDA-acala-vaja namana,Saluting the one who roams the glowing[RV] mountains[RV 10.180.2]
+20.1,Blk-2,Lower Indus,Bala-kot,--,--,--,BLK-104,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1,R,SEAL:S,1,Poor,Y,R/L,LC,6,6,,,,30.5,31,0,+390-717-061-002-368-634+,tanavat-dara,Roaring[√तन् + अच् + मतुप्] Destroyer[RV]
+21.1,Blk-3,Lower Indus,Bala-kot,--,--,--,3 BLK-1975,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1:II,SAN,SEAL:S,1,Poor,N,R/L,??,5,2,,,,25,25,0,+000-388-233-000-000+,
+22.1,Blk-4,Lower Indus,Bala-kot,--,--,--,2 BLK- 222,-,-,-,- -,-,-,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Poor,Y,R/L,SC,5,5,,,,27,27,0,+527-554-298-368-634+,tana-lAsam,Roarer's[RV] dance[Rt]
+23.1,Blk-6,Lower Indus,Bala-kot,--,--,--,3 BLK- 189,-,-,-,- -,-,-,Red,-,-,complete,None,None,BNGL,1,Poor,Y,R/L,SC,2,2,,,,0,0,0,+750-798+,Ahana,Slayer[आ + √हन् + अच्]
+24.1,Blk-5,Lower Indus,Bala-kot,--,--,--,4 BLK- 21,-,-,-,- -,PBVF,-,-,square,rectangular,complete,Bull3,S520,SEAL:S,1,Good,Y,NR,NU,1,1,,,,21,20.5,3 - 10,+415+,ta[m],him[√तद्]
 25.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,-Figure 68.02,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,R/L,??,1,0,,,,0,0,0,+000+
-26.1,-,Eastern Headwaters,Banawali,--,--,--,BNL 11448,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,-,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,17,17,11,+520-001+
-27.1,B-1,Eastern Headwaters,Banawali,--,--,--,BNL1 1027,Period 3C-2,-,-,- -,PBSG,Steatite,White,square,-,complete,Bull1:O,HAF,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,35.1,35.6,8.1,+090-740-220-002-368-550-821+
-28.1,B-3,Eastern Headwaters,Banawali,--,--,--,BNL1 5026,Period 2,II,-,- -,PB,-,-,square,-,complete,Bull1,S520,SEAL:S,1,Poor,Y,R/L,ZN,2,2,,,,15,15,0,+220-014+
-29.1,B-4,Eastern Headwaters,Banawali,--,--,--,BNL 5473,Period 3C-2,-,-,- -,PB,-,-,square,-,complete,Bull3,S390,SEAL:S,1,Poor,Y,R/L,SC,2,2,,,,16,16,0,+740-797+
-30.1,B-5,Eastern Headwaters,Banawali,--,--,--,BNL 9903,Period 2,II,-,- -,PBRF,-,-,square,rectangular,complete,Bull3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,13,13,26 - 54.6,+002-817+
-31.1,B-7,Eastern Headwaters,Banawali,--,--,--,BNL 551,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Buff,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,22.8,21.8,3.5 - 7.2,+002-817+
-32.1,B-8,Eastern Headwaters,Banawali,--,--,--,BNL 312,Period 3C-2,-,-,- -,PBVG,Steatite,-,square,rectangular,complete,Goat:4,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,3.5-7 (estimated),21.5,21.3,3.8 - 7,+740-061+
-33.1,B-9,Eastern Headwaters,Banawali,--,--,--,BNL1 1028,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,rectangular,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,PN,2,2,,,4.5-8 (estimated),22.8,21,4.9 - 8,+390-004+
-34.1,B-10,Eastern Headwaters,Banawali,--,--,--,BNL 9204,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Goat:3,S390,SEAL:S,1,Fair,Y,NR,NU,1,1,,,,14.3,12.5,3.1 - 6.9,+007+
-35.1,B-12,Eastern Headwaters,Banawali,--,--,--,BNL 5132,Period 3C-2,-,-,- -,PBRF,Steatite,-,square,rectangular,complete,Goat:2,S017,SEAL:S,1,Good,Y,NR,TS,1,1,,,4-8 (estimated),18.9,18.7,4.2 - 8,+411+
-36.1,B-15,Eastern Headwaters,Banawali,--,--,--,BNL 1847,Period 2,II,-,- -,PBRF,Steatite,-,square,-,complete,Rhin,None,SEAL:S,1,Good,Y,R/L,SS,2,2,,,,19,19,6.5 - 11.8,+002-817+
-37.1,B-17,Eastern Headwaters,Banawali,--,--,--,BNL 9201,Period 2,II,-,- -,PBSG,Steatite,-,square,-,complete,Htgr,HBF,SEAL:S,1,Fair,Y,R/L,SC,4,4,,,,29.5,29.5,7.9 - 17.8,+236-002-308-090+
+26.1,-,Eastern Headwaters,Banawali,--,--,--,BNL 11448,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,-,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,17,17,11,+520-001+,ana,breath[ŚBr]
+27.1,B-1,Eastern Headwaters,Banawali,--,--,--,BNL1 1027,Period 3C-2,-,-,- -,PBSG,Steatite,White,square,-,complete,Bull1:O,HAF,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,35.1,35.6,8.1,+090-740-220-002-368-550-821+,rarAsa navamAna,(He) roars[√रस् लिट् 1s.] O wanderer[√नु Ā + शानच्]
+28.1,B-3,Eastern Headwaters,Banawali,--,--,--,BNL1 5026,Period 2,II,-,- -,PB,-,-,square,-,complete,Bull1,S520,SEAL:S,1,Poor,Y,R/L,ZN,2,2,,,,15,15,0,+220-014+,Sam,blessing[RV]
+29.1,B-4,Eastern Headwaters,Banawali,--,--,--,BNL 5473,Period 3C-2,-,-,- -,PB,-,-,square,-,complete,Bull3,S390,SEAL:S,1,Poor,Y,R/L,SC,2,2,,,,16,16,0,+740-797+,Ahana,Slayer[आ + √हन् + अच्]
+30.1,B-5,Eastern Headwaters,Banawali,--,--,--,BNL 9903,Period 2,II,-,- -,PBRF,-,-,square,rectangular,complete,Bull3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,13,13,26 - 54.6,+002-817+,rava,Roarer(Rudra)[√रु + अच्]
+31.1,B-7,Eastern Headwaters,Banawali,--,--,--,BNL 551,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Buff,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,22.8,21.8,3.5 - 7.2,+002-817+,rava,Roarer(Rudra)[√रु + अच्]
+32.1,B-8,Eastern Headwaters,Banawali,--,--,--,BNL 312,Period 3C-2,-,-,- -,PBVG,Steatite,-,square,rectangular,complete,Goat:4,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,3.5-7 (estimated),21.5,21.3,3.8 - 7,+740-061+,tana,Destroyer[√तन् + अच्]
+33.1,B-9,Eastern Headwaters,Banawali,--,--,--,BNL1 1028,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,rectangular,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,PN,2,2,,,4.5-8 (estimated),22.8,21,4.9 - 8,+390-004+,cara,Wanderer[=Shiva;RV:√चर् + अच्],
+34.1,B-10,Eastern Headwaters,Banawali,--,--,--,BNL 9204,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Goat:3,S390,SEAL:S,1,Fair,Y,NR,NU,1,1,,,,14.3,12.5,3.1 - 6.9,+007+,ha,Verily[Ved]
+35.1,B-12,Eastern Headwaters,Banawali,--,--,--,BNL 5132,Period 3C-2,-,-,- -,PBRF,Steatite,-,square,rectangular,complete,Goat:2,S017,SEAL:S,1,Good,Y,NR,TS,1,1,,,4-8 (estimated),18.9,18.7,4.2 - 8,+411+,ra,giving[Śiś]
+36.1,B-15,Eastern Headwaters,Banawali,--,--,--,BNL 1847,Period 2,II,-,- -,PBRF,Steatite,-,square,-,complete,Rhin,None,SEAL:S,1,Good,Y,R/L,SS,2,2,,,,19,19,6.5 - 11.8,+002-817+,rava,Roarer(Rudra)[√रु + अच्]
+37.1,B-17,Eastern Headwaters,Banawali,--,--,--,BNL 9201,Period 2,II,-,- -,PBSG,Steatite,-,square,-,complete,Htgr,HBF,SEAL:S,1,Fair,Y,R/L,SC,4,4,,,,29.5,29.5,7.9 - 17.8,+236-002-308-090+,Alava,Reaper[आ + √लु + अच्]
 38.1,B-18,Eastern Headwaters,Banawali,--,--,--,BNL 9206,Period 2,II,-,- -,PB,-,-,square,-,fragment,-,-,SEAL:S,1,Poor,N,R/L,??,3+?,2,,,,0,0,6.5,]000-002-861+
-39.1,B-19,Eastern Headwaters,Banawali,--,--,--,-,Period 3C-2,-,-,- -,PB,-,-,square,-,complete,None,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,10,9.2,0,+740-803+
-40.1,B-21,Eastern Headwaters,Banawali,--,--,--,BNL 9205,Period 2,II,-,- -,PN,Steatite,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fair,Y,R/L,SP,4,4,,,,26.9,13.1,6.7 - 9,+426-003-060-692+
+39.1,B-19,Eastern Headwaters,Banawali,--,--,--,-,Period 3C-2,-,-,- -,PB,-,-,square,-,complete,None,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,10,9.2,0,+740-803+,Sam,blessings[RV]
+40.1,B-21,Eastern Headwaters,Banawali,--,--,--,BNL 9205,Period 2,II,-,- -,PN,Steatite,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fair,Y,R/L,SP,4,4,,,,26.9,13.1,6.7 - 9,+426-003-060-692+,kam jaya,perfect[ŚBr] victory[RV]
 41.1,B-23,Eastern Headwaters,Banawali,--,--,--,BNL1 3378,Period 3C-2,-,-,- -,-,-,-,-,-,chipped,Scene,None,TAG,1,Poor,?,T/B,UC,3+?,3,,,,22,21,0,+520-220-002[
 42.1,B-24,Eastern Headwaters,Banawali,--,--,--,-Figure 4.4,Period 2,II,-,- -,-,-,-,prism,triangular,fragment,Scene,None,TAB:B,1,Poor,N,-,??,8+?,7,,,,32,14,8,]906-090-000-158-900-380-484-900+
 43.1,B-25,Eastern Headwaters,Banawali,--,--,--,BNL1 170/84,Period 3C-2,-,-,- -,-,-,-,-,-,complete,None,None,MISC,1,Poor,N,-,??,5,2,,,,0,0,0,+000-000/000-031-700+
-44.1,B-28,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,-,SC,3,3,,,,0,0,0,+374-308-350+
+44.1,B-28,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,-,SC,3,3,,,,0,0,0,+374-308-350+,calata,wander[√चल् लोट् 2p.]
 45.1,B-29,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,?,-,UC,1+?,1,,,,0,0,0,+748[
 46.1,B-30,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2+?,1,,,,0,0,0,+740-000[
-47.1,B-32,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,ZN,1,1,,,,0,0,0,+234+
+47.1,B-32,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,ZN,1,1,,,,0,0,0,+234+,naman,saluting[√नम् + शतृँ]
 48.1,B-35,Eastern Headwaters,Banawali,--,--,--,BNL,Period 3C-2,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2,1,,,,0,0,0,+700-000+
 49.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,-,None,MISC,1,Poor,N,T/B,??,3,0,,,,0,0,0,+000-000-000+
 50.1,-,Eastern Headwaters,Bhirrana,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Buff,None,SEAL:S,1,Fine,Y,L/R,PN,3,3,,,,21,20,0,+390-003-003+

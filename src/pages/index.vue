@@ -59,7 +59,7 @@
         <!-- <td :colspan="columns.length">
           More info about {{ item.description }}
         </td> -->
-        <td></td><td>{{ item.site }}</td><td>{{ item.xlit }}</td><td>{{ item.skt }}</td>
+        <td></td><td>{{ item.site }}</td><td>{{ item.description }}</td><td></td>
       </tr>
     </template>
   </v-data-table>
@@ -96,9 +96,9 @@
   import Schar from '../components/schar.vue'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
-  import mw from '../assets/data/mw.txt?raw'
+  // import mw from '../assets/data/mw.txt?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'sanskrit', 'translation'] })
   const xlitarray = csv2json(xlits)
   const borders = {
     L: { ']': '\uE3E5', '+': '\uE3E3' },
@@ -123,8 +123,8 @@
     el.regex = analyzed.regex
     el.text = jsize(el.text)
     const regex = new RegExp('^' + el.regex + '$', 'smg')
-    const matches = mw.match(regex)
-    el.best = matches === null ? '' : matches[0]
+    // const matches = mw.match(regex)
+    // el.best = matches === null ? '' : matches[0]
   })
 
   function jsize (text) {
@@ -219,9 +219,10 @@
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
           { title: 'Inscription', key: 'text', align: 'end', cellProps: { class: 'indus' } },
-          { title: 'Transliteration', key: 'description' },
+          // { title: 'Transliteration', key: 'description' },
           // { title: 'Regex', key: 'regex' },
-          { title: 'Match', key: 'best' },
+          { title: 'Sanskrit', key: 'sanskrit' },
+          { title: 'Translation', key: 'translation' },
           { title: '', key: 'data-table-expand' },
         ],
         items: inx,
