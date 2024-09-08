@@ -76,9 +76,6 @@
 
     <template v-slot:expanded-row="{ columns, item }">
       <tr>
-        <!-- <td :colspan="columns.length">
-          More info about {{ item.description }}
-        </td> -->
         <td></td><td>{{ item.site }}</td><td style="text-align: right;">{{ item.description }}</td><td></td>
       </tr>
     </template>
@@ -116,12 +113,14 @@
     R: { '[': '\uE3E6', '+': '' }, //'\uE3E4' },
   }
 
+  const canonMap = {}
   const xlitmap = {}
   xlitarray.forEach(element => {
     xlitmap[element.sign] = {}
     xlitmap[element.sign].xlit = element.xlit
     xlitmap[element.sign].canonical = element.canonical
     xlitmap[element.sign].regex = element.regex || element.xlit
+    canonMap[characterize(element.sign)] = characterize(element.canonical)
   })
 
   xlitarray.forEach(element => {
@@ -132,7 +131,9 @@
     const analyzed = xlitize(el.text)
     el.description = analyzed.str
     el.regex = analyzed.regex
-    el.text = jsize(el.text)
+    const canonized = canonize(el.text)
+    el.text = canonized.str // jsize(el.text)
+    el.canonized = canonized.canon
     el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
               + '\n' + sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
     // const regex = new RegExp('^' + el.regex + '$', 'smg')
@@ -140,30 +141,58 @@
     // el.best = matches === null ? '' : matches[0]
   })
 
-  function jsize (text) {
-    text = text.trim()
-    const slices = text.split(/\//).reverse()
-    if (slices === null) return ''
-    const jslices = slices.map($item => { return jsizepart($item) })
-    const L = borders.L[text.charAt(0)]
-    const R = borders.R[text.charAt(text.length - 1)]
-    if (R === undefined) {
-      console.log(text)
-    }
+  // function jsize (text) {
+  //   text = text.trim()
+  //   const slices = text.split(/\//).reverse()
+  //   if (slices === null) return ''
+  //   const jslices = slices.map($item => { return jsizepart($item) })
+  //   const L = borders.L[text.charAt(0)]
+  //   const R = borders.R[text.charAt(text.length - 1)]
+  //   if (jslices[0]) jslices[0] = L + jslices[0]
+  //   if (jslices[jslices.length - 1]) jslices[jslices.length - 1] += R
+  //   return jslices.join('\n')
+  // }
 
-    if (jslices[0]) jslices[0] = L + jslices[0]
-    if (jslices[jslices.length - 1]) jslices[jslices.length - 1] += R
-    return jslices.join('\n')
+  function canonized (text) {
+    let canonizedStr = ''
+    for (let i = 0; i < text.length; i++) {
+      canonizedStr += canonMap[text.charAt(i)]
+    }
+    return canonizedStr
   }
 
-  function jsizepart (text) {
+  function characterize (points) {
+    const charset = points.toString().split('-')
+    let result = ''
+    charset.forEach(point => {
+      result += '\\u' + (0xE000 + parseInt(point)).toString(16)
+    })
+    return JSON.parse('"' + result + '"')
+  }
+
+  function canonize (text) {
+    text = text.replace('/', '-999-')
     const re = /(\d+)/g
     const results = text.match(re)
     let str = ''
+    let canon = ''
     results.forEach(row => {
-      str += '\\u' + (0xE000 + parseInt(row)).toString(16)
+      const thisChar = '\\u' + (0xE000 + parseInt(row)).toString(16)
+      str += thisChar
+      if (row !== xlitmap[row].canonical) {
+        if (!xlitmap[row].canonical) return row
+        const canel = xlitmap[row].canonical.toString().split('-')
+        canon += canel.map(a => {
+          return '\\u' + (0xE000 + parseInt(a)).toString(16)
+        }).join('')
+      } else {
+        canon += thisChar
+      }
     })
-    return JSON.parse('"' + str + '"')
+    // if (canon.length > 20) console.log('Canonical of ', JSON.parse('"' + str + '"'), 'is', JSON.parse('"' + canon + '"'))
+    str = JSON.parse('"' + str + '"')
+    canon = JSON.parse('"' + canon + '"')
+    return { str, canon }
   }
 
   function mkregex (element) {
@@ -194,7 +223,7 @@
 
   function xlitize (text) {
     const re = /(\d+)/g
-    const results = text.match(re) //.reverse()
+    const results = text.match(re).reverse()
     if (xlitmap[results[0]] === undefined) {
       return console.log('Warning: Missing sign', results[0])
     }
@@ -218,6 +247,7 @@
       str += 'a'
       regex += 'a?'
     }
+    str = str.split('-').reverse().join('-')
     return { str, regex }
   }
 
@@ -259,7 +289,8 @@
           query != null &&
           item.raw.complete === 'Y' &&
           typeof value === 'string' &&
-          value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1
+          ((value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1) ||
+          (query.length > 0 && query.charCodeAt(0) >= 0xE000 && canonized(value).indexOf(canonized(query)) !== -1))
         )
       },
     },
