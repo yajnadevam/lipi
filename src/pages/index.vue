@@ -6,9 +6,9 @@
         location="right"
         temporary
       >
+          <!-- prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg" -->
         <v-list-item
-          prepend-avatar="https://randomuser.me/api/portraits/men/78.jpg"
-          title="Indus Script"
+          title="Allograph values"
         ></v-list-item>
         <v-fab @click.stop="drawer = !drawer"
         :key="activeFab.icon"

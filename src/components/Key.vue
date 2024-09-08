@@ -19,7 +19,7 @@
   const items = csv2json(decipher)
   items.forEach(it => {
     it.id += ' ' + it.name
-    // it.varna += '\n' + it.letter
+    it.varna += (it.varna.length === 1 ? ' ' : '\n') + it.letter
     it.glyphs = JSON.parse('"' + it.glyphs + '"')
   })
   const dheaders = [
@@ -38,12 +38,13 @@
         font-size: 24pt;
         }
         .indus1 {
-            font-family: indus_scriptregular; font-size: 9pt;
+            font-family: indus_scriptregular; font-size: 12pt;
             white-space: pre;
-            height: 18px !important;
+            height: 30px !important;
         }
         .sanskrit1 {
+            font-size: 7pt;
             white-space: pre;
-            height: 18px !important;
+            height: 30px !important;
         }
 </style>
