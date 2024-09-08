@@ -1,9 +1,12 @@
 <script setup>
-  defineProps(['value'])
+  defineProps(['value', 'xlit'])
 </script>
 
 <template>
-  <span class="indus">{{ value }}</span>
+    <table>
+    <tr><td class="indus">{{ value }}</td></tr>
+    <tr><td class="xlit">{{ xlit }}</td></tr>
+    </table>
 </template>
 
 <style>
@@ -16,5 +19,6 @@
         }
         .indus {
             font-family: indus_scriptregular; font-size: 24pt;
+            white-space: pre;
         }
 </style>

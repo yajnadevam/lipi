@@ -21,14 +21,12 @@
         app
         appear
       ></v-fab>
-
-
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
           <!-- <v-list-item prepend-icon="mdi-view-dashboard" title="Home" value="home"></v-list-item>
           <v-list-item prepend-icon="mdi-forum" title="About" value="about"></v-list-item> -->
-          <Schar value="अ"></Schar><Schar value="अयुग"></Schar><Ichar value="&#xE001;" />
+          <Key />
         </v-list>
       </v-navigation-drawer>
       <v-main>
@@ -45,7 +43,7 @@
     <template v-slot:top>
       <v-text-field
         v-model="search"
-        class="pa-2"
+        class="pa-2 indus"
         label="Search Indus valley inscriptions"
       ></v-text-field>
     </template>
@@ -59,7 +57,7 @@
         <!-- <td :colspan="columns.length">
           More info about {{ item.description }}
         </td> -->
-        <td></td><td>{{ item.site }}</td><td>{{ item.description }}</td><td></td>
+        <td></td><td>{{ item.site }}</td><td style="text-align: right;">{{ item.description }}</td><td></td>
       </tr>
     </template>
   </v-data-table>
@@ -92,6 +90,7 @@
 
 <script>
   import { csv2json } from 'json-2-csv'
+  import Key from '../components/Key.vue'
   import Ichar from '../components/ichar.vue'
   import Schar from '../components/schar.vue'
   import sanskrittransliterate from 'devanagari-transliterate'
@@ -102,8 +101,8 @@
   const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'sanskrit', 'translation'] })
   const xlitarray = csv2json(xlits)
   const borders = {
-    L: { ']': '\uE3E5', '+': '\uE3E3' },
-    R: { '[': '\uE3E6', '+': '\uE3E4' },
+    L: { ']': '\uE3E5', '+': '' }, //'\uE3E3' },
+    R: { '[': '\uE3E6', '+': '' }, //'\uE3E4' },
   }
 
   const xlitmap = {}
@@ -123,8 +122,8 @@
     el.description = analyzed.str
     el.regex = analyzed.regex
     el.text = jsize(el.text)
-    el.sanskrit = sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
-              + '\n' + sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
+    el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
+              + '\n' + sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
     // const regex = new RegExp('^' + el.regex + '$', 'smg')
     // const matches = mw.match(regex)
     // el.best = matches === null ? '' : matches[0]
@@ -184,7 +183,7 @@
 
   function xlitize (text) {
     const re = /(\d+)/g
-    const results = text.match(re).reverse()
+    const results = text.match(re) //.reverse()
     if (xlitmap[results[0]] === undefined) {
       return console.log('Warning: Missing sign', results[0])
     }
@@ -212,7 +211,7 @@
   }
 
   export default {
-    components: { Ichar, Schar },
+    components: { Ichar, Schar, Key },
     data () {
       return {
         search: '',
@@ -249,7 +248,7 @@
           query != null &&
           item.raw.complete === 'Y' &&
           typeof value === 'string' &&
-          value.toString().toLocaleLowerCase().indexOf(query) !== -1
+          value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1
         )
       },
     },
