@@ -1,6 +1,15 @@
 <template>
-  <v-card>
-    <v-layout>
+  <v-toolbar>
+    <v-img aspect-ratio="1" src="../assets/sarasvati.png"></v-img>
+    <v-toolbar-title>Indus script corpus</v-toolbar-title>
+    <v-spacer />
+    <v-btn icon>
+        <v-icon>mdi-cog-outline</v-icon>
+      </v-btn>
+    <v-btn icon>
+        <v-icon>mdi-cog-outline</v-icon>
+      </v-btn>
+  </v-toolbar>
       <v-navigation-drawer
         v-model="drawer"
         location="right"
@@ -14,10 +23,9 @@
         :key="activeFab.icon"
         :color="activeFab.color"
         :icon="activeFab.icon"
-        class="ms-4 mb-4"
+        class="ms-1 mb-1"
         location="top right"
         size="40"
-        absolute
         app
         appear
       ></v-fab>
@@ -29,6 +37,20 @@
           <Key />
         </v-list>
       </v-navigation-drawer>
+        <v-fab @click.stop="drawer = !drawer"
+        :key="activeFab.icon"
+        :color="activeFab.color"
+        :icon="activeFab.icon"
+        class="ms-1 mb-1"
+        location="top right"
+        size="40"
+        absolute
+        app
+        appear
+      ></v-fab>
+
+  <v-card>
+    <v-layout>
       <v-main>
         <div class="d-flex justify-center align-center h-100">
   <v-data-table
@@ -43,7 +65,7 @@
     <template v-slot:top>
       <v-text-field
         v-model="search"
-        class="pa-2 indus"
+        class="pa-2"
         label="Search Indus valley inscriptions"
       ></v-text-field>
     </template>
@@ -61,17 +83,6 @@
       </tr>
     </template>
   </v-data-table>
-        <v-fab @click.stop="drawer = !drawer"
-        :key="activeFab.icon"
-        :color="activeFab.color"
-        :icon="activeFab.icon"
-        class="ms-4 mb-4"
-        location="top right"
-        size="40"
-        absolute
-        app
-        appear
-      ></v-fab>
         </div>
       </v-main>
     </v-layout>
@@ -233,8 +244,8 @@
     },
     computed: {
       activeFab () {
-        return this.drawer ? { color: 'lightgrey', icon: 'mdi-chevron-right' }
-          : { color: 'lightgrey', icon: 'mdi-chevron-left' }
+        return this.drawer ? { color: 'white', icon: 'mdi-chevron-right' }
+          : { color: 'green', icon: 'mdi-chevron-left' }
       },
       filtered () {
         return this.items.filter(e => e.complete === 'Y')
@@ -274,5 +285,8 @@
         }
         .sanskrit {
             white-space: pre;
+        }
+        .v-text-field input {
+            font-family: indus_scriptregular; font-size: 24pt;
         }
 </style>
