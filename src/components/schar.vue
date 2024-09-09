@@ -9,7 +9,7 @@
 <style scoped>
         @font-face {
         font-family: 'devanagariregular';
-        src: url('../assets/fonts/NotoSerifDevanagari.ttf') format('truetype');
+        src: url('../assets/fonts/NotoSerifDevanagari.ttf') format('truetype'); 
         font-weight: normal;
         font-style: normal;
         font-size: 24pt;
