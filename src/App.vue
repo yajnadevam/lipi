@@ -14,6 +14,6 @@
     setTimeout(function () {
       const splashScreen = document.querySelector('.splash')
       if (splashScreen) splashScreen.classList.add('hidden')
-    }, 2000)
+    }, 500)
   }
 </script>
