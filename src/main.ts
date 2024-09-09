@@ -7,7 +7,7 @@
 // Plugins
 import { registerPlugins } from '@/plugins'
 import { inject } from '@vercel/analytics'
-import { injectSpeedInsights } from '@vercel/speed-insights' 
+import { injectSpeedInsights } from '@vercel/speed-insights'
  
 // Components
 import App from './App.vue'
