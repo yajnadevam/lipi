@@ -261,7 +261,7 @@
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
           { title: 'Inscription', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
-          // { title: 'Transliteration', key: 'description' },
+          { title: 'Transliteration', key: 'description', align: ' d-none' },
           // { title: 'Regex', key: 'regex' },
           { title: 'Sanskrit', key: 'sanskrit', cellProps: { class: 'sanskrit' } },
           // { title: 'IAST', key: 'iast' },
