@@ -1,5 +1,6 @@
 <template>
   <v-footer height="40" app>
+
     <a
       v-for="item in items"
       :key="item.title"
@@ -14,21 +15,22 @@
         :size="item.icon === '$vuetify' ? 24 : 16"
       />
     </a>
+      <v-bottom-sheet>
+  <template v-slot:activator="{ props }">
+    <v-btn v-bind="props" text="About"></v-btn>
+  </template>
+
+  <v-card
+    title="About the Indus inscriptions"
+    text="The Indus script was provably deciphered by Yajnadevam in 2022. This site transliterates and translates the entire corpus of Indus inscriptions. Click on the icons on the bottom for links to the decipherment paper and social media."
+  ></v-card>
+</v-bottom-sheet>
 
     <div
       class="text-caption text-disabled"
       style="position: absolute; right: 16px;"
     >
       &copy; 2024-{{ (new Date()).getFullYear() }} <span class="d-none d-sm-inline-block">Yajnadevam</span>
-      <!-- —
-      <a
-        class="text-decoration-none on-surface"
-        href="https://vuetifyjs.com/about/licensing/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        MIT License
-      </a> -->
     </div>
   </v-footer>
 </template>
@@ -40,11 +42,6 @@
       icon: ['M24 21.1942V22.4H13.2272V21.1942C15.0281 21.1624 15.913 20.7822 15.913 19.7656C15.913 19.4173 15.7817 19.0037 15.6175 18.528L14.4026 15.5707H6.01683C5.31582 17.3429 4.79048 18.6664 4.7166 18.8462C3.93023 20.7726 5.01047 21.0081 6.86394 21.1926C6.86887 21.1926 6.87215 21.1942 6.87544 21.1942C6.87544 21.1942 6.87544 21.1942 6.87708 21.1942L6.87544 22.4H0V21.1942C0.883234 21.0351 1.60394 20.8776 1.8978 20.0202L8.90622 2.5055L7.85717 0H13.7837L22.0694 20.0202C22.2155 20.4163 22.4699 20.6708 22.8016 20.8442C23.1332 21.0192 23.542 21.1146 24 21.1942ZM13.8946 12.9684L10.6774 4.71578C10.1485 6.1236 8.77553 9.7833 7.57884 12.9684H13.8946Z'],
       href: 'https://www.academia.edu/78867798/A_cryptanalytic_decipherment_of_the_Indus_Script',
     },
-    // {
-    //   title: 'Vuetify Support',
-    //   icon: 'mdi-shield-star-outline',
-    //   href: 'https://support.vuetifyjs.com/',
-    // },
     {
       title: 'Yajnadevam X',
       icon: ['M2.04875 3.00002L9.77052 13.3248L1.99998 21.7192H3.74882L10.5519 14.3697L16.0486 21.7192H22L13.8437 10.8137L21.0765 3.00002H19.3277L13.0624 9.76874L8.0001 3.00002H2.04875ZM4.62054 4.28821H7.35461L19.4278 20.4308H16.6937L4.62054 4.28821Z'],

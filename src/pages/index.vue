@@ -3,9 +3,18 @@
     <v-img aspect-ratio="1" src="../assets/sarasvati.png"></v-img>
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
-    <v-btn icon>
-        <v-icon>mdi-cog-outline</v-icon>
-      </v-btn>
+    <v-menu :close-on-content-click="false" :close-delay="2000" :open-on-hover="true">
+      <template v-slot:activator="{ props }">
+      <v-btn  v-bind="props" icon>
+          <v-icon>mdi-cog-outline</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+          <v-list-item-title><v-switch v-model="optionCanonical" color="primary" label="Canonical" value="Canonical"></v-switch></v-list-item-title>
+          <v-list-item-title><v-switch v-model="optionBroken" color="red" label="Include Broken" value="Broken"></v-switch></v-list-item-title>
+      </v-list>
+    </v-menu>
+      
     <v-btn icon>
         <v-icon>mdi-cog-outline</v-icon>
       </v-btn>
@@ -56,7 +65,7 @@
   <v-data-table
     v-model:expanded="expanded"
     :custom-filter="filterInscriptions"
-    :headers="headers"
+    :headers="computedHeaders"
     item-value="id"
     :items="filtered"
     :search="search"
@@ -84,16 +93,6 @@
       </v-main>
     </v-layout>
   </v-card>
-  <!-- <v-bottom-sheet>
-  <template v-slot:activator="{ props }">
-    <v-btn v-bind="props" text="Click Me"></v-btn>
-  </template>
-
-  <v-card
-    title="Bottom Sheet"
-    text="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ut, eos? Nulla aspernatur odio rem, culpa voluptatibus eius debitis dolorem perspiciatis asperiores sed consectetur praesentium! Delectus et iure maxime eaque exercitationem!"
-  ></v-card>
-</v-bottom-sheet> -->
 </template>
 
 <script>
@@ -261,7 +260,7 @@
         headers: [
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
-          { title: 'Inscription', key: 'text', align: 'end', cellProps: { class: 'indus' } },
+          { title: 'Inscription', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
           // { title: 'Transliteration', key: 'description' },
           // { title: 'Regex', key: 'regex' },
           { title: 'Sanskrit', key: 'sanskrit', cellProps: { class: 'sanskrit' } },
@@ -270,6 +269,8 @@
           { title: '', key: 'data-table-expand' },
         ],
         items: inx,
+        optionCanonical: '',
+        optionBroken: '',
       }
     },
     computed: {
@@ -278,7 +279,15 @@
           : { color: 'green', icon: 'mdi-chevron-left' }
       },
       filtered () {
-        return this.items.filter(e => e.complete === 'Y')
+        return this.items.filter(e => this.optionBroken || e.complete === 'Y')
+      },
+      computedHeaders() {
+        this.headers.forEach(h => {
+          if (h.title === 'Inscription') {
+            h.key = this.optionCanonical ? 'canonized' : 'text'
+          }
+        })
+        return this.headers
       },
     },
 
@@ -287,7 +296,7 @@
         return (
           value != null &&
           query != null &&
-          item.raw.complete === 'Y' &&
+          ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete === 'Y') &&
           typeof value === 'string' &&
           ((value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1) ||
           (query.length > 0 && query.charCodeAt(0) >= 0xE000 && canonized(value).indexOf(canonized(query)) !== -1))
