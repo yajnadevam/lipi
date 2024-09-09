@@ -6,7 +6,8 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
-
+import { inject } from '@vercel/analytics'
+ 
 // Components
 import App from './App.vue'
 
@@ -16,5 +17,6 @@ import { createApp } from 'vue'
 const app = createApp(App)
 
 registerPlugins(app)
+inject()
 
 app.mount('#app')
