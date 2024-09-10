@@ -9,7 +9,7 @@
           <v-icon>mdi-cog-outline</v-icon>
         </v-btn>
       </template>
-      <v-list>
+      <v-list style="padding: 4px;">
           <v-list-item-title>
             <v-switch 
                 v-model="optionCanonical" 
@@ -24,6 +24,15 @@
               color="red" 
               label="Include Broken"
               @update:model-value="persistBroken"
+            >
+            </v-switch>
+          </v-list-item-title>
+          <v-list-item-title>
+            <v-switch 
+              v-model="lightTheme"
+              color="primary" 
+              label="Light Theme"
+              @update:model-value="toggleTheme"
             >
             </v-switch>
           </v-list-item-title>
@@ -106,11 +115,20 @@
   </v-card>
 </template>
 
+<script setup>
+  import { useTheme } from 'vuetify'
+  const theme = useTheme()
+  theme.global.name.value = localStorage.getItem('theme') || 'dark'
+
+  function toggleTheme () {
+    theme.global.name.value = theme.global.current.value.dark ? 'light' : 'dark'
+    localStorage.setItem('theme', theme.global.name.value)
+  }
+
+</script>
 <script>
   import { csv2json } from 'json-2-csv'
   import Key from '../components/Key.vue'
-  import Ichar from '../components/ichar.vue'
-  import Schar from '../components/schar.vue'
   import sanskrittransliterate from 'devanagari-transliterate'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
@@ -161,7 +179,7 @@
   }
 
   function canonize (text) {
-    text = text.replace('/', '-999-999-999-999-')
+    text = text.replaceAll('/', '-999-999-999-999-')
     const re = /(\d+)/g
     const results = text.match(re)
     let str = ''
@@ -260,6 +278,7 @@
         items: inx,
         optionCanonical: false,
         optionBroken: false,
+        lightTheme: false,
       }
     },
     computed: {
@@ -292,7 +311,7 @@
         )
       },
       itemrow (item) {
-        return item.item.complete === 'Y' ? { class: 'text-white' } : { class: 'text-red' }
+        return item.item.complete === 'Y' ? { class: 'primary--text' } : { class: 'text-red' }
       },
       pageChange (newPage) {
         localStorage.setItem('page', newPage)
@@ -309,6 +328,7 @@
       this.pageNum = localStorage.getItem('page')
       this.optionCanonical = localStorage.getItem('canonical') === 'true'
       this.optionBroken = localStorage.getItem('broken') === 'true'
+      this.lightTheme = localStorage.getItem('theme') == 'light'
     },
   }
 
