@@ -61,13 +61,15 @@
         <div class="d-flex justify-center align-center h-100">
   <v-data-table
     v-model:expanded="expanded"
-    :row-props="itemrow"
     :custom-filter="filterInscriptions"
     :headers="computedHeaders"
     item-value="id"
     :items="filtered"
+    :page="pageNum"
+    :row-props="itemrow"
     :search="search"
     show-expand
+    @update:page="pageChange"
   >
     <template #top>
       <v-text-field
@@ -144,7 +146,7 @@
   }
 
   function canonize (text) {
-    text = text.replace('/', '-999-')
+    text = text.replace('/', '-999-999-999-999-')
     const re = /(\d+)/g
     const results = text.match(re)
     let str = ''
@@ -224,11 +226,12 @@
   }
 
   export default {
-    components: { Ichar, Schar, Key },
+    components: { Key },
     data () {
       return {
         search: '',
         drawer: null,
+        pageNum: 1,
         expanded: [],
         headers: [
           { title: 'Seal ID', key: 'id' },
@@ -252,7 +255,7 @@
       filtered () {
         return this.items.filter(e => this.optionBroken || e.complete === 'Y')
       },
-      computedHeaders() {
+      computedHeaders () {
         this.headers.forEach(h => {
           if (h.title === 'Inscription') {
             h.key = this.optionCanonical ? 'canonized' : 'text'
@@ -276,6 +279,13 @@
       itemrow (item) {
         return item.item.complete === 'Y' ? { class: 'text-white' } : { class: 'text-red' }
       },
+      pageChange (newPage) {
+        localStorage.setItem('page', newPage)
+        this.pageNum = newPage
+      },
+    },
+    created () {
+      this.pageNum = localStorage.getItem('page')
     },
   }
 
