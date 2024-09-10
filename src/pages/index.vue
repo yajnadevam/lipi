@@ -10,8 +10,23 @@
         </v-btn>
       </template>
       <v-list>
-          <v-list-item-title><v-switch v-model="optionCanonical" color="primary" label="Canonical" value="Canonical"></v-switch></v-list-item-title>
-          <v-list-item-title><v-switch v-model="optionBroken" color="red" label="Include Broken" value="Broken"></v-switch></v-list-item-title>
+          <v-list-item-title>
+            <v-switch 
+                v-model="optionCanonical" 
+                color="primary" 
+                label="Canonical" 
+                @update:model-value="persistCanonical"
+              >
+            </v-switch></v-list-item-title>
+          <v-list-item-title>
+            <v-switch 
+              v-model="optionBroken" 
+              color="red" 
+              label="Include Broken"
+              @update:model-value="persistBroken"
+            >
+            </v-switch>
+          </v-list-item-title>
       </v-list>
     </v-menu>
       
@@ -243,8 +258,8 @@
           { title: '', key: 'data-table-expand' },
         ],
         items: inx,
-        optionCanonical: '',
-        optionBroken: '',
+        optionCanonical: false,
+        optionBroken: false,
       }
     },
     computed: {
@@ -283,9 +298,17 @@
         localStorage.setItem('page', newPage)
         this.pageNum = newPage
       },
+      persistCanonical (value) {
+        localStorage.setItem('canonical', value)
+      },
+      persistBroken (value) {
+        localStorage.setItem('broken', value)
+      },
     },
     created () {
       this.pageNum = localStorage.getItem('page')
+      this.optionCanonical = localStorage.getItem('canonical') === 'true'
+      this.optionBroken = localStorage.getItem('broken') === 'true'
     },
   }
 
