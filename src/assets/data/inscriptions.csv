@@ -1,4 +1,4 @@
-id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,period,phase,depth,boss,material,color,shape,cross-section,preservation,symbol,cult,type,sides,condition,complete,dir.,class,text length,signs,h,v,th,horizontal(mm),vertical(mm),thickness(mm),text,sanskrit,translation
+id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,period,phase,depth,boss,material,color,shape,cross-section,preservation,symbol,cult,type,sides,condition,complete,dir.,class,text length,signs,h,v,th,horizontal(mm),vertical(mm),thickness(mm),text,sanskrit,translation,notes
 1.1,Agr-1,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+,hara,Destroyer[MBh]
 2.1,Agr-2,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,PN,2,2,,,,0,0,0,+410-017+,hara,Destroyer[MBh]
 3.1,Agr-3,Eastern Headwaters,Alamgirpur,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Fair,Y,L/R,SC,2,2,,,,0,0,0,+405-017+,hara,Destroyer[MBh]
@@ -143,7 +143,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 141.1,-,Gujarat/Kutch,Dholavira,--,--,--,391,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,TAG:L,1,Poor,N,R/L,??,3+?,2,3.5,3.2,1.5,35,32,1.5,+090-740-000[
 142.1,-,Gujarat/Kutch,Dholavira,--,--,--,392,-,-,-,- -,-,Clay,-,-,-,complete,None,None,TAG:L,1,Poor,N,R/L,??,2,1,3.8,3.9,1.4,38,39,1.4,+740-000+
 143.1,-,Gujarat/Kutch,Dholavira,Castle-,57 x 28 x 4-,--,403,-,-,-,- -,-,Clay,Brown,rectangular,-,complete,Gavi,None,TAB:B,1,Fair,N,R/L,??,6,5,30.03,12.01,17.64,30,12,17.6,+000-400-350-031-002-817+
-144.1,-,Gujarat/Kutch,Dholavira,CastleCitadel,-W.Chamber,N.Gate-,-signboard,-,-,-,- -,-,Gypsum,White,-,-,complete,None,None,MISC,1,Fair,Y,R/L,LC,9,9,300cm,37cm,,3000,370,0,+798-821-001-480-850-820-388-611-820+
+144.1,-,Gujarat/Kutch,Dholavira,CastleCitadel,-W.Chamber,N.Gate-,-signboard,-,-,-,- -,-,Gypsum,White,-,-,complete,None,None,MISC,1,Fair,Y,R/L,LC,9,9,300cm,37cm,,3000,370,0,+798-821-031-645-850-820-388-611-820+,,,Dholavira signboard
 145.1,Dlv-1,Gujarat/Kutch,Dholavira,--,--,--,-,-,-,-,- -,NBCF,-,-,square,rectangular,complete,Bull1:J,HBN,SEAL:S,1,Poor,Y,R/L,SP,5,5,,,,20,21,0,+151-382-031-002-861+
 146.1,Dlv-2,Gujarat/Kutch,Dholavira,--,--,--,-,-,-,-,- -,PN,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,N,R/L,??,3+?,2,,,,0,18,6 - 21,]000-002-817+
 147.1,-,Persian Gulf,Failaka,--,Trench D3-4,-F3,-,-,-,2000BC,7.5 m,-,-,-,circular,-,slightly chipped,Gaur,-,SEAL:C,1,Poor,N,-,??,4,3,,,,0,0,0,+317-817-000-090+

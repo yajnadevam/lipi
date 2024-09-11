@@ -115,7 +115,7 @@
 
     <template v-slot:expanded-row="{ columns, item }">
       <tr>
-        <td></td><td>{{ item.site }}</td><td style="text-align: right;">{{ item.description }}</td><td></td>
+        <td></td><td>{{ item.site }}</td><td style="text-align: right;">{{ item.description }}</td><td></td><td>{{ item.notes }}</td>
       </tr>
     </template>
   </v-data-table>
@@ -143,7 +143,7 @@
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'sanskrit', 'translation'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'sanskrit', 'translation', 'notes'] })
   const xlitarray = csv2json(xlits)
 
   const canonMap = {}
@@ -167,8 +167,12 @@
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
     el.canonized = canonized.canon
+    if(el.sanskrit) {
     el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
               + '\n' + sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
+    } else {
+      el.sanskrit = '*' + el.description.replaceAll('-', '')
+    }
   })
 
   function canonized (text) {
@@ -264,7 +268,7 @@
       str += 'a'
       regex += 'a?'
     }
-    str = str.split('-').reverse().join('-')
+    str = str.split('-').join('-')
     return { str, regex }
   }
 
