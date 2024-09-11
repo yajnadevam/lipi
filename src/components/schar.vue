@@ -7,7 +7,7 @@
 </template>
 
 <style scoped>
-        @font-face {
+        /* @font-face {
         font-family: 'devanagariregular';
         src: url('../assets/fonts/NotoSerifDevanagari.ttf') format('truetype'); 
         font-weight: normal;
@@ -16,5 +16,5 @@
         }
         .indus {
             font-family: devanagariregular; font-size: 24pt; color: black;
-        }
+        } */
 </style>

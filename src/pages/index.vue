@@ -1,6 +1,6 @@
 <template>
   <v-toolbar>
-    <v-img aspect-ratio="1" src="../assets/sarasvati.png"></v-img>
+    <h1 class="indus" style="margin: 10px;"></h1>
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
     <v-menu :close-on-content-click="false" :close-delay="2000" :open-on-hover="true">

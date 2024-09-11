@@ -24,7 +24,6 @@
   })
   const dheaders = [
     { title: 'L', key: 'varna', cellProps: { class: 'sanskrit1' } },
-    // { title: 'Name', key: 'id', cellProps: { class: 'sanskrit' } },
     { title: 'Glyphs', key: 'glyphs', cellProps: { class: 'indus1' } },
   ]
 </script>
@@ -32,7 +31,7 @@
 <style>
         @font-face {
         font-family: 'indus_scriptregular';
-        src: url('../assets/fonts/indus-font.ttf') format('truetype');
+        src: url('../assets/fonts/indus-font.woff2') format('woff2');
         font-weight: normal;
         font-style: normal;
         font-size: 24pt;
