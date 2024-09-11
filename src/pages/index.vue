@@ -294,6 +294,7 @@
           { title: 'CISI ID', key: 'cisi' },
           { title: 'Inscription', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description', align: ' d-none' },
+          { title: 'Notes', key: 'notes', align: ' d-none' },
           { title: 'Sanskrit', key: 'sanskrit', cellProps: { class: 'sanskrit' } },
           { title: 'Translation', key: 'translation' },
           { title: '', key: 'data-table-expand' },
