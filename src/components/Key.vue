@@ -35,15 +35,18 @@
         font-weight: normal;
         font-style: normal;
         font-size: 24pt;
+        font-display: swap;
         }
         .indus1 {
             font-family: indus_scriptregular; font-size: 12pt;
             white-space: pre;
             height: 30px !important;
+            font-display: swap;
         }
         .sanskrit1 {
             font-size: 7pt;
             white-space: pre;
             height: 30px !important;
+            font-display: swap;
         }
 </style>

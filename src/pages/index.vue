@@ -148,6 +148,8 @@
 
   const canonMap = {}
   const xlitmap = {}
+  const inxMap = {}
+
   xlitarray.forEach(element => {
     xlitmap[element.sign] = {}
     xlitmap[element.sign].xlit = element.xlit
@@ -167,13 +169,23 @@
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
     el.canonized = canonized.canon
-    if(el.sanskrit) {
-    el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
+    if (el.sanskrit) {
+      if (el.sanskrit.startsWith('ref:')) {
+        Object.assign(el, resolve(el.sanskrit))
+      } else {
+        el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
               + '\n' + sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
+      }
     } else {
       el.sanskrit = '*' + el.description.replaceAll('-', '')
     }
+    inxMap[el.id] = el
   })
+
+  function resolve(ref) {
+    const referred = inxMap[ref.substring(4)]
+    return { sanskrit: referred.sanskrit, translation: referred.translation }
+  }
 
   function canonized (text) {
     let canonizedStr = ''
@@ -375,15 +387,16 @@
         font-weight: normal;
         font-style: normal;
         font-size: 24pt;
+        font-display: swap;
         }
         .indus {
-            font-family: indus_scriptregular; font-size: 24pt;
+            font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
             white-space: pre;
         }
         .sanskrit {
             white-space: pre;
         }
         .v-text-field input {
-            font-family: indus_scriptregular; font-size: 24pt;
+            font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
         }
 </style>

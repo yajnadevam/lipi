@@ -16,9 +16,11 @@
         font-weight: normal;
         font-style: normal;
         font-size: 24pt;
+        font-display: swap;
         }
         .indus {
             font-family: indus_scriptregular; font-size: 24pt;
             white-space: pre;
+            font-display: swap;
         }
 </style>
