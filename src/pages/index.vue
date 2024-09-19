@@ -143,7 +143,7 @@
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
 
-  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'sanskrit', 'translation', 'notes'] })
+  const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'text length', 'sanskrit', 'translation', 'notes'] })
   const xlitarray = csv2json(xlits)
 
   const canonMap = {}
@@ -184,12 +184,13 @@
 
   function resolve(ref) {
     const referred = inxMap[ref.substring(4)]
+    if (!referred) return console.log('Failed to find reference', ref)
     return { sanskrit: referred.sanskrit, translation: referred.translation }
   }
 
   function canonized (text) {
     let canonizedStr = ''
-    for (let i = 0; i < text.length; i++) {
+    for (let i = 0; i < parseInt(text.length); i++) {
       canonizedStr += canonMap[text.charAt(i)]
     }
     return canonizedStr
@@ -304,6 +305,7 @@
         headers: [
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
+          { title: 'Len', key: 'text length' },
           { title: 'Inscription', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description', align: ' d-none' },
           { title: 'Notes', key: 'notes', align: ' d-none' },
@@ -323,7 +325,7 @@
           : { color: 'green', icon: this.icons.chevLeft }
       },
       filtered () {
-        return this.items.filter(e => this.optionBroken || e.complete === 'Y')
+        return this.items.filter(e => this.optionBroken || e.complete !== 'N')
       },
       computedHeaders () {
         this.headers.forEach(h => {
@@ -350,14 +352,14 @@
         return (
           value != null &&
           query != null &&
-          ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete === 'Y') &&
+          ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete !== 'N') &&
           typeof value === 'string' &&
           ((value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1) ||
           (query.length > 0 && query.charCodeAt(0) >= 0xE000 && canonized(value).indexOf(canonized(query)) !== -1))
         )
       },
       itemrow (item) {
-        return item.item.complete === 'Y' ? { class: 'primary--text' } : { class: 'text-red' }
+        return item.item.complete !== 'N' ? { class: 'primary--text' } : { class: 'text-red' }
       },
       pageChange (newPage) {
         localStorage.setItem('page', newPage)
