@@ -115,7 +115,7 @@
 
     <template v-slot:expanded-row="{ columns, item }">
       <tr>
-        <td></td><td>{{ item.site }}</td><td style="text-align: right;">{{ item.description }}</td><td></td><td>{{ item.notes }}</td>
+        <td></td><td>{{ item.site }}</td><td></td><td style="text-align: right;">{{ item.description }}</td><td></td><td>{{ item.notes }}</td>
       </tr>
     </template>
   </v-data-table>
@@ -168,6 +168,7 @@
     el.regex = analyzed.regex
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
+    el.textlength = parseInt(el['text length'])
     el.canonized = canonized.canon
     if (el.sanskrit) {
       if (el.sanskrit.startsWith('ref:')) {
@@ -305,7 +306,7 @@
         headers: [
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
-          { title: 'Len', key: 'text length' },
+          { title: 'Len', key: 'textlength' },
           { title: 'Inscription', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description', align: ' d-none' },
           { title: 'Notes', key: 'notes', align: ' d-none' },
@@ -325,7 +326,7 @@
           : { color: 'green', icon: this.icons.chevLeft }
       },
       filtered () {
-        return this.items.filter(e => this.optionBroken || e.complete !== 'N')
+        return this.items.filter(e => this.optionBroken || e.complete === 'Y')
       },
       computedHeaders () {
         this.headers.forEach(h => {
@@ -352,14 +353,14 @@
         return (
           value != null &&
           query != null &&
-          ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete !== 'N') &&
+          ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete === 'Y') &&
           typeof value === 'string' &&
           ((value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1) ||
           (query.length > 0 && query.charCodeAt(0) >= 0xE000 && canonized(value).indexOf(canonized(query)) !== -1))
         )
       },
       itemrow (item) {
-        return item.item.complete !== 'N' ? { class: 'primary--text' } : { class: 'text-red' }
+        return item.item.complete === 'Y' ? { class: 'primary--text' } : { class: 'text-red' }
       },
       pageChange (newPage) {
         localStorage.setItem('page', newPage)
