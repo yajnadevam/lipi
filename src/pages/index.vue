@@ -100,6 +100,7 @@
     show-expand
       @update:page="pageChange"
       @update:sort-by="sortChange"
+      mobile-breakpoint="200"
   >
     <template #top>
       <v-text-field
