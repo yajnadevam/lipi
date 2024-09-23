@@ -103,8 +103,13 @@
   >
     <template #top>
       <v-text-field
+        id="search"
         v-model="search"
         class="pa-2"
+        clearable
+        :clear-icon="icons.clear"
+        @update:model-value="updateSearch"
+        @click:clear="clearSearch"
         label="Search Indus valley inscriptions"
       />
     </template>
@@ -300,11 +305,13 @@
           expand: ['M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z'],
           collapse: ['M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z'],
           cog: ['M 12 15.5 A 3.5 3.5 0 0 1 8.5 12 A 3.5 3.5 0 0 1 12 8.5 A 3.5 3.5 0 0 1 15.5 12 A 3.5 3.5 0 0 1 12 15.5 M 19.43 12.97 C 19.47 12.65 19.5 12.33 19.5 12 C 19.5 11.67 19.47 11.34 19.43 11 L 21.54 9.37 C 21.73 9.22 21.78 8.95 21.66 8.73 L 19.66 5.27 C 19.54 5.05 19.27 4.96 19.05 5.05 L 16.56 6.05 C 16.04 5.66 15.5 5.32 14.87 5.07 L 14.5 2.42 C 14.46 2.18 14.25 2 14 2 H 10 C 9.75 2 9.54 2.18 9.5 2.42 L 9.13 5.07 C 8.5 5.32 7.96 5.66 7.44 6.05 L 4.95 5.05 C 4.73 4.96 4.46 5.05 4.34 5.27 L 2.34 8.73 C 2.21 8.95 2.27 9.22 2.46 9.37 L 4.57 11 C 4.53 11.34 4.5 11.67 4.5 12 C 4.5 12.33 4.53 12.65 4.57 12.97 L 2.46 14.63 C 2.27 14.78 2.21 15.05 2.34 15.27 L 4.34 18.73 C 4.46 18.95 4.73 19.03 4.95 18.95 L 7.44 17.94 C 7.96 18.34 8.5 18.68 9.13 18.93 L 9.5 21.58 C 9.54 21.82 9.75 22 10 22 H 14 C 14.25 22 14.46 21.82 14.5 21.58 L 14.87 18.93 C 15.5 18.67 16.04 18.34 16.56 17.94 L 19.05 18.95 C 19.27 19.03 19.54 18.95 19.66 18.73 L 21.66 15.27 C 21.78 15.05 21.73 14.78 21.54 14.63 L 19.43 12.97 Z'],
+          clear: ['M 8.00386 9.41816 C 7.61333 9.02763 7.61334 8.39447 8.00386 8.00395 C 8.39438 7.61342 9.02755 7.61342 9.41807 8.00395 L 12.0057 10.5916 L 14.5907 8.00657 C 14.9813 7.61605 15.6144 7.61605 16.0049 8.00657 C 16.3955 8.3971 16.3955 9.03026 16.0049 9.42079 L 13.4199 12.0058 L 16.0039 14.5897 C 16.3944 14.9803 16.3944 15.6134 16.0039 16.0039 C 15.6133 16.3945 14.9802 16.3945 14.5896 16.0039 L 12.0057 13.42 L 9.42097 16.0048 C 9.03045 16.3953 8.39728 16.3953 8.00676 16.0048 C 7.61624 15.6142 7.61624 14.9811 8.00676 14.5905 L 10.5915 12.0058 L 8.00386 9.41816 Z'],
         },
         sortBy: [{ key: 'textlength', order: 'desc' }],
         search: '',
         drawer: null,
         pageNum: 1,
+        oldPageNum: null,
         expanded: [],
         headers: [
           { title: 'Seal ID', key: 'id' },
@@ -366,8 +373,14 @@
         return item.item.complete === 'Y' ? { class: 'primary--text' } : { class: 'text-red' }
       },
       pageChange (newPage) {
-        localStorage.setItem('page', newPage)
-        this.pageNum = newPage
+        const isSearching = this.search !== null && this.search !== ''
+        if (isSearching) {
+          this.pageNum = newPage
+        } else {
+          localStorage.setItem('page', newPage)
+          this.pageNum = this.oldPageNum || newPage
+          this.oldPageNum = null
+        }
       },
       sortChange (newSort) {
         localStorage.setItem('sort', JSON.stringify(newSort))
@@ -378,6 +391,18 @@
       },
       persistBroken (value) {
         localStorage.setItem('broken', value)
+      },
+      updateSearch (value) {
+        if (value !== '' && value !== null) {
+          this.oldPageNum = this.oldPageNum || this.pageNum
+        } else {
+          this.clearSearch()
+        }
+      },
+      clearSearch () {
+        if ((this.search === null || this.search === '') && this.oldPageNum) {
+          this.pageNum = this.oldPageNum
+        }
       },
     },
     created () {
