@@ -368,7 +368,7 @@
           query != null &&
           ((this.optionBroken && item.raw.complete === 'N') || item.raw.complete === 'Y') &&
           (typeof value === 'string' || typeof value === 'number') &&
-          (value === query ||
+          (value === query || query === ('L' + value) ||
              (value.toString().toLocaleLowerCase().indexOf(query.toLocaleLowerCase()) !== -1) ||
              (query.length > 0 && query.charCodeAt(0) >= 0xE000 && canonized(value).indexOf(canonized(query)) !== -1)
           )
