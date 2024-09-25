@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@indic-transliteration/sanscript':
+        specifier: ^1.3.1
+        version: 1.3.1
       '@mdi/font':
         specifier: 7.4.47
         version: 7.4.47
@@ -322,6 +325,12 @@ packages:
   '@humanwhocodes/object-schema@2.0.3':
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
+
+  '@indic-transliteration/common_maps@1.0.5':
+    resolution: {integrity: sha512-XbWDA5AXGE+Nh4uGr/yN9ZM8avRBy4F1KQL+DLgQGOdsQ390lcW4fga0NSjg4C/rOpMd0rHZv2YFV3Bq3UbpkQ==}
+
+  '@indic-transliteration/sanscript@1.3.1':
+    resolution: {integrity: sha512-LDlQ/+VT1oBIxUUb23SkXkDvjwaJ/hdrTIexaYJcbi1dPe6R3Gp1XScEhlWfWUGPGPEOwrBwhqDOn7uCyEqWhg==}
 
   '@jridgewell/gen-mapping@0.3.5':
     resolution: {integrity: sha512-IzL8ZoEDIBRWEzlCcRhOaCupYyN5gdIK+Q6fbFdPDg6HqX6jpkItn7DFIpW9LQzXG6Df9sA7+OKnq0qlz/GaQg==}
@@ -1684,6 +1693,9 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
+  toml@2.3.6:
+    resolution: {integrity: sha512-gVweAectJU3ebq//Ferr2JUY4WKSDe5N+z0FvjDncLGyHmIDoxgY/2Ie4qfEIDm4IS7OA6Rmdm7pdEEdMcV/xQ==}
+
   ts-api-utils@1.3.0:
     resolution: {integrity: sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==}
     engines: {node: '>=16'}
@@ -2093,6 +2105,13 @@ snapshots:
   '@humanwhocodes/module-importer@1.0.1': {}
 
   '@humanwhocodes/object-schema@2.0.3': {}
+
+  '@indic-transliteration/common_maps@1.0.5': {}
+
+  '@indic-transliteration/sanscript@1.3.1':
+    dependencies:
+      '@indic-transliteration/common_maps': 1.0.5
+      toml: 2.3.6
 
   '@jridgewell/gen-mapping@0.3.5':
     dependencies:
@@ -3614,6 +3633,8 @@ snapshots:
   to-regex-range@5.0.1:
     dependencies:
       is-number: 7.0.0
+
+  toml@2.3.6: {}
 
   ts-api-utils@1.3.0(typescript@5.5.4):
     dependencies:

@@ -150,6 +150,8 @@
   import sanskrittransliterate from 'devanagari-transliterate'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
+  // eslint-disable-next-line import/first
+  import Sanscript from '@indic-transliteration/sanscript'
 
   const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'text length', 'sanskrit', 'translation', 'notes'] })
   const xlitarray = csv2json(xlits)
@@ -182,8 +184,8 @@
       if (el.sanskrit.startsWith('ref:')) {
         Object.assign(el, resolve(el.sanskrit))
       } else {
-        el.sanskrit = sanskrittransliterate('SLP', 'latin2devanagari', el.sanskrit)
-              + '\n' + sanskrittransliterate('SLP', 'latin2ISO', el.sanskrit)
+        el.sanskrit = Sanscript.t(el.sanskrit, 'slp1', 'devanagari')
+              + '\n' + Sanscript.t(el.sanskrit, 'slp1', 'iast')
       }
     } else {
       el.sanskrit = '*' + el.description.replaceAll('-', '')
