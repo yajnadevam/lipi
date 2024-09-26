@@ -413,7 +413,8 @@
       },
       pasteSearch () {
         const selection = window.getSelection().toString()
-        this.search = selection.trim() + this.search
+        if (selection === null || selection === '') return
+        this.search = selection.trim() + (this.search || '')
       },
     },
     created () {
