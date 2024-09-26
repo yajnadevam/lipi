@@ -85,6 +85,7 @@
       <v-main>
         <div class="d-flex justify-center align-center h-100">
   <v-data-table
+    ref="target"
     v-model:expanded="expanded"
     :custom-filter="filterInscriptions"
     :first-icon="icons.pageFirst"
@@ -410,6 +411,10 @@
           this.pageNum = this.oldPageNum
         }
       },
+      pasteSearch () {
+        const selection = window.getSelection().toString()
+        this.search = selection.trim() + this.search
+      },
     },
     created () {
       this.pageNum = localStorage.getItem('page')
@@ -418,9 +423,14 @@
       this.optionBroken = localStorage.getItem('broken') === 'true'
       this.lightTheme = localStorage.getItem('theme') == 'light'
     },
-      mounted() {
-        console.log('Mounted')
-          setTimeout(function () {
+    // eslint-disable-next-line vue/order-in-components
+    mounted () {
+      document.addEventListener('mouseup', event => {
+      const classes = Array.from(event.target.classList)
+      if(classes.includes('indus1') || classes.includes('indus'))
+          this.pasteSearch()
+      })
+      setTimeout(function () {
         const splashScreen = document.querySelector('.splash')
         if (splashScreen) splashScreen.classList.add('hidden')
       }, 500)
