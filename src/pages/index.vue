@@ -427,7 +427,7 @@
     mounted () {
       document.addEventListener('mouseup', event => {
       const classes = Array.from(event.target.classList)
-      if(classes.includes('indus1') || classes.includes('indus'))
+      if(classes.includes('indus1'))
           this.pasteSearch()
       })
       setTimeout(function () {
