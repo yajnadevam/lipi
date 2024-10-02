@@ -176,7 +176,7 @@
 
   inx.forEach(el => {
     const analyzed = xlitize(el.text)
-    el.description = analyzed.str
+    el.description = analyzed.description
     el.regex = analyzed.regex
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
@@ -190,7 +190,7 @@
               + '\n' + Sanscript.t(el.sanskrit, 'slp1', 'iast')
       }
     } else {
-      el.sanskrit = '*' + el.description.replaceAll('-', '')
+      el.sanskrit = '*' + analyzed.str.split('-').reverse().join('') // el.description.replaceAll('-', '')
     }
     inxMap[el.id] = el
   })
@@ -295,7 +295,8 @@
       regex += 'a?'
     }
     str = str.split('-').reverse().join('-')
-    return { str, regex }
+    const description = str.split('-').join('-')
+    return { str, regex, description }
   }
 
   export default {
