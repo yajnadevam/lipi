@@ -323,7 +323,7 @@
           { title: 'Seal ID', key: 'id' },
           { title: 'CISI ID', key: 'cisi' },
           { title: 'Len', key: 'textlength' },
-          { title: 'Inscription(R to L)', key: 'canonized', align: 'end', cellProps: { class: 'indus' } },
+          { title: 'Inscription(R to L)', key: 'text', align: 'end', cellProps: { class: 'indus' } },
           { title: 'Transliteration', key: 'description', align: ' d-none' },
           { title: 'Notes', key: 'notes', align: ' d-none' },
           { title: 'Sanskrit(L to R)', key: 'sanskrit', cellProps: { class: 'sanskrit' } },
@@ -346,7 +346,7 @@
       },
       computedHeaders () {
         this.headers.forEach(h => {
-          if (h.title === 'Inscription') {
+          if (h.title === 'Inscription(R to L)') {
             h.key = this.optionCanonical ? 'canonized' : 'text'
           }
         })
