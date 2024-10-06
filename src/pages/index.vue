@@ -125,7 +125,10 @@
 
     <template v-slot:expanded-row="{ columns, item }">
       <tr>
-        <td></td><td>{{ item.site }}</td><td></td><td style="text-align: right;">{{ item.description }}</td><td></td><td>{{ item.notes }}</td>
+        <td></td><td>{{ item.site }}</td><td></td><td class="sanskrit" style="text-align: right;">{{ item.description }}</td><td></td><td>{{ item.notes }}</td>
+      </tr>
+      <tr v-if="fullrandom">
+        <td></td><td></td><td></td><td class="random" style="text-align: right;">{{ item.random }}</td><td></td><td></td>
       </tr>
     </template>
   </v-data-table>
@@ -149,14 +152,17 @@
 <script>
   import { csv2json } from 'json-2-csv'
   import Key from '../components/Key.vue'
-  import sanskrittransliterate from 'devanagari-transliterate'
+  // import sanskrittransliterate from 'devanagari-transliterate'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
   // eslint-disable-next-line import/first
   import Sanscript from '@indic-transliteration/sanscript'
 
   const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'text length', 'sanskrit', 'translation', 'notes'] })
+  const iso = Sanscript.t('aAiIuUoOfFxXEOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzshL', 'slp1', 'iast')
+  const slp = 'aiukgcjtdnpbmyrlvsl'
   const xlitarray = csv2json(xlits)
+  const fullrandom = false
 
   const canonMap = {}
   const xlitmap = {}
@@ -166,6 +172,7 @@
     xlitmap[element.sign] = {}
     xlitmap[element.sign].xlit = element.xlit
     xlitmap[element.sign].canonical = element.canonical
+    xlitmap[element.sign].random = mkrandom(fullrandom ? iso : slp)
     xlitmap[element.sign].regex = element.regex || element.xlit
     canonMap[characterize(element.sign)] = characterize(element.canonical)
   })
@@ -177,6 +184,7 @@
   inx.forEach(el => {
     const analyzed = xlitize(el.text)
     el.description = analyzed.description
+    el.random = analyzed.random
     el.regex = analyzed.regex
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
@@ -195,7 +203,12 @@
     inxMap[el.id] = el
   })
 
-  function resolve(ref) {
+  function mkrandom (alphabet) {
+    const randomInd = Math.floor(Math.random() * alphabet.length)
+    return alphabet.charAt(randomInd)
+  }
+
+  function resolve (ref) {
     const referred = inxMap[ref.substring(4)]
     if (!referred) return console.log('Failed to find reference', ref)
     return { sanskrit: referred.sanskrit, translation: referred.translation }
@@ -275,6 +288,7 @@
       return console.log('Warning: Missing sign', results[0])
     }
     let str = xlitmap[results[0]].xlit
+    let rnd = xlitmap[results[0]].random
     let regex = str
     results.shift()
     results.forEach(row => {
@@ -284,7 +298,11 @@
           str += 'a'
           regex += 'a?'
         }
+        if (!fullrandom && rnd.match(/^.*([iueofFxX]|an|as)$/) == null && sign.random.match(/^[aiu]$/) == null && !str.endsWith('.')) {
+          rnd += 'a'
+        }
         str += '-' + sign.xlit
+        rnd += '-' + sign.random
         regex += sign.xlit
       } else {
         console.log('Warning: Missing sign', row)
@@ -294,9 +312,14 @@
       str += 'a'
       regex += 'a?'
     }
+    if (!fullrandom && rnd.match(/.*([iueo]|an|as)$/) === null) {
+      rnd += 'a'
+    }
     str = str.split('-').reverse().join('-')
+    rnd = rnd.split('-').reverse().join('-')
     const description = str.split('-').join('-')
-    return { str, regex, description }
+    const random = '⚄ random: ' + rnd
+    return { str, regex, description, random }
   }
 
   export default {
@@ -334,6 +357,7 @@
         optionCanonical: false,
         optionBroken: false,
         lightTheme: false,
+        fullrandom: fullrandom,
       }
     },
     computed: {
@@ -443,21 +467,25 @@
 
 <style>
         @font-face {
-        font-family: 'indus_scriptregular';
-        src: url('../assets/fonts/indus-font.woff2') format('woff2');
-        font-weight: normal;
-        font-style: normal;
-        font-size: 24pt;
-        font-display: swap;
+          font-family: 'indus_scriptregular';
+          src: url('../assets/fonts/indus-font.woff2') format('woff2');
+          font-weight: normal;
+          font-style: normal;
+          font-size: 24pt;
+          font-display: swap;
         }
         .indus {
-            font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
-            white-space: pre;
+          font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
+          white-space: pre;
         }
         .sanskrit {
-            white-space: pre;
+          white-space: pre;
+        }
+        .random {
+          white-space: pre;
+          color:orange;
         }
         .v-text-field input {
-            font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
+          font-family: indus_scriptregular; font-size: 24pt;font-display: swap;
         }
 </style>
