@@ -160,7 +160,7 @@
 
   const inx = csv2json(incx, { keys: ['id', 'cisi', 'site', 'complete', 'text', 'text length', 'sanskrit', 'translation', 'notes'] })
   const iso = Sanscript.t('aAiIuUoOfFxXEOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzshL', 'slp1', 'iast')
-  const slp = 'aiukgcjtdnpbmyrlvsl'
+  const slp = 'aiukgcjtdnpbmyrlvsmst'
   const xlitarray = csv2json(xlits)
   const fullrandom = false
 
