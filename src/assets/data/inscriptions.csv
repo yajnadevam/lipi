@@ -94,7 +94,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 93.1,C-5,Lower Indus,Chanhu-daro,--,--,loc. 227sq. 9/C,CH 2361Pl. LI:32,-,-,-,+10.9 ft,PB,Steatite,White,square,-,complete,Bull1:I,RBF,SEAL:S,1,Fine,Y,R/L,SP,6,6,1.3,1.3,0.52,33,33,0 - 13.2,+740-140-717-002-298-741+,analavat—dattaM,granted[RV] in the presence of fire[AgP:अनल + मतुप्] 
 94.1,C-6,Lower Indus,Chanhu-daro,--,Cut.-,loc. 469sq. 9/D,CH 4852Pl. LII:5,-,-,-,-2.8 ft,PB,Steatite,White,square,-,complete,Bull1:J,RAN,SEAL:S,1,Poor,Y,R/L,2L,9,9,1.13,1.13,0.51,28.7,28.7,0 - 13,+817-521-521/090-740-221-002-031-500+,Ava AmAna tatra,go[√अव् + लोट् 2p.] there[RV] to[RV] honor[RV]
 95.1,C-7,Lower Indus,Chanhu-daro,Mound I-,--,loc. 20sq. 12/K,CH 4327Pl. LII:7,-,-,-,+14.8 ft,PB,Steatite,White,square,-,fragment,Bull,-,SEAL:S,1,Poor,N,R/L,??,7+?,6,0.9,0.52,0.39,22.9,13.2,0 - 9.9,+520-033-705-240-798-002-000[
-96.1,C-8,Lower Indus,Chanhu-daro,--,--,loc. 189sq. 7/F,CH 2468Pl. LII:27,-,-,-,+9.8 ft,PB,Steatite,White,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fine,Y,R/L,SP,6,6,1.1,1.09,0.55,27.9,27.7,0 - 14,+740-803-233-741-250-579+,madaM mahaM,abundant[RV] joy[RV]   
+96.1,C-8,Lower Indus,Chanhu-daro,--,--,loc. 189sq. 7/F,CH 2468Pl. LII:27,-,-,-,+9.8 ft,PB,Steatite,White,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fine,Y,R/L,SP,6,6,1.1,1.09,0.55,27.9,27.7,0 - 14,+740-803-233-741-250-579+,madana-mazan,"Destroying[मष् शतृॅं] Kāma[MBh]"
 97.1,C-9,Lower Indus,Chanhu-daro,--,--,loc. 177sq. 8/E,CH 3045Pl. LI:27,-,-,-,+7.6 ft,PB,Steatite,White,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,LC,6,6,1.1,1.09,0.61,27.9,27.7,0 - 15.5,+151-233-803-033-705-240+
 98.1,C-10,Lower Indus,Chanhu-daro,--,--,loc. 174sq. 9/D,CH 2297Pl. LI:29,-,-,-,+10 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,SP,6,6,1.1,1.1,0.41,27.9,27.9,0 - 10.4,+740-231-220-032-002-817+
 99.1,C-11,Lower Indus,Chanhu-daro,--,--,loc. 296sq. 9/C,CH 2559Pl. LII:20,-,-,-,+9.5 ft,PB,Steatite,White,square,-,complete,Bull1:I,-,SEAL:S,1,Poor,Y,R/L,2L,8,8,1,1,0.52,25.4,25.4,0 - 13.2,+590-615-140/232-240-001-060-920+,dama—ama naman tanva,"O Mighty[RV] Subduer[TS], saluting (you), Tanva(author RV 10.93)"
@@ -658,7 +658,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 508.2,H-1869,Inter-Riverine,Harappa,EC,--,3-,H90-1595Figure 13.46 (i),Period 3B,3,B,- -,-,Faience,-,rectangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,MT,3,3,,,,15.5,7,0,+151-740-222+,nama—anya,The subduer[√नम्];the inexhaustible[AV]
 509.1,H-1868,Inter-Riverine,Harappa,EC,--,3-,H90-1596Figure 13.46 (j),Period 3B,3,B,- -,-,Faience,-,rectangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,VN,2,2,,,,15.5,7,0,+700-034+,ref:198.1
 509.2,H-1868,Inter-Riverine,Harappa,EC,--,3-,H90-1596Figure 13.46 (j),Period 3B,3,B,- -,-,Faience,-,rectangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,MT,3,3,,,,15.5,7,0,+151-740-222+,ref:508.2
-510.1,H-1916,Inter-Riverine,Harappa,EC,--,3-,H90-1597Figure 13.46 (g),Period 3B,3,B,- -,-,Faience,-,triangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,VN,2,2,,,,16,16,0,+700-004+
+510.1,H-1916,Inter-Riverine,Harappa,EC,--,3-,H90-1597Figure 13.46 (g),Period 3B,3,B,- -,-,Faience,-,triangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,VN,2,2,,,,16,16,0,+700-004+,ref:198.1
 510.2,H-1916,Inter-Riverine,Harappa,EC,--,3-,H90-1597Figure 13.46 (g),Period 3B,3,B,- -,-,Faience,-,triangular,-,complete,None,None,TAB:B,2,Fair,Y,R/L,MT,4,4,,,,16,16,0,+520-070-255-832+
 511.1,H-1688,Inter-Riverine,Harappa,EC,--,--,H90-1600Figure 13.44 (e),Period 3A,3,A,- -,-,Steatite,-,square,-,fragment,Bull,-,SEAL:S,1,Poor,?,-,UC,1+?,1,,,,0,23.5,0,+700[,ref:26.1
 512.1,H-1816,Inter-Riverine,Harappa,EB,--,--,H90-1601Figure 13.44 (h),Period 3B,3,B,- -,-,-,-,rectangular,-,complete,None,None,TAB:B,2,Poor,N,R/L,??,6,5,,,,19.5,9,0,+740-033-000-335-575-413+
@@ -685,7 +685,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 527.1,H-2073,Inter-Riverine,Harappa,E-,--,--,H93-2017Figure 16.d,Period 3B/C,3,B/C,- -,-,Steatite,-,-,rectangular,fragment,-,-,TAB:I,1,Poor,?,R/L,UC,2+?,2,,,,0,8.5,2.5,+740-032[
 528.1,H-1955,Inter-Riverine,Harappa,E-,--,--,H93-2044Figure 16.i,Period 3B/C,3,B/C,- -,-,Clay,-,rectangular,rectangular,fragment,Rhin,-,TAB:B,1,Poor,Y,NR,ZN,1,1,,,,0,15,4.2,+942+,Ama—tA,rawness[RV]
 529.1,-,Inter-Riverine,Harappa,--,--,--,H93-2049Figure 15.f,Period 3,3,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+002+,ref:341.1
-530.1,H-1677,Inter-Riverine,Harappa,--,--,--,H93-2069Figure 16.a,Period 3B/C,3,B/C,- -,PBSG,Steatite,-,square,rectangular,partly damaged,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,SS,2,2,,,,21.3,19.8,7 - 13.1,+156-140+
+530.1,H-1677,Inter-Riverine,Harappa,--,--,--,H93-2069Figure 16.a,Period 3B/C,3,B/C,- -,PBSG,Steatite,-,square,rectangular,partly damaged,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,SS,2,2,,,,21.3,19.8,7 - 13.1,+156-140+,taya,protector[√तय्]
 531.1,H-1743,Inter-Riverine,Harappa,--,--,--,H93-2071Figure 16.m,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:s,1,Poor,?,-,UC,1+?,1,,,,0,0,0,+552[,ahas,day[RV]
 532.1,H-2069,Inter-Riverine,Harappa,E-ETTrench 10W,--,--,H93-2106Figure 16.e,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Good,Y,R/L,SC,3,3,,,,17.1,9.4,3,+868-705-590+
 532.2,H-2069,Inter-Riverine,Harappa,E-ETTrench 10W,--,--,H93-2106Figure 16.e,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Good,Y,R/L,VX,5,5,,,,17.1,9.4,3,+700-034-400-525-550+
@@ -699,7 +699,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 539.1,H-2400,Inter-Riverine,Harappa,--,--,--,H93-3521Figure 15.c,Period 3,3,-,- -,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,?,-,UC,1+?,1,,,,0,0,0,]740[,ref:26.1
 540.1,-,Inter-Riverine,Harappa,--,--,--,H93-3544Figure 15.i,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,2,1,,,,0,0,0,+034-000+
 541.1,-,Inter-Riverine,Harappa,--,--,--,H93-4043Figure 15.d,Period 3,3,-,- -,-,Clay,Black,-,-,fragment,None,None,POT:T:g,1,Poor,N,R/L,??,4,3,,,,0,0,0,+063-700-176-000+
-542.1,-,Inter-Riverine,Harappa,--,--,--,H93-4159Figure 15.h,Period 3,3,-,- -,-,Clay,Black,-,-,fragment,None,None,POT:T:g,1,Poor,Y,R/L,AN,2,2,,,,0,0,0,+111-033+
+542.1,-,Inter-Riverine,Harappa,--,--,--,H93-4159Figure 15.h,Period 3,3,-,- -,-,Clay,Black,-,-,fragment,None,None,POT:T:g,1,Poor,Y,R/L,AN,2,2,,,,0,0,0,+111-033+,jAna,"O Origin[RV]"
 543.1,-,Inter-Riverine,Harappa,--,--,--,H93-4304Figure 15.g,Period 3,3,-,- -,-,Clay,Black,-,-,fragment,None,None,POT:T:g,1,Poor,N,R/L,??,7,6,,,,0,0,0,+000-480-003-064-002-003-861+
 544.1,H-2115,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H94-2172Figure 20.d,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Good,Y,R/L,VN,2,2,,,,17,10,3.5,+700-033+,ref:212.1
 544.2,H-2115,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H94-2172Figure 20.d,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Good,Y,R/L,SS,4,4,,,,17,10,3.5,+400-740-032-028+
@@ -787,7 +787,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 594.1,H-2022,Inter-Riverine,Harappa,ETrench 7/8,--,--,H95-2433Figure 20.04,Period 3B/C,3,B/C,- -,-,Clay,-,prism,triangular,complete,Phyt,Mult,TAB:B,2,Fair,Y,R/L,SC,3,3,,,,45,15,0,+032-850-031+
 594.2,H-2022,Inter-Riverine,Harappa,ETrench 7/8,--,--,H95-2433Figure 20.04,Period 3B/C,3,B/C,- -,-,Clay,-,prism,triangular,complete,Phyt,Mult,TAB:B,2,Fair,Y,R/L,IT,5,5,,,,45,15,0,+740-752-175-002-861+
 595.1,H-1892,Inter-Riverine,Harappa,--,--,--,H94-2435Figure 17.12,-,-,-,-0.0 m,-,Faience,-,rectangular,convex,complete,None,None,TAB:B,2,Poor,N,R/L,??,3,2,,,,25,11.5,6.2,+220-000-700+
-595.2,H-1892,Inter-Riverine,Harappa,--,--,--,H94-2435Figure 17.12,-,-,-,-0.0 m,-,Faience,-,rectangular,convex,complete,None,None,TAB:B,2,Poor,Y,R/L,SC,2,2,,,,25,11.5,6.2,+400-698+
+595.2,H-1892,Inter-Riverine,Harappa,--,--,--,H94-2435Figure 17.12,-,-,-,-0.0 m,-,Faience,-,rectangular,convex,complete,None,None,TAB:B,2,Poor,Y,R/L,SC,2,2,,,,25,11.5,6.2,+400-698+,ananI,"The breathing one[अनन इनि]"
 596.1,H-2139,Inter-Riverine,Harappa,--,--,--,H95-2440Figure 18.06,Period 3B/C,3,B/C,-0.0 m,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Fair,Y,R/L,VN,2,2,,,,15,8.6,3.6,+700-032+,ref:229.2
 596.2,H-2139,Inter-Riverine,Harappa,--,--,--,H95-2440Figure 18.06,Period 3B/C,3,B/C,-0.0 m,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Fair,Y,R/L,MT,5,5,,,,15,8.6,3.6,+740-176-033-705-235+
 597.1,H-2039,Inter-Riverine,Harappa,ETTrench 19,--,--,H95-2496Figure 21.06,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,slightly chipped,Fish,None,TAB:I,1,Fair,Y,R/L,SS,4,4,,,,22,8.5,3,+740-690-436-255+
@@ -824,7 +824,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 624.2,H-1817,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H94-2326Figure 26.06,Period 3,3,-,- -,-,Faience,-,rectangular,rectangular,complete,None,None,TAB:B,2,Good,Y,R/L,SC,3,3,,,,13.5,8,3.3,+400-525-554+
 625.1,H-1745,Inter-Riverine,Harappa,--,Mughal Sarai-,--,H95-2407Figure 39.09,Period 3C,3,C,- -,-,Clay,-,-,-,complete,None,None,POT:T:s,1,Fair,Y,R/L,SS,2,2,,,,0,0,0,+003-408+,ref:218.2
 626.1,H-1662,Inter-Riverine,Harappa,ETrench 7/8,--,--,H95-2410Figure 21.03,Period 3B/C,3,B/C,- -,-,Steatite,-,square,rectangular,partly damaged,Bull1:W,H,SEAL:S,1,Poor,Y,R/L,2L,8,8,,,,30.4,31.7,7.6,+033-033/740-142-061-140-002-546+,dAva tatAn jaja,"O fire[MBh], to my fathers[RV], O warrior[√जज्]"
-627.1,H-1917,Inter-Riverine,Harappa,ETTrench 27,--,--,H95-2411Figure 22.05,Period 3B/C,3,B/C,- -,-,Faience,-,triangular,rectangular,complete,None,None,TAB:B,2,Fair,Y,R/L,VN,2,2,,,,15,15,4.3,+700-004+
+627.1,H-1917,Inter-Riverine,Harappa,ETTrench 27,--,--,H95-2411Figure 22.05,Period 3B/C,3,B/C,- -,-,Faience,-,triangular,rectangular,complete,None,None,TAB:B,2,Fair,Y,R/L,VN,2,2,,,,15,15,4.3,+700-004+,ref:198.1
 627.2,H-1917,Inter-Riverine,Harappa,ETTrench 27,--,--,H95-2411Figure 22.05,Period 3B/C,3,B/C,- -,-,Faience,-,triangular,rectangular,complete,None,None,TAB:B,2,Fair,Y,R/L,SC,3,3,,,,15,15,4.3,+400-151-097+
 628.1,H-1899,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H95-2412Figure 28.10,Period 3,3,-,- -,-,Faience,-,rectangular-round,rectangular,complete,None,None,TAB:B,2,Good,Y,R/L,NV,3,3,,,,13.5,8.8,3.5,+032-032-700+
 628.2,H-1899,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H95-2412Figure 28.10,Period 3,3,-,- -,-,Faience,-,rectangular-round,rectangular,complete,None,None,TAB:B,2,Good,Y,R/L,SS,3,3,,,,13.5,8.8,3.5,+520-033-033+
@@ -3807,7 +3807,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 2974.1,M-492,Lower Indus,Mohenjo-daro,DKG. (S),9IV,2-,DK812092.11,Period 3C-4,Late,III,-9.4 ft,-,Clay,-,prism,triangular,complete,Mult,None,TAB:B,2,Poor,N,R/L,??,2,1,1.6,,0.45,40.6,0,11.4,+000-362+
 2974.2,M-492,Lower Indus,Mohenjo-daro,DKG. (S),9IV,2-,DK812092.11,Period 3C-4,Late,III,-9.4 ft,-,Clay,-,prism,triangular,complete,Mult,None,TAB:B,2,Poor,Y,R/L,??,5,4,1.6,,0.45,40.6,0,11.4,+090-740-585-803-240+,mahaBaRa,mighty[RV] Roarer[√भण्]
 2975.1,M-494,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1059/1258,DK-E 1517CXVI:23,-,-,-,-10.0 ft,-,Clay,Grey,prism,triangular,complete,None,None,TAB:B,3,Poor,Y,R/L,MS,7,7,1.25,0.4,,31.8,10.2,0,+390-697-151-740-176-798-838+,sAhasam yAnam ana-ra,"Boldness[MBh] for the voyage[MBh], O breath[ŚBr](life) giver[Sis]"
-2975.2,M-494,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1059/1258,DK-E 1517CXVI:23,-,-,-,-10.0 ft,-,Clay,Grey,prism,triangular,complete,None,None,TAB:B,3,Poor,Y,R/L,LC,7,7,1.25,0.4,,31.8,10.2,0,+032-840-221-150-741-070-255+
+2975.2,M-494,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1059/1258,DK-E 1517CXVI:23,-,-,-,-10.0 ft,-,Clay,Grey,prism,triangular,complete,None,None,TAB:B,3,Poor,Y,R/L,LC,7,7,1.25,0.4,,31.8,10.2,0,+032-840-221-150-741-070-255+,mama anya-ama-Adaha,"O one of inexhaustible[AV] power[RV], O my Burner[आ-√दह्]"
 2975.3,M-494,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1059/1258,DK-E 1517CXVI:23,-,-,-,-10.0 ft,-,Clay,Grey,prism,triangular,complete,None,None,TAB:B,3,Poor,Y,R/L,LC,10,10,1.25,0.4,,31.8,10.2,0,+921-100-415-904-017-032-820-740-904-741+,anA—Anarza sAtAdaH,Verily the giftgiver sets flow,RV 8.93.2 As from a mountain flow the water-brooks; thus flow his gifts
 2976.1,M-495,Lower Indus,Mohenjo-daro,DKG. (S),Fore Lane-,--,DK6417101.7,Period 3B/C,Intermediate,III,-16.7 ft,-,Clay,-,prism,triangular,complete,None,None,TAB:B,3,Fair,Y,R/L,MS,7,7,2.4,,0.36,61,0,9.1,+390-697-151-740-176-798-838+,ref:2975.1
 2976.2,M-495,Lower Indus,Mohenjo-daro,DKG. (S),Fore Lane-,--,DK6417101.7,Period 3B/C,Intermediate,III,-16.7 ft,-,Clay,-,prism,triangular,complete,None,None,TAB:B,3,Fair,Y,R/L,LC,6,6,2.4,,0.36,61,0,9.1,+032-840-267-150-741-070+,mAnya—aTAdasa,honored[RV] surely[RV;AV]
@@ -3839,7 +3839,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 2992.2,M-516,Lower Indus,Mohenjo-daro,VSA,2XIII,73 75-7631 X/17,VS 2590,-,-,-,-4.5 ft,-,Copper,-,square,-,complete,None,None,TAB:C,2,Good,Y,R/L,SS,3,3,,,,23,22,0,+740-615-503+
 2993.1,M-517,Lower Indus,Mohenjo-daro,DK-,--,--,DK9015,-,-,-,- -,-,Copper,-,square,-,complete,None,None,TAB:C,2,Good,Y,NR,ZN,1,1,,,,22,22,0,+341+,ref:187.2
 2993.2,M-517,Lower Indus,Mohenjo-daro,DK-,--,--,DK9015,-,-,-,- -,-,Copper,-,square,-,complete,None,None,TAB:C,2,Good,Y,R/L,SS,3,3,,,,22,22,0,+740-615-503+
-2994.1,M-519,Lower Indus,Mohenjo-daro,DK-,--,--,HR 2984CXVII:10,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull1:W,Trough,TAB:C,1,Fair,Y,R/L,MS,7,7,,,,36,24,0,+617-142-001-595-095-760-744+,an-ra ava-Anana,"O breath(life)[ŚBr] giver[Sis], O one who turned his face[R] away[RV; ShivaPurana 48.8]"
+2994.1,M-519,Lower Indus,Mohenjo-daro,DK-,--,--,HR 2984CXVII:10,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull1:W,Trough,TAB:C,1,Fair,Y,R/L,MS,7,7,,,,36,24,0,+617-142-001-595-095-760-744+,ana-ra ava-Anana,"O breath(life)[ŚBr] giver[Sis], O one who turned his face[R] away[RV; ShivaPurana 48.8]"
 2995.1,M-520,Lower Indus,Mohenjo-daro,DKG,First Street-,1-,DK4235103.2,Period 3C-1,Intermediate,II,-14.7 ft,-,Copper,-,rectangular,-,complete,Bull1:W,None,TAB:C,1,Fair,Y,R/L,MS,7,7,1.45,0.97,0.07,36.8,24.6,1.8,+617-142-001-595-095-760-744+,ref:2994.1
 2996.1,M-521,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,-,-,TAB:C,1,Poor,N,R/L,??,4,2,,,,39,22.5,0,+000-000-717-747+
 2997.1,M-522,Lower Indus,Mohenjo-daro,HRB,8LVI,336BB/05,HR 4615,-,-,-,-2.5 ft,-,Copper,-,rectangular,-,complete,Gaur,Trough,TAB:C,1,Fair,Y,R/L,SC,3,3,,,,33,20.5,0,+595-343-615+
@@ -3933,8 +3933,8 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3076.1,M-625,Lower Indus,Mohenjo-daro,VSA,4XXVI,6030AA/04,VS 1573027,-,-,-,-5.0 ft,PBSG,Steatite,White,square,rectangular,fragment,Bull1:W,-,SEAL:S,1,Poor,N,R/L,??,7+?,5,1.45,1.85,,0,47,11.5 - 19.2,+740-176-741-435-255-000-000[
 3077.1,M-626,Lower Indus,Mohenjo-daro,DKC,5-,6-,C2691012,-,-,-,-1.5 ft,PBSG,Steatite,White,square,rectangular,slightly chipped,Bull1:J,S,SEAL:S,1,Fair,Y,R/L,2L,13,13,1.85,1.85,,47,47,8.7 - 16.9,+842-374-125/740-803-060-692-740-690-435-255-060-692+,kam mAKaM kaMsaM dAta nadan,Excellent sacrificial cup O roaring purified one!,RV 1.15.2 Drink from the purifier's cup;RV  2.37.1 meath out of the sacrificer's cup,
 3078.1,M-627,Lower Indus,Mohenjo-daro,HRA,2III,1337 W/23,HR 582004,-,-,-,-3.0 ft,PBSG,Steatite,White,square,rectangular,slightly chipped,Bull1:W,SCF,SEAL:S,1,Poor,Y,R/L,LC,6,6,1.8,1.8,,45.7,45.7,11.3,+617-243-741-615-440-220+
-3079.1,M-628,Lower Indus,Mohenjo-daro,HRA,South Lane-,-37 W/17,HR 2025033,-,-,-,-6.5 ft,PBSG,Steatite,White,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.8,1.8,,45.7,45.7,12.8 - 21.5,+740-560-233-002-291-690-564+,ASaka lavamahAn,O bestower[RV]
-3080.1,M-629,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 998,-,-,-,- -,PBSG,-,-,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,Fine,Y,R/L,LP,7,7,,,,44,43,12 - 20.5,+679-740-176-240-798-002-861+
+3079.1,M-628,Lower Indus,Mohenjo-daro,HRA,South Lane-,-37 W/17,HR 2025033,-,-,-,-6.5 ft,PBSG,Steatite,White,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.8,1.8,,45.7,45.7,12.8 - 21.5,+740-560-233-002-291-690-564+,ASaka lavamahAn,"O bestower[RV], O great reaper[MBh,RV]"
+3080.1,M-629,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 998,-,-,-,- -,PBSG,-,-,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,Fine,Y,R/L,LP,7,7,,,,44,43,12 - 20.5,+679-740-176-240-798-002-861+,ravaH maha-Anaka,"O roaring one[RV] O great[RV] energetic one[T]"
 3081.1,M-631,Lower Indus,Mohenjo-daro,HRA,2II,-38 W/21,HR 743008,-,-,-,-3.0 ft,PBSG,Steatite,White,square,rectangular,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,LP,8,8,2.0,2.0,,50.8,50.8,15.6 - 23.5,+520-033-706-240-220-032-368-263+,tana Sama maYjan,"O Pervader[√तन् अच्], O tranquil[RV] Roaring one[√मञज् शतृॅं]"
 3082.1,M-632,Lower Indus,Mohenjo-daro,HRB,5XXXVI,89-,HR 4568017,-,-,-,-3.0 ft,PBSG,Steatite,White,square,rectangular,fragment,Bull1:W,SAN,SEAL:S,1,Poor,N,R/L,??,7+?,6,2.25,?,,57.2,57.2,16.5 - 29,]000-220-415-798-746-442-556+
 3083.1,M-633,Lower Indus,Mohenjo-daro,VSA,2VIII,432 X/18,VS 1037016,-,-,-,-3.0 ft,PB,Steatite,White,square,-,slightly chipped,Bull1:W,SAN,SEAL:S,1,Poor,N,-,??,6,5,2.35,2.35,,59.7,59.7,0,+930/000-071-235-745-617+
@@ -3945,13 +3945,13 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3088.1,M-639,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 442,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,IM,5,5,,,,0,0,0,+226-415-002-190-751+,antarASvatTa naman,saluting Ashwatta[AV] spirit[RV] 
 3089.1,M-644,Lower Indus,Mohenjo-daro,SD-,7/8-,-27 K/16,SD 92553,-,-,-,-4.25 ft,PBSG,Steatite,White,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,9,9,1.55,1.55,,39.4,39.4,10.9 - 16.9,+740-585-017-740-240-002-817-090-370+,kA—ravamARa—saBam,"Yearning[RV] for the council[RV] of the roaring one[MBh]"
 3090.1,M-646,Lower Indus,Mohenjo-daro,DKG. (S),3VI,40-,DK7825653,Period 3B-2,Early,I,-20.7 ft,PB,Paste,-,square,-,fragment,Bull1,RAN,SEAL:S,1,Poor,N,R/L,??,6,5,1.6,1.6,0.43,40.6,40.6,10.9,+740-760-440-000-002-817+
-3091.1,M-647,Lower Indus,Mohenjo-daro,VSA,2XVI,10431 Y/07,VS 2328024,-,-,-,-6.33 ft,PB,Steatite,White,square,-,complete,Bull1:S,SA,SEAL:S,1,Fine,Y,R/L,LP,7,7,1.4,1.4,,35.6,35.6,0,+740-100-235-233-741-060-920+
+3091.1,M-647,Lower Indus,Mohenjo-daro,VSA,2XVI,10431 Y/07,VS 2328024,-,-,-,-6.33 ft,PB,Steatite,White,square,-,complete,Bull1:S,SA,SEAL:S,1,Fine,Y,R/L,LP,7,7,1.4,1.4,,35.6,35.6,0,+740-100-235-233-741-060-920+,damanam Amana,"Subduing[MBh], O beneficent one[TS]"
 3092.1,M-648,Lower Indus,Mohenjo-daro,DKB,--,-23 P/18,DK-B 1135,-,-,-,-5.0 ft,PB,-,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,34.5,33.5,0,+090-740-100-220-032-741-361+,Ama aMSamAna,serve[√अम् लोट् 2p.] portion[RV]
 3093.1,M-649,Lower Indus,Mohenjo-daro,DKG. (S),1I,74-,DK5605530,Period 3C-1,Intermediate,II,-15.8 ft,PB,Silver,-,square,-,complete,Bull1:X,SAN,SEAL:S,1,Good,Y,R/L,SC,2,2,1.51,1.5,0.44,38.4,38.1,11.2,+820-571+,mIra,ocean[Uṇ]
 3094.1,M-650,Lower Indus,Mohenjo-daro,HRB,1V,47-,HR 5030032,-,-,-,-5.0 ft,PB,Steatite,White,square,-,chipped,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,SP,6,6,1.5,,,38.1,0,0,+520-220-415-519-002-817+
 3095.1,M-651,Lower Indus,Mohenjo-daro,DKG. (S),1I,15-,DK7263578,Period 3B/C,Intermediate,III,-17.3 ft,PBDG,Steatite,-,square,rectangular,partly damaged,Bull1:W,SAF,SEAL:S,1,Fair,Y,R/L,SP,6,6,1.56,1.56,0.36,39.6,39.6,9.1 - 16,+740-717-220-240-002-820+
 3096.1,M-653,Lower Indus,Mohenjo-daro,SDStupa,-Lane,-23JJ/18,DM189057,Period 3C-4,Late,III,-9.0 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAF,SEAL:S,1,Poor,Y,R/L,SP,5,5,1.4,1.4,,35.6,35.6,0,+679-740-235-002-861+
-3097.1,M-655,Lower Indus,Mohenjo-daro,DKG. (N),21I,2-,DK1091498,Period 3C-4,Late,II,-6.1 ft,PB,Steatite,-,square,-,fragment,Bull1,S,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.59,,0.4,40.4,0,10.2,+740-717-233-002-220-880-689+
+3097.1,M-655,Lower Indus,Mohenjo-daro,DKG. (N),21I,2-,DK1091498,Period 3C-4,Late,II,-6.1 ft,PB,Steatite,-,square,-,fragment,Bull1,S,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.59,,0.4,40.4,0,10.2,+740-717-233-002-220-880-689+,sakza-rama vama-dAna,"O one delighting[RV] in overpowering[RV], O giver[√वम्] of gifts[RV]"
 3098.1,M-657,Lower Indus,Mohenjo-daro,DKG. (S),9III,35-,DK337326,Period 4,Late,IB,-3.7 ft,PB,Steatite,-,square,-,partly damaged,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,MT,2,2,1.25,1.35,0.4,31.8,34.3,10.2,+520-240+,ref:282.2
 3099.1,M-658,Lower Indus,Mohenjo-daro,VSA,Lane 2S of XXII,1330 Y/25,VS 349039,-,-,-,-2.08 ft,PB,Steatite,White,square,-,chipped,Bull1:W,SAN,SEAL:S,1,Poor,N,R/L,??,6+?,5,1.7,1.7,,43.2,43.2,0,]000-003-070-002-002-817+
 3100.1,M-661,Lower Indus,Mohenjo-daro,DKG. (N),21III,21-,DK11184207,Period 3C-3,Late,III,-8.4 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:W,SAF,SEAL:S,1,Fair,Y,R/L,SP,6,6,1.4,1.45,0.4,35.6,36.8,10.2,+740-798-220-415-741-072+
@@ -3972,15 +3972,15 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3115.1,M-677,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 563,-,-,-,- -,PBSG,-,-,square,rectangular,slightly chipped,Bull1:L,SAN,SEAL:S,1,Fair,Y,R/L,LP,11,11,,,,35.5,35,10 - 16.5,+740-923-070-032-033-706-231-242-002-861-901+,Arava mama aYjas mAna,O Roarer; O my honored Soma,RV 1.84.9 Soma juice prepared amid the many honours
 3116.1,M-678,Lower Indus,Mohenjo-daro,VSA,2VIII,432 X/18,VS 1059066,-,-,-,-3.5 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,LP,9,9,1.75,1.75,,44.5,44.5,0,+740-752-006-503-236-806-002-031-502+,Avaha—nAman—Aharam,"Offering[MBh] in the name[RV] of the Bearer[Mn]"
 3117.1,M-681,Lower Indus,Mohenjo-daro,DKG. (N),17I,6-,DK11908182,Period 3C-3,Late,III,-7.9 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,R/L,UC,2+?,2,,,0.32,0,0,8.1,]405-590+
-3118.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Gaur,Trough,SEAL:S,1,Good,Y,R/L,LP,7,7,2.1cm,2.1cm,,21,21,0,+520-070-255-832-220-003-853+
-3119.1,M-683,Lower Indus,Mohenjo-daro,DKG. (N),West Street-,--,DK12124174,Period 3C-3,Late,III,-7.7 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.72,?,0.49,43.7,0,12.4,+740-798-231-002-298-460-032+
+3118.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Gaur,Trough,SEAL:S,1,Good,Y,R/L,LP,7,7,2.1cm,2.1cm,,21,21,0,+520-070-255-832-220-003-853+,ut-jamatam mana,"Remember[√म्नना लोट्] with fire[जमत्]"
+3119.1,M-683,Lower Indus,Mohenjo-daro,DKG. (N),West Street-,--,DK12124174,Period 3C-3,Late,III,-7.7 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.72,?,0.49,43.7,0,12.4,+740-798-231-002-298-460-032+,Sada lavamahAn,"O killer[शद् अच् Mbh] O great reaper[MBh RV]"
 3120.1,M-684,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-396a,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,-,UC,1+?,1,,,,0,0,0,]415+
 3121.1,M-685,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4244276,-,-,-,- -,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,R/L,UC,2+?,2,,,,0,0,0,]034-204+
 3122.1,M-686,Lower Indus,Mohenjo-daro,DKG. (S),9IV,6-,DK8222324,Period 3C-2,Intermediate,I,-10.6 ft,-,Steatite,-,-,-,fragment,None,None,SEAL,1,Poor,Y,R/L,MT,3,3,1.41,0.93,0.5,35.8,23.6,12.7,+520-235-806+,sAman,wealth[RV]
 3123.1,M-692,Lower Indus,Mohenjo-daro,HRB,2IX,8537 Z/14,HR 5414031,-,-,-,-5.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,5+?,3,1.6,1.6,,40.6,40.6,0,+000-004-002-817-000[
 3124.1,M-693,Lower Indus,Mohenjo-daro,DK-,--,--,DK7134,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,2+?,1,,,,0,0,0,+740-000[
 3125.1,M-696,Lower Indus,Mohenjo-daro,DKG. (S),8III,37-,DK8105287,Period 3C-4,Late,III,-9.9 ft,PB,Steatite,-,square,-,fragment,Bull,-,SEAL:S,1,Poor,?,-,UC,1+?,1,1.45,,0.41,36.8,0,10.4,+520[
-3126.1,M-699,Lower Indus,Mohenjo-daro,HRB,2XI,116-,HR 5085050,-,-,-,-6.0 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,MS,7,7,1.3,1.3,,33,33,0,+740-100-415-002-130-035-171+
+3126.1,M-699,Lower Indus,Mohenjo-daro,HRB,2XI,116-,HR 5085050,-,-,-,-6.0 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,MS,7,7,1.3,1.3,,33,33,0,+740-100-415-002-130-035-171+,upya-vawAn,"Sow[KātyŚr] the Banyan trees[MBh]"
 3127.1,M-700,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1150,-,-,-,- -,PB,-,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,IT,5,5,,,,30.5,30,0,+740-760-820-368-263+
 3128.1,M-701,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1048/2019,DK-E 2401059,-,-,-,-7.0 ft,PB,Steatite,White,square,-,fragment,Bull1:W,SAN,SEAL:S,1,Poor,N,R/L,??,3+?,2,1.25,,,31.8,0,0,]000-002-824+
 3129.1,M-702,Lower Indus,Mohenjo-daro,DKG. (N),27II,20-,DK11860206,Period 3C-3,Late,III,-8.3 ft,PB,Steatite,-,square,-,fragment,Bull1,SAN,SEAL:S,1,Poor,?,R/L,UC,2+?,2,,1.33,0.35,0,33.8,8.9,]368-286+
@@ -4000,26 +4000,26 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3143.1,M-719,Lower Indus,Mohenjo-daro,DKG. (S),7IX,31-,DK4524137,Period 4,Late,II,-6.6 ft,PB,Steatite,-,square,-,fragment,Bull1,R,SEAL:S,1,Poor,N,R/L,??,5+?,4,1.1,0.95,0.3,27.9,24.1,7.6,]000-740-390-630-032+
 3144.1,M-720,Lower Indus,Mohenjo-daro,HR-,--,-36 X/17,HR 2371082,-,-,-,-3.25 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,7,6,1.35,,,34.3,0,0,+000-740-923-220-032-002-817+
 3145.1,M-721,Lower Indus,Mohenjo-daro,DKC,Street C3 betw. 11/12-,-1623/0458,DK-C 206165,-,-,-,-5.5 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,5+?,4,,,,0,0,0,]000-233-002-111-700+
-3146.1,M-722,Lower Indus,Mohenjo-daro,DKC,9-,91460/0560,DK-C 315014,-,-,-,-3.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.3,,,33,0,0,+740-585-240-220-032-002-817+
+3146.1,M-722,Lower Indus,Mohenjo-daro,DKC,9-,91460/0560,DK-C 315014,-,-,-,-3.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.3,,,33,0,0,+740-585-240-220-032-002-817+,rava-samam BaRa,"Roar[√भण् लोट्] like[RV] Rudra[√रु]"
 3147.1,M-723,Lower Indus,Mohenjo-daro,DKG. (N),16II,11-,DK1164954,Period 4,Late,I,-4.6 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Fair,Y,R/L,LP,8,8,1.29,,0.35,32.8,0,8.9,+740-460-510-235-220-032-002-861+,rava sama-ama udDana,"O Roarer[रु], O tranquil[MBh] powerful[RV] one, O uplifter[RV उद्-√धन् अच्]"
 3148.1,M-724,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1133,-,-,-,- -,PB,-,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,IM,5,5,,,,31,31,0,+390-721-790-002-861+
-3149.1,M-725,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,PBBG,Steatite,-,square,rectangular,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,29.5,30,7 - 11,+090-740-220-003-741-252-530+
+3149.1,M-725,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,PBBG,Steatite,-,square,rectangular,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,29.5,30,7 - 11,+090-740-220-003-741-252-530+,Asada-AYjamAna,"the honoring[√अञ्ज् शानच्] presider[RV]"
 3150.1,M-726,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1161,-,-,-,- -,PBDG,-,-,square,rectangular,complete,Bull1:T,SAN,SEAL:S,1,Fair,Y,R/L,LP,9,9,,,,32,31,8 - 12,+031-850-140-236-220-032-803-002-820+,rava SasmanA—AmantrA[ma],"O Roarer[रु], we invite[आ—मन्त्र] (you) with praise[शस्ममन् INS]"
 3151.1,M-727,Lower Indus,Mohenjo-daro,DKG. (N),21IV,23-,DK12138168,Period 3C-3,Late,III,-7.6 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,IT,5,5,1.2,1.2,0.35,30.5,30.5,8.9,+740-100-415-002-820+
 3152.1,M-728,Lower Indus,Mohenjo-daro,DKH,--,--,DK H36691,Period 3B/C,Intermediate,III,-19.3 ft,PB,Steatite,-,square,-,complete,Bull1:V,HBN,SEAL:S,1,Good,Y,R/L,IT,5,5,1.22,1.22,0.36,31,31,9.1,+740-575-017-002-820+
 3153.1,M-729,Lower Indus,Mohenjo-daro,VSA,2XVI,10431 Y/07,VS 2541177,-,-,-,-5.0 ft,PB,Steatite,White,square,-,complete,Bull1:I,RAF,SEAL:S,1,Fair,Y,R/L,ZN,2,2,1.2,1.2,,30.5,30.5,0,+234-415+
-3154.1,M-730,Lower Indus,Mohenjo-daro,DK-,--,--,-,-,-,-,- -,PB,-,-,square,-,complete,Bull1:J,RAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,29,29.5,0,+740-384-090-351-741-033-272+
+3154.1,M-730,Lower Indus,Mohenjo-daro,DK-,--,--,-,-,-,-,- -,PB,-,-,square,-,complete,Bull1:J,RAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,29,29.5,0,+740-384-090-351-741-033-272+,tad-jAna ca A-baRa,"O Origin[RV] of this world[R], O Roarer[Dhātup]"
 3155.1,M-731,Lower Indus,Mohenjo-daro,--,--,--,MD-CD82,-,-,-,- -,PB,-,-,square,-,complete,Bull1:I,RAF,SEAL:S,1,Poor,Y,R/L,MT,2,2,,,,30,30,0,+151-220+,ref:108.1
 3156.1,M-732,Lower Indus,Mohenjo-daro,DKG,First Street-,12-,DK8634674,Period 3B-2,Early,I,-22.6 ft,PB,Steatite,-,square,-,complete,Bull1:V,RAF,SEAL:S,1,Good,Y,R/L,MT,5,5,1.2,1.18,0.25,30.5,30,6.4,+520-400-350-002-817+
 3157.1,M-733,Lower Indus,Mohenjo-daro,DKG. (S),7V,66-,DK8104519,Period 3C-1,Intermediate,II,-15.4 ft,PBSG,Steatite,-,square,rectangular,complete,Bull1:W,RBF,SEAL:S,1,Good,Y,R/L,2L,8,8,1.2,1.2,0.3,30.5,30.5,7.6 - 14.8,+151-740-760-220/892-590-850-032+,sarva-da mara anya,"O All giver[RV], O death[AitUp], O inexhaustible[AV] One"
 3158.1,M-734,Lower Indus,Mohenjo-daro,DKC,10-,161540/0560,DK-C 121539,-,-,-,-2.0 ft,PB,Steatite,White,square,-,complete,Bull1:S,RBF,SEAL:S,1,Fine,Y,R/L,SC,5,5,1.2,1.2,,30.5,30.5,0,+033-033-368-390-590+
-3159.1,M-735,Lower Indus,Mohenjo-daro,DKC,2-,71370/0720,DK-C 3070060,-,-,-,-3.0 ft,PB,Steatite,White,square,-,complete,Bull1:U,HAF,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.25,1.30,,31.8,33,0,+740-760-235-002-390-125-195+
+3159.1,M-735,Lower Indus,Mohenjo-daro,DKC,2-,71370/0720,DK-C 3070060,-,-,-,-3.0 ft,PB,Steatite,White,square,-,complete,Bull1:U,HAF,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.25,1.30,,31.8,33,0,+740-760-235-002-390-125-195+,Asada-Arava-amaram,"The Presider[RV], Roarer[Śiś], Immortal[ŚBr]"
 3160.1,M-736,Lower Indus,Mohenjo-daro,DKG. (S),9VIII,14-,DK6795562,Period 3B/C,Intermediate,III,-16.7 ft,PB,Faience,-,square,-,fragment,Bull1:J,HBF,SEAL:S,1,Good,N,R/L,??,4+?,3,1.2,1.16,0.3,30.5,29.5,7.6,+740-337-176-000[
 3161.1,M-737,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1050/1920,DK-E 2543112,-,-,-,-4.0 ft,PB,Steatite,White,square,-,partly damaged,Bull1:I,HBF,SEAL:S,1,Poor,N,R/L,??,6+?,4,,,,30.5,30.5,0,+706-000/090-740-220-000[
 3162.1,M-738,Lower Indus,Mohenjo-daro,DKG. (S),7II,88-,DK8703644,Period 3B/C,Intermediate,III,-20.1 ft,PBSG,Steatite,-,square,-,fragment,Bull1:J,RBF,SEAL:S,1,Fair,N,R/L,??,4+?,2,1.18,1.16,0.31,30,29.5,7.9 - 17.5,+717-000/740-000[
 3163.1,M-739,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,PBSG,-,-,square,rectangular,complete,Bull1:J,RAF,SEAL:S,1,Fair,Y,R/L,IT,9,9,,,,31.5,31,8 - 13.5,+090-740-100-415-002-031-350-550-692+,kaSa ca avatAna,"O Killer[√कश्] and protector[अवतान = cover]"
 3164.1,M-740,Lower Indus,Mohenjo-daro,VSA,4XXIII,42200/1860,VS 47090,-,-,-,-2.83 ft,PB,Steatite,White,square,-,complete,Bull1:J,RBF,SEAL:S,1,Poor,Y,R/L,IT,5,5,1.2,1.25,,30.5,31.8,0,+226-491-742-705-575+
-3165.1,M-741,Lower Indus,Mohenjo-daro,DKG. (S),1VI,56-,DK5494421,Period 3C-2,Intermediate,I,-12.8 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:I,RBN,SEAL:S,1,Good,Y,R/L,SS,2,2,1.2,1.15,0.35,30.5,29.2,8.9,+151-416+,taya,protector[√तय्]
+3165.1,M-741,Lower Indus,Mohenjo-daro,DKG. (S),1VI,56-,DK5494421,Period 3C-2,Intermediate,I,-12.8 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:I,RBN,SEAL:S,1,Good,Y,R/L,SS,2,2,1.2,1.15,0.35,30.5,29.2,8.9,+151-416+,ref:530.1
 3166.1,M-742,Lower Indus,Mohenjo-daro,DKG. (S),10I,5-,DK7875595,Period 3B/C,Intermediate,III,-17.8 ft,PB,Steatite,-,square,-,chipped,Bull1:W,H,SEAL:S,1,Fair,Y,R/L,SC,5,5,1.3,1.3,0.3,33,33,7.6,+090-850-032-060-573+,ABAm sarA(m),river[AV] of light[MBh]
 3167.1,M-744,Lower Indus,Mohenjo-daro,DK-,--,--,DK7219,-,-,-,- -,PB,Steatite,-,square,-,complete,Bull1:I,-,SEAL:S,1,Poor,N,R/L,??,4+?,3,,,,30.5,31,0,+090-740-543-000[
 3168.1,M-745,Lower Indus,Mohenjo-daro,VSA,4XXVII,-29AA/15,VS 1558175,-,-,-,-3.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,SC,4,4,1.35,,0.3,34.3,0,7.6,+307-350-617-741+
@@ -4035,7 +4035,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3178.1,M-755,Lower Indus,Mohenjo-daro,DKB,2III,323 P/18,DK-B 3279140,-,-,-,-7.0 ft,PB,Steatite,White,square,-,chipped,Bull1,-,SEAL:S,1,Poor,Y,R/L,SP,6,6,1.2,1.2,,30.5,30.5,0,+740-337-484-741-060-920+
 3179.1,M-756,Lower Indus,Mohenjo-daro,DKB,2IV,1122 O/15,DK-B 2484028,-,-,-,-3.5 ft,PB,Steatite,White,square,-,chipped,Bull1:W,-,SEAL:S,1,Poor,Y,R/L,IT,6,6,1.4,1.4,,35.6,35.6,0,+740-100-176-002-812-031+
 3180.1,M-757,Lower Indus,Mohenjo-daro,DKG. (S),2I,10-,DK4313507,Period 3C-1,Intermediate,II,-15.1 ft,PB,Steatite,-,square,-,chipped,Bull1,-,SEAL:S,1,Fair,Y,R/L,MT,6,6,1.15,1.12,0.3,29.2,28.4,7.6,+520-033-705-233-235-808+
-3181.1,M-758,Lower Indus,Mohenjo-daro,DKG,First Street-,24-,DK10712184,Period 3C-3,Late,III,-7.8 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,LP,7,7,1.31,1.31,0.35,33.3,33.3,8.9,+740-760-001-240-742-530-786+
+3181.1,M-758,Lower Indus,Mohenjo-daro,DKG,First Street-,24-,DK10712184,Period 3C-3,Late,III,-7.8 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,LP,7,7,1.31,1.31,0.35,33.3,33.3,8.9,+740-760-001-240-742-530-786+,rasana-mAram,"Roaring[VarBṛS] Destruction[VarBṛS]"
 3182.1,M-759,Lower Indus,Mohenjo-daro,DKG. (S),10IV,71-,DK5619384,Period 3C-2,Intermediate,I,-12.2 ft,-,Steatite,-,-,-,fragment,None,None,SEAL,1,Fair,Y,R/L,MT,3,3,1.17,0.69,0.45,29.7,17.5,11.4,+520-240-806+,ref:1248.1
 3183.1,M-760,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 892,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Fair,N,R/L,??,5+?,4,,,,0,0,0,]000-415-803-741-709+,manassTam,stilled[RV] mind[RV]
 3184.1,M-761,Lower Indus,Mohenjo-daro,HR-,--,--,HR 5167417,-,-,-,-4.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,R/L,UC,4+?,4,,,,0,0,0,]002-741-455-125+
@@ -4044,7 +4044,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3187.1,M-770,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4986138,-,-,-,-2.67 ft,PB,Steatite,White,square,-,fragment,Bull1:W,-,SEAL:S,1,Poor,N,R/L,??,2+?,1,1.25,,,31.8,0,0,+400-000[
 3188.1,M-771,Lower Indus,Mohenjo-daro,DKG. (S),7I,3-,DK9475676,Period 3B-2,Early,I,-23.4 ft,PB,Steatite,-,square,-,fragment,Bull1:W,-,SEAL:S,1,Poor,N,R/L,??,4+?,3,1.28,1.28,0.4,32.5,32.5,10.2,+740-690-233-000[
 3189.1,M-772,Lower Indus,Mohenjo-daro,DKG. (S),1Central Corridor,71-,DK6664453,Period 3C-1,Intermediate,II,-13.4 ft,PB,Steatite,-,square,-,fragment,Bull,-,SEAL:S,1,Poor,N,R/L,??,5,4,1.2,0.84,0.35,30.5,21.3,8.9,+740-100-415-382-000+
-3190.1,M-776,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1025/08__,DK-E 845146,-,-,-,-2.75 ft,PB,Steatite,White,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.0,1.0,,25.4,25.4,0,+740-032-840-585-017-002-817+
+3190.1,M-776,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1025/08__,DK-E 845146,-,-,-,-2.75 ft,PB,Steatite,White,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.0,1.0,,25.4,25.4,0,+740-032-840-585-017-002-817+,ravasa badDa Sam,"Bless[RV] (us), O Roaring[MārkP] Restrained[MBh]"
 3191.1,M-777,Lower Indus,Mohenjo-daro,DKG. (S),7VIII,28-,DK6002536,Period 3C-1,Intermediate,II,-15.9 ft,PB,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,SP,5,5,1.12,1.15,0.28,28.4,29.2,7.1,+173-520-235-060-550+,asamAmanapada,unequalled[RV] friendly[TS] sign[MBh]
 3192.1,M-778,Lower Indus,Mohenjo-daro,DKG. (S),7V,54-,DK5697425,Period 3C-2,Intermediate,I,-12.9 ft,PB,Steatite,-,square,-,fragment,Bull1:W,SAN,SEAL:S,1,Poor,N,R/L,??,2+?,1,1.08,0.7,0.31,27.4,17.8,7.9,]000-892+
 3193.1,M-779,Lower Indus,Mohenjo-daro,DKG. (S),1III,1-,DK8930622,Period 3B/C,Intermediate,III,-18.9 ft,PB,Steatite,-,square,-,complete,Bull1:L,SAN,SEAL:S,1,Fair,Y,R/L,SC,3,3,0.97,0.97,0.35,24.6,24.6,8.9,+520-070-921+,ref:2512.1
@@ -4061,7 +4061,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3204.1,M-790,Lower Indus,Mohenjo-daro,HRA,2VI,4036 X/09,HR 1950141,-,-,-,-5.5 ft,PB,Steatite,White,square,-,fragment,Bull1:S,SAN,SEAL:S,1,Poor,N,R/L,??,2+?,1,1.0,1.0,,25.4,25.4,0,]000-031+
 3205.1,M-791,Lower Indus,Mohenjo-daro,DK-,--,--,UPM/MD-529,-,-,-,- -,PB,-,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Poor,N,R/L,??,2+?,1,,,,23.5,23,0,+740-000[
 3206.1,M-792,Lower Indus,Mohenjo-daro,DKG. (N),15VI,29-,DK1121213,Period 4,Late,I,-3.5 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:S,SAN,SEAL:S,1,Fair,Y,R/L,IT,6,6,1.05,1.05,0.3,26.7,26.7,7.6,+679-740-575-017-002-817+
-3207.1,M-793,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 441,-,-,-,- -,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,,,,25,25.5,0,+740-388-235-240-798-002-861+
+3207.1,M-793,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 441,-,-,-,- -,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,,,,25,25.5,0,+740-388-235-240-798-002-861+,ravasam A-mavam,"The roaring[MārkP] restrainer[आ-√मव् अच्]"
 3208.1,M-794,Lower Indus,Mohenjo-daro,DKG. (N),15IV,17-,DK1112667,Period 4,Late,I,-5.0 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,SP,4,4,1.0,0.98,0.3,25.4,24.9,7.6,+804-231-002-861+
 3209.1,M-795,Lower Indus,Mohenjo-daro,DKB,3VII,171543/0976,DK-B 608228,-,-,-,-10.0 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,IT,4,4,0.9,0.9,,22.9,22.9,0,+156-260-002-817+
 3210.1,M-796,Lower Indus,Mohenjo-daro,DKG. (S),9VIII,21-,DK7956105,Period 4,Late,II,-6.1 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,SC,3,3,1.0,1.0,0.25,25.4,25.4,6.4,+368-140-706+
@@ -4080,7 +4080,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3224.1,M-811,Lower Indus,Mohenjo-daro,DKG. (S),9IX,63-,DK12654211,Period 3C-4,Late,III,-8.3 ft,PB,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,SS,3,3,1.01,1.01,0.31,25.7,25.7,7.9,+226-032-803+
 3225.1,M-812,Lower Indus,Mohenjo-daro,DKG. (S),1I,82-,DK8985629,Period 3B/C,Intermediate,III,-19.3 ft,PB,Steatite,-,square,-,partly damaged,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,SS,2,2,1.05,1.05,0.35,26.7,26.7,8.9,+740-058+,anAn,breathing[ŚBr]
 3226.1,M-813,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 601,-,-,-,- -,PB,-,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,IT,5,5,,,,28,28,0,+161-390-590-002-861+
-3227.1,M-814,Lower Indus,Mohenjo-daro,DKG. (S),1III,1-,DK5821426,Period 3C-2,Intermediate,I,-12.9 ft,PB,Steatite,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,LT,7,7,1.11,1.1,0.34,28.2,27.9,8.6,+740-176-033-705-240-235-803+
+3227.1,M-814,Lower Indus,Mohenjo-daro,DKG. (S),1III,1-,DK5821426,Period 3C-2,Intermediate,I,-12.9 ft,PB,Steatite,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,LT,7,7,1.11,1.1,0.34,28.2,27.9,8.6,+740-176-033-705-240-235-803+,SAma-maYja Sam,"bless[RV] (us) O, appeased[W] Roarer[√मञ्ज् अच्]"
 3228.1,M-815,Lower Indus,Mohenjo-daro,DKG. (S),Crooked Lane-,--,DK7333555,Period 3B/C,Intermediate,III,-16.5 ft,PB,Faience,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,SP,6,6,1.07,1.07,0.36,27.2,27.2,9.1,+520-070-233-798-002-861+
 3229.1,M-816,Lower Indus,Mohenjo-daro,DKG. (S),10II,20-,DK7062424,Period 3C-2,Intermediate,I,-12.9 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,IT,6,6,1.01,1.0,0.29,25.7,25.4,7.4,+740-690-435-255-002-817+
 3230.1,M-817,Lower Indus,Mohenjo-daro,DKG. (S),7VIII,22-,DK6229435,Period 3C-2,Intermediate,I,-13.0 ft,PB,Steatite,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,SC,3,3,0.98,0.99,0.28,24.9,25.1,7.1,+520-382-878+
@@ -4101,7 +4101,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3246.1,M-834,Lower Indus,Mohenjo-daro,DKG. (S),7IX,31-,DK8223569,Period 3B/C,Intermediate,III,-16.9 ft,PB,Faience,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Good,Y,R/L,IT,6,6,0.98,0.98,0.26,24.9,24.9,6.6,+151-390-590-900-002-861+
 3247.1,M-835,Lower Indus,Mohenjo-daro,DKG. (N),18-,47-,DK12208179,Period 3C-3,Late,III,-7.7 ft,PBSG,Steatite,-,square,rectangular,fragment,Bull1,SAN,SEAL:S,1,Poor,N,R/L,??,7,6,1.06,1.25,0.4,26.9,31.8,8.3 - 15.4,+090-740-035-171-000-002-817+
 3248.1,M-836,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1011,-,-,-,- -,PB,-,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,SC,3,3,,,,23.5,23,0,+400-368-055+,jani,woman/wife[RV]
-3249.1,M-837,Lower Indus,Mohenjo-daro,DK-,--,--,DK12890,-,-,-,- -,PB,-,-,square,rectangular,complete,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,,,,27.5,27,6,+740-142-061-031-741-125-575+
+3249.1,M-837,Lower Indus,Mohenjo-daro,DK-,--,--,DK12890,-,-,-,- -,PB,-,-,square,rectangular,complete,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,,,,27.5,27,6,+740-142-061-031-741-125-575+,madAn A-tAna,"O Bestower[RV] of (Soma)drinks[RV]"
 3250.1,M-838,Lower Indus,Mohenjo-daro,DKG. (S),10II,22-,DK6317368,Period 3C-2,Intermediate,I,-11.6 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:L,SAF,SEAL:S,1,Good,Y,R/L,SS,2,2,0.96,,0.29,24.4,0,7.4,+156-003+
 3251.1,M-839,Lower Indus,Mohenjo-daro,DKG. (S),1III,2-,DK5709476,Period 3C-1,Intermediate,II,-14.0 ft,PB,Steatite,-,square,-,complete,Bull1:L,SAN,SEAL:S,1,Good,Y,R/L,IT,5,5,1.08,1.07,0.35,27.4,27.2,8.9,+740-100-415-002-817+
 3252.1,M-840,Lower Indus,Mohenjo-daro,DKG. (S),1I,21-,DK8962617,Period 3B/C,Intermediate,III,-18.5 ft,PB,Steatite,-,square,-,complete,Bull1:T,SAN,SEAL:S,1,Good,Y,R/L,LC,8,8,0.95,0.93,0.35,24.1,23.6,8.9,+032-316-033-705-233-001-920-374+,taqa AmaYja-Arasa,"O punisher[√तड्], O resounding[√मञ्ज्] roarer[Mālav]"
@@ -4120,7 +4120,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3265.1,M-853,Lower Indus,Mohenjo-daro,DKG. (N),22-,2-,DK11938255,Period 3C-3,Late,III,-9.4 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:S,RAN,SEAL:S,1,Fair,Y,R/L,IT,5,5,1.06,1.06,0.35,26.9,26.9,8.9,+090-740-792-002-817+
 3266.1,M-854,Lower Indus,Mohenjo-daro,DKG. (S),4-,12-,DK5852501,Period 3C-1,Intermediate,II,-14.9 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,IT,4,4,1.1,0.9,0.29,27.9,22.9,7.4,+592-741-060-920+
 3267.1,M-855,Lower Indus,Mohenjo-daro,DKG. (S),7I,15-,DK6266473,Period 3C-1,Intermediate,II,-14.0 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Fair,Y,R/L,LC,9,9,0.95,0.75,0.3,24.1,19.1,7.6,+861-260-832-390-590-002-817-690-544+,Dakka rava—vara tatara,"O Destroyer[धक्क्], Eminent[MBh] Roarer[रु], that one of two[Pāṇ]"
-3268.1,M-856,Lower Indus,Mohenjo-daro,HRB,6XLVIII,--,HR 4585211,-,-,-,-2.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,IT,7,7,1.0,,,25.4,0,0,+740-575-017-060-220-065-374+
+3268.1,M-856,Lower Indus,Mohenjo-daro,HRB,6XLVIII,--,HR 4585211,-,-,-,-2.0 ft,PB,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,IT,7,7,1.0,,,25.4,0,0,+740-575-017-060-220-065-374+,tanam mahman,"Offspring[AV], O great one[AV]"
 3269.1,M-857,Lower Indus,Mohenjo-daro,DKG. (N),22-,4-,DK1096391,Period 3C-4,Late,II,-5.8 ft,PB,Steatite,-,square,-,partly damaged,Bull1,-,SEAL:S,1,Poor,Y,R/L,SS,4,4,1.13,1.13,0.38,28.7,28.7,9.7,+740-690-435-255+
 3270.1,M-858,Lower Indus,Mohenjo-daro,DKG. (N),21IV,27-,DK12109189,Period 3C-3,Late,III,-8.1 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,R/L,UC,2+?,2,1.2,1.2,0.45,30.5,30.5,11.4,]636-240+
 3271.1,M-860,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 550,-,-,-,- -,PB,-,-,square,-,slightly chipped,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,MT,4,4,,,,28,28,0,+520-033-705-240+
@@ -4130,7 +4130,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3275.1,M-864,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4386240,-,-,-,-2.0 ft,PB,Steatite,White,square,-,fragment,Bull1,SAN,SEAL:S,1,Poor,N,R/L,??,3+?,2,0.95,0.95,,24.1,24.1,0,]000-705-632+
 3276.1,M-865,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1008/0779,DK-E 230109,-,-,-,-1.25 ft,PB,Steatite,White,square,-,partly damaged,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,SP,6,6,1.1,1.1,,27.9,27.9,0,+090-740-240-235-001-820+
 3277.1,M-866,Lower Indus,Mohenjo-daro,DKG. (S),1I,82-,DK9085646,Period 3B/C,Intermediate,III,-20.2 ft,PB,Steatite,-,square,-,fragment,Bull1:I,SAN,SEAL:S,1,Poor,N,R/L,??,5,4,0.9,0.9,0.26,22.9,22.9,6.6,+740-482-233-002-000+
-3278.1,M-868,Lower Indus,Mohenjo-daro,DK-,--,--,UPM/MD-624,-,-,-,- -,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,27,27.5,0,+520-033-705-231-220-002-817+
+3278.1,M-868,Lower Indus,Mohenjo-daro,DK-,--,--,UPM/MD-624,-,-,-,- -,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,27,27.5,0,+520-033-705-231-220-002-817+,rava mama aYjan,"My honoring[√अञ्ज् शतृॅं] Roarer[√रु]"
 3279.1,M-869,Lower Indus,Mohenjo-daro,--,--,--,RWTH,-,-,-,- -,PB,-,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,IT,5,5,,,,25,0,0,+740-100-415-002-861+
 3280.1,M-870,Lower Indus,Mohenjo-daro,DKE,Trench EII,81015/1065,DK-E 1809160,-,-,-,-9.0 ft,PB,Steatite,White,square,-,partly damaged,Bull1:L,SAF,SEAL:S,1,Poor,Y,R/L,IT,5,5,1.0,1.0,,25.4,25.4,0,+740-460-741-060-920+
 3281.1,M-872,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1028,-,-,-,- -,PB,-,-,square,-,complete,Bull1:I,SAF,SEAL:S,1,Poor,Y,R/L,IM,4,4,,,,26,26.5,0,+390-016-002-824+
@@ -4148,7 +4148,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3293.1,M-887,Lower Indus,Mohenjo-daro,DKC,12-,111662/0468,DK-C 810169,-,-,-,-7.0 ft,PB,Steatite,White,square,-,complete,Bull1:J,RAN,SEAL:S,1,Poor,Y,NR,TS,1,1,0.95,0.95,,24.1,24.1,0,+117+,ref:1150.1
 3295.1,M-889,Lower Indus,Mohenjo-daro,HRB,2Main street,1-,HR 3207126,-,-,-,-7.0 ft,PBSG,Steatite,White,square,rectangular,complete,Bull1:I,RBF,SEAL:S,1,Poor,Y,R/L,IT,6,6,1.0,1.0,,25.4,25.4,6.8 - 14.1,+740-384-032-803-002-820+
 3296.1,M-890,Lower Indus,Mohenjo-daro,DKG,First Street-,30-,DK10289117,Period 3C-4,Late,II,-6.5 ft,PB,Steatite,-,square,-,partly damaged,Bull1,R,SEAL:S,1,Poor,Y,R/L,IT,5,5,1.1,,0.3,27.9,0,7.6,+740-927-032-741-208+
-3297.1,M-892,Lower Indus,Mohenjo-daro,HRA,3VII,136 X/11,HR 2595247,-,-,-,-3.0 ft,PB,Steatite,White,square,-,partly damaged,Bull1:J,-,SEAL:S,1,Poor,Y,BUS,LP,7,7,0.95,,,24.1,0,0,+740-798-463-350-742-706-032+
+3297.1,M-892,Lower Indus,Mohenjo-daro,HRA,3VII,136 X/11,HR 2595247,-,-,-,-3.0 ft,PB,Steatite,White,square,-,partly damaged,Bull1:J,-,SEAL:S,1,Poor,Y,BUS,LP,7,7,0.95,,,24.1,0,0,+740-798-463-350-742-706-032+,hanana ca dAhana,"O killer[Hariv] and burner[MBh]"
 3298.1,M-893,Lower Indus,Mohenjo-daro,DKG,First Street-,21-,-659,Period 3B-2,Early,I,-21.1 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,?,R/L,UC,3+?,3,,,0.28,0,0,7.1,+740-900-004[
 3299.1,M-894,Lower Indus,Mohenjo-daro,DKG. (S),12I,1-,DK8480393,Period 3C-2,Intermediate,I,-12.3 ft,PB,Steatite,-,square,-,complete,Bull1:I,-,SEAL:S,1,Fair,Y,R/L,LC,8,8,1.1,1.1,0.22,27.9,27.9,5.6,+892-070-590-495-520-231-368-861+,raRa manAva-mada,"O Roarer[√रण्] O zealous[RV] joyful[RV] one"
 3300.1,M-895,Lower Indus,Mohenjo-daro,DKG. (S),7I,13-,DK4815262,Period 3C-4,Late,III,-9.5 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,IT,4,4,0.92,,0.25,23.4,0,6.4,+740-048-002-817+
@@ -4183,10 +4183,10 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3329.1,M-934,Lower Indus,Mohenjo-daro,SDStupa,--,--,DM50158,-,-,-,-4.58 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,SP,5,5,0.95,0.95,,24.1,24.1,0,+526-555-235-002-861+
 3330.1,M-935,Lower Indus,Mohenjo-daro,DKG. (N),18-,17-,DK11026144,Period 3C-3,Late,III,-7.1 ft,PB,Steatite,-,square,-,complete,Bull1:S,SAF,SEAL:S,1,Good,Y,R/L,SS,3,3,0.75,0.75,0.28,19.1,19.1,7.1,+740-920-320+
 3331.1,M-936,Lower Indus,Mohenjo-daro,DKC,10-,121530/0580,DK-C 3202197,-,-,-,-2.75 ft,PB,Steatite,White,square,-,slightly chipped,Bull1:J,SAN,SEAL:S,1,Poor,Y,R/L,SS,2,2,0.8,0.8,,20.3,20.3,0,+520-460+,ref:133.1
-3332.1,M-937,Lower Indus,Mohenjo-daro,DKG. (N),16II,11-,DK1169066,Period 4,Late,I,-5.0 ft,PB,Steatite,-,square,-,chipped,Bull1:J,S,SEAL:S,1,Fair,Y,R/L,IT,7,7,0.8,0.8,0.2,20.3,20.3,5.1,+740-460-503-031-002-900-615+
+3332.1,M-937,Lower Indus,Mohenjo-daro,DKG. (N),16II,11-,DK1169066,Period 4,Late,I,-5.0 ft,PB,Steatite,-,square,-,chipped,Bull1:J,S,SEAL:S,1,Fair,Y,R/L,IT,7,7,0.8,0.8,0.2,20.3,20.3,5.1,+740-460-503-031-002-900-615+,nAv-Adam,"Receiving[AV] the boat[नौ RV]"
 3333.1,M-938,Lower Indus,Mohenjo-daro,DKG. (N),West Street-,--,DK11395158,Period 3C-3,Late,III,-7.4 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,SS,2,2,0.72,0.72,0.29,18.3,18.3,7.4,+740-416+
 3334.1,M-939,Lower Indus,Mohenjo-daro,DKG. (S),Crooked Lane-,--,DK9343652,Period 3B-2,Early,I,-20.6 ft,PB,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Fair,Y,R/L,SS,2,2,0.77,0.77,0.22,19.6,19.6,5.6,+527-550+
-3335.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Bull1:J,RAF,SEAL:S,1,Good,Y,R/L,MS,7,7,2.9cm,2.9cm,,29,29,0,+740-205-032-002-390-590-032+
+3335.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,square,-,complete,Bull1:J,RAF,SEAL:S,1,Good,Y,R/L,MS,7,7,2.9cm,2.9cm,,29,29,0,+740-205-032-002-390-590-032+,sva-rava SAsana,"O self-roaring[RV √रु] punisher[SAsana]"
 3336.1,M-941,Lower Indus,Mohenjo-daro,DKG. (N),17I,3-,DK12047256,Period 3C-3,Late,III,-9.0 ft,PB,Steatite,-,square,-,fragment,Bull1:S,SAN,SEAL:S,1,Good,N,R/L,??,6,5,0.8,0.8,0.25,20.3,20.3,6.4,+000-642-240-031-002-861+
 3337.1,M-942,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1009/0929,DK-E 976296,-,-,-,-7.0 ft,PB,Steatite,White,square,-,fragment,Bull1:J,SAN,SEAL:S,1,Poor,N,R/L,??,4+?,2,0.75,?,,19.1,0,0,+740-013-000-000[
 3338.1,M-943,Lower Indus,Mohenjo-daro,DKG. (S),9IX,66-,DK12849282,Period 3C-4,Late,III,-9.9 ft,PB,Steatite,-,square,-,chipped,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,MT,5,5,0.8,0.78,0.27,20.3,19.8,6.9,+740-176-220-415-798+
@@ -4230,7 +4230,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3375.1,M-982,Lower Indus,Mohenjo-daro,DKG. (N),22-,5-,DK1014921,Period 4,Late,I,-3.7 ft,PB,Steatite,-,square,-,complete,Bull1:U,SAN,SEAL:S,1,Fair,Y,R/L,SS,3,3,0.8,0.8,0.31,20.3,20.3,7.9,+740-825-002+
 3376.1,M-983,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-126,-,-,-,- -,PBSG,-,-,square,rectangular,slightly chipped,Bull1,None,SEAL:S,1,Poor,N,R/L,??,2,1,,,,22,22,6 - 10,+740-000+
 3377.1,-,Gujarat/Kutch,Dholavira,Middle Town-,--,--,-,-,-,-,42 cm,-,Clay,Grey,-,-,fragment,-,-,TAG,1,Poor,N,R/L,??,5+?,2,,,,0,0,0,]000-220-000-740-000[
-3378.1,M-985,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1066,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,MT,7,7,,,,22,0,0,+520-070-033-705-233-235-803+
+3378.1,M-985,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1066,-,-,-,- -,PB,-,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,MT,7,7,,,,22,0,0,+520-070-033-705-233-235-803+,sAma-maYjaman,"The calming[TBr] Resoundness[√मञ्ज् मनिन्]"
 3379.1,M-986,Lower Indus,Mohenjo-daro,DKG,First Street-,15-,DK12621341,Period 3C-2,Intermediate,I,-10.9 ft,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,SS,3,3,0.88,0.56,0.25,22.4,14.2,6.4,+740-760-605+,naraM,man[TS]  
 3380.1,M-987,Lower Indus,Mohenjo-daro,HRB,2IX,85-,HR 4110007,-,-,-,-3.0 ft,PB,Steatite,White,square,-,complete,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,PN,2,2,0.7,0.7,,17.8,17.8,0,+390-016+
 3381.1,M-988,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 479,-,-,-,- -,PB,-,-,square,-,fragment,-,-,SEAL:S,1,Poor,Y,R/L,AN,2,2,,,,0,0,0,+151-055+
@@ -4335,7 +4335,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3480.1,M-1109,Lower Indus,Mohenjo-daro,DKC,8-,91460/0610,DK-C 2073327,-,-,-,-4.0 ft,PB,Steatite,White,square,-,fragment,Zebu,-,SEAL:S,1,Poor,Y,R/L,SP,4,4,,,,0,0,0,+520-231-002-820+
 3481.1,M-1110,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1146/1259,DK-E 1346334,-,-,-,-5.6 ft,PB,Steatite,White,square,-,fragment,Zebu,None,SEAL:S,1,Poor,Y,R/L,IT,5,5,1.4,,,35.6,0,0,+740-615-104-002-817+
 3482.1,M-1111,Lower Indus,Mohenjo-daro,DKA,2XVII,11331 X/25,VS 3026333,-,-,-,-6.5 ft,PB,Steatite,White,square,-,complete,Zebu,None,SEAL:S,1,Good,Y,R/L,IT,5,5,1.35,1.3,,34.3,33,0,+740-798-745-924-692+
-3483.1,M-1112,Lower Indus,Mohenjo-daro,DKG. (S),9XI,70-,DK12878366,Period 3C-2,Intermediate,I,-11.4 ft,PB,Steatite,-,square,-,partly damaged,Zebu,None,SEAL:S,1,Fair,Y,R/L,2L,7,7,1.32,,0.27,33.5,0,6.9,+740-585-220/002-130-035-171+
+3483.1,M-1112,Lower Indus,Mohenjo-daro,DKG. (S),9XI,70-,DK12878366,Period 3C-2,Intermediate,I,-11.4 ft,PB,Steatite,-,square,-,partly damaged,Zebu,None,SEAL:S,1,Fair,Y,R/L,2L,7,7,1.32,,0.27,33.5,0,6.9,+740-585-220/002-130-035-171+,upya-vama Bana,"O seed[KātyŚr] giver[√वम्], O Roarer[√भन्]"
 3484.1,M-1113,Lower Indus,Mohenjo-daro,DKG. (S),7IX,34-,DK8159441,Period 3C-1,Intermediate,II,-13.2 ft,PB,Steatite,-,square,-,complete,Zebu,None,SEAL:S,1,Good,Y,R/L,SS,3,3,1.28,1.25,0.35,32.5,31.8,8.9,+550-233-235+
 3485.1,M-1114,Lower Indus,Mohenjo-daro,VSA,2VIII,1532 X/16,VS 3093331,-,-,-,-4.5 ft,PB,Steatite,White,square,-,partly damaged,Zebu,None,SEAL:S,1,Poor,Y,R/L,IT,6,6,1.2,1.2,,30.5,30.5,7.3 - 11.6,+740-140-002-741-060-920+
 3486.1,M-1115,Lower Indus,Mohenjo-daro,DKC,13-,323 M/15,DK-C 681328,-,-,-,-2.25 ft,PB,Steatite,White,square,-,fragment,Zebu,-,SEAL:S,1,Poor,Y,R/L,SP,5,5,0.3,,,7.6,0,0,+740-335-233-002-861+
@@ -4415,12 +4415,12 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3555.3,M-1205,Lower Indus,Mohenjo-daro,HRB,7XLVIII,--,HR 4629293,-,-,-,-4.0 ft,PBSG,Steatite,White,square,rectangular,fragment,Bull1,-,SEAL:S,3,Poor,N,-,??,1,0,,0.85,,0,21.6,9 - 12.8,+000+
 3556.1,M-1206,Lower Indus,Mohenjo-daro,DKG. (S),9IV,6-,DK8186229,Period 3C-4,Late,III,-8.4 ft,PBSG,Steatite,-,square,rectangular,complete,Gaur,None,SEAL:S,2,Good,Y,R/L,MT,3,3,1.3,1.2,0.55,33,30.5,7 - 14,+520-220-034+,camana,eating[Jaim]
 3556.2,M-1206,Lower Indus,Mohenjo-daro,DKG. (S),9IV,6-,DK8186229,Period 3C-4,Late,III,-8.4 ft,PBSG,Steatite,-,square,rectangular,complete,Gaur,None,SEAL:S,2,Good,Y,R/L,IT,6,6,1.3,1.2,0.55,33,30.5,7 - 14,+740-690-435-255-002-861+
-3557.1,M-1221,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 645,-,-,-,- -,PN,-,-,square,rectangular,partly damaged,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,IT,7,7,,,,0,0,10 - 10,+090-740-100-320-001-300-632+
+3557.1,M-1221,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 645,-,-,-,- -,PN,-,-,square,rectangular,partly damaged,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,IT,7,7,,,,0,0,10 - 10,+090-740-100-320-001-300-632+,tala-amAna,"O formless[RV] Shiva[MBh]"
 3558.1,M-1222,Lower Indus,Mohenjo-daro,DKC,12-,101632/0450,DK-C 162268,-,-,-,-3.5 ft,PN,Steatite,White,square,rectangular,chipped,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,SS,2,2,0.6,0.6,,15.2,15.2,8 - 8,+151-416+
 3559.1,M-1224,Lower Indus,Mohenjo-daro,LB,9-,94-,L 323227,-,-,-,-2.0 ft,PN,Steatite,White,square,rectangular,complete,Mult,Mult,SEAL:S,2,Good,Y,R/L,MT,5,5,0.9,0.9,,22.9,22.9,10 - 10,+400-090-740-032-840+
 3559.2,M-1224,Lower Indus,Mohenjo-daro,LB,9-,94-,L 323227,-,-,-,-2.0 ft,PN,Steatite,White,square,rectangular,complete,Mult,Mult,SEAL:S,2,Good,Y,R/L,SC,4,4,0.9,0.9,,22.9,22.9,10 - 10,+401-390-016-853+,usrIH,morning-lights[RV] 
 3560.1,M-1225,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4503311/508,-,-,-,- -,PN,Steatite,White,square,rectangular,complete,Gaur,Trough,SEAL:S,1,Fine,Y,R/L,SS,4,4,0.8,0.8,,20.3,20.3,8 - 8,+740-900-005-877+
-3561.1,M-1226,Lower Indus,Mohenjo-daro,DKC,9-,101480/0560,DK-C 209326,-,-,-,-1.5 ft,-,Steatite,White,square,-,complete,Gaur,Trough,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.0,1.0,,25.4,25.4,10 - 10,+520-033-705-235-233-002-817+
+3561.1,M-1226,Lower Indus,Mohenjo-daro,DKC,9-,101480/0560,DK-C 209326,-,-,-,-1.5 ft,-,Steatite,White,square,-,complete,Gaur,Trough,SEAL:S,1,Fair,Y,R/L,LP,7,7,1.0,1.0,,25.4,25.4,10 - 10,+520-033-705-235-233-002-817+,rava mAm aYjan,"O Roarer[√रु], annointing[√अञ्ज् लोट्] me"
 3562.1,M-1228,Lower Indus,Mohenjo-daro,DKC,Street C7-,-1310/0710,DK-C 3158394,-,-,-,-6.5 ft,-,Steatite,Brown,square,-,fragment,None,None,SEAL:S,1,Poor,Y,R/L,SC,3,3,1.5,0.6,,38.1,15.2,0,+001-368-351+
 3563.1,M-1231,Lower Indus,Mohenjo-daro,DKG. (S),6A-,33-,DK12586321,Period 3C-2,Intermediate,I,-10.4 ft,-,Steatite,-,square,-,complete,None,None,SEAL:S,1,Poor,N,L/R,??,3,2,0.56,0.59,0.21,14.2,15,5.3,+740-000-240+
 3564.1,M-1232,Lower Indus,Mohenjo-daro,DKG. (S),7III,43-,DK8250497,Period 3C-1,Intermediate,II,-14.8 ft,-,Steatite,-,square,-,complete,None,None,SEAL:S,1,Poor,Y,L/R,SS,2,2,1.05,0.9,0.52,26.7,22.9,13.2,+156-003+
@@ -4438,11 +4438,11 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3571.1,M-1264,Lower Indus,Mohenjo-daro,DK-,--,--,HR 1050405,-,-,-,-2.5 ft,PN,Steatite,Green,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fine,Y,R/L,IT,5,5,1.85,0.6,,47,15.2,0,+740-100-456-001-820+
 3572.1,M-1265,Lower Indus,Mohenjo-daro,DKG. (S),Fore Lane1(IV)/10,--,DK4741227,Period 3C-4,Late,III,-8.5 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MT,6,6,1.45,0.68,0.52,36.8,17.3,13.2,+740-055-240-220-032-806+
 3573.1,M-1266,Lower Indus,Mohenjo-daro,DK-,--,--,HR 4237470,-,-,-,-1.5 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MT,5,5,1.7,0.65,,43.2,16.5,0,+740-483-233-235-055+
-3574.1,M-1267,Lower Indus,Mohenjo-daro,DKB,1Street C7,-20 O/08,DK-C 931494,-,-,-,-2.0 ft,-,Steatite,White,rectangular,-,chipped,None,None,SEAL:R,1,Poor,Y,R/L,IT,7,7,1.3,0.7,,33,17.8,0,+416-001-740-720-175-002-861+
+3574.1,M-1267,Lower Indus,Mohenjo-daro,DKB,1Street C7,-20 O/08,DK-C 931494,-,-,-,-2.0 ft,-,Steatite,White,rectangular,-,chipped,None,None,SEAL:R,1,Poor,Y,R/L,IT,7,7,1.3,0.7,,33,17.8,0,+416-001-740-720-175-002-861+,rava sadanAt,"O Roarer[√रु] from the dwelling[RV abl]"
 3575.1,M-1268,Lower Indus,Mohenjo-daro,DKG. (S),12AII,12-,DK5476288,Period 3C-4,Late,III,-9.9 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,IT,5,5,1.45,0.6,0.4,36.8,15.2,10.2,+740-455-176-002-817+
 3576.1,M-1269,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 370,-,-,-,- -,-,-,White,rectangular,-,complete,None,None,SEAL:R,1,Fine,Y,R/L,MT,5,5,32,,,0,16,0,+520-033-706-240-235+
 3577.1,M-1270,Lower Indus,Mohenjo-daro,HRB,2V,4937 ?/02,HR 4109464,-,-,-,-2.42 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Fine,Y,R/L,SS,4,4,1.45,0.6,,36.8,15.2,0,+154-388-717-706+
-3578.1,M-1271,Lower Indus,Mohenjo-daro,DKG. (S),2IV,15-,DK5567603,Period 3B/C,Intermediate,III,-18.1 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LC,7,7,1.53,0.59,0.4,38.9,15,10.2,+400-456-503-337-484-920-140+
+3578.1,M-1271,Lower Indus,Mohenjo-daro,DKG. (S),2IV,15-,DK5567603,Period 3B/C,Intermediate,III,-18.1 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LC,7,7,1.53,0.59,0.4,38.9,15,10.2,+400-456-503-337-484-920-140+,tada-samA asi,"You are[√अस्] like[RV] the Striker[√तड्]"
 3579.1,M-1272,Lower Indus,Mohenjo-daro,VSA,1I,30-,VS 3553457,-,-,-,-10.0 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LC,6,6,1.05,0.6,,26.7,15.2,0,+520-070-921-742-615-920+
 3580.1,M-1273,Lower Indus,Mohenjo-daro,DKG. (S),Long Lane10/12,--,DK7061679,Period 3B-2,Early,I,-23.7 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,IT,5,5,1.32,0.55,0.5,33.5,14,12.7,+740-055-002-861-603+
 3581.1,M-1274,Lower Indus,Mohenjo-daro,DKG. (S),8III,28-,DK11877106,Period 4,Late,II,-6.2 ft,-,Steatite,-,rectangular,-,fragment,None,None,SEAL:R,1,Good,Y,R/L,SC,3,3,1.22,0.56,0.4,31,14.2,10.2,+130-032-905+
@@ -4468,7 +4468,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3601.1,M-1296,Lower Indus,Mohenjo-daro,SD-,--,--,SD 2805,-,-,-,- -,-,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,?,-,UC,2+?,2,,,,0,13.5,0,+407-370[
 3602.1,M-1297,Lower Indus,Mohenjo-daro,L-,--,--,L 650445,-,-,-,-5.0 ft,PN,Steatite,White,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,?,R/L,UC,3+?,3,,0.55,,0,14,3.5 - 6,]806-002-824+
 3603.1,M-1298,Lower Indus,Mohenjo-daro,DK-,--,--,DK6172,-,-,-,- -,-,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,N,R/L,??,3+?,2,,,,0,15,0,]740-100-000[
-3604.1,M-1299,Lower Indus,Mohenjo-daro,DKC,Street C3 betw. 11/12-,-1621/0458,DK-C 204456,-,-,-,-5.5 ft,PN,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LP,7,7,0.6,0.25,,15.2,6.4,0,+527-550-033-705-233-002-817+
+3604.1,M-1299,Lower Indus,Mohenjo-daro,DKC,Street C3 betw. 11/12-,-1621/0458,DK-C 204456,-,-,-,-5.5 ft,PN,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LP,7,7,0.6,0.25,,15.2,6.4,0,+527-550-033-705-233-002-817+,ravam aYjasam,"Rudra[√रु] and (Soma) mixture[RV]"
 3605.1,M-1300,Lower Indus,Mohenjo-daro,DKG. (S),9VII,17-,DK6171350,Period 3C-2,Intermediate,I,-11.2 ft,PN,Steatite,-,cuboid-convex,plano-convex,partly damaged,None,None,SEAL:R,1,Fair,N,R/L,??,5+?,4,1.4,0.42,0.45,35.6,10.7,11.4,+617-142-001-747-000[
 3606.1,M-1301,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 96,-,-,-,- -,-,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,N,R/L,??,4+?,3,,,,0,12.5,3,+740-407-590-000[
 3607.1,M-1302,Lower Indus,Mohenjo-daro,HR-,--,--,HR 5260432,-,-,-,-4.0 ft,PN,Steatite,White,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,N,R/L,??,4+?,2,,0.5,,0,12.7,0 - 8,]000-877-032-000[
@@ -4479,20 +4479,20 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3612.1,M-1307,Lower Indus,Mohenjo-daro,L-,--,--,L 702526b,-,-,-,-3.5 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,SS,3,3,1.1,0.40,,27.9,10.2,0,+740-460-503+,adana,eating[√अद् + ल्युट्]
 3613.1,M-1308,Lower Indus,Mohenjo-daro,SD-,Main Street-,--,SD 3054697,Period 4,Late,I,+1.2 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MS,6,6,1.0,0.45,0.29,25.4,11.4,7.4,+740-032-055-001-407-004+,carAjazaM,moving[MBh] immortal[√जष्]
 3614.1,M-1309,Lower Indus,Mohenjo-daro,DKG. (S),Crooked Lane-,--,DK7465579,Period 3B/C,Intermediate,III,-17.4 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,-,SC,3,3,0.95,0.46,0.33,24.1,11.7,8.4,+032-820-877+
-3615.1,M-1310,Lower Indus,Mohenjo-daro,DKC,12-,51700/0480,DK-C 217418,-,-,-,-3.0 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,MS,7,7,1.2,0.45,,30.5,11.4,0,+407-004-001-740-407-590-235+
+3615.1,M-1310,Lower Indus,Mohenjo-daro,DKC,12-,51700/0480,DK-C 217418,-,-,-,-3.0 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,MS,7,7,1.2,0.45,,30.5,11.4,0,+407-004-001-740-407-590-235+,ama-varRa-Acara,"Powerful[RV] varṇa[RV] rites performance[MBh]"
 3616.1,M-1311,Lower Indus,Mohenjo-daro,DKG. (S),1III,17-,DK5156485,Period 3C-1,Intermediate,II,-14.5 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,IT,5,5,1.17,0.47,0.3,29.7,11.9,7.6,+520-400-354-002-817+
 3617.1,M-1312,Lower Indus,Mohenjo-daro,DKG. (N),16I,5-,DK11824318,Period 3C-2,Intermediate,I,-10.5 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,MT,3,3,0.76,0.44,0.28,19.3,11.2,7.1,+400-740-220+
 3618.1,M-1313,Lower Indus,Mohenjo-daro,DKG. (N),16II,19-,DK1022293,Period 3C-4,Late,II,-5.1 ft,-,Steatite,-,rectangular,-,slightly chipped,None,None,SEAL:R,1,Good,Y,NR,TS,1,1,0.7,0.45,0.25,17.8,11.4,6.4,+946+,naktan,night[RV 6.104.18]
 3619.1,M-1314,Lower Indus,Mohenjo-daro,DKC,2-,922 N/01,DK-C 1618439,-,-,-,-8.0 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MS,5,5,0.95,0.45,,24.1,11.4,0,+407-016-001-740-923+,Anahara,(Sarasvati's) nose[RV] severer[MBh] 
 3620.1,M-1315,Lower Indus,Mohenjo-daro,DKG. (S),10III,62-,DK5577345,Period 3C-2,Intermediate,I,-11.0 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,SC,3,3,0.72,0.35,0.24,18.3,8.9,6.1,+617-142-240+
-3621.1,M-1316,Lower Indus,Mohenjo-daro,DKG. (S),9I,46-,DK1060949,Period 4,Late,I,-4.7 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LC,7,7,1.03,0.33,0.28,26.2,8.4,7.1,+127-381-292-590-032-901-620+
+3621.1,M-1316,Lower Indus,Mohenjo-daro,DKG. (S),9I,46-,DK1060949,Period 4,Late,I,-4.7 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,LC,7,7,1.03,0.33,0.28,26.2,8.4,7.1,+127-381-292-590-032-901-620+,sAha-vallaBa-badDa aDa,"O mighty[RV] beloved[MBh] (braid)tied[Megh] one, Certainly[Ved]"
 3622.1,M-1317,Lower Indus,Mohenjo-daro,DKB,--,-5 6,DK-B 937,-,-,-,-3.2 ft,PN,-,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Good,Y,R/L,SS,2,2,,,,18,8,3 - 5,+154-384+
 3623.1,M-1318,Lower Indus,Mohenjo-daro,DKC,Trench D-,--,D150416,-,-,-,-1.5 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,IT,5,5,0.8,0.35,,20.3,8.9,0,+740-460-503-002-880+
 3624.1,M-1319,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 1144,-,-,-,- -,-,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,?,R/L,UC,5+?,5,,,,0,13,0,]798-806-002-904-346+
 3625.1,M-1320,Lower Indus,Mohenjo-daro,DKA,2XVII,11332 Y/06,VS 2289447,-,-,-,-6.33 ft,-,Steatite,White,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MT,5,5,1.5,0.45,,38.1,11.4,0,+527-555-231-240-798+
 3626.1,M-1321,Lower Indus,Mohenjo-daro,HRA,1I,1838 X/03,HR 350446,-,-,-,-3.0 ft,PN,Steatite,White,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,?,R/L,UC,2+?,2,,0.5,,0,12.7,2.5 - 8,+740-388[
 3627.1,M-1322,Lower Indus,Mohenjo-daro,DK-,--,--,DK12173,-,-,-,- -,PN,-,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fair,Y,R/L,SC,3,3,,,,28.5,13,3.5 - 8,+423-003-491+,ajaya,undefeated[RV]
-3628.1,M-1323,Lower Indus,Mohenjo-daro,DK-,--,--,DK10887,-,-,-,- -,PN,-,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fair,Y,R/L,LT,7,7,,,,41,11.5,2.5 - 7,+740-798-405-590-033-706-806+
+3628.1,M-1323,Lower Indus,Mohenjo-daro,DK-,--,--,DK10887,-,-,-,- -,PN,-,-,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Fair,Y,R/L,LT,7,7,,,,41,11.5,2.5 - 7,+740-798-405-590-033-706-806+,saMjvara-hAna,"Remover[Śaṃk] of the great fever[Mn]"
 3629.1,M-1324,Lower Indus,Mohenjo-daro,DKG. (S),1A-,89-,DK5831682,Period 3B-2,Early,I,-24.4 ft,PN,Steatite,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Good,N,R/L,??,3+?,2,0.7,0.49,0.41,17.8,12.4,10.4,+155-806-000[
 3630.1,M-1325,Lower Indus,Mohenjo-daro,DKG. (S),7III,42-,DK7921118,Period 4,Late,II,-6.5 ft,PN,Steatite,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Good,N,R/L,??,6+?,5,,0.5,0.3,0,12.7,7.6,+407-063-444-388-231-000[
 3631.1,M-1326,Lower Indus,Mohenjo-daro,DK-,--,--,SD 2725,-,-,-,- -,PN,-,-,cuboid-convex,plano-convex,fragment,None,None,SEAL:R,1,Poor,?,R/L,UC,2+?,2,,,,0,11.5,3 - 6,+740-585[
@@ -4514,7 +4514,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3647.1,M-1342,Lower Indus,Mohenjo-daro,DKB,2XIII,95-,HR 3130393,-,-,-,-3.0 ft,NN,Steatite,Blue,cuboid-convex,plano-convex,chipped,None,None,SEAL:R,1,Poor,Y,R/L,SC,5,5,1.7,1.0,,43.2,25.4,7 - 13,+740-680-090-585-017+,saBAsakzaM,powerful[TS] council[RV]
 3648.1,M-1343,Lower Indus,Mohenjo-daro,HRB,3XIV,1-,HR 4125433,-,-,-,-4.0 ft,-,Steatite,Blue,-,-,fragment,None,None,SEAL,1,Poor,Y,R/L,SP,6,6,1.2,0.75,,30.5,19.1,0,+740-390-590-235-002-861+
 3649.1,M-1344,Lower Indus,Mohenjo-daro,DKG. (N),29I,1-,DK12551315,Period 3C-2,Intermediate,I,-10.4 ft,-,Steatite,-,rectangular,-,slightly chipped,None,None,SEAL:R,1,Good,?,R/L,UC,3+?,3,1.01,0.8,0.42,25.7,20.3,10.7,+740-407-220[
-3650.1,M-1346,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,complete,None,None,SEAL:R,1,Poor,Y,R/L,LP,7,7,,,,0,0,0,+740-861-032-233-803-002-820+
+3650.1,M-1346,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,complete,None,None,SEAL:R,1,Poor,Y,R/L,LP,7,7,,,,0,0,0,+740-861-032-233-803-002-820+,ravasam haram,"The Roaring[RV] Seizer[MBh]"
 3651.1,M-1350,Lower Indus,Mohenjo-daro,DKG. (S),1I,17-,DK7288599,Period 3B/C,Intermediate,III,-18.0 ft,PN,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,LC,8,8,1.4,0.62,0.45,35.6,15.7,11.4,+406-371-220-415-803-742-920-320+,madana-hataM-kara,"O killer[RV] of Kāma[MBh]"
 3652.1,M-1351,Lower Indus,Mohenjo-daro,DKG. (N),-Lane,--,DK11456142,Period 3C-3,Late,III,-7.1 ft,-,Steatite,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MT,3,3,1.35,0.56,0.4,34.3,14.2,10.2,+527-555-235+
 3653.1,M-1353,Lower Indus,Mohenjo-daro,VSA,2XVI,-2300/1760,VS 208459,-,-,-,-3.08 ft,PN,Steatite,White,cuboid,rectangular,fragment,None,None,SEAL:R,1,Good,?,R/L,UC,4+?,4,0.7,,,17.8,0,0,+740-463-503-745[
@@ -4544,7 +4544,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3676.1,M-1380,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-101,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:s,1,Poor,N,R/L,??,4,2,,,,0,0,0,+151-031-000-000+
 3677.1,M-1381,Lower Indus,Mohenjo-daro,L-,-I,18-,L 515CXV:559,-,-,-,- -,-,Clay,-,-,-,complete,None,None,POT:T:s,1,Fair,Y,R/L,IT,4,4,,,,0,0,0,+527-550-002-370+
 3678.1,M-1382,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-1,-,-,-,- -,-,Clay,-,square,-,chipped,None,None,POT:T:s,1,Fair,Y,R/L,SS,2,2,,,,0,0,0,+740-792+
-3679.1,M-1383,Lower Indus,Mohenjo-daro,DK-,--,--,MN 82a,-,-,-,- -,-,Clay,-,-,-,slightly chipped,Bull1,SAN,TAG:R,1,Fair,Y,R/L,IT,7,7,,,,0,0,0,+740-575-017-031-741-060-920+
+3679.1,M-1383,Lower Indus,Mohenjo-daro,DK-,--,--,MN 82a,-,-,-,- -,-,Clay,-,-,-,slightly chipped,Bull1,SAN,TAG:R,1,Fair,Y,R/L,IT,7,7,,,,0,0,0,+740-575-017-031-741-060-920+,damana-asamAna,"O incomparable[Daś] Subduer[MBh]"
 3680.1,M-1384,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,complete,None,None,TAG:L,1,Poor,Y,R/L,LC,8,8,,,,0,0,0,+904-004-821-001-480-850-595-391+,Arava-ra sAra-fca,"O screamer[Pāṇ Sis], O powerful[AV] verse[RV]"
 3681.1,M-1385,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Clay,-,circular,-,fragment,Bull1,-,TAG:P,1,Poor,Y,R/L,SP,5,5,,,,0,0,0,+740-760-032-002-817+
 3681.2,M-1385,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Clay,-,circular,-,fragment,Bull1,-,TAG:P,1,Poor,?,R/L,UC,5+?,5,,,,0,0,0,+740-760-032-002-817[
@@ -4588,7 +4588,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3710.1,M-1425,Lower Indus,Mohenjo-daro,DK-,--,--,DK11677,-,-,-,- -,-,Clay,-,twisted rectangular,-,complete,Mult,None,TAB:B,1,Good,Y,R/L,VX,4,4,,,,38,11,4,+400-097-700-004+
 3711.1,M-1426,Lower Indus,Mohenjo-daro,DKE,Trench E-,--,DK-E 1260CXVI:21,-,-,-,-10.0 ft,-,Clay,-,prism,triangular,complete,None,None,TAB:B,1,Fair,Y,R/L,LP,8,8,1.65,0.38,,41.9,9.7,0,+740-760-036-220-415-798-002-861+,rava—astam Saram,"Roarer's[√रु] thrown[Ragh] arrow[RV]"
 3712.1,M-1427,Lower Indus,Mohenjo-daro,DKG. (S),8II,23-,DK8870102.6,Period 3C-2,Intermediate,I,-13.0 ft,-,Clay,-,-,-,complete,Bull1,None,TAG:O,1,Fair,Y,R/L,LC,9,9,1.32,0.65,0.37,33.5,16.5,9.4,+001-484-140-002-220-627-615-906-388+,vaja nara-amavat-sA,"O Wanderer[√वज्], (you are the) strengthener[RV;sā = giver RV] of men[TS]"
-3713.1,M-1429,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-602,-,-,-,- -,-,-,-,prism,triangular,complete,Mult,None,TAB:B,1,Good,Y,R/L,MS,7,7,,,,45,11,0,+090-740-792-740-220-003-803+
+3713.1,M-1429,Lower Indus,Mohenjo-daro,--,--,--,UPM/MD-602,-,-,-,- -,-,-,-,prism,triangular,complete,Mult,None,TAB:B,1,Good,Y,R/L,MS,7,7,,,,45,11,0,+090-740-792-740-220-003-803+,sajjamAna tat tAna,"O that Wanderering[√सज्ज् शानच्] Roarer[√तन् घञ्]"
 3714.1,M-1430,Lower Indus,Mohenjo-daro,DKG. (S),9VI,31-,DK454792.12,Period 4,Late,II,-6.6 ft,-,Clay,-,twisted prism,triangular,complete,Mult,None,TAB:B,3,Poor,Y,R/L,SS,2,2,1.68,,0.45,42.7,0,11.4,+740-384+
 3714.2,M-1430,Lower Indus,Mohenjo-daro,DKG. (S),9VI,31-,DK454792.12,Period 4,Late,II,-6.6 ft,-,Clay,-,twisted prism,triangular,complete,Mult,None,TAB:B,3,Poor,Y,R/L,SS,2,2,1.68,,0.45,42.7,0,11.4,+740-384+
 3714.3,M-1430,Lower Indus,Mohenjo-daro,DKG. (S),9VI,31-,DK454792.12,Period 4,Late,II,-6.6 ft,-,Clay,-,twisted prism,triangular,complete,Mult,None,TAB:B,3,Poor,Y,R/L,SS,2,2,1.68,,0.45,42.7,0,11.4,+740-384+
@@ -4622,15 +4622,15 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3736.2,M-1461,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,square,-,complete,-,-,TAB:C,2,Poor,N,R/L,??,3,2,,,,22,21,0,+165-900-000+
 3737.1,M-1465,Lower Indus,Mohenjo-daro,DKG. (S),2II,24-,DK4294103.7,Period 3B/C,Intermediate,III,-16.5 ft,-,Copper,-,square,-,complete,None,None,TAB:C,2,Poor,Y,NR,NU,1,1,0.9,0.9,0.11,22.9,22.9,2.8,+035+,ref:1008.1
 3737.2,M-1465,Lower Indus,Mohenjo-daro,DKG. (S),2II,24-,DK4294103.7,Period 3B/C,Intermediate,III,-16.5 ft,-,Copper,-,square,-,complete,None,None,TAB:C,2,Poor,Y,R/L,SS,2,2,0.9,0.9,0.11,22.9,22.9,2.8,+740-773+
-3738.1,M-1470,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i  803,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull1:W,Trough,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,37,23.5,0,+617-142-001-595-095-717-747+
+3738.1,M-1470,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i  803,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull1:W,Trough,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,37,23.5,0,+617-142-001-595-095-717-747+,anDa-ava-Anana,"The face of the destroyer[√अव् अच्] of darkness"
 3739.1,M-1472,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,-,-,fragment,Bull1:W,-,TAB:C,1,Poor,?,R/L,UC,5+?,5,,,,0,25,0,]001-595-142-717-747+
 3740.1,M-1474,Lower Indus,Mohenjo-daro,DK-,--,--,DK4058,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull,-,TAB:C,1,Poor,N,R/L,??,5,4,,,,34.5,22,0,+000-740-690-435-255+
 3741.1,M-1475,Lower Indus,Mohenjo-daro,HR-,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,Buff,Trough,TAB:C,1,Fair,Y,R/L,CT,8,8,,,,36,22,0,+424-003-001-900-740-690-435-255+,mAKam Ajaya,"The sacrifice[RV], O conquerer[RV:आ-जि]"
-3742.1,M-1476,Lower Indus,Mohenjo-daro,DK-,--,--,DK10311,-,-,-,- -,-,Copper,-,rectangular,-,complete,Buff,Trough,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,31,22.8,0,+422-003-900-740-690-435-255+
+3742.1,M-1476,Lower Indus,Mohenjo-daro,DK-,--,--,DK10311,-,-,-,- -,-,Copper,-,rectangular,-,complete,Buff,Trough,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,31,22.8,0,+422-003-900-740-690-435-255+,mAKam ajaya,"Sacrifice[RV], O undefeated one"
 3743.1,M-1477,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 693,-,-,-,- -,-,Copper,-,rectangular,-,slightly chipped,Bull,Trough,TAB:C,1,Poor,N,R/L,??,5,3,,,,35,23.5,0,+000-900-740-690-000+
 3744.1,M-1478,Lower Indus,Mohenjo-daro,DK-,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,Bull,Trough,TAB:C,1,Poor,N,-,??,3,1,,,,33,21,0,+000-003-000+
-3745.1,M-1479,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,slightly chipped,-,-,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,37,23,0,+422-003-900-740-690-435-255+
-3746.1,M-1480,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,-,-,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,35,23,0,+422-003-900-740-690-435-255+
+3745.1,M-1479,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,slightly chipped,-,-,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,37,23,0,+422-003-900-740-690-435-255+,ref:3742.1
+3746.1,M-1480,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,-,-,TAB:C,1,Poor,Y,R/L,MS,7,7,,,,35,23,0,+422-003-900-740-690-435-255+,ref:3742.1
 3747.1,M-1482,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 167,-,-,-,- -,-,Copper,-,rectangular,-,complete,Elep,Trough,TAB:C,1,Fair,Y,R/L,MS,4,4,,,,32.5,22.5,0,+740-923-033-706+,ref:2488.2
 3748.1,M-1483,Lower Indus,Mohenjo-daro,DK-,--,--,DK11127,-,-,-,- -,-,Copper,-,rectangular,-,complete,Elep,Trough,TAB:C,1,Fair,Y,R/L,MS,4,4,,,,35.5,22.5,0,+740-923-033-706+,ref:2488.2
 3749.1,M-1484,Lower Indus,Mohenjo-daro,VSA,3XVIII,529 Y/25,VS 888,-,-,-,-5.0 ft,-,Copper,-,rectangular,-,complete,Elep,Trough,TAB:C,1,Poor,Y,R/L,MS,4,4,,,,35,22,0,+740-923-033-706+,ref:2488.2
@@ -4653,7 +4653,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3766.1,M-1509,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,Othr,Trough,TAB:C,1,Poor,Y,R/L,SS,4,4,,,,32,26,0,+740-752-615-503+
 3767.1,M-1512,Lower Indus,Mohenjo-daro,--,--,--,SD 1517,-,-,-,- -,-,Copper,-,rectangular,-,complete,Othr,Trough,TAB:C,1,Poor,Y,R/L,SS,4,4,,,,34,25,0,+740-752-615-503+
 3768.1,M-1513,Lower Indus,Mohenjo-daro,HRA,3-,-36 W/16,HR 2081,-,-,-,-4 ft,-,Copper,-,rectangular,-,slightly chipped,Othr,Trough,TAB:C,1,Poor,Y,R/L,SS,4,4,1.125,1.125,,28.6,28.6,0,+740-752-615-503+
-3769.1,-,Inter-Riverine,Ganweriwala,--,--,--,-,-,-,-,- -,-,Terracotta,White,twisted rectangular-rounded,rectangular,complete,-,-,TAG,1,Poor,Y,R/L,LC,7,7,,,,0,0,0,+740-400-061-299-350-125-176+
+3769.1,-,Inter-Riverine,Ganweriwala,--,--,--,-,-,-,-,- -,-,Terracotta,White,twisted rectangular-rounded,rectangular,complete,-,-,TAG,1,Poor,Y,R/L,LC,7,7,,,,0,0,0,+740-400-061-299-350-125-176+,sadA calatin,"Always[RV] wandering[√चल् शतृँ इनि]"
 3770.1,M-1515,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 688,-,-,-,- -,-,Copper,-,rectangular,-,complete,Othr,Trough,TAB:C,1,Poor,Y,R/L,MT,5,5,,,,34,24,0,+407-061-845-240-798+
 3771.1,M-1516,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,Othr,None,TAB:C,1,Poor,Y,R/L,MT,5,5,,,,32,22,0,+407-061-845-240-798+
 3772.1,M-1517,Lower Indus,Mohenjo-daro,DKG. (S),9VI,31-,DK381193.10,Period 4,Late,II,-6.9 ft,-,Copper,-,rectangular,-,complete,Tigr,None,TAB:C,1,Fair,Y,R/L,MT,5,5,1.25,0.9,0.15,31.8,22.9,3.8,+407-061-845-240-798+
@@ -4692,7 +4692,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3796.1,M-1563,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,None,None,TAB:C,2,Fair,Y,NR,TS,1,1,,,,30,14.5,0,+782+,ref:2284.1
 3796.2,M-1563,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Copper,-,rectangular,-,complete,None,None,TAB:C,2,Fair,Y,R/L,LT,7,7,,,,30,14.5,0,+740-900-850-407-061-845-806+,ref:2287.2
 3797.1,M-1568,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 412,-,-,-,- -,-,Copper,-,rectangular,-,complete,None,None,TAB:C,2,Fair,Y,NR,TS,1,1,,,,37.5,15,0,+957+,ref:3067.1
-3797.2,M-1568,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 412,-,-,-,- -,-,Copper,-,rectangular,-,complete,None,None,TAB:C,2,Fair,Y,R/L,LT,7,7,,,,37.5,15,0,+740-100-904-033-705-231-798+,ref:1440.1
+3797.2,M-1568,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 412,-,-,-,- -,-,Copper,-,rectangular,-,complete,None,None,TAB:C,2,Fair,Y,R/L,LT,7,7,,,,37.5,15,0,+740-100-904-033-705-231-798+,ref:3067.2
 3798.1,M-1569,Lower Indus,Mohenjo-daro,DK-,--,--,DK8044,-,-,-,- -,-,Copper,-,rectangular,-,complete,-,-,TAB:C,1,Poor,Y,R/L,SC,3,3,,,,32,15,0,+904-032-904+,ASA,desire[AV]
 3799.1,M-1575,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,R/L,??,7+?,5,,,,0,0,0,]000-061-032-000-031-530-742[
 3800.1,M-1576,Lower Indus,Mohenjo-daro,--,--,--,-,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Fair,Y,R/L,MT,4,4,,,,0,0,0,+241-220-235-803+
@@ -4793,7 +4793,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3888.1,-,Other,Unknown,--,--,--,-,-,2000BC,-,- -,-,Steatite,-,cylindrical,circular,fragment,Unknown,None,SEAL:CY,1,Fair,N,R/L,??,5,4,,,,0,0,0,+090-055-000-132-032+
 3889.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,?B,Steatite,-,circular,-,complete,Gaur,Trough,SEAL:C,1,Fair,Y,R/L,SC,5,5,1.0,1.0,,0,0,7.5 - 11,+740-740-001-550-467+
 3890.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,square,-,chipped,Bull1:W,-,SEAL:S,1,Poor,Y,R/L,SP,6,6,,,,0,0,0,+740-585-231-240-060-820+
-3891.1,-,Other,Unknown,--,--,--,Un-100,-,-,-,- -,-,-,Brown,square,-,complete,Bull1:J,RBF,SEAL:S,1,Fair,Y,R/L,IT,7,7,,,,0,0,0,+740-100-415-927-060-920-031+
+3891.1,-,Other,Unknown,--,--,--,Un-100,-,-,-,- -,-,-,Brown,square,-,complete,Bull1:J,RBF,SEAL:S,1,Fair,Y,R/L,IT,7,7,,,,0,0,0,+740-100-415-927-060-920-031+,ADmAtAm,"The blown one (Agni)[RV]"
 3892.1,?-3,Other,Unknown,--,--,--,-,-,-,-,- -,NN,-,-,square,rectangular,complete,None,None,SEAL:S,1,Poor,Y,R/L,SC,4,4,,,,16,20,5,+002-368-590-900+
 3893.1,?-4,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,fragment,None,None,TAB:B,1,Poor,?,-,UC,2+?,2,,,,0,10,4,]233-240[
 3894.1,?-5,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,rectangular,rectangular,complete,None,None,TAB:B,1,Poor,Y,R/L,SP,4,4,,,,16,9,9,+555-233-002-820+
@@ -4811,10 +4811,10 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3903.1,M-1734,Lower Indus,Mohenjo-daro,DK-,--,--,DK5214872,-,-,-,- -,PBSG,-,-,square,rectangular,complete,Bull1:W,SAN,SEAL:S,1,good,Y,R/L,SS,2,2,,,,25,24,8 - 12,+740-912+
 3904.1,M-1998,Lower Indus,Mohenjo-daro,DKC,8-,2-31420/0600,DK-C 105614,-,-,-,-3.0 ft,-,-,-,rectangular,-,complete,None,None,POT:T:s,1,Poor,N,R/L,??,2,1,,,,0,0,0,+146-000+
 3905.1,M-1664,Lower Indus,Mohenjo-daro,DKB,--,-5 11,DK-B 997,-,-,-,-3.0 ft,-,-,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,IC,4,4,,,,41,41,0,+812-500-060-920+
-3906.1,M-1666,Lower Indus,Mohenjo-daro,DKB,--,-5 6,DK-B 930,-,-,-,-2.9 ft,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,39,37,0,+740-690-435-255-742-615-380+
+3906.1,M-1666,Lower Indus,Mohenjo-daro,DKB,--,-5 6,DK-B 930,-,-,-,-2.9 ft,PB,-,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,39,37,0,+740-690-435-255-742-615-380+,baRan mAKam,"O Roarer[बण् शतृँ] the sacrifice[RV]"
 3907.1,M-1669,Lower Indus,Mohenjo-daro,DKG. (S),9XI,44-,DK12498269,Period 3C-4,Late,III,-9.3 ft,-,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Fair,Y,L/R,SS,2,2,1.2,1.14,0.34,30.5,29,8.6,+740-390+
 3908.1,M-1670,Lower Indus,Mohenjo-daro,DK-,--,--,DK13007,-,-,-,- -,-,-,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Good,Y,R/L,LP,6,6,,,,35,35,0,+740-760-001-233-002-861+
-3909.1,M-1698,Lower Indus,Mohenjo-daro,--,--,--,RMW/MD50.1383604,-,-,-,- -,-,-,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,32.5,32.5,0,+740-482-033-705-002-861-803+
+3909.1,M-1698,Lower Indus,Mohenjo-daro,--,--,--,RMW/MD50.1383604,-,-,-,- -,-,-,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,32.5,32.5,0,+740-482-033-705-002-861-803+,Sarva aYjasam,"O Shiva[AV], the (Soma) mixture[RV]"
 3910.1,H-1733,Inter-Riverine,Harappa,--,--,--,H-95-2817,Period 3C,3,C,- -,-,Clay,-,-,-,chipped,None,-,POT:T:s,1,poor,N,R/L,??,2+?,1,,,,0,0,0,+000-604[
 3911.1,H-1735,Inter-Riverine,Harappa,F-,--,--,H98-4077Figure 35.09,Period 3C,3,C,- -,-,Clay,-,-,-,complete,None,-,POT:T:s,1,fair,Y,NR,NU,1,1,,,,0,0,0,+016+,ref:34.1
 3912.1,H-1550,Inter-Riverine,Harappa,--,--,--,H90-2975,Period 2,2,-,- -,-,-,-,-,-,fragment,-,-,POT:T:g,1,Poor,Y,R/L,VN,2,2,,,,0,0,0,+031-700+,anA,indeed[RV]
@@ -4915,13 +4915,13 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3992.1,M-1825,Lower Indus,Mohenjo-daro,--,--,--,BJ25710,-,-,-,- -,-,-,-,square,-,complete,Bull1,S,SEAL:S,1,Fair,Y,R/L,SC,5,5,,,,17.5,18.5,0,+157-031-002-390-705+
 3993.1,M-1835,Lower Indus,Mohenjo-daro,--,--,--,DK4883207,-,-,-,- -,-,-,-,square,-,complete,Bull1:O,SAN,SEAL:S,1,Good,Y,R/L,LP,6,6,,,,22,22,0,+154-900-004-001-390-032+
 3994.1,M-1840,Lower Indus,Mohenjo-daro,--,--,--,1325-MD88886,-,-,-,- -,-,-,-,square,-,complete,Bull1:I,SAN,SEAL:S,1,Poor,N,R/L,??,4,2,,,,22,22,0,+000-000-033-033+
-3995.1,M-1843,Lower Indus,Mohenjo-daro,DK-,--,--,DK8310698,-,-,-,- -,-,-,-,square,-,complete,Bull1:I,SAF,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,18,18,0,+520-220-001-820-220-063-315+
+3995.1,M-1843,Lower Indus,Mohenjo-daro,DK-,--,--,DK8310698,-,-,-,- -,-,-,-,square,-,complete,Bull1:I,SAF,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,18,18,0,+520-220-001-820-220-063-315+,Sata-mara-Amana,"O Destroyer[Mn] of a hundred[RV] (Indra), O beneficent[RV] one"
 3996.1,M-1852,Lower Indus,Mohenjo-daro,--,--,--,-668,-,-,-,- -,-,-,-,square,-,complete,Bull1,SAN,SEAL:S,1,Fair,Y,R/L,SS,3,3,,,,17,18,0,+740-900-005+
 3997.1,M-1856,Lower Indus,Mohenjo-daro,DK-,--,--,DK7902693,-,-,-,- -,-,-,-,square,-,complete,Bull1,-,SEAL:S,1,Poor,Y,R/L,SS,2,2,,,,13,13.5,0,+740-061+
 3998.1,M-1866,Lower Indus,Mohenjo-daro,--,--,--,-563,-,-,-,- -,-,-,-,-,-,fragment,Bull1,-,SEAL:S,1,?,N,R/L,??,4,2,,,,0,0,0,+000-233-743-000+
 3999.1,M-1873,Lower Indus,Mohenjo-daro,--,--,--,DM 121659,-,-,-,- -,-,-,-,-,-,fragment,-,-,SEAL:S,1,Poor,?,-,UC,1+?,1,,,,0,0,0,]632[
 4000.1,M-1878,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4364318,-,-,-,- -,-,-,-,square,-,fragment,Gaur,Trough,SEAL:S,1,Poor,N,R/L,??,5,3,,,,0,0,0,+740-000-031-000-820+
-4001.1,M-1894,Lower Indus,Mohenjo-daro,--,--,--,RMW/MD 50.77 (1)600,-,-,-,- -,-,-,-,square,-,complete,Zebu,None,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,35,36,0,+740-440-233-002-413-368-031+
+4001.1,M-1894,Lower Indus,Mohenjo-daro,--,--,--,RMW/MD 50.77 (1)600,-,-,-,- -,-,-,-,square,-,complete,Zebu,None,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,35,36,0,+740-440-233-002-413-368-031+,A-ni-vama-pAna,"O who sends[√वम् अच्] drinks[RV] in every direction[आ-नि-√वम् cf. आ-नि-चेय]"
 4002.1,M-1909,Lower Indus,Mohenjo-daro,--,--,--,-887,-,-,-,- -,-,-,-,square,-,complete,Rhin,None,SEAL:S,1,Fair,Y,R/L,SC,5,5,,,,26,25,0,+368-005-002-590-455+,aSvavapana,cutting[ŚBr] the horse[RV]
 4003.1,M-1929,Lower Indus,Mohenjo-daro,DKG. (S),7III,40-,DK8143377,Period 3C-2,Intermediate,I,-11.9 ft,-,Steatite,-,square,-,complete,Bull,-,SEAL:S,1,Poor,Y,NR,TS,1,1,0.82,0.78,0.22,20.8,17.8,5.6,+530+,ref:335.1
 4004.1,M-1930,Lower Indus,Mohenjo-daro,--,--,--,0659-MD88889,-,-,-,- -,-,-,-,square,-,complete,None,None,SEAL:S,2,Good,Y,R/L,SC,2,2,,,,12,12,0,+455-922+
@@ -4931,7 +4931,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4007.1,M-1962,Lower Indus,Mohenjo-daro,DKG. (S),1I,15-,DK4590682,Period 3C-4,Late,III,-8.0 ft,-,-,-,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,SC,3,3,,,,28,12,0,+155-806-468+
 4008.1,M-1966,Lower Indus,Mohenjo-daro,--,--,--,-669,-,-,-,- -,-,-,-,-,-,fragment,-,-,SEAL:R,1,Fair,?,R/L,UC,4+?,4,,,,0,14.5,0,+527-555-233-235[
 4009.1,M-1968,Lower Indus,Mohenjo-daro,DK-,--,--,DK7799560,-,-,-,- -,-,-,-,-,-,fragment,-,-,SEAL:R,1,Poor,?,R/L,UC,2+?,2,,,,0,0,0,]220-415+
-4010.1,M-1973,Lower Indus,Mohenjo-daro,DKB,--,-5 6,DK-B 940720,-,-,-,-2.2 ft,PN,-,-,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,LP,7,7,,,,25,10,0,+740-575-017-233-550-002-861+
+4010.1,M-1973,Lower Indus,Mohenjo-daro,DKB,--,-5 6,DK-B 940720,-,-,-,-2.2 ft,PN,-,-,rectangular,-,complete,None,None,SEAL:R,1,Fair,Y,R/L,LP,7,7,,,,25,10,0,+740-575-017-233-550-002-861+,ravasam samam,"Like[RV] the Roarer[MārkP]"
 4011.1,M-1979,Lower Indus,Mohenjo-daro,DK-,--,--,DK6817715,-,-,-,- -,-,-,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,IT,4,4,,,,20.5,9,0,+740-923-013-820+
 4012.1,M-1987,Lower Indus,Mohenjo-daro,DK-,--,--,DK7146716,-,-,-,- -,-,-,-,rectangular,-,fragment,-,-,SEAL:R,1,Poor,?,R/L,UC,2+?,2,,,,0,0,0,]625-140+
 4013.1,M-1992,Lower Indus,Mohenjo-daro,--,--,--,-760,-,-,-,- -,NB,-,-,-,rectangular,fragment,-,-,SEAL,1,Fair,?,R/L,UC,3+?,3,,,,0,11,3.5 - 11,]740-328-240[
@@ -5118,7 +5118,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4161.1,-,Gujarat/Kutch,Dholavira,Middle TownS.W. corner,--,--,-,-,-,-,0 -,-,-,-,rectangular,-,complete,None,None,SEAL:R,1,Good,Y,R/L,MS,6,6,,,,0,0,0,+064-004-002-001-740-176+
 4162.1,-,Gujarat/Kutch,Dholavira,South Reservoir5,48 x 38 x 1+2-,--,-,-,-,-,-800 cm,PBSG,Steatite,White,square,-,slightly chipped,Bull1,RAN,SEAL:S,1,Fair,Y,R/L,SC,4,4,15.42,15.03,4.65,15.4,15,4.7 - 9,+740-760-001-233+
 4163.1,-,Gujarat/Kutch,Dholavira,-East of Castle,--,--,-,-,-,-,0 -,PBSG,Steatite,White,square,rectangular,complete,Bull1:W,SAF,SEAL:S,1,Poor,N,R/L,??,3,2,22.22,22.40,7.06,22.2,22.4,7.1 - 12.4,+400-125-000+
-4164.1,-,Gujarat/Kutch,Dholavira,Middle Town-,35 x 63 x 4+1-,--,-,Period 1B,1,-,168 cm,P,Steatite,White,rectangular,-,chipped,None,None,SEAL:R,1,Fair,Y,L/R,SC,7,7,27.98,10.29,4.84,28,10.3,4.8 - 8.8,+423-003-001-423-002-031-104+
+4164.1,-,Gujarat/Kutch,Dholavira,Middle Town-,35 x 63 x 4+1-,--,-,Period 1B,1,-,168 cm,P,Steatite,White,rectangular,-,chipped,None,None,SEAL:R,1,Fair,Y,L/R,SC,7,7,27.98,10.29,4.84,28,10.3,4.8 - 8.8,+423-003-001-423-002-031-104+,Avaya ajaya,"O arriving[T] invincible[RV] one"
 4165.1,-,Gujarat/Kutch,Dholavira,Middle Town-,45 x 46 x 2-,--,-,Period 3C-2,5,-,- -,PBSG,Steatite,White,square,-,complete,Bull1:V,SAN,SEAL:S,1,Fair,Y,R/L,SS,3,3,24.02,23.70,7.79-11.8,24,23.7,7.8 - 11.8,+740-840-416+
 4166.1,-,Gujarat/Kutch,Dholavira,Castle-,47 x 57 x 4-,--,-,-,-,-,-175 cm,P,-,White,rectangular,-,complete,None,None,TAB:I,1,Good,Y,R/L,SC,4,4,19.23,7.12,1.95,19.2,7.1,2 - 4.2,+776-440-003-421+
 4167.1,-,Gujarat/Kutch,Dholavira,Castle-,--,--,-,-,-,-,0 -,NN,Steatite,Black,rectangular,-,slightly chipped,None,None,SEAL:R,1,Good,Y,R/L,SS,3,3,21.78,14.12,10.23,21.8,14.1,10.2,+520-033-706+
@@ -5148,7 +5148,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4191.1,-,Gujarat/Kutch,Dholavira,Middle Town-,46 x 44 x 1-,--,-,Period 3B-1,4,-,- -,-,-,White,-,-,fragment,-,-,SEAL,1,Poor,N,R/L,??,7+?,5,10.07(ext),18.0(ext),7.98,0,0,8 - 13.5,]740-760-382/000-740-220-000[
 4192.1,-,Gujarat/Kutch,Dholavira,Lower Town-,25 x 9 x 2-,--,-,Period 3B-1,4,-,- -,PBSG,Steatite,White,square,-,fragment,-,-,SEAL:S,1,Poor,N,R/L,??,4,2,23.7,17.45(ext),6.82-9.19(ext),23.7,0,6.8,+740-000-000-235+
 4193.1,-,Gujarat/Kutch,Dholavira,Middle Town-,56 x 55 x 4-,--,-,-,-,-,- -,-,-,Brown,-,-,fragment,-,-,MISC,1,Poor,N,R/L,??,2+?,1,,,,0,0,0,]000-820[
-4194.1,-,Gujarat/Kutch,Dholavira,--,45 x 58 x 1-,--,DHR-20013,-,-,-,250 cm,PN,-,White,rectangular,plano-convex,complete,None,None,SEAL:R,1,Good,Y,R/L,MS,7,7,,,,30,7,0,+154-806-472-013-220-455-806+
+4194.1,-,Gujarat/Kutch,Dholavira,--,45 x 58 x 1-,--,DHR-20013,-,-,-,250 cm,PN,-,White,rectangular,plano-convex,complete,None,None,SEAL:R,1,Good,Y,R/L,MS,7,7,,,,30,7,0,+154-806-472-013-220-455-806+,saha mata-kzaya,"O mighty[RV] one, O in whom honor[Pāṇ] resides[RV]"
 4195.1,-,Gujarat/Kutch,Dholavira,--,55 x 52-,--,DHR-16412,-,-,-,- -,-,Steatite,Brown,square,-,complete,Bull1:V,HAN,SEAL:S,1,Good,Y,R/L,SP,5,5,,,,21,21,0 - 10,+820-390-590-002-861+
 4196.1,-,Gujarat/Kutch,Dholavira,--,25 x 10 x 4-,--,DHR-24475,-,-,-,- -,PBSG,Steatite,-,square,-,complete,Bull1:J,SAN,SEAL:S,1,Poor,Y,R/L,SC,4,4,,,,25,25,0 - 12,+391-002-365-550+
 4197.1,-,Gujarat/Kutch,Dholavira,--,35 x 54 x 1-,--,-,-,-,-,- -,-,-,Brown,rectangular,-,chipped,None,None,SEAL:R,1,Good,N,R/L,??,7,5,,,,0,0,0,+001-000-000-832-904-002-817+
@@ -5157,7 +5157,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4200.1,-,Gujarat/Kutch,Dholavira,--,47 x 58 x 1-,--,-,-,-,-,- -,-,-,-,rectangular,-,chipped,None,None,TAB:I,1,Fair,?,R/L,UC,5+?,5,,,,0,0,0,+575-031-002-226-231[
 4201.1,-,Gujarat/Kutch,Dholavira,--,47 x 78 x 3-,--,DHR-25871,-,-,-,- -,PN,Steatite,White,cuboid-convex,plano-convex,complete,None,None,SEAL:R,1,Good,Y,R/L,SC,5,5,,,,19,6,0,+832-140-002-001-547+
 4202.1,-,Gujarat/Kutch,Dholavira,--,55 x 89 x 1-,--,-,-,-,-,80 cm,NB,-,White,square,-,complete,Bull2,S740,SEAL:S,1,Poor,Y,NR,TS,1,1,,,,0,0,0,+416+,ref:952.1
-4203.1,-,Gujarat/Kutch,Dholavira,Bailey-,57 x 54 x 1-,--,-,Period 3B-1,4,-,- -,-,-,White,square,-,complete,Bull1:I,RAF,SEAL:S,1,Fair,Y,R/L,2L,7,7,25.38,25.17,4.61,25.4,25.2,4.6 - 13.4,+463-513/390-017-002-463-575+
+4203.1,-,Gujarat/Kutch,Dholavira,Bailey-,57 x 54 x 1-,--,-,Period 3B-1,4,-,- -,-,-,White,square,-,complete,Bull1:I,RAF,SEAL:S,1,Fair,Y,R/L,2L,7,7,25.38,25.17,4.61,25.4,25.2,4.6 - 13.4,+463-513/390-017-002-463-575+,maDu-aSru-da,"O Sweet one[Mbh मधु = Shiva], O Rudra[RV अश्रु-द = brings tears]; [Sandhi u+a = va]"
 4204.1,-,Gujarat/Kutch,Dholavira,Middle Town-,54 x 77 x 2-,--,-,Period 3B-1,4,-,- -,-,-,White,-,-,fragment,-,-,SEAL,1,Poor,N,R/L,??,2+?,1,19.52(ext),12.01(ext),8.18(ext)-Missing,0,0,0,]611-000[
 4205.1,-,Gujarat/Kutch,Dholavira,Middle Town-,55 x 95 x 1-,--,-,Period 3B-1,4,-,- -,PBSG,Steatite,White,square,-,complete,Elep,-,SEAL:S,1,Poor,N,R/L,??,4,3,,,,0,0,0,+740-740-000-742+
 4206.1,-,Gujarat/Kutch,Dholavira,Middle Town-,45 x 53 x 2-,--,-,Period 3B-1,4,-,- -,-,Steatite,White,-,-,fragment,-,-,SEAL,1,Poor,N,R/L,??,3+?,2,11.20(ext),14.55(ext),5.88-Missing,0,0,5.9,+595-134-000[
@@ -5205,7 +5205,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4247.1,-,Gujarat/Kutch,Dholavira,Lower Town-,35 x 13 x 4-,--,-,Period 3C-2,5,-,- -,PBSG,Steatite,-,circular,-,slightly chipped,Gaur,None,SEAL:C,1,Poor,N,R/L,??,6,5,21.27,21.27,6.27-7.70(ext),0,0,6.3,+806-091-001-368-255-000+
 4248.1,-,Gujarat/Kutch,Dholavira,Middle Town-,46 x 62 x 2-,--,-,Period 3C-2,5,-,-105 cm,PBSG,-,White,-,-,fragment,-,-,SEAL:S,1,Poor,N,R/L,??,3+?,1,29.49,27.56,8.34-14.28,29.5,27.6,8.3 - 14.3,+740-000-000[
 4249.1,-,Gujarat/Kutch,Dholavira,Lower Town-,24 x 7 x 3-,--,-,Period 3C-2,5,-,- -,-,Steatite,White,square,-,fragment,Gaur,-,SEAL:S,1,Poor,N,R/L,??,3,1,14.15(ext),15.02,4.6-Missing,0,15,4.6,+705-000-000+
-4250.1,-,Gujarat/Kutch,Dholavira,Middle TownGreat multipurpose ground,66 x 57 x 1-,--,-,Period 3C-2,5,-,- -,-,-,White,square,-,fragment,-,-,SEAL:S,1,Fair,Y,R/L,LC,7,7,30.21(ext),23.36(ext),8.95-Missing,30.2,0,9,+520-090-803-564-741-798-892+
+4250.1,-,Gujarat/Kutch,Dholavira,Middle TownGreat multipurpose ground,66 x 57 x 1-,--,-,Period 3C-2,5,-,- -,-,-,White,square,-,fragment,-,-,SEAL:S,1,Fair,Y,R/L,LC,7,7,30.21(ext),23.36(ext),8.95-Missing,30.2,0,9,+520-090-803-564-741-798-892+,dAha nASa-hAna,"O destroyer[MBh], O remover[Gaut] of death[MBh]"
 4251.1,-,Gujarat/Kutch,Dholavira,Middle Town-,46 x 23 x 4-,--,-,Period 3C-2,5,-,- -,PBRF,-,White,square,-,complete,-,-,SEAL:S,1,Poor,N,R/L,??,3,2,20.67,20.02,5.81-12.56,20.7,20,5.8 - 12.6,+255-014-000+
 4252.1,-,Gujarat/Kutch,Dholavira,Middle Town-,55 x 76 x 2-,--,-,Period 3C-2,5,-,0.28 cm,PBSG,-,White,square,-,fragment,Bull1:V,-,SEAL:S,1,Fair,N,R/L,??,5+?,4,29.29(ext),29.15,6.57-12.67,0,29.2,6.6 - 12.7,+740-760-175-002-000[
 4253.1,-,Gujarat/Kutch,Dholavira,Middle Town-,45 x 40 x 2-,--,-,Period 3C-2,5?,-,0 -,PBSG,Steatite,White,-,-,fragment,Bull1,-,SEAL:S,1,Fair,N,R/L,??,3+?,2,35.50(ext),27.19(ext),12.45-20.25,0,0,12.5 - 20.3,]000-572-090+
@@ -5363,7 +5363,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5191.1,M-654,Lower Indus,Mohenjo-daro,DKG. (S),9AV,75-,DK7280561,Period 3B/C,Intermediate,III,-16.6 ft,-,Faience,-,square,-,complete,Bull1:U,S,SEAL:S,1,Poor,N,-,??,4,3,1.36,1.36,0.35,34.5,34.5,8.9,+368-000-091-031+
 5203.1,M-1877,Lower Indus,Mohenjo-daro,DK-,--,--,DK-i 525131,-,-,-,- -,-,-,-,-,-,fragment,Gaur,Trough,SEAL:S,1,?,N,R/L,??,4,0,,,,0,0,0,+000-000-000-000+
 5215.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench El 15-,--,--,BSR 2037,-,Layer 3,-,100  cm,PB,-,White,square,-,complete,Bull1:L,SAN,SEAL:S,1,Good,Y,R/L,AN,2,2,1.8cm,1.8cm,1cm,18,18,0 - 10,+155-005+
-5216.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench Eo 11-,--,--,BSR 6719,-,-,-,66 cm,PB,-,Yellow-Gray,square,-,complete,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,2.6cm,2.6cm,0.78cm,26.6,26.2,0,+090-740-100-415-240-820-033+
+5216.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench Eo 11-,--,--,BSR 6719,-,-,-,66 cm,PB,-,Yellow-Gray,square,-,complete,Bull1:S,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,2.6cm,2.6cm,0.78cm,26.6,26.2,0,+090-740-100-415-240-820-033+,jaram tAna[m],"The roar[√तन्] of destruction[√जॄ]"
 5217.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench Ea 12-,--,--,BSR 6952,-,-,-,70-75 cm,?BSG,-,-,-,-,fragment,Bull1,SAN,SEAL:S,1,Poor,N,R/L,??,3,0,3.45cm,2.38cm,1.5cm,34.5,0,0,+000-000-000+
 5218.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench Eh 1-,--,--,BSR 7197,-,-,-,26 cm,?B,-,-,square,-,complete,Bull1:I,SAN,SEAL:S,1,Good,Y,R/L,LP,9,9,2.07cm,2.23cm,,20.7,22.3,5.6 - 10,+520-070-495-240-060-297-368-632-032+,stana lamam aman,"O thunderer[RV √स्तन्], your enjoyment[Hariv लम् = रम्], O roaring one[अम् शतृॅं]"
 5219.1,-,Gujarat/Kutch,Gola Dhoro (Bagasra),Trench Ei 14-,--,--,BSR 8288,-,-,-,105 cm,?B,-,Yellow-Gray,square,-,complete,Bull1:I,SAN,SEAL:S,1,Poor,Y,R/L,LC,6,6,2.53cm,2.37cm,0.72cm,25.3,23.7,7.2 - 10,+292-352-125-741-900-322+
@@ -5378,7 +5378,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5229.1,-,Persian Gulf,Saar,Cemetery-,--,--,-,-,-,-,- -,?B,-,-,circular,-,complete,None,None,SEAL:C,1,?,Y,R/L,LC,6,6,,,,0,0,8 - 14,+031-093-001-091-220-055+
 5230.1,-,Persian Gulf,Karzakan,CemeteryMound 20362,--,--,-,-,-,-,- -,?B,-,-,circular,-,complete,Gaur,None,SEAL:C,1,Poor,Y,NR,TS,2,2,,,,0,0,10 - 14.5,+740/740+
 5231.1,-,Mesopotamia,Ur,--,--,--,-,-,-,-,- -,-,-,-,-,-,fragment,-,-,SEAL:C,1,?,?,-,UC,2+?,2,,,,25.5,25.5,7.6 - 11.4,]405-090[
-5232.1,-,Persian Gulf,Janabiyah,Cemetery-,--,--,-,-,-,-,- -,?B,-,-,circular,-,complete,Gaur,None,SEAL:C,1,Poor,Y,L/R,SC,7,7,,,,0,0,10.6 - 16,+055-099-121-055-831-031-071+
+5232.1,-,Persian Gulf,Janabiyah,Cemetery-,--,--,-,-,-,-,- -,?B,-,-,circular,-,complete,Gaur,None,SEAL:C,1,Poor,Y,L/R,SC,7,7,,,,0,0,10.6 - 16,+055-099-121-055-831-031-071+,mA sajya aja,"Do not string[MBh] (your bow), O Shiva[AV][Sri Rudram 1.19-21]"
 5234.1,-,Lower Indus,Lakhanjo-daro,Western Mound-,--,--,-,-,-,-,- -,-,-,Red-Brown,square,-,complete,Bull1:S,RAN,SEAL:S,1,Fair,Y,R/L,SC,2,2,,,,0,0,0,+740-061+
 5235.1,-,Lower Indus,Lakhanjo-daro,--,--,--,-,-,-,-,- -,PBSG,Steatite,White,square,-,chipped,Bull1:S,SAN,SEAL:S,1,Fair,Y,R/L,LP,5,5,,,,27,27,8 - 13,+740-032-029-002-281+
 5236.1,-,Lower Indus,Lakhanjo-daro,--,--,--,-,-,-,-,- -,PBSG,Steatite,White,square,-,chipped,Bull1:W,S,SEAL:S,1,Good,Y,R/L,SP,5,5,,,,27,27,8,+740-405-590-060-146+
@@ -5409,7 +5409,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5271.1,C-91,Lower Indus,Chanhu-daro,Mound II-,--,loc. 171sq. 9/E,CH 3419Pl. XXXIX:24,-,-,-,+6.8 ft,-,Clay,-,-,-,complete,None,None,POT:T:p,1,Good,Y,R/L,SS,2,2,,,,0,155,0,+740-177+
 5272.1,C-94,Lower Indus,Chanhu-daro,--,--,loc. 297sq. 8/C,CH 2529GPl. LXIII:3,-,-,-,+10.4 ft,-,Copper,-,axe,-,complete,None,None,MISC,1,Fair,Y,R/L,SS,3,3,3.25,8,0.32,82.6,203.2,8.1,+740-463-503+
 5272.2,C-94,Lower Indus,Chanhu-daro,--,--,loc. 297sq. 8/C,CH 2529GPl. LXIII:3,-,-,-,+10.4 ft,-,Copper,-,axe,-,complete,None,None,MISC,1,Fair,Y,NR,NU,1,1,3.25,8,0.32,82.6,203.2,8.1,+909+,ref:182.1
-5273.1,K-145,Inter-Riverine,Kalibangan,--,--,--,-,Period 3,2,-,- -,PBSG,-,-,square,-,complete,Bull1:J,SAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,30,30,0,+740-585-231-220-032-002-820+
+5273.1,K-145,Inter-Riverine,Kalibangan,--,--,--,-,Period 3,2,-,- -,PBSG,-,-,square,-,complete,Bull1:J,SAF,SEAL:S,1,Good,Y,R/L,LP,7,7,,,,30,30,0,+740-585-231-220-032-002-820+,rava-samam Bana,"Roar[√भन् लोट्] like Rudra[√रु]"
 5274.1,K-146,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,- -,PBSG,-,-,-,-,fragment,Bull1:J,-,SEAL:S,1,Fair,N,R/L,??,5+?,4,,,,24,26,0,]460-350-002-296-000[
 5275.1,K-147,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,- -,-,Steatite,-,square,-,complete,Bull1,HAF,SEAL:S,1,Poor,N,R/L,??,3,2,,,,33,30,0,+151-176-000+
 5277.1,K-150,Inter-Riverine,Kalibangan,KLB-1-,--,--,KLB1,Period 3,2,-,surface -,PBVG,Steatite,White,square,rectangular,complete,Gaur,None,SEAL:S,1,Fine,Y,R/L,MT,3,3,,,,36,32,7 - 19,+520-220-006+,ref:1248.1
@@ -5676,5 +5676,5 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5583.1,-,Gujarat/Kutch,Dholavira,--,--,--,DHR-488,-,-,-,- -,-,terracotta,Red,-,-,fragment,-,-,POT:T:g,1,Poor,?,-,UC,2+?,2,,,,0,0,0,]740-081[
 5584.1,-,Gujarat/Kutch,Dholavira,--,--,--,DHR-3053,-,-,-,- -,-,terracotta,-,-,-,fragment,-,-,TAG,1,Poor,N,-,??,2+?,1,,,,0,0,0,]705-000[
 5585.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,-,-,-,Bull:i,HAF,SEAL:S,1,-,N,R/L,??,3,2,,,,22,22,0,+000-176-142+
-5586.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,-,-,-,None,None,SEAL:R,1,-,Y,R/L,LP,7,7,,,,19,8,0,+740-154-017-060-130-035-171+
+5586.1,-,Other,Unknown,--,--,--,-,-,-,-,- -,-,-,-,-,-,-,None,None,SEAL:R,1,-,Y,R/L,LP,7,7,,,,19,8,0,+740-154-017-060-130-035-171+,upayama-sayana[m],"The wedding[Sāh] knot[Nir]"
 5587.1,-,Lower Indus,Mohenjo-daro,HR-,--,--,HR 4337CXVIII:3,-,-,-,- -,-,Copper,-,rectangular,-,complete,Buff,Trough,TAB:C,1,Fair,Y,R/L,MT,7,7,,,,0,0,0,+407-032-520-095-585-017-231+,ref:2284.2
