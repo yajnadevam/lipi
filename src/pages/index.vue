@@ -115,6 +115,7 @@
         @click:clear="clearSearch"
         label="Search Indus valley inscriptions"
       />
+      <v-progress-linear :model-value="complete" color="green" ></v-progress-linear>
     </template>
 
     <template v-slot:item.data-table-expand="{item, isExpanded}">
@@ -164,6 +165,11 @@
   const xlitarray = csv2json(xlits)
   const fullrandom = false
 
+  let totalLen = 0
+  let totalCount = 0
+  let decipheredLen = 0
+  let decipheredCount = 0
+
   const canonMap = {}
   const xlitmap = {}
   const inxMap = {}
@@ -189,6 +195,10 @@
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
     el.textlength = parseInt(el['text length'])
+    totalLen += el.complete === 'Y' ? el.textlength : 0
+    totalCount += el.complete ? 1 : 0
+    decipheredLen += el.complete === 'Y' && el.translation ? el.textlength : 0
+    decipheredCount += el.translation ? 1 : 0
     el.canonized = canonized.canon
     if (el.sanskrit) {
       if (el.sanskrit.startsWith('ref:')) {
@@ -361,6 +371,8 @@
       }
     },
     computed: {
+      complete () { console.log('C', decipheredLen, '/', totalLen); return 100 * decipheredLen / totalLen },
+      completeCount () { console.log('N', decipheredCount, '/', totalCount); return 100 * decipheredCount / totalCount },
       activeFab () {
         return this.drawer ? { color: 'white', icon: this.icons.chevRight }
           : { color: 'green', icon: this.icons.chevLeft }
