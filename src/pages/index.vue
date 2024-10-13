@@ -105,6 +105,11 @@
       mobile-breakpoint="200"
   >
     <template #top>
+      <v-progress-linear height="25" :model-value="complete" color="green" >
+      <template v-slot:default="{ value }">
+        <strong>{{ Math.ceil(value) }}% translated</strong>
+      </template>
+      </v-progress-linear>
       <v-text-field
         id="search"
         v-model="search"
@@ -115,7 +120,6 @@
         @click:clear="clearSearch"
         label="Search Indus valley inscriptions"
       />
-      <v-progress-linear :model-value="complete" color="green" ></v-progress-linear>
     </template>
 
     <template v-slot:item.data-table-expand="{item, isExpanded}">
@@ -153,7 +157,6 @@
 <script>
   import { csv2json } from 'json-2-csv'
   import Key from '../components/Key.vue'
-  // import sanskrittransliterate from 'devanagari-transliterate'
   import incx from '../assets/data/inscriptions.csv?raw'
   import xlits from '../assets/data/xlits.csv?raw'
   // eslint-disable-next-line import/first
@@ -195,6 +198,7 @@
     const canonized = canonize(el.text)
     el.text = canonized.str // jsize(el.text)
     el.textlength = parseInt(el['text length'])
+    el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll('-', '—') : el.sanskrit
     totalLen += el.complete === 'Y' ? el.textlength : 0
     totalCount += el.complete ? 1 : 0
     decipheredLen += el.complete === 'Y' && el.translation ? el.textlength : 0
