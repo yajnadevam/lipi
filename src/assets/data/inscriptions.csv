@@ -2666,13 +2666,13 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1925.1,K-67,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 148,Period 3C,2,Late,surface -,NN,Terracotta,-,square,rectangular,fragment,Bull3,Pipal,SEAL:S,1,Poor,Y,NR,TS,1,1,,,,28,26.5,0,+384+,ref:1900.1
 1926.1,K-68,Inter-Riverine,Kalibangan,--,--,--,KLB 19527,-,-,-,surface -,NN,Faience,-,cuboid,rectangular,complete,Bull1,RAN,TAB:B,2,Poor,Y,R/L,SS,3,3,,,,13.5,8,4,+400-740-263+
 1926.2,K-68,Inter-Riverine,Kalibangan,--,--,--,KLB 19527,-,-,-,surface -,NN,Faience,-,cuboid,rectangular,complete,Bull1,RAN,TAB:B,2,Poor,Y,R/L,VN,2,2,,,,13.5,8,4,+700-032+,ref:229.2
-1927.1,K-69,Inter-Riverine,Kalibangan,KLB-1-,--,ZD8-,KLB1 16060,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,34,12,7,+892-890-417-002-056-091+
-1928.1,K-70,Inter-Riverine,Kalibangan,KLB-1-,--,ZF7-,KLB1 16047,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,36,12.5,8,+892-890-417-002-056-091+
-1929.1,K-71,Inter-Riverine,Kalibangan,KLB-1-,--,ZF9-,KLB1 16946,-,-,-,surface -,-,Terracotta,-,-,-,slightly chipped,None,None,TAG,1,Good,Y,R/L,LC,6,6,,,,35,12,5,+892-890-417-002-056-091+
-1930.1,K-72,Inter-Riverine,Kalibangan,KLB-1-,--,ZC8-,KLB1 17780,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,37,13,6,+892-890-417-002-056-091+
-1931.1,K-73,Inter-Riverine,Kalibangan,KLB-1-,--,ZD9-,KLB1 18352,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Poor,Y,R/L,LC,6,6,,,,36.5,25,7.5,+892-890-417-002-056-091+
-1932.1,K-74,Inter-Riverine,Kalibangan,KLB-1-,--,ZE10-,KLB1 19182,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,36,11.5,7,+892-890-417-002-056-091+
-1933.1,K-75,Inter-Riverine,Kalibangan,KLB-1-,--,ZD9-,KLB1 18705,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,37,13,7.5,+892-890-417-002-056-091+
+1927.1,K-69,Inter-Riverine,Kalibangan,KLB-1-,--,ZD8-,KLB1 16060,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,34,12,7,+892-890-417-002-056-091+,A-jajjavat-daQa,"Sacrifice[AitBr] to the swift[DaivBr; मतुप्] one(Shiva)"
+1928.1,K-70,Inter-Riverine,Kalibangan,KLB-1-,--,ZF7-,KLB1 16047,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,36,12.5,8,+892-890-417-002-056-091+,ref:1927.1
+1929.1,K-71,Inter-Riverine,Kalibangan,KLB-1-,--,ZF9-,KLB1 16946,-,-,-,surface -,-,Terracotta,-,-,-,slightly chipped,None,None,TAG,1,Good,Y,R/L,LC,6,6,,,,35,12,5,+892-890-417-002-056-091+,ref:1927.1
+1930.1,K-72,Inter-Riverine,Kalibangan,KLB-1-,--,ZC8-,KLB1 17780,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,37,13,6,+892-890-417-002-056-091+,ref:1927.1
+1931.1,K-73,Inter-Riverine,Kalibangan,KLB-1-,--,ZD9-,KLB1 18352,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Poor,Y,R/L,LC,6,6,,,,36.5,25,7.5,+892-890-417-002-056-091+,ref:1927.1
+1932.1,K-74,Inter-Riverine,Kalibangan,KLB-1-,--,ZE10-,KLB1 19182,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,36,11.5,7,+892-890-417-002-056-091+,ref:1927.1
+1933.1,K-75,Inter-Riverine,Kalibangan,KLB-1-,--,ZD9-,KLB1 18705,Period 3C,2,Late,- -,-,Terracotta,-,rectangular,-,complete,Bull1,-,TAG,1,Good,Y,R/L,LC,6,6,,,,37,13,7.5,+892-890-417-002-056-091+,ref:1927.1
 1934.1,K-77,Inter-Riverine,Kalibangan,KLB-2-,--,YB14/YB15-,KLB2 21425,-,-,-,surface -,-,Faience,-,cuboid,rectangular,fragment,None,None,TAB:B,2,Poor,N,L/R,??,3+?,2,8.5+?,,,0,10.5,4,+400-740-000[
 1934.2,K-77,Inter-Riverine,Kalibangan,KLB-2-,--,YB14/YB15-,KLB2 21425,-,-,-,surface -,-,Faience,-,cuboid,rectangular,fragment,None,None,TAB:B,2,Poor,?,-,UC,1+?,1,8.5+?,,,0,10.5,4,]033[,ref:337.1
 1935.1,K-78,Inter-Riverine,Kalibangan,KLB-2-,--,XA2-,KLB2 3844,Period 3C,2,Late,-1.3 m,-,Terracotta,-,rectangular-round,rectangular,complete,Gavi,None,TAB:B,1,Good,Y,R/L,IT,5,5,,,,28,14,4,+740-817-390-002-820+
@@ -2691,7 +2691,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1943.2,K-88,Inter-Riverine,Kalibangan,KLB-2-,--,--,KLB2 21505,-,-,-,surface -,-,-,-,-,-,complete,Bull1,?,TAG:L,4,Poor,N,R/L,??,4+?,1,,,,0,0,0,+740-000-000-000[
 1943.3,K-88,Inter-Riverine,Kalibangan,KLB-2-,--,--,KLB2 21505,-,-,-,surface -,-,-,-,-,-,complete,Bull1,?,TAG:L,4,Poor,N,R/L,??,2+?,0,,,,0,0,0,+000-000[
 1943.4,K-88,Inter-Riverine,Kalibangan,KLB-2-,--,--,KLB2 21505,-,-,-,surface -,-,-,-,-,-,complete,Bull1,?,TAG:L,4,Poor,N,R/L,??,4+?,0,,,,0,0,0,+000-000-000-000[
-1944.1,K-89,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 868,-,-,-,surface -,-,-,-,-,-,fragment,Bull1,SAN,TAG:L,4,Fair,Y,R/L,IT,6,6,,,,0,0,0,+090-740-362-002-360-832+
+1944.1,K-89,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 868,-,-,-,surface -,-,-,-,-,-,fragment,Bull1,SAN,TAG:L,4,Fair,Y,R/L,IT,6,6,,,,0,0,0,+090-740-362-002-360-832+,tam avammAna,"That favor[RV], O honored one[MBh]"
 1944.2,K-89,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 868,-,-,-,surface -,-,-,-,-,-,fragment,Bull1,SAN,TAG:L,4,Fair,N,R/L,??,6,3,,,,0,0,0,+000-033-705-000-002-000+
 1944.3,K-89,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 868,-,-,-,surface -,-,-,-,-,-,fragment,Bull1,SAN,TAG:L,4,Fair,N,R/L,??,6,5,,,,0,0,0,+001-350-002-595-390-000+
 1944.4,K-89,Inter-Riverine,Kalibangan,--,--,--,KLB1+2 868,-,-,-,surface -,-,-,-,-,-,fragment,Bull1,SAN,TAG:L,4,Fair,N,R/L,??,5,1,,,,0,0,0,+000-491-000-000-000+
@@ -2739,7 +2739,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1982.1,-,Gujarat/Kutch,Lothal,SRG 3GX 10,--,--,01845CLXIV-E1,-,-,-,- -,-,-,-,-,-,fragment,-,-,TAG,2,Poor,N,R/L,??,3+?,1,,,,0,0,0,+000-740-000[
 1982.2,-,Gujarat/Kutch,Lothal,SRG 3GX 10,--,--,01845CLXIV-E1,-,-,-,- -,-,-,-,-,-,fragment,-,-,TAG,2,Poor,N,R/L,??,3+?,0,,,,0,0,0,+000-000-000[
 1983.1,-,Gujarat/Kutch,Lothal,SRG 2D 24,--,--,13732(S073) CLX-C5,-,Layer 4,III,-4 ft,-,Steatite,-,rectangular,-,chipped,None,None,SEAL:R,1,Poor,?,R/L,UC,2+?,2,0.35,0.25,,0,0,0,]740-564+
-1984.1,L-1,Gujarat/Kutch,Lothal,SRG 3AX 1,--,--,03017(S001) CLIII-A,-,Layer 10,II,-0.5 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Fine,Y,R/L,SP,6,6,1.5,1.5,,38.1,38.1,0,+527-550-233-002-812-095+
+1984.1,L-1,Gujarat/Kutch,Lothal,SRG 3AX 1,--,--,03017(S001) CLIII-A,-,Layer 10,II,-0.5 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Fine,Y,R/L,SP,6,6,1.5,1.5,,38.1,38.1,0,+527-550-233-002-812-095+,Atava maha-ama,"O Strong one[आ-√तु], Ogreat[RV] powerful[RV] one"
 1985.1,L-2,Gujarat/Kutch,Lothal,SRG 3BX 3,--,--,05321(S019) CLVII-A4,-,Layer 9,III,-4.8 ft,PB,Steatite,-,square,-,slightly chipped,Bull1:W,SAF,SEAL:S,1,Good,N,R/L,??,8,7,1.5,1.5,,38.1,38.1,0,+353-001-527-550-233-060-390-000+
 1986.1,L-4,Gujarat/Kutch,Lothal,SRG 2B 25,--,--,15163(S024) CLVII-C1,-,-,III,-2.9 ft,PB,Steatite,-,square,-,complete,Bull1,SAN,SEAL:S,1,Poor,Y,R/L,LP,7,7,1.4,1.4,,35.6,35.6,0,+090-740-100-233-002-575-031+,A-mava mAna,"O honored[MBh] Binder[√मव्]"
 1987.1,L-5,Gujarat/Kutch,Lothal,SRG 3E 4,--,--,06492(S016) CLVII-A1,-,Layer 2,III,-2.12 ft,PB,Steatite,White,square,-,fragment,Bull1:J,RAF,SEAL:S,1,Poor,N,R/L,??,8,7,1.5,1.5,,38.1,38.1,0,+740-760-552/000-002-455-692-416+
@@ -2758,7 +2758,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 2000.1,L-22,Gujarat/Kutch,Lothal,SRG 2E 2,--,--,05450(S015) CLVI-C4,-,Layer 13,III,-6.75 ft,PB,Steatite,-,square,-,complete,Bull1:U,SAN,SEAL:S,1,Good,Y,R/L,SS,3,3,1.0,1.0,,25.4,25.4,0,+740-840-013+
 2001.1,L-23,Gujarat/Kutch,Lothal,SRG 3E 4,--,--,06425(S023) CLVII-B4,-,Layer 2,IV,-1.4 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAN,SEAL:S,1,Good,Y,R/L,MT,3,3,0.9,0.9,,22.9,22.9,7,+740-482-235+
 2002.1,L-25,Gujarat/Kutch,Lothal,--,--,--,17372(S106),-,-,-,- -,PB,Steatite,-,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,4+?,3,,,,0,0,0,+740-016-002-000[
-2003.1,L-26,Gujarat/Kutch,Lothal,SRG 2B 17,--,--,04262(S028) CLVII-C5,-,Layer 7,III,-5.33 ft,PB,Steatite,-,square,-,complete,Bull1:W,HAN,SEAL:S,1,Good,Y,R/L,SP,6,6,0.9,0.9,,22.9,22.9,0,+740-798-240-060-111-166+
+2003.1,L-26,Gujarat/Kutch,Lothal,SRG 2B 17,--,--,04262(S028) CLVII-C5,-,Layer 7,III,-5.33 ft,PB,Steatite,-,square,-,complete,Bull1:W,HAN,SEAL:S,1,Good,Y,R/L,SP,6,6,0.9,0.9,,22.9,22.9,0,+740-798-240-060-111-166+,bARam maham,"The mighty[RV] (Shiva's) arrow[RV]"
 2004.1,L-27,Gujarat/Kutch,Lothal,SRG 2B 17,--,--,05617(S037) CLVIII-B1,-,Layer 8,III,-4.5 ft,PB,Steatite,-,square,-,partly damaged,Bull1:I,SAN,SEAL:S,1,Poor,N,R/L,??,4+?,3,0.75,0.75,,19.1,19.1,0,+390-016-140-000[
 2005.1,L-28,Gujarat/Kutch,Lothal,SRG 2-,--,--,06726(S014) CLVI-C3,-,Layer 8C,III,- -,PB,Steatite,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Fair,Y,R/L,SP,6,6,1.1,1.1,,27.9,27.9,0,+740-406-590-741-060-920+
 2006.1,L-29,Gujarat/Kutch,Lothal,SRG 1XII-XVII,--,--,00989(S022) CLVII-B3,-,Layer 19,I,-19.12 ft,PB,Steatite,-,square,-,complete,Bull1:O,SAN,SEAL:S,1,Good,Y,R/L,MS,5,5,1.0,1.0,,25.4,25.4,5.4,+390-003-480-368-861+
@@ -2771,10 +2771,10 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 2013.1,L-41,Gujarat/Kutch,Lothal,SRG 2M 28,--,--,13338CLIX-B,-,Layer 11,II,-2.5 ft,PB,Clay,-,square,rectangular,complete,Bull,-,SEAL:S,1,Poor,Y,R/L,SP,5,5,,,,22.5,22,5 - 9,+090-740-233-002-817+
 2014.1,L-42,Gujarat/Kutch,Lothal,--,--,--,01980 (2),-,-,-,- -,PB,-,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,17,17,0,+156-003+
 2015.1,L-43,Gujarat/Kutch,Lothal,SRG 2C 24,--,--,08736(S017) CLVII-A2,-,Layer 2,V,-0.75 ft,PB,Steatite,-,square,-,complete,Bull1:X,-,SEAL:S,1,Poor,Y,R/L,SS,3,3,0.62,0.62,,15.7,15.7,0,+151-590-390+
-2016.1,L-45,Gujarat/Kutch,Lothal,SRG 2B 8,--,--,05040(S052) CLIX-A4,-,Layer 11,II,-7.1 ft,PB,Steatite,-,square,-,complete,Gaur,Trough,SEAL:S,1,Good,Y,R/L,LC,6,6,1.25,1.25,,31.8,31.8,0,+411-440-236-220-741-634+,tanAmanAman para,fulfill[√पॄ + लोट् 2s.] the mark[RV] of the destroyer[√तन् + अच्] 
+2016.1,L-45,Gujarat/Kutch,Lothal,SRG 2B 8,--,--,05040(S052) CLIX-A4,-,Layer 11,II,-7.1 ft,PB,Steatite,-,square,-,complete,Gaur,Trough,SEAL:S,1,Good,Y,R/L,LC,6,6,1.25,1.25,,31.8,31.8,0,+411-440-236-220-741-634+,tana-ama nAmana-praH,"O powerful[RV] Roarer[√तन्], I fully[AV] bow[Kāvyād] (to you)"
 2017.1,L-46,Gujarat/Kutch,Lothal,SRG 2B 27,--,--,05784b(S050) CLIX-A2,-,Layer 9,III,-4.25 ft,PB,Steatite,-,square,-,fragment,Gaur,Trough,SEAL:S,1,Poor,Y,R/L,LC,8,8,1.0,1.0,,25.4,25.4,0,+527-388-233-740-176-002-861-392+,rara vaSam mavam,"May we grant[√रा लोट् 2p] the wish of the binder[√मव्]"
 2018.1,L-47,Gujarat/Kutch,Lothal,SRG 2C 25,--,--,14371(S038) CLVIII-B2,-,Layer 4,III,-3.6 ft,PB,Steatite,-,square,-,chipped,Bull1,-,SEAL:S,1,Poor,Y,R/L,SC,5,5,0.75(ext),0.5(ext),,0,0,0,+409-190-002-798-055+
-2019.1,L-48,Gujarat/Kutch,Lothal,SRG 2B 2,--,--,04829(S051) CLIX-A3,-,Layer 7,III,-4.0 ft,PB,Steatite,-,square,-,complete,Goat:2,RBF,SEAL:S,1,Good,Y,R/L,2L,6,6,1.1,1.1,,27.9,27.9,0,+865-685/226-032-741-390+,raraKa aMSa naman,I moved [√नम्] praying[√नम्] O Aditya[RV 2.1.4]
+2019.1,L-48,Gujarat/Kutch,Lothal,SRG 2B 2,--,--,04829(S051) CLIX-A3,-,Layer 7,III,-4.0 ft,PB,Steatite,-,square,-,complete,Goat:2,RBF,SEAL:S,1,Good,Y,R/L,2L,6,6,1.1,1.1,,27.9,27.9,0,+865-685/226-032-741-390+,raRa-hanman-kara,"O Battle[RV] striker[RV AV]"
 2020.1,L-51,Gujarat/Kutch,Lothal,SRG 2C 25,--,--,11358(S058) CLIX-C5,-,Layer 2,IV,-1.0 ft,PB,Clay,-,square,-,complete,Misc,None,SEAL:S,1,Good,Y,R/L,MT,4,4,0.85,0.85,,21.6,21.6,7.3,+527-555-231-235+
 2021.1,L-52,Gujarat/Kutch,Lothal,SRG 3FX 10,--,--,01938(S080) CLX-E3,-,Layer 2,IV,-2.75 ft,PBVF,Clay,-,square,-,complete,None,None,SEAL:S,1,Poor,Y,L/R,SS,2,2,1.2,1.2,,30.5,30.5,6.9 - 12.2,+527-550+,ASam,food[ŚBr]
 2022.1,L-55,Gujarat/Kutch,Lothal,--,--,--,17374(S095),-,-,-,- -,PB,Steatite,Light Brown,square,-,complete,None,None,SEAL:S,1,Poor,Y,R/L,MT,3,3,0.9,0.9,,22.9,22.9,0,+740-176-233+
@@ -5414,7 +5414,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5275.1,K-147,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,- -,-,Steatite,-,square,-,complete,Bull1,HAF,SEAL:S,1,Poor,N,R/L,??,3,2,,,,33,30,0,+151-176-000+
 5277.1,K-150,Inter-Riverine,Kalibangan,KLB-1-,--,--,KLB1,Period 3,2,-,surface -,PBVG,Steatite,White,square,rectangular,complete,Gaur,None,SEAL:S,1,Fine,Y,R/L,MT,3,3,,,,36,32,7 - 19,+520-220-006+,ref:1248.1
 5280.1,K-153,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,- -,PBVF,-,-,square,rectangular,complete,None,None,SEAL:S,1,Good,Y,R/L,SC,2,2,,,,11,11,0,+151-061+
-5281.1,K-156,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,surface -,-,Terracotta,-,rectangular,-,fragment,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,38,12,0 - 6,+892-890-417-002-056-091+
+5281.1,K-156,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,surface -,-,Terracotta,-,rectangular,-,fragment,Bull1,-,TAG,1,Fair,Y,R/L,LC,6,6,,,,38,12,0 - 6,+892-890-417-002-056-091+,ref:1927.1
 5282.1,K-155,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,surface -,-,Terracotta,-,-,-,fragment,Bull1,-,TAG,1,Poor,N,R/L,??,3+?,2,,,,32,0,0,]002-817-000+
 5283.1,K-157,Inter-Riverine,Kalibangan,--,--,--,-,-,-,-,surface -,-,Terracotta,-,rectangular-round,-,slightly chipped,Gavi,None,TAB:B,1,Poor,N,R/L,??,5,3,,,,28,14,0 - 5,+740-000-000-002-820+
 5284.1,K-158,Inter-Riverine,Kalibangan,KLB-1-,--,--,KLB1,-,-,-,- -,-,Copper,-,square,-,complete,None,None,TAB:C,1,Poor,Y,R/L,SS,2,2,,,,13,11,0 - 2,+740-798+
