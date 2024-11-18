@@ -413,9 +413,6 @@
         let found = 1
         for (let f = 1; f < fields.length; f++) {
           for (let i = 0; fields[f] && i < keys.length; i++) {
-            if (item.columns[keys[i]] === 2742.1) {
-              console.log(item)
-            }
             if (this.filterPart(item.columns[keys[i]], fields[f], item)) { found++; break }
           }
         }
@@ -460,6 +457,7 @@
       updateSearch (value) {
         if (value !== '' && value !== null) {
           this.oldPageNum = this.oldPageNum || this.pageNum
+          localStorage.setItem('search', this.search)
         } else {
           this.clearSearch()
         }
@@ -468,15 +466,18 @@
         if ((this.search === null || this.search === '') && this.oldPageNum) {
           this.pageNum = this.oldPageNum
         }
+        localStorage.removeItem('search')
       },
       pasteSearch () {
         const selection = window.getSelection().toString()
         if (selection === null || selection === '') return
         this.search = selection.trim() + (this.search || '')
+        localStorage.setItem('search', this.search)
       },
     },
     created () {
       this.pageNum = localStorage.getItem('page')
+      this.search = localStorage.getItem('search')
       this.sortBy = JSON.parse(localStorage.getItem('sort')) || this.sortBy
       this.optionCanonical = localStorage.getItem('canonical') === 'true'
       this.optionBroken = localStorage.getItem('broken') === 'true'
@@ -492,7 +493,7 @@
       setTimeout(function () {
         const splashScreen = document.querySelector('.splash')
         if (splashScreen) splashScreen.classList.add('hidden')
-      }, 500)
+      }, 100)
     }
   }
 
