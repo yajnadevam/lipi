@@ -3109,7 +3109,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 2322.1,M-2041,Lower Indus,Mohenjo-daro,DKG. (S),9VII,47-,DK5748220,Period 3C-4,Late,III,-8.3 ft,-,Steatite,-,rectangular,-,complete,None,None,TAB:I,2,Good,Y,R/L,SC,2,2,0.8,0.4,0.2,20.3,10.2,5.1,+323-690+
 2322.2,M-2041,Lower Indus,Mohenjo-daro,DKG. (S),9VII,47-,DK5748220,Period 3C-4,Late,III,-8.3 ft,-,Steatite,-,rectangular,-,complete,None,None,TAB:I,2,Good,Y,R/L,IT,4,4,0.8,0.4,0.2,20.3,10.2,5.1,+740-690-060-550+
 2323.1,M-1755,Lower Indus,Mohenjo-daro,DKG. (S),12V,92-,DK5891580,Period 3B/C,Intermediate,III,-17.4 ft,-,Steatite,-,square,-,complete,Bull1:L,SAN,SEAL:S,1,Fair,Y,R/L,IT,4,4,0.96,0.95,0.23,24.4,24.1,5.8,+740-176-002-861+
-2324.1,M-1777,Lower Indus,Mohenjo-daro,DKG. (S),7I,6-,DK5912214,Period 3C-4,Late,III,-8.3 ft,-,Steatite,-,square,-,complete,Bull1:L,SAN,SEAL:S,1,Good,Y,R/L,SS,3,3,1.05,1.05,0.35,26.7,26.7,8.9,+740-585-017+,,saBAm,council[RV]
+2324.1,M-1777,Lower Indus,Mohenjo-daro,DKG. (S),7I,6-,DK5912214,Period 3C-4,Late,III,-8.3 ft,-,Steatite,-,square,-,complete,Bull1:L,SAN,SEAL:S,1,Good,Y,R/L,SS,3,3,1.05,1.05,0.35,26.7,26.7,8.9,+740-585-017+,saBAm,"council[RV]"
 2325.1,M-1735,Lower Indus,Mohenjo-daro,DKG. (S),1VIII,63-,DK6068639,Period 3B/C,Intermediate,III,-20.0 ft,-,Steatite,-,square,-,complete,Bull1:S,SAN,SEAL:S,1,Good,Y,R/L,SS,2,2,1.0,0.98,0.28,25.4,24.9,7.1,+156-031+
 2326.1,M-1967,Lower Indus,Mohenjo-daro,DKG. (S),Long Lane betw. 10A/11-,--,DK6080391,Period 3C-2,Intermediate,I,-12.3 ft,-,Steatite,-,rectangular,-,chipped,None,None,SEAL:R,1,Good,?,R/L,UC,5+?,5,1.1,0.6,0.4,27.9,15.2,10.2,+520-033-705-002-585[
 2327.1,M-1922,Lower Indus,Mohenjo-daro,DKG. (S),12V,94-,DK6140600,Period 3B/C,Intermediate,III,-18.0 ft,-,Faience,-,square,-,complete,None,None,SEAL:S,1,Good,Y,R/L,SS,3,3,0.56,0.56,0.23,14.2,14.2,5.8,+740-405-590+
@@ -3860,9 +3860,9 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3012.1,M-540,Lower Indus,Mohenjo-daro,DK-,--,--,DK11029,-,-,-,- -,-,-,-,rectangular,squarish,complete,-,-,TAB:B,1,Poor,N,R/L,??,4+?,1,,,,29,10,0,]000-000-740-000+
 3013.1,M-541,Lower Indus,Mohenjo-daro,DK-,--,--,DK7871,-,-,-,- -,-,Copper,-,rectangular,-,complete,Hare,Plant,TAB:C,1,Good,Y,R/L,LC,7,7,,,,33,25,0,+407-321-407-845-033-705-235+,ref:3006.1
 3014.1,M-542,Lower Indus,Mohenjo-daro,DK-,--,--,DK5440,-,-,-,- -,-,Copper,-,rectangular,-,slightly chipped,Hare,Plant,TAB:C,1,Good,Y,R/L,LC,7,7,,,,0,0,0,+407-321-407-845-033-705-235+,ref:3006.1
-3015.1,M-543,Lower Indus,Mohenjo-daro,DK-,--,--,DK1838,-,-,-,- -,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,36,25,0,+790-740-100-176-421-003+
-3016.1,M-544,Lower Indus,Mohenjo-daro,DK-,--,--,DK-C 153,-,-,-,- -,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,38,25.5,0,+790-740-100-176-421-003+
-3017.1,M-545,Lower Indus,Mohenjo-daro,DKB,3-,81560/0980,DK-B 103,-,-,-,-5.6 ft,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,0,25.5,0,+790-740-100-176-421-003+
+3015.1,M-543,Lower Indus,Mohenjo-daro,DK-,--,--,DK1838,-,-,-,- -,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,36,25,0,+790-740-100-176-421-003+,jaya-hAna-ra,"Victorious[RV] destroyer[Gaut] (a name)"
+3016.1,M-544,Lower Indus,Mohenjo-daro,DK-,--,--,DK-C 153,-,-,-,- -,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,38,25.5,0,+790-740-100-176-421-003+,ref:3015.1
+3017.1,M-545,Lower Indus,Mohenjo-daro,DKB,3-,81560/0980,DK-B 103,-,-,-,-5.6 ft,-,Copper,-,rectangular,-,complete,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MS,6,6,,,,0,25.5,0,+790-740-100-176-421-003+,ref:3015.1
 3018.1,M-546,Lower Indus,Mohenjo-daro,SD-,--,--,SD 1200,-,-,-,- -,-,Copper,-,square,-,fragment,Goat:8,Trough,TAB:C,1,Good,N,R/L,??,4,3,,,,24,24,0,+000-176-421-003+
 3019.1,M-547,Lower Indus,Mohenjo-daro,DKG. (S),9VII,51-,DK467293.11,Period 4,Late,I,-4.7 ft,-,Copper,-,rectangular-round,-,slightly chipped,Othr,Trough,TAB:C,1,Fair,Y,R/L,MT,7,7,1.45,0.93,0.08,36.8,23.6,2,+407-032-520-095-585-017-231+,ref:2284.2
 3020.1,M-548,Lower Indus,Mohenjo-daro,DK-,--,--,DK501,-,-,-,- -,-,Copper,-,rectangular,-,slightly chipped,Goat:8,Trough,TAB:C,1,Good,Y,R/L,MT,7,7,,,,37,25,0,+407-032-520-095-585-017-231+,ref:2284.2
@@ -5519,7 +5519,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5384.1,Ns-87,Lower Indus,Nausharo,--,--,--,NS 95.05.17.01,-,4,-,- -,NN,Steatite,White,square,-,fragment,Bull1,SAN,SEAL:S,1,Fair,Y,R/L,LP,8,8,,14.5,,19,0,7,+740-384-031-950-001-741-257-840+,dahana-A-Ka-A-Bana,"O roaring[RV √भन् + अच्] fire[Mbh] from[RV] the sky[ŚBr]"
 5386.1,Sb-4,Iranian Plateau,Sibri,--,--,SB 10R locus 4-,82.1,-,Mehrgarh VIII,-,- -,-,Stone,-,square,plano-convex,slightly chipped,None,None,SEAL,1,Fair,N,-,??,2+?,1,,,,14,11,8,]000-095+
 5388.1,L-127,Gujarat/Kutch,Lothal,SRG-,--,--,1850,-,-,-,- -,-,Clay,-,-,-,fragment,Bull1,-,TAG:L,1,Poor,Y,R/L,MS,8,8,,,,0,0,0,+090-740-220-055-001-741-500-705+,ref:2068.1
-5389.1,H-2585,Inter-Riverine,Harappa,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,complete,None,None,TAB:I,1,Poor,Y,R/L,SC,3,3,,,,15,7.5,0,+400-740-032+,,Sani,Saturn[R]
+5389.1,H-2585,Inter-Riverine,Harappa,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,complete,None,None,TAB:I,1,Poor,Y,R/L,SC,3,3,,,,15,7.5,0,+400-740-032+,Sani,Saturn[R]
 5391.1,-,Lower Indus,Mohenjo-daro,DKG. (S),1VII,37-,DK9274101.2,Period 3B/C,Intermediate,III,-16.1 ft,-,Clay,Cream,prism,triangular,complete,Mult,None,TAB:B,1,Poor,N,-,??,4+?,1,1.46,,,37.1,0,0,+000-600-000-000[
 5392.1,M-493,Lower Indus,Mohenjo-daro,DKG. (S),7V,54-,DK7846101.3,Period 3B/C,Intermediate,III,-18.1 ft,-,Clay,Cream,prism,triangular,complete,Mult,-,TAB:B,1,Poor,N,-,??,6,4,1.59,0.51,,40.4,13,0,+004-740-000-503-000-625+
 5393.1,M-930,Lower Indus,Mohenjo-daro,--,--,--,DK4811,-,-,-,- -,PB,-,-,square,-,fragment,Bull1:W,SAN,SEAL:S,1,Poor,?,-,UC,1+?,1,,,,20,19.5,0,+137[

@@ -406,6 +406,23 @@
         itemIndex > -1 ? this.expanded.splice(itemIndex, 1) : this.expanded.push(item.id)
       },
       filterInscriptions (value, query, item) {
+        if (query == null) return false
+        const fields = query.trim().split(/\s+/)
+        if (!this.filterPart(value, fields[0], item)) return false
+        const keys = Object.keys(item.columns)
+        let found = 1
+        for (let f = 1; f < fields.length; f++) {
+          for (let i = 0; fields[f] && i < keys.length; i++) {
+            if (item.columns[keys[i]] === 2742.1) {
+              console.log(item)
+            }
+            if (this.filterPart(item.columns[keys[i]], fields[f], item)) { found++; break }
+          }
+        }
+        return found === fields.length
+      },
+
+      filterPart (value, query, item) {
         return (
           value != null &&
           query != null &&
