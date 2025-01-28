@@ -202,12 +202,14 @@
     totalLen += el.complete === 'Y' ? el.textlength : 0
     totalCount += el.complete ? 1 : 0
     decipheredLen += el.complete === 'Y' && el.translation ? el.textlength : 0
+    // if (el.translation) console.log(el.translation)
     decipheredCount += el.translation ? 1 : 0
     el.canonized = canonized.canon
     if (el.sanskrit) {
       if (el.sanskrit.startsWith('ref:')) {
         Object.assign(el, resolve(el.sanskrit))
       } else {
+        console.log('>>', Sanscript.t(el.sanskrit, 'slp1', 'iast'))
         el.sanskrit = Sanscript.t(el.sanskrit, 'slp1', 'devanagari')
               + '\n' + Sanscript.t(el.sanskrit, 'slp1', 'iast')
       }
