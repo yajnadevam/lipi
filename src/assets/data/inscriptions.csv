@@ -1762,20 +1762,20 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1275.2,H-250,Inter-Riverine,Harappa,F-,--,--,2900,Period 3B/C,-,-,-12.25 ft,-,Faience,White,prism,triangular,chipped,-,-,TAB:B,2,Poor,N,R/L,??,2+?,1,0.5,0.4,,12.7,10.2,0,]000-700+
 1276.1,H-251,Inter-Riverine,Harappa,FGranery,--,-I9/22,8800342,Period 3B/C,-,Stratum V,-12.0 ft,-,Faience,Yellow,prism,triangular,complete,Gaur,Trough,TAB:B,2,Fair,Y,R/L,MT,4,4,0.7,0.4,,17.8,10.2,0,+400-740-100-240+
 1276.2,H-251,Inter-Riverine,Harappa,FGranery,--,-I9/22,8800342,Period 3B/C,-,Stratum V,-12.0 ft,-,Faience,Yellow,prism,triangular,complete,Gaur,Trough,TAB:B,2,Fair,Y,R/L,VN,2,2,0.7,0.4,,17.8,10.2,0,+700-032+,ref:229.2
-1277.1,H-252,Inter-Riverine,Harappa,--,--,-Am40/1,G256/4,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,15,+520-240-002-405-501+
-1278.1,H-253,Inter-Riverine,Harappa,--,--,-Am40/1,G256/9,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+
-1279.1,H-254,Inter-Riverine,Harappa,--,--,-Am40/1,G256/3,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1280.1,H-255,Inter-Riverine,Harappa,--,--,--,G8/2,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1281.1,H-256,Inter-Riverine,Harappa,--,--,-Am40/1,G256/2,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1282.1,H-257,Inter-Riverine,Harappa,--,--,-Am40/1,G256/5,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,37,0,0,+520-240-002-405-501+
-1283.1,H-258,Inter-Riverine,Harappa,--,--,-Am40/1,G256/6,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+
-1284.1,H-259,Inter-Riverine,Harappa,--,--,-Am40/1,G256/7,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+
-1285.1,H-260,Inter-Riverine,Harappa,--,--,-Am40/1,G256/8,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+
-1286.1,H-261,Inter-Riverine,Harappa,G-,--,-Am40/1,G256/1315,Period 3C-4,-,Stratum III,-4.0 ft,-,Clay,Red,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,1.35,,,34.3,0,0,+520-240-002-405-501+
-1287.1,H-262,Inter-Riverine,Harappa,--,--,-Am40/1,G256/10,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+
-1288.1,H-263,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+
-1289.1,H-264,Inter-Riverine,Harappa,--,--,--,G58,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34.5,0,0,+520-240-002-405-501+
-1290.1,H-265,Inter-Riverine,Harappa,--,--,--,G80,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35.5,0,0,+520-240-002-405-501+
+1277.1,H-252,Inter-Riverine,Harappa,--,--,-Am40/1,G256/4,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,15,+520-240-002-405-501+,Arava-mana,"The roaring[Pāṇ] annointer[√मन् + अच्]"
+1278.1,H-253,Inter-Riverine,Harappa,--,--,-Am40/1,G256/9,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+,ref:1277.1
+1279.1,H-254,Inter-Riverine,Harappa,--,--,-Am40/1,G256/3,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1280.1,H-255,Inter-Riverine,Harappa,--,--,--,G8/2,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1281.1,H-256,Inter-Riverine,Harappa,--,--,-Am40/1,G256/2,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1282.1,H-257,Inter-Riverine,Harappa,--,--,-Am40/1,G256/5,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,37,0,0,+520-240-002-405-501+,ref:1277.1
+1283.1,H-258,Inter-Riverine,Harappa,--,--,-Am40/1,G256/6,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+,ref:1277.1
+1284.1,H-259,Inter-Riverine,Harappa,--,--,-Am40/1,G256/7,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+,ref:1277.1
+1285.1,H-260,Inter-Riverine,Harappa,--,--,-Am40/1,G256/8,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+,ref:1277.1
+1286.1,H-261,Inter-Riverine,Harappa,G-,--,-Am40/1,G256/1315,Period 3C-4,-,Stratum III,-4.0 ft,-,Clay,Red,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,1.35,,,34.3,0,0,+520-240-002-405-501+,ref:1277.1
+1287.1,H-262,Inter-Riverine,Harappa,--,--,-Am40/1,G256/10,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+,ref:1277.1
+1288.1,H-263,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+,ref:1277.1
+1289.1,H-264,Inter-Riverine,Harappa,--,--,--,G58,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,34.5,0,0,+520-240-002-405-501+,ref:1277.1
+1290.1,H-265,Inter-Riverine,Harappa,--,--,--,G80,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,35.5,0,0,+520-240-002-405-501+,ref:1277.1
 1291.1,H-266,Inter-Riverine,Harappa,FTrench III,--,-N9/9,2253011,Period 3C-1,-,Stratum IV,-15.25 ft,-,Steatite,White,square,-,fragment,Bull1:W,SAN,SEAL:S,1,Poor,?,-,UC,1+?,1,1.85,1.85,,47,47,0,]817+
 1292.1,H-267,Inter-Riverine,Harappa,FTrench VI,--,-P10/16,11476007,Period 3C-3,-,Stratum II,-3.75 ft,-,Steatite,White,square,-,fragment,Bull1,SAN,SEAL:S,1,Poor,N,R/L,??,3+?,2,1.81,1.81,,46,46,0,]000-368-692+
 1293.1,H-268,Inter-Riverine,Harappa,AB-,-Pit IV,--,PIV-114020,Period 3C-2,-,Stratum IV,-11.0 ft,-,Steatite,White,square,-,slightly chipped,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,LP,10,10,1.8,1.8,,45.7,45.7,0,+740-585-017-033-706-803-002-220-455-920+,dasma vaha aYjasBAM,O extraordinary one; flow—forth the shining Soma,RV 8.96.10 brightly-shining; mingled with the milk; the draughts of Soma
@@ -1783,8 +1783,8 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1295.1,H-271,Inter-Riverine,Harappa,AB-,--,-P24/9,5383069,Period 3C-4,-,Stratum II,-4.5 ft,-,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,SC,4,4,1.8,0,,45.7,0,0,+595-420-717-745+
 1296.1,H-272,Inter-Riverine,Harappa,AB-,--,--,11453619,-,-,-,- -,-,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,Y,R/L,LP,8,8,1.75,1.75,,44.5,0,0,+740-585-017-240-002-305-032-904+,A-sala-vama-saBam,"the Wandering[√सल्] emitter's[√वम्] council[RV]"
 1297.1,H-273,Inter-Riverine,Harappa,F-,--,--,2820176,Period 3B/C,-,-,- -,-,Steatite,White,square,-,fragment,Bull1,-,SEAL:S,1,Poor,N,R/L,??,4+?,3,,,,0,0,0,]000-240-002-820+
-1298.1,H-276,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+
-1299.1,H-277,Inter-Riverine,Harappa,--,--,--,G8/1,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+
+1298.1,H-276,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+,ref:1277.1
+1299.1,H-277,Inter-Riverine,Harappa,--,--,--,G8/1,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1,None,TAB:B,1,Poor,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+,ref:1277.1
 1300.1,H-278,Inter-Riverine,Harappa,F-,--,--,Af29,Period 3B/C,-,-,-3.25 ft,-,Steatite,Grey,cylindrical,round,complete,Gavi,None,TAB:B,1,Fair,Y,R/L,LT,11,11,1.6,0.4,,40.6,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
 1301.1,H-279,Inter-Riverine,Harappa,FGranery,--,-J9/25,4261,Period 3C-4,-,Stratum I,-5.25 ft,-,Clay,Grey,cylindrical,round,complete,Gavi,None,TAB:B,1,Poor,Y,R/L,LT,11,11,1.7,0.3,,43.2,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
 1302.1,H-280,Inter-Riverine,Harappa,FGranery,--,-J9/19,1201335,Period 3C-3,-,Stratum II,-4.0 ft,-,Clay,Red,cylindrical,round,complete,Gavi,None,TAB:B,1,Poor,Y,R/L,LT,11,11,1.65,0.4,,41.9,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
@@ -2383,18 +2383,18 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1740.2,H-854,Inter-Riverine,Harappa,F-,--,--,10010647,Period 3B/C,-,-,-10.0 ft,-,Faience,White,prism,triangular,complete,Bult,None,TAB:B,2,Poor,Y,L/R,VN,2,2,0.65,0.25,,16.5,6.4,0,+700-032+,ref:229.2
 1741.1,H-857,Inter-Riverine,Harappa,--,--,--,13546,-,-,-,- -,-,-,-,prism,triangular,complete,None,None,TAB:B,2,Poor,Y,R/L,MT,4,4,,,,16,7,0,+740-390-590-235+
 1741.2,H-857,Inter-Riverine,Harappa,--,--,--,13546,-,-,-,- -,-,-,-,prism,triangular,complete,None,None,TAB:B,2,Poor,Y,R/L,VN,2,2,,,,16,7,0,+700-033+,ref:212.1
-1742.1,H-859,Inter-Riverine,Harappa,--,--,--,G58,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+
-1743.1,H-860,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+
-1744.1,H-861,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1745.1,H-862,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1746.1,H-863,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+
-1747.1,H-864,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1748.1,H-865,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1749.1,H-866,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:U,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+
-1750.1,H-867,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:U,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1751.1,H-868,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+
-1752.1,H-869,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
-1753.1,H-870,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+
+1742.1,H-859,Inter-Riverine,Harappa,--,--,--,G58,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+,ref:1277.1
+1743.1,H-860,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+,ref:1277.1
+1744.1,H-861,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1745.1,H-862,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1746.1,H-863,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33.5,0,0,+520-240-002-405-501+,ref:1277.1
+1747.1,H-864,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1748.1,H-865,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1749.1,H-866,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:U,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,33,0,0,+520-240-002-405-501+,ref:1277.1
+1750.1,H-867,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:U,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1751.1,H-868,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,35,0,0,+520-240-002-405-501+,ref:1277.1
+1752.1,H-869,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
+1753.1,H-870,Inter-Riverine,Harappa,--,--,-Am40/1,G256,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Good,Y,R/L,SP,5,5,,,,34,0,0,+520-240-002-405-501+,ref:1277.1
 1754.1,H-871,Inter-Riverine,Harappa,FGranery,--,-I8/22,1459,Period 3C-2,-,Stratum III,-7.5 ft,-,Clay,Red,cylindrical,round,complete,Gavi,None,TAB:B,1,Poor,Y,R/L,LT,11,11,1.65,0.4,,41.9,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
 1755.1,H-872,Inter-Riverine,Harappa,FGranery,--,-J9/24,1236,Period 3C-2,-,Stratum III,-8.0 ft,-,Clay,Red,cylindrical,round,complete,Gavi,None,TAB:B,1,Poor,Y,R/L,LT,11,11,1.6,0.4,,40.6,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
 1756.1,H-873,Inter-Riverine,Harappa,F-,--,--,Af168,Period 3B/C,-,-,-3.0 ft,-,Clay,Grey,cylindrical,round,chipped,Gavi,None,TAB:B,1,Poor,Y,R/L,LT,11,11,1.0,0.4,,0,0,0,+740-407-590-690-436-255-920-318-220-415-803+,ref:291.1
@@ -5333,7 +5333,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 4575.1,H-1292,Inter-Riverine,Harappa,F-,--,--,1241,Period 3B/C,-,-,-12 ft,-,Steatite,White,-,rectangular,fragment,-,-,TAB:I,1,Poor,N,R/L,??,4+?,3,,,,0,0,0,]740-000-390-520[
 4577.1,H-1259,Inter-Riverine,Harappa,F-,--,--,2896,Period 3B/C,-,-,-12.25 ft,-,Steatite,White,-,rectangular,fragment,-,-,TAB:I,1,Poor,?,-,UC,2+?,2,,,,0,9,0,]840-013+
 4578.1,H-732,Inter-Riverine,Harappa,--,--,--,-,-,-,-,- -,-,-,-,rectangular,-,complete,Phyt,None,TAB:B,1,Poor,N,-,??,4,0,,,,21,10,0,+000-000-000-000+
-4580.1,H-1155,Inter-Riverine,Harappa,--,--,--,G256/28,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Fair,Y,R/L,SP,5,5,,,,34.5,0,0,+520-240-002-405-501+
+4580.1,H-1155,Inter-Riverine,Harappa,--,--,--,G256/28,-,-,-,- -,-,-,-,cylindrical,round,complete,Bull1:I,None,TAB:B,1,Fair,Y,R/L,SP,5,5,,,,34.5,0,0,+520-240-002-405-501+,ref:1277.1
 4597.1,H-1101,Inter-Riverine,Harappa,--,--,--,-,-,-,-,- -,-,-,-,cylindrical,round,complete,Mult,None,TAB:B,1,Poor,Y,R/L,SS,2,2,,,,25,0,0,+400-090+,ref:281.1
 4598.1,H-1011,Inter-Riverine,Harappa,--,--,--,H87-236,-,-,-,- -,-,Clay,-,-,-,complete,None,None,MISC,1,Poor,Y,NR,TS,1,1,,,,0,0,0,+898+,ref:159.1
 4599.1,H-1125,Inter-Riverine,Harappa,F-,--,-Q31/11,3943636,Period 3B/C,-,-,-0.417 ft,-,Steatite,White,rectangular,rectangular,fragment,-,-,TAB:I,1,Poor,N,-,??,2,1,0.4,0.32,,10.2,8.1,0,+000-032+
