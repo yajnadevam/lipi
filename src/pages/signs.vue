@@ -13,7 +13,12 @@
           <span class="indus">
             {{ sign.characterizedSign }}
           </span>
-          {{ sign.sign }}
+          <span>
+            {{ sign.sign }}
+          </span>
+          <span>
+            Canonical: ({{ sign.canonical.toString().replaceAll("-", ", ") }})
+          </span>
         </div>
       </div>
     </v-main>
