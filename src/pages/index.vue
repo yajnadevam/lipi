@@ -2,13 +2,7 @@
   <v-toolbar>
     <h1 class="indus" style="margin: 10px"></h1>
     <!-- </h1> -->
-    <v-toolbar-title>
-      <div>Indus script corpus</div>
-      <div>
-        <a href="/" class="header-link">Home</a>
-        <a href="/signs" class="header-link">Signs</a>
-      </div>
-    </v-toolbar-title>
+    <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
     <v-menu
       :close-on-content-click="false"
@@ -55,6 +49,8 @@
       <v-icon :icon="activeFab.icon"></v-icon>
     </v-btn>
   </v-toolbar>
+  <HeaderLinks />
+
   <v-navigation-drawer v-model="drawer" location="right" temporary>
     <v-list-item title="Allograph values"></v-list-item>
     <v-fab
@@ -188,6 +184,7 @@ function toggleTheme() {
 <script>
 import { csv2json } from "json-2-csv";
 import Key from "../components/Key.vue";
+import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 // eslint-disable-next-line import/first
@@ -400,7 +397,7 @@ function xlitize(text) {
 }
 
 export default {
-  components: { Key },
+  components: { Key, HeaderLinks },
   data() {
     return {
       icons: {
@@ -622,18 +619,6 @@ export default {
   font-display: swap;
   white-space: pre;
 }
-.header-link {
-  margin-right: 15px;
-  text-decoration: none;
-}
-.header-link:hover {
-  margin-right: 15px;
-  text-decoration: underline;
-}
-.header-link:visited {
-  text-decoration: none;
-  color: inherit;
-}
 .sanskrit {
   white-space: pre;
 }
@@ -645,5 +630,8 @@ export default {
   font-family: indus_scriptregular;
   font-size: 24pt;
   font-display: swap;
+}
+.v-toolbar-title__placeholder {
+  overflow: visible !important;
 }
 </style>
