@@ -117,4 +117,7 @@ export default {
   padding: 20px;
   align-items: center;
 }
+.v-toolbar-title {
+  overflow: visible !important;
+}
 </style>

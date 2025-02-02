@@ -631,4 +631,7 @@ export default {
   font-size: 24pt;
   font-display: swap;
 }
+.v-toolbar-title__placeholder {
+  overflow: visible !important;
+}
 </style>
