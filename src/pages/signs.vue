@@ -2,9 +2,7 @@
   <!--Header-->
   <v-toolbar>
     <h1 class="indus" style="margin: 10px"></h1>
-    <v-toolbar-title>
-      <div>Indus script corpus</div>
-    </v-toolbar-title>
+    <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
   </v-toolbar>
   <HeaderLinks />
