@@ -4,13 +4,10 @@
     <h1 class="indus" style="margin: 10px"></h1>
     <v-toolbar-title>
       <div>Indus script corpus</div>
-      <div>
-        <a href="/" class="header-link">Home</a>
-        <a href="/signs" class="header-link">Signs</a>
-      </div>
     </v-toolbar-title>
     <v-spacer />
   </v-toolbar>
+  <HeaderLinks />
 
   <v-layout>
     <v-main>
@@ -39,6 +36,7 @@ theme.global.name.value = localStorage.getItem("theme") || "dark";
 import { ref } from "vue";
 import { csv2json } from "json-2-csv";
 import xlits from "../assets/data/xlits.csv?raw";
+import HeaderLinks from "../components/HeaderLinks.vue";
 
 const signs = ref(
   csv2json(xlits, {
@@ -60,6 +58,7 @@ function characterize(points) {
 }
 
 export default {
+  components: { HeaderLinks },
   data() {
     return {
       items: signs,
@@ -95,18 +94,6 @@ export default {
   font-size: 48pt;
   font-display: swap;
   white-space: pre;
-}
-.header-link {
-  margin-right: 15px;
-  text-decoration: none;
-}
-.header-link:hover {
-  margin-right: 15px;
-  text-decoration: underline;
-}
-.header-link:visited {
-  text-decoration: none;
-  color: inherit;
 }
 .sanskrit {
   white-space: pre;
