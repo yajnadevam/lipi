@@ -11,7 +11,10 @@
     <v-main>
       <div class="d-flex justify-center align-center h-100 card-container">
         <div v-for="sign in signs" :key="sign.sign" class="card">
-          <span class="indus-symbol">
+          <span
+            class="indus-symbol"
+            @click="handleSignClick(sign.characterizedSign)"
+          >
             {{ sign.characterizedSign }}
           </span>
           <span>
@@ -62,6 +65,12 @@ export default {
       items: signs,
     };
   },
+  methods: {
+    handleSignClick(characterizedSign) {
+      localStorage.setItem("search", characterizedSign);
+      window.location = "/";
+    },
+  },
   mounted() {
     // Todo: This should probably moved to a common location since its used across pages
     setTimeout(function () {
@@ -92,6 +101,7 @@ export default {
   font-size: 48pt;
   font-display: swap;
   white-space: pre;
+  cursor: pointer;
 }
 .sanskrit {
   white-space: pre;
