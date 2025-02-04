@@ -49,7 +49,7 @@
       <v-icon :icon="activeFab.icon"></v-icon>
     </v-btn>
   </v-toolbar>
-  <HeaderLinks />
+  <HeaderLinks :search="search" />
 
   <v-navigation-drawer v-model="drawer" location="right" temporary>
     <v-list-item title="Allograph values"></v-list-item>
