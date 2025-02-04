@@ -21,6 +21,7 @@
             {{ sign.sign }}
           </span>
           <span> Canonical: ({{ sign.canonical }}) </span>
+          <span> Frequency: {{ frequency[sign.sign] }} </span>
         </div>
       </div>
     </v-main>
@@ -37,6 +38,7 @@ theme.global.name.value = localStorage.getItem("theme") || "dark";
 import { ref } from "vue";
 import { csv2json } from "json-2-csv";
 import xlits from "../assets/data/xlits.csv?raw";
+import frequency from "../assets/data/symbol-frequency.json";
 import HeaderLinks from "../components/HeaderLinks.vue";
 
 const signs = ref(
