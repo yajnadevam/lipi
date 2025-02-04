@@ -49,7 +49,7 @@
       <v-icon :icon="activeFab.icon"></v-icon>
     </v-btn>
   </v-toolbar>
-  <HeaderLinks />
+  <HeaderLinks/>
 
   <v-navigation-drawer v-model="drawer" location="right" temporary>
     <v-list-item title="Allograph values"></v-list-item>
@@ -126,7 +126,12 @@
                 @update:model-value="updateSearch"
                 @click:clear="clearSearch"
                 label="Search Indus valley inscriptions"
-              />
+              >
+                <template v-slot:append>
+                  <v-icon v-if="search" @click="downloadScreenshot" :icon="icons.download"></v-icon>
+                  <v-icon v-if="search" @click="copyScreenshotToClipboard" :icon="icons.copy"></v-icon>
+                </template>
+              </v-text-field>
             </template>
 
             <template v-slot:item.data-table-expand="{ item, isExpanded }">
@@ -173,12 +178,23 @@
 
 <script setup>
 import { useTheme } from "vuetify";
+import { ref } from 'vue'
+import { downloadScreenshot, copyScreenshotToClipboard } from '@/components/screenshot.vue'
+
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
 
 function toggleTheme() {
   theme.global.name.value = theme.global.current.value.dark ? "light" : "dark";
   localStorage.setItem("theme", theme.global.name.value);
+}
+
+function updateSearch(value) {
+  search.value = value
+}
+
+function clearSearch() {
+  search.value = ''
 }
 </script>
 <script>
@@ -423,6 +439,12 @@ export default {
         clear: [
           "M 8.00386 9.41816 C 7.61333 9.02763 7.61334 8.39447 8.00386 8.00395 C 8.39438 7.61342 9.02755 7.61342 9.41807 8.00395 L 12.0057 10.5916 L 14.5907 8.00657 C 14.9813 7.61605 15.6144 7.61605 16.0049 8.00657 C 16.3955 8.3971 16.3955 9.03026 16.0049 9.42079 L 13.4199 12.0058 L 16.0039 14.5897 C 16.3944 14.9803 16.3944 15.6134 16.0039 16.0039 C 15.6133 16.3945 14.9802 16.3945 14.5896 16.0039 L 12.0057 13.42 L 9.42097 16.0048 C 9.03045 16.3953 8.39728 16.3953 8.00676 16.0048 C 7.61624 15.6142 7.61624 14.9811 8.00676 14.5905 L 10.5915 12.0058 L 8.00386 9.41816 Z",
         ],
+        download: [
+          "M5,20H19A1,1 0 0,1 20,21A1,1 0 0,1 19,22H5A1,1 0 0,1 4,21A1,1 0 0,1 5,20M14,2A2,2 0 0,1 16,4V14.17L18.59,11.59L20,13L15,18L10,13L11.41,11.59L14,14.17V4H10V2H14Z",
+        ],
+        copy: [
+          "M19,21H9A2,2 0 0,1 7,19V7H9V19H19M16,17H5A2,2 0 0,1 3,15V3A2,2 0 0,1 5,1H16A2,2 0 0,1 18,3V15A2,2 0 0,1 16,17Z",
+        ],
       },
       sortBy: [{ key: "textlength", order: "desc" }],
       search: "",
@@ -581,6 +603,8 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
+    downloadScreenshot,
+    copyScreenshotToClipboard,
   },
   created() {
     this.pageNum = localStorage.getItem("page");
