@@ -69,7 +69,7 @@ export const copyScreenshotToClipboard = async () => {
       try {
         const clipboardItem = new ClipboardItem({ 'image/png': blob })
         await navigator.clipboard.write([clipboardItem])
-        alert('Screenshot copied to clipboard!')
+        console.log('Screenshot copied to clipboard!')
       } catch (err) {
         console.error('Failed to copy screenshot', err)
       }
