@@ -5,20 +5,22 @@
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
   </v-toolbar>
+  <HeaderLinks />
 
   <v-layout>
     <v-main>
       <div class="d-flex justify-center align-center h-100 card-container">
         <div v-for="sign in signs" :key="sign.sign" class="card">
-          <span class="indus">
+          <span
+            class="indus-symbol"
+            @click="handleSignClick(sign.characterizedSign)"
+          >
             {{ sign.characterizedSign }}
           </span>
           <span>
             {{ sign.sign }}
           </span>
-          <span>
-            Canonical: ({{ sign.canonical.toString().replaceAll("-", ", ") }})
-          </span>
+          <span> Canonical: ({{ sign.canonical }}) </span>
         </div>
       </div>
     </v-main>
@@ -35,6 +37,7 @@ theme.global.name.value = localStorage.getItem("theme") || "dark";
 import { ref } from "vue";
 import { csv2json } from "json-2-csv";
 import xlits from "../assets/data/xlits.csv?raw";
+import HeaderLinks from "../components/HeaderLinks.vue";
 
 const signs = ref(
   csv2json(xlits, {
@@ -56,10 +59,17 @@ function characterize(points) {
 }
 
 export default {
+  components: { HeaderLinks },
   data() {
     return {
       items: signs,
     };
+  },
+  methods: {
+    handleSignClick(characterizedSign) {
+      localStorage.setItem("search", characterizedSign);
+      window.location = "/";
+    },
   },
   mounted() {
     // Todo: This should probably moved to a common location since its used across pages
@@ -82,9 +92,16 @@ export default {
 }
 .indus {
   font-family: indus_scriptregular;
+  font-size: 24pt;
+  font-display: swap;
+  white-space: pre;
+}
+.indus-symbol {
+  font-family: indus_scriptregular;
   font-size: 48pt;
   font-display: swap;
   white-space: pre;
+  cursor: pointer;
 }
 .sanskrit {
   white-space: pre;
@@ -109,5 +126,8 @@ export default {
   flex-direction: column;
   padding: 20px;
   align-items: center;
+}
+.v-toolbar-title {
+  overflow: visible !important;
 }
 </style>
