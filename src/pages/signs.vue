@@ -40,6 +40,7 @@ import { csv2json } from "json-2-csv";
 import xlits from "../assets/data/xlits.csv?raw";
 import frequency from "../assets/data/symbol-frequency.json";
 import HeaderLinks from "../components/HeaderLinks.vue";
+import { hideSplashScreen } from "../utils/splash.js";
 
 const signs = ref(
   csv2json(xlits, {
@@ -50,7 +51,6 @@ const signs = ref(
     .map((value) => ({ ...value, characterizedSign: characterize(value.sign) }))
 );
 
-// Todo: This should probably moved to a common location since its used across pages
 function characterize(points) {
   const charset = points.toString().split("-");
   let result = "";
@@ -59,6 +59,8 @@ function characterize(points) {
   });
   return JSON.parse('"' + result + '"');
 }
+
+export const canonicalForms = signs.value.map(sign => characterize(sign.canonical))
 
 export default {
   components: { HeaderLinks },
@@ -74,11 +76,7 @@ export default {
     },
   },
   mounted() {
-    // Todo: This should probably moved to a common location since its used across pages
-    setTimeout(function () {
-      const splashScreen = document.querySelector(".splash");
-      if (splashScreen) splashScreen.classList.add("hidden");
-    }, 100);
+    hideSplashScreen();
   },
 };
 </script>
