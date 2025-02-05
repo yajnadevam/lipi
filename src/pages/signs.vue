@@ -40,7 +40,6 @@ import { csv2json } from "json-2-csv";
 import xlits from "../assets/data/xlits.csv?raw";
 import frequency from "../assets/data/symbol-frequency.json";
 import HeaderLinks from "../components/HeaderLinks.vue";
-import { hideSplashScreen } from "../utils/splash.js";
 
 const signs = ref(
   csv2json(xlits, {
@@ -76,7 +75,11 @@ export default {
     },
   },
   mounted() {
-    hideSplashScreen();
+    // Reuse the code from hideSplashScreen directly
+    setTimeout(function () {
+      const splashScreen = document.querySelector(".splash");
+      if (splashScreen) splashScreen.classList.add("hidden");
+    }, 100);
   },
 };
 </script>

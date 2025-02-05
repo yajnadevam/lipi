@@ -63,7 +63,6 @@ import { canonicalForms } from '@/pages/signs.vue'
 import symbolFrequency from '@/assets/data/symbol-frequency.json'
 import HeaderLinks from "@/components/HeaderLinks.vue"
 import { useTheme } from "vuetify"
-import { hideSplashScreen } from "@/utils/splash.js"
 import { copyToClipboard, downloadText } from '@/components/screenshot.vue'
 
 const theme = useTheme();
@@ -167,7 +166,10 @@ watch(inputText, (newValue, oldValue) => {
 const canonicalFormsCount = computed(() => canonicalForms.length)
 
 onMounted(() => {
-  hideSplashScreen();
+  setTimeout(function () {
+    const splashScreen = document.querySelector(".splash");
+    if (splashScreen) splashScreen.classList.add("hidden");
+  }, 100);
 });
 </script>
 
