@@ -1,4 +1,11 @@
 <template>
+  <!--Header-->
+  <v-toolbar>
+    <h1 class="indus" style="margin: 10px"></h1>
+    <v-toolbar-title>Indus script corpus</v-toolbar-title>
+    <v-spacer />
+  </v-toolbar>
+  <HeaderLinks />
   <v-card>
     <v-layout>
       <v-main>
