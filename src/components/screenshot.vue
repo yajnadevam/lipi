@@ -12,11 +12,14 @@ export const downloadScreenshot = async () => {
       console.error("No text found in search box")
       return
     }
+    const charWidth = 25 
+    const canvasHeight = 50
+    const canvasWidth = (charWidth * searchText.length)+10
 
     const tempCanvas = document.createElement('canvas')
     const context = tempCanvas.getContext('2d')
-    tempCanvas.width = searchBox.offsetWidth
-    tempCanvas.height = searchBox.offsetHeight
+    tempCanvas.width = canvasWidth//searchBox.offsetWidth
+    tempCanvas.height = canvasHeight//searchBox.offsetHeight
 
     const computedStyles = getComputedStyle(searchBox)
     context.font = computedStyles.font
@@ -24,7 +27,7 @@ export const downloadScreenshot = async () => {
     context.textBaseline = 'top'
     context.fillStyle = computedStyles.color
 
-    context.fillText(searchText, 0, 0)
+    context.fillText(searchText, 5, 5, canvasWidth)
 
     tempCanvas.toBlob((blob) => {
       const link = document.createElement('a')
@@ -47,15 +50,22 @@ export const copyScreenshotToClipboard = async () => {
     }
 
     const searchText = searchBox.value
+    // console.log("searchText", searchText)
+    // console.log("Length of searchText:", searchText.length)
     if (!searchText) {
       console.error("No text found in search box")
       return
     }
 
+    const charWidth = 25 
+    const canvasHeight = 50
+    const canvasWidth = (charWidth * searchText.length)+10
+
     const tempCanvas = document.createElement('canvas')
+    console.log("tempCanvas", tempCanvas)
     const context = tempCanvas.getContext('2d')
-    tempCanvas.width = searchBox.offsetWidth
-    tempCanvas.height = searchBox.offsetHeight
+    tempCanvas.width = canvasWidth
+    tempCanvas.height = canvasHeight
 
     const computedStyles = getComputedStyle(searchBox)
     context.font = computedStyles.font
@@ -63,7 +73,7 @@ export const copyScreenshotToClipboard = async () => {
     context.textBaseline = 'top'
     context.fillStyle = computedStyles.color
 
-    context.fillText(searchText, 0, 0)
+    context.fillText(searchText, 5, 5, canvasWidth)
 
     tempCanvas.toBlob(async (blob) => {
       try {
