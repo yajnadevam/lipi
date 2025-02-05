@@ -64,7 +64,7 @@ import symbolFrequency from '@/assets/data/symbol-frequency.json'
 import HeaderLinks from "@/components/HeaderLinks.vue"
 import { useTheme } from "vuetify"
 import { hideSplashScreen } from "@/utils/splash.js"
-import { copyToClipboard, downloadText } from '@/pages/screenshot.vue'
+import { copyToClipboard, downloadText } from '@/components/screenshot.vue'
 
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
