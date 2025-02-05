@@ -50,7 +50,6 @@ const signs = ref(
     .map((value) => ({ ...value, characterizedSign: characterize(value.sign) }))
 );
 
-// Todo: This should probably moved to a common location since its used across pages
 function characterize(points) {
   const charset = points.toString().split("-");
   let result = "";
@@ -59,6 +58,8 @@ function characterize(points) {
   });
   return JSON.parse('"' + result + '"');
 }
+
+export const canonicalForms = signs.value.map(sign => characterize(sign.canonical))
 
 export default {
   components: { HeaderLinks },
@@ -74,7 +75,7 @@ export default {
     },
   },
   mounted() {
-    // Todo: This should probably moved to a common location since its used across pages
+    // Reuse the code from hideSplashScreen directly
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
       if (splashScreen) splashScreen.classList.add("hidden");
