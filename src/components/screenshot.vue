@@ -12,9 +12,9 @@ export const downloadScreenshot = async () => {
       console.error("No text found in search box")
       return
     }
-    const charWidth = 25 
+    const charWidth = 23 
     const canvasHeight = 50
-    const canvasWidth = (charWidth * searchText.length)+10
+    const canvasWidth = (charWidth * searchText.length)+9
 
     const tempCanvas = document.createElement('canvas')
     const context = tempCanvas.getContext('2d')
@@ -27,7 +27,7 @@ export const downloadScreenshot = async () => {
     context.textBaseline = 'top'
     context.fillStyle = computedStyles.color
 
-    context.fillText(searchText, 5, 5, canvasWidth)
+    context.fillText(searchText, 9, 9, canvasWidth)
 
     tempCanvas.toBlob((blob) => {
       const link = document.createElement('a')
@@ -57,9 +57,9 @@ export const copyScreenshotToClipboard = async () => {
       return
     }
 
-    const charWidth = 25 
+    const charWidth = 23 
     const canvasHeight = 50
-    const canvasWidth = (charWidth * searchText.length)+10
+    const canvasWidth = (charWidth * searchText.length)+9
 
     const tempCanvas = document.createElement('canvas')
     console.log("tempCanvas", tempCanvas)
@@ -73,7 +73,7 @@ export const copyScreenshotToClipboard = async () => {
     context.textBaseline = 'top'
     context.fillStyle = computedStyles.color
 
-    context.fillText(searchText, 5, 5, canvasWidth)
+    context.fillText(searchText, 9, 9, canvasWidth)
 
     tempCanvas.toBlob(async (blob) => {
       try {
