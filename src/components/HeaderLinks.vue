@@ -2,7 +2,7 @@
   <div class="header-links v-theme">
     <a href="/" class="header-link">Home</a>
     <a href="/signs" class="header-link">Signs</a>
-    <a href="/type" class="header-link">Type</a>
+    <a href="/type" class="header-link">Write</a>
   </div>
   <v-divider />
 </template>

@@ -19,12 +19,25 @@
         ></textarea>
         <div class="button-container">
           <button class="clear-btn" @click="clearText">Clear</button>
+          <button class="copy-btn" @click="copyToClipboard">Copy</button>
+          <button class="download-btn" @click="downloadText">Download</button>
           <v-switch
             v-model="autoReplace"
             color="primary"
             label="Auto-replace variants"
             class="ms-4"
           ></v-switch>
+          <v-btn @click="toggleTheme">{{ theme.global.name.value === 'dark' ? 'Light Mode' : 'Dark Mode' }}</v-btn>
+        </div>
+
+        <!-- Move the keyboard-map section above the keys section -->
+        <div class="keyboard-map">
+          <div v-for="(row, index) in keyboardLayout" :key="index" class="key-row">
+            <div v-for="key in row" :key="key.char" class="key-mapping">
+              <span class="keyboard-key">{{ key.char }}</span>
+              <span class="indus">{{ key.sign }}</span>
+            </div>
+          </div>
         </div>
 
         <!-- Add clickable keys section -->
@@ -38,16 +51,7 @@
             {{ sign }}
           </button>
         </div>
-
-        <div class="keyboard-map">
-          <div v-for="(row, index) in keyboardLayout" :key="index" class="key-row">
-            <div v-for="key in row" :key="key.char" class="key-mapping">
-              <span class="keyboard-key">{{ key.char }}</span>
-              <span class="indus">{{ key.sign }}</span>
-            </div>
-          </div>
-        </div>
-        <div>Total Canonical Forms: {{ canonicalFormsCount }}</div>
+        <!-- <div>Total Canonical Forms: {{ canonicalFormsCount }}</div> -->
       </div>
     </v-main>
   </v-layout>
@@ -60,6 +64,7 @@ import symbolFrequency from '@/assets/data/symbol-frequency.json'
 import HeaderLinks from "@/components/HeaderLinks.vue"
 import { useTheme } from "vuetify"
 import { hideSplashScreen } from "@/utils/splash.js"
+import { copyToClipboard, downloadText } from '@/pages/screenshot.vue'
 
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
@@ -125,6 +130,11 @@ function clearText() {
   inputText.value = ''
 }
 
+function toggleTheme() {
+  theme.global.name.value = theme.global.name.value === 'dark' ? 'light' : 'dark';
+  localStorage.setItem("theme", theme.global.name.value);
+}
+
 // Enhanced variant replacement logic
 watch(inputText, (newValue, oldValue) => {
   if (!autoReplace.value) return
@@ -187,17 +197,38 @@ onMounted(() => {
   margin-bottom: 20px;
 }
 
-.clear-btn {
+.clear-btn, .copy-btn, .download-btn {
   padding: 8px 16px;
-  background-color: #ff4444;
-  color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
+.clear-btn {
+  background-color: #ff4444;
+  color: white;
+}
+
 .clear-btn:hover {
   background-color: #cc0000;
+}
+
+.copy-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.copy-btn:hover {
+  background-color: #45a049;
+}
+
+.download-btn {
+  background-color: #008CBA;
+  color: white;
+}
+
+.download-btn:hover {
+  background-color: #007bb5;
 }
 
 .keys {
