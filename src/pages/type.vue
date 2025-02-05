@@ -19,8 +19,8 @@
         ></textarea>
         <div class="button-container">
           <button class="clear-btn" @click="clearText">Clear</button>
-          <button class="copy-btn" @click="copyToClipboard">Copy</button>
-          <button class="download-btn" @click="downloadText">Download</button>
+          <button class="copy-btn"@click="copyScreenshotToClipboard">Copy</button>
+          <button class="download-btn"@click="downloadScreenshot">Download</button>
           <v-switch
             v-model="autoReplace"
             color="primary"
@@ -63,7 +63,7 @@ import { canonicalForms } from '@/pages/signs.vue'
 import symbolFrequency from '@/assets/data/symbol-frequency.json'
 import HeaderLinks from "@/components/HeaderLinks.vue"
 import { useTheme } from "vuetify"
-import { copyToClipboard, downloadText } from '@/components/screenshot.vue'
+import { downloadScreenshot, copyScreenshotToClipboard } from '@/components/screenshot.vue'
 
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
