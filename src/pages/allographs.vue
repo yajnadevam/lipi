@@ -17,6 +17,8 @@
             :items="items"
             :headers="headers"
             item-value="index"
+            disable-pagination
+            :items-per-page="-1"
           >
             <template v-slot:item.phoneme="{ item }">
               <span class="item">{{ item.phoneme }}</span>
@@ -48,11 +50,10 @@
 
             <template v-slot:expanded-row="{ item }">
               <tr>
-                <td>Canonical</td>
+                <td><span>Canonical</span></td>
                 <td>
                   <span class="indus">
                     {{ expandedGlyph[item.index].glyph }} =>
-
                     <template
                       v-for="canonical in expandedGlyph[item.index].canonical"
                       class="indus"
@@ -60,15 +61,15 @@
                       {{ canonical }}
                     </template>
                   </span>
-                  <!-- <div v-for="glyph in item.glyphs" class="indus">
+                </td>
+              </tr>
+              <!-- <div v-for="glyph in item.glyphs" class="indus">
                     {{ glyph.glyph }} =>
 
                     <span v-for="canonical in glyph.canonical">
                       {{ canonical }}
                     </span>
                   </div> -->
-                </td>
-              </tr>
             </template>
           </v-data-table>
         </div>
@@ -140,7 +141,7 @@ export default {
       },
       items: processed_allographs,
       headers: [
-        { title: "Phoneme", key: "phoneme" },
+        { title: "Phoneme", key: "phoneme", width: "200pt" },
         { title: "Glyphs", key: "glyphs" },
       ],
       expanded: [],
@@ -155,9 +156,9 @@ export default {
     handleGlyphClick(item, glyph) {
       const itemIndex = this.expanded.indexOf(item.index);
       if (itemIndex > -1) {
-        if (this.expandedGlyph[itemIndex] == glyph) {
+        if (this.expandedGlyph[item.index] == glyph) {
           this.expanded.splice(itemIndex, 1);
-          delete this.expandedGlyph[itemIndex];
+          delete this.expandedGlyph[item.index];
         } else {
           this.expandedGlyph[item.index] = glyph;
         }
