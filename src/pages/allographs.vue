@@ -53,7 +53,9 @@
 
             <template v-slot:expanded-row="{ item }">
               <tr class="expanded-row">
-                <td><span>Canonical</span></td>
+                <td>
+                  <span><strong>Canonical</strong></span>
+                </td>
                 <td>
                   <span class="indus canonical">
                     <template
