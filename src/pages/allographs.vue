@@ -141,7 +141,7 @@ export default {
       },
       items: processed_allographs,
       headers: [
-        { title: "Phoneme", key: "phoneme" },
+        { title: "Phoneme", key: "phoneme", width: "90pt" },
         { title: "Glyphs", key: "glyphs" },
       ],
       expanded: [],
