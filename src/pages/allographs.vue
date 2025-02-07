@@ -215,17 +215,23 @@ export default {
 .phoneme {
   width: 90pt;
 }
-.active {
-  color: red;
-}
 .v-theme--light {
+  .active {
+    color: blue;
+  }
   .expanded-row {
     background: #f5f5dc;
+    color: blue;
   }
 }
+
 .v-theme--dark {
+  .active {
+    color: yellow;
+  }
   .expanded-row {
     background: black;
+    color: yellow;
   }
 }
 </style>
