@@ -17,7 +17,6 @@
             :items="items"
             :headers="headers"
             item-value="index"
-            show-expand
           >
             <template v-slot:item.phoneme="{ item }">
               <span class="item">{{ item.phoneme }}</span>
@@ -25,13 +24,16 @@
 
             <template v-slot:item.glyphs="{ item }">
               <template v-for="glyph in item.glyphs">
-                <span class="indus">
+                <span
+                  class="indus glyph"
+                  @click="handleGlyphClick(item, glyph)"
+                >
                   {{ glyph.glyph }}
                 </span>
               </template>
             </template>
 
-            <template v-slot:item.data-table-expand="{ item, isExpanded }">
+            <!-- <template v-slot:item.data-table-expand="{ item, isExpanded }">
               <v-icon
                 v-if="isExpandedRow(item.index)"
                 :icon="icons.collapse"
@@ -42,19 +44,29 @@
                 :icon="icons.expand"
                 @click="handleExpansion(item, isExpanded)"
               ></v-icon>
-            </template>
+            </template> -->
 
-            <template v-slot:expanded-row="{ columns, item }">
+            <template v-slot:expanded-row="{ item }">
               <tr>
                 <td>Canonical</td>
                 <td>
-                  <div v-for="glyph in item.glyphs" class="indus">
+                  <span class="indus">
+                    {{ expandedGlyph[item.index].glyph }} =>
+
+                    <template
+                      v-for="canonical in expandedGlyph[item.index].canonical"
+                      class="indus"
+                    >
+                      {{ canonical }}
+                    </template>
+                  </span>
+                  <!-- <div v-for="glyph in item.glyphs" class="indus">
                     {{ glyph.glyph }} =>
 
                     <span v-for="canonical in glyph.canonical">
                       {{ canonical }}
                     </span>
-                  </div>
+                  </div> -->
                 </td>
               </tr>
             </template>
@@ -132,18 +144,27 @@ export default {
         { title: "Glyphs", key: "glyphs" },
       ],
       expanded: [],
+      expandedGlyph: {},
     };
   },
   methods: {
     isExpandedRow(id) {
-      return this.expanded.indexOf(id) > -1;
+      // return this.expanded.indexOf(id) > -1;
+      return this.expanded.has(id);
     },
-    handleExpansion(item, state) {
+    handleGlyphClick(item, glyph) {
       const itemIndex = this.expanded.indexOf(item.index);
-
-      itemIndex > -1
-        ? this.expanded.splice(itemIndex, 1)
-        : this.expanded.push(item.index);
+      if (itemIndex > -1) {
+        if (this.expandedGlyph[itemIndex] == glyph) {
+          this.expanded.splice(itemIndex, 1);
+          delete this.expandedGlyph[itemIndex];
+        } else {
+          this.expandedGlyph[item.index] = glyph;
+        }
+      } else {
+        this.expanded.push(item.index);
+        this.expandedGlyph[item.index] = glyph;
+      }
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -178,6 +199,10 @@ export default {
   font-size: 24pt;
   white-space: pre;
   letter-spacing: 5pt;
+}
+.glyph {
+  padding: 5pt;
+  cursor: pointer;
 }
 .sanskrit {
   white-space: pre;
