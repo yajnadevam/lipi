@@ -21,7 +21,7 @@
             :items-per-page="-1"
           >
             <template v-slot:item.phoneme="{ item }">
-              <span class="item">{{ item.phoneme }}</span>
+              <div class="item phoneme" v-html="item.phoneme" />
             </template>
 
             <template v-slot:item.glyphs="{ item }">
@@ -141,7 +141,7 @@ export default {
       },
       items: processed_allographs,
       headers: [
-        { title: "Phoneme", key: "phoneme", width: "200pt" },
+        { title: "Phoneme", key: "phoneme" },
         { title: "Glyphs", key: "glyphs" },
       ],
       expanded: [],
@@ -219,5 +219,8 @@ export default {
 }
 .v-toolbar-title__placeholder {
   overflow: visible !important;
+}
+.phoneme {
+  width: 90pt;
 }
 </style>
