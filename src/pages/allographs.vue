@@ -10,15 +10,53 @@
     <v-layout>
       <v-main>
         <div class="d-flex justify-center align-center h-100">
-          <v-data-table :hide-default-footer="true" :items="items">
+          <v-data-table
+            ref="target"
+            v-model:expanded="expanded"
+            :hide-default-footer="true"
+            :items="items"
+            :headers="headers"
+            item-value="index"
+            show-expand
+          >
             <template v-slot:item.phoneme="{ item }">
-              <span class="item" v-html="item.phoneme" />
+              <span class="item">{{ item.phoneme }}</span>
             </template>
-            <template v-slot:item.name="{ item }">
-              <span class="item" v-html="item.name" />
-            </template>
+
             <template v-slot:item.glyphs="{ item }">
-              <span class="item indus" v-html="item.glyphs" />
+              <template v-for="glyph in item.glyphs">
+                <span class="indus">
+                  {{ glyph.glyph }}
+                </span>
+              </template>
+            </template>
+
+            <template v-slot:item.data-table-expand="{ item, isExpanded }">
+              <v-icon
+                v-if="isExpandedRow(item.index)"
+                :icon="icons.collapse"
+                @click="handleExpansion(item, isExpanded)"
+              ></v-icon>
+              <v-icon
+                v-else
+                :icon="icons.expand"
+                @click="handleExpansion(item, isExpanded)"
+              ></v-icon>
+            </template>
+
+            <template v-slot:expanded-row="{ columns, item }">
+              <tr>
+                <td>Canonical</td>
+                <td>
+                  <div v-for="glyph in item.glyphs" class="indus">
+                    {{ glyph.glyph }} =>
+
+                    <span v-for="canonical in glyph.canonical">
+                      {{ canonical }}
+                    </span>
+                  </div>
+                </td>
+              </tr>
             </template>
           </v-data-table>
         </div>
@@ -40,6 +78,7 @@ function toggleTheme() {
 <script>
 import { csv2json } from "json-2-csv";
 import allographCsv from "../assets/data/allographs.csv?raw";
+import xlits from "../assets/data/xlits.csv?raw";
 
 // Todo: This should probably moved to a common location since its used across pages
 function characterize(points) {
@@ -51,30 +90,61 @@ function characterize(points) {
   return JSON.parse('"' + result + '"');
 }
 
-const allographs = csv2json(allographCsv, {
-  keys: ["phoneme", "name", "glyphs"],
+const xlitsJson = csv2json(xlits, {
+  keys: ["sign", "canonical"],
 });
 
-const processed_allographs = allographs.map((allograph) => {
-  console.log(allograph.glyphs.split(" "));
+const allographs = csv2json(allographCsv, {
+  keys: ["phoneme", "glyphs"],
+});
+
+const processed_allographs = allographs.map((allograph, index) => {
   return {
     ...allograph,
+    index,
     glyphs: allograph.glyphs
+      .toString()
       .split(" ")
       .map((glyph) => {
-        console.log("this is the glyph" + glyph);
-        if (glyph == "<br/>") return glyph;
-        return characterize(glyph.toString());
-      })
-      .join(""),
+        let canonical = xlitsJson
+          .filter((s) => s.canonical == glyph)
+          .map((s) => characterize(s.sign.toString()));
+        return {
+          canonical,
+          glyph: characterize(glyph.toString()),
+        };
+      }),
   };
 });
 
 export default {
   data() {
     return {
+      icons: {
+        expand: ["M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"],
+        collapse: [
+          "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z",
+        ],
+      },
       items: processed_allographs,
+      headers: [
+        { title: "Phoneme", key: "phoneme" },
+        { title: "Glyphs", key: "glyphs" },
+      ],
+      expanded: [],
     };
+  },
+  methods: {
+    isExpandedRow(id) {
+      return this.expanded.indexOf(id) > -1;
+    },
+    handleExpansion(item, state) {
+      const itemIndex = this.expanded.indexOf(item.index);
+
+      itemIndex > -1
+        ? this.expanded.splice(itemIndex, 1)
+        : this.expanded.push(item.index);
+    },
   },
   // eslint-disable-next-line vue/order-in-components
   mounted() {
@@ -105,7 +175,7 @@ export default {
 .indus {
   font-family: indus_scriptregular;
   font-display: swap;
-  font-size: 18pt;
+  font-size: 24pt;
   white-space: pre;
   letter-spacing: 5pt;
 }
