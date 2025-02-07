@@ -27,6 +27,9 @@
             <template v-slot:item.glyphs="{ item }">
               <template v-for="glyph in item.glyphs">
                 <span
+                  :class="`${
+                    expandedGlyph[item.index] == glyph ? 'active' : ''
+                  }`"
                   class="indus glyph"
                   @click="handleGlyphClick(item, glyph)"
                 >
@@ -49,14 +52,12 @@
             </template> -->
 
             <template v-slot:expanded-row="{ item }">
-              <tr>
+              <tr class="expanded-row">
                 <td><span>Canonical</span></td>
                 <td>
-                  <span class="indus">
-                    {{ expandedGlyph[item.index].glyph }} =>
+                  <span class="indus canonical">
                     <template
                       v-for="canonical in expandedGlyph[item.index].canonical"
-                      class="indus"
                     >
                       {{ canonical }}
                     </template>
@@ -199,28 +200,32 @@ export default {
   font-display: swap;
   font-size: 24pt;
   white-space: pre;
-  letter-spacing: 5pt;
 }
 .glyph {
-  padding: 5pt;
+  padding: 5pt 10pt 5pt 0;
   cursor: pointer;
+  text-align: center;
 }
-.sanskrit {
-  white-space: pre;
-}
-.random {
-  white-space: pre;
-  color: orange;
-}
-.v-text-field input {
-  font-family: indus_scriptregular;
-  font-size: 24pt;
-  font-display: swap;
+.canonical {
+  letter-spacing: 10pt;
 }
 .v-toolbar-title__placeholder {
   overflow: visible !important;
 }
 .phoneme {
   width: 90pt;
+}
+.active {
+  color: red;
+}
+.v-theme--light {
+  .expanded-row {
+    background: #f5f5dc;
+  }
+}
+.v-theme--dark {
+  .expanded-row {
+    background: black;
+  }
 }
 </style>
