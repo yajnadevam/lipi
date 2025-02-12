@@ -1,8 +1,8 @@
 <template>
   <div class="header-links v-theme">
     <a href="/" class="header-link">Home</a>
-    <a href="/signs" class="header-link">Signs</a>
     <a href="/allographs" class="header-link">Allographs</a>
+    <a href="/signs" class="header-link">Signs</a>
   </div>
   <v-divider />
 </template>
@@ -20,6 +20,7 @@ export default {
 .header-link {
   margin-right: 15px;
   text-decoration: none;
+  color: inherit;
 }
 .header-link:hover {
   margin-right: 15px;

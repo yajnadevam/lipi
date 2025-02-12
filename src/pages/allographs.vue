@@ -37,42 +37,24 @@
                 </span>
               </template>
             </template>
-
-            <!-- <template v-slot:item.data-table-expand="{ item, isExpanded }">
-              <v-icon
-                v-if="isExpandedRow(item.index)"
-                :icon="icons.collapse"
-                @click="handleExpansion(item, isExpanded)"
-              ></v-icon>
-              <v-icon
-                v-else
-                :icon="icons.expand"
-                @click="handleExpansion(item, isExpanded)"
-              ></v-icon>
-            </template> -->
-
             <template v-slot:expanded-row="{ item }">
               <tr class="expanded-row">
                 <td>
                   <span><strong>Canonical</strong></span>
                 </td>
                 <td>
-                  <span class="indus canonical">
+                  <span class="canonical-container">
                     <template
                       v-for="canonical in expandedGlyph[item.index].canonical"
                     >
-                      {{ canonical }}
+                      <span class="canonical">
+                        <span class="indus">{{ characterize(canonical) }}</span>
+                        <span>({{ frequency[canonical] }})</span>
+                      </span>
                     </template>
                   </span>
                 </td>
               </tr>
-              <!-- <div v-for="glyph in item.glyphs" class="indus">
-                    {{ glyph.glyph }} =>
-
-                    <span v-for="canonical in glyph.canonical">
-                      {{ canonical }}
-                    </span>
-                  </div> -->
             </template>
           </v-data-table>
         </div>
@@ -94,6 +76,7 @@ function toggleTheme() {
 <script>
 import { csv2json } from "json-2-csv";
 import allographCsv from "../assets/data/allographs.csv?raw";
+import frequency from "../assets/data/symbol-frequency.json";
 import xlits from "../assets/data/xlits.csv?raw";
 
 // Todo: This should probably moved to a common location since its used across pages
@@ -124,7 +107,7 @@ const processed_allographs = allographs.map((allograph, index) => {
       .map((glyph) => {
         let canonical = xlitsJson
           .filter((s) => s.canonical == glyph)
-          .map((s) => characterize(s.sign.toString()));
+          .map((s) => s.sign.toString());
         return {
           canonical,
           glyph: characterize(glyph.toString()),
@@ -204,12 +187,18 @@ export default {
   white-space: pre;
 }
 .glyph {
-  padding: 5pt 10pt 5pt 0;
+  padding-right: 10pt;
   cursor: pointer;
-  text-align: center;
+}
+.canonical-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to move to new lines */
 }
 .canonical {
-  letter-spacing: 10pt;
+  display: flex;
+  flex-direction: column;
+  padding-right: 10pt;
+  text-align: center;
 }
 .v-toolbar-title__placeholder {
   overflow: visible !important;
