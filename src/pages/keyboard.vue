@@ -20,6 +20,8 @@
             >asda
           </v-textarea>
           <div class="indus-input">{{ translation }}</div>
+          Right to Left Below:
+          <div class="indus-input rtl">{{ translation }}</div>
         </div>
       </v-main>
     </v-layout>
@@ -40,22 +42,17 @@ function toggleTheme() {
 </script>
 
 <script>
-function reverse(str) {
-  return str.split("").reverse().join("");
-}
-
 export default {
   data() {
-    const initialText = "अननं";
+    const initialText = "अननं\nअन्";
     return {
-      translation: reverse(initialText),
+      translation: initialText,
       textareaValue: initialText,
     };
   },
   methods: {
     translate(value) {
-      console.log(value, reverse(value));
-      this.translation = reverse(value);
+      this.translation = value;
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -74,8 +71,6 @@ export default {
   src: url("../assets/fonts/indus-input-font.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
-  font-size: 24pt;
-  font-display: swap;
 }
 @font-face {
   font-family: "indus_scriptregular";
@@ -87,9 +82,10 @@ export default {
 }
 .indus-input {
   font-family: indus_input;
-  font-display: swap;
   font-size: 24pt;
+  font-display: swap;
   white-space: pre;
+  font-feature-settings: "dlig" 1;
 }
 .indus {
   font-family: indus_scriptregular;
@@ -108,5 +104,8 @@ export default {
 }
 .textarea {
   width: 500pt;
+}
+.rtl {
+  transform: scale(-1, 1);
 }
 </style>
