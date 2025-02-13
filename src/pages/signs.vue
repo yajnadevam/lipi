@@ -120,13 +120,13 @@ export default {
 .card-container {
   display: flex;
   flex-wrap: wrap; /* Allows items to move to new lines */
-  gap: 10px; /* Space between items */
-  padding: 10px;
+  gap: 10pt; /* Space between items */
+  padding: 10pt;
 }
 .card {
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 20pt;
   align-items: center;
 }
 .v-toolbar-title {
