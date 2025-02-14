@@ -44,7 +44,8 @@ function toggleTheme() {
 <script>
 export default {
   data() {
-    const initialText = "अननं\nअन्";
+    const initialText =
+      "कि की\n\nअननं\nअन\n\nआननम्\nअना\nआम्\n\nअन्ध\nधन\nधा\n\nअधि\nइद्\n\nअधीन\n\nतन\nदददान्त\n\nशशी\nशनि\n\nचण\n\nवर्णज\n\nअनर्वशं\n\nभणवी\n\nऋणी\n\nमसन";
     return {
       translation: initialText,
       textareaValue: initialText,
@@ -85,7 +86,7 @@ export default {
   font-size: 24pt;
   font-display: swap;
   white-space: pre;
-  font-feature-settings: "dlig" 1;
+  font-feature-settings: "dlig" on, "fina" on;
 }
 .indus {
   font-family: indus_scriptregular;
