@@ -19,9 +19,9 @@
             placeholder="Type in Devanagiri"
             >asda
           </v-textarea>
-          <div class="indus-input">{{ translation }}</div>
+          <div class="indus-input" v-html="processText" />
           Right to Left Below:
-          <div class="indus-input rtl">{{ translation }}</div>
+          <div class="indus-input rtl" v-html="processText" />
         </div>
       </v-main>
     </v-layout>
@@ -51,6 +51,19 @@ export default {
       textareaValue: initialText,
     };
   },
+  computed: {
+    processText() {
+      let words = this.translation.split(" ");
+      words = words.map((word) => {
+        const allButLast = word.slice(0, -1);
+        const lastLetter = `<span class='indus-input-fina'>${word.slice(
+          -1
+        )}</span>`;
+        return allButLast + lastLetter;
+      });
+      return words.join("");
+    },
+  },
   methods: {
     translate(value) {
       this.translation = value;
@@ -70,6 +83,7 @@ export default {
 @font-face {
   font-family: "indus_input";
   src: url("../assets/fonts/indus-input-font.woff2") format("woff2");
+  /* src: url("../assets/fonts/indus-input-font.otf") format("otf"); */
   font-weight: normal;
   font-style: normal;
 }
@@ -84,9 +98,11 @@ export default {
 .indus-input {
   font-family: indus_input;
   font-size: 24pt;
-  font-display: swap;
   white-space: pre;
-  font-feature-settings: "dlig" on, "fina" on;
+  font-feature-settings: "dlig" 1;
+}
+.indus-input-fina {
+  font-feature-settings: "dlig" 1, "fina" 1;
 }
 .indus {
   font-family: indus_scriptregular;
