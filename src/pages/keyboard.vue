@@ -22,13 +22,26 @@
           <div class="indus-input" v-html="processText" />
           Right to Left Below:
           <div class="indus-input rtl" v-html="processText" />
+          <v-data-table
+            :items="items"
+            :headers="headers"
+            item-value="input"
+            disable-pagination
+            :items-per-page="-1"
+            :hide-default-footer="true"
+          >
+            <template v-slot:item.expected="{ item }">
+              <div class="indus-input-test" v-html="item.expected"></div>
+            </template>
+            <template v-slot:item.actual="{ item }">
+              <div class="indus-input-test" v-html="pText(item.actual)"></div>
+            </template>
+          </v-data-table>
         </div>
       </v-main>
     </v-layout>
   </v-card>
 </template>
-
-<!--  -->
 
 <script setup>
 import { useTheme } from "vuetify";
@@ -42,18 +55,18 @@ function toggleTheme() {
 </script>
 
 <script>
-export default {
-  data() {
-    const initialText =
-      "कि की\n\nअननं\nअन\n\nआननम्\nअना\nआम्\n\nअन्ध\nधन\nधा\n\nअधि\nइद्\n\nअधीन\n\nतन\nदददान्त\n\nशशी\nशनि\n\nचण\n\nवर्णज\n\nअनर्वशं\n\nभणवी\n\nऋणी\n\nमसन";
-    return {
-      translation: initialText,
-      textareaValue: initialText,
-    };
-  },
-  computed: {
-    processText() {
-      let words = this.translation.split(" ");
+import { csv2json } from "json-2-csv";
+import testsCsv from "../assets/data/keyboard-tests.csv?raw";
+
+const tests = csv2json(testsCsv, {
+  keys: ["input", "expected"],
+}).map((test) => ({ ...test, actual: test.input }));
+
+function _processText(text) {
+  return text
+    .split("\n")
+    .map((sentence) => {
+      let words = sentence.split(" ");
       words = words.map((word) => {
         const allButLast = word.slice(0, -1);
         const lastLetter = `<span class='indus-input-fina'>${word.slice(
@@ -62,11 +75,35 @@ export default {
         return allButLast + lastLetter;
       });
       return words.join("");
+    })
+    .join("\n");
+}
+
+export default {
+  data() {
+    const initialText = "";
+    return {
+      translation: initialText,
+      textareaValue: initialText,
+      items: tests,
+      headers: [
+        { title: "Input", key: "input" },
+        { title: "Expected Output (L to R)", key: "expected" },
+        { title: "Actual Output (L to R)", key: "actual" },
+      ],
+    };
+  },
+  computed: {
+    processText() {
+      return _processText(this.translation);
     },
   },
   methods: {
     translate(value) {
       this.translation = value;
+    },
+    pText(value) {
+      return _processText(value);
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -103,6 +140,12 @@ export default {
 }
 .indus-input-fina {
   font-feature-settings: "dlig" 1, "fina" 1;
+}
+.indus-input-test {
+  font-family: indus_input;
+  white-space: pre;
+  font-size: 24pt;
+  font-feature-settings: "dlig" 1;
 }
 .indus {
   font-family: indus_scriptregular;
