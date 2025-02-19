@@ -3,7 +3,6 @@
     <h1 class="indus" style="margin: 10px"></h1>
     <!-- </h1> -->
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
-    <span class="indus">&#xe021;</span>
     <v-spacer />
     <v-menu
       :close-on-content-click="false"
