@@ -16,12 +16,26 @@
             class="container-item textarea"
             @update:model-value="translate"
             no-resize=""
-            placeholder="Type in Devanagiri"
-            >asda
+            placeholder="Type in Devanagari"
+          >
           </v-textarea>
-          <div class="indus-input" v-html="processText" />
+          <div class="output-container">
+            <span
+              v-for="(line, index) in textareaValue.split('\n')"
+              :key="index"
+              class="indus-input"
+              >{{ line }}</span
+            >
+          </div>
           Right to Left Below:
-          <div class="indus-input rtl" v-html="processText" />
+          <div class="output-container rtl">
+            <span
+              v-for="(line, index) in textareaValue.split('\n')"
+              :key="index"
+              class="indus-input"
+              >{{ line }}</span
+            >
+          </div>
           <v-data-table
             :items="items"
             :headers="headers"
@@ -34,7 +48,7 @@
               <div class="indus-input-test" v-html="item.expected"></div>
             </template>
             <template v-slot:item.actual="{ item }">
-              <div class="indus-input-test" v-html="pText(item.actual)"></div>
+              <div class="indus-input-test" v-html="item.actual"></div>
             </template>
           </v-data-table>
         </div>
@@ -62,26 +76,9 @@ const tests = csv2json(testsCsv, {
   keys: ["input", "expected"],
 }).map((test) => ({ ...test, actual: test.input }));
 
-function _processText(text) {
-  return text
-    .split("\n")
-    .map((sentence) => {
-      let words = sentence.split(" ");
-      words = words.map((word) => {
-        const allButLast = word.slice(0, -1);
-        const lastLetter = `<span class='indus-input-fina'>${word.slice(
-          -1
-        )}</span>`;
-        return allButLast + lastLetter;
-      });
-      return words.join("");
-    })
-    .join("\n");
-}
-
 export default {
   data() {
-    const initialText = "";
+    const initialText = "अननननन तन भणवीन";
     return {
       translation: initialText,
       textareaValue: initialText,
@@ -94,16 +91,14 @@ export default {
     };
   },
   computed: {
+    // Todo: This function is probably not needed
     processText() {
-      return _processText(this.translation);
+      return this.translation;
     },
   },
   methods: {
     translate(value) {
       this.translation = value;
-    },
-    pText(value) {
-      return _processText(value);
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -120,7 +115,6 @@ export default {
 @font-face {
   font-family: "indus_input";
   src: url("../assets/fonts/indus-input-font.woff2") format("woff2");
-  /* src: url("../assets/fonts/indus-input-font.otf") format("otf"); */
   font-weight: normal;
   font-style: normal;
 }
@@ -136,16 +130,24 @@ export default {
   font-family: indus_input;
   font-size: 24pt;
   white-space: pre;
-  font-feature-settings: "dlig" 1;
+  word-break: break-word;
+  font-variant-ligatures: discretionary-ligatures;
+  /* font-feature-settings: "fina" on; */
 }
-.indus-input-fina {
-  font-feature-settings: "dlig" 1, "fina" 1;
+
+.indus-input:after {
+  content: " ";
 }
+/* .indus-input-fina {
+  font-feature-settings: "dlig" 1;  
+} */
 .indus-input-test {
   font-family: indus_input;
+  font-weight: normal;
+  font-size: normal;
   white-space: pre;
   font-size: 24pt;
-  font-feature-settings: "dlig" 1;
+  font-feature-settings: "dlig" on, "fina" on;
 }
 .indus {
   font-family: indus_scriptregular;
@@ -167,5 +169,13 @@ export default {
 }
 .rtl {
   transform: scale(-1, 1);
+  text-align: left;
+}
+.output-container {
+  display: flex;
+  flex-direction: column;
+}
+.output-container span {
+  flex: auto;
 }
 </style>
