@@ -16,27 +16,23 @@
             class="container-item textarea"
             @update:model-value="translate"
             no-resize=""
-            placeholder="Type in Devanagari"
+            placeholder="Type in Devanagari. Eg: ॐ रुद्राय नमः"
+            autofocus
           >
           </v-textarea>
-          <div class="output-container">
-            <span
-              v-for="(line, index) in textareaValue.split('\n')"
-              :key="index"
-              class="indus-input"
-              >{{ line }}</span
+          <div class="attribution">
+            Powered by
+            <a
+              target="_blank"
+              href="https://github.com/ram-g-athreya/Indus-Input-Font"
+              >Indus Input Font</a
             >
           </div>
-          Right to Left Below:
+          <!-- Right to Left Below: -->
           <div class="output-container rtl">
-            <span
-              v-for="(line, index) in textareaValue.split('\n')"
-              :key="index"
-              class="indus-input"
-              >{{ line }}</span
-            >
+            <span class="indus-input">{{ translation }}</span>
           </div>
-          <v-data-table
+          <!-- <v-data-table
             :items="items"
             :headers="headers"
             item-value="input"
@@ -50,7 +46,7 @@
             <template v-slot:item.actual="{ item }">
               <div class="indus-input" v-html="item.actual"></div>
             </template>
-          </v-data-table>
+          </v-data-table> -->
         </div>
       </v-main>
     </v-layout>
@@ -78,7 +74,7 @@ const tests = csv2json(testsCsv, {
 
 export default {
   data() {
-    const initialText = "अननननन तन भणवीन";
+    const initialText = "";
     return {
       translation: initialText,
       textareaValue: initialText,
@@ -98,7 +94,7 @@ export default {
   },
   methods: {
     translate(value) {
-      this.translation = value;
+      this.translation = value.split("\n").join(" \n");
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -130,7 +126,6 @@ export default {
   font-family: indus_input;
   font-size: 24pt;
   white-space: pre;
-  word-break: break-word;
   font-variant-ligatures: discretionary-ligatures;
 }
 .indus-input:after {
@@ -157,13 +152,24 @@ export default {
   padding: 15pt;
   display: flex;
   flex-direction: column;
-  gap: 10pt;
 }
 .container-item {
   flex: auto;
 }
 .textarea {
-  width: 500pt;
+  width: 90%;
+}
+.attribution {
+  width: 90%;
+  font-size: 10pt;
+  text-align: right;
+  margin-bottom: 15pt;
+}
+.attribution a {
+  color: inherit;
+}
+.textarea .v-input__details {
+  display: none;
 }
 .rtl {
   transform: scale(-1, 1);
@@ -172,8 +178,9 @@ export default {
 .output-container {
   display: flex;
   flex-direction: column;
+  width: 90%;
 }
 .output-container span {
-  flex: auto;
+  overflow: auto;
 }
 </style>
