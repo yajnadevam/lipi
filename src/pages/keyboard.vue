@@ -45,10 +45,10 @@
             :hide-default-footer="true"
           >
             <template v-slot:item.expected="{ item }">
-              <div class="indus-input-test" v-html="item.expected"></div>
+              <div class="indus-input" v-html="item.expected"></div>
             </template>
             <template v-slot:item.actual="{ item }">
-              <div class="indus-input-test" v-html="item.actual"></div>
+              <div class="indus-input" v-html="item.actual"></div>
             </template>
           </v-data-table>
         </div>
@@ -132,15 +132,13 @@ export default {
   white-space: pre;
   word-break: break-word;
   font-variant-ligatures: discretionary-ligatures;
-  /* font-feature-settings: "fina" on; */
 }
-
 .indus-input:after {
   content: " ";
 }
-/* .indus-input-fina {
-  font-feature-settings: "dlig" 1;  
-} */
+.indus-input:before {
+  content: " ";
+}
 .indus-input-test {
   font-family: indus_input;
   font-weight: normal;
