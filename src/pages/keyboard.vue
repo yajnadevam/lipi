@@ -6,17 +6,30 @@
     <v-spacer />
   </v-toolbar>
   <HeaderLinks />
-
   <v-card>
     <v-layout>
       <v-main>
         <div class="d-flex justify-center align-center h-100 container">
+          <div class="toolbar">
+            <v-select
+              v-model="formatValue"
+              class="format-select"
+              density="comfortable"
+              item-title="label"
+              item-value="value"
+              :items="formats"
+              @update:model-value="changeFormat"
+              return-object
+            >
+              <v-icon :icon="icons.expand"></v-icon>
+            </v-select>
+          </div>
           <v-textarea
             v-model="textareaValue"
             class="container-item textarea"
             @update:model-value="translate"
             no-resize=""
-            placeholder="Type in Devanagari. Eg: ॐ रुद्राय नमः"
+            :placeholder="placeholderText"
             autofocus
           >
           </v-textarea>
@@ -65,8 +78,17 @@ function toggleTheme() {
 </script>
 
 <script>
+import Sanscript from "@indic-transliteration/sanscript";
 import { csv2json } from "json-2-csv";
 import testsCsv from "../assets/data/keyboard-tests.csv?raw";
+import { placeholder } from "@babel/types";
+
+const DEVANAGARI = "devanagari";
+
+const FORMATS = {
+  devanagari: { label: "Devanagari", value: DEVANAGARI },
+  slp1: { label: "SLP1", value: "slp1" },
+};
 
 const tests = csv2json(testsCsv, {
   keys: ["input", "expected"],
@@ -76,9 +98,14 @@ export default {
   data() {
     const initialText = "";
     return {
+      icons: {
+        expand: ["M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"],
+      },
       translation: initialText,
       textareaValue: initialText,
       items: tests,
+      formats: Object.values(FORMATS),
+      formatValue: FORMATS.devanagari,
       headers: [
         { title: "Input", key: "input" },
         { title: "Expected Output (L to R)", key: "expected" },
@@ -87,14 +114,43 @@ export default {
     };
   },
   computed: {
-    // Todo: This function is probably not needed
-    processText() {
-      return this.translation;
+    placeholderText() {
+      if (this.formatValue.value == DEVANAGARI) {
+        return "Type in Devanagari. Eg: ॐ रुद्राय नमः";
+      } else if (this.formatValue.value == "slp1") {
+        return "Type in SLP1. Eg: oM rudrAya namaH";
+      }
     },
   },
   methods: {
     translate(value) {
-      this.translation = value.split("\n").join(" \n");
+      function massageOm(text, om) {
+        return text
+          .split(" ")
+          .map((value) => (value == om ? "ॐ" : value))
+          .join(" ");
+      }
+
+      function massage(t) {
+        return t.split("\n").join(" \n ");
+      }
+
+      if (this.formatValue.value == DEVANAGARI) {
+        this.translation = massage(value);
+      } else {
+        // Substitute
+        value = this.translation = massage(
+          Sanscript.t(
+            massageOm(value, "oM"),
+            this.formatValue.value,
+            DEVANAGARI
+          )
+        );
+      }
+    },
+    changeFormat(value) {
+      this.formatValue = value;
+      this.translate(this.textareaValue);
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -187,5 +243,11 @@ export default {
 }
 .output-container span {
   overflow: auto;
+}
+.toolbar {
+  margin-bottom: 5pt;
+}
+.format-select {
+  width: 200pt;
 }
 </style>
