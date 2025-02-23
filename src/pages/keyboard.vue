@@ -159,6 +159,9 @@ export default {
 .textarea {
   width: 90%;
 }
+.textarea textarea {
+  font-size: 16pt;
+}
 .attribution {
   width: 90%;
   font-size: 10pt;
