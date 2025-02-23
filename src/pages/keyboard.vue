@@ -127,6 +127,7 @@ export default {
   font-size: 24pt;
   white-space: pre;
   font-variant-ligatures: discretionary-ligatures;
+  text-wrap: wrap;
 }
 .indus-input:after {
   content: " ";
@@ -160,7 +161,8 @@ export default {
   width: 90%;
 }
 .textarea textarea {
-  font-size: 16pt;
+  font-size: 26pt;
+  text-align: right;
 }
 .attribution {
   width: 90%;
