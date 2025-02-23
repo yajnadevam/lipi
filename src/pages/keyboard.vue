@@ -1,7 +1,7 @@
 <template>
   <!--Header-->
   <v-toolbar>
-    <h1 class="indus" style="margin: 10px"></h1>
+    <h1 class="indus" style="margin: 10px"></h1>
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
     <v-spacer />
   </v-toolbar>
@@ -11,42 +11,36 @@
     <v-layout>
       <v-main>
         <div class="d-flex justify-center align-center h-100 container">
-          <v-textarea
-            v-model="textareaValue"
-            class="container-item textarea"
-            @update:model-value="translate"
-            no-resize=""
-            placeholder="Type in Devanagari. Eg: ॐ रुद्राय नमः"
-            autofocus
-          >
-          </v-textarea>
+          <!-- Input Method Selector -->
+          <InputSelector @input-change="handleInputMethodChange" />
+
+          <!-- Input Area -->
+          <div v-if="inputMethod === 'slp1'" class="full-width">
+            <SLP1Input @text-change="handleTextChange" />
+          </div>
+          <div v-else class="full-width">
+            <v-textarea
+              v-model="textareaValue"
+              class="container-item textarea"
+              @update:model-value="translate"
+              no-resize=""
+              placeholder="Type in Devanagari. Eg: ॐ रुद्राय नमः"
+              autofocus
+            >
+            </v-textarea>
+          </div>
+
           <div class="attribution">
             Powered by
-            <a
-              target="_blank"
-              href="https://github.com/ram-g-athreya/Indus-Input-Font"
-              >Indus Input Font</a
-            >
+            <a target="_blank" href="https://github.com/ram-g-athreya/Indus-Input-Font">
+              Indus Input Font
+            </a>
           </div>
+
           <!-- Right to Left Below: -->
           <div class="output-container rtl">
             <span class="indus-input">{{ translation }}</span>
           </div>
-          <!-- <v-data-table
-            :items="items"
-            :headers="headers"
-            item-value="input"
-            disable-pagination
-            :items-per-page="-1"
-            :hide-default-footer="true"
-          >
-            <template v-slot:item.expected="{ item }">
-              <div class="indus-input" v-html="item.expected"></div>
-            </template>
-            <template v-slot:item.actual="{ item }">
-              <div class="indus-input" v-html="item.actual"></div>
-            </template>
-          </v-data-table> -->
         </div>
       </v-main>
     </v-layout>
@@ -54,57 +48,45 @@
 </template>
 
 <script setup>
-import { useTheme } from "vuetify";
-const theme = useTheme();
-theme.global.name.value = localStorage.getItem("theme") || "dark";
+import { ref } from 'vue'
+import { useTheme } from 'vuetify'
+import InputSelector from '../components/InputSelector.vue'
+import SLP1Input from '../components/SLP1Input.vue'
+import HeaderLinks from '../components/HeaderLinks.vue'
 
-function toggleTheme() {
-  theme.global.name.value = theme.global.current.value.dark ? "light" : "dark";
-  localStorage.setItem("theme", theme.global.name.value);
+const theme = useTheme()
+theme.global.name.value = localStorage.getItem('theme') || 'dark'
+
+const inputMethod = ref(localStorage.getItem('inputMethod') || 'devanagari')
+const textareaValue = ref('')
+const translation = ref('')
+
+const handleInputMethodChange = (method) => {
+  inputMethod.value = method
+  textareaValue.value = ''
+  translation.value = ''
 }
-</script>
 
-<script>
-import { csv2json } from "json-2-csv";
-import testsCsv from "../assets/data/keyboard-tests.csv?raw";
+const handleTextChange = (text) => {
+  // We now use forIndus which is formatted for Indus font conversion
+  if (text.forIndus) {
+    translate(text.forIndus)
+  } else {
+    translate(text.devanagari)
+  }
+}
 
-const tests = csv2json(testsCsv, {
-  keys: ["input", "expected"],
-}).map((test) => ({ ...test, actual: test.input }));
+const translate = (value) => {
+  if (!value) return
+  translation.value = value.split('\n').join(' \n')
+}
 
-export default {
-  data() {
-    const initialText = "";
-    return {
-      translation: initialText,
-      textareaValue: initialText,
-      items: tests,
-      headers: [
-        { title: "Input", key: "input" },
-        { title: "Expected Output (L to R)", key: "expected" },
-        { title: "Actual Output (L to R)", key: "actual" },
-      ],
-    };
-  },
-  computed: {
-    // Todo: This function is probably not needed
-    processText() {
-      return this.translation;
-    },
-  },
-  methods: {
-    translate(value) {
-      this.translation = value.split("\n").join(" \n");
-    },
-  },
-  // eslint-disable-next-line vue/order-in-components
-  mounted() {
-    setTimeout(function () {
-      const splashScreen = document.querySelector(".splash");
-      if (splashScreen) splashScreen.classList.add("hidden");
-    }, 100);
-  },
-};
+onMounted(() => {
+  setTimeout(() => {
+    const splashScreen = document.querySelector('.splash')
+    if (splashScreen) splashScreen.classList.add('hidden')
+  }, 100)
+})
 </script>
 
 <style>
@@ -114,6 +96,7 @@ export default {
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: "indus_scriptregular";
   src: url("../assets/fonts/indus-font.woff2") format("woff2");
@@ -122,18 +105,22 @@ export default {
   font-size: 24pt;
   font-display: swap;
 }
+
 .indus-input {
-  font-family: indus_input;
+  font-family: indus_input  !important;
   font-size: 24pt;
   white-space: pre;
   font-variant-ligatures: discretionary-ligatures;
 }
+
 .indus-input:after {
   content: " ";
 }
+
 .indus-input:before {
   content: " ";
 }
+
 .indus-input-test {
   font-family: indus_input;
   font-weight: normal;
@@ -142,45 +129,63 @@ export default {
   font-size: 24pt;
   font-feature-settings: "dlig" on, "fina" on;
 }
+
 .indus {
   font-family: indus_scriptregular;
   font-display: swap;
   font-size: 24pt;
   white-space: pre;
 }
+
 .container {
   padding: 15pt;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
+
+.full-width {
+  width: 100%;
+}
+
 .container-item {
   flex: auto;
+  width: 100%;
 }
+
 .textarea {
-  width: 90%;
+  width: 100% !important;
 }
+
 .attribution {
-  width: 90%;
+  width: 100%;
   font-size: 10pt;
   text-align: right;
   margin-bottom: 15pt;
 }
+
 .attribution a {
   color: inherit;
 }
+
 .textarea .v-input__details {
   display: none;
 }
+
 .rtl {
   transform: scale(-1, 1);
   text-align: left;
+  width: 100%;
 }
+
 .output-container {
   display: flex;
   flex-direction: column;
-  width: 90%;
+  width: 100%;
 }
+
 .output-container span {
   overflow: auto;
+  width: 100%;
 }
 </style>

@@ -10,10 +10,12 @@ declare module 'vue' {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     HeaderLinks: typeof import('./components/HeaderLinks.vue')['default']
     Ichar: typeof import('./components/ichar.vue')['default']
+    InputSelector: typeof import('./components/InputSelector.vue')['default']
     Key: typeof import('./components/Key.vue')['default']
     LoadingScreen: typeof import('./components/LoadingScreen.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Schar: typeof import('./components/schar.vue')['default']
+    SLP1Input: typeof import('./components/SLP1Input.vue')['default']
   }
 }
