@@ -88,6 +88,7 @@ const DEVANAGARI = "devanagari";
 const FORMATS = {
   devanagari: { label: "Devanagari", value: DEVANAGARI },
   slp1: { label: "SLP1", value: "slp1" },
+  iast: { label: "IAST", value: "iast" },
 };
 
 const tests = csv2json(testsCsv, {
@@ -119,6 +120,8 @@ export default {
         return "Type in Devanagari. Eg: ॐ रुद्राय नमः";
       } else if (this.formatValue.value == "slp1") {
         return "Type in SLP1. Eg: oM rudrAya namaH";
+      } else if (this.formatValue.value == "iast") {
+        return "Type in IAST. Eg: oṃ rudrāya namaḥ";
       }
     },
   },
@@ -143,10 +146,10 @@ export default {
       if (this.formatValue.value == DEVANAGARI) {
         this.translation = massage(value);
       } else {
-        // Substitute
+        const omSub = this.formatValue.value == "slp1" ? "oM" : "oṃ";
         value = this.translation = massage(
           Sanscript.t(
-            massageOm(value, "oM"),
+            massageOm(value, omSub),
             this.formatValue.value,
             DEVANAGARI
           )
