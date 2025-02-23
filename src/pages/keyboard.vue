@@ -127,7 +127,12 @@ export default {
       function massageOm(text, om) {
         return text
           .split(" ")
-          .map((value) => (value == om ? "ॐ" : value))
+          .map((value) => {
+            return value
+              .split("\n")
+              .map((v) => (v == om ? "ॐ" : v))
+              .join("\n");
+          })
           .join(" ");
       }
 
