@@ -21,8 +21,13 @@
               @update:model-value="changeFormat"
               return-object
             >
-              <v-icon :icon="icons.expand"></v-icon>
             </v-select>
+            <v-checkbox
+              v-model="displayBrahmi"
+              label="Brahmi"
+              true-icon="mdi-checkbox-marked"
+              false-icon="mdi-checkbox-blank-outline"
+            ></v-checkbox>
           </div>
           <v-textarea
             v-model="textareaValue"
@@ -55,6 +60,16 @@
                 "
                 >{{ translation }}</span
               >
+            </div>
+
+            <v-divider v-if="displayBrahmi == true" vertical />
+            <div v-if="displayBrahmi == true">
+              <span v-if="translation.length > 0">
+                (L to R) <v-icon>mdi-arrow-right</v-icon>
+              </span>
+              <span v-if="displayBrahmi == true" class="brahmi">{{
+                brahmiTranslation
+              }}</span>
             </div>
           </div>
           <template
@@ -107,6 +122,7 @@ import testsCsv from "../assets/data/keyboard-tests.csv?raw";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 const DEVANAGARI = "devanagari";
+const BRAHMI = "brahmi";
 
 const FORMATS = {
   devanagari: { label: "Devanagari", value: DEVANAGARI },
@@ -117,6 +133,41 @@ const FORMATS = {
 const tests = csv2json(testsCsv, {
   keys: ["input", "expected"],
 }).map((test) => ({ ...test, actual: test.input }));
+
+const translateToBrahmi = (text, format) => {
+  if (text) {
+    const replacements = {
+      ऽ: "अ",
+      "ा": "आ",
+      "	ि": "इ",
+      "ी": "ई",
+      "ु": "उ",
+      "ू": "ऊ",
+      "ृ": "ऋ",
+      "ॄ": "ऋ",
+      "ॅ": "ए",
+      "ॆ": "ए",
+      "े": "ए",
+      "ै": "ऎ",
+      "ॉ": "ओ",
+      "ो": "ओ",
+      "ो": "ओ",
+      "ौ": "औ",
+      "ॏ": "औ",
+      "ॢ": "ऋ",
+      "ॣ": "ऋ",
+    };
+    return text
+      .split("")
+      .map((c) => {
+        if (c in replacements) {
+          return Sanscript.t(replacements[c], format, BRAHMI);
+        }
+        return Sanscript.t(c, format, BRAHMI);
+      })
+      .join("");
+  }
+};
 
 export default {
   data() {
@@ -130,10 +181,12 @@ export default {
         },
       },
       translation: initialText,
+      brahmiTranslation: translateToBrahmi(initialText, DEVANAGARI),
       textareaValue: initialText,
       items: tests,
       formats: Object.values(FORMATS),
       formatValue: FORMATS.devanagari,
+      displayBrahmi: false,
       headers: [
         { title: "Input", key: "input" },
         { title: "Expected Output (L to R)", key: "expected" },
@@ -182,6 +235,7 @@ export default {
           )
         );
       }
+      this.brahmiTranslation = translateToBrahmi(this.translation, DEVANAGARI);
     },
     isSafari() {
       return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -189,6 +243,9 @@ export default {
     changeFormat(value) {
       this.formatValue = value;
       this.translate(this.textareaValue);
+    },
+    isSafari() {
+      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -289,6 +346,9 @@ export default {
 }
 .toolbar {
   margin-bottom: 5pt;
+  display: flex;
+  flex-direction: row;
+  gap: 5pt;
 }
 .format-select {
   width: 140pt;
@@ -305,5 +365,24 @@ export default {
 }
 .disable-ligatures {
   font-feature-settings: "dlig" off;
+}
+.devanagari-output {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.devanagari-output span {
+  text-align: right;
+  overflow: auto;
+  font-size: 16pt;
+}
+.disable-ligatures {
+  font-feature-settings: "dlig" off;
+}
+.brahmi {
+  font-size: 24pt;
+}
+.text-right {
+  text-align: right;
 }
 </style>
