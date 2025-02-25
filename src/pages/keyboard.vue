@@ -123,6 +123,7 @@ import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 const DEVANAGARI = "devanagari";
 const BRAHMI = "brahmi";
+const HALANTH = "्";
 
 const FORMATS = {
   devanagari: { label: "Devanagari", value: DEVANAGARI },
@@ -139,7 +140,7 @@ const translateToBrahmi = (text, format) => {
     const replacements = {
       ऽ: "अ",
       "ा": "आ",
-      "	ि": "इ",
+      "ि": "इ",
       "ी": "ई",
       "ु": "उ",
       "ू": "ऊ",
@@ -148,7 +149,7 @@ const translateToBrahmi = (text, format) => {
       "ॅ": "ए",
       "ॆ": "ए",
       "े": "ए",
-      "ै": "ऎ",
+      "ै": "ऐ",
       "ॉ": "ओ",
       "ो": "ओ",
       "ो": "ओ",
@@ -161,16 +162,22 @@ const translateToBrahmi = (text, format) => {
     // itara iti uutamU eka Ekaoka OkakO kE
     // kakAkiklkukUkokOkekEkE
 
-    return text
+    const x = text
       .split("")
       .map((c) => {
         if (c in replacements) {
+          console.log("this will be replaced", c);
           return Sanscript.t(replacements[c], format, BRAHMI);
         }
+
+        console.log("this is character", c);
         return Sanscript.t(c, format, BRAHMI);
       })
       .join("");
+    console.log(x);
+    return x;
   }
+  return text;
 };
 
 export default {
