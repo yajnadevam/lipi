@@ -157,6 +157,10 @@ const translateToBrahmi = (text, format) => {
       "ॢ": "ऋ",
       "ॣ": "ऋ",
     };
+    // yadA yadA hi Darmasya
+    // itara iti uutamU eka Ekaoka OkakO kE
+    // kakAkiklkukUkokOkekEkE
+
     return text
       .split("")
       .map((c) => {
@@ -381,6 +385,8 @@ export default {
 }
 .brahmi {
   font-size: 24pt;
+  white-space: pre;
+  text-wrap: wrap;
 }
 .text-right {
   text-align: right;
