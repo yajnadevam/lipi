@@ -138,7 +138,6 @@ const tests = csv2json(testsCsv, {
 const translateToBrahmi = (text, format) => {
   if (text) {
     const replacements = {
-      ऽ: "अ",
       "ा": "आ",
       "ि": "इ",
       "ी": "ई",
