@@ -272,8 +272,8 @@ inx.forEach((el) => {
   //   el.sanskrit = el.sanskrit.split(/—|\s/).map((key) => {
   //   if(key=='अकक') { 
   //     console.log(key, urlMap[key])
-  //     // return urlMap[key] ? '<a href="' + urlMap[key] + '">' + key + '</a>' : key
-  //     return key
+  //     return urlMap[key] ? '<a href="' + urlMap[key] + '">' + key + '</a>' : key
+  //     // return key
   //   }
   //   }).join('—')
   // }

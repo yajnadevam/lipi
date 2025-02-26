@@ -2558,9 +2558,9 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1840.2,H-963,Inter-Riverine,Harappa,F-,--,--,2124,Period 3B/C,-,-,-13.17 ft,-,Steatite,White,circular,rectangular,slightly chipped,None,None,TAB:I,2,Poor,Y,R/L,VN,2,2,0.3,0.25,,7.6,6.4,0,+700-032+,ref:229.2
 1841.1,H-964,Inter-Riverine,Harappa,F-,--,--,3399,Period 3B/C,-,-,-10.42 ft,-,Steatite,White,rectangular-rounded,rectangular,fragment,None,None,TAB:I,2,Poor,N,R/L,??,2+?,1,,,,0,7,0,]000-034+
 1841.2,H-964,Inter-Riverine,Harappa,F-,--,--,3399,Period 3B/C,-,-,-10.42 ft,-,Steatite,White,rectangular-rounded,rectangular,fragment,None,None,TAB:I,2,Poor,N,R/L,??,3+?,2,,,,0,7,0,+400-740-000[
-1842.1,H-965,Inter-Riverine,Harappa,FTrench I,--,-M11/21,3397562,Period 3C-1,-,Stratum IV,-10.42 ft,-,Steatite,White,rectangular-round,rectangular,chipped,None,None,TAB:I,2,Poor,Y,L/R,MT,4,4,0.7,0.45,,17.8,11.4,0,+740-690-636-240+
+1842.1,H-965,Inter-Riverine,Harappa,FTrench I,--,-M11/21,3397562,Period 3C-1,-,Stratum IV,-10.42 ft,-,Steatite,White,rectangular-round,rectangular,chipped,None,None,TAB:I,2,Poor,Y,L/R,MT,4,4,0.7,0.45,,17.8,11.4,0,+740-690-636-240+,maTakam,"The meditator[√मथ् + वुन्]"
 1842.2,H-965,Inter-Riverine,Harappa,FTrench I,--,-M11/21,3397562,Period 3C-1,-,Stratum IV,-10.42 ft,-,Steatite,White,rectangular-round,rectangular,chipped,None,None,TAB:I,2,Poor,Y,R/L,VN,2,2,0.7,0.45,,17.8,11.4,0,+700-032+,ref:229.2
-1843.1,H-966,Inter-Riverine,Harappa,--,--,--,13823,-,-,-,- -,-,-,-,rectangular-rounded,-,complete,None,None,TAB:I,2,Fair,Y,L/R,MT,4,4,,,,0,10.5,0,+740-690-636-240+
+1843.1,H-966,Inter-Riverine,Harappa,--,--,--,13823,-,-,-,- -,-,-,-,rectangular-rounded,-,complete,None,None,TAB:I,2,Fair,Y,L/R,MT,4,4,,,,0,10.5,0,+740-690-636-240+,ref:1842.1
 1843.2,H-966,Inter-Riverine,Harappa,--,--,--,13823,-,-,-,- -,-,-,-,rectangular-rounded,-,complete,None,None,TAB:I,2,Fair,Y,R/L,VN,2,2,,,,0,10.5,0,+700-032+,ref:229.2
 1844.1,H-967,Inter-Riverine,Harappa,FTrench VI,--,-O11/23,12104563,Period 3C-4,-,Stratum I,-1.0 ft,-,Steatite,Black,rectangular-round,rectangular,complete,None,None,TAB:I,1,Good,Y,R/L,SS,4,4,0.65,0.37,,16.5,9.4,0,+400-740-032-028+,ref:1796.1
 1845.1,H-968,Inter-Riverine,Harappa,--,--,--,H88-1199,-,-,-,- -,-,-,-,rectangular-round,-,complete,None,None,TAB:I,2,Fair,Y,L/R,VN,2,2,,,,18,8.5,0,+700-032+,ref:229.2
