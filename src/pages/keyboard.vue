@@ -42,9 +42,31 @@
             >
           </div>
           <!-- Right to Left Below: -->
-          <div class="output-container rtl">
-            <span class="indus-input">{{ translation }}</span>
+          <div class="output-container">
+            <div>
+              <span class="text-right" v-if="translation.length > 0">
+                <v-icon>mdi-arrow-left</v-icon> (R to L)
+              </span>
+              <span
+                :class="
+                  isSafari()
+                    ? 'indus-input rtl disable-ligatures'
+                    : 'indus-input rtl'
+                "
+                >{{ translation }}</span
+              >
+            </div>
           </div>
+          <template
+            v-if="
+              JSON.stringify(formatValue) !=
+                JSON.stringify(FORMATS.devanagari) && textareaValue.length > 0
+            "
+          >
+            <div class="devanagari-output">
+              <span>Devanagari: {{ translation }}</span>
+            </div>
+          </template>
           <!-- <v-data-table
             :items="items"
             :headers="headers"
@@ -80,8 +102,9 @@ function toggleTheme() {
 <script>
 import Sanscript from "@indic-transliteration/sanscript";
 import { csv2json } from "json-2-csv";
+import "@mdi/font/css/materialdesignicons.css";
 import testsCsv from "../assets/data/keyboard-tests.csv?raw";
-import { placeholder } from "@babel/types";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 const DEVANAGARI = "devanagari";
 
@@ -100,7 +123,11 @@ export default {
     const initialText = "";
     return {
       icons: {
-        expand: ["M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"],
+        defaultSet: "mdi",
+        aliases,
+        sets: {
+          mdi,
+        },
       },
       translation: initialText,
       textareaValue: initialText,
@@ -147,7 +174,7 @@ export default {
         this.translation = massage(value);
       } else {
         const omSub = this.formatValue.value == "slp1" ? "oM" : "oṃ";
-        value = this.translation = massage(
+        this.translation = massage(
           Sanscript.t(
             massageOm(value, omSub),
             this.formatValue.value,
@@ -155,6 +182,9 @@ export default {
           )
         );
       }
+    },
+    isSafari() {
+      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     },
     changeFormat(value) {
       this.formatValue = value;
@@ -190,7 +220,7 @@ export default {
   font-family: indus_input;
   font-size: 24pt;
   white-space: pre;
-  font-variant-ligatures: discretionary-ligatures;
+  font-feature-settings: "dlig" 1;
   text-wrap: wrap;
 }
 .indus-input:after {
@@ -246,16 +276,34 @@ export default {
 }
 .output-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 90%;
+  margin-bottom: 15pt;
+  gap: 10pt;
 }
-.output-container span {
+.output-container div {
   overflow: auto;
+  flex: auto;
+  display: flex;
+  flex-direction: column;
 }
 .toolbar {
   margin-bottom: 5pt;
 }
 .format-select {
-  width: 200pt;
+  width: 140pt;
+}
+.devanagari-output {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.devanagari-output span {
+  text-align: right;
+  overflow: auto;
+  font-size: 16pt;
+}
+.disable-ligatures {
+  font-feature-settings: "dlig" off;
 }
 </style>
