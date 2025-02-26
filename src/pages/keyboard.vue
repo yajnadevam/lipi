@@ -155,26 +155,19 @@ const translateToBrahmi = (text, format) => {
       "ो": "ओ",
       "ौ": "औ",
       "ॏ": "औ",
-      "ॢ": "ऋ",
-      "ॣ": "ऋ",
+      "ॢ": "ऌ",
+      "ॣ": "ॡ",
     };
-    // yadA yadA hi Darmasya
-    // itara iti uutamU eka Ekaoka OkakO kE
-    // kakAkiklkukUkokOkekEkE
-
     const x = text
       .split("")
       .map((c) => {
         if (c in replacements) {
-          console.log("this will be replaced", c);
           return Sanscript.t(replacements[c], format, BRAHMI);
         }
 
-        console.log("this is character", c);
         return Sanscript.t(c, format, BRAHMI);
       })
       .join("");
-    console.log(x);
     return x;
   }
   return text;
