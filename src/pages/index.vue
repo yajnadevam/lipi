@@ -186,10 +186,16 @@ import { csv2json } from "json-2-csv";
 import Key from "../components/Key.vue";
 import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
+import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
+const urllist = csv2json(urls)
+const urlMap = {}
+urllist.forEach((item) => {
+  urlMap[item.key] = item.url
+})
 const inx = csv2json(incx, {
   keys: [
     "id",
@@ -242,7 +248,7 @@ inx.forEach((el) => {
   const canonized = canonize(el.text);
   el.text = canonized.str; // jsize(el.text)
   el.textlength = parseInt(el["text length"]);
-  el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
+    el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
   totalLen += el.complete === "Y" ? el.textlength : 0;
   totalCount += el.complete ? 1 : 0;
   decipheredLen += el.complete === "Y" && el.translation ? el.textlength : 0;
@@ -253,7 +259,7 @@ inx.forEach((el) => {
     if (el.sanskrit.startsWith("ref:")) {
       Object.assign(el, resolve(el.sanskrit));
     } else {
-      console.log(">>", Sanscript.t(el.sanskrit, "slp1", "iast"));
+      // console.log(">>", Sanscript.t(el.sanskrit, "slp1", "iast"));
       el.sanskrit =
         Sanscript.t(el.sanskrit, "slp1", "devanagari") +
         "\n" +
@@ -262,6 +268,15 @@ inx.forEach((el) => {
   } else {
     el.sanskrit = "*" + analyzed.str.split("-").reverse().join(""); // el.description.replaceAll('-', '')
   }
+  // if(el.sanskrit) {
+  //   el.sanskrit = el.sanskrit.split(/—|\s/).map((key) => {
+  //   if(key=='अकक') { 
+  //     console.log(key, urlMap[key])
+  //     // return urlMap[key] ? '<a href="' + urlMap[key] + '">' + key + '</a>' : key
+  //     return key
+  //   }
+  //   }).join('—')
+  // }
   inxMap[el.id] = el;
 });
 
