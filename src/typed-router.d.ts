@@ -22,5 +22,6 @@ declare module 'vue-router/auto-routes' {
     '/allographs': RouteRecordInfo<'/allographs', '/allographs', Record<never, never>, Record<never, never>>,
     '/keyboard': RouteRecordInfo<'/keyboard', '/keyboard', Record<never, never>, Record<never, never>>,
     '/signs': RouteRecordInfo<'/signs', '/signs', Record<never, never>, Record<never, never>>,
+    '/type': RouteRecordInfo<'/type', '/type', Record<never, never>, Record<never, never>>,
   }
 }
