@@ -24,7 +24,7 @@
             </v-select>
             <v-checkbox
               v-model="displayBrahmi"
-              label="Brahmi"
+              label="Use Brahmi-like Glyphs"
               true-icon="mdi-checkbox-marked"
               false-icon="mdi-checkbox-blank-outline"
             ></v-checkbox>
@@ -52,14 +52,7 @@
               <span class="text-right" v-if="translation.length > 0">
                 <v-icon>mdi-arrow-left</v-icon> (R to L)
               </span>
-              <span
-                :class="
-                  isSafari()
-                    ? 'indus-input rtl disable-ligatures'
-                    : 'indus-input rtl'
-                "
-                >{{ translation }}</span
-              >
+              <span :class="indusInputCss">{{ translation }}</span>
             </div>
 
             <v-divider v-if="displayBrahmi == true" vertical />
@@ -207,6 +200,18 @@ export default {
         return "Type in IAST. Eg: oṃ rudrāya namaḥ";
       }
     },
+    indusInputCss() {
+      const isSafari = () => {
+        return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      };
+
+      let cls = "";
+      cls +=
+        this.displayBrahmi == true ? "indus-brahmi-input " : "indus-input ";
+      cls += isSafari() ? "disable-ligatures " : "";
+      cls += "rtl";
+      return cls;
+    },
   },
   methods: {
     translate(value) {
@@ -240,15 +245,9 @@ export default {
       }
       this.brahmiTranslation = translateToBrahmi(this.translation, DEVANAGARI);
     },
-    isSafari() {
-      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    },
     changeFormat(value) {
       this.formatValue = value;
       this.translate(this.textareaValue);
-    },
-    isSafari() {
-      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     },
   },
   // eslint-disable-next-line vue/order-in-components
@@ -276,8 +275,23 @@ export default {
   font-size: 24pt;
   font-display: swap;
 }
+@font-face {
+  font-family: "indus_brahmi_input";
+  src: url("../assets/fonts/indus-brahmi-font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24pt;
+  font-display: swap;
+}
 .indus-input {
   font-family: indus_input;
+  font-size: 24pt;
+  white-space: pre;
+  font-feature-settings: "dlig" 1;
+  text-wrap: wrap;
+}
+.indus-brahmi-input {
+  font-family: indus_brahmi_input;
   font-size: 24pt;
   white-space: pre;
   font-feature-settings: "dlig" 1;
@@ -355,19 +369,6 @@ export default {
 }
 .format-select {
   width: 140pt;
-}
-.devanagari-output {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-}
-.devanagari-output span {
-  text-align: right;
-  overflow: auto;
-  font-size: 16pt;
-}
-.disable-ligatures {
-  font-feature-settings: "dlig" off;
 }
 .devanagari-output {
   display: flex;
