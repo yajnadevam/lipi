@@ -48,19 +48,24 @@
           </div>
           <!-- Right to Left Below: -->
           <div class="output-container">
-            <div>
-              <span class="text-right" v-if="translation.length > 0">
-                <v-icon>mdi-arrow-left</v-icon> (R to L: Indus)
+            <div v-if="translation.length > 0">
+              <span class="text-right">
+                <template v-if="displayBrahmi == true"
+                  >(L to R: Indus) <v-icon>mdi-arrow-right</v-icon></template
+                >
+                <template v-if="displayBrahmi == false"
+                  ><v-icon>mdi-arrow-left</v-icon> (R to L: Indus)</template
+                >
               </span>
               <span :class="indusInputCss">{{ translation }}</span>
             </div>
 
-            <v-divider v-if="displayBrahmi == true" vertical />
-            <div v-if="displayBrahmi == true">
-              <span v-if="translation.length > 0">
+            <v-divider v-if="displayBrahmi == true && translation" />
+            <div v-if="displayBrahmi == true && translation">
+              <span v-if="translation.length > 0" class="text-right">
                 (L to R: Brahmi) <v-icon>mdi-arrow-right</v-icon>
               </span>
-              <span v-if="displayBrahmi == true" class="brahmi">{{
+              <span v-if="displayBrahmi == true" class="brahmi text-right">{{
                 brahmiTranslation
               }}</span>
             </div>
@@ -72,6 +77,7 @@
             "
           >
             <div class="devanagari-output">
+              <v-divider />
               <span>Devanagari: {{ translation }}</span>
             </div>
           </template>
@@ -207,9 +213,8 @@ export default {
 
       let cls = "";
       cls +=
-        this.displayBrahmi == true ? "indus-brahmi-input " : "indus-input ";
+        this.displayBrahmi == true ? "indus-brahmi-input " : "indus-input rtl ";
       cls += isSafari() ? "disable-ligatures " : "";
-      cls += "rtl";
       return cls;
     },
   },
@@ -296,6 +301,7 @@ export default {
   white-space: pre;
   font-feature-settings: "dlig" 1;
   text-wrap: wrap;
+  text-align: right;
 }
 .indus-input:after {
   content: " ";
@@ -350,9 +356,9 @@ export default {
 }
 .output-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 90%;
-  margin-bottom: 15pt;
+  /* margin-bottom: 15pt; */
   gap: 10pt;
 }
 .output-container div {
@@ -379,6 +385,7 @@ export default {
   text-align: right;
   overflow: auto;
   font-size: 16pt;
+  margin-top: 5pt;
 }
 .disable-ligatures {
   font-feature-settings: "dlig" off;
