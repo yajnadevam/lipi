@@ -50,7 +50,7 @@
           <div class="output-container">
             <div>
               <span class="text-right" v-if="translation.length > 0">
-                <v-icon>mdi-arrow-left</v-icon> (R to L: Indus Script)
+                <v-icon>mdi-arrow-left</v-icon> (R to L: Indus)
               </span>
               <span :class="indusInputCss">{{ translation }}</span>
             </div>
@@ -318,7 +318,7 @@ export default {
   white-space: pre;
 }
 .container {
-  padding: 15pt;
+  padding: 10pt;
   display: flex;
   flex-direction: column;
 }
@@ -368,7 +368,7 @@ export default {
   gap: 5pt;
 }
 .format-select {
-  width: 140pt;
+  width: 135pt;
 }
 .devanagari-output {
   display: flex;
