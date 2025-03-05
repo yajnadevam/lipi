@@ -386,6 +386,7 @@ export default {
   overflow: auto;
   font-size: 16pt;
   margin-top: 5pt;
+  white-space: pre;
 }
 .disable-ligatures {
   font-feature-settings: "dlig" off;
