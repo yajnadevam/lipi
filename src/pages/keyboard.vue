@@ -50,7 +50,7 @@
           <div class="output-container">
             <div>
               <span class="text-right" v-if="translation.length > 0">
-                <v-icon>mdi-arrow-left</v-icon> (R to L)
+                <v-icon>mdi-arrow-left</v-icon> (R to L: Indus Script)
               </span>
               <span :class="indusInputCss">{{ translation }}</span>
             </div>
@@ -58,7 +58,7 @@
             <v-divider v-if="displayBrahmi == true" vertical />
             <div v-if="displayBrahmi == true">
               <span v-if="translation.length > 0">
-                (L to R) <v-icon>mdi-arrow-right</v-icon>
+                (L to R: Brahmi) <v-icon>mdi-arrow-right</v-icon>
               </span>
               <span v-if="displayBrahmi == true" class="brahmi">{{
                 brahmiTranslation
