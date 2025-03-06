@@ -156,7 +156,7 @@ const translateToBrahmi = (text, format) => {
       "ॢ": "ऌ",
       "ॣ": "ॡ",
     };
-    const x = text
+    return text
       .split("")
       .map((c) => {
         if (c in replacements) {
@@ -165,8 +165,9 @@ const translateToBrahmi = (text, format) => {
 
         return Sanscript.t(c, format, BRAHMI);
       })
-      .join("");
-    return x;
+      .join("")
+      .split(" ")
+      .join("  ");
   }
   return text;
 };
