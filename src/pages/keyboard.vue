@@ -21,8 +21,13 @@
               @update:model-value="changeFormat"
               return-object
             >
-              <v-icon :icon="icons.expand"></v-icon>
             </v-select>
+            <v-checkbox
+              v-model="displayBrahmi"
+              label="Use Brahmi-like Glyphs"
+              true-icon="mdi-checkbox-marked"
+              false-icon="mdi-checkbox-blank-outline"
+            ></v-checkbox>
           </div>
           <v-textarea
             v-model="textareaValue"
@@ -43,18 +48,26 @@
           </div>
           <!-- Right to Left Below: -->
           <div class="output-container">
-            <div>
-              <span class="text-right" v-if="translation.length > 0">
-                <v-icon>mdi-arrow-left</v-icon> (R to L)
+            <div v-if="translation.length > 0">
+              <span class="text-right">
+                <template v-if="displayBrahmi == true"
+                  >(L to R: Indus) <v-icon>mdi-arrow-right</v-icon></template
+                >
+                <template v-if="displayBrahmi == false"
+                  ><v-icon>mdi-arrow-left</v-icon> (R to L: Indus)</template
+                >
               </span>
-              <span
-                :class="
-                  isSafari()
-                    ? 'indus-input rtl disable-ligatures'
-                    : 'indus-input rtl'
-                "
-                >{{ translation }}</span
-              >
+              <span :class="indusInputCss">{{ translation }}</span>
+            </div>
+
+            <v-divider v-if="displayBrahmi == true && translation" />
+            <div v-if="displayBrahmi == true && translation">
+              <span v-if="translation.length > 0" class="text-right">
+                (L to R: Brahmi) <v-icon>mdi-arrow-right</v-icon>
+              </span>
+              <span v-if="displayBrahmi == true" class="brahmi text-right">{{
+                brahmiTranslation
+              }}</span>
             </div>
           </div>
           <template
@@ -64,6 +77,7 @@
             "
           >
             <div class="devanagari-output">
+              <v-divider />
               <span>Devanagari: {{ translation }}</span>
             </div>
           </template>
@@ -107,6 +121,8 @@ import testsCsv from "../assets/data/keyboard-tests.csv?raw";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
 
 const DEVANAGARI = "devanagari";
+const BRAHMI = "brahmi";
+const HALANTH = "्";
 
 const FORMATS = {
   devanagari: { label: "Devanagari", value: DEVANAGARI },
@@ -117,6 +133,43 @@ const FORMATS = {
 const tests = csv2json(testsCsv, {
   keys: ["input", "expected"],
 }).map((test) => ({ ...test, actual: test.input }));
+
+const translateToBrahmi = (text, format) => {
+  if (text) {
+    const replacements = {
+      "ा": "आ",
+      "ि": "इ",
+      "ी": "ई",
+      "ु": "उ",
+      "ू": "ऊ",
+      "ृ": "ऋ",
+      "ॄ": "ॠ",
+      "ॅ": "ए",
+      "ॆ": "ए",
+      "े": "ए",
+      "ै": "ऐ",
+      "ॉ": "ओ",
+      "ो": "ओ",
+      "ो": "ओ",
+      "ौ": "औ",
+      "ॏ": "औ",
+      "ॢ": "ऌ",
+      "ॣ": "ॡ",
+    };
+    const x = text
+      .split("")
+      .map((c) => {
+        if (c in replacements) {
+          return Sanscript.t(replacements[c], format, BRAHMI);
+        }
+
+        return Sanscript.t(c, format, BRAHMI);
+      })
+      .join("");
+    return x;
+  }
+  return text;
+};
 
 export default {
   data() {
@@ -130,10 +183,12 @@ export default {
         },
       },
       translation: initialText,
+      brahmiTranslation: translateToBrahmi(initialText, DEVANAGARI),
       textareaValue: initialText,
       items: tests,
       formats: Object.values(FORMATS),
       formatValue: FORMATS.devanagari,
+      displayBrahmi: false,
       headers: [
         { title: "Input", key: "input" },
         { title: "Expected Output (L to R)", key: "expected" },
@@ -150,6 +205,17 @@ export default {
       } else if (this.formatValue.value == "iast") {
         return "Type in IAST. Eg: oṃ rudrāya namaḥ";
       }
+    },
+    indusInputCss() {
+      const isSafari = () => {
+        return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      };
+
+      let cls = "";
+      cls +=
+        this.displayBrahmi == true ? "indus-brahmi-input " : "indus-input rtl ";
+      cls += isSafari() ? "disable-ligatures " : "";
+      return cls;
     },
   },
   methods: {
@@ -182,9 +248,7 @@ export default {
           )
         );
       }
-    },
-    isSafari() {
-      return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+      this.brahmiTranslation = translateToBrahmi(this.translation, DEVANAGARI);
     },
     changeFormat(value) {
       this.formatValue = value;
@@ -216,12 +280,28 @@ export default {
   font-size: 24pt;
   font-display: swap;
 }
+@font-face {
+  font-family: "indus_brahmi_input";
+  src: url("../assets/fonts/indus-brahmi-font.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24pt;
+  font-display: swap;
+}
 .indus-input {
   font-family: indus_input;
   font-size: 24pt;
   white-space: pre;
   font-feature-settings: "dlig" 1;
   text-wrap: wrap;
+}
+.indus-brahmi-input {
+  font-family: indus_brahmi_input;
+  font-size: 24pt;
+  white-space: pre;
+  font-feature-settings: "dlig" 1;
+  text-wrap: wrap;
+  text-align: right;
 }
 .indus-input:after {
   content: " ";
@@ -244,7 +324,7 @@ export default {
   white-space: pre;
 }
 .container {
-  padding: 15pt;
+  padding: 10pt;
   display: flex;
   flex-direction: column;
 }
@@ -276,9 +356,9 @@ export default {
 }
 .output-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 90%;
-  margin-bottom: 15pt;
+  /* margin-bottom: 15pt; */
   gap: 10pt;
 }
 .output-container div {
@@ -289,9 +369,12 @@ export default {
 }
 .toolbar {
   margin-bottom: 5pt;
+  display: flex;
+  flex-direction: row;
+  gap: 5pt;
 }
 .format-select {
-  width: 140pt;
+  width: 135pt;
 }
 .devanagari-output {
   display: flex;
@@ -302,8 +385,18 @@ export default {
   text-align: right;
   overflow: auto;
   font-size: 16pt;
+  margin-top: 5pt;
+  white-space: pre;
 }
 .disable-ligatures {
   font-feature-settings: "dlig" off;
+}
+.brahmi {
+  font-size: 24pt;
+  white-space: pre;
+  text-wrap: wrap;
+}
+.text-right {
+  text-align: right;
 }
 </style>
