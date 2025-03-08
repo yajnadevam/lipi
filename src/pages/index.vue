@@ -175,7 +175,7 @@
                         class="image-container"
                       >
                         <v-img
-                          :src="`/public/seal_images/${img}`"
+                          :src="`/seal_images/${img}`"
                           contain
                           class="hover-image"
                         />
