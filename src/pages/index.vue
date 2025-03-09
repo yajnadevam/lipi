@@ -164,26 +164,27 @@
                 <td></td>
               </tr>
                 <!-- Row for Seal Images -->
-              <tr v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0">
-                <td colspan="12" class="text-center">
-                  <v-container>
-                    <v-row justify="center">
-                      <v-col
-                        v-for="(img, index) in sealImages[item.cisi]"
-                        :key="index"
-                        :cols="Math.floor(12 / sealImages[item.cisi].length) || 12"
-                        class="image-container"
-                      >
-                        <v-img
-                          :src="`/seal_images/${img}`"
-                          contain
-                          class="hover-image"
-                        />
-                      </v-col>
-                    </v-row>
-                  </v-container>
-                </td>
-              </tr>
+                <tr v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0">
+                  <td colspan="12" class="text-center">
+                    <v-container>
+                      <v-row justify="center">
+                        <v-col
+                          v-for="(img, index) in sealImages[item.cisi].slice(0, 2)"
+                          :key="index"
+                          :cols="6"
+                          class="image-container"
+                        >
+                          <v-img
+                            :src="`/seal_images/${img}`"
+                            contain
+                            class="hover-image"
+                          />
+                        </v-col>
+                      </v-row>
+                    </v-container>
+                  </td>
+                </tr>
+
             </template>
             
           </v-data-table>
