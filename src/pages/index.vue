@@ -143,7 +143,7 @@
             </template>
 
             <template v-slot:expanded-row="{ columns, item }">
-              <tr>
+              <tr class="expanded-content">
                 <td></td>
                 <td>{{ item.site }}</td>
                 <td></td>
@@ -152,6 +152,7 @@
                 </td>
                 <td></td>
                 <td>{{ item.notes }}</td>
+                <td></td>
               </tr>
               <tr v-if="fullrandom">
                 <td></td>
@@ -163,30 +164,34 @@
                 <td></td>
                 <td></td>
               </tr>
-                <!-- Row for Seal Images -->
-                <tr v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0">
-                  <td colspan="12" class="text-center">
-                    <v-container>
-                      <v-row justify="center">
-                        <v-col
-                          v-for="(img, index) in sealImages[item.cisi].slice(0, 2)"
-                          :key="index"
-                          :cols="6"
-                          class="image-container"
-                        >
-                          <v-img
-                            :src="`/seal_images/${img}`"
-                            contain
-                            class="hover-image"
-                          />
-                        </v-col>
-                      </v-row>
-                    </v-container>
-                  </td>
-                </tr>
-
+              <!-- Row for Seal Images -->
+              <tr
+                v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0"
+                class="expanded-content"
+              >
+                <td colspan="12" class="text-center">
+                  <v-container>
+                    <v-row justify="center">
+                      <v-col
+                        v-for="(img, index) in sealImages[item.cisi].slice(
+                          0,
+                          2
+                        )"
+                        :key="index"
+                        :cols="6"
+                        class="image-container"
+                      >
+                        <v-img
+                          :src="`/seal_images/${img}`"
+                          contain
+                          class="hover-image"
+                        />
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </td>
+              </tr>
             </template>
-            
           </v-data-table>
         </div>
       </v-main>
@@ -195,7 +200,7 @@
 </template>
 
 <script setup>
-import sealImages from '@/assets/data/seal_id_and_image_mapping.json'; // Ensure the file is in `assets`
+import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
@@ -215,11 +220,11 @@ import xlits from "../assets/data/xlits.csv?raw";
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
-const urllist = csv2json(urls)
-const urlMap = {}
+const urllist = csv2json(urls);
+const urlMap = {};
 urllist.forEach((item) => {
-  urlMap[item.key] = item.url
-})
+  urlMap[item.key] = item.url;
+});
 const inx = csv2json(incx, {
   keys: [
     "id",
@@ -272,7 +277,7 @@ inx.forEach((el) => {
   const canonized = canonize(el.text);
   el.text = canonized.str; // jsize(el.text)
   el.textlength = parseInt(el["text length"]);
-    el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
+  el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
   totalLen += el.complete === "Y" ? el.textlength : 0;
   totalCount += el.complete ? 1 : 0;
   decipheredLen += el.complete === "Y" && el.translation ? el.textlength : 0;
@@ -294,7 +299,7 @@ inx.forEach((el) => {
   }
   // if(el.sanskrit) {
   //   el.sanskrit = el.sanskrit.split(/—|\s/).map((key) => {
-  //   if(key=='अकक') { 
+  //   if(key=='अकक') {
   //     console.log(key, urlMap[key])
   //     return urlMap[key] ? '<a href="' + urlMap[key] + '">' + key + '</a>' : key
   //     // return key
@@ -463,8 +468,7 @@ export default {
           "M 8.00386 9.41816 C 7.61333 9.02763 7.61334 8.39447 8.00386 8.00395 C 8.39438 7.61342 9.02755 7.61342 9.41807 8.00395 L 12.0057 10.5916 L 14.5907 8.00657 C 14.9813 7.61605 15.6144 7.61605 16.0049 8.00657 C 16.3955 8.3971 16.3955 9.03026 16.0049 9.42079 L 13.4199 12.0058 L 16.0039 14.5897 C 16.3944 14.9803 16.3944 15.6134 16.0039 16.0039 C 15.6133 16.3945 14.9802 16.3945 14.5896 16.0039 L 12.0057 13.42 L 9.42097 16.0048 C 9.03045 16.3953 8.39728 16.3953 8.00676 16.0048 C 7.61624 15.6142 7.61624 14.9811 8.00676 14.5905 L 10.5915 12.0058 L 8.00386 9.41816 Z",
         ],
       },
- 
-      
+
       sortBy: [{ key: "textlength", order: "desc" }],
       search: "",
       drawer: null,
@@ -622,7 +626,6 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
-
   },
   created() {
     this.pageNum = localStorage.getItem("page");
@@ -642,9 +645,7 @@ export default {
       const splashScreen = document.querySelector(".splash");
       if (splashScreen) splashScreen.classList.add("hidden");
     }, 100);
-     
   },
-
 };
 </script>
 
@@ -688,5 +689,19 @@ export default {
 .hover-image:hover {
   transform: scale(2);
   z-index: 10; /* Brings it above other elements */
+}
+
+.v-theme--light {
+  .expanded-content {
+    background: #f5f5dc;
+    color: blue;
+  }
+}
+
+.v-theme--dark {
+  .expanded-content {
+    background: black;
+    color: yellow;
+  }
 }
 </style>
