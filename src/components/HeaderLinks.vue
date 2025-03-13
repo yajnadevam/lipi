@@ -4,6 +4,7 @@
     <a href="/allographs" class="header-link">Allographs</a>
     <a href="/keyboard" class="header-link">Keyboard</a>
     <a href="/signs" class="header-link">Signs</a>
+    <a href="/signGraph" class="header-link">Sign Graph</a>
   </div>
   <v-divider />
 </template>
