@@ -214,25 +214,16 @@ import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
+import inx from '../assets/data/inscriptions.json';
 
 const urllist = csv2json(urls)
 const urlMap = {}
 urllist.forEach((item) => {
   urlMap[item.key] = item.url
 })
-const inx = csv2json(incx, {
-  keys: [
-    "id",
-    "cisi",
-    "site",
-    "complete",
-    "text",
-    "text length",
-    "sanskrit",
-    "translation",
-    "notes",
-  ],
-});
+
+
+
 const iso = Sanscript.t(
   "aAiIuUoOfFxXEOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzshL",
   "slp1",

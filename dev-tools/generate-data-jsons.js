@@ -1,5 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const csvtojson = require("csvtojson");
+
+
+const inscriptionsCsvFilePath =  "./src/assets/data/inscriptions.csv";
+const inscriptionsjsonFilePath =  "./src/assets/data/inscriptions.json";
+const sealImagesFolder = './public/seal_images'; 
 
 // Define the regex pattern
 const sealImageNamePattern = /^([A-Za-z]{1,5})[-]+(\d+)(.*)$/;
@@ -93,6 +99,49 @@ function groupFilesBySealId(sealImagesFolder) {
     return fileMap;
 }
 
-// Example usage:
-const sealImagesFolder = './public/seal_images'; // Change this to your folder path
-const result = groupFilesBySealId(sealImagesFolder);
+
+
+const requiredColumns = [
+  "id",
+  "cisi",
+  "site",
+  "complete",
+  "condition",
+  "text",
+  "text length",
+  "sanskrit",
+  "translation",
+  "notes"
+];
+
+
+async function convertCsvToJson(inputFilePath, outputFilePath) {
+    try {
+      const jsonArray = await csvtojson({
+        delimiter: ",", // Ensure correct separator
+        trim: true, // Trim whitespace
+        checkType: true, // Auto-detect numbers & booleans
+      })
+        .fromFile(inputFilePath);
+  
+      // Filter required columns
+      const filteredData = jsonArray.map(row => {
+        const filteredRow = {};
+        requiredColumns.forEach(col => {
+          filteredRow[col] = row[col] || ""; // Handle missing values
+        });
+        return filteredRow;
+      });
+  
+      // Save JSON output
+      fs.writeFileSync(outputFilePath, JSON.stringify(filteredData, null, 2), "utf-8");
+      console.log(`JSON file saved at ${outputFilePath}`);
+    } catch (error) {
+      console.error("Error converting CSV to JSON:", error);
+    }
+  }
+
+
+groupFilesBySealId(sealImagesFolder);
+
+convertCsvToJson(inscriptionsCsvFilePath,inscriptionsjsonFilePath);
