@@ -6,8 +6,6 @@ const processIndusScript = (data) => {
     const charPrev = {};
     const charWords = {};
     const charCount = {};
-    const charNextCount = {};
-    const charPrevCount = {};
 
     data.forEach(entry => {
         let text = entry.text;
@@ -29,27 +27,35 @@ const processIndusScript = (data) => {
 
                 if (i > 0) {
                     const prevChar = chars[i - 1];
-                    if (!charPrev[char]) charPrev[char] = [];
-                    if (!charPrevCount[char]) charPrevCount[char] = {};
-                    
-                    charPrev[char].push({ char: prevChar, freq: (charPrevCount[char][prevChar] = (charPrevCount[char][prevChar] || 0) + 1) });
+                    if (!charPrev[char]) charPrev[char] = new Map();
+
+                    // Update frequency if prevChar exists, otherwise add it
+                    charPrev[char].set(prevChar, (charPrev[char].get(prevChar) || 0) + 1);
                 }
+
                 if (i < chars.length - 1) {
                     const nextChar = chars[i + 1];
-                    if (!charNext[char]) charNext[char] = [];
-                    if (!charNextCount[char]) charNextCount[char] = {};
-                    
-                    charNext[char].push({ char: nextChar, freq: (charNextCount[char][nextChar] = (charNextCount[char][nextChar] || 0) + 1) });
+                    if (!charNext[char]) charNext[char] = new Map();
+
+                    // Update frequency if nextChar exists, otherwise add it
+                    charNext[char].set(nextChar, (charNext[char].get(nextChar) || 0) + 1);
                 }
             });
         });
     });
 
+    // Convert Maps to sorted arrays for JSON serialization
     Object.keys(charWords).forEach(char => {
         frequencyMap[Number(char)] = {
             count: charCount[char] || 0,
-            before: charPrev[char] || [],
-            after: charNext[char] || [],
+            before: Array.from(charPrev[char] || [])
+                .map(([char, freq]) => ({ char, freq }))
+                .sort((a, b) => b.freq - a.freq), // Sort by frequency (descending)
+
+            after: Array.from(charNext[char] || [])
+                .map(([char, freq]) => ({ char, freq }))
+                .sort((a, b) => b.freq - a.freq), // Sort by frequency (descending)
+
             words: Array.from(charWords[char] || [])
         };
     });

@@ -1,5 +1,5 @@
 <template>
-  <!--Header-->
+  <!-- Header -->
   <v-toolbar>
     <h1 class="indus" style="margin: 10px"></h1>
     <v-toolbar-title>Indus script corpus</v-toolbar-title>
@@ -7,15 +7,34 @@
   </v-toolbar>
   <HeaderLinks />
 
-  <v-layout>
-    <v-main>
-      <div class="d-flex justify-center align-center h-100 card-container">
-        <div v-for="sign in items" :key="sign.sign" class="card" @click="handleSignClick(sign.sign)">
-          <span>{{ sign }}</span>
-        </div>
-      </div>
-    </v-main>
-  </v-layout>
+  <v-container>
+    <v-data-table
+      :headers="headers"
+      :items="tableItems"
+      :sort-by="[{ key: 'count', order: 'desc' }]"  
+      class="elevation-1"
+    >
+      <template v-slot:item.character="{ item }">
+        <span class="indus-symbol">{{ characterize(item.key) }}</span>
+      </template>
+
+      <template v-slot:item.key="{ item }">
+        <span class="key-label">{{ item.key }}</span>
+      </template>
+
+      <template v-slot:item.count="{ item }">
+        <span class="key-label">{{ item.count }}</span>
+      </template>
+
+      <template v-slot:item.before="{ item }">
+        <span class="key-label">{{ item.before.length }}</span>
+      </template>
+
+      <template v-slot:item.after="{ item }">
+        <span class="key-label">{{ item.after.length }}</span>
+      </template>
+    </v-data-table>
+  </v-container>
 </template>
 
 <script setup>
@@ -28,14 +47,40 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
 
-// Reactive State
-const items = ref(signs);
+// Headers for the sortable table
+const headers = ref([
+  { title: "Character", key: "character", sortable: false },
+  { title: "Key", key: "key", sortable: true },
+  { title: "Frequency", key: "count", sortable: true },
+  { title: "Follows", key: "before", sortable: true },
+  { title: "Followed By", key: "after", sortable: true },
+]);
+
+// Convert sign data into a structured table format
+const tableItems = ref(
+  Object.entries(signs).map(([key, frequencyInfo]) => ({
+    key,
+    count: frequencyInfo.count || 0,
+    before: frequencyInfo.before || [],
+    after: frequencyInfo.after || [],
+  }))
+);
 
 // Handle Sign Click
 const handleSignClick = (characterizedSign) => {
   localStorage.setItem("search", characterizedSign);
   window.location = "/";
 };
+
+// Todo: This should probably be moved to a common location since it's used across pages
+function characterize(points) {
+  const charset = points.toString().split("-");
+  let result = "";
+  charset.forEach((point) => {
+    result += "\\u" + (0xe000 + parseInt(point)).toString(16);
+  });
+  return JSON.parse('"' + result + '"');
+}
 
 // Splash Screen Removal
 onMounted(() => {
@@ -45,6 +90,7 @@ onMounted(() => {
   }, 100);
 });
 </script>
+
 
 <style>
 /* Your styles remain unchanged */
