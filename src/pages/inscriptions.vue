@@ -44,26 +44,59 @@ const iso = Sanscript.t(
   "iast"
 );
 
-// Headers for the sortable table
 const headers = ref([
   { title: "id", key: "id", sortable: false },
   { title: "cisi", key: "cisi", sortable: true },
+  { title: "text", key: "text", sortable: true },
+  { title: "sanskrit", key: "sanskrit", sortable: true },
+  { title: "translation", key: "translation", sortable: true },
+  { title: "notes", key: "notes", sortable: true },
+  { title: "site", key: "site", sortable: true },
+  { title: "area-section", key: "area-section", sortable: true },
+  { title: "block-house", key: "block-house", sortable: true },
+  { title: "room-grid", key: "room-grid", sortable: true },
+  { title: "excavation-idno", key: "excavation-idno", sortable: true },
+  { title: "time", key: "time", sortable: true },
+  { title: "period", key: "period", sortable: true },
+  { title: "phase", key: "phase", sortable: true },
+  { title: "depth", key: "depth", sortable: true },
+  { title: "boss", key: "boss", sortable: true },
+  { title: "material", key: "material", sortable: true },
+  { title: "complete", key: "complete", sortable: true },
   { title: "condition", key: "condition", sortable: true },
-  { title: "text", key: "text", sortable: true }  ,
-  { title: "sanskrit", key: "sanskrit", sortable: true }   
+
+  { title: "text length", key: "text length", sortable: true },
+
 ]);
+
 
 const tableItems = ref(
   Object.entries(signs)
     .map(([key, info]) => ({
       id: info.id,
       cisi: info.cisi || 0,
+      site: info.site || "",
+      "area-section": info["area-section"] || "",
+      "block-house": info["block-house"] || "",
+      "room-grid": info["room-grid"] || "",
+      "excavation-idno": info["excavation-idno"] || "",
+      time: info.time || "",
+      period: info.period || "",
+      phase: info.phase || "",
+      depth: info.depth || "",
+      boss: info.boss || "",
+      material: info.material || "",
+      complete: info.complete || "",
       condition: info.condition || "",
-      text: info.text || "",   
-      sanskrit: info.sanskrit || ""
+      text: info.text || "",
+      "text length": info["text length"] || "",
+      sanskrit: info.sanskrit || "",
+      translation: info.translation || "",
+      notes: info.notes || ""
     }))
     .filter(item => item.condition.toLowerCase() !== "poor") // Exclude rows where condition is "poor"
 );
+
 
 // Handle Sign Click
 const handleSignClick = (characterizedSign) => {
@@ -94,19 +127,18 @@ function characterize(input) {
   try{
     let result = "";
 
-    let points = input.toString().replaceAll("]", " ");
-    points = points.toString().replaceAll("[", " ");
-
-    points = points.toString().replaceAll("  ", " ");
-
-    let words = points.toString().split(" ");
-    words.forEach((word) => {
-
-      const charset = word.toString().split("-");    
+    let points = input.toString().replaceAll("]", "-");
+    points = points.toString().replaceAll("[", "-");
+    points = points.toString().replaceAll("/", "-");
+ 
+    const charset = points.toString().split("-");    
       charset.forEach((point) => {
-        result += "\\u" + (0xe000 + parseInt(point)).toString(16);
+        if(point)
+        {
+          result += "\\u" + (0xe000 + parseInt(point)).toString(16);          
+        }
+       
       });
-    });
    
     return JSON.parse('"' + result + '"');
 
@@ -118,6 +150,43 @@ function characterize(input) {
 
   return "";
 
+}
+
+function characterize2(points) {
+  let log =false;
+
+  try
+  {
+    if(points.toString().includes("+032-031"))
+    {
+      console.log("characterize = "+points);
+      log=true;
+      
+    }
+    const charset = points.toString().split("-");
+    let result = "";
+    charset.forEach((point) => {
+      result += "\\u" + (0xe000 + parseInt(point)).toString(16);
+    });
+
+    
+
+    result = JSON.parse('"' + result + '"');
+
+    if(log)
+    {
+      console.log("result = "+result);
+      result = "check? "+result;
+    }
+
+    return result;
+  }
+  catch(err)
+  {
+    //console.error("error parsing: "+points+" ",err);
+  }
+
+  return "";
 }
 
 // Splash Screen Removal

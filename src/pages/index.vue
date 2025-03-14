@@ -219,7 +219,7 @@ import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
-import inx from '../assets/data/inscriptions.json';
+//import inx from '../assets/data/inscriptions.json';
 
 const urllist = csv2json(urls);
 const urlMap = {};
