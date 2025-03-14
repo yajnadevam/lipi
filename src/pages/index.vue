@@ -619,22 +619,6 @@ export default {
         isValueStringOrNumber &&
         (matchesLength || matchesSubstring || matchesCanonical)
       );
-      return (
-        value != null &&
-        query != null &&
-        ((this.optionBroken && item.raw.complete === "N") ||
-          item.raw.complete === "Y") &&
-        (typeof value === "string" || typeof value === "number") &&
-        (value === query ||
-          query === "L" + value ||
-          value
-            .toString()
-            .toLocaleLowerCase()
-            .indexOf(query.toLocaleLowerCase()) !== -1 ||
-          (query.length > 0 &&
-            query.charCodeAt(0) >= 0xe000 &&
-            canonized(value).indexOf(canonized(query)) !== -1))
-      );
     },
     itemrow(item) {
       return item.item.complete === "Y"
