@@ -590,7 +590,14 @@ export default {
 
       const pattern = query.slice(1, -1); // Remove the slashes
       const regex = new RegExp(pattern);
-      return regex.test(value);
+
+      let canonicalMatch = false;
+      if (this.optionCanonical && query.charCodeAt(0) >= 0xe000) {
+        const canonizedRegex = new RegExp(canonized(pattern));
+        canonicalMatch = canonizedRegex.test(canonized(value));
+      }
+
+      return regex.test(value) || canonicalMatch;
     },
     filterPart(value, query, item) {
       if (
@@ -613,6 +620,7 @@ export default {
 
       const matchesCanonical =
         query.charCodeAt(0) >= 0xe000 &&
+        this.optionCanonical &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
