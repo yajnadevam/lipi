@@ -42,20 +42,31 @@ function groupFilesBySealId(sealImagesFolder) {
         }
     });
 
-    // Sort the file names for each sealId
     Object.keys(fileMap).forEach(sealId => {
         fileMap[sealId].sort((a, b) => {
             const suffixA = a.suffix || '';
             const suffixB = b.suffix || '';
-
-            const isNumericA = /^_[0-9]/.test(suffixA);
-            const isNumericB = /^_[0-9]/.test(suffixB);
-
-            if (isNumericA !== isNumericB) {
-                return isNumericA ? 1 : -1;
-            }
-
-            return a.file.toLowerCase().localeCompare(b.file.toLowerCase()) || a.file.localeCompare(b.file);
+    
+            const firstCharA = suffixA.charAt(1) || ''; // Ignore the leading `_`
+            const firstCharB = suffixB.charAt(1) || '';
+    
+            const isLowerA = /^[a-z]/.test(firstCharA);
+            const isLowerB = /^[a-z]/.test(firstCharB);
+            const isUpperA = /^[A-Z]/.test(firstCharA);
+            const isUpperB = /^[A-Z]/.test(firstCharB);
+            const isNumericA = /^[0-9]/.test(firstCharA);
+            const isNumericB = /^[0-9]/.test(firstCharB);
+    
+            // Priority: lowercase < uppercase < numeric
+            if (isLowerA !== isLowerB) return isLowerA ? -1 : 1;
+            if (isUpperA !== isUpperB) return isUpperA ? -1 : 1;
+            if (isNumericA !== isNumericB) return isNumericA ? 1 : -1;
+    
+            // If the same category, compare by length
+            if (suffixA.length !== suffixB.length) return suffixA.length - suffixB.length;
+    
+            // Fallback to lexicographical order
+            return suffixA.localeCompare(suffixB);
         });
 
         // Replace array of objects with just filenames
