@@ -548,22 +548,77 @@ export default {
     },
     filterInscriptions(value, query, item) {
       if (query == null) return false;
-      const fields = query.trim().split(/\s+/);
-      if (!this.filterPart(value, fields[0], item)) return false;
       const keys = Object.keys(item.columns);
-      let found = 1;
-      for (let f = 1; f < fields.length; f++) {
-        for (let i = 0; fields[f] && i < keys.length; i++) {
-          if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
-            found++;
-            break;
-          }
-        }
-      }
-      return found === fields.length;
-    },
 
+      // Regex Query
+      if (query.startsWith("/") && query.endsWith("/")) {
+        return (
+          this.filterRegex(item.columns["canonized"], query, item) ||
+          this.filterRegex(item.columns["text"], query, item)
+        );
+      } else {
+        const fields = query.trim().split(/\s+/);
+        for (let f = 0; f < fields.length; f++) {
+          let found = false;
+          for (let i = 0; fields[f] && i < keys.length; i++) {
+            if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
+              found = true;
+              break;
+            }
+          }
+          if (!found) return false;
+        }
+        return true;
+      }
+    },
+    isValidValueAndQuery(value, query) {
+      return value != null && query != null && query.length > 0;
+    },
+    isCompleteOrBrokenIsAllowed(item) {
+      return (
+        item.raw.complete === "Y" ||
+        (this.optionBroken && item.raw.complete === "N")
+      );
+    },
+    filterRegex(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      const pattern = query.slice(1, -1); // Remove the slashes
+      const regex = new RegExp(pattern);
+      return regex.test(value);
+    },
     filterPart(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      // Not sure if this check is really necessary
+      const isValueStringOrNumber =
+        typeof value === "string" || typeof value === "number";
+
+      const matchesLength = query === "L" + value;
+      const matchesSubstring =
+        value
+          .toString()
+          .toLocaleLowerCase()
+          .indexOf(query.toLocaleLowerCase()) !== -1;
+
+      const matchesCanonical =
+        query.charCodeAt(0) >= 0xe000 &&
+        canonized(value).indexOf(canonized(query)) !== -1;
+
+      return (
+        isValueStringOrNumber &&
+        (matchesLength || matchesSubstring || matchesCanonical)
+      );
       return (
         value != null &&
         query != null &&
