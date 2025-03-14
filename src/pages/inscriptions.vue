@@ -8,15 +8,23 @@
   <HeaderLinks />
 
   <v-container>
-    <v-data-table
-      :headers="headers"
-      :items="tableItems"
-      :sort-by="[{ key: 'cisi', order: 'desc' }]"  
-      class="elevation-1"
-    >
+
+    <v-text-field
+      v-model="searchQuery"
+      label="Search"
+      class="mb-4"
+      clearable
+    ></v-text-field>
+
+        <v-data-table
+        :headers="headers"
+        :items="filteredItems" 
+        :sort-by="[{ key: 'cisi', order: 'desc' }]"  
+
+      >
    
     <template v-slot:item.text="{ item }">
-      <span class="indus-symbol">{{ characterize(item.text) }}</span>
+      <span class="indus-symbol">{{ item.text }}</span>
     </template>
     <template v-slot:item.sanskrit="{ item }">
       <span  >{{  sanskritize(item.sanskrit) }}</span>
@@ -88,14 +96,27 @@ const tableItems = ref(
       material: info.material || "",
       complete: info.complete || "",
       condition: info.condition || "",
-      text: info.text || "",
+      text: characterize(info.text),
       "text length": info["text length"] || "",
       sanskrit: info.sanskrit || "",
       translation: info.translation || "",
       notes: info.notes || ""
     }))
-    .filter(item => item.condition.toLowerCase() !== "poor") // Exclude rows where condition is "poor"
+    
 );
+
+const searchQuery = ref("");
+const currentPage = ref(1);
+
+const filteredItems = computed(() => {
+  if (!searchQuery.value) return tableItems.value;
+  return tableItems.value.filter((item) =>
+    Object.values(item).some((val) =>
+      String(val).toLowerCase().includes(searchQuery.value.toLowerCase())
+    )
+  );
+});
+
 
 
 // Handle Sign Click

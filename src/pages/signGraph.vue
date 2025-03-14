@@ -17,13 +17,17 @@
       <template v-slot:item.character="{ item }">
         <span class="indus-symbol">{{ characterize(item.key) }}</span>
       </template>
-
-      <template v-slot:item.key="{ item }">
-        <span class="key-label">{{ item.key }}</span>
+      
+      <template v-slot:item.before_chars="{ item }">
+        <span v-for="beforeItem in item.before_chars" :key="beforeItem.char"  >
+          <span class="indus-symbol" >{{ characterize(beforeItem.char.toString()) }}</span>   ({{ beforeItem.freq }})
+        </span>
       </template>
 
-      <template v-slot:item.count="{ item }">
-        <span class="key-label">{{ item.count }}</span>
+      <template v-slot:item.after_chars="{ item }">
+        <span v-for="afterItem in item.after_chars" :key="afterItem.char" >
+          <span class="indus-symbol" >{{ characterize(afterItem.char.toString()) }}</span> ({{ afterItem.freq }})
+        </span>
       </template>
 
       <template v-slot:item.before="{ item }">
@@ -47,24 +51,28 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 const theme = useTheme();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
 
-// Headers for the sortable table
 const headers = ref([
-  { title: "Character", key: "character", sortable: false },
-  { title: "Key", key: "key", sortable: true },
-  { title: "Frequency", key: "count", sortable: true },
-  { title: "Follows", key: "before", sortable: true },
-  { title: "Followed By", key: "after", sortable: true },
+  { title: "Sign", key: "character", sortable: false },
+  { title: "code", key: "key", sortable: true },
+  { title: "Words Having this Sign", key: "count", sortable: true },
+  { title: "Follows # Signs", key: "before", sortable: true },
+  { title: "Top Signs That Follow (# words)", key: "before_chars", sortable: false },
+  { title: "Followed By # Signs", key: "after", sortable: true },
+  { title: "Top Followed By Signs (# words)", key: "after_chars", sortable: false },
 ]);
 
-// Convert sign data into a structured table format
 const tableItems = ref(
   Object.entries(signs).map(([key, frequencyInfo]) => ({
     key,
     count: frequencyInfo.count || 0,
     before: frequencyInfo.before || [],
     after: frequencyInfo.after || [],
+    before_chars: (frequencyInfo.before || []).slice(0, 2), // Keep `{char, freq}` pairs
+    after_chars: (frequencyInfo.after || []).slice(0, 2),   // Keep `{char, freq}` pairs
   }))
 );
+
+
 
 // Handle Sign Click
 const handleSignClick = (characterizedSign) => {
@@ -73,13 +81,34 @@ const handleSignClick = (characterizedSign) => {
 };
 
 // Todo: This should probably be moved to a common location since it's used across pages
-function characterize(points) {
-  const charset = points.toString().split("-");
-  let result = "";
-  charset.forEach((point) => {
-    result += "\\u" + (0xe000 + parseInt(point)).toString(16);
-  });
-  return JSON.parse('"' + result + '"');
+function characterize(input) {
+ 
+ try{
+   let result = "";
+
+   let points = input.toString().replaceAll("]", "-");
+   points = points.toString().replaceAll("[", "-");
+   points = points.toString().replaceAll("/", "-");
+
+   const charset = points.toString().split("-");    
+     charset.forEach((point) => {
+       if(point)
+       {
+         result += "\\u" + (0xe000 + parseInt(point)).toString(16);          
+       }
+      
+     });
+  
+   return JSON.parse('"' + result + '"');
+
+ }
+ catch(err)
+ {
+   console.error("error parsing: "+input+" ",err);
+ }
+
+ return "";
+
 }
 
 // Splash Screen Removal

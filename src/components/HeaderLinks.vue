@@ -4,7 +4,8 @@
     <a href="/allographs" class="header-link">Allographs</a>
     <a href="/keyboard" class="header-link">Keyboard</a>
     <a href="/signs" class="header-link">Signs</a>
-    <a href="/signGraph" class="header-link">Sign Graph</a>
+    <a href="/signGraph" class="header-link">Sign-Map</a>
+    <a href="/inscriptions" class="header-link">All inscriptions </a>
   </div>
   <v-divider />
 </template>
