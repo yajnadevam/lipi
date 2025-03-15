@@ -549,27 +549,44 @@ export default {
     filterInscriptions(value, query, item) {
       if (query == null) return false;
       const keys = Object.keys(item.columns);
-
-      // Regex Query
-      if (query.startsWith("/") && query.endsWith("/")) {
-        return (
-          this.filterRegex(item.columns["canonized"], query, item) ||
-          this.filterRegex(item.columns["text"], query, item)
+      const fields = query
+        .trim()
+        .split(/\s+/)
+        // Filter regex expressions if they are incomplete
+        .filter(
+          (field) =>
+            !(
+              (field.startsWith("/") || field.endsWith("/")) &&
+              !(field.startsWith("/") && field.endsWith("/"))
+            )
         );
-      } else {
-        const fields = query.trim().split(/\s+/);
-        for (let f = 0; f < fields.length; f++) {
-          let found = false;
-          for (let i = 0; fields[f] && i < keys.length; i++) {
-            if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
-              found = true;
-              break;
-            }
+
+      // Iterate through every segment of the query
+      for (let f = 0; f < fields.length; f++) {
+        // Regex Query
+        if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
+          if (
+            !(
+              this.filterRegex(item.columns["canonized"], fields[f], item) ||
+              this.filterRegex(item.columns["text"], fields[f], item)
+            )
+          ) {
+            return false;
           }
-          if (!found) return false;
+          continue;
         }
-        return true;
+
+        let found = false;
+        // Iterate through every column in the row
+        for (let i = 0; fields[f] && i < keys.length; i++) {
+          if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
+            found = true;
+            break;
+          }
+        }
+        if (!found) return false;
       }
+      return true;
     },
     isValidValueAndQuery(value, query) {
       return value != null && query != null && query.length > 0;
