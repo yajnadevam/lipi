@@ -127,14 +127,6 @@
                   @click:clear="clearSearch"
                   label="Search Indus valley inscriptions"
                 />
-                <!-- <v-select
-                  v-model="searchCanonical"
-                  class="format-select"
-                  density="comfortable"
-                  :items="canonicalOptions"
-                  @update:model-value="changeCanonicalOption"
-                  label="Match Scheme"
-                /> -->
               </div>
             </template>
 
@@ -449,8 +441,6 @@ function xlitize(text) {
   return { str, regex, description, random };
 }
 
-const SEARCH_CANONICAL_OPTIONS = ["Canonical", "Verbatim"];
-
 export default {
   components: { Key, HeaderLinks },
   data() {
@@ -511,8 +501,6 @@ export default {
       optionBroken: false,
       lightTheme: false,
       fullrandom: fullrandom,
-      canonicalOptions: SEARCH_CANONICAL_OPTIONS,
-      searchCanonical: "Canonical",
     };
   },
   computed: {
@@ -558,9 +546,6 @@ export default {
       itemIndex > -1
         ? this.expanded.splice(itemIndex, 1)
         : this.expanded.push(item.id);
-    },
-    changeCanonicalOption(value) {
-      this.searchCanonical = value;
     },
     filterInscriptions(value, query, item) {
       if (query == null) return false;
@@ -630,12 +615,16 @@ export default {
       const regex = new RegExp(pattern);
 
       let canonicalMatch = false;
-      if (
-        pattern.charCodeAt(0) >= 0xe000
-        // &&
-        // this.searchCanonical === "Canonical"
-      ) {
-        const canonizedRegex = new RegExp(canonized(pattern));
+      if (pattern.charCodeAt(0) >= 0xe000) {
+        let canonizedPattern = "";
+        for (let i = 0; i < pattern.length; i++) {
+          if (pattern.charCodeAt(i) >= 0xe000) {
+            canonizedPattern += canonized(pattern.charAt(i));
+          } else {
+            canonizedPattern += pattern.charAt(i);
+          }
+        }
+        const canonizedRegex = new RegExp(canonizedPattern);
         canonicalMatch = canonizedRegex.test(canonized(value));
       }
 
@@ -662,7 +651,6 @@ export default {
 
       const matchesCanonical =
         query.charCodeAt(0) >= 0xe000 &&
-        // this.searchCanonical === "Canonical" &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
