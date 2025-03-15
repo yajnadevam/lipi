@@ -615,18 +615,17 @@ export default {
       const regex = new RegExp(pattern);
 
       let canonicalMatch = false;
-      if (pattern.charCodeAt(0) >= 0xe000) {
-        let canonizedPattern = "";
-        for (let i = 0; i < pattern.length; i++) {
-          if (pattern.charCodeAt(i) >= 0xe000) {
-            canonizedPattern += canonized(pattern.charAt(i));
-          } else {
-            canonizedPattern += pattern.charAt(i);
-          }
+      let canonizedPattern = "";
+      for (let i = 0; i < pattern.length; i++) {
+        if (pattern.charCodeAt(i) >= 0xe000) {
+          canonizedPattern += canonized(pattern.charAt(i));
+        } else {
+          canonizedPattern += pattern.charAt(i);
         }
-        const canonizedRegex = new RegExp(canonizedPattern);
-        canonicalMatch = canonizedRegex.test(canonized(value));
       }
+
+      const canonizedRegex = new RegExp(canonizedPattern);
+      canonicalMatch = canonizedRegex.test(canonized(value));
 
       return regex.test(value) || canonicalMatch;
     },
