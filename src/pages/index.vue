@@ -614,7 +614,7 @@ export default {
       const regex = new RegExp(pattern);
 
       let canonicalMatch = false;
-      if (this.optionCanonical && query.charCodeAt(0) >= 0xe000) {
+      if (query.charCodeAt(0) >= 0xe000) {
         const canonizedRegex = new RegExp(canonized(pattern));
         canonicalMatch = canonizedRegex.test(canonized(value));
       }
@@ -642,7 +642,6 @@ export default {
 
       const matchesCanonical =
         query.charCodeAt(0) >= 0xe000 &&
-        this.optionCanonical &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
