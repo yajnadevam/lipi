@@ -566,8 +566,8 @@ export default {
         // Regex Query
         if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
           let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
-          sanskrit = sanskrit.replaceAll("—", " ");
-          translation = translation.replaceAll("—", " ");
+          sanskrit = sanskrit ? sanskrit.replaceAll("—", " ") : "";
+          translation = translation ? translation.replaceAll("—", " ") : "";
           if (
             !(
               this.filterRegex(item.columns["canonized"], fields[f], item) ||
