@@ -127,14 +127,14 @@
                   @click:clear="clearSearch"
                   label="Search Indus valley inscriptions"
                 />
-                <v-select
+                <!-- <v-select
                   v-model="searchCanonical"
                   class="format-select"
                   density="comfortable"
                   :items="canonicalOptions"
                   @update:model-value="changeCanonicalOption"
                   label="Match Scheme"
-                />
+                /> -->
               </div>
             </template>
 
@@ -631,8 +631,9 @@ export default {
 
       let canonicalMatch = false;
       if (
-        query.charCodeAt(0) >= 0xe000 &&
-        this.searchCanonical === "Canonical"
+        pattern.charCodeAt(0) >= 0xe000
+        // &&
+        // this.searchCanonical === "Canonical"
       ) {
         const canonizedRegex = new RegExp(canonized(pattern));
         canonicalMatch = canonizedRegex.test(canonized(value));
@@ -661,7 +662,7 @@ export default {
 
       const matchesCanonical =
         query.charCodeAt(0) >= 0xe000 &&
-        this.searchCanonical === "Canonical" &&
+        // this.searchCanonical === "Canonical" &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
