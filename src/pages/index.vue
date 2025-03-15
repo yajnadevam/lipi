@@ -578,7 +578,6 @@ export default {
           ) {
             return false;
           }
-          console.log(sanskrit, translation);
           continue;
         }
 
