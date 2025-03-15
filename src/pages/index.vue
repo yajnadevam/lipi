@@ -117,16 +117,17 @@
                   <strong>{{ Math.ceil(value) }}% translated</strong>
                 </template>
               </v-progress-linear>
-              <v-text-field
-                id="search"
-                v-model="search"
-                class="pa-2"
-                clearable
-                :clear-icon="icons.clear"
-                @update:model-value="updateSearch"
-                @click:clear="clearSearch"
-                label="Search Indus valley inscriptions"
-              />
+              <div class="pa-2 search-container">
+                <v-text-field
+                  id="search"
+                  v-model="search"
+                  clearable
+                  :clear-icon="icons.clear"
+                  @update:model-value="updateSearch"
+                  @click:clear="clearSearch"
+                  label="Search Indus valley inscriptions"
+                />
+              </div>
             </template>
 
             <template v-slot:item.data-table-expand="{ item, isExpanded }">
@@ -548,37 +549,112 @@ export default {
     },
     filterInscriptions(value, query, item) {
       if (query == null) return false;
-      const fields = query.trim().split(/\s+/);
-      if (!this.filterPart(value, fields[0], item)) return false;
       const keys = Object.keys(item.columns);
-      let found = 1;
-      for (let f = 1; f < fields.length; f++) {
+      const fields = query
+        .trim()
+        .split(/\s+/)
+        // Filter regex expressions if they are incomplete
+        .filter(
+          (field) =>
+            !(
+              (field.startsWith("/") || field.endsWith("/")) &&
+              !(field.startsWith("/") && field.endsWith("/"))
+            )
+        );
+
+      // Iterate through every segment of the query
+      for (let f = 0; f < fields.length; f++) {
+        // Regex Query
+        if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
+          let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
+          sanskrit = sanskrit ? sanskrit.replaceAll("—", " ") : "";
+          translation = translation ? translation.replaceAll("—", " ") : "";
+          if (
+            !(
+              this.filterRegex(item.columns["canonized"], fields[f], item) ||
+              this.filterRegex(item.columns["text"], fields[f], item) ||
+              this.filterRegex(sanskrit, fields[f], item) ||
+              this.filterRegex(translation, fields[f], item)
+            )
+          ) {
+            return false;
+          }
+          continue;
+        }
+
+        let found = false;
+        // Iterate through every column in the row
         for (let i = 0; fields[f] && i < keys.length; i++) {
           if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
-            found++;
+            found = true;
             break;
           }
         }
+        if (!found) return false;
       }
-      return found === fields.length;
+      return true;
     },
-
-    filterPart(value, query, item) {
+    isValidValueAndQuery(value, query) {
+      return value != null && query != null && query.length > 0;
+    },
+    isCompleteOrBrokenIsAllowed(item) {
       return (
-        value != null &&
-        query != null &&
-        ((this.optionBroken && item.raw.complete === "N") ||
-          item.raw.complete === "Y") &&
-        (typeof value === "string" || typeof value === "number") &&
-        (value === query ||
-          query === "L" + value ||
-          value
-            .toString()
-            .toLocaleLowerCase()
-            .indexOf(query.toLocaleLowerCase()) !== -1 ||
-          (query.length > 0 &&
-            query.charCodeAt(0) >= 0xe000 &&
-            canonized(value).indexOf(canonized(query)) !== -1))
+        item.raw.complete === "Y" ||
+        (this.optionBroken && item.raw.complete === "N")
+      );
+    },
+    filterRegex(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      const pattern = query.slice(1, -1); // Remove the slashes
+      const regex = new RegExp(pattern);
+
+      let canonicalMatch = false;
+      let canonizedPattern = "";
+      for (let i = 0; i < pattern.length; i++) {
+        if (pattern.charCodeAt(i) >= 0xe000) {
+          canonizedPattern += canonized(pattern.charAt(i));
+        } else {
+          canonizedPattern += pattern.charAt(i);
+        }
+      }
+
+      const canonizedRegex = new RegExp(canonizedPattern);
+      canonicalMatch = canonizedRegex.test(canonized(value));
+
+      return regex.test(value) || canonicalMatch;
+    },
+    filterPart(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      // Not sure if this check is really necessary
+      const isValueStringOrNumber =
+        typeof value === "string" || typeof value === "number";
+
+      const matchesLength = query === "L" + value;
+      const matchesSubstring =
+        value
+          .toString()
+          .toLocaleLowerCase()
+          .indexOf(query.toLocaleLowerCase()) !== -1;
+
+      const matchesCanonical =
+        query.charCodeAt(0) >= 0xe000 &&
+        canonized(value).indexOf(canonized(query)) !== -1;
+
+      return (
+        isValueStringOrNumber &&
+        (matchesLength || matchesSubstring || matchesCanonical)
       );
     },
     itemrow(item) {
@@ -703,5 +779,10 @@ export default {
     background: black;
     color: yellow;
   }
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
 }
 </style>
