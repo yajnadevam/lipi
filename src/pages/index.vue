@@ -565,14 +565,20 @@ export default {
       for (let f = 0; f < fields.length; f++) {
         // Regex Query
         if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
+          let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
+          sanskrit = sanskrit.replaceAll("—", " ");
+          translation = translation.replaceAll("—", " ");
           if (
             !(
               this.filterRegex(item.columns["canonized"], fields[f], item) ||
-              this.filterRegex(item.columns["text"], fields[f], item)
+              this.filterRegex(item.columns["text"], fields[f], item) ||
+              this.filterRegex(sanskrit, fields[f], item) ||
+              this.filterRegex(translation, fields[f], item)
             )
           ) {
             return false;
           }
+          console.log(sanskrit, translation);
           continue;
         }
 
