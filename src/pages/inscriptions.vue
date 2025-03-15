@@ -178,29 +178,16 @@ function characterize2(points) {
 
   try
   {
-    if(points.toString().includes("+032-031"))
-    {
-      console.log("characterize = "+points);
-      log=true;
-      
-    }
+ 
     const charset = points.toString().split("-");
     let result = "";
     charset.forEach((point) => {
       result += "\\u" + (0xe000 + parseInt(point)).toString(16);
     });
-
+    
     
 
-    result = JSON.parse('"' + result + '"');
-
-    if(log)
-    {
-      console.log("result = "+result);
-      result = "check? "+result;
-    }
-
-    return result;
+    return JSON.parse('"' + result + '"');   
   }
   catch(err)
   {
