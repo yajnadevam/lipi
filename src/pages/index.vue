@@ -201,6 +201,7 @@
 </template>
 
 <script setup>
+import { toRefs } from "vue";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
@@ -582,6 +583,23 @@ export default {
           continue;
         }
 
+        // Columnar Query
+        if (fields[f].indexOf(":") > -1) {
+          const [column, q] = fields[f].split(":");
+          const rawValue = toRefs(item.raw);
+          if (rawValue[column]) {
+            let value = rawValue[column].value;
+            if (column === "site" && value.toLocaleLowerCase() === "unknown") {
+              value = null;
+            }
+
+            if (!this.filterPart(value, q ? q : "*", item)) {
+              return false;
+            }
+          }
+          continue;
+        }
+
         let found = false;
         // Iterate through every column in the row
         for (let i = 0; fields[f] && i < keys.length; i++) {
@@ -636,6 +654,10 @@ export default {
       ) {
         return false;
       }
+
+      // If query is empty then filter out rows that have no value (empty)
+      if (query === "*")
+        return value !== "" && value !== null && value !== "undefined";
 
       // Not sure if this check is really necessary
       const isValueStringOrNumber =
