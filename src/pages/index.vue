@@ -588,7 +588,7 @@ export default {
 
         // Columnar Query
         if (fields[f].indexOf(":") > -1) {
-          const [column, q] = fields[f].split(":");
+          let [column, q] = fields[f].split(":");
           const rawValue = toRefs(item.raw);
           if (rawValue[column]) {
             let value = rawValue[column].value;
@@ -596,6 +596,11 @@ export default {
             // If column is site and value is unknown substitute null value
             if (column === "site" && value.toLocaleLowerCase() === "unknown") {
               value = null;
+            }
+
+            // Rewrite unicorn as bull1 since that's the internal name
+            if (column === "symbol" && q.toLocaleLowerCase() === "unicorn") {
+              q = "bull1";
             }
 
             if (!this.filterPart(value, q ? q : "*", item)) {
