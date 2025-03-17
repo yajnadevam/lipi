@@ -238,6 +238,9 @@ const inx = csv2json(incx, {
     "sanskrit",
     "translation",
     "notes",
+    "symbol",
+    "phase",
+    "period",
   ],
 });
 const iso = Sanscript.t(
