@@ -589,6 +589,8 @@ export default {
           const rawValue = toRefs(item.raw);
           if (rawValue[column]) {
             let value = rawValue[column].value;
+
+            // If column is site and value is unknown substitute null value
             if (column === "site" && value.toLocaleLowerCase() === "unknown") {
               value = null;
             }
