@@ -603,7 +603,7 @@ export default {
               q = "bull1";
             }
 
-            if (!this.filterPart(value, q ? q : "*", item)) {
+            if (!this.filterPart(value, q ? q : "**", item)) {
               return false;
             }
           }
@@ -665,8 +665,9 @@ export default {
         return false;
       }
 
-      // If query is empty then filter out rows that have no value (empty)
-      if (query === "*")
+      // If query is any (represented as **) then filter out rows that have no value (empty)
+      // Please note * is used to find yet to be translated seals so we are using ** for any
+      if (query === "**")
         return value !== "" && value !== null && value !== "undefined";
 
       // Not sure if this check is really necessary
