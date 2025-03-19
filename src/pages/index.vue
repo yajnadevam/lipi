@@ -283,9 +283,9 @@ inx.forEach((el) => {
   el.text = canonized.str; // jsize(el.text)
   el.textlength = parseInt(el["text length"]);
   el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
-  totalLen += el.complete === "Y" ? el.textlength : 0;
-  totalCount += el.complete ? 1 : 0;
-  decipheredLen += el.complete === "Y" && el.translation ? el.textlength : 0;
+  totalLen += el.complete === 'Y' ? el.textlength : 0;
+  totalCount += el.complete === 'Y' ? 1 : 0;
+  decipheredLen += (el.complete === 'Y' && el.sanskrit) ? el.textlength : 0;
   // if (el.translation) console.log(el.translation)
   decipheredCount += el.translation ? 1 : 0;
   el.canonized = canonized.canon;
