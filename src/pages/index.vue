@@ -501,9 +501,7 @@ export default {
           key: "sanskrit",
           cellProps: { class: "sanskrit" },
         },
-        { title: "Translation", key: "translation" },
-        {title:"material",key:"material"},
-        {title:"color",key:"color"},
+        { title: "Translation", key: "translation" }, 
         { title: "", key: "data-table-expand" },
         
       ],
