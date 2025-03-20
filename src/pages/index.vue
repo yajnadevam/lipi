@@ -118,15 +118,15 @@
                 </template>
               </v-progress-linear>
               <div class="pa-2 search-container">
-                <v-text-field
-                  id="search"
-                  v-model="search"
-                  clearable
-                  :clear-icon="icons.clear"
-                  @update:model-value="updateSearch"
-                  @click:clear="clearSearch"
-                  label="Search Indus valley inscriptions"
-                />
+              <v-text-field
+                id="search"
+                v-model="search"
+                clearable
+                :clear-icon="icons.clear"
+                @update:model-value="updateSearch"
+                @click:clear="clearSearch"
+                label="Search Indus valley inscriptions"
+              />
               </div>
             </template>
 
@@ -186,6 +186,7 @@
                           :src="`/seal_images/${img}`"
                           contain
                           class="hover-image"
+                          :class="getSealClasses(item)"
                         />
                       </v-col>
                     </v-row>
@@ -232,6 +233,8 @@ const inx = csv2json(incx, {
     "id",
     "cisi",
     "site",
+    "material",
+    "color",
     "complete",
     "text",
     "text length",
@@ -499,7 +502,10 @@ export default {
           cellProps: { class: "sanskrit" },
         },
         { title: "Translation", key: "translation" },
+        {title:"material",key:"material"},
+        {title:"color",key:"color"},
         { title: "", key: "data-table-expand" },
+        
       ],
       items: inx,
       optionCanonical: false,
@@ -677,13 +683,13 @@ export default {
 
       const matchesLength = query === "L" + value;
       const matchesSubstring =
-        value
-          .toString()
-          .toLocaleLowerCase()
+          value
+            .toString()
+            .toLocaleLowerCase()
           .indexOf(query.toLocaleLowerCase()) !== -1;
 
       const matchesCanonical =
-        query.charCodeAt(0) >= 0xe000 &&
+            query.charCodeAt(0) >= 0xe000 &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
@@ -736,6 +742,14 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
+
+
+    getSealClasses(item) {
+      let material = item.material ? item.material.toLowerCase().replace(/\s+/g, '') : '';
+      let color = item.color ? item.color.toLowerCase().replace(/[\s\-]+/g, '') : '';  
+      
+      return `seal-mat-${material} seal-mat-${material}-${color}`;
+    }
   },
   created() {
     this.pageNum = localStorage.getItem("page");
@@ -819,4 +833,41 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+
+
+
+.seal-mat-steatite img{
+ 
+
+  filter: sepia(80%) hue-rotate(320deg) saturate(200%) brightness(100%);
+}
+
+.seal-mat-steatite-white img{
+   
+  filter: sepia(80%) hue-rotate(320deg) saturate(110%) brightness(80%);
+}
+
+.seal-mat-steatite-grey img{
+   
+  filter: sepia(0%) hue-rotate(0deg) saturate(100%) brightness(100%);
+ }
+ 
+
+
+.seal-mat-clay img {
+  filter: sepia(80%) hue-rotate(320deg) saturate(200%) brightness(100%);
+}
+
+.seal-mat-clay-grey img {
+  filter: sepia(0%) hue-rotate(0deg) saturate(100%) brightness(100%);
+}
+
+
+.seal-mat-copper img {
+  filter: sepia(98%) hue-rotate(310deg) saturate(150%) brightness(60%);
+}
+
+
+
 </style>
