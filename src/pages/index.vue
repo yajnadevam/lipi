@@ -289,6 +289,7 @@ inx.forEach((el) => {
   // if (el.translation) console.log(el.translation)
   decipheredCount += el.translation ? 1 : 0;
   el.canonized = canonized.canon;
+  //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
   if (el.sanskrit) {
     if (el.sanskrit.startsWith("ref:")) {
       Object.assign(el, resolve(el.sanskrit));
