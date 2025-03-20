@@ -848,6 +848,13 @@ export default {
   filter: sepia(80%) hue-rotate(320deg) saturate(110%) brightness(80%);
 }
 
+
+.seal-mat-steatite-blue img {
+  filter: sepia(40%) hue-rotate(190deg) saturate(250%) brightness(100%) contrast(140%);  
+}
+
+
+
 .seal-mat-steatite-grey img{
    
   filter: sepia(0%) hue-rotate(0deg) saturate(100%) brightness(100%);
