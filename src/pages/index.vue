@@ -117,16 +117,17 @@
                   <strong>{{ Math.ceil(value) }}% translated</strong>
                 </template>
               </v-progress-linear>
-              <v-text-field
-                id="search"
-                v-model="search"
-                class="pa-2"
-                clearable
-                :clear-icon="icons.clear"
-                @update:model-value="updateSearch"
-                @click:clear="clearSearch"
-                label="Search Indus valley inscriptions"
-              />
+              <div class="pa-2 search-container">
+                <v-text-field
+                  id="search"
+                  v-model="search"
+                  clearable
+                  :clear-icon="icons.clear"
+                  @update:model-value="updateSearch"
+                  @click:clear="clearSearch"
+                  label="Search Indus valley inscriptions"
+                />
+              </div>
             </template>
 
             <template v-slot:item.data-table-expand="{ item, isExpanded }">
@@ -200,6 +201,7 @@
 </template>
 
 <script setup>
+import { toRefs } from "vue";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
@@ -238,6 +240,9 @@ const inx = csv2json(incx, {
     "sanskrit",
     "translation",
     "notes",
+    "symbol",
+    "phase",
+    "period",
   ],
 });
 
@@ -282,12 +287,13 @@ inx.forEach((el) => {
   el.text = canonized.str; // jsize(el.text)
   el.textlength = parseInt(el["text length"]);
   el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
-  totalLen += el.complete === "Y" ? el.textlength : 0;
-  totalCount += el.complete ? 1 : 0;
-  decipheredLen += el.complete === "Y" && el.translation ? el.textlength : 0;
+  totalLen += el.complete === 'Y' ? el.textlength : 0;
+  totalCount += el.complete === 'Y' ? 1 : 0;
+  decipheredLen += (el.complete === 'Y' && el.sanskrit) ? el.textlength : 0;
   // if (el.translation) console.log(el.translation)
   decipheredCount += el.translation ? 1 : 0;
   el.canonized = canonized.canon;
+  //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
   if (el.sanskrit) {
     if (el.sanskrit.startsWith("ref:")) {
       Object.assign(el, resolve(el.sanskrit));
@@ -552,37 +558,141 @@ export default {
     },
     filterInscriptions(value, query, item) {
       if (query == null) return false;
-      const fields = query.trim().split(/\s+/);
-      if (!this.filterPart(value, fields[0], item)) return false;
       const keys = Object.keys(item.columns);
-      let found = 1;
-      for (let f = 1; f < fields.length; f++) {
+      const fields = query
+        .trim()
+        .split(/\s+/)
+        // Filter regex expressions if they are incomplete
+        .filter(
+          (field) =>
+            !(
+              (field.startsWith("/") || field.endsWith("/")) &&
+              !(field.startsWith("/") && field.endsWith("/"))
+            )
+        );
+
+      // Iterate through every segment of the query
+      for (let f = 0; f < fields.length; f++) {
+        // Regex Query
+        if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
+          let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
+          sanskrit = sanskrit ? sanskrit.replaceAll("—", " ") : "";
+          translation = translation ? translation.replaceAll("—", " ") : "";
+          if (
+            !(
+              this.filterRegex(item.columns["canonized"], fields[f], item) ||
+              this.filterRegex(item.columns["text"], fields[f], item) ||
+              this.filterRegex(sanskrit, fields[f], item) ||
+              this.filterRegex(translation, fields[f], item)
+            )
+          ) {
+            return false;
+          }
+          continue;
+        }
+
+        // Columnar Query
+        if (fields[f].indexOf(":") > -1) {
+          let [column, q] = fields[f].split(":");
+          const rawValue = toRefs(item.raw);
+          if (rawValue[column]) {
+            let value = rawValue[column].value;
+
+            // If column is site and value is unknown substitute null value
+            if (column === "site" && value.toLocaleLowerCase() === "unknown") {
+              value = null;
+            }
+
+            // Rewrite unicorn as bull1 since that's the internal name
+            if (column === "symbol" && q.toLocaleLowerCase() === "unicorn") {
+              q = "bull1";
+            }
+
+            if (!this.filterPart(value, q ? q : "**", item)) {
+              return false;
+            }
+          }
+          continue;
+        }
+
+        let found = false;
+        // Iterate through every column in the row
         for (let i = 0; fields[f] && i < keys.length; i++) {
           if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
-            found++;
+            found = true;
             break;
           }
         }
+        if (!found) return false;
       }
-      return found === fields.length;
+      return true;
     },
-
-    filterPart(value, query, item) {
+    isValidValueAndQuery(value, query) {
+      return value != null && query != null && query.length > 0;
+    },
+    isCompleteOrBrokenIsAllowed(item) {
       return (
-        value != null &&
-        query != null &&
-        ((this.optionBroken && item.raw.complete === "N") ||
-          item.raw.complete === "Y") &&
-        (typeof value === "string" || typeof value === "number") &&
-        (value === query ||
-          query === "L" + value ||
-          value
-            .toString()
-            .toLocaleLowerCase()
-            .indexOf(query.toLocaleLowerCase()) !== -1 ||
-          (query.length > 0 &&
-            query.charCodeAt(0) >= 0xe000 &&
-            canonized(value).indexOf(canonized(query)) !== -1))
+        item.raw.complete === "Y" ||
+        (this.optionBroken && item.raw.complete === "N")
+      );
+    },
+    filterRegex(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      const pattern = query.slice(1, -1); // Remove the slashes
+      const regex = new RegExp(pattern);
+
+      let canonicalMatch = false;
+      let canonizedPattern = "";
+      for (let i = 0; i < pattern.length; i++) {
+        if (pattern.charCodeAt(i) >= 0xe000) {
+          canonizedPattern += canonized(pattern.charAt(i));
+        } else {
+          canonizedPattern += pattern.charAt(i);
+        }
+      }
+
+      const canonizedRegex = new RegExp(canonizedPattern);
+      canonicalMatch = canonizedRegex.test(canonized(value));
+
+      return regex.test(value) || canonicalMatch;
+    },
+    filterPart(value, query, item) {
+      if (
+        !this.isValidValueAndQuery(value, query) ||
+        !this.isCompleteOrBrokenIsAllowed(item)
+      ) {
+        return false;
+      }
+
+      // If query is any (represented as **) then filter out rows that have no value (empty)
+      // Please note * is used to find yet to be translated seals so we are using ** for any
+      if (query === "**")
+        return value !== "" && value !== null && value !== "undefined";
+
+      // Not sure if this check is really necessary
+      const isValueStringOrNumber =
+        typeof value === "string" || typeof value === "number";
+
+      const matchesLength = query === "L" + value;
+      const matchesSubstring =
+        value
+          .toString()
+          .toLocaleLowerCase()
+          .indexOf(query.toLocaleLowerCase()) !== -1;
+
+      const matchesCanonical =
+        query.charCodeAt(0) >= 0xe000 &&
+        canonized(value).indexOf(canonized(query)) !== -1;
+
+      return (
+        isValueStringOrNumber &&
+        (matchesLength || matchesSubstring || matchesCanonical)
       );
     },
     itemrow(item) {
@@ -707,5 +817,10 @@ export default {
     background: black;
     color: yellow;
   }
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
 }
 </style>
