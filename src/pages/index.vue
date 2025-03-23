@@ -561,7 +561,7 @@ export default {
         !(query.startsWith("/") && query.endsWith("/"))
       );
     },
-    filterInscriptions(value, query, item) {
+    filterInscriptions(_value, query, item) {
       if (query == null) return false;
       const keys = Object.keys(item.columns).filter(
         (value) => value != "text" && value != "canonized"
@@ -584,7 +584,7 @@ export default {
             useCanonical = false;
             queryTerm = q;
           } else {
-            // If the column is valid that is, it exists in the data try to match or else ignore this queryTerm
+            // If the column is valid, that is, it exists in the data try to match or else ignore this queryTerm
             if (rawValue[column]) {
               let value = rawValue[column].value;
 
