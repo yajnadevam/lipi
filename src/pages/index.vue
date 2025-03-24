@@ -581,6 +581,7 @@ export default {
           // If glyph search then we just disable canonical and modify the query and process in the subsequent sections
           // as regex query or simple string match
           if (column === "glyph") {
+            if (q.length == 0) continue;
             useCanonical = false;
             queryTerm = q;
           } else {
