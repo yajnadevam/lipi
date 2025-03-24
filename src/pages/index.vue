@@ -186,6 +186,7 @@
                           :src="`/seal_images/${img}`"
                           contain
                           class="hover-image"
+                          :class="getSealClasses(item)"
                         />
                       </v-col>
                     </v-row>
@@ -234,6 +235,8 @@ const inx = csv2json(incx, {
     "id",
     "cisi",
     "site",
+    "material",
+    "color",
     "complete",
     "text",
     "text length",
@@ -287,9 +290,9 @@ inx.forEach((el) => {
   el.text = canonized.str; // jsize(el.text)
   el.textlength = parseInt(el["text length"]);
   el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
-  totalLen += el.complete === 'Y' ? el.textlength : 0;
-  totalCount += el.complete === 'Y' ? 1 : 0;
-  decipheredLen += (el.complete === 'Y' && el.sanskrit) ? el.textlength : 0;
+  totalLen += el.complete === "Y" ? el.textlength : 0;
+  totalCount += el.complete === "Y" ? 1 : 0;
+  decipheredLen += el.complete === "Y" && el.sanskrit ? el.textlength : 0;
   // if (el.translation) console.log(el.translation)
   decipheredCount += el.translation ? 1 : 0;
   el.canonized = canonized.canon;
@@ -633,7 +636,8 @@ export default {
     isCompleteOrBrokenIsAllowed(item) {
       return (
         item.raw.complete === "Y" ||
-        (this.optionBroken && item.raw.complete === "N")
+        (this.optionBroken &&
+          (item.raw.complete === "N" || item.raw.complete === "?"))
       );
     },
     filterRegex(value, query, item) {
@@ -740,6 +744,17 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
+
+    getSealClasses(item) {
+      let material = item.material
+        ? item.material.toLowerCase().replace(/\s+/g, "")
+        : "";
+      let color = item.color
+        ? item.color.toLowerCase().replace(/[\s\-]+/g, "")
+        : "";
+
+      return `seal-mat-${material} seal-mat-${material}-${color}`;
+    },
   },
   created() {
     this.pageNum = localStorage.getItem("page");
@@ -822,5 +837,34 @@ export default {
 .search-container {
   display: flex;
   flex-direction: column;
+}
+
+.seal-mat-steatite img {
+  filter: sepia(80%) hue-rotate(320deg) saturate(200%) brightness(100%);
+}
+
+.seal-mat-steatite-white img {
+  filter: sepia(80%) hue-rotate(320deg) saturate(110%) brightness(80%);
+}
+
+.seal-mat-steatite-blue img {
+  filter: sepia(40%) hue-rotate(190deg) saturate(250%) brightness(100%)
+    contrast(140%);
+}
+
+.seal-mat-steatite-grey img {
+  filter: sepia(0%) hue-rotate(0deg) saturate(100%) brightness(100%);
+}
+
+.seal-mat-clay img {
+  filter: sepia(80%) hue-rotate(320deg) saturate(200%) brightness(100%);
+}
+
+.seal-mat-clay-grey img {
+  filter: sepia(0%) hue-rotate(0deg) saturate(100%) brightness(100%);
+}
+
+.seal-mat-copper img {
+  filter: sepia(98%) hue-rotate(310deg) saturate(150%) brightness(60%);
 }
 </style>

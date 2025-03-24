@@ -6,6 +6,8 @@
     <a href="/signs" class="header-link">Signs</a>
     <a href="/signGraph" class="header-link">Sign-Map</a>
     <a href="/inscriptions" class="header-link">All inscriptions </a>
+    <a href="/glyphs" class="header-link">Glyphs</a>
+
   </div>
   <v-divider />
 </template>
