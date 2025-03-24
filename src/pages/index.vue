@@ -555,34 +555,80 @@ export default {
         ? this.expanded.splice(itemIndex, 1)
         : this.expanded.push(item.id);
     },
-    filterInscriptions(value, query, item) {
+    isIncompleteRegex(query) {
+      return (
+        (query.startsWith("/") || query.endsWith("/")) &&
+        !(query.startsWith("/") && query.endsWith("/"))
+      );
+    },
+    filterInscriptions(_value, query, item) {
       if (query == null) return false;
-      const keys = Object.keys(item.columns);
-      const fields = query
-        .trim()
-        .split(/\s+/)
-        // Filter regex expressions if they are incomplete
-        .filter(
-          (field) =>
-            !(
-              (field.startsWith("/") || field.endsWith("/")) &&
-              !(field.startsWith("/") && field.endsWith("/"))
-            )
-        );
+      const keys = Object.keys(item.columns).filter(
+        (value) => value != "text" && value != "canonized"
+      );
+      const fields = query.trim().split(/\s+/);
+      const rawValue = toRefs(item.raw);
 
       // Iterate through every segment of the query
       for (let f = 0; f < fields.length; f++) {
+        let useCanonical = true;
+        let queryTerm = fields[f];
+
+        // Columnar Query
+        if (queryTerm.indexOf(":") > -1) {
+          let [column, q] = queryTerm.split(":");
+
+          // If glyph search then we just disable canonical and modify the query and process in the subsequent sections
+          // as regex query or simple string match
+          if (column === "glyph") {
+            if (q.length == 0) continue;
+            useCanonical = false;
+            queryTerm = q;
+          } else {
+            // If the column is valid, that is, it exists in the data try to match or else ignore this queryTerm
+            if (rawValue[column]) {
+              let value = rawValue[column].value;
+
+              // If column is site and value is unknown substitute null value
+              if (
+                column === "site" &&
+                value.toLocaleLowerCase() === "unknown"
+              ) {
+                value = null;
+              }
+
+              // Rewrite unicorn as bull1 since that's the internal name
+              if (column === "symbol" && q.toLocaleLowerCase() === "unicorn") {
+                q = "bull1";
+              }
+
+              if (!this.filterPart(value, q ? q : "**", item, useCanonical)) {
+                return false;
+              }
+            }
+            continue;
+          }
+        }
+
+        // Filter regex expressions if they are incomplete
+        if (this.isIncompleteRegex(queryTerm)) {
+          continue;
+        }
+
+        const signColumn = useCanonical
+          ? rawValue["canonized"].value
+          : rawValue["text"].value;
+
         // Regex Query
-        if (fields[f].startsWith("/") && fields[f].endsWith("/")) {
+        if (queryTerm.startsWith("/") && queryTerm.endsWith("/")) {
           let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
           sanskrit = sanskrit ? sanskrit.replaceAll("—", " ") : "";
           translation = translation ? translation.replaceAll("—", " ") : "";
           if (
             !(
-              this.filterRegex(item.columns["canonized"], fields[f], item) ||
-              this.filterRegex(item.columns["text"], fields[f], item) ||
-              this.filterRegex(sanskrit, fields[f], item) ||
-              this.filterRegex(translation, fields[f], item)
+              this.filterRegex(signColumn, queryTerm, item, useCanonical) ||
+              this.filterRegex(sanskrit, queryTerm, item, useCanonical) ||
+              this.filterRegex(translation, queryTerm, item, useCanonical)
             )
           ) {
             return false;
@@ -590,38 +636,26 @@ export default {
           continue;
         }
 
-        // Columnar Query
-        if (fields[f].indexOf(":") > -1) {
-          let [column, q] = fields[f].split(":");
-          const rawValue = toRefs(item.raw);
-          if (rawValue[column]) {
-            let value = rawValue[column].value;
-
-            // If column is site and value is unknown substitute null value
-            if (column === "site" && value.toLocaleLowerCase() === "unknown") {
-              value = null;
-            }
-
-            // Rewrite unicorn as bull1 since that's the internal name
-            if (column === "symbol" && q.toLocaleLowerCase() === "unicorn") {
-              q = "bull1";
-            }
-
-            if (!this.filterPart(value, q ? q : "**", item)) {
-              return false;
+        // First check in sign column text or canonized dependeing on useCanonical flag, then iterate through all other
+        // columns if a match is not found
+        let found = this.filterPart(signColumn, queryTerm, item, useCanonical);
+        if (!found) {
+          // Iterate through every column in the row except text and canonized
+          for (let i = 0; queryTerm && i < keys.length; i++) {
+            if (
+              this.filterPart(
+                item.columns[keys[i]],
+                queryTerm,
+                item,
+                useCanonical
+              )
+            ) {
+              found = true;
+              break;
             }
           }
-          continue;
         }
 
-        let found = false;
-        // Iterate through every column in the row
-        for (let i = 0; fields[f] && i < keys.length; i++) {
-          if (this.filterPart(item.columns[keys[i]], fields[f], item)) {
-            found = true;
-            break;
-          }
-        }
         if (!found) return false;
       }
       return true;
@@ -636,7 +670,7 @@ export default {
           (item.raw.complete === "N" || item.raw.complete === "?"))
       );
     },
-    filterRegex(value, query, item) {
+    filterRegex(value, query, item, useCanonical) {
       if (
         !this.isValidValueAndQuery(value, query) ||
         !this.isCompleteOrBrokenIsAllowed(item)
@@ -648,21 +682,23 @@ export default {
       const regex = new RegExp(pattern);
 
       let canonicalMatch = false;
-      let canonizedPattern = "";
-      for (let i = 0; i < pattern.length; i++) {
-        if (pattern.charCodeAt(i) >= 0xe000) {
-          canonizedPattern += canonized(pattern.charAt(i));
-        } else {
-          canonizedPattern += pattern.charAt(i);
+      if (useCanonical) {
+        let canonizedPattern = "";
+        for (let i = 0; i < pattern.length; i++) {
+          if (pattern.charCodeAt(i) >= 0xe000) {
+            canonizedPattern += canonized(pattern.charAt(i));
+          } else {
+            canonizedPattern += pattern.charAt(i);
+          }
         }
-      }
 
-      const canonizedRegex = new RegExp(canonizedPattern);
-      canonicalMatch = canonizedRegex.test(canonized(value));
+        const canonizedRegex = new RegExp(canonizedPattern);
+        canonicalMatch = canonizedRegex.test(canonized(value));
+      }
 
       return regex.test(value) || canonicalMatch;
     },
-    filterPart(value, query, item) {
+    filterPart(value, query, item, useCanonical) {
       if (
         !this.isValidValueAndQuery(value, query) ||
         !this.isCompleteOrBrokenIsAllowed(item)
@@ -688,6 +724,7 @@ export default {
 
       const matchesCanonical =
         query.charCodeAt(0) >= 0xe000 &&
+        useCanonical &&
         canonized(value).indexOf(canonized(query)) !== -1;
 
       return (
