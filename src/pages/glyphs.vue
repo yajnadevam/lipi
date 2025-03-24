@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     handleSignClick(characterizedSign) {
-      localStorage.setItem("search", characterizedSign);
+      localStorage.setItem("search", `glyph:${characterizedSign}`);
       window.location = "/";
     },
   },
