@@ -100,6 +100,7 @@ function replace(word: string, characters: string[]) {
         const matches = getAllMatches(devanagariWord)
         if (matches.length > 0) {
             results[word] = matches.map((match) => ({key: match, krdantas: deriveKrdantas(match)}))
+            results[word] = matches
         } else {
             unknown.push(word)
         }

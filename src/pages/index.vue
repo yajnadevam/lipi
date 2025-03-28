@@ -130,6 +130,21 @@
               </div>
             </template>
 
+            <template v-slot:item.sanskrit="{ item }">
+              <template v-for="word in renderSanskrit(item.sanskrit)">
+                <span
+                  v-if="word.link == true"
+                  class="sanskrit-link"
+                  @click="onSanskritClick(word.word)"
+                >
+                  {{ word.word }}
+                </span>
+                <span v-else>
+                  {{ word.word }}
+                </span>
+              </template>
+            </template>
+
             <template v-slot:item.data-table-expand="{ item, isExpanded }">
               <v-icon
                 v-if="isExpandedRow(item.id)"
@@ -199,6 +214,56 @@
       </v-main>
     </v-layout>
   </v-card>
+
+  <v-dialog v-model="showPrakriyaDialog" max-width="600">
+    <v-card>
+      <v-card-title>{{ prakriyaDialogContent.word }}</v-card-title>
+      <v-card-text>
+        <template v-for="krdanta in prakriyaDialogContent.krdantas">
+          <!-- Todo: Maybe needs to be made more prominent-->
+          <span>{{ krdanta.dhatu }} {{ krdanta.pratyaya }}</span>
+
+          <template v-for="step in krdanta.steps">
+            <div>
+              <template v-if="step.result.length == 1">
+                <span>
+                  {{
+                    Sanscript.t(
+                      step.result[0].text.replaceAll("\\", ""),
+                      "slp1",
+                      "devanagari"
+                    )
+                  }}
+                </span>
+              </template>
+              <template v-else>
+                {{
+                  Sanscript.t(
+                    step.result[0].text.replaceAll("\\", ""),
+                    "slp1",
+                    "devanagari"
+                  )
+                }}
+                +
+                {{
+                  Sanscript.t(
+                    step.result[1].text.replaceAll("\\", ""),
+                    "slp1",
+                    "devanagari"
+                  )
+                }}
+              </template>
+            </div>
+          </template>
+          {{ prakriyaDialogContent.word }}
+        </template>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>
@@ -220,8 +285,16 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
+import prakriyas from "../assets/data/prakriyas.json";
+import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
+import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
+
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
+
+await initVidyut();
+const dhatupathaText = await (await fetch(dhatupatha)).text();
+const vidyut = Vidyut.init(dhatupathaText);
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -509,6 +582,8 @@ export default {
       optionBroken: false,
       lightTheme: false,
       fullrandom: fullrandom,
+      showPrakriyaDialog: false,
+      prakriyaDialogContent: {},
     };
   },
   computed: {
@@ -777,7 +852,6 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
-
     getSealClasses(item) {
       let material = item.material
         ? item.material.toLowerCase().replace(/\s+/g, "")
@@ -787,6 +861,77 @@ export default {
         : "";
 
       return `seal-mat-${material} seal-mat-${material}-${color}`;
+    },
+    checkPrakriyaExists(word) {
+      const slp1Word = Sanscript.t(word, "devanagari", "slp1");
+      if (prakriyas[slp1Word]) {
+        return true;
+      }
+      return false;
+    },
+    // Todo: Maybe refactor better ?
+    renderSanskrit(sanskrit) {
+      const parts = sanskrit.split("\n");
+      let sanskritResult = [];
+      let word = "";
+      for (let i = 0; i < parts[0].length; i++) {
+        if (parts[0][i] === "—" || parts[0][i] === " ") {
+          sanskritResult.push(
+            this.checkPrakriyaExists(word) ? { word, link: true } : { word }
+          );
+          sanskritResult.push({ word: parts[0][i] });
+          word = "";
+        } else {
+          word += parts[0][i];
+        }
+      }
+      sanskritResult.push(
+        this.checkPrakriyaExists(word) ? { word, link: true } : { word }
+      );
+      sanskritResult.push({ word: "\n" });
+      sanskritResult.push({ word: parts[1] });
+      return sanskritResult;
+    },
+    generateKrdantaInput(code, krt) {
+      return {
+        code: code, // example dhatu code
+        krt: krt, // BaseKrt
+        sanadi: [], // Sanadi is an array of strings
+        upasarga: [], // array of strings
+        lakara: null, // or something like "Lat" if required
+        prayoga: null, // or "Kartari", etc.
+      };
+    },
+    onSanskritClick(devanagariWord) {
+      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
+      const prakriyaKeys = prakriyas[slp1Word];
+
+      // Todo: Need to do for all prakriyas
+      const prakriyaKey = prakriyaKeys[0].split("_");
+      const krdantaInput = this.generateKrdantaInput(
+        prakriyaKey[0],
+        Sanscript.t(prakriyaKey[1], "devanagari", "slp1")
+      );
+      const _krdantas = vidyut.deriveKrdantas(krdantaInput);
+      const krdantas = [];
+
+      // Todo: need to do for all krdantas
+      krdantas.push({
+        dhatu: prakriyaKey[0],
+        pratyaya: prakriyaKey[1],
+        steps: _krdantas[0].history,
+        result: devanagariWord,
+      });
+
+      const prakriyaDialogContent = {
+        word: devanagariWord,
+        krdantas,
+      };
+
+      console.log(prakriyaDialogContent);
+
+      this.prakriyaDialogContent = prakriyaDialogContent;
+      this.showPrakriyaDialog = true;
     },
   },
   created() {
@@ -899,5 +1044,15 @@ export default {
 
 .seal-mat-copper img {
   filter: sepia(98%) hue-rotate(310deg) saturate(150%) brightness(60%);
+}
+
+.sanskrit {
+  font-size: 16pt;
+  word-spacing: 5pt;
+}
+
+.sanskrit-link {
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>
