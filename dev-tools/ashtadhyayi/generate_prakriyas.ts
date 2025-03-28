@@ -3,11 +3,11 @@ import path from 'path'
 import csvParser from 'csv-parser';
 import Sanscript from "@indic-transliteration/sanscript";
 import dhatuforms from './assets/dhatuforms_vidyut_shuddha_krut.json';
-import { Vidyut } from './assets/vidyut_prakriya'
 
-const VIDYUT = Vidyut.init(fs.readFileSync(path.join(__dirname, 'assets/vidyut_dhatupatha_5.tsv'), 'utf-8'))
 const DEVANAGARI = 'devanagari'
 const SLP1 = 'slp1'
+
+const dhatudata = JSON.parse(fs.readFileSync(path.join(__dirname, 'assets/data.txt'), 'utf-8'))
 
 async function readCSV(filePath: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
@@ -41,35 +41,27 @@ async function getUniqueWords(): Promise<Set<string>> {
     return words
 }
 
-function getAllMatches(devanagariWord: string) {
-    let results: string[] = []
+function getAllVidyutMatches(devanagariWord: string) {
+    let results: object[] = []
     for(const code in dhatuforms) {
         for (const pratyaya in dhatuforms[code]) {
             const prakrutas = dhatuforms[code][pratyaya].split(',')
             const matchIndex = prakrutas.indexOf(devanagariWord)
             if (matchIndex > -1) {
-                const key = `${code}_${pratyaya}_${matchIndex}`
+                const dhatu = dhatudata['data'].filter(dhatu => dhatu.baseindex === code)[0]
+                const key = {
+                    code,
+                    pratyaya,
+                    form: matchIndex,
+                    dhatu: dhatu['dhatu'],
+                    index: dhatu['i'],
+                    artha: dhatu['artha']
+                }
                 results.push(key)                
             }
         }
     }
     return results
-}
-
-function generateKrdantaInput(code: string, krt: string) {
-    return {
-        code: code, // example dhatu code
-        krt: krt, // BaseKrt
-        sanadi: [], // Sanadi is an array of strings
-        upasarga: [], // array of strings
-        lakara: null, // or something like "Lat" if required
-        prayoga: null // or "Kartari", etc.
-    }
-}
-
-function deriveKrdantas(input: string) {
-    const inputParts = input.split('_')
-    return VIDYUT.deriveKrdantas(generateKrdantaInput(Sanscript.t(inputParts[0], DEVANAGARI, SLP1), Sanscript.t(inputParts[1], DEVANAGARI, SLP1)))    
 }
 
 async function writeFile(filePath: string, data: string) {
@@ -97,9 +89,8 @@ function replace(word: string, characters: string[]) {
     for (const word of uniqueWords) {
         const sanitizedWord = replace(word, ['[', ']', '(', ')'])
         const devanagariWord = Sanscript.t(sanitizedWord, SLP1, DEVANAGARI)
-        const matches = getAllMatches(devanagariWord)
+        const matches = getAllVidyutMatches(devanagariWord)
         if (matches.length > 0) {
-            results[word] = matches.map((match) => ({key: match, krdantas: deriveKrdantas(match)}))
             results[word] = matches
         } else {
             unknown.push(word)

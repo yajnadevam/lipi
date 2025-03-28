@@ -220,27 +220,37 @@
       <v-card-title>{{ prakriyaDialogContent.word }}</v-card-title>
       <v-card-text>
         <template v-for="krdanta in prakriyaDialogContent.krdantas">
-          <!-- Todo: Maybe needs to be made more prominent-->
-          <span>{{ krdanta.dhatu }} {{ krdanta.pratyaya }}</span>
+          <div class="krdanta-container">
+            <span class="krdanta-title"
+              >{{ krdanta.dhatu }} + {{ krdanta.pratyaya }} [{{
+                krdanta.code
+              }}]</span
+            >
 
-          <template v-for="step in krdanta.steps">
-            <div>
-              {{
-                step.result
-                  .filter((r) => r.text != "")
-                  .map((r) =>
-                    Sanscript.t(
-                      r.text.replaceAll("\\", ""),
-                      "slp1",
-                      "devanagari"
+            <template v-for="(step, index) in krdanta.steps">
+              <div>
+                <v-icon v-if="index > 0">mdi-arrow-right</v-icon>
+                {{
+                  step.result
+                    .filter((r) => r.text != "")
+                    .map((r) =>
+                      Sanscript.t(
+                        r.text.replaceAll("\\", "").replaceAll("^", ""),
+                        "slp1",
+                        "devanagari"
+                      )
                     )
-                  )
-                  .join(" + ")
-              }}
-            </div>
-          </template>
-          {{ prakriyaDialogContent.word }}
-          <v-divider></v-divider>
+                    .join(" + ")
+                }}
+                <span v-if="index > 0"
+                  >[{{ step.rule.source }}:{{ step.rule.code }}]</span
+                >
+                <span v-if="index == 0">[{{ krdanta.artha }}]</span>
+              </div>
+            </template>
+            <v-icon>mdi-arrow-right</v-icon> {{ prakriyaDialogContent.word }}
+            <v-divider></v-divider>
+          </div>
         </template>
       </v-card-text>
       <v-card-actions>
@@ -253,6 +263,8 @@
 
 <script setup>
 import { toRefs } from "vue";
+import "@mdi/font/css/materialdesignicons.css";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
@@ -514,6 +526,11 @@ export default {
   data() {
     return {
       icons: {
+        defaultSet: "mdi",
+        aliases,
+        sets: {
+          mdi,
+        },
         pageFirst: [
           "M18.41,16.59L13.82,12L18.41,7.41L17,6L11,12L17,18L18.41,16.59M6,6H8V18H6V6Z",
         ],
@@ -892,8 +909,6 @@ export default {
     deriveKrdantas(dhatu, pratyaya, krdantaInput, devanagariWord) {
       // Todo: need to check if this will always be ONLY 1 element
       return vidyut.deriveKrdantas(krdantaInput).map((result) => ({
-        dhatu,
-        pratyaya,
         steps: result.history,
         result: devanagariWord,
       }))[0];
@@ -904,44 +919,23 @@ export default {
       const prakriyaKeys = prakriyas[slp1Word];
 
       const krdantas = prakriyaKeys.map((prakriyaKey) => {
-        console.log("this is prakriya key", prakriyaKey);
-        const key = prakriyaKey.split("_");
+        const { code, pratyaya, dhatu, index, artha } = prakriyaKey;
         const krdantaInput = me.generateKrdantaInput(
-          key[0],
-          Sanscript.t(key[1], "devanagari", "slp1")
+          code,
+          Sanscript.t(pratyaya, "devanagari", "slp1")
         );
-        return this.deriveKrdantas(
-          key[0],
-          key[1],
-          krdantaInput,
-          devanagariWord
-        );
+        return {
+          dhatu,
+          pratyaya,
+          code,
+          index,
+          artha,
+          ...this.deriveKrdantas(code, pratyaya, krdantaInput, devanagariWord),
+        };
       });
-      // Todo: Need to do for all prakriyas
-      // const prakriyaKey = prakriyaKeys[0].split("_");
-      // const krdantaInput = this.generateKrdantaInput(
-      //   prakriyaKey[0],
-      //   Sanscript.t(prakriyaKey[1], "devanagari", "slp1")
-      // );
-      // const krdantas = this.deriveKrdantas(
-      //   prakriyaKey[0],
-      //   prakriyaKey[1],
-      //   krdantaInput,
-      //   devanagariWord
-      // );
-
-      // const _krdantas = vidyut
-      //   .deriveKrdantas(krdantaInput)
-      //   .map((result) => ({}));
-      // const krdantas = [];
-
-      // // Todo: need to do for all krdantas
-      // krdantas.push({
-      //   dhatu: prakriyaKey[0],
-      //   pratyaya: prakriyaKey[1],
-      //   steps: _krdantas[0].history,
-      //   result: devanagariWord,
-      // });
+      // dhatu: dhatu['dhatu'],
+      // index: dhatu['i'],
+      // artha: dhatu['artha']
 
       const prakriyaDialogContent = {
         word: devanagariWord,
@@ -1078,5 +1072,14 @@ export default {
 .sanskrit-link {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.krdanta-title {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+.krdanta-container {
+  margin-bottom: 5pt;
 }
 </style>
