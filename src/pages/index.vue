@@ -264,6 +264,13 @@
             <v-divider></v-divider>
           </div>
         </template>
+        Derived using
+        <a
+          href="https://github.com/ambuda-org/vidyut"
+          target="_blank"
+          style="color: inherit"
+          >Vidyut</a
+        >
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
@@ -1096,8 +1103,8 @@ export default {
 }
 
 .prakriya-title {
-  font-weight: bold;
-  font-size: 20pt;
+  font-weight: bold !important;
+  font-size: 20pt !important;
 }
 
 .prakriya-steps {
