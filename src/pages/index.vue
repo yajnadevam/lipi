@@ -220,7 +220,7 @@
       <v-card-title class="prakriya-title">{{
         prakriyaDialogContent.word
       }}</v-card-title>
-      <v-card-text>
+      <v-card-text class="scrollable-card-text">
         <span class="prakriya-description"
           >Ashtadhyayi derivation of {{ prakriyaDialogContent.word }}</span
         >
@@ -264,6 +264,8 @@
             <v-divider></v-divider>
           </div>
         </template>
+      </v-card-text>
+      <v-card-actions class="prakriya-dialog-bottom">
         Derived using
         <a
           href="https://github.com/ambuda-org/vidyut"
@@ -271,8 +273,6 @@
           style="color: inherit"
           >Vidyut</a
         >
-      </v-card-text>
-      <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
       </v-card-actions>
@@ -1120,5 +1120,10 @@ export default {
 .ashtadhyayi-link {
   text-decoration: none;
   color: inherit;
+}
+
+.scrollable-card-text {
+  max-height: 80vh; /* Adjust as needed */
+  overflow-y: auto;
 }
 </style>
