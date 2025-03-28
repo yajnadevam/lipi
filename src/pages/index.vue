@@ -225,37 +225,22 @@
 
           <template v-for="step in krdanta.steps">
             <div>
-              <template v-if="step.result.length == 1">
-                <span>
-                  {{
+              {{
+                step.result
+                  .filter((r) => r.text != "")
+                  .map((r) =>
                     Sanscript.t(
-                      step.result[0].text.replaceAll("\\", ""),
+                      r.text.replaceAll("\\", ""),
                       "slp1",
                       "devanagari"
                     )
-                  }}
-                </span>
-              </template>
-              <template v-else>
-                {{
-                  Sanscript.t(
-                    step.result[0].text.replaceAll("\\", ""),
-                    "slp1",
-                    "devanagari"
                   )
-                }}
-                +
-                {{
-                  Sanscript.t(
-                    step.result[1].text.replaceAll("\\", ""),
-                    "slp1",
-                    "devanagari"
-                  )
-                }}
-              </template>
+                  .join(" + ")
+              }}
             </div>
           </template>
           {{ prakriyaDialogContent.word }}
+          <v-divider></v-divider>
         </template>
       </v-card-text>
       <v-card-actions>
@@ -902,26 +887,59 @@ export default {
         prayoga: null, // or "Kartari", etc.
       };
     },
+    deriveKrdantas(dhatu, pratyaya, krdantaInput, devanagariWord) {
+      // Todo: need to check if this will always be ONLY 1 element
+      return vidyut.deriveKrdantas(krdantaInput).map((result) => ({
+        dhatu,
+        pratyaya,
+        steps: result.history,
+        result: devanagariWord,
+      }))[0];
+    },
     onSanskritClick(devanagariWord) {
+      const me = this;
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
       const prakriyaKeys = prakriyas[slp1Word];
 
-      // Todo: Need to do for all prakriyas
-      const prakriyaKey = prakriyaKeys[0].split("_");
-      const krdantaInput = this.generateKrdantaInput(
-        prakriyaKey[0],
-        Sanscript.t(prakriyaKey[1], "devanagari", "slp1")
-      );
-      const _krdantas = vidyut.deriveKrdantas(krdantaInput);
-      const krdantas = [];
-
-      // Todo: need to do for all krdantas
-      krdantas.push({
-        dhatu: prakriyaKey[0],
-        pratyaya: prakriyaKey[1],
-        steps: _krdantas[0].history,
-        result: devanagariWord,
+      const krdantas = prakriyaKeys.map((prakriyaKey) => {
+        console.log("this is prakriya key", prakriyaKey);
+        const key = prakriyaKey.split("_");
+        const krdantaInput = me.generateKrdantaInput(
+          key[0],
+          Sanscript.t(key[1], "devanagari", "slp1")
+        );
+        return this.deriveKrdantas(
+          key[0],
+          key[1],
+          krdantaInput,
+          devanagariWord
+        );
       });
+      // Todo: Need to do for all prakriyas
+      // const prakriyaKey = prakriyaKeys[0].split("_");
+      // const krdantaInput = this.generateKrdantaInput(
+      //   prakriyaKey[0],
+      //   Sanscript.t(prakriyaKey[1], "devanagari", "slp1")
+      // );
+      // const krdantas = this.deriveKrdantas(
+      //   prakriyaKey[0],
+      //   prakriyaKey[1],
+      //   krdantaInput,
+      //   devanagariWord
+      // );
+
+      // const _krdantas = vidyut
+      //   .deriveKrdantas(krdantaInput)
+      //   .map((result) => ({}));
+      // const krdantas = [];
+
+      // // Todo: need to do for all krdantas
+      // krdantas.push({
+      //   dhatu: prakriyaKey[0],
+      //   pratyaya: prakriyaKey[1],
+      //   steps: _krdantas[0].history,
+      //   result: devanagariWord,
+      // });
 
       const prakriyaDialogContent = {
         word: devanagariWord,
