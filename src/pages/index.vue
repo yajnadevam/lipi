@@ -277,9 +277,11 @@ import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
-await initVidyut();
-const dhatupathaText = await (await fetch(dhatupatha)).text();
-const vidyut = Vidyut.init(dhatupathaText);
+// Will be initialized after mount
+let vidyut;
+// await initVidyut();
+// const dhatupathaText = await (await fetch(dhatupatha)).text();
+// const vidyut = Vidyut.init(dhatupathaText);
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -961,11 +963,15 @@ export default {
     this.lightTheme = localStorage.getItem("theme") == "light";
   },
   // eslint-disable-next-line vue/order-in-components
-  mounted() {
+  async mounted() {
     document.addEventListener("mouseup", (event) => {
       const classes = Array.from(event.target.classList);
       if (classes.includes("indus1")) this.pasteSearch();
     });
+    await initVidyut();
+    const dhatupathaText = await (await fetch(dhatupatha)).text();
+    vidyut = Vidyut.init(dhatupathaText);
+
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
       if (splashScreen) splashScreen.classList.add("hidden");
