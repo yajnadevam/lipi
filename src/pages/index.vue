@@ -217,18 +217,27 @@
 
   <v-dialog v-model="showPrakriyaDialog" max-width="600">
     <v-card>
-      <v-card-title>{{ prakriyaDialogContent.word }}</v-card-title>
+      <v-card-title class="prakriya-title">{{
+        prakriyaDialogContent.word
+      }}</v-card-title>
       <v-card-text>
+        <span class="prakriya-description"
+          >Ashtadhyayi derivation of {{ prakriyaDialogContent.word }}</span
+        >
         <template v-for="krdanta in prakriyaDialogContent.krdantas">
           <div class="krdanta-container">
             <span class="krdanta-title"
-              >{{ krdanta.dhatu }} + {{ krdanta.pratyaya }} [{{
-                krdanta.code
-              }}]</span
+              >{{ krdanta.dhatu }} + {{ krdanta.pratyaya }} [{{ krdanta.code }}]
+            </span>
+            <a
+              class="ashtadhyayi-link"
+              :href="krdanta.ashtadhyayiLink"
+              target="_blank"
+              ><v-icon>mdi-open-in-new</v-icon></a
             >
 
             <template v-for="(step, index) in krdanta.steps">
-              <div>
+              <div class="prakriya-steps">
                 <v-icon v-if="index > 0">mdi-arrow-right</v-icon>
                 {{
                   step.result
@@ -248,7 +257,10 @@
                 <span v-if="index == 0">[{{ krdanta.artha }}]</span>
               </div>
             </template>
-            <v-icon>mdi-arrow-right</v-icon> {{ prakriyaDialogContent.word }}
+            <span class="prakriya-steps"
+              ><v-icon>mdi-arrow-right</v-icon>
+              {{ prakriyaDialogContent.word }}</span
+            >
             <v-divider></v-divider>
           </div>
         </template>
@@ -265,6 +277,7 @@
 import { toRefs } from "vue";
 import "@mdi/font/css/materialdesignicons.css";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { mdiOpenInNew } from "@mdi/js";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
@@ -291,9 +304,6 @@ import Sanscript from "@indic-transliteration/sanscript";
 
 // Will be initialized after mount
 let vidyut;
-// await initVidyut();
-// const dhatupathaText = await (await fetch(dhatupatha)).text();
-// const vidyut = Vidyut.init(dhatupathaText);
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -527,7 +537,10 @@ export default {
     return {
       icons: {
         defaultSet: "mdi",
-        aliases,
+        aliases: {
+          ...aliases,
+          openInNew: mdiOpenInNew,
+        },
         sets: {
           mdi,
         },
@@ -554,7 +567,6 @@ export default {
           "M 8.00386 9.41816 C 7.61333 9.02763 7.61334 8.39447 8.00386 8.00395 C 8.39438 7.61342 9.02755 7.61342 9.41807 8.00395 L 12.0057 10.5916 L 14.5907 8.00657 C 14.9813 7.61605 15.6144 7.61605 16.0049 8.00657 C 16.3955 8.3971 16.3955 9.03026 16.0049 9.42079 L 13.4199 12.0058 L 16.0039 14.5897 C 16.3944 14.9803 16.3944 15.6134 16.0039 16.0039 C 15.6133 16.3945 14.9802 16.3945 14.5896 16.0039 L 12.0057 13.42 L 9.42097 16.0048 C 9.03045 16.3953 8.39728 16.3953 8.00676 16.0048 C 7.61624 15.6142 7.61624 14.9811 8.00676 14.5905 L 10.5915 12.0058 L 8.00386 9.41816 Z",
         ],
       },
-
       sortBy: [{ key: "textlength", order: "desc" }],
       search: "",
       drawer: null,
@@ -913,6 +925,9 @@ export default {
         result: devanagariWord,
       }))[0];
     },
+    getAshtadhyayiLink(code, index, pratyaya) {
+      return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
+    },
     onSanskritClick(devanagariWord) {
       const me = this;
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
@@ -930,13 +945,10 @@ export default {
           code,
           index,
           artha,
+          ashtadhyayiLink: this.getAshtadhyayiLink(code, index, pratyaya),
           ...this.deriveKrdantas(code, pratyaya, krdantaInput, devanagariWord),
         };
       });
-      // dhatu: dhatu['dhatu'],
-      // index: dhatu['i'],
-      // artha: dhatu['artha']
-
       const prakriyaDialogContent = {
         word: devanagariWord,
         krdantas,
@@ -1081,5 +1093,25 @@ export default {
 
 .krdanta-container {
   margin-bottom: 5pt;
+}
+
+.prakriya-title {
+  font-weight: bold;
+  font-size: 20pt;
+}
+
+.prakriya-steps {
+  font-size: 14pt;
+  line-height: 30pt;
+}
+
+.prakriya-description {
+  font-size: 16pt;
+  line-height: 30pt;
+}
+
+.ashtadhyayi-link {
+  text-decoration: none;
+  color: inherit;
 }
 </style>
