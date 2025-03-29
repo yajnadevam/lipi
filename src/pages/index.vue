@@ -1025,13 +1025,16 @@ export default {
         result: Sanscript.t(result.text, "slp1", "devanagari"),
       }))[0];
     },
-    deriveTinantas(tinantaInput, dhatu) {
+    deriveTinantas(tinantaInput, dhatu, devanagariWord) {
       const { lakaraLabel, purushaLabel, vacanaLabel, ...rest } = tinantaInput;
-      return vidyut.deriveTinantas(rest).map((result) => ({
-        steps: result.history,
-        title: `${dhatu}, ${purushaLabel}, ${vacanaLabel}`,
-        result: Sanscript.t(result.text, "slp1", "devanagari"),
-      }))[0];
+      return vidyut
+        .deriveTinantas(rest)
+        .map((result) => ({
+          steps: result.history,
+          title: `${dhatu}, ${purushaLabel}, ${vacanaLabel}`,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }))
+        .filter((res) => res.result == devanagariWord)[0];
     },
     getKrdantaAshtadhyayiLink(code, index, pratyaya) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
@@ -1064,7 +1067,7 @@ export default {
           );
         } else if (type === "kartari") {
           input = this.generateTinantaInput(code, kartari, form);
-          result = this.deriveTinantas(input, dhatu);
+          result = this.deriveTinantas(input, dhatu, devanagariWord);
           ashtadhyayiLink = this.getKartariAshtadhyayiLink(
             code,
             index,
