@@ -224,21 +224,25 @@
         <span class="prakriya-description"
           >Ashtadhyayi derivation of {{ prakriyaDialogContent.word }}</span
         >
-        <template v-for="krdanta in prakriyaDialogContent.krdantas">
-          <div class="krdanta-container">
-            <span class="krdanta-title"
-              >{{ krdanta.dhatu }} + {{ krdanta.pratyaya }} [{{ krdanta.code }}]
+        <template v-for="prakriya in prakriyaDialogContent.prakriyas">
+          <div class="prakriya-container">
+            <span class="prakriya-title"
+              >{{ prakriya.title }} [{{ prakriya.code }}]
             </span>
             <a
               class="ashtadhyayi-link"
-              :href="krdanta.ashtadhyayiLink"
+              :href="prakriya.ashtadhyayiLink"
               target="_blank"
               ><v-icon>mdi-open-in-new</v-icon></a
             >
 
-            <template v-for="(step, index) in krdanta.steps">
+            <div class="prakriya-steps">
+              {{ prakriya.dhatu }} [{{ prakriya.artha }}]
+            </div>
+
+            <template v-for="(step, index) in prakriya.steps">
               <div class="prakriya-steps">
-                <v-icon v-if="index > 0">mdi-arrow-right</v-icon>
+                <v-icon>mdi-arrow-right</v-icon>
                 {{
                   step.result
                     .filter((r) => r.text != "")
@@ -251,15 +255,11 @@
                     )
                     .join(" + ")
                 }}
-                <span v-if="index > 0"
-                  >[{{ step.rule.source }}:{{ step.rule.code }}]</span
-                >
-                <span v-if="index == 0">[{{ krdanta.artha }}]</span>
+                <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
               </div>
             </template>
             <span class="prakriya-steps"
-              ><v-icon>mdi-arrow-right</v-icon>
-              {{ prakriyaDialogContent.word }}</span
+              ><v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}</span
             >
             <v-divider></v-divider>
           </div>
@@ -272,6 +272,13 @@
           target="_blank"
           style="color: inherit"
           >Vidyut</a
+        >
+        &
+        <a
+          href="https://github.com/ashtadhyayi-com/data"
+          target="_blank"
+          style="color: inherit"
+          >Ashtadhyayi</a
         >
         <v-spacer></v-spacer>
         <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
@@ -302,7 +309,7 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
-import prakriyas from "../assets/data/prakriyas.json";
+import prakriyaMap from "../assets/data/prakriyas.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 
@@ -887,7 +894,7 @@ export default {
     },
     checkPrakriyaExists(word) {
       const slp1Word = Sanscript.t(word, "devanagari", "slp1");
-      if (prakriyas[slp1Word]) {
+      if (prakriyaMap[slp1Word]) {
         return true;
       }
       return false;
@@ -925,40 +932,167 @@ export default {
         prayoga: null, // or "Kartari", etc.
       };
     },
-    deriveKrdantas(dhatu, pratyaya, krdantaInput, devanagariWord) {
+    generateTinantaInput(code, lakara, form) {
+      const lakaraMap = {
+        plat: { name: "Lat", label: "लट्लकारः" },
+        plit: { name: "Lit", label: "लिट्लकारः" },
+        plut: { name: "Lut", label: "लुट्लकारः" },
+        plrut: { name: "Lrt", label: "लृट्लकारः" },
+        plot: { name: "Lot", label: "लोट्लकारः" },
+        plang: { name: "Lan", label: "लङ्लकारः" },
+        pvidhiling: { name: "VidhiLin", label: "विधिलिङ्लकारः" },
+        pashirling: { name: "AshirLin", label: "आशीर्लिङ्लकारः" },
+        plung: { name: "Lun", label: "लुङ्लकारः" },
+        plrung: { name: "Lrn", label: "लृङ्लकारः" },
+      };
+
+      const formMap = [
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+      ];
+
+      return {
+        code,
+        lakara: lakaraMap[lakara].name,
+        lakaraLabel: lakaraMap[lakara].label,
+        prayoga: "Kartari",
+        purusha: formMap[form].purusha,
+        vacana: formMap[form].vacana,
+        purushaLabel: formMap[form].purushaLabel,
+        vacanaLabel: formMap[form].vacanaLabel,
+        pada: null,
+        sanadi: [],
+        upasarga: [],
+      };
+    },
+    deriveKrdantas(krdantaInput, dhatu, pratyaya) {
       // Todo: need to check if this will always be ONLY 1 element
       return vidyut.deriveKrdantas(krdantaInput).map((result) => ({
         steps: result.history,
-        result: devanagariWord,
+        title: `${dhatu} + ${pratyaya}`,
+        result: Sanscript.t(result.text, "slp1", "devanagari"),
       }))[0];
     },
-    getAshtadhyayiLink(code, index, pratyaya) {
+    deriveTinantas(tinantaInput, dhatu) {
+      const { lakaraLabel, purushaLabel, vacanaLabel, ...rest } = tinantaInput;
+      return vidyut.deriveTinantas(rest).map((result) => ({
+        steps: result.history,
+        title: `${dhatu}, ${purushaLabel}, ${vacanaLabel}`,
+        result: Sanscript.t(result.text, "slp1", "devanagari"),
+      }))[0];
+    },
+    getKrdantaAshtadhyayiLink(code, index, pratyaya) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
     },
+    getKartariAshtadhyayiLink(code, index, kartari, form) {
+      let f = form;
+      // This is needed because the website swaps the positions Uttama and Prathama purushas when it does table indexing vs the actual dataset
+      if (f < 3) {
+        f += 6;
+      }
+      if (f > 6) {
+        f -= 6;
+      }
+      return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${f}&scrollcolor=cyan&scrolloffset=400`;
+    },
     onSanskritClick(devanagariWord) {
-      const me = this;
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
-      const prakriyaKeys = prakriyas[slp1Word];
+      const prakriyaKeys = prakriyaMap[slp1Word];
 
-      const krdantas = prakriyaKeys.map((prakriyaKey) => {
-        const { code, pratyaya, dhatu, index, artha } = prakriyaKey;
-        const krdantaInput = me.generateKrdantaInput(
-          code,
-          Sanscript.t(pratyaya, "devanagari", "slp1")
-        );
+      // Todo: Change name to prakriyas
+      const prakriyas = prakriyaKeys.map((prakriyaKey) => {
+        const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
+          prakriyaKey;
+
+        let input;
+        let result;
+        let ashtadhyayiLink;
+        if (type === "krdanta") {
+          input = this.generateKrdantaInput(
+            code,
+            Sanscript.t(pratyaya, "devanagari", "slp1")
+          );
+          result = this.deriveKrdantas(input, dhatu, pratyaya);
+          ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
+            code,
+            index,
+            pratyaya
+          );
+        } else if (type === "kartari") {
+          input = this.generateTinantaInput(code, kartari, form);
+          result = this.deriveTinantas(input, dhatu);
+          ashtadhyayiLink = this.getKartariAshtadhyayiLink(
+            code,
+            index,
+            kartari,
+            form
+          );
+        }
+
         return {
           dhatu,
-          pratyaya,
           code,
           index,
           artha,
-          ashtadhyayiLink: this.getAshtadhyayiLink(code, index, pratyaya),
-          ...this.deriveKrdantas(code, pratyaya, krdantaInput, devanagariWord),
+          ashtadhyayiLink,
+          ...result,
         };
       });
       const prakriyaDialogContent = {
         word: devanagariWord,
-        krdantas,
+        prakriyas,
       };
 
       console.log(prakriyaDialogContent);
@@ -1093,12 +1227,12 @@ export default {
   cursor: pointer;
 }
 
-.krdanta-title {
+.prakriya-title {
   font-weight: bold;
   font-size: 16pt;
 }
 
-.krdanta-container {
+.prakriya-container {
   margin-bottom: 5pt;
 }
 

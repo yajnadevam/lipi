@@ -1,13 +1,12 @@
 import fs from 'fs';
-import path from 'path'
 import csvParser from 'csv-parser';
 import Sanscript from "@indic-transliteration/sanscript";
+import dhatudata from './assets/data.json'
 import dhatuforms from './assets/dhatuforms_vidyut_shuddha_krut.json';
+import kartariforms from './assets/dhatuforms_vidyut_shuddha_kartari.json'
 
 const DEVANAGARI = 'devanagari'
 const SLP1 = 'slp1'
-
-const dhatudata = JSON.parse(fs.readFileSync(path.join(__dirname, 'assets/data.txt'), 'utf-8'))
 
 async function readCSV(filePath: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
@@ -41,7 +40,7 @@ async function getUniqueWords(): Promise<Set<string>> {
     return words
 }
 
-function getAllVidyutMatches(devanagariWord: string) {
+function getAllVidyutKrutMatches(devanagariWord: string) {
     let results: object[] = []
     for(const code in dhatuforms) {
         for (const pratyaya in dhatuforms[code]) {
@@ -50,8 +49,33 @@ function getAllVidyutMatches(devanagariWord: string) {
             if (matchIndex > -1) {
                 const dhatu = dhatudata['data'].filter(dhatu => dhatu.baseindex === code)[0]
                 const key = {
+                    type: 'krdanta',
                     code,
                     pratyaya,
+                    form: matchIndex,
+                    dhatu: dhatu['dhatu'],
+                    index: dhatu['i'],
+                    artha: dhatu['artha']
+                }
+                results.push(key)                
+            }
+        }
+    }
+    return results
+}
+
+function getAllVidyutKartariMatches(devanagariWord: string) {
+    let results: object[] = []
+    for(const code in kartariforms) {
+        for (const kartari in kartariforms[code]) {
+            const prayogas = kartariforms[code][kartari].split(';')
+            const matchIndex = prayogas.indexOf(devanagariWord)
+            if (matchIndex > -1) {
+                const dhatu = dhatudata['data'].filter(dhatu => dhatu.baseindex === code)[0]
+                const key = {
+                    type: 'kartari',
+                    code,
+                    kartari,
                     form: matchIndex,
                     dhatu: dhatu['dhatu'],
                     index: dhatu['i'],
@@ -89,11 +113,22 @@ function replace(word: string, characters: string[]) {
     for (const word of uniqueWords) {
         const sanitizedWord = replace(word, ['[', ']', '(', ')'])
         const devanagariWord = Sanscript.t(sanitizedWord, SLP1, DEVANAGARI)
-        const matches = getAllVidyutMatches(devanagariWord)
-        if (matches.length > 0) {
-            results[word] = matches
-        } else {
+        const krutMatches = getAllVidyutKrutMatches(devanagariWord)
+        let krutResults: any[] = []
+        if (krutMatches.length > 0) {
+            krutResults = krutMatches
+        }
+
+        const kartariMatches = getAllVidyutKartariMatches(devanagariWord)
+        let kartariResults: any[] = []
+        if (kartariMatches.length > 0) {
+            kartariResults = kartariMatches
+        }
+
+        results[word] = krutResults.concat(kartariResults)
+        if (results[word].length == 0) {
             unknown.push(word)
+            delete results[word]
         }
         process.stdout.write(`Completed ${(++count / uniqueWords.size * 100).toFixed(2)}% \r`)
     }

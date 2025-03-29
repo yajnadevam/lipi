@@ -9,7 +9,6 @@ acala
 tanavat
 Ahana
 ta[m]
-rarAsa
 navamAna
 Sam
 ha
@@ -17,8 +16,6 @@ ra
 Alava
 nAman
 kam
-calata
-jajara
 Bana
 A
 Ka
@@ -55,9 +52,7 @@ rasatasa
 saMDAra
 sarasa
 trEtAH
-daDya
 samara
-mama
 va
 hariH
 sadaya
@@ -85,7 +80,6 @@ mamAna
 raja
 (sa)mpayI
 tman
-mamna
 he
 nAna
 mAyI
@@ -98,7 +92,6 @@ damanasya
 SamanI
 asamad
 hAnI
-mame
 satyI
 narAni
 BARI
@@ -133,7 +126,6 @@ sananI
 vaNkaScara
 BAMSa
 asrI
-asi
 ravata
 uzAmattaM
 manI
@@ -145,7 +137,6 @@ dAnI
 acara
 sadasam
 AcaM
-amAni
 tAn
 Am
 taravaH
@@ -159,7 +150,6 @@ ahas
 anya
 tam
 manajA
-asmi
 svatAm
 maRi[m]
 tA
@@ -173,17 +163,13 @@ rayi
 AmanI
 raja[m]
 asamAmam
-yAni
 anEH
 kzayI
-Arza[m]
 Adaram
-Aca
 vajra
 tatAn
 AyI
 aMhas
-jajYa
 aSani
 masadaM
 vAnI
@@ -199,9 +185,6 @@ DI
 Ba
 ahAni
 jajaram
-tatAna
-mahAni
-samAni
 pARiDara
 kayI
 raTa
@@ -216,7 +199,6 @@ tAnEh
 nAmanI
 sa
 namanI
-Atata
 AkASam
 jaka
 sva
@@ -234,7 +216,6 @@ vARI
 tEH
 tat
 ajAda
-vava
 anaM
 anaYca
 asattva
@@ -253,7 +234,6 @@ ravat
 Anavam
 tamra
 vasman
-avamam
 aDa
 maTum
 SatadArava
@@ -268,7 +248,6 @@ saBam
 damavaha
 maTamahAn
 KaravAhamaha
-rave
 maYjana
 damanahAnakAma
 Ayaya
@@ -283,7 +262,6 @@ anarva
 aDi
 amahAnUna
 ASAm
-ahata
 manaMjaya
 vajra[m]
 saBAm
@@ -294,7 +272,6 @@ tAtam
 rahasa
 namrI
 tasavat
-rara
 Basma
 ram
 talva
@@ -423,7 +400,6 @@ vastra
 mahaBaRa
 sAhasam
 Adaha
-Anarza
 sAtAdaH
 aTAdasa
 sAtAn
@@ -435,11 +411,9 @@ jamAn
 Danvacara
 nASAvAnana
 saBavAn
-rarARa
 rasAlavAha
 tamasaharaRa
 (sa)mpannam
-amanan
 lavamahAn
 ftaraTarAtamanAk
 antarASvatTa
@@ -454,7 +428,6 @@ naSanavan
 aYjas
 Aharam
 ut
-jamatam
 sAman
 upya
 vawAn
@@ -476,14 +449,12 @@ AnanaYcala[m]
 sampanna[m]
 nAnasam
 Ahita[m]
-anaram
 tAma
 manassTam
 asamAmanapada
 mAnTa
 samAnaka
 cazanaMSa
-Ane
 raRe
 anAn
 mAnasam
@@ -505,7 +476,6 @@ hananaH
 ravas
 ASna
 dAhana
-manAva
 amASAya
 SaSI
 rIra
@@ -530,13 +500,11 @@ ota
 Ahananam
 maYjaman
 amAnavaH
-vavra
 vAmana
 vAhasmanAk
 ammam
 Amat
 asTAna
-aSlezam
 ravadAna
 anu
 anvaya
@@ -564,12 +532,9 @@ usrIH
 rapAn
 cane
 varRaja
-baBa
 aSnacara
-ahan
 sadanAt
 tada
-ahasam
 mAne
 Avaham
 carAjazaM
@@ -578,7 +543,6 @@ naktan
 Anahara
 vallaBa
 saMjvara
-vavaza
 saBAsakzaM
 hataM
 ahAvas
@@ -592,7 +556,6 @@ malAMSa
 amavat
 namanAni
 AnanAcara
-calati
 AhAva
 ISan
 ASA
@@ -607,7 +570,6 @@ acalatva
 SamaSarANgatamra
 mAsI
 rasaya
-acara[m]
 ADmAtAm
 ASI
 Damet
@@ -650,13 +612,11 @@ maDu
 aSru
 anASam
 mAman
-Atan
 vaSya
 BAMaH
 samaya
 tanasAm
 tAva
-jaga
 AYjad
 lamam
 mAndA
