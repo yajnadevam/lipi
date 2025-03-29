@@ -69,19 +69,20 @@ function getAllVidyutKartariMatches(devanagariWord: string) {
     for(const code in kartariforms) {
         for (const kartari in kartariforms[code]) {
             const prayogas = kartariforms[code][kartari].split(';')
-            const matchIndex = prayogas.indexOf(devanagariWord)
-            if (matchIndex > -1) {
-                const dhatu = dhatudata['data'].filter(dhatu => dhatu.baseindex === code)[0]
-                const key = {
-                    type: 'kartari',
-                    code,
-                    kartari,
-                    form: matchIndex,
-                    dhatu: dhatu['dhatu'],
-                    index: dhatu['i'],
-                    artha: dhatu['artha']
+            for (let i = 0; i < prayogas.length; i++) {
+                if (prayogas[i].split(',').indexOf(devanagariWord) > -1) {
+                    const dhatu = dhatudata['data'].filter(dhatu => dhatu.baseindex === code)[0]
+                    const key = {
+                        type: 'kartari',
+                        code,
+                        kartari,
+                        form: i,
+                        dhatu: dhatu['dhatu'],
+                        index: dhatu['i'],
+                        artha: dhatu['artha']
+                    }
+                    results.push(key) 
                 }
-                results.push(key)                
             }
         }
     }

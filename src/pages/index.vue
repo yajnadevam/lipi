@@ -948,20 +948,20 @@ export default {
 
       const formMap = [
         {
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
           vacana: "Eka",
           vacanaLabel: "एकवचनम्",
         },
         {
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
           vacana: "Dvi",
           vacanaLabel: "द्विवचनम्",
         },
         {
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
           vacana: "Bahu",
           vacanaLabel: "बहुवचनम्",
         },
@@ -984,20 +984,20 @@ export default {
           vacanaLabel: "बहुवचनम्",
         },
         {
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
           vacana: "Eka",
           vacanaLabel: "एकवचनम्",
         },
         {
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
           vacana: "Dvi",
           vacanaLabel: "द्विवचनम्",
         },
         {
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
           vacana: "Bahu",
           vacanaLabel: "बहुवचनम्",
         },
@@ -1037,15 +1037,7 @@ export default {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
     },
     getKartariAshtadhyayiLink(code, index, kartari, form) {
-      let f = form;
-      // This is needed because the website swaps the positions Uttama and Prathama purushas when it does table indexing vs the actual dataset
-      if (f < 3) {
-        f += 6;
-      }
-      if (f > 6) {
-        f -= 6;
-      }
-      return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${f}&scrollcolor=cyan&scrolloffset=400`;
+      return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
     onSanskritClick(devanagariWord) {
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
