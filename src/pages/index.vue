@@ -258,11 +258,14 @@
                 <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
               </div>
             </template>
-            <span class="prakriya-steps"
-              ><v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}</span
-            >
-            <v-divider></v-divider>
+            <div class="prakriya-steps">
+              <v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}
+            </div>
+            <div v-if="prakriya.finalResult != null" class="prakriya-steps">
+              <v-icon>mdi-arrow-right</v-icon> {{ prakriya.finalResult }}
+            </div>
           </div>
+          <v-divider></v-divider>
         </template>
       </v-card-text>
       <v-card-actions class="prakriya-dialog-bottom">
@@ -922,7 +925,16 @@ export default {
       sanskritResult.push({ word: parts[1] });
       return sanskritResult;
     },
-    generateKrdantaInput(code, krt) {
+    generateKrdantaInput(code, krt, form) {
+      let formLabel = null;
+      if (form == 1) {
+        formLabel = "(पुं)";
+      } else if (form == 2) {
+        formLabel = "(स्त्री)";
+      } else if (form == 3) {
+        formLabel = "(नपुं)";
+      }
+
       return {
         code: code, // example dhatu code
         krt: krt, // BaseKrt
@@ -930,6 +942,7 @@ export default {
         upasarga: [], // array of strings
         lakara: null, // or something like "Lat" if required
         prayoga: null, // or "Kartari", etc.
+        formLabel,
       };
     },
     generateTinantaInput(code, lakara, form) {
@@ -1017,12 +1030,13 @@ export default {
         upasarga: [],
       };
     },
-    deriveKrdantas(krdantaInput, dhatu, pratyaya) {
-      // Todo: need to check if this will always be ONLY 1 element
-      return vidyut.deriveKrdantas(krdantaInput).map((result) => ({
+    deriveKrdantas(krdantaInput, dhatu, pratyaya, devanagariWord) {
+      const { formLabel, ...rest } = krdantaInput;
+      return vidyut.deriveKrdantas(rest).map((result) => ({
         steps: result.history,
         title: `${dhatu} + ${pratyaya}`,
         result: Sanscript.t(result.text, "slp1", "devanagari"),
+        finalResult: `${formLabel} ${devanagariWord}`,
       }))[0];
     },
     deriveTinantas(tinantaInput, dhatu, devanagariWord) {
@@ -1055,11 +1069,13 @@ export default {
         let result;
         let ashtadhyayiLink;
         if (type === "krdanta") {
+          console.log("this is the form", form);
           input = this.generateKrdantaInput(
             code,
-            Sanscript.t(pratyaya, "devanagari", "slp1")
+            Sanscript.t(pratyaya, "devanagari", "slp1"),
+            form
           );
-          result = this.deriveKrdantas(input, dhatu, pratyaya);
+          result = this.deriveKrdantas(input, dhatu, pratyaya, devanagariWord);
           ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
             code,
             index,
