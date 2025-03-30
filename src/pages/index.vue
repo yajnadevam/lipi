@@ -1036,7 +1036,8 @@ export default {
         steps: result.history,
         title: `${dhatu} + ${pratyaya}`,
         result: Sanscript.t(result.text, "slp1", "devanagari"),
-        finalResult: `${formLabel} ${devanagariWord}`,
+        finalResult:
+          formLabel != null ? `${formLabel} ${devanagariWord}` : null,
       }))[0];
     },
     deriveTinantas(tinantaInput, dhatu, devanagariWord) {
