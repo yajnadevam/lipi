@@ -133,9 +133,16 @@
             <template v-slot:item.sanskrit="{ item }">
               <template v-for="word in renderSanskrit(item.sanskrit)">
                 <span
-                  v-if="word.link == true"
+                  v-if="word.link == 'prakriya'"
                   class="sanskrit-link"
-                  @click="onSanskritClick(word.word)"
+                  @click="showPrakriyaExplanation(word.word)"
+                >
+                  {{ word.word }}
+                </span>
+                <span
+                  v-else-if="word.link == 'mw'"
+                  class="sanskrit-link"
+                  @click="showMwExplanation(word.word)"
                 >
                   {{ word.word }}
                 </span>
@@ -217,16 +224,16 @@
 
   <v-dialog v-model="showPrakriyaDialog" max-width="600">
     <v-card>
-      <v-card-title class="prakriya-title">{{
+      <v-card-title class="explanation-title">{{
         prakriyaDialogContent.word
       }}</v-card-title>
       <v-card-text class="scrollable-card-text">
-        <span class="prakriya-description"
+        <span class="explanation-description"
           >Ashtadhyayi derivation of {{ prakriyaDialogContent.word }}</span
         >
         <template v-for="prakriya in prakriyaDialogContent.prakriyas">
           <div class="prakriya-container">
-            <span class="prakriya-title"
+            <span class="explanation-title"
               >{{ prakriya.title }} [{{ prakriya.code }}]
             </span>
             <a
@@ -268,7 +275,7 @@
           <v-divider></v-divider>
         </template>
       </v-card-text>
-      <v-card-actions class="prakriya-dialog-bottom">
+      <v-card-actions class="explanation-dialog-bottom">
         Derived using
         <a
           href="https://github.com/ambuda-org/vidyut"
@@ -285,6 +292,34 @@
         >
         <v-spacer></v-spacer>
         <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
+  <v-dialog v-model="showMwDialog" max-width="600">
+    <v-card>
+      <v-card-title class="explanation-title">{{
+        mwDialogContent.devanagariWord
+      }}</v-card-title>
+      <v-card-text class="scrollable-card-text">
+        <div class="explanation-description">
+          MW Dictionary meaning for {{ mwDialogContent.devanagariWord }}
+        </div>
+
+        <div class="mw-meaning" v-for="meaning in mwDialogContent.content">
+          {{ meaning }}
+        </div>
+      </v-card-text>
+      <v-card-actions class="explanation-dialog-bottom">
+        Meanings from
+        <a
+          href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"
+          target="_blank"
+          style="color: inherit"
+          >MW Dictionary</a
+        >
+        <v-spacer></v-spacer>
+        <v-btn text @click="showMwDialog = false">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -313,6 +348,7 @@ import incx from "../assets/data/inscriptions.csv?raw";
 import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
+import mwMap from "../assets/data/mw.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 
@@ -617,6 +653,8 @@ export default {
       fullrandom: fullrandom,
       showPrakriyaDialog: false,
       prakriyaDialogContent: {},
+      showMwDialog: false,
+      mwDialogContent: {},
     };
   },
   computed: {
@@ -895,12 +933,14 @@ export default {
 
       return `seal-mat-${material} seal-mat-${material}-${color}`;
     },
-    checkPrakriyaExists(word) {
+    getExplanationIfExists(word) {
       const slp1Word = Sanscript.t(word, "devanagari", "slp1");
       if (prakriyaMap[slp1Word]) {
-        return true;
+        return { word, link: "prakriya" };
+      } else if (mwMap[slp1Word]) {
+        return { word, link: "mw" };
       }
-      return false;
+      return { word };
     },
     // Todo: Maybe refactor better ?
     renderSanskrit(sanskrit) {
@@ -909,18 +949,14 @@ export default {
       let word = "";
       for (let i = 0; i < parts[0].length; i++) {
         if (parts[0][i] === "—" || parts[0][i] === " ") {
-          sanskritResult.push(
-            this.checkPrakriyaExists(word) ? { word, link: true } : { word }
-          );
+          sanskritResult.push(this.getExplanationIfExists(word));
           sanskritResult.push({ word: parts[0][i] });
           word = "";
         } else {
           word += parts[0][i];
         }
       }
-      sanskritResult.push(
-        this.checkPrakriyaExists(word) ? { word, link: true } : { word }
-      );
+      sanskritResult.push(this.getExplanationIfExists(word));
       sanskritResult.push({ word: "\n" });
       sanskritResult.push({ word: parts[1] });
       return sanskritResult;
@@ -1057,7 +1093,7 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    onSanskritClick(devanagariWord) {
+    showPrakriyaExplanation(devanagariWord) {
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
       const prakriyaKeys = prakriyaMap[slp1Word];
 
@@ -1070,7 +1106,6 @@ export default {
         let result;
         let ashtadhyayiLink;
         if (type === "krdanta") {
-          console.log("this is the form", form);
           input = this.generateKrdantaInput(
             code,
             Sanscript.t(pratyaya, "devanagari", "slp1"),
@@ -1111,6 +1146,14 @@ export default {
 
       this.prakriyaDialogContent = prakriyaDialogContent;
       this.showPrakriyaDialog = true;
+    },
+    showMwExplanation(devanagariWord) {
+      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
+      this.mwDialogContent = {
+        devanagariWord,
+        content: mwMap[slp1Word],
+      };
+      this.showMwDialog = true;
     },
   },
   created() {
@@ -1239,7 +1282,7 @@ export default {
   cursor: pointer;
 }
 
-.prakriya-title {
+.explanation-title {
   font-weight: bold;
   font-size: 16pt;
 }
@@ -1248,7 +1291,7 @@ export default {
   margin-bottom: 5pt;
 }
 
-.prakriya-title {
+.explanation-title {
   font-weight: bold !important;
   font-size: 20pt !important;
 }
@@ -1258,7 +1301,7 @@ export default {
   line-height: 30pt;
 }
 
-.prakriya-description {
+.explanation-description {
   font-size: 16pt;
   line-height: 30pt;
 }
@@ -1271,5 +1314,10 @@ export default {
 .scrollable-card-text {
   max-height: 80vh; /* Adjust as needed */
   overflow-y: auto;
+}
+
+.mw-meaning {
+  font-size: 14pt;
+  line-height: 28pt;
 }
 </style>
