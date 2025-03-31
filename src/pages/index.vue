@@ -130,6 +130,28 @@
               </div>
             </template>
 
+            <template v-slot:item.sanskrit="{ item }">
+              <template v-for="word in renderSanskrit(item.sanskrit)">
+                <span
+                  v-if="word.link == true"
+                  class="sanskrit-link"
+                  @click="showExplanation(word.word)"
+                >
+                  {{ word.word }}
+                </span>
+                <span
+                  v-else-if="word.link == 'mw'"
+                  class="sanskrit-link"
+                  @click="showMwExplanation(word.word)"
+                >
+                  {{ word.word }}
+                </span>
+                <span v-else>
+                  {{ word.word }}
+                </span>
+              </template>
+            </template>
+
             <template v-slot:item.data-table-expand="{ item, isExpanded }">
               <v-icon
                 v-if="isExpandedRow(item.id)"
@@ -199,10 +221,113 @@
       </v-main>
     </v-layout>
   </v-card>
+
+  <v-dialog v-model="showExplanationDialog" max-width="600">
+    <v-card>
+      <v-card-title class="explanation-title">{{
+        explanationDialogContent.devanagariWord
+      }}</v-card-title>
+      <v-card-text class="scrollable-card-text">
+        <template v-if="explanationDialogContent.mwDialogContent">
+          <div class="explanation-description">
+            Monier-Williams Dictionary meaning for
+            {{ explanationDialogContent.devanagariWord }}
+          </div>
+
+          <div
+            class="mw-meaning"
+            v-for="meaning in explanationDialogContent.mwDialogContent.content"
+          >
+            {{ meaning }}
+          </div>
+          <v-divider></v-divider>
+        </template>
+
+        <template v-if="explanationDialogContent.prakriyaDialogContent">
+          <span class="explanation-description"
+            >Ashtadhyayi derivation of
+            {{ explanationDialogContent.devanagariWord }}</span
+          >
+          <template
+            v-for="prakriya in explanationDialogContent.prakriyaDialogContent
+              .prakriyas"
+          >
+            <div class="prakriya-container">
+              <span class="explanation-title"
+                >{{ prakriya.title }} [{{ prakriya.code }}]
+              </span>
+              <a
+                class="ashtadhyayi-link"
+                :href="prakriya.ashtadhyayiLink"
+                target="_blank"
+                ><v-icon>mdi-open-in-new</v-icon></a
+              >
+
+              <div class="prakriya-steps">
+                {{ prakriya.dhatu }} [{{ prakriya.artha }}]
+              </div>
+
+              <template v-for="(step, index) in prakriya.steps">
+                <div class="prakriya-steps">
+                  <v-icon>mdi-arrow-right</v-icon>
+                  {{
+                    step.result
+                      .filter((r) => r.text != "")
+                      .map((r) =>
+                        Sanscript.t(
+                          r.text.replaceAll("\\", "").replaceAll("^", ""),
+                          "slp1",
+                          "devanagari"
+                        )
+                      )
+                      .join(" + ")
+                  }}
+                  <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
+                </div>
+              </template>
+              <div class="prakriya-steps">
+                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}
+              </div>
+              <div v-if="prakriya.finalResult != null" class="prakriya-steps">
+                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.finalResult }}
+              </div>
+            </div>
+            <v-divider></v-divider>
+          </template>
+        </template>
+      </v-card-text>
+      <v-card-actions class="explanation-dialog-bottom">
+        Credits:
+        <a
+          href="https://github.com/ambuda-org/vidyut"
+          target="_blank"
+          style="color: inherit"
+          >Vidyut</a
+        >
+        <a
+          href="https://github.com/ashtadhyayi-com/data"
+          target="_blank"
+          style="color: inherit"
+          >Ashtadhyayi</a
+        >
+        <a
+          href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"
+          target="_blank"
+          style="color: inherit"
+          >MW</a
+        >
+        <v-spacer></v-spacer>
+        <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>
 import { toRefs } from "vue";
+import "@mdi/font/css/materialdesignicons.css";
+import { aliases, mdi } from "vuetify/iconsets/mdi";
+import { mdiOpenInNew } from "@mdi/js";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
 import { useTheme } from "vuetify";
 const theme = useTheme();
@@ -220,8 +345,16 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
+import prakriyaMap from "../assets/data/prakriyas.json";
+import mwMap from "../assets/data/mw.json";
+import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
+import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
+
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
+
+// Will be initialized after mount
+let vidyut;
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -454,6 +587,14 @@ export default {
   data() {
     return {
       icons: {
+        defaultSet: "mdi",
+        aliases: {
+          ...aliases,
+          openInNew: mdiOpenInNew,
+        },
+        sets: {
+          mdi,
+        },
         pageFirst: [
           "M18.41,16.59L13.82,12L18.41,7.41L17,6L11,12L17,18L18.41,16.59M6,6H8V18H6V6Z",
         ],
@@ -477,7 +618,6 @@ export default {
           "M 8.00386 9.41816 C 7.61333 9.02763 7.61334 8.39447 8.00386 8.00395 C 8.39438 7.61342 9.02755 7.61342 9.41807 8.00395 L 12.0057 10.5916 L 14.5907 8.00657 C 14.9813 7.61605 15.6144 7.61605 16.0049 8.00657 C 16.3955 8.3971 16.3955 9.03026 16.0049 9.42079 L 13.4199 12.0058 L 16.0039 14.5897 C 16.3944 14.9803 16.3944 15.6134 16.0039 16.0039 C 15.6133 16.3945 14.9802 16.3945 14.5896 16.0039 L 12.0057 13.42 L 9.42097 16.0048 C 9.03045 16.3953 8.39728 16.3953 8.00676 16.0048 C 7.61624 15.6142 7.61624 14.9811 8.00676 14.5905 L 10.5915 12.0058 L 8.00386 9.41816 Z",
         ],
       },
-
       sortBy: [{ key: "textlength", order: "desc" }],
       search: "",
       drawer: null,
@@ -509,6 +649,8 @@ export default {
       optionBroken: false,
       lightTheme: false,
       fullrandom: fullrandom,
+      showExplanationDialog: false,
+      explanationDialogContent: {},
     };
   },
   computed: {
@@ -777,7 +919,6 @@ export default {
       this.search = selection.trim() + (this.search || "");
       localStorage.setItem("search", this.search);
     },
-
     getSealClasses(item) {
       let material = item.material
         ? item.material.toLowerCase().replace(/\s+/g, "")
@@ -787,6 +928,230 @@ export default {
         : "";
 
       return `seal-mat-${material} seal-mat-${material}-${color}`;
+    },
+    checkExplanationExists(word) {
+      const slp1Word = Sanscript.t(word, "devanagari", "slp1");
+      if (prakriyaMap[slp1Word] || mwMap[slp1Word]) {
+        return { word, link: true };
+      }
+      return { word };
+    },
+    // Todo: Maybe refactor better ?
+    renderSanskrit(sanskrit) {
+      const parts = sanskrit.split("\n");
+      let sanskritResult = [];
+      let word = "";
+      for (let i = 0; i < parts[0].length; i++) {
+        if (parts[0][i] === "—" || parts[0][i] === " ") {
+          sanskritResult.push(this.checkExplanationExists(word));
+          sanskritResult.push({ word: parts[0][i] });
+          word = "";
+        } else {
+          word += parts[0][i];
+        }
+      }
+      sanskritResult.push(this.checkExplanationExists(word));
+      sanskritResult.push({ word: "\n" });
+      sanskritResult.push({ word: parts[1] });
+      return sanskritResult;
+    },
+    generateKrdantaInput(code, krt, form) {
+      let formLabel = null;
+      if (form == 1) {
+        formLabel = "(पुं)";
+      } else if (form == 2) {
+        formLabel = "(स्त्री)";
+      } else if (form == 3) {
+        formLabel = "(नपुं)";
+      }
+
+      return {
+        code: code, // example dhatu code
+        krt: krt, // BaseKrt
+        sanadi: [], // Sanadi is an array of strings
+        upasarga: [], // array of strings
+        lakara: null, // or something like "Lat" if required
+        prayoga: null, // or "Kartari", etc.
+        formLabel,
+      };
+    },
+    generateTinantaInput(code, lakara, form) {
+      const lakaraMap = {
+        plat: { name: "Lat", label: "लट्लकारः" },
+        plit: { name: "Lit", label: "लिट्लकारः" },
+        plut: { name: "Lut", label: "लुट्लकारः" },
+        plrut: { name: "Lrt", label: "लृट्लकारः" },
+        plot: { name: "Lot", label: "लोट्लकारः" },
+        plang: { name: "Lan", label: "लङ्लकारः" },
+        pvidhiling: { name: "VidhiLin", label: "विधिलिङ्लकारः" },
+        pashirling: { name: "AshirLin", label: "आशीर्लिङ्लकारः" },
+        plung: { name: "Lun", label: "लुङ्लकारः" },
+        plrung: { name: "Lrn", label: "लृङ्लकारः" },
+      };
+
+      const formMap = [
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Prathama",
+          purushaLabel: "प्रथमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Madhyama",
+          purushaLabel: "मध्यमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Eka",
+          vacanaLabel: "एकवचनम्",
+        },
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Dvi",
+          vacanaLabel: "द्विवचनम्",
+        },
+        {
+          purusha: "Uttama",
+          purushaLabel: "उत्तमपुरुषः",
+          vacana: "Bahu",
+          vacanaLabel: "बहुवचनम्",
+        },
+      ];
+
+      return {
+        code,
+        lakara: lakaraMap[lakara].name,
+        lakaraLabel: lakaraMap[lakara].label,
+        prayoga: "Kartari",
+        purusha: formMap[form].purusha,
+        vacana: formMap[form].vacana,
+        purushaLabel: formMap[form].purushaLabel,
+        vacanaLabel: formMap[form].vacanaLabel,
+        pada: null,
+        sanadi: [],
+        upasarga: [],
+      };
+    },
+    deriveKrdantas(krdantaInput, dhatu, pratyaya, devanagariWord) {
+      const { formLabel, ...rest } = krdantaInput;
+      return vidyut.deriveKrdantas(rest).map((result) => ({
+        steps: result.history,
+        title: `${dhatu} + ${pratyaya}`,
+        result: Sanscript.t(result.text, "slp1", "devanagari"),
+        finalResult:
+          formLabel != null ? `${formLabel} ${devanagariWord}` : null,
+      }))[0];
+    },
+    deriveTinantas(tinantaInput, dhatu, devanagariWord) {
+      const { lakaraLabel, purushaLabel, vacanaLabel, ...rest } = tinantaInput;
+      return vidyut
+        .deriveTinantas(rest)
+        .map((result) => ({
+          steps: result.history,
+          title: `${dhatu}, ${purushaLabel}, ${vacanaLabel}`,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }))
+        .filter((res) => res.result == devanagariWord)[0];
+    },
+    getKrdantaAshtadhyayiLink(code, index, pratyaya) {
+      return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
+    },
+    getKartariAshtadhyayiLink(code, index, kartari, form) {
+      return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
+    },
+    getPrakriyaExplanation(devanagariWord, slp1Word) {
+      const prakriyaKeys = prakriyaMap[slp1Word];
+      const prakriyas = prakriyaKeys.map((prakriyaKey) => {
+        const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
+          prakriyaKey;
+
+        let input;
+        let result;
+        let ashtadhyayiLink;
+        if (type === "krdanta") {
+          input = this.generateKrdantaInput(
+            code,
+            Sanscript.t(pratyaya, "devanagari", "slp1"),
+            form
+          );
+          result = this.deriveKrdantas(input, dhatu, pratyaya, devanagariWord);
+          ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
+            code,
+            index,
+            pratyaya
+          );
+        } else if (type === "kartari") {
+          input = this.generateTinantaInput(code, kartari, form);
+          result = this.deriveTinantas(input, dhatu, devanagariWord);
+          ashtadhyayiLink = this.getKartariAshtadhyayiLink(
+            code,
+            index,
+            kartari,
+            form
+          );
+        }
+
+        return {
+          dhatu,
+          code,
+          index,
+          artha,
+          ashtadhyayiLink,
+          ...result,
+        };
+      });
+      return {
+        prakriyas,
+      };
+    },
+    getMwExplanation(slp1Word) {
+      return {
+        content: mwMap[slp1Word],
+      };
+    },
+    showExplanation(devanagariWord) {
+      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
+      const mwDialogContent = mwMap[slp1Word]
+        ? this.getMwExplanation(slp1Word)
+        : null;
+      const prakriyaDialogContent = prakriyaMap[slp1Word]
+        ? this.getPrakriyaExplanation(devanagariWord, slp1Word)
+        : null;
+
+      this.explanationDialogContent = {
+        devanagariWord,
+        mwDialogContent,
+        prakriyaDialogContent,
+      };
+      this.showExplanationDialog = true;
     },
   },
   created() {
@@ -798,11 +1163,15 @@ export default {
     this.lightTheme = localStorage.getItem("theme") == "light";
   },
   // eslint-disable-next-line vue/order-in-components
-  mounted() {
+  async mounted() {
     document.addEventListener("mouseup", (event) => {
       const classes = Array.from(event.target.classList);
       if (classes.includes("indus1")) this.pasteSearch();
     });
+    await initVidyut();
+    const dhatupathaText = await (await fetch(dhatupatha)).text();
+    vidyut = Vidyut.init(dhatupathaText);
+
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
       if (splashScreen) splashScreen.classList.add("hidden");
@@ -899,5 +1268,54 @@ export default {
 
 .seal-mat-copper img {
   filter: sepia(98%) hue-rotate(310deg) saturate(150%) brightness(60%);
+}
+
+.sanskrit {
+  font-size: 16pt;
+  word-spacing: 5pt;
+}
+
+.sanskrit-link {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.explanation-title {
+  font-weight: bold;
+  font-size: 16pt;
+}
+
+.prakriya-container {
+  margin-bottom: 5pt;
+}
+
+.explanation-title {
+  font-weight: bold !important;
+  font-size: 20pt !important;
+}
+
+.prakriya-steps {
+  font-size: 14pt;
+  line-height: 30pt;
+}
+
+.explanation-description {
+  font-size: 16pt;
+  line-height: 30pt;
+}
+
+.ashtadhyayi-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.scrollable-card-text {
+  max-height: 80vh; /* Adjust as needed */
+  overflow-y: auto;
+}
+
+.mw-meaning {
+  font-size: 14pt;
+  line-height: 28pt;
 }
 </style>
