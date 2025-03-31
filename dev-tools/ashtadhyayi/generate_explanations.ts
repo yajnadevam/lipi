@@ -158,9 +158,10 @@ function getPrakriyaMatches(devanagariWord) {
     let count = 0
     for (const word of uniqueWords) {
         const sanitizedWord = replace(word, ['[', ']', '(', ')'])
-        const devanagariWord = Sanscript.t(sanitizedWord, SLP1, DEVANAGARI)
+        const replaceRegex = /(sya|s|m)$/i
+        const declensionRemovedWord = sanitizedWord.replace(replaceRegex, "")
         
-        let res = getPrakriyaMatches(devanagariWord)
+        let res = getPrakriyaMatches(Sanscript.t(sanitizedWord, SLP1, DEVANAGARI))
         if (res.length === 0) {
             // the way i see it, tadditha 2ndary affixes are not easily found and the declensions are not easily found. 
             // i think at least for declension, it is a substring, ie if the word ends in /s/, /m/, /sya/ etc, you could clip 
@@ -168,13 +169,15 @@ function getPrakriyaMatches(devanagariWord) {
             // i think its mostly matup (-vat, vān), ini (ī) and a couple of rare ones like tasil. 
             // they could probably all be handled similarly
             // for example: दमनवतम् is damana + matup + accusative.
-            res = getPrakriyaMatches(Sanscript.t(sanitizedWord.replace(/(sya|s|m)$/i, ""), SLP1, DEVANAGARI))
+            res = getPrakriyaMatches(Sanscript.t(declensionRemovedWord, SLP1, DEVANAGARI))
         }        
 
         prakriyaResults[word] = res
 
-        if(sanitizedWord in mwMap) {
+        if (sanitizedWord in mwMap) {
             mwResults[word] = mwMap[sanitizedWord]
+        } else if (declensionRemovedWord in mwMap) {
+            mwResults[word] = mwMap[declensionRemovedWord]
         }
         
         if (prakriyaResults[word].length == 0 && !(word in mwResults)) {            
