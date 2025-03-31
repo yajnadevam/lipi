@@ -303,7 +303,8 @@
       }}</v-card-title>
       <v-card-text class="scrollable-card-text">
         <div class="explanation-description">
-          MW Dictionary meaning for {{ mwDialogContent.devanagariWord }}
+          Monier-Williams Dictionary meaning for
+          {{ mwDialogContent.devanagariWord }}
         </div>
 
         <div class="mw-meaning" v-for="meaning in mwDialogContent.content">
