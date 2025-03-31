@@ -135,6 +135,21 @@ function replace(word: string, characters: string[]) {
     return word
 }
 
+function getPrakriyaMatches(devanagariWord) {
+    const krutMatches = getAllVidyutKrutMatches(devanagariWord)
+    let krutResults: any[] = []
+    if (krutMatches.length > 0) {
+        krutResults = krutMatches
+    }
+
+    const kartariMatches = getAllVidyutKartariMatches(devanagariWord)
+    let kartariResults: any[] = []
+    if (kartariMatches.length > 0) {
+        kartariResults = kartariMatches
+    }
+    return krutResults.concat(kartariResults)
+}
+
 (async() => {
     const uniqueWords: Set<string> = await getUniqueWords()
     const prakriyaResults: {[key: string]: any} = {}
@@ -144,19 +159,19 @@ function replace(word: string, characters: string[]) {
     for (const word of uniqueWords) {
         const sanitizedWord = replace(word, ['[', ']', '(', ')'])
         const devanagariWord = Sanscript.t(sanitizedWord, SLP1, DEVANAGARI)
-        const krutMatches = getAllVidyutKrutMatches(devanagariWord)
-        let krutResults: any[] = []
-        if (krutMatches.length > 0) {
-            krutResults = krutMatches
-        }
+        
+        let res = getPrakriyaMatches(devanagariWord)
+        if (res.length === 0) {
+            // the way i see it, tadditha 2ndary affixes are not easily found and the declensions are not easily found. 
+            // i think at least for declension, it is a substring, ie if the word ends in /s/, /m/, /sya/ etc, you could clip 
+            // that off and see if something matches. We could add the tadittas as well, 
+            // i think its mostly matup (-vat, vān), ini (ī) and a couple of rare ones like tasil. 
+            // they could probably all be handled similarly
+            // for example: दमनवतम् is damana + matup + accusative.
+            res = getPrakriyaMatches(Sanscript.t(sanitizedWord.replace(/(sya|s|m)$/i, ""), SLP1, DEVANAGARI))
+        }        
 
-        const kartariMatches = getAllVidyutKartariMatches(devanagariWord)
-        let kartariResults: any[] = []
-        if (kartariMatches.length > 0) {
-            kartariResults = kartariMatches
-        }
-
-        prakriyaResults[word] = krutResults.concat(kartariResults)
+        prakriyaResults[word] = res
 
         if(sanitizedWord in mwMap) {
             mwResults[word] = mwMap[sanitizedWord]

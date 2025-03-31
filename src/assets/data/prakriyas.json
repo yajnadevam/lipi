@@ -706,6 +706,17 @@
       "artha": "गतौ शब्दे च"
     }
   ],
+  "anDa(s)": [
+    {
+      "type": "krdanta",
+      "code": "10.0471",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अन्ध",
+      "index": "1100471",
+      "artha": "दृष्ट्युपघाते"
+    }
+  ],
   "jara": [
     {
       "type": "krdanta",
@@ -1225,6 +1236,53 @@
       "artha": "रोगे"
     }
   ],
+  "ASas": [
+    {
+      "type": "krdanta",
+      "code": "05.0020",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "अश्",
+      "index": "1050020",
+      "artha": "व्याप्तौ सङ्घाते च"
+    },
+    {
+      "type": "krdanta",
+      "code": "09.0059",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "अश्",
+      "index": "1090059",
+      "artha": "भोजने"
+    },
+    {
+      "type": "kartari",
+      "code": "09.0059",
+      "kartari": "plit",
+      "form": 0,
+      "dhatu": "अश्",
+      "index": "1090059",
+      "artha": "भोजने"
+    },
+    {
+      "type": "kartari",
+      "code": "09.0059",
+      "kartari": "plit",
+      "form": 5,
+      "dhatu": "अश्",
+      "index": "1090059",
+      "artha": "भोजने"
+    },
+    {
+      "type": "kartari",
+      "code": "09.0059",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "अश्",
+      "index": "1090059",
+      "artha": "भोजने"
+    }
+  ],
   "dAna": [
     {
       "type": "krdanta",
@@ -1319,6 +1377,35 @@
       "artha": "आस्वादनस्नेहनयोः"
     }
   ],
+  "manas": [
+    {
+      "type": "krdanta",
+      "code": "04.0073",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मन्",
+      "index": "1040073",
+      "artha": "ज्ञाने"
+    },
+    {
+      "type": "krdanta",
+      "code": "08.0009",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मन्",
+      "index": "1080009",
+      "artha": "अवबोधने"
+    },
+    {
+      "type": "kartari",
+      "code": "01.1078",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "म्ना",
+      "index": "1011078",
+      "artha": "अभ्यासे"
+    }
+  ],
   "vama": [
     {
       "type": "krdanta",
@@ -1337,6 +1424,26 @@
       "dhatu": "वम्",
       "index": "1010984",
       "artha": "उद्गिरणे"
+    }
+  ],
+  "mataM": [
+    {
+      "type": "krdanta",
+      "code": "04.0073",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "मन्",
+      "index": "1040073",
+      "artha": "ज्ञाने"
+    },
+    {
+      "type": "krdanta",
+      "code": "08.0009",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "मन्",
+      "index": "1080009",
+      "artha": "अवबोधने"
     }
   ],
   "caza": [
@@ -1368,6 +1475,44 @@
       "dhatu": "साम",
       "index": "1100420",
       "artha": "सान्त्वप्रयोगे"
+    }
+  ],
+  "dattaM": [
+    {
+      "type": "krdanta",
+      "code": "01.1079",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "दा",
+      "index": "1011079",
+      "artha": "दाने"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.1117",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "दे",
+      "index": "1011117",
+      "artha": "रक्षणे"
+    },
+    {
+      "type": "krdanta",
+      "code": "03.0010",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "दा",
+      "index": "1030010",
+      "artha": "दाने"
+    },
+    {
+      "type": "kartari",
+      "code": "03.0010",
+      "kartari": "plot",
+      "form": 5,
+      "dhatu": "दा",
+      "index": "1030010",
+      "artha": "दाने"
     }
   ],
   "Ava": [
@@ -2264,6 +2409,73 @@
       "artha": "हिंसायाम्"
     }
   ],
+  "vananaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0533",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "वन्",
+      "index": "1010533",
+      "artha": "शब्दे"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0534",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "वन्",
+      "index": "1010534",
+      "artha": "सम्भक्तौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0915",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "वन्",
+      "index": "1010915",
+      "artha": "हिंसायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0951",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "वन्",
+      "index": "1010951",
+      "artha": "अनेकार्थत्वे"
+    },
+    {
+      "type": "krdanta",
+      "code": "08.0008",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "वन्",
+      "index": "1080008",
+      "artha": "याचने"
+    }
+  ],
+  "ananaM": [
+    {
+      "type": "krdanta",
+      "code": "02.0065",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "अन्",
+      "index": "1020065",
+      "artha": "प्राणने"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0072",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "अन्",
+      "index": "1040072",
+      "artha": "प्राणने"
+    }
+  ],
   "anam": [
     {
       "type": "krdanta",
@@ -2589,6 +2801,17 @@
       "dhatu": "पा",
       "index": "1020051",
       "artha": "रक्षणे"
+    }
+  ],
+  "damanasya": [
+    {
+      "type": "krdanta",
+      "code": "04.0100",
+      "pratyaya": "ल्युट्",
+      "form": 0,
+      "dhatu": "दम्",
+      "index": "1040100",
+      "artha": "उपशमे"
     }
   ],
   "asamad": [
@@ -2998,6 +3221,17 @@
       "artha": "हर्षे ग्लेपने च"
     }
   ],
+  "jawAm": [
+    {
+      "type": "krdanta",
+      "code": "01.0342",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "जट्",
+      "index": "1010342",
+      "artha": "सङ्घाते"
+    }
+  ],
   "mahat": [
     {
       "type": "krdanta",
@@ -3054,6 +3288,17 @@
       "dhatu": "रा",
       "index": "1020052",
       "artha": "दाने"
+    }
+  ],
+  "rajam": [
+    {
+      "type": "kartari",
+      "code": "01.1154",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "रञ्ज्",
+      "index": "1011154",
+      "artha": "रागे"
     }
   ],
   "caran": [
@@ -3606,6 +3851,35 @@
       "artha": "हिंसायाम्"
     }
   ],
+  "AcaM": [
+    {
+      "type": "kartari",
+      "code": "01.0999",
+      "kartari": "plit",
+      "form": 0,
+      "dhatu": "अच्",
+      "index": "1010999",
+      "artha": "गतौ याचने च"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0999",
+      "kartari": "plit",
+      "form": 5,
+      "dhatu": "अच्",
+      "index": "1010999",
+      "artha": "गतौ याचने च"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0999",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "अच्",
+      "index": "1010999",
+      "artha": "गतौ याचने च"
+    }
+  ],
   "Barba": [
     {
       "type": "krdanta",
@@ -3753,6 +4027,17 @@
       "dhatu": "सह्",
       "index": "1100341",
       "artha": "मर्षणे"
+    }
+  ],
+  "ahas": [
+    {
+      "type": "krdanta",
+      "code": "05.0029",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अह्",
+      "index": "1050029",
+      "artha": "व्याप्तौ"
     }
   ],
   "nama": [
@@ -4163,6 +4448,37 @@
       "dhatu": "चल्",
       "index": "1060083",
       "artha": "विलसने विकसने च"
+    }
+  ],
+  "raja[m]": [
+    {
+      "type": "kartari",
+      "code": "01.1154",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "रञ्ज्",
+      "index": "1011154",
+      "artha": "रागे"
+    }
+  ],
+  "asamAmam": [
+    {
+      "type": "kartari",
+      "code": "01.0963",
+      "kartari": "plang",
+      "form": 8,
+      "dhatu": "सम्",
+      "index": "1010963",
+      "artha": "अवैकल्ये"
+    },
+    {
+      "type": "kartari",
+      "code": "04.0132",
+      "kartari": "plung",
+      "form": 8,
+      "dhatu": "सम्",
+      "index": "1040132",
+      "artha": "परिणामे"
     }
   ],
   "yAni": [
@@ -4604,6 +4920,53 @@
       "artha": "लवने"
     }
   ],
+  "aMhas": [
+    {
+      "type": "krdanta",
+      "code": "01.0722",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "अंह्",
+      "index": "1010722",
+      "artha": "गतौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0722",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अंह्",
+      "index": "1010722",
+      "artha": "गतौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0328",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "अंह्",
+      "index": "1100328",
+      "artha": "भाषायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0328",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अंह्",
+      "index": "1100328",
+      "artha": "भाषायाम्"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0328",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "अंह्",
+      "index": "1100328",
+      "artha": "भाषायाम्"
+    }
+  ],
   "jajYa": [
     {
       "type": "kartari",
@@ -4762,6 +5125,35 @@
       "dhatu": "अश्",
       "index": "1090059",
       "artha": "भोजने"
+    }
+  ],
+  "taraM": [
+    {
+      "type": "krdanta",
+      "code": "01.1124",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "तॄ",
+      "index": "1011124",
+      "artha": "प्लवनतरणयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.1124",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "तॄ",
+      "index": "1011124",
+      "artha": "प्लवनतरणयोः"
+    },
+    {
+      "type": "kartari",
+      "code": "01.1124",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "तॄ",
+      "index": "1011124",
+      "artha": "प्लवनतरणयोः"
     }
   ],
   "jawa": [
@@ -5029,6 +5421,71 @@
       "artha": "शब्दे"
     }
   ],
+  "jajaram": [
+    {
+      "type": "kartari",
+      "code": "01.1098",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "जृ",
+      "index": "1011098",
+      "artha": "गतौ"
+    },
+    {
+      "type": "kartari",
+      "code": "04.0025",
+      "kartari": "plit",
+      "form": 5,
+      "dhatu": "जॄ",
+      "index": "1040025",
+      "artha": "वयोहानौ"
+    },
+    {
+      "type": "kartari",
+      "code": "04.0025",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "जॄ",
+      "index": "1040025",
+      "artha": "वयोहानौ"
+    },
+    {
+      "type": "kartari",
+      "code": "09.0027",
+      "kartari": "plit",
+      "form": 5,
+      "dhatu": "जॄ",
+      "index": "1090027",
+      "artha": "वयोहानौ"
+    },
+    {
+      "type": "kartari",
+      "code": "09.0027",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "जॄ",
+      "index": "1090027",
+      "artha": "वयोहानौ"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0346",
+      "kartari": "plit",
+      "form": 5,
+      "dhatu": "जॄ",
+      "index": "1100346",
+      "artha": "वयोहानौ"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0346",
+      "kartari": "plit",
+      "form": 6,
+      "dhatu": "जॄ",
+      "index": "1100346",
+      "artha": "वयोहानौ"
+    }
+  ],
   "tatAna": [
     {
       "type": "kartari",
@@ -5160,6 +5617,17 @@
       "dhatu": "अय्",
       "index": "1010546",
       "artha": "गतौ"
+    }
+  ],
+  "tatas": [
+    {
+      "type": "krdanta",
+      "code": "08.0001",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "तन्",
+      "index": "1080001",
+      "artha": "विस्तारे"
     }
   ],
   "vaSA": [
@@ -5516,6 +5984,26 @@
       "dhatu": "सह्",
       "index": "1100341",
       "artha": "मर्षणे"
+    }
+  ],
+  "anaM": [
+    {
+      "type": "krdanta",
+      "code": "02.0065",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अन्",
+      "index": "1020065",
+      "artha": "प्राणने"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0072",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अन्",
+      "index": "1040072",
+      "artha": "प्राणने"
     }
   ],
   "anA": [
@@ -5922,6 +6410,53 @@
       "artha": "भर्त्सनदीप्त्योः"
     }
   ],
+  "vanAm": [
+    {
+      "type": "krdanta",
+      "code": "01.0533",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "वन्",
+      "index": "1010533",
+      "artha": "शब्दे"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0534",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "वन्",
+      "index": "1010534",
+      "artha": "सम्भक्तौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0915",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "वन्",
+      "index": "1010915",
+      "artha": "हिंसायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0951",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "वन्",
+      "index": "1010951",
+      "artha": "अनेकार्थत्वे"
+    },
+    {
+      "type": "krdanta",
+      "code": "08.0008",
+      "pratyaya": "अच्",
+      "form": 2,
+      "dhatu": "वन्",
+      "index": "1080008",
+      "artha": "याचने"
+    }
+  ],
   "anana[m]": [
     {
       "type": "krdanta",
@@ -6011,6 +6546,46 @@
       "dhatu": "वम्",
       "index": "1010984",
       "artha": "उद्गिरणे"
+    }
+  ],
+  "mahaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0831",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मह्",
+      "index": "1010831",
+      "artha": "पूजायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0406",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मह",
+      "index": "1100406",
+      "artha": "पूजायाम्"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0831",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "मह्",
+      "index": "1010831",
+      "artha": "पूजायाम्"
+    }
+  ],
+  "mAKaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0140",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "मख्",
+      "index": "1010140",
+      "artha": "गतौ"
     }
   ],
   "Pakkam": [
@@ -7189,6 +7764,26 @@
       "artha": "बन्धने"
     }
   ],
+  "paRam": [
+    {
+      "type": "krdanta",
+      "code": "01.0507",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "पण्",
+      "index": "1010507",
+      "artha": "व्यवहारे स्तुतौ च"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0507",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "पण्",
+      "index": "1010507",
+      "artha": "व्यवहारे स्तुतौ च"
+    }
+  ],
   "vamam": [
     {
       "type": "krdanta",
@@ -7209,6 +7804,17 @@
       "dhatu": "रै",
       "index": "1011057",
       "artha": "शब्दे"
+    }
+  ],
+  "naSaM": [
+    {
+      "type": "krdanta",
+      "code": "04.0091",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नश्",
+      "index": "1040091",
+      "artha": "अदर्शने"
     }
   ],
   "asya": [
@@ -7358,6 +7964,26 @@
       "dhatu": "मस्",
       "index": "1040131",
       "artha": "परिणामे"
+    }
+  ],
+  "sadasya": [
+    {
+      "type": "krdanta",
+      "code": "01.0990",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सद्",
+      "index": "1010990",
+      "artha": "विशरणगत्यवसादनेषु"
+    },
+    {
+      "type": "krdanta",
+      "code": "06.0163",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सद्",
+      "index": "1060163",
+      "artha": "विशरणगत्यवसादनेषु"
     }
   ],
   "DA": [
@@ -7605,6 +8231,44 @@
       "artha": "हिंसायाम्"
     }
   ],
+  "mayas": [
+    {
+      "type": "krdanta",
+      "code": "01.0549",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मय्",
+      "index": "1010549",
+      "artha": "गतौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0032",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मी",
+      "index": "1040032",
+      "artha": "हिंसायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0361",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मी",
+      "index": "1100361",
+      "artha": "गतौ"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0361",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "मी",
+      "index": "1100361",
+      "artha": "गतौ"
+    }
+  ],
   "tayanam": [
     {
       "type": "krdanta",
@@ -7627,6 +8291,26 @@
       "artha": "विलोडने"
     }
   ],
+  "kaMsaM": [
+    {
+      "type": "krdanta",
+      "code": "02.0014",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "कंस्",
+      "index": "1020014",
+      "artha": "गतिशासनयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "02.0014",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "कंस्",
+      "index": "1020014",
+      "artha": "गतिशासनयोः"
+    }
+  ],
   "nadan": [
     {
       "type": "krdanta",
@@ -7645,6 +8329,17 @@
       "dhatu": "नद्",
       "index": "1100309",
       "artha": "भाषायाम्"
+    }
+  ],
+  "vaDam": [
+    {
+      "type": "krdanta",
+      "code": "02.0002",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "हन्",
+      "index": "1020002",
+      "artha": "हिंसागत्योः"
     }
   ],
   "dadat": [
@@ -7966,6 +8661,53 @@
       "artha": "इच्छायाम्"
     }
   ],
+  "naraM": [
+    {
+      "type": "krdanta",
+      "code": "01.0921",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "नॄ",
+      "index": "1010921",
+      "artha": "नये"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0921",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नॄ",
+      "index": "1010921",
+      "artha": "नये"
+    },
+    {
+      "type": "krdanta",
+      "code": "09.0030",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "नॄ",
+      "index": "1090030",
+      "artha": "नये"
+    },
+    {
+      "type": "krdanta",
+      "code": "09.0030",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नॄ",
+      "index": "1090030",
+      "artha": "नये"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0921",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "नॄ",
+      "index": "1010921",
+      "artha": "नये"
+    }
+  ],
   "DAra": [
     {
       "type": "krdanta",
@@ -8031,6 +8773,17 @@
       "dhatu": "रह्",
       "index": "1010832",
       "artha": "त्यागे"
+    }
+  ],
+  "kamam": [
+    {
+      "type": "krdanta",
+      "code": "01.0511",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "कम्",
+      "index": "1010511",
+      "artha": "कान्तौ"
     }
   ],
   "jawam": [
@@ -8262,6 +9015,100 @@
       "dhatu": "वन्",
       "index": "1010951",
       "artha": "अनेकार्थत्वे"
+    }
+  ],
+  "Cadasya": [
+    {
+      "type": "krdanta",
+      "code": "01.0925",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "छद्",
+      "index": "1010925",
+      "artha": "ऊर्जने"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0370",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "छद्",
+      "index": "1100370",
+      "artha": "अपवारणे"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0481",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "छद",
+      "index": "1100481",
+      "artha": "अपवारणे"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0925",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "छद्",
+      "index": "1010925",
+      "artha": "ऊर्जने"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0370",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "छद्",
+      "index": "1100370",
+      "artha": "अपवारणे"
+    }
+  ],
+  "madaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0927",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "मद्",
+      "index": "1010927",
+      "artha": "हर्षग्लेपनयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0927",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मद्",
+      "index": "1010927",
+      "artha": "हर्षग्लेपनयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0105",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "मद्",
+      "index": "1040105",
+      "artha": "हर्षे ग्लेपने च"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0105",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "मद्",
+      "index": "1040105",
+      "artha": "हर्षे ग्लेपने च"
+    },
+    {
+      "type": "kartari",
+      "code": "01.0927",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "मद्",
+      "index": "1010927",
+      "artha": "हर्षग्लेपनयोः"
     }
   ],
   "cAnana[m]": [
@@ -9196,6 +10043,35 @@
       "artha": "प्रसवैश्वर्ययोः"
     }
   ],
+  "aYjas": [
+    {
+      "type": "krdanta",
+      "code": "07.0021",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अञ्ज्",
+      "index": "1070021",
+      "artha": "व्यक्तिम्रक्षणकान्तिगतिषु"
+    },
+    {
+      "type": "krdanta",
+      "code": "10.0316",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "अञ्ज्",
+      "index": "1100316",
+      "artha": "भाषायाम्"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0316",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "अञ्ज्",
+      "index": "1100316",
+      "artha": "भाषायाम्"
+    }
+  ],
   "jamatam": [
     {
       "type": "kartari",
@@ -9227,6 +10103,35 @@
       "dhatu": "चर्",
       "index": "1010640",
       "artha": "गतौ भक्षणे च"
+    }
+  ],
+  "SAsaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0828",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "शस्",
+      "index": "1010828",
+      "artha": "हिंसायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "02.0070",
+      "pratyaya": "घञ्",
+      "form": 0,
+      "dhatu": "शास्",
+      "index": "1020070",
+      "artha": "अनुशिष्टौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "02.0070",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "शास्",
+      "index": "1020070",
+      "artha": "अनुशिष्टौ"
     }
   ],
   "samam": [
@@ -9859,6 +10764,26 @@
       "artha": "प्लवनतरणयोः"
     }
   ],
+  "tanam": [
+    {
+      "type": "krdanta",
+      "code": "10.0377",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "तन्",
+      "index": "1100377",
+      "artha": "श्रद्धोपकरणयोः"
+    },
+    {
+      "type": "kartari",
+      "code": "10.0377",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "तन्",
+      "index": "1100377",
+      "artha": "श्रद्धोपकरणयोः"
+    }
+  ],
   "pAna[m]": [
     {
       "type": "krdanta",
@@ -9904,6 +10829,44 @@
       "dhatu": "पा",
       "index": "1020051",
       "artha": "रक्षणे"
+    }
+  ],
+  "ravas": [
+    {
+      "type": "krdanta",
+      "code": "01.1114",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "रु",
+      "index": "1011114",
+      "artha": "गतिरेषणयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.1114",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "रु",
+      "index": "1011114",
+      "artha": "गतिरेषणयोः"
+    },
+    {
+      "type": "krdanta",
+      "code": "02.0028",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "रु",
+      "index": "1020028",
+      "artha": "शब्दे"
+    },
+    {
+      "type": "krdanta",
+      "code": "02.0028",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "रु",
+      "index": "1020028",
+      "artha": "शब्दे"
     }
   ],
   "manAva": [
@@ -10415,6 +11378,35 @@
       "artha": "विदारणे"
     }
   ],
+  "saras": [
+    {
+      "type": "krdanta",
+      "code": "01.1085",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सृ",
+      "index": "1011085",
+      "artha": "गतौ"
+    },
+    {
+      "type": "krdanta",
+      "code": "03.0018",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सृ",
+      "index": "1030018",
+      "artha": "गतौ"
+    },
+    {
+      "type": "kartari",
+      "code": "01.1085",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "सृ",
+      "index": "1011085",
+      "artha": "गतौ"
+    }
+  ],
   "dAna[m]": [
     {
       "type": "krdanta",
@@ -10878,6 +11870,26 @@
       "artha": "प्रसह्यकरणे"
     }
   ],
+  "hataM": [
+    {
+      "type": "krdanta",
+      "code": "02.0002",
+      "pratyaya": "क्त",
+      "form": 0,
+      "dhatu": "हन्",
+      "index": "1020002",
+      "artha": "हिंसागत्योः"
+    },
+    {
+      "type": "kartari",
+      "code": "02.0002",
+      "kartari": "plot",
+      "form": 5,
+      "dhatu": "हन्",
+      "index": "1020002",
+      "artha": "हिंसागत्योः"
+    }
+  ],
   "dadAna": [
     {
       "type": "krdanta",
@@ -11187,6 +12199,26 @@
       "artha": "कुटिलायां गतौ"
     }
   ],
+  "yajas": [
+    {
+      "type": "krdanta",
+      "code": "01.1157",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "यज्",
+      "index": "1011157",
+      "artha": "देवपूजासङ्गतिकरणदानेषु"
+    },
+    {
+      "type": "kartari",
+      "code": "01.1157",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "यज्",
+      "index": "1011157",
+      "artha": "देवपूजासङ्गतिकरणदानेषु"
+    }
+  ],
   "jAya": [
     {
       "type": "krdanta",
@@ -11353,6 +12385,35 @@
       "artha": "हिंसायाम्"
     }
   ],
+  "naBaM": [
+    {
+      "type": "krdanta",
+      "code": "01.0855",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नभ्",
+      "index": "1010855",
+      "artha": "हिंसायाम् अभावे च"
+    },
+    {
+      "type": "krdanta",
+      "code": "04.0155",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नभ्",
+      "index": "1040155",
+      "artha": "हिंसायाम्"
+    },
+    {
+      "type": "krdanta",
+      "code": "09.0056",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "नभ्",
+      "index": "1090056",
+      "artha": "हिंसायाम्"
+    }
+  ],
   "paRa": [
     {
       "type": "krdanta",
@@ -11422,6 +12483,26 @@
       "dhatu": "अग्",
       "index": "1010902",
       "artha": "कुटिलायां गतौ"
+    }
+  ],
+  "paRa[m]": [
+    {
+      "type": "krdanta",
+      "code": "01.0507",
+      "pratyaya": "अप्",
+      "form": 0,
+      "dhatu": "पण्",
+      "index": "1010507",
+      "artha": "व्यवहारे स्तुतौ च"
+    },
+    {
+      "type": "krdanta",
+      "code": "01.0507",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "पण्",
+      "index": "1010507",
+      "artha": "व्यवहारे स्तुतौ च"
     }
   ],
   "yajaH": [
@@ -11862,6 +12943,46 @@
       "dhatu": "री",
       "index": "1040033",
       "artha": "स्रवणे"
+    }
+  ],
+  "vahas": [
+    {
+      "type": "krdanta",
+      "code": "01.1159",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "वह्",
+      "index": "1011159",
+      "artha": "प्रापणे"
+    },
+    {
+      "type": "kartari",
+      "code": "01.1159",
+      "kartari": "plot",
+      "form": 3,
+      "dhatu": "वह्",
+      "index": "1011159",
+      "artha": "प्रापणे"
+    }
+  ],
+  "sadas": [
+    {
+      "type": "krdanta",
+      "code": "01.0990",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सद्",
+      "index": "1010990",
+      "artha": "विशरणगत्यवसादनेषु"
+    },
+    {
+      "type": "krdanta",
+      "code": "06.0163",
+      "pratyaya": "अच्",
+      "form": 0,
+      "dhatu": "सद्",
+      "index": "1060163",
+      "artha": "विशरणगत्यवसादनेषु"
     }
   ],
   "yAn": [
