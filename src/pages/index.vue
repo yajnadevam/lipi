@@ -133,9 +133,9 @@
             <template v-slot:item.sanskrit="{ item }">
               <template v-for="word in renderSanskrit(item.sanskrit)">
                 <span
-                  v-if="word.link == 'prakriya'"
+                  v-if="word.link == true"
                   class="sanskrit-link"
-                  @click="showPrakriyaExplanation(word.word)"
+                  @click="showExplanation(word.word)"
                 >
                   {{ word.word }}
                 </span>
@@ -222,105 +222,102 @@
     </v-layout>
   </v-card>
 
-  <v-dialog v-model="showPrakriyaDialog" max-width="600">
+  <v-dialog v-model="showExplanationDialog" max-width="600">
     <v-card>
       <v-card-title class="explanation-title">{{
-        prakriyaDialogContent.word
+        explanationDialogContent.devanagariWord
       }}</v-card-title>
       <v-card-text class="scrollable-card-text">
-        <span class="explanation-description"
-          >Ashtadhyayi derivation of {{ prakriyaDialogContent.word }}</span
-        >
-        <template v-for="prakriya in prakriyaDialogContent.prakriyas">
-          <div class="prakriya-container">
-            <span class="explanation-title"
-              >{{ prakriya.title }} [{{ prakriya.code }}]
-            </span>
-            <a
-              class="ashtadhyayi-link"
-              :href="prakriya.ashtadhyayiLink"
-              target="_blank"
-              ><v-icon>mdi-open-in-new</v-icon></a
-            >
+        <template v-if="explanationDialogContent.mwDialogContent">
+          <div class="explanation-description">
+            Monier-Williams Dictionary meaning for
+            {{ explanationDialogContent.devanagariWord }}
+          </div>
 
-            <div class="prakriya-steps">
-              {{ prakriya.dhatu }} [{{ prakriya.artha }}]
-            </div>
-
-            <template v-for="(step, index) in prakriya.steps">
-              <div class="prakriya-steps">
-                <v-icon>mdi-arrow-right</v-icon>
-                {{
-                  step.result
-                    .filter((r) => r.text != "")
-                    .map((r) =>
-                      Sanscript.t(
-                        r.text.replaceAll("\\", "").replaceAll("^", ""),
-                        "slp1",
-                        "devanagari"
-                      )
-                    )
-                    .join(" + ")
-                }}
-                <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
-              </div>
-            </template>
-            <div class="prakriya-steps">
-              <v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}
-            </div>
-            <div v-if="prakriya.finalResult != null" class="prakriya-steps">
-              <v-icon>mdi-arrow-right</v-icon> {{ prakriya.finalResult }}
-            </div>
+          <div
+            class="mw-meaning"
+            v-for="meaning in explanationDialogContent.mwDialogContent.content"
+          >
+            {{ meaning }}
           </div>
           <v-divider></v-divider>
         </template>
+
+        <template v-if="explanationDialogContent.prakriyaDialogContent">
+          <span class="explanation-description"
+            >Ashtadhyayi derivation of
+            {{ explanationDialogContent.devanagariWord }}</span
+          >
+          <template
+            v-for="prakriya in explanationDialogContent.prakriyaDialogContent
+              .prakriyas"
+          >
+            <div class="prakriya-container">
+              <span class="explanation-title"
+                >{{ prakriya.title }} [{{ prakriya.code }}]
+              </span>
+              <a
+                class="ashtadhyayi-link"
+                :href="prakriya.ashtadhyayiLink"
+                target="_blank"
+                ><v-icon>mdi-open-in-new</v-icon></a
+              >
+
+              <div class="prakriya-steps">
+                {{ prakriya.dhatu }} [{{ prakriya.artha }}]
+              </div>
+
+              <template v-for="(step, index) in prakriya.steps">
+                <div class="prakriya-steps">
+                  <v-icon>mdi-arrow-right</v-icon>
+                  {{
+                    step.result
+                      .filter((r) => r.text != "")
+                      .map((r) =>
+                        Sanscript.t(
+                          r.text.replaceAll("\\", "").replaceAll("^", ""),
+                          "slp1",
+                          "devanagari"
+                        )
+                      )
+                      .join(" + ")
+                  }}
+                  <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
+                </div>
+              </template>
+              <div class="prakriya-steps">
+                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}
+              </div>
+              <div v-if="prakriya.finalResult != null" class="prakriya-steps">
+                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.finalResult }}
+              </div>
+            </div>
+            <v-divider></v-divider>
+          </template>
+        </template>
       </v-card-text>
       <v-card-actions class="explanation-dialog-bottom">
-        Derived using
+        Credits:
         <a
           href="https://github.com/ambuda-org/vidyut"
           target="_blank"
           style="color: inherit"
           >Vidyut</a
         >
-        &
         <a
           href="https://github.com/ashtadhyayi-com/data"
           target="_blank"
           style="color: inherit"
           >Ashtadhyayi</a
         >
-        <v-spacer></v-spacer>
-        <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
-
-  <v-dialog v-model="showMwDialog" max-width="600">
-    <v-card>
-      <v-card-title class="explanation-title">{{
-        mwDialogContent.devanagariWord
-      }}</v-card-title>
-      <v-card-text class="scrollable-card-text">
-        <div class="explanation-description">
-          Monier-Williams Dictionary meaning for
-          {{ mwDialogContent.devanagariWord }}
-        </div>
-
-        <div class="mw-meaning" v-for="meaning in mwDialogContent.content">
-          {{ meaning }}
-        </div>
-      </v-card-text>
-      <v-card-actions class="explanation-dialog-bottom">
-        Meanings from
         <a
           href="https://www.sanskrit-lexicon.uni-koeln.de/scans/MWScan/2020/web/webtc/indexcaller.php"
           target="_blank"
           style="color: inherit"
-          >MW Dictionary</a
+          >MW</a
         >
         <v-spacer></v-spacer>
-        <v-btn text @click="showMwDialog = false">Close</v-btn>
+        <v-btn text @click="showPrakriyaDialog = false">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>
@@ -652,10 +649,8 @@ export default {
       optionBroken: false,
       lightTheme: false,
       fullrandom: fullrandom,
-      showPrakriyaDialog: false,
-      prakriyaDialogContent: {},
-      showMwDialog: false,
-      mwDialogContent: {},
+      showExplanationDialog: false,
+      explanationDialogContent: {},
     };
   },
   computed: {
@@ -934,12 +929,10 @@ export default {
 
       return `seal-mat-${material} seal-mat-${material}-${color}`;
     },
-    getExplanationIfExists(word) {
+    checkExplanationExists(word) {
       const slp1Word = Sanscript.t(word, "devanagari", "slp1");
-      if (prakriyaMap[slp1Word]) {
-        return { word, link: "prakriya" };
-      } else if (mwMap[slp1Word]) {
-        return { word, link: "mw" };
+      if (prakriyaMap[slp1Word] || mwMap[slp1Word]) {
+        return { word, link: true };
       }
       return { word };
     },
@@ -950,14 +943,14 @@ export default {
       let word = "";
       for (let i = 0; i < parts[0].length; i++) {
         if (parts[0][i] === "—" || parts[0][i] === " ") {
-          sanskritResult.push(this.getExplanationIfExists(word));
+          sanskritResult.push(this.checkExplanationExists(word));
           sanskritResult.push({ word: parts[0][i] });
           word = "";
         } else {
           word += parts[0][i];
         }
       }
-      sanskritResult.push(this.getExplanationIfExists(word));
+      sanskritResult.push(this.checkExplanationExists(word));
       sanskritResult.push({ word: "\n" });
       sanskritResult.push({ word: parts[1] });
       return sanskritResult;
@@ -1094,11 +1087,8 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    showPrakriyaExplanation(devanagariWord) {
-      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
+    getPrakriyaExplanation(devanagariWord, slp1Word) {
       const prakriyaKeys = prakriyaMap[slp1Word];
-
-      // Todo: Change name to prakriyas
       const prakriyas = prakriyaKeys.map((prakriyaKey) => {
         const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
           prakriyaKey;
@@ -1138,23 +1128,30 @@ export default {
           ...result,
         };
       });
-      const prakriyaDialogContent = {
-        word: devanagariWord,
+      return {
         prakriyas,
       };
-
-      console.log(prakriyaDialogContent);
-
-      this.prakriyaDialogContent = prakriyaDialogContent;
-      this.showPrakriyaDialog = true;
     },
-    showMwExplanation(devanagariWord) {
-      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
-      this.mwDialogContent = {
-        devanagariWord,
+    getMwExplanation(slp1Word) {
+      return {
         content: mwMap[slp1Word],
       };
-      this.showMwDialog = true;
+    },
+    showExplanation(devanagariWord) {
+      const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
+      const mwDialogContent = mwMap[slp1Word]
+        ? this.getMwExplanation(slp1Word)
+        : null;
+      const prakriyaDialogContent = prakriyaMap[slp1Word]
+        ? this.getPrakriyaExplanation(devanagariWord, slp1Word)
+        : null;
+
+      this.explanationDialogContent = {
+        devanagariWord,
+        mwDialogContent,
+        prakriyaDialogContent,
+      };
+      this.showExplanationDialog = true;
     },
   },
   created() {

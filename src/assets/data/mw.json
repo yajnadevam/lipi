@@ -1,4 +1,19 @@
 {
+  "hara": [
+    "hara mf(A, rarely I)n. (only ifc.; fr. √ 1. hf) bearing, wearing, taking, conveying, bringing (see kavaca-, vArttA-h°), taking away, carrying off, removing, destroying (see bala-, Sakti-h°)",
+    "receiving, obtaining (see aMSa-h°)",
+    "ravishing, captivating (see mano-h°)",
+    "hara m. ‘Seizer’, ‘Destroyer’, N. of Śiva, ĀśvGṛ.; Mn.; MBh. &amp;c.",
+    "of a Dānava, MBh.; Hariv.",
+    "of a monkey, R.",
+    "of various authors &amp;c., Cat.",
+    "(in arithm.) a divisor, Col.",
+    "the denominator of a fraction, division, ib.",
+    "a stallion (?), L.",
+    "an ass, L.",
+    "fire, L.",
+    "hara &amp;c. See p. 1289."
+  ],
   "jaqa": [
     "jaqa mf(A)n. (cf. ja/|u) cold, frigid, Pañcat. i, 12, 4; Kāvyād. ii, 34; Rājat. iv, 41",
     "stiff, torpid, motionless, apathetic, senseless, stunned, paralysed, Ragh. iii, 68; Śak. &amp;c.",
@@ -13,6 +28,18 @@
     "‘inanimate’, lifeless, matter (opposed to cetana)",
     "jaqa n. water (= jala), ŚārṅgP. (Subh.)",
     "lead, L."
+  ],
+  "arRa": [
+    "a/rRa m. n. a wave, flood stream, RV.; BhP.",
+    "(figuratively applied to the) tumult of battle, RV. v, 50, 4",
+    "a/rRa m. a letter, syllable, RāmatUp. N. of a metre (comprising ten feet, and belonging to the class called Daṇḍaka)",
+    "the teak tree (see arjunApama above), L.",
+    "N. of a man (see arna citra/raTa below)",
+    "a/rRa m. pl. N. of a people, BhP."
+  ],
+  "jAna": [
+    "1. jA/na n. birth, origin, birth place, RV. i, 37, 9 and 95, 3; v, x; AV. vii, 76, 5; ŚBr. iii, 2, 1, 40.",
+    "2. jAna m. (fr. ja/na) patr. of Vṛśa (= vEjAna, ‘son of Vijānā’ Sch.), TāṇḍyaBr. xiii, 3; ĀrṣBr."
   ],
   "Gana": [
     "Gana/ mf(A/)n. (√ han) a striker, killer, destroyer, RV. i, 4, 8; iii, 49, 1; iv, 38, 1; viii, 96, 18",
@@ -45,6 +72,12 @@
     "tin, L.",
     "a mode of dancing (neither quick nor slow), L.",
     "darkness, L."
+  ],
+  "ama": [
+    "1. a/ma m. impetuosity, violence, strength, power, RV.; VS.; AV.",
+    "depriving of sensation, fright, terror, RV.",
+    "disease, L.",
+    "2. a/ma mfn. (pron.; cf. amu) this, AV. xiv, 2, 71 (quoted in ŚBr. xiv &amp; ĀśvGṛ.) [The word is also explained by prARa, ‘soul’, cf. Comm. on ChUp. v, 2, 6.]"
   ],
   "Ahan": [
     "A-√ han P. -hanti (Impv. A/-jahi, AV. &amp;c.; pf. A/-jaGAna, RV. &amp;c.) Ā. -hate (only if no object follows, Pāṇ. i, 3, 28, or if the object is a part of one's own body, Kāty.; Pot. 1. sg. -GnIya, Pat. on Pāṇ. i, 1, 62; Daś.) to strike at, hit, beat; to attack, assault, RV.; TS.; ĀśvGṛ.; MBh.; Kathās. &amp;c.: (Ā.) to strike one's self (or any part of one's body), BhP.; Pāṇ. and Comm. Bhaṭṭ.; to make away with one's self, Daś. 91, 15; to fasten, AV.; ŚBr.; to beat or cause to sound (a drum &amp;c.), TS.; ŚBr.; Kathās.; Bhaṭṭ. &amp;c.: Intens. A/-jaNGanti, RV. vi, 75, 13, to strike at or beat violently."
@@ -79,6 +112,62 @@
     "DAma n. abode &amp;c. = DAman, L.",
     "2. DAma in comp. for °man, below."
   ],
+  "tara": [
+    "1. tara an affix forming the compar. degree of adjectives and rarely (cf. vftra-ta/ra) of substantives, Suśr. i, 20, 11",
+    "(Am), added (in older language) to adverbs (see ati-tarA/m &amp;c.) and (in later language) to verbs (Pañcat. i, 14, 7; Ratnāv. iii, 9; Kathās.), intensifying their meaning",
+    "tara ind. with na, not at all, BhP. x, 46, 43.",
+    "2. ta/ra mfn. (√ tF; g. pacAdi) carrying across or beyond, saving (?, said of Śiva), MBh. xii, 10380",
+    "ifc. passing over or beyond, W.",
+    "‘surpassing, conquering’, see Soka-tara/ cf. raTaMtara/",
+    "excelling, w.",
+    "ta/ra m. crossing, passage, RV. ii, 13, 12; viii, 96, 1; Mn. viii, 404 and 407; Yājñ. (ifc.), MBh. xii",
+    "ta/ra m. (a-tara mfn. ‘impassable’), Bhaṭṭ. vii, 55 (cf. dus-)",
+    "ta/ra m. ‘excelling, conquering’, see duz-wa/ra, su-ta/ra, dus-",
+    "= -paRya, Mn. viii, 406",
+    "a raft, W.",
+    "a road, L.",
+    "N. of a magical spell (against evil spirits supposed to possess certain weapons), R. i, 30, 4",
+    "fire, W.",
+    "N. of a man, Rājat. vii, 809"
+  ],
+  "cara": [
+    "cara mfn. (g. pacAdi) moving, locomotive (as animals opposed to plants, or as the Karaṇas in astrol.), VPrāt.; ŚvetUp. iii, 18; Mn. vii, 15; MBh. &amp;c.",
+    "(= saMcArin) forming the retinue of any one, BhP. iv, 29, 23",
+    "movable, shaking, unsteady, W.",
+    "ifc. going, walking, wandering, being, living, practising (e.g. aDaS-, anta-, antarikza-, ap-, AdAya-, udake-, &amp;c.; cf. Pāṇ. iii, 2, 16)",
+    "cara mf(I)n. ifc. (Pāṇ. v, 3, 53 f.; vi, 3, 35 f.) having been formerly (e.g. AQya-, devadatta-, qq.vv.; a-dfzwa- or nadfzwa-, ‘not seen before’, Kathās. [once f. irr. A, lx, 58] Sarvad. iii, 16; vii, 19; an-Alokita- id., Bālar. iv, 54/55)",
+    "cara m. a spy, secret emissary or agent, Mn. vii, 122; Hariv. 10316; R. &amp;c.",
+    "= carawa, L.",
+    "the small shell Cypraea moneta, L.",
+    "the wind, air, BhP. x, 14, 11",
+    "the planet Mars, L.",
+    "a game played with dice (similar to backgammon), L.",
+    "a cowrie, W.",
+    "‘passage’, see a-, duS-",
+    "cara n. (in astron.) ascensional difference, Gol. vii",
+    "(in astron., read, ‘the difference of time between the rising of a heavenly body at Laṅkā or Ceylon, over which the first meridian passes, and that of its rising at any partic. place’)."
+  ],
+  "rava": [
+    "ra/va m. (√ 1. ru) a roar, yell, cry, howl (of animals, wild beasts &amp;c.), RV. &amp;c. &amp;c.",
+    "song, singing (of birds), MBh.; R. &amp;c.",
+    "hum, humming (of bees), Ragh.; Kathās.",
+    "clamour, outcry, Kathās.",
+    "thunder, RV.; MBh.",
+    "talk, MW.",
+    "any noise or sound (e.g. the whizz of a bow, the ringing of a bell &amp;c.), MBh.; Kāv. &amp;c."
+  ],
+  "dasa": [
+    "da/sa m. a demon, vi, 21, 11."
+  ],
+  "dara": [
+    "dara mfn. (Pāṇ. iii, 3, 58) (√ dF) ifc., cleaving, breaking See puraM-dara/, BagaM-",
+    "dara m. (g. arDarcAdi, uYCAdu) = °rI, R. ii, 96, 4",
+    "a conch-shell, BhP. i, v f., x; Kramadīp.",
+    "the navel, Gal.",
+    "‘stream’, see asfg-",
+    "fear, MBh. v, 4622",
+    "dara n. poison (v.l. Dara), L."
+  ],
   "acala": [
     "a-cala mf(A)n. not moving, immovable",
     "a-cala m. a mountain, rock",
@@ -87,8 +176,23 @@
     "N. of Śiva and of the first of the nine deified persons, called ‘white Balas’ among the Jainas",
     "of a Devarṣi, VP."
   ],
+  "namana": [
+    "namana mfn. bending, bowing (ifc.), Śiś. vi, 30 (cf. nf-)",
+    "namana n. bowing down, sinking, MārkP.",
+    "bending (a bow), Sāh."
+  ],
+  "tana": [
+    "ta/na n. offspring, posterity, i, 39, 7; viii, 18, 18 and 25, 2; AV. vii, 73, 5 (°nA/yA for °nAya)"
+  ],
   "ta[m]": [
     "tam cl. 4. tA/myati (Pāṇ. vii, 3, 74; rarely Ā. R. ii, 63, 46; Gīt. v, 16; pf. tatAma, ŚBr. iv; aor. Pass. atami, Pāṇ. vii, 3, 34, Kāś.; Ved. inf. ta/mitos, with A/ preceding, ‘till exhaustion’, TBr. i, 4, 4, 2; TāṇḍyaBr. xii; Lāṭy.; Āp.; pf. Pass. p. -tAnta/, q.v.) to gasp for breath (as one suffocating), choke, be suffocated, faint away, be exhausted, perish, be distressed or disturbed or perplexed, RV. ii, 30, 7 (na/ mA tamat [aor. subj.] ‘may I not be exhausted’), Kāṭh.; TBr. &amp;c.; to stop (as breath), become immovable or stiff, Suśr.; Mālatīm.; Amar.; Rājat. v, 344; to desire (cf. 2. °ma, °mata), Dhātup. xxvi, 93 : Caus. tama/yati (aor. Pass. atAmi, Pāṇ. vi, 4, 93, Kāś.) to suffocate, deprive of breath, ŚBr. iii, 3, 2, 19 and 8, 1, 15; KātyŚr. vi, 5, 18; cf. a/-tameru."
+  ],
+  "Ana": [
+    "Ana/ m. (fr. √ an), face [NBD.]",
+    "mouth",
+    "nose [Sāy.], RV. i, 52, 15",
+    "exhaling the breath through the nose, T.",
+    "inhalation, breath inspired, breathing, blowing, L."
   ],
   "Sam": [
     "1. Sam cl. 4. P. (Dhātup. xxvi, 92), SA/myati (rarely °te, and ep. also Samati, °te; Ved. Samyati, Simyati, and cl. 9. SamnAti [Naigh. ii, 9], SamnIze, SamnITAs Impv. SamnIzva, SamIzva, Samizva, SamIDvam; pf. SaSAma, SemuH, Br. &amp;c.; SaSame/ Subj. SaSa/mate, RV.; p. SaSamAna/ [q.v.]; aor. a/SamizWAs, RV.; aSamat, Br. [cf. pres.]; Prec. SamyAt Gr.; fut. SamitA, Samizyati, ib.; ind.p. SamitvA, SAntvA, SAmam or Samam, ib.), to toil at, fatigue or exert one's self (esp. in performing ritual acts), RV.; TBr.; to prepare, arrange, VS.; to become tired, finish, stop, come to an end, rest, be quiet or calm or satisfied or contented, TS.; ŚBr. &amp;c.; to cease, be allayed or extinguished, MBh.; Kāv. &amp;c.; cl. 9. (cf. above) to put an end to, hurt, injure, destroy, Kāṭh. : Pass. Samyate (aor. aSami), Pāṇ. vii, 3, 34 : Caus. Sama/yati (mc. also SAmayati; aor. aSISamat; Pass. SAmyate), to appease, allay, alleviate, pacify, calm, soothe, settle, RV. &amp;c. &amp;c.; to put to an end or to death, kill, slay, destroy, remove, extinguish, suppress, TS. &amp;c. &amp;c.; to leave off, desist, MBh.; to conquer, subdue, Kālid.; Bhaṭṭ. : Desid. SiSamizati Gr.: Intens. SaMSamIti (Bālar.), SaMSamyate, SaMSanti (Gr.), to be entirely appeased or extinguished (pf. SaMSamAM cakruH, Bhaṭṭ.). [cf. Gk. κάμνω],",
@@ -167,6 +271,52 @@
     "2. kam cl. 1. Ā. (not used in the conjugational tenses) cakame, kamitA, kamizyate, acakamata, Dhātup. xii, 10 to wish, desire, long for, RV. v, 36, 1; x, 117, 2; AV. xix, 52, 3; ŚBr.; Ragh. &amp;c.; to love, be in love with, have sexual intercourse with, ŚBr. xi; BhP. : Caus. Ā. (ep. also P.) kAmayate, -ti, kAmayAM-cakre, acIkamata, &amp;c.; to wish, desire, long for (with acc. or inf. or Pot. Pāṇ. iii, 3, 157; e.g. kAmaye BuYjIta BavAn, I wish your worship may eat; kAmaye dAtum, I wish to give, Kāś.), RV.; AV.; TS.; MBh. &amp;c.; to love, be in love with, have sexual intercourse with, RV. x, 124, 5; 125, 5; ŚBr.; MBh. &amp;c.; to cause any one to love, Ṛtus. (in that sense P. Vop.); (with bahu or aty-arTam) to rate or value highly, R. : Desid. cikamizate and cikAmayizate: Intens. caMkamyate;",
     "kam [cf. Lat. comis; also amo, with the loss of the initial, for camo; câ-rus for cam-rus: Hib. caemh, ‘love, desire; fine, handsome, pleasant’; caomhach, ‘a friend, companion’; caomhaim, ‘I save, spare, protect’; Armen. kamim.]"
   ],
+  "jaya": [
+    "jaya/ mfn. (√ ji) ifc. conquering, winning See ftaM-, kftaM-, DanaM-jaya/, puraM-, SatruM-",
+    "jaya/ m. (Pāṇ. iii, 3, 56, Kāś.) conquest, victory, triumph, winning, being victorious (in battle or in playing with dice or in a lawsuit), AV. vii, 50, 8; ŚBr. vi; Mn. vii (indriyARAMj° victory over or restraint of the senses) &amp; x; MBh. &amp;c.",
+    "cf. Atma-, prARa-, rug-",
+    "jaya/ m. pl. (parox.) N. of particular verses causing victory (personified as deities, VāyuP. ii, 6, 4 ff.), MaitrS. i, 4, 14; TS. iii; PārGṛ. i, 5; Nyāyam. iii, 4, 24",
+    "jaya/ m. sg. Premna spinosa or longifolia, L.",
+    "a yellow variety of Phaseolus Mungo, L.",
+    "N. of the 3rd year of the 6th lustrum of the Bṛhaspati cycle, VarBṛS. viii, 38",
+    "a kind of flute",
+    "(in music) a kind of measure",
+    "the sun, MBh. iii, 154",
+    "Arjuna (son of Pāṇḍu), 266, 7 and iv, 5, 35",
+    "Indra, L.",
+    "N. of a Ṛṣi (author of RV. x, 180; son of Aṅgiras [RAnukr.] or of Indra; living under the 10th Manu, BhP. viii, 13, 22)",
+    "of a spirit, VarBṛS. liii, 48; Hcat. i, 9, 149 and 172",
+    "of an attendant of Viṣṇu, BhP. iii, 16, 2",
+    "of a Nāga, MBh. v, 3632; ix, 2554",
+    "of a Dānava, Hariv. 13093",
+    "of a son (of Dhṛtarāṣṭra, MBh. i, vii; of Sṛñjaya, Hariv. 1514; of Suśruta, VP. iv, 5, 12; of Sruta, BhP. ix, 13, 25; of Saṃjaya, 17, 16; of Saṃkṛti, 18; of Mañju, 21, 1; of Yuyudhāna, 24, 13; of Kaṅka, 43; of Kṛṣṇa, x, 61, 17; of Vatsara by Svar-vīthi, iv, 13, 12; of Viśvāmitra, Hariv. 1462; BhP. ix, 16, 36; of Purūravas by Urvaśī, 15, 1 f.)",
+    "of an ancient king (11th Cakravartin in Bhārata, L.), MBh. ii, 326",
+    "of a Pāṇḍava hero, vii, 6911",
+    "of Yudhiṣṭhira at Virāṭa's court, iv, 176",
+    "of Aśoka in a former birth, Divyāv. xxvi, 336 f.",
+    "of a carpenter, Rājat. iii, 351"
+  ],
+  "ana": [
+    "1. an-, occasionally ana-, (before a vowel) the substitute for 3. a, or a privative.",
+    "ana/ m. breath, respiration, ŚBr.; ChUp."
+  ],
+  "hAna": [
+    "1. hAna mfn. gone or departed &amp;c. (in sa/MhAna, ‘risen’), VS.",
+    "2. hAna n. the act of abandoning, relinquishing, giving up, escaping, getting rid of Gaut.; Śaṃk.; Sarvad.",
+    "want, lack, Kap.",
+    "cessation, ib.; Bhartṛ. (v.l.)",
+    "hAna , hAni &amp;c. See p. 1296, col. 2."
+  ],
+  "vanA": [
+    "va/nA f. the piece of wood used for kindling fire by attrition (= araRi, q.v.; sometimes personified), RV. iii, 13"
+  ],
+  "raRa": [
+    "1. ra/Ra m. delight, pleasure, gladness, joy, RV.; VS.; AV.",
+    "ra/Ra n. battle (as an object of delight), war, combat, fight, conflict, RV.; &amp;c.",
+    "2. raRa m. (for 1. See p. 863, col. 3) sound, noise, L.",
+    "the quill or bow of a lute (= koRa), L.",
+    "3. raRa m. going, motion, L."
+  ],
   "A": [
     "1. A the second vowel of the alphabet corresponding to the a in far.",
     "2. A ind. a particle of reminiscence, Pāṇ. i, 1, 14; Pat.",
@@ -226,15 +376,107 @@
     "grassy ground, RV. vii, 96, 2",
     "food, MBh. iii, 13244; BhP."
   ],
+  "jara": [
+    "ja/ra mfn. (√ 1. jF), ‘becoming old’, see a-ja/ra, ahar-jaram",
+    "cf. go-jara",
+    "ja/ra m. the act of wearing out, wasting, RV. i, 164, 11; ii, 34, 10"
+  ],
+  "dama": [
+    "da/ma m. (or n.) house, home (δόμος, Lat. domus), RV.; AV. vii (also puru-da/ma, q.v.), VS. viii, 24",
+    "da/ma mfn. ifc. ‘taming, subduing’, see ariM-, gAM-, baliM-",
+    "da/ma m. self-command, self-restraint, self-control, ŚBr. xiv, 8, 2, 4 (°ma/, but cf. Pāṇ. vii, 3, 34, Kāś.), TUp.; KenUp.; Mn. &amp;c.",
+    "taming, L.",
+    "punishment, fine, viii f.; Yājñ. ii, 4; BhP.",
+    "N. of a brother of Damayantī, Nal. i, 9",
+    "of a Maha-rṣi, MBh. xiii, 1762",
+    "of a son of Dakṣa, i, Sch.",
+    "of a grandson [or son, BhP. ix, 2, 29] of Marutta, VP. iv, 1, 20; MārkP. cxxxiv; VāyuP.",
+    "cf. dur-, su-."
+  ],
   "Anava": [
     "A/nava mf(I)n. (fr. 2. anu, BRD.), kind to men, RV.",
     "humane, ib.",
     "a foreign man, RV. vii, 18, 13 (according to T.[fr. Anu = man], ‘belonging to living men’)."
   ],
+  "nASa": [
+    "1. nASa m. (√ 1. naS) attainment (see dUR°).",
+    "2. nASa m. (√ 2. naS) the being lost, loss, disappearance, destruction, annihilation, ruin, death, Br.; Mn.; MBh. &amp;c. (ifc. destroying, annihilating, cf. karma-nASA, graha-nASa, duH-svapna-n°)",
+    "flight, desertion, W.",
+    "(arithm.) elimination, ib."
+  ],
+  "nadana": [
+    "nadana mfn. sounding, Nir. v, 2."
+  ],
   "han": [
     "1. han cl. 2. P. (Dhātup. xxiv, 2) hanti (3. du. hata/H, 3. pl. Gnanti; rarely Ā. hate, 3. pl. Gnate; and cl. 1. hanati, Ved. also jiGnate, °ti; Pot. hanyAt, Br. also ha/nIta, GnIta; Impv. jahi/, TĀr. hanDi/; impf. a/han, Ved. and ep. also ahanat, ahanan, aGnanta; p. jaGnat, GnamAna, MBh.; pf. jaGA/na, jaGnu/H, Br. and ep. also jaGne, °nire, Subj. jaGa/nat, RV.; p. jaGniva/s, Ved. also jaGanvas; aor. ahAnIt, JaimBr. [cf. √ vaD]; fut. hantA, MBh.; haMsyati, ib.; hanizya/ti, °te, AV. &amp;c.; inf. ha/ntum, Ved. also ha/ntave, °tavE/, °toH; ind.p. hatvA/, Ved. also °tvI/, °tvAya, -hatya; -hanya, MBh.; -GA/tam, Br. &amp;c.), to strike, beat (also a drum), pound, hammer (acc.), strike &amp;c. upon (loc.), RV. &amp;c. &amp;c.; to smite, slay, hit, kill, mar, destroy, ib.; to put to death, cause to be executed, Mn.; Hit.; to strike off, Kathās.; to ward off, avert, MBh.; to hurt, wound (the heart), R.; to hurl (a dart) upon (gen.), RV.; (in astron.) to touch, come into contact, VarBṛS.; to obstruct, hinder, Rājat.; to repress, give up, abandon (anger, sorrow &amp;c.), Kāv.; BhP.; (?) to go, move, Naigh. ii, 14 : Pass. hanya/te (ep. also °ti; aor. avaDi or aGAni), to be struck or killed, RV. &amp;c. &amp;c.: Caus. GAtayati, °te (properly a Nom. fr. GAta, q.v.; aor. ajIGatat or ajIGanat), to cause to be slain or killed, kill, slay, put to death, punish, Mn.; MBh. &amp;c.; to notify a person's death (kaMsaM GAtayati = kaMsa-vaDam Acazwe), Pāṇ. iii, 1, 26, Vārtt. 6 Pat.; to mar, destroy, MBh.; Pañcat. (v.l.) : Desid. ji/GAMsati, °te (Pot. jiGAMsIyat, MBh.; impf. ajiGAMsIH, ŚBr.), to wish to kill or destroy, RV. &amp;c. &amp;c.: Intens. ja/NGanti (RV.; p. jaNGanat, ja/NGnat or Ga/niGnat), jaNGanyate (with pass. sense, MuṇḍUp.), jeGnIyate (Pāṇ. vii, 4, 31), to strike = tread upon (loc. or acc.), RV.; to slay, kill, ib.; to dispel (darkness), destroy (evil, harm), ib.; to hurt, injure, wound, MuṇḍUp.",
     "han [cf. Gk. θείνω, θάνατος; ϕόνος, ἔπεϕνον πέϕαται; Lat. de-fendere, of-fendere; Lit. genu, gíti; Slav. gǔnati.]",
     "2. han mf(GnI)n. killing, a killer, slayer (only ifc.; see ari-, tamo-han &amp;c.)"
+  ],
+  "Dara": [
+    "Dara mf(A)n. (√ Df) bearing, supporting (scil. the world, said of Kṛṣṇa and Śiva), MBh.",
+    "ifc. holding, bearing, carrying, wearing, possessing, having, keeping (also in memory), sustaining, preserving, observing (cf. aMSu-, akza-, kulaM- &amp;c.), MBh.; R. &amp;c.",
+    "Dara m. a mountain, Kir. xv, 12 (cf. kziti-, BU- &amp;c.)",
+    "a flock of cotton, L.",
+    "a frivolous or dissolute man (= viwa), L.",
+    "a sword, Gal.",
+    "N. of a Vasu, MBh.",
+    "of a follower of the Pāṇḍavas, ib. of the king of the tortoises, L.",
+    "of the father of Padma-prabha (6th Arhat of pres. Ava-sarpiṇī), L.",
+    "Dara n. poison, L. (v.l. dara)"
+  ],
+  "dahana": [
+    "dahana mf(I)n. burning, consuming by fire, scorching, destroying (chiefly ifc.), Hariv.; BhP.; Bhartṛ.",
+    "(said of the DAraRA of fire), Gorakṣ. 164",
+    "dahana m. fire (of three kinds), Agni, Kauś.; MBh. &amp;c. (ifc. f(A). , Horāś.)",
+    "dahana m. the numeral three, VarBṛS.; Sūryas.",
+    "one of the 5 forms of fire in the Svāhā-kāra, Hariv. 10465",
+    "a pigeon, L.",
+    "Plumbago zeylanica, L.",
+    "Anacardium officinarum, L.",
+    "N. of an attendant of Skanda, MBh. ix, 2536",
+    "N. of a Rudra, i; MatsyaP.",
+    "dahana n. burning, consuming by fire, Kauś. 80; R. vii; Ragh. &amp;c.",
+    "cauterising, Suśr.",
+    "sour gruel, Npr."
+  ],
+  "mAna": [
+    "mAna See p. 809, col. 3.",
+    "1. mA/na m. (√ man) opinion, notion, conception, idea, Tattvas. (cf. Atma-m°)",
+    "purpose, wish, design, AitBr.",
+    "self-conceit, arrogance, pride, KauṣUp.; Mn. &amp;c. (with Buddhists one of the 6 evil feelings, Dharmas. 67; or one of the 10 fetters to be got rid of MWB. 127)",
+    "(also n.) consideration, regard, respect, honour, Mn.; MBh. &amp;c.",
+    "a wounded sense of honour, anger or indignation excited by jealousy (esp. in women), caprice, sulking, Kāv.; Daśar.; Sāh.",
+    "N. of the father of Agastya (perhaps also of A° himself, Pāṇ. the family of Māna), RV.",
+    "(in astron.) N. of the tenth house, VarBṛS. (W. also a ‘blockhead ; an agent; a barbarian’).",
+    "2. mA/na m. (√ 3. mA) a building, house, dwelling, RV.",
+    "an altar, Āpast.",
+    "(mAna/) a preparation, decoction (?), RV. x, 144, 5",
+    "(accord. to some in RV. i, 39, 1 = ‘light, sheen’).",
+    "mA/na n. measuring, meting out, KātyŚr.; Hariv. &amp;c.",
+    "measure, measuring-cord, standard, RV. &amp;c. &amp;c.",
+    "dimension, size, height, length (in space and time), weight, ib. (ifc. = fold See Sata/-m°)",
+    "a partic. measure or weight (= kfzRala or raktikA; accord. to Sch. on TS. &amp; KātyŚr. 100 Mānas = 5 Palas or Paṇas)",
+    "form, appearance, RV.",
+    "likeness, resemblance, Śiś.",
+    "(in phil.) proof, demonstration, means of proof (= pra-mARa. q.v.)"
+  ],
+  "mAnya": [
+    "mAnya mfn. to be respected or honoured, worthy of honour, respectable, venerable, Mn.; MBh. &amp;c.",
+    "mAnya/ m. patr. fr. 1. mA/na, RV. i, 163, 14, &amp;c.",
+    "N. of Maitrāvaruṇi (author of RV. viii, 67), RAnukr.",
+    "mAnya See p. 809, col. 3."
+  ],
+  "Asa": [
+    "1. Asa m. seat (in sv-Asa-sTa/, q.v.), RV.; TS.; ŚBr. &amp;c.",
+    "the lower part of the body behind, posteriors, ChUp.",
+    "2. A/sa m. (√ 2. as), ashes, dust, AV. ix, 8, 10; ŚBr.",
+    "A/sa n. a bow, L."
+  ],
+  "Amana": [
+    "1. Amana n. sickness, disease",
+    "(for 2. Amana See A-√ man.)",
+    "2. A/-mana n. friendly disposition, inclination, affection, TS. ii, 3, 9, 1 and 2; MaitrS.",
+    "(for 1. Amana See under 2. Ama.)"
   ],
   "mAnasa": [
     "mAnasa/ mf(I, once A)n. (fr. ma/nas) belonging to the mind or spirit, mental, spiritual (opp. to SArIra, corporeal), VS. &amp;c. &amp;c.",
@@ -272,6 +514,34 @@
     "Viṣṇu",
     "earth, L."
   ],
+  "dAna": [
+    "1. dAna/ n. the act of giving, RV.; ŚBr.; MBh. &amp;c.",
+    "giving in marriage (cf. kanyA-)",
+    "giving up (cf. prARa-, Atma-, SarIra-, Pañc. ii)",
+    "communicating, imparting, teaching (cf. brahma-)",
+    "paying back, restoring, Mn.; Yājñ.",
+    "adding, addition (VarBṛS.)",
+    "donation, gift [Lat. donum], RV.; ŚBr. &amp;c. (°naMdA, to offer a g°, Mn.; Yājñ.; Hit. &amp;c.; °nam prayam, to bestow a g°, Mn. iv, 234)",
+    "oblation (cf. udaka-, havir-)",
+    "liberality (cf. 2. dAna)",
+    "bribery, Mn. vii, 198 (cf. upAya).",
+    "2. dA/na n. cutting off, splitting, dividing, L.",
+    "pasture, meadow, RV.",
+    "rut-fluid (which flows from an elephant's temples), MBh.; Hariv. &amp;c.",
+    "dAna/ m. (only in RV., but cf. vasu-) distribution of food or of a sacrificial meal",
+    "imparting, communicating, liberality",
+    "part, share, possession",
+    "distributor, dispenser, RV. vii, 27, 4.",
+    "3. dAna n. purification, L."
+  ],
+  "rasana": [
+    "1. rasana n. (for 2. See p. 870, col. 3) the act of roaring or screaming or rumbling or thundering, any sound or noise, VarBṛS.; Bālar.",
+    "croaking (of frogs), VarBṛS.",
+    "2. rasana m. (for 1. See p. 869, col. 2) phlegm or saliva (regarded as the cause to taste to the tongue), ŚārṅgS.",
+    "rasana n. tasting, taste, flavour, savour, Yājñ.; MBh. &amp;c.",
+    "the tongue as organ of taste, Tarkas.",
+    "the being sensible of (anything), perception, apprehension, sense, Sāh."
+  ],
   "manas": [
     "ma/nas n. mind (in its widest sense as applied to all the mental powers), intellect, intelligence, understanding, perception, sense, conscience, will, RV. &amp;c. &amp;c. (in phil. the internal organ or antaH-karaRa of perception and cognition, the faculty or instrument through which thoughts enter or by which objects of sense affect the soul, IW. 53; in this sense manas is always regarded as distinct from Atman and puruza, ‘spirit or soul’ and belonging only to the body, like which it is — except in the Nyāya — considered perishable; as to its position in the various systems See for Nyāya and Vaiśeṣika, IW. 63; 67; 76, for Sāṃkhya and Vedānta, ib. 84; 109; 117; in RV. it is sometimes joined with hfd or hfdaya, the heart, Mn. vii, 6 with cakzus, the eye)",
     "the spirit or spiritual principle, the breath or living soul which escapes from the body at death (called asu in animals; cf. above), ib.",
@@ -292,6 +562,10 @@
     "zo-qa.",
     "6. da m. a mountain, L.",
     "da n. a wife (derived fr. da/m-patI), L."
+  ],
+  "vama": [
+    "vama mf(I)n. vomiting, ejecting, giving out, W.",
+    "vama m. = vAma, g. jvalAdi."
   ],
   "SaM": [
     "SaM in comp. for 2. Sam."
@@ -320,6 +594,16 @@
     "3. sa/d mfn. (mostly ifc.; for 1. See p. 1137, col. 1) sitting or dwelling in (cf. adma-, antarikza-, apsu-sad &amp;c.)",
     "sa/d covering (the female); sa/dA = ‘ever’ in AV. iv, 4, 7"
   ],
+  "sAmana": [
+    "1. sAmana mf(A)n. (for 2. See under 2. sAman) rich, affluent, abundant (others ‘common, universal’), RV. iii, 30, 9.",
+    "2. sAmana/ mfn. (for 1. See under 1. sAman) quiet, calm, RV. x, 85, 9."
+  ],
+  "Ava": [
+    "Ava/ the base of the dual cases of the pronoun of the 1st person",
+    "Nom. Acc. AvAm (Ved. Ava/m)",
+    "Inst. Dat.. Abl. AvAByAm (Ved. Abl. also Ava/t)",
+    "Gen., Loc. Ava/yos."
+  ],
   "tatra": [
     "ta/tra ind. (also °trA, RV.) (ta/-tra, correlative of ya/-tra; g. cAdi, not in Kāś.) used for the loc. (sg. du. and pl.) of ta/d (q.v., Pāṇ. v, 3, 10; vi, 3, 35), RV.; AV.; Mn. &amp;c.",
     "in that place, there (in comp. Pāṇ. ii, 1, 46), RV. &amp;c.",
@@ -335,9 +619,47 @@
     "yatra tatrApi, to whatever place, v, 1084; Kathās. xxxvi, 101;",
     "tatra [cf. Goth. thathrō.]"
   ],
+  "madana": [
+    "ma/dana m. (ifc. f(A). ) passion, love or the god of love, MBh.; Kāv. &amp;c.",
+    "a kind of embrace, L.",
+    "the season of spring, L.",
+    "a bee, L.",
+    "(?) bees-wax (see pawwikA)",
+    "Vangueria Spinosa, Suśr.",
+    "a thorn-apple and various other plants (e.g. Phaseolus Radiatus, Acacia Catechu &amp;c.), L.",
+    "a bird, L.",
+    "(in music) a kind of measure, Saṃgīt.",
+    "(in astrol.) N. of the 7th mansion, Var.",
+    "N. of various men and authors (also with AcArya, Bawwa, sarasvatI &amp;c.; cf. below), Rājat.; Inscr.; Cat.",
+    "ma/dana n. the act of intoxicating or exhilarating, MW.",
+    "(scil. astra), N. of a mythical weapon, R. (v.l. mAdana)",
+    "bees-wax, L.",
+    "ma/dana mfn. = mandra/, Nir."
+  ],
+  "Samya": [
+    "Samya mfn. to be appeased or kept quiet &amp;c., MW.",
+    "= rUkza, TS., Sch.",
+    "Samya m. a partic. personification, SāmavBr.",
+    "Samya . SamyA &amp;c. See p. 1054, col. 2."
+  ],
   "tanva": [
     "tanva m. N. of the author of a Sāman (cf. 2. tA/nva)",
     "(n., ?) a part of the body, Śulbas. ii, 37."
+  ],
+  "damana": [
+    "damana mf(I)n. ifc. taming, subduing, overpowering, MBh. viii; Bhartṛ.",
+    "self-controlled, passionless, L.",
+    "damana m. a tamer of horses, charioteer, BhP. iv, 26, 2",
+    "(g. nandy-Adi) Artemisia indica, Mantram. xxiii",
+    "N. of a Samādhi, Kāraṇḍ. xvii, 18",
+    "of Yāmāyana (author of RV. x, 16), RAnukr.",
+    "of a son of Vasu-deva by Rohiṇī, Hariv. 1951",
+    "of a Brahmarṣi, Nal. i, 6; VāyuP. i, 23, 115",
+    "of a son of Bharadvāja, KāśīKh. lxxiv",
+    "of an old king, MBh. i, 224",
+    "of a Vidarbha king, Nal. i, 9",
+    "damana n. taming, subduing, punishing, MBh.; R.; Śak.; BhP.; BrahmavP.",
+    "self-restraint, W."
   ],
   "avarya": [
     "avarya Nom. P. °ryati, to become lower, (g. kaRqv-Adi, q.v.)"
@@ -345,6 +667,63 @@
   "aDIna": [
     "aDIna mfn. (fr. aDi) ifc. resting on or in, situated",
     "depending on, subject to, subservient to."
+  ],
+  "Ara": [
+    "1. Ara n. brass, BhP. x, 41, 20",
+    "iron, L.",
+    "a sting Comm. on TS.",
+    "an angle",
+    "a corner",
+    "Ara m. cavity, Sūryas.",
+    "N. of a tree, L.",
+    "N. of a lake, KauṣUp.",
+    "the planet Mars, Ἄρης",
+    "the planet Saturn, L.",
+    "2. Ara n. v.l. for ara, q.v., a spoke, MBh. i, 1498 (ed. Bomb. i, 33, 4 reads ara).",
+    "3. Ara n. a multitude of enemies, Śiś. xix, 27."
+  ],
+  "Arya": [
+    "A/rya m. (fr. arya/, √ f), a respectable or honourable or faithful man, an inhabitant of Āryāvarta",
+    "one who is faithful to the religion of his country",
+    "N. of the race which immigrated from Central Asia into Āryāvarta (opposed to an-Arya, dasyu, dAsa)",
+    "in later times N. of the first three castes (opposed to SUdra), RV.; AV.; VS.; MBh.; Yājñ.; Pañcat. &amp;c.",
+    "a man highly esteemed, a respectable, honourable man, Pañcat.; Śak. &amp;c.",
+    "a master, an owner, L.",
+    "a friend, L.",
+    "a Vaiśya, L.",
+    "Buddha",
+    "(with Buddhists [Pāli ayyo, or ariyo]) a man who has thought on the four chief truths of Buddhism (see next col.) and lives accordingly, a Buddhist priest",
+    "a son of Manu Sāvarṇa, Hariv.",
+    "A/rya mf(A and A/rI)n. Āryan, favourable to the Āryan people, RV. &amp;c.",
+    "behaving like an Āryan, worthy of one, honourable, respectable, noble, R.; Mn.; Śak. &amp;c.",
+    "of a good family",
+    "excellent",
+    "wise",
+    "suitable",
+    "Arya [cf. Old Germ. êra; Mod. Germ. Ehre; Irish Erin.]"
+  ],
+  "maya": [
+    "1. maya m. (√ 3. mA) N. of an Asura (the artificer or architect of the Daityas, also versed in magic, astronomy and military science), MBh.; Kāv. &amp;c.",
+    "N. of various teachers and authors (esp. of an astronomer and a poet), Cat.",
+    "2. ma/ya m. (prob. fr. √ 2. mA) a horse, VS.",
+    "a camel, L.",
+    "a mule, L.",
+    "3. maya m. (√ 1. mI) hurting, injuring, W."
+  ],
+  "sara": [
+    "sara/ mf(A)n. (fr. √ sf) fluid, liquid, VS.",
+    "cathartic, purgative, laxative, Suśr.; Vāgbh.",
+    "(ifc. f(I). , Pāṇ. iii, 2, 18) going, moving &amp;c. (cf. anu-, aBi-, puraH-s°)",
+    "sara/ m. going, motion, L.",
+    "a cord, string (cf. prati-, maRi-, muktA-maRi-, and mOktika-s°)",
+    "a short vowel (in prosody), Col.",
+    "salt, L.",
+    "N. of Vāyu or the wind, L.",
+    "a waterfall, L.",
+    "often v.l. or w.r. for Sara (also in comp. sara-ja &amp;c. for Sara-ja &amp;c.)",
+    "sara/ n. a lake, pool (also irregularly in comp. for saras), Uṇ. iv, 188, Sch.",
+    "milk, L.",
+    "sara &amp;c. See p. 1182, col. 1."
   ],
   "pa": [
     "1. pa the first labial consonant.",
@@ -355,6 +734,16 @@
     "5. pa m. (only L.) wind",
     "a leaf",
     "= pUta"
+  ],
+  "rAdDa": [
+    "rAdDa/ mfn. accomplished, brought about, perfected, achieved, prepared, ready (n. impers. ‘it has been achieved by’, with instr.), KātyŚr.; BhP.",
+    "successful, fortunate, happy, Br.; Kauś.",
+    "fallen to the share or lot of any one, BhP.",
+    "propitiated, conciliated, MW.",
+    "perfect in mysterious or magical power, adept, initiated, ib."
+  ],
+  "paTa": [
+    "paTa m. a way, path, road, course, reach, MBh.; Kāv. &amp;c. (generally ifc. for paTin; cf. Pāṇ. v, 4, 74)."
   ],
   "sarasa": [
     "sarasa n. (for sa-rasa See s.v.) = saras, a lake, pond, pool (see jala-, deva-, and maRqUka-s°).",
@@ -374,6 +763,74 @@
     "N. of a king of the Vidyā-dharas, Kathās.",
     "of a king of Kāmpilya, Hariv.",
     "of a brother of king Avantivarman, Rājat."
+  ],
+  "paya": [
+    "1. paya See kat-paya/.",
+    "2. paya in comp. for °yas."
+  ],
+  "ara": [
+    "ara mfn. (√ f), swift, speedy, L.",
+    "little (only for the etym. of udara) Comm. on TUp.",
+    "ifc. ‘going’, cf. samara/",
+    "ara m. the spoke or radius of a wheel, RV. &amp;c.",
+    "the spoke of an altar formed like a wheel, Śulb.",
+    "a spoke of the time-wheel, viz. a Jaina division of time (the sixth of an Avasarpiṇī or Utsarpiṇī)",
+    "the eighteenth Jaina saint of the present Avasarpiṇī",
+    "N. of an ocean in Brahmā's world (only for a mystical interpretation of araRya), ChUp.",
+    "ara n. the spoke of a wheel, L.",
+    "ara/ (in comp. -a/ram)."
+  ],
+  "rata": [
+    "rata rati &amp;c. See under √ ram, p. 867, cols. 2, 3.",
+    "rata/ mfn. pleased, amused, gratified, BhP.",
+    "delighting in, intent upon, fond or enamoured of, devoted or attached or addicted or disposed to (loc. instr. or comp.), ŚBr. &amp;c. &amp;c.",
+    "(ifc.) having sexual intercourse with, BhP.",
+    "loved, beloved, MW.",
+    "rata/ n. pleasure, enjoyment, (esp.) enjoyment of love, sexual union, copulation, Kāv.; Var. &amp;c.",
+    "the private parts, L."
+  ],
+  "mama": [
+    "ma/ma gen. sg. of 1st pers. pron. in comp."
+  ],
+  "para": [
+    "1. pa/ra mf(A)n. (√ 1. pf; abl. sg. m. n. pa/rasmAt, °rAt; loc. pa/rasmin, °re; nom. pl. m. pa/re, °rAs, °rAsas; cf. Pāṇ. i, 1, 34; vii, 1, 16; 50) far, distant, remote (in space), opposite, ulterior, farther than, beyond, on the other or farther side of, extreme",
+    "previous (in time), former",
+    "ancient, past",
+    "later, future, next",
+    "following, succeeding, subsequent",
+    "final, last",
+    "exceeding (in number or degree), more than",
+    "better or worse than, superior or inferior to, best or worst, highest, supreme, chief (in the compar. meanings [where also -tara], with abl., rarely gen. or ifc.; exceptionally paraM Satam, more than a hundred lit. ‘an excessive h°, a h° with a surplus’, R. ; parAH kowayaH, Prab.; Hcat.), RV. &amp;c. &amp;c.",
+    "strange, foreign, alien, adverse, hostile, ib.",
+    "other than, different from (abl.), Prab.",
+    "left, remaining, Kathās.",
+    "concerned or anxious for (loc.), R.",
+    "pa/ra m. another (different from one's self), a foreigner, enemy, foe, adversary, RV. &amp;c. &amp;c.",
+    "a following letter or sound (only ifc. mfn., e.g. ta-para, having t as the f° l°, followed by t), RPrāt.; Pāṇ.",
+    "(scil. graha) a subsidiary Soma-graha, TS.",
+    "N. of a king of Kosala with the patr. Āṭṇāra, Br.",
+    "of another king, MBh.",
+    "of a son of Samara, Hariv.",
+    "(sc. prAsAda) of the palace of Mitravindā, ib.",
+    "pa/ra m. or n. the Supreme or Absolute Being, the Universal Soul, Up.; R.; Pur.",
+    "pa/ra n. remotest distance, MBh.",
+    "highest point or degree, ib.",
+    "final beatitude, L. (also -taram and parAt para-taram)",
+    "the number 10,000,000,000 (as the full age of Brahmā), VP.",
+    "N. of partic. Sāmans, Kāṭh.",
+    "pa/ra n. any chief matter or paramount object (ifc. [f(A). ] having as the chief object, given up to, occupied with, engrossed in, intent upon, resting on, consisting of, serving for, synonymous with &amp;c., MBh.; Kāv. &amp;c.)",
+    "the wider or more extended or remoter meaning of a word, Jaim.; Kull.",
+    "(in logic) genus",
+    "existence (regarded as the common property of all things), W.",
+    "para [cf. Zd. para; Gk. πέρᾱ, πέρᾱν; Lat. peren-die; Goth. faírra; Germ. fern; Eng. far and fore.]",
+    "2. para in comp. for °ras."
+  ],
+  "anDa": [
+    "anDa/ mf(A)n. blind",
+    "dark",
+    "anDa/ (am), n. darkness",
+    "turbid water, water",
+    "anDa/ (As), m. pl. N. of a people."
   ],
   "va": [
     "1. va the 3rd semivowel (corresponding to the vowels u and U, and having the sound of the English v, except when forming the last member of a conjunct consonant, in which case it is pronounced like w; it is often confounded and interchanged with the labial consonant b).",
@@ -397,6 +854,18 @@
   "sadaya": [
     "sa—daya mf(A)n. merciful, compassionate, kind, gentle (ibc. and am ind. ‘mercifully, kindly, gently, gradually’), Kāv.; Kathās."
   ],
+  "naya": [
+    "naya m. (√ 1. nI) leading (of an army), R.",
+    "conduct, behaviour, (esp.) prudent c° or b°, good management, polity, civil and military government, MBh.; Kāv. &amp;c.",
+    "wisdom, prudence, reason (naya ibc. or nayezu, in a prudent manner, MBh.), R.; BhP.",
+    "plan, design, MBh.; Pañc.; Kathās.",
+    "leading thought, maxim, principle, system, method, doctrine, R.; Sāh.; Bhāṣāp.; Sarvad.",
+    "a kind of game and a sort of dice or men for playing it, L.",
+    "N. of a son of Dharma and Kriyā, Pur.",
+    "of a son of 13th Manu, Hariv.",
+    "guide, conductor, L.",
+    "naya mfn. fit, right, proper, L."
+  ],
   "aTa": [
     "a/Ta or a/TA (or Ved. a/TA), ind. (probably fr. pronom. base a) an auspicious and inceptive particle (not easily expressed in English), now; then; moreover; rather; certainly; but; else; what? how else? &amp;c."
   ],
@@ -404,6 +873,16 @@
     "Sata/ n. (rarely m.; ifc. f(I). ) a hundred (used with other numerals thus, ekADikaM Satam, or eka-S°, a h° + one, 101 viMSaty-aDikaM Satam or viMSaM S°, a h° + twenty, 120; Sate or dve Sate or dvi-Satam or Sata-dvayam, 200; trIRi SatAni or tri-SatAni or Sata-trayam, 300; zaw-Satam, 600; or the comp. becomes an ordinal, e.g. dvi-Sata, the 200th; dvikaM, trikaM Satam = 2, 3 per cent; SatAtpara, ‘beyond a h°, exceeding 100’; the counted object is added either in the gen., or in the same case as Sata, or ibc., e.g. Satam pitaraH or Satam pitFRAm or pitf-Satam ‘a h° ancestors’; sometimes also ifc. See comp. below; rarely Satam is used as an indecl. with an instr., e.g. Sata/M ra/TeBiH, ‘with a h° chariots’, RV. i, 48, 7; rarely occurs a masc. form in pl., e.g. paYca-SatAn raTAn, MBh. iv, 1057; and Sata n. rarely in comp. of the following kind, catur-varza-Satam or °tAni, ‘400 years’), RV. &amp;c.;",
     "any very large number (in comp. as Sata-pattra &amp;c. below).",
     "Sata [cf. Gk. ἑ-κατόν ‘one’ hundred; Lat. centum; Lith. szìmtas; Got. (twa) hunḍa; Germ. hund-ert; Eng. hund-red.]"
+  ],
+  "Dana": [
+    "Da/na n. the prize of a contest or the contest itself (lit. a running match, race, or the thing raced for; hita/M Da/nam, a proposed prize or contest; DanaM-√ ji, to win the p° or the fight), RV.",
+    "booty, prey (Danam-√ Bf Ā., to carry off the prize or booty), RV.; AV.",
+    "any valued object, (esp.) wealth, riches, (movable) property, money, treasure, gift, RV. &amp;c. &amp;c.",
+    "capital (opp. to vfdDi interest), Yājñ. ii, 58",
+    "= go-Dana, Hariv. 3886",
+    "(arithm.) the affirmative quantity or plus (opp. to fRa, kzaya, vyaya, hAni)",
+    "N. of the 2nd mansion, Var.",
+    "Da/na m. N. of a merchant, HPariś.; Siṃhās."
   ],
   "dvaya": [
     "dvaya/ mf(I)n. (fr. and in comp. = dvi) twofold, double, of 2 kinds or sorts, RV.; AV.; Br.; MBh. &amp;c. (°ye m. pl. Śiś. iii, 57)",
@@ -431,6 +910,52 @@
     "a kind of symbol procuring security, Hcat.",
     "a sacrificial hymn recited to obtain personal security, Kauś.",
     "the root of a fragrant grass, Andropogon Muricatum."
+  ],
+  "parRa": [
+    "parRa/ n. a pinion, feather (also of an arrow), wing, RV. &amp;c., Br.; MBh.",
+    "a leaf (regarded as the plumage of a tree), RV. &amp;c. &amp;c. (ifc. f(A). , but in N. of plants f(I). ; cf. Pāṇ. iv, 1, 64)",
+    "the Pān or betel leaf, L.",
+    "parRa/ m. Butea Frondosa (a large-leaved sacred tree whose wood is used for making sacred vessels, later generally called palASa), RV.; AV.; Br.; Yājñ. (-tva/ n., MaitrS.)",
+    "parRa/ m. N. of a teacher, VāyuP. (cf. g. SivAdi)",
+    "(pl.) of a people, VP.",
+    "of a place, iv, 2, 145",
+    "parRa [According to Uṇ. iv, 6 fr. √ pF. but more probably fr. a √ pf, orig. spf; cf. Lith. sparna; HGerm. varn, Farn; Angl.Sax. fearn; Eng. fern.]"
+  ],
+  "kara": [
+    "1. kara/ mf(I, rarely A)n. (for 2. See p. 254, col. 3) (√ 1. kf), a doer, maker, causer, doing, making, causing, producing (esp. ifc.; cf. duHKakara, BayaM-k°, sampat-k°, &amp;c.; cf. Lat. cerus, ‘creator’), AV. xii, 2, 2; Mn.; Pañcat. &amp;c.",
+    "helping, promoting, RV. i, 116, 13",
+    "kara/ m. the act of doing, making &amp;c. (ifc.; cf. Izatkara, su-k°, duz-k°, &amp;c.)",
+    "‘the doer’, the hand, RV. x, 67, 6; MBh.; Mn. &amp;c.",
+    "a measure (the breadth of twenty-four thumbs)",
+    "an elephant's trunk, MBh.; Pañcat. &amp;c.",
+    "the claws of a crab, Hit.",
+    "symbolical expression for the number two",
+    "the lunar mansion Hasta, VarBṛS.",
+    "2. kara m. (for 1. See p. 253, col. 1) (√ kF), a ray of light, sunbeam, moonbeam, R.; Megh.; Pañcat. &amp;c.",
+    "hail, L.",
+    "royal revenue, toll, tax, tribute, duty, Mn.; Yājñ.; MBh. &amp;c."
+  ],
+  "rada": [
+    "rada mfn. (ifc.) scratching, splitting, gnawing at, Ghaṭ.",
+    "rada m. the act of splitting or gnawing, L.",
+    "a tooth (and therefore N. of the number 32), Kāv.; Var.",
+    "the tusk of an elephant, Var.; Nalod."
+  ],
+  "datta": [
+    "1. datta mfn. (√ de) protected, L.",
+    "honoured, L.",
+    "2. datta/ mfn. (√ 1. dA) given, granted, presented, RV. i f., viii, x; AV. &amp;c.",
+    "placed, extended, W.",
+    "(with puttra) = °ttrima, MBh. xiii, 2616",
+    "datta/ m. a short form [Pāṇ. v, 3, 83; Kār.; Pat.] of names so terminating (yajYa-, deva-, jaya &amp;c.) which chiefly are given to Vaiśya men, vi, 2, 148; v, 3, 78 ff., Kāś.; Mn. ii, 32; Kull.; Sāh. vi, 141",
+    "(Pāṇ. vi, 1, 205, Kāś.) N. of an ascetic, TāṇḍyaBr. xxv, 15, 3 (snake-priest), MBh. xii, 10875; BhP. iv, 19, 6",
+    "= °ttAtreya, 1, 15; vi, 15, 14",
+    "N. of a son of Rājādhideya Sūra, Hariv. 2033",
+    "of a sage in the 2nd Manv-antara, 417",
+    "of the 7th Vāsudeva, Jain.; L.",
+    "of the 8th Tīrtha-kara of the past Utsarpiṇī, ib.",
+    "datta/ n. a gift, donation, ChUp. v; BhP. i, 5, 22",
+    "datta/ cf. a/-."
   ],
   "jAmA": [
     "jAmA f. a daughter, MBh. xiii, 2474."
@@ -486,6 +1011,31 @@
     "= prastuta",
     "= dviraRqa (?)"
   ],
+  "mA": [
+    "mA f. a mother, L.",
+    "measure, L.",
+    "authority (-tva n.), Nyāyam.",
+    "light, L.",
+    "knowledge, L.",
+    "binding, fettering, L.",
+    "death, L.",
+    "a woman's waist, L.",
+    "1. mA/ ind. (causing a following C to be changed to cC, Pāṇ. vi, 1, 74) not, that not, lest, would that not, RV. &amp;c. &amp;c.",
+    "a particle of prohibition or negation = Gk. μή, most commonly joined with the Subjunctive i.e. the augmentless form of a past tense (esp. of the aor., e.g. mA/ no vaDIr indra, do not slay us, O Indra, RV.; mA BEzIH or mA BEH, do not be afraid, MBh.; tapovana-vAsinAm uparoDo mA BUt, let there not be any disturbance of the inhabitants of the sacred grove, Śak.; often also with sma, e.g. mA sma gamaH, do not go, Bhag. cf. Pāṇ. iii, 3, 175; 176; in the sense of ‘that not, lest’ also yaTA mA, e.g. yaTA mA vo mftyuH pari-vyatkA iti, that death may not disturb you, PraśnaUp.; or mA yaTA, e.g. mA BUt kAlAtyayo yaTA, lest there be any loss of time, R.; mA na with aor. Subj. = Ind. without a negative, e.g. mA dvizo na vaDIr mama, do slay my enemies, Bhaṭṭ. cf. Vām. v, 1, 9; rarely with the augmentless impf. with or without sma, e.g. mEnam aBiBAzaTAH, do not speak to him, R.; mA sma karot, let him not do it, Pāṇ. vi, 4, 74, Sch.; exceptionally also with the Ind. of the aor., e.g., mA kAlas tvAm aty-agAt, may not the season pass by thee, MBh.; cf. Pāṇ. vi, 4, 75, Sch.)",
+    "or with the Impv. (in RV. only viii, 103, 6, mA no hfRItAm [SV. hfRItAs] agni/H, may Agni not be angry with us; but very often in later language, e.g. mA kranda do not cry, MBh.; gacCa vA mA vA, you can go or not go, ib.; ripur ayam mA jAyatAm, may not this foe arise, Śāntiś.; also with sma, e.g. mA sma kiM cid vaco vada do not speak a word, MBh.)",
+    "or with the Pot. (e.g. mA yamam paSyeyam, may I not see Yama; esp. mABujema in RV.)",
+    "or with the Prec. (only once in mA BUyAt, may it not be, R. [B.] ii, 75, 45)",
+    "or sometimes with the fut. (= that not, lest, e.g. mA tvAM Sapsye, lest I curse thee, MBh. cf. Vop. xxv, 27)",
+    "or with a participle (e.g. mA jIvanyo duHKadagDo jIvati, he ought not to live who lives consumed by pain, Pañcat.; gataH sa mA, he cannot have gone, Kathās.; maIvamprArTyam, it must not be so requested, BhP.)",
+    "sometimes for the simple negative na (e.g. kaTam mA BUt, how may it not be, Kathās.; mA gantum arhasi, thou oughtest not to go, R.; mA BUd AgataH, can he not i.e. surely he must have arrived, Amar.)",
+    "occasionally without a verb (e. g. mA SabdaH or Sabdam, do not make a noise, Hariv.; mA nAma rakziRaH, may it not be the watchmen, Mṛcch.; mA Bavantam analaH pavano vA, may not fire or wind harm thee, Vām. v, 1, 14; esp. = not so, e.g. mA prAtfda, not so, O Pr°, ŚBr.; in this meaning also mA mA, mA mEvam, mA tAvat)",
+    "in the Veda often with u (mo/) = and not, nor (e.g. mA/ maGo/naH pa/ri Kyatam mo/ asmA/kam f/zRAm, do not forget the rich lords nor us the poets, RV. v, 65, 6; and then usually followed by zu/ = su/, e.g. mo zu/ RaH ni/rftir vaDIt, let not N° on any account destroy us, i, 38, 6)",
+    "in ŚBr. sma mA — mo/ sma = neither — nor (in a prohibitive sense).",
+    "2. mA cl. 3. P. mi/mAti (accord. to Dhātup. xxv, 6 Ā. mimIte, SV. mimeti; Pot. mimIyat, Kāṭh.; pf., mimAya; aor. a/mImet Subj. mImayat; inf. mA/tavE/), to sound, bellow, roar, bleat (esp. said of cows, calves, goats &amp;c.), RV.; AV.; Br. : Intens., only pr. p. me/myat, bleating (as a goat), RV. i, 162, 2.",
+    "3. mA cl. 2. P. (Dhātup. xxiv, 54) mAti; cl. 3. Ā. (xxv, 6) mi/mIte; cl. 4. Ā. (xxvi, 33) mAyate (Ved. and ep. also mimAti Pot. mimIyAt Impv., mimIhi; Pot. mimet, Br.; pf. mamO/, mame, mamire/, RV.; aor. a/mAsi Subj. mA/sAtE, AV.; amAsIt Gr.; Prec. mAsIzwa, meyAt, ib.; fut. mAtA; mAsyati, mAsyate, ib.; inf. -me/, -mE/, RV.; mAtum, Br.; ind.p. mitvA/, -mA/ya, RV. &amp;c. &amp;c.), to measure, mete out, mark off, RV. &amp;c. &amp;c.; to measure across = traverse, RV.; to measure (by any standard), compare with (instr.), Kum.; (mAti) to correspond in measure (either with gen., ‘to be large or long enough for’, BhP.; or with loc., ‘to find room or be contained in’, Inscr.; Kāv.; or with na and instr., ‘to be beside one's self with’, Vcar.; Kathās.); to measure out, apportion, grant, RV.; to help any one (acc.) to anything (dat.), ib., i, 120, 9; to prepare, arrange, fashion, form, build, make, RV.; to show, display, exhibit (amimIta, ‘he displayed or developed himself’, iii, 29, 11), ib.; (in phil.) to infer, conclude; to pray (yAcYA-karmaRi), Naigh. iii, 59 : Pass. mIya/te (aor. amAyi); to be measured &amp;c., RV.; &amp;c. Caus., mApayati, °te (aor. amImapat, Pāṇ. vii, 4, 93, Vārtt. 2 Pat.), to cause to be measured or built, measure, build, erect, Up.; GṛS.; MBh. &amp;c.: Desid. mitsati, °te, Pāṇ. vii, 4, 54; 58 (cf. nir-√ mA) : Intens. memIyate, Pāṇ. vi, 4, 66.",
+    "mA [cf. Zd. mā; Gk. μέτρον, μετρέω; Lat. mētior, mensus, mensura; Slav. měra; Lith. mėrà.]",
+    "4. mA f. See under 4. ma, p. 771, col. 2."
+  ],
   "i": [
     "1. i the third vowel of the alphabet, corresponding to i short, and pronounced as that letter in kill &amp;c.",
     "2. i ind. an interjection of anger, calling, sorrow, distress, compassion, &amp;c., (g. cAdi, Pāṇ. i, 4, 57, &amp;c.)",
@@ -514,6 +1064,16 @@
     "as [cf. Gk. ἐσ-τί; Lat. es-t; Goth. is-t; Lith. es-ti.]",
     "2. as cl. 4. P. a/syati (p. a/syat; impf. A/syat, AV. [cf. parAs and vy-as]; fut. p. asizya/t; aor. AsTat [Nir. ii, 2; Pāṇ. vii, 4, 17; cf. vy-as]; perf. P. Asa [cf. parAs] Ā. Ase [cf. vy-as]; Ved. Inf. a/stave, VS.) to throw, cast, shoot at (loc. dat., or gen.), RV. &amp;c.; to drive or frighten away, Nalod. iv, 36; See also 1. asta/ s.v.",
     "3. as asati, °te = √ az, q.v."
+  ],
+  "caRa": [
+    "caRa mfn. ifc. (Pāṇ. v, 2, 26; = caYcu) renowned or famous for, HPariś. viii, 195",
+    "caRa m. the chick-pea, MBh. xiii, 5468 (cf. akzara-, kaTA-, cAra-, mAyA-)."
+  ],
+  "mana": [
+    "1. mana m. Indian spikenard, Nardostachys Jatamansi, L.",
+    "N. of a son of Śambara, Hariv. (v.l. mata).",
+    "2. mana in comp. for manas.",
+    "3. mana/ m. du. (for 1. and 2. See p. 783, col. 2) a partic. ornament, RV. viii, 78, 2."
   ],
   "ka": [
     "1. ka the first consonant of the alphabet, and the first guttural letter (corresponding in sound to k in keep or king).",
@@ -548,16 +1108,66 @@
     "ka/ n. (also regarded as ind.; cf. 1. kam.)",
     "4. ka a Taddhita affix (much used in forming adjectives; it may also be added to nouns to express diminution, deterioration, or similarity, e.g. putraka, a little son; aSvaka, a bad horse or like a horse)."
   ],
+  "sajjana": [
+    "sajjana mfn. (for saj-jana See p. 1135, col. 1) hanging round (e.g. kaRWa-s°, ‘h° r° the neck’), Mn. ii, 63",
+    "sajjana n. a flight of steps or Ghāt leading down to the water, ferry, L.",
+    "equipment, preparation &amp;c., L.",
+    "sajjana n. caparisoning an elephant (also f(A). )",
+    "sajjana n. a guard, sentry, L.",
+    "saj-jana See under sat, p. 1135, col. 1.",
+    "saj—jana mfn. (for sajjana See p. 1131, col. 2) well-born, respectable, virtuous, Hariv.",
+    "saj—jana m. a good or virtuous or wise man, Mn. &amp;c. &amp;c.",
+    "N. of various men, Rājat.; Buddh.; Cat."
+  ],
+  "jana": [
+    "ja/na mf(I)n. ‘generating’, see puraM-",
+    "ja/na m. (g. vfzAdi) creature, living being, man, person, race (pa/Yca ja/nAs, ‘the five races’ = p° kfzwa/yas, RV. iii, viii ff.; MBh. iii, 14160), people, subjects (the sg. used collectively, e.g. dE/vya or divyA/ j°, ‘divine race’, the gods collectively, RV.; mahat j°, many people, R. vi, 101, 2; often ifc. denoting one person or a number of persons collectively, e.g. prezya-, banDu-, saKI- &amp;c., qq.vv. ; with names of peoples, VarBṛS. iv, 22 and v, 74; ayaM janaH, ‘this person, these persons’, I, we, MBh. viii, 709; Hariv. 7110; R. ii, 41, 2; Śak. &amp;c.; eza j°, id., Kāvyād. ii, 75), RV. &amp;c.",
+    "the person nearest to the speaker (also with ayam or asO, ‘this my lover’, Kāvyād. ii, 271; Ratnāv. i, 24/25), Nal. x, 10; Śak.; Mālav.",
+    "a common person, one of the people, Kir. ii, 42 and 47",
+    "the world beyond the Mahar-loka, BhP. iii, 11, 29; SkandaP.",
+    "jana/ (°na/), m. (g. aSvAdi) N. of a man (with the patr. Śārkarākṣya), ŚBr. x; ChUp."
+  ],
+  "raja": [
+    "raja &amp;c. See p. 863, col. 1.",
+    "1. raja m. (g. pacAdi) = rajas, dust (cf. nI-, vi-r°)",
+    "the pollen of flowers, Prasaṅgābh.",
+    "the menstrual excretion (also n.), L.",
+    "emotion, affection, L. : the quality of passion, Uṇ. iv, 216, Sch.",
+    "N. of one of Skanda's attendants, MBh.",
+    "of a king (son of Viraja), VP.",
+    "2. raja in comp. for rajas."
+  ],
   "tman": [
     "tma/n m. (= Atma/n) the vital breath, RV. i, 63, 8 (acc. tma/nam), ĀśvŚr. vi, 9, 1 (acc. tmAnam)",
     "one's own person, self, RV.; 'tman after e, or o for Atman, KaṭhUp. iii, 12; MBh. i-iii; BhP. vii, 9, 32",
     "tma/n ind. uta/ tma/nA or tma/nAca ‘and also, and certainly’, iva or na/ tma/nA ‘just as’, a/Da tma/nA, ‘and even’, RV."
+  ],
+  "tamaH": [
+    "tamaH in comp. for °mas."
+  ],
+  "SAsa": [
+    "1. SA/sa m. order, command, RV.",
+    "(SAsa/), a commander, ruler, chastiser, RV.",
+    "N. of the hymn x, 152, AitBr.",
+    "of its author (having the patr. Bhāradvāja), Anukr.",
+    "2. SAsa/ m. (for 1. See p. 1068, col. 3) a butcher's knife, Br.; ŚrS."
   ],
   "he": [
     "he ind. a vocative particle (‘oh!’ ‘ho!’ &amp;c.; also said to express envy or ill-will or disapprobation), ŚBr.; &amp;c."
   ],
   "nAna": [
     "nAna m. N. of a man (also -Bawwa), Cat."
+  ],
+  "raRva": [
+    "1. raRva/ mf(A/)n. pleasant, delightful, agreeable, lovely, RV.",
+    "joyous, gay, ib.",
+    "2. raRva Nom. P. °vati, to rejoice, delight, TS.",
+    "1. 2. raRva , raRvita. See col. 1."
+  ],
+  "aham": [
+    "aha/m nom. sg., ‘I’, RV. &amp;c.",
+    "= ahaMkaraRa, q.v., (hence declinable gen. ahamas, &amp;c.), BhP.",
+    "aham [Zd. azem; Gk. ἐγώ; Goth. ik; Mod. Germ. ich; Lith. asz; Slav. az]."
   ],
   "I": [
     "1. I the fourth letter of the alphabet, corresponding to i long, and having the sound of ee in feel.",
@@ -580,6 +1190,13 @@
     "SamanI f. See below",
     "SamanI f. ‘the calming one’, night, L."
   ],
+  "asamad": [
+    "a/-samad t, f. non-conflict, concord, ŚBr."
+  ],
+  "mAya": [
+    "mAya mfn. (√ 3. mA) measuring (see DAnya-m°)",
+    "creating illusions (said of Viṣṇu), MBh."
+  ],
   "E": [
     "1. E the twelfth vowel of the alphabet and having the sound of ei in height.",
     "2. E ind. an interjection, MaitrS.",
@@ -587,6 +1204,43 @@
     "summoning",
     "remembering, L.",
     "3. E m. N. of Śiva, L."
+  ],
+  "Ana[m]": [
+    "A-√ nam P. (3. pl. A/-namanti, RV. &amp;c.; inf. -na/mam, RV. iv, 8, 3) Ā. (Impv. 3. pl. A/namantAm, RV. vi, 49, 4) to bend down, bend, bow, incline, R.; BhP.; Ragh. &amp;c.; to do homage, salute reverently, BhP.; ŚBr. &amp;c.; to condescend; to be propitious (as gods to men), RV. vi, 50, 4; to bring near; to bend towards or near; to subdue, RV. : Caus. -nAmayati and -namayati, to inflect, bend (a bow), cause to bend, subdue, MBh.; Mālav.; Hariv."
+  ],
+  "hawa": [
+    "hawa w.r. for haWa."
+  ],
+  "mahat": [
+    "maha/t mfn. (orig. pr. p. of √ 1. mah; strong form, mahAnt f. mahatI/; in ep. often mahat for mahAntam; ibc. mostly mahA, q.v.) great (in space, time, quantity or degree) i.e. large, big, huge, ample, extensive, long, abundant, numerous, considerable, important, high, eminent, RV. &amp;c. &amp;c. (also ind. in mahad-√ BU, to become great or full [said of the moon] Śiś.)",
+    "abounding on rich in (instr.), ChUp.",
+    "(ifc.) distinguished by, Śak.",
+    "early (morning), ib.",
+    "advanced (afternoon), MBh.",
+    "violent (pain or emotion), ib.",
+    "thick (as darkness), gross, ib.",
+    "loud (as noise), Lāṭy.",
+    "many (people, with jana sg.), MBh. (with ukTa n. a partic. Uktha of 720 verses; with OkTya n. N. of a Sāman, MBh.; mahAnti BUtAni, the gross elements, Mn.; MBh.; cf. mahABUta)",
+    "maha/t m. a great or noble man (opp. to nIca, alpa or dIna), Kāv.; Kām.; Pañcat.",
+    "the leader of a sect or superior of a monastery, RTL. 87 n. 1",
+    "a camel, L.",
+    "N. of Rudra or of a partic. R°, BhP.",
+    "of a Dānava, Hariv.",
+    "(scil. gaRa), a partic. class of deceased progenitors, MārkP.",
+    "of two princes, VP.",
+    "maha/t m. (rarely n. scil. tattva), ‘the great principle’, N. of Buddhi, ‘Intellect’, or the intellectual principle (according to the Sāṃkhya philosophy the second of the 23 principles produced from Prakṛti and so called as the great source of Ahaṃkāra, ‘self-consciousness’, and Manas, ‘the mind’; cf. IW. 83, 91 &amp;c.), MaitrUp.; Mn.; Sāṃkhyak.; MBh. &amp;c.",
+    "maha/t n. anything great or important, ChUp.",
+    "greatness, power, might, ŚBr.; ĀśvGṛ.",
+    "dominion, L.",
+    "a great thing, important matter, the greater part, ĀśvGṛ.",
+    "advanced state or time (mahati/ rAtriyE or rAtryE, in the middle of the night, TS.; Br.)",
+    "sacred knowledge, MBh.",
+    "maha/t , maha/n &amp;c. See p. 794, cols. 2, 3."
+  ],
+  "rARa": [
+    "rARa m. n. (√ 2. raR) murmuring, L.",
+    "rARa n. a leaf, L.",
+    "a peacock's tail, L. (cf. rAja-rARaka)"
   ],
   "marya": [
     "ma/rya m. (prob. fr. √ mf) a mortal, man, (esp.) young man, lover, suitor, RV.; VS.; Br. (pl. people; voc. often used as a kind of particle; cf. VPrāt. ii, 16 and Bos)",
@@ -635,6 +1289,10 @@
     "of a son of the 14th Manu, Hariv.",
     "vapra n. lead, L. (cf. varDra)."
   ],
+  "hana": [
+    "hana mf(I)n. id. (see vIra-haRa)",
+    "hana m. killing, slaughter (see su-hana)"
+  ],
   "maRi": [
     "maRi/ m. (f(i) only, L.; f(I). , Siṃhās.; maRIva = maRI [du.] iva, Naiṣ.) a jewel, gem, pearl (also fig.), any ornament or amulet, globule, crystal, RV. &amp;c. &amp;c.",
     "a magnet, loadstone, Kap.",
@@ -653,6 +1311,16 @@
     "of a king of the Kiṃnaras, Kāraṇḍ.",
     "of various works and a collection of magical formulas (also abridged for Tattva-cintāmaṇi and Siddhānta-śiromaṇi).",
     "maRi [cf. Gk. μάννος, μόννος; Lat. monile; Germ. mane, Mähne; Eng. mane.]"
+  ],
+  "haWa": [
+    "haWa m. violence, force (ibc., ena, and At, ‘by force, forcibly’), R.; Rājat.; Kathās. &amp;c.",
+    "obstinacy, pertinacity (ibc. and At, ‘obstinately, persistently’), Pañcat.; Kathās.",
+    "absolute or inevitable necessity (as the cause of all existence and activity; ibc., At, and ena, ‘necessarily, inevitably, by all means’), MBh.; Kāv. &amp;c.",
+    "= haWa-yoga, Cat.",
+    "oppression, W.",
+    "rapine, ib.",
+    "going in the rear of an enemy, L.",
+    "Pistia Stratiotes, L."
   ],
   "ja": [
     "1. ja the 3rd palatal letter (having the sound of j in jump).",
@@ -675,10 +1343,31 @@
     "Śiva, L.",
     "a husband's brother's wife, L."
   ],
+  "sA": [
+    "sA f. N. of Lakṣmi or Gaurī",
+    "1. sA f. of 4. sa, q.v.",
+    "2. sA/ f. of 6. sa, q.v.",
+    "3. sA (weak form of √ san), giving, bestowing, granting (cf. ap-, aSva-sA &amp;c.)",
+    "4. sA = √ so, q.v."
+  ],
+  "jaja": [
+    "jaja m. ‘a warrior’",
+    "cf. jAjin."
+  ],
+  "Anam": [
+    "A-√ nam P. (3. pl. A/-namanti, RV. &amp;c.; inf. -na/mam, RV. iv, 8, 3) Ā. (Impv. 3. pl. A/namantAm, RV. vi, 49, 4) to bend down, bend, bow, incline, R.; BhP.; Ragh. &amp;c.; to do homage, salute reverently, BhP.; ŚBr. &amp;c.; to condescend; to be propitious (as gods to men), RV. vi, 50, 4; to bring near; to bend towards or near; to subdue, RV. : Caus. -nAmayati and -namayati, to inflect, bend (a bow), cause to bend, subdue, MBh.; Mālav.; Hariv."
+  ],
   "ADava": [
     "A-Dava &amp;c. See under A-√ Du.",
     "A-Dava/ m. one who stirs up or agitates, RV.",
     "that which is agitated, mixture, ib."
+  ],
+  "tAna": [
+    "tAna m. (√ 3. tan) a fibre, Suśr. i, 25",
+    "a tone, MBh. ii, 133 and 391; xiii, 3888; Kum. i, 8",
+    "a monotonous tone (in reciting, eka-Sruti), KātyŚr. i, 8, 18; Vait.; Bhāṣik.; Nyāyam.; VPrāt., Sch.",
+    "an object of sense (or = tAtparya), L. (cf. eka-)",
+    "[τόνος.]"
   ],
   "ajA": [
     "ajA (A), f. N. of Prakṛti, of Māyā or Illusion See a-jA (s.v. 2. a-jA)",
@@ -715,12 +1404,32 @@
     "odd",
     "a/-sama mf(A)n. unequalled, without a fellow or equal, RV.; AV. &amp;c."
   ],
+  "varam": [
+    "va/ram (am), ind. (g. svar-Adi) preferably, rather, better (also = preferable, sometimes with abl. which in Veda is often followed by A, e.g. agni/Byo va/ram, ‘better than fires’, RV.; sa/KiBya A/ va/ram, ‘better than companions’, ib.; exceptionally with acc., e.g. SizyEH Sata-hutAn homAn, ekaH putra-huto varam, ‘better one sacrifice offered by a son than a hundred offered by disciples’, ṢaḍvBr.), RV. &amp;c. &amp;c.",
+    "va/ram ind. it is better that, it would be best if (with pres., e.g. varaM gacCAmi, ‘it is better that I go’; or with Impv., e.g. varaM naye sTApyatAm, ‘it would be better if he were initiated into our plan’, Kathās.; or without any verb, e.g. varaM siMhAt, ‘better [death caused] by a lion’, Pañcat.; sometimes with Pot., e.g. varaM tat kuryAt, ‘better that he should do that’, Kām.), Kāv.; Kathās. &amp;c.",
+    "it is better than, rather than (in these senses varam is followed by na, na ca, na tu, na punaH, tad api na or taTApi na, with nom., e.g. varaM mftyur nacAkIrtiH, ‘better death than [lit. ‘and not’] infamy’; exceptionally with instr., e.g. varam eko guRI putro na ca mUrKa-SatEr api, ‘better one virtuous son than hundreds of fools’, Hit.; na hi-varam, ‘by no mean — but rather’), Mn.; MBh. &amp;c."
+  ],
   "BAMSa": [
     "BAMSa m. portion of an asterism, Jyot.",
     "BAMSa See under 4. Ba."
   ],
+  "aYca": [
+    "aYca ‘curling’ (of the hairs of the body, thrill of rapture), only at the end of romAYca, q.v."
+  ],
+  "mahan": [
+    "maha/n n. greatness, might, power, abundance (only instr. sg. mahnA/ and once pl. maha/BiH, which also = greatly, mightily, right heartily), RV."
+  ],
+  "asi": [
+    "asi/ m. (√ 2. as), a sword, scimitar, knife (used for killing animals), RV.; AV. &amp;c.",
+    "(also) a shark, alligator, L.",
+    "asi (is), f. N. of a river (near Benares), VāmP. (cf. asI);",
+    "asi [Lat. ensi-s.]"
+  ],
   "ravata": [
     "ravata m. = rava, roaring, yelling &amp;c., ĀpŚr."
+  ],
+  "raRaka": [
+    "raRaka m. N. of a king, BhP."
   ],
   "aMSa": [
     "a/MSa m. (probably fr. √ 1. aS, perf. An-a/MSa, and not from the above √ aMS fictitiously formed to serve as root), a share, portion, part, party",
@@ -733,6 +1442,37 @@
     "a degree of latitude or longitude",
     "a day, L.",
     "N. of an Āditya."
+  ],
+  "vaDa": [
+    "vaDa/ m. one who kills, a slayer, vanquisher, destroyer, RV.; VS.; TS.; ŚBr.",
+    "a deadly weapon (esp. Indra's thunderbolt), RV.; AitBr.; ŚāṅkhGṛ.",
+    "the act of striking or killing, slaughter, murder, death, destruction, RV. &amp;c. &amp;c.",
+    "(in law) capital or (more commonly) corporal punishment, Mn.; Yājñ. &amp;c. = vaDa-BUmi, place of execution, Caurap., Introd.",
+    "stroke, hurt, injury, Nir.",
+    "paralysis, Suśr.",
+    "annihilation, disappearance (of inanimate things), MBh.; Kāv. &amp;c.",
+    "frustration, prevention, Gaut.",
+    "a defect, imperfection (28 are enumerated), VP.",
+    "multiplication, Gaṇit.",
+    "a product, Bījag.",
+    "N. of a Rākṣasa, VP."
+  ],
+  "dattA": [
+    "dattA (A), f. N. of a woman, Pat., Kāś. (see dAtteya)",
+    "(names so terminating given to veSyAs, Sāh. vi, 141)",
+    "dattA f. of °tta/."
+  ],
+  "Sara": [
+    "Sara/ m. (fr. √ SF ‘to rend’ or ‘destroy’) a sort of reed or grass, Saccharum Sara (used for arrows), RV. &amp;c. &amp;c.",
+    "an arrow, shaft, MuṇḍUp.; Mn.; MBh. &amp;c.",
+    "N. of the number ‘five’ (from the 5 arrows of the god of love), VarBṛS.",
+    "(in astron.) the versed sine of an arc (accord. to Āryabh. also ‘the whole diameter with subtraction of the versed sine’)",
+    "a partic. configuration of stars (when all the planets are in the 4th, 5th, 6th, and 7th houses), VarBṛS.",
+    "the upper part of cream or slightly curdled milk (v.l. sara), ĀpŚr.; Car.",
+    "mischief, injury, hurt, a wound, W.",
+    "N. of a son of Ṛcatka, RV.",
+    "of an Asura, Hariv. (v.l. Suka)",
+    "Sara/ n. water (see Sara-varza and °zin)"
   ],
   "acara": [
     "a-cara or a/-carat [RV.], mfn. immovable.",
@@ -747,12 +1487,19 @@
     "BaraRI f. (of °Ra) Luffa Foetida or a similar plant, L.",
     "(also pl.) N. of the 7th Nakṣatra (containing 3 stars and figured by the pudendum muliebre), AV.; &amp;c."
   ],
+  "cama": [
+    "cama m. pl. = camaka-sUkta, Pāṇ. v, 2, 4, Vārtt. 2, Pat."
+  ],
   "janaDA": [
     "ja/na—DA (ja/n°), mfn. (√ DA) nourishing creatures, TBr. i, 1, 1, 1 f. (-DAya, TāṇḍyaBr. i, 4; -DAyas, MaitrS. i, 3, 12 and 27)."
   ],
   "ahas": [
     "a/has the base of the middle cases of a/har instr. pl. a/hoBis [RV. (twice), VS.; ŚBr. &amp;c.] dat. abl. a/hoByas [VS. &amp;c.] loc. a/hassu [ŚBr. x; AitBr. &amp;c.]",
     "ahas See ib."
+  ],
+  "nama": [
+    "1. na/ma m. pasture-ground, RV. iii, 39, 6.",
+    "2. nama = °mas in nama-ukti"
   ],
   "anya": [
     "1. a/nya (3), am, n. inexhaustibleness (as of the milk of cows), AV. xii, 1, 4 (cf. a/nyA.).",
@@ -768,17 +1515,242 @@
   "tam": [
     "tam cl. 4. tA/myati (Pāṇ. vii, 3, 74; rarely Ā. R. ii, 63, 46; Gīt. v, 16; pf. tatAma, ŚBr. iv; aor. Pass. atami, Pāṇ. vii, 3, 34, Kāś.; Ved. inf. ta/mitos, with A/ preceding, ‘till exhaustion’, TBr. i, 4, 4, 2; TāṇḍyaBr. xii; Lāṭy.; Āp.; pf. Pass. p. -tAnta/, q.v.) to gasp for breath (as one suffocating), choke, be suffocated, faint away, be exhausted, perish, be distressed or disturbed or perplexed, RV. ii, 30, 7 (na/ mA tamat [aor. subj.] ‘may I not be exhausted’), Kāṭh.; TBr. &amp;c.; to stop (as breath), become immovable or stiff, Suśr.; Mālatīm.; Amar.; Rājat. v, 344; to desire (cf. 2. °ma, °mata), Dhātup. xxvi, 93 : Caus. tama/yati (aor. Pass. atAmi, Pāṇ. vi, 4, 93, Kāś.) to suffocate, deprive of breath, ŚBr. iii, 3, 2, 19 and 8, 1, 15; KātyŚr. vi, 5, 18; cf. a/-tameru."
   ],
+  "asmi": [
+    "asmi ‘I am’, √ 1. as, q.v."
+  ],
+  "haya": [
+    "ha/ya m. (ifc. f(A). ; fr. √ 1. hi) a horse, RV. &amp;c. &amp;c.",
+    "a symbolical expression for the number ‘seven’ (on account of the 7 horses of the Sun), Śrutab.",
+    "the zodiacal sign Sagittarius, VarBṛS.",
+    "(in prosody) a foot of four short syllables, proceleusmaticus, Col.",
+    "a man of a partic. class, L.",
+    "the Yak or Bos Grunniens, L.",
+    "N. of Indra, L.",
+    "of one of the horses of the Moon, L.",
+    "of a son of Sahasra-da, Hariv.",
+    "of a son of Śatā-jit, VP.",
+    "pl. the family of Haya, MBh.",
+    "ha/ya f(A or I) a female horse, mare, Hariv.; Kathās.",
+    "Physalis Flexuosa, L.",
+    "ha/ya mfn. urging on, driving (see aSva-haya/).",
+    "haya &amp;c. See p. 1288, cols. 2, 3."
+  ],
+  "raya": [
+    "raya m. (√ rI) the stream of a river, current, MBh.; Kāv. &amp;c.",
+    "quick motion, speed, swiftness (°yeRa ind. and °yAt ind. quickly, immediately, straightway), Kāv.; Pur.",
+    "course (cf. saMvatsarar°)",
+    "impetuosity, vehemence, ardour, zeal, Śiś.; BhP.",
+    "N. of a son of Purū-ravas, BhP.",
+    "of another king, Cat."
+  ],
+  "Ama": [
+    "1. Ama/ mf(A)n. raw, uncooked (opposed to pakva, q.v.), RV.; AV.; Mn.; Yājñ. &amp;c.",
+    "N. of the cow (considered as the raw material which produces the prepared milk), RV. iii, 30, 14, &amp;c.",
+    "unbaked, unannealed, AV.; MBh.; VarBṛS. &amp;c.",
+    "undressed",
+    "unripe, immature, Suśr. &amp;c.",
+    "undigested, Suśr.",
+    "fine, soft, tender (as a skin), BhP. iii, 31, 27",
+    "Ama/ (as), m. N. of a son of Kṛṣṇa, VP.",
+    "of a son of Ghṛta-pṛṣṭha, BhP. v, 20, 21",
+    "Ama/ (as), m. or (am), n. constipation, passing hard and unhealthy excretions, Suśr.",
+    "Ama/ (am), n. state or condition of being raw, Suśr.",
+    "grain not yet freed from chaff",
+    "Ama [cf. Gk. ὠμός; Lat. amārus; Hib. amh, ‘raw, unsodden, crude, unripe’; Old Germ. ampher; Mod. Germ. (Sauer-)ampfer.]",
+    "2. Ama m. (probably identical with 1. Ama), sickness, disease, L.",
+    "3. Ama ind. yes, HPariś."
+  ],
   "tA": [
     "tA f. Lakṣmī, L."
   ],
+  "taya": [
+    "taya m. g. vfzAdi",
+    "cf. tAya."
+  ],
+  "varRa": [
+    "va/rRa m. (or n. g. arDarcAdi, prob. fr. √ 1. vf; ifc. f(A). ) a covering, cloak, mantle, L.",
+    "a cover, lid, Yājñ. iii, 99",
+    "outward appearance, exterior, form, figure, shape, colour, RV. &amp;c. &amp;c.",
+    "colour of the face, (esp.) good colour or complexion, lustre, beauty, Mn.; MBh. &amp;c.",
+    "colour, tint, dye, pigment (for painting or writing), MBh.; Kāv. &amp;c.",
+    "colour = race, species, kind, sort, character, nature, quality, property (applied to persons and things), RV. &amp;c. &amp;c.",
+    "class of men, tribe, order, caste (prob. from contrast of colour between the dark aboriginal tribes and their fair conquerors; in RV. esp. applied to the Āryas and the Dāsas; but more properly applicable to the four principal classes described in Manu's code, viz. Brāhmans, Kṣatriyas, Vaiśyas, and Śūdras; the more modern word for ‘caste’ being jāti; cf. IW. 210 n. 1), ib.",
+    "a letter, sound, vowel, syllable, word, Br.; Prāt. &amp;c.",
+    "a musical sound or note (also applied to the voice of animals), MBh.; R.; Pañcat.",
+    "the order or arrangement of a song or poem, W.",
+    "praise, commendation, renown, glory, Mṛcch.; Kum.; Rājat.",
+    "(in alg.) an unknown magnitude or quantity",
+    "(in arithm.) the figure, ‘one’",
+    "(accord. to some) a co-efficient",
+    "a kind of measure, L. (cf. -tAla)",
+    "gold, L.",
+    "a religious observance, L.",
+    "one who wards off, expeller, Sāy. on RV. i, 104, 2",
+    "va/rRa n. saffron, L.",
+    "varRa [Cf., accord. to some, Slav. vranǔ, ‘black’, ‘a crow’; Lith. várnas, ‘a crow’.]"
+  ],
+  "ASa": [
+    "1. ASa m. (√ 1. aS), reaching, obtaining (cf. dur°.)",
+    "2. ASa m. (√ 2. aS), food",
+    "eating, ŚBr.; KātyŚr. &amp;c. (cf. prAtar-ASa, sAyam-ASa, &amp;c.; hutASa, ASrayASa, &amp;c.)"
+  ],
   "dahanI": [
     "dahanI f. Sanseviera Roxburghiana, L."
+  ],
+  "jaza": [
+    "jaza/ m. N. of an aquatic animal (cf. Jaza/), AV. xi, 2, 25; TS. v, 5; GopBr. ii, 2, 5."
   ],
   "rayi": [
     "rayi/ m. or (rarely) f. (fr. √ rA; the following forms occur in the Veda, rayis, °yi/m, °yiBis, °yIRAm; rayyA/, °yyE/, °yyA/m; cf. 2. rE), property, goods, possessions, treasure, wealth (often personified), RV.; AV.; VS.; Br.; ŚrS.; ChUp.",
     "stuff, materials, PraśnUp.",
     "v.l. for raji, q.v.",
     "rayi/ mfn. (?) rich, RV. viii, 31, 11; ix, 101, 7."
+  ],
+  "vada": [
+    "vada mfn. speaking, a speaker (only ifc.; see ku-v°, priyaM-v°)",
+    "speaking well or sensibly, L.",
+    "vada m. N. of the first Veda (with the Magians), Cat."
+  ],
+  "cala": [
+    "cala mf(A)n. (g. pacAdi) moving, trembling, shaking, loose, MBh. &amp;c.",
+    "unsteady, fluctuating, perishable, ib.",
+    "disturbed, confused, ib.",
+    "cala m. ‘agitation, shaking’, see BUmi-",
+    "wind, L.",
+    "wind (in med.), Aṣṭāṅg. i, 11, 1",
+    "quicksilver, L.",
+    "a sprout, shoot, Gal.",
+    "cala n. water, Gal.",
+    "(cf. a-, niS-, puMScalI, cAla.)"
+  ],
+  "mara": [
+    "mara m. (√ mf) dying, death (see pari-mara)",
+    "the world of death i.e. the earth, AitUp.",
+    "mara mfn. killing (see nf-mara)",
+    "mara m. pl. the inhabitants of hell, Āryabh.",
+    "mara m. w.r. for narAH, Hariv. 8464."
+  ],
+  "yAna": [
+    "yA/na mfn. leading, conducting (said of a road; ‘to’ gen. or adv. in °trA/), RV.",
+    "yA/na n. (ifc. f(A). ) a journey, travel",
+    "going, moving, riding, marching &amp;c. to (loc. or comp.) or upon (instr. or comp.) or against (acc. with prati), Mn.; MBh. &amp;c.",
+    "a vehicle of any kind, carriage, waggon, vessel, ship, litter, palanquin, RV. &amp;c. &amp;c.",
+    "(with Buddhists) the vehicle or method of arriving at knowledge, the means of release from repeated births (there are either 3 systems, the SrAvaka-yAna, the pratyeka-budDa-y° or pratyeka-y°, and the mahA-y°; or more generally only 2, the mahA-yAna or ‘Great method’ and the hina-y° or ‘Lesser method’; sometimes there is only ‘One Vehicle’, the eka-yAna, or ‘one way to beatitude’), SaddhP.; Dharmas. 2 (cf. MWB. 159 &amp;c.)",
+    "yAna &amp;c. See p. 849, col. 3."
+  ],
+  "nara": [
+    "na/ra m. (cf. nf) a man, a male, a person (pl. men, people), TS. &amp;c. &amp;c.",
+    "husband, Mn. ix, 76",
+    "hero, VarBṛS. iv, 31; Bālar. viii, 56",
+    "a man or piece at chess or draughts &amp;c., L.",
+    "the pin or gnomon of a sun-dial, Sūryas. (cf. -yantra)",
+    "person, personal termination, Kāś. on Pāṇ. iii, 1, 85 (cf. puruza)",
+    "the primeval Man or eternal Spirit pervading the universe (always associated with Nārāyaṇa, ‘son of the pr° man’ ; both are considered either as gods or sages and accordingly called devO, fzI, tApasO &amp;c.; in ep. poetry they are the sons of Dharma by Mūrti or A-hiṃsā and emanations of Viṣṇu, Arjuna being identified with Nara, and Kṛṣṇa with Nārāyaṇa), Mn. (cf. -sUnu), MBh.; Hariv.; Pur.",
+    "(pl.) a class of myth. beings allied to the Gandharvas and Kiṃ-naras, MBh.; Pur.",
+    "N. of a son of Manu Tāmasa, BhP.",
+    "of a s° of Viśvāmitra, Hariv.",
+    "of a s° of Gaya and father of Virāj, VP.",
+    "of a s° of Su-dhṛti and f° of Kevala, Pur.",
+    "of a s° of Bhavan-manyu (Manyu) and f° of Saṃkṛti, ib.",
+    "of Bhāradvāja (author of RV. vi, 35 and 36), Anukr.",
+    "of 2 kings of Kaśmīra, Rājat.",
+    "of one of the 10 horses of the Moon, L.",
+    "na/ra n. a kind of fragrant grass."
+  ],
+  "anta": [
+    "a/nta m. end, limit, boundary, term",
+    "end of a texture",
+    "end, conclusion",
+    "end of life, death, destruction (in these latter senses sometimes neut.)",
+    "a final syllable, termination",
+    "last word of a compound",
+    "pause, settlement, definite ascertainment, certainty",
+    "whole amount",
+    "border, outskirt (e.g. grAmAnte, in the outskirts of the village)",
+    "nearness, proximity, presence",
+    "inner part, inside",
+    "condition, nature",
+    "a/nta mfn. near, handsome, agreeable, L.",
+    "anta [cf. Goth. andeis, Theme andja; Germ. Ende; Eng. end: with anta are also compared the Gk. ἄντα, ἀντί; Lat. ante; the Goth. anda in anda-vaurd, &amp;c.; and the Germ. ent, e.g. in entsagen]."
+  ],
+  "haraRa": [
+    "haraRa mf(A or I)n. (only ifc.) carrying, holding, containing (e.g. bali-haraRI darvI, ‘a ladle containing an oblation’), ĀśvGṛ.",
+    "taking away, removing (e.g. rajo-h° ‘removing dust’), Kauś.",
+    "haraRa m. ‘taker’, a hand, L.",
+    "an arm, L.",
+    "Michelia Champaca, L.",
+    "haraRa n. the act of carrying or bringing or fetching, KātyŚr.; MBh. &amp;c.",
+    "offering, KātyŚr.; Gaut.",
+    "carrying off, robbing, abduction, Gaut.; Mn.; MBh. &amp;c.",
+    "removing, destroying, Suśr.; VarBṛS.",
+    "dividing, division, Col.",
+    "a nuptial present (= -yOtaka), MBh.",
+    "a gift to a student at his initiation, W.",
+    "fodder given to a stallion (= vAqaba-h°), Kāś. on Pāṇ. vi, 2, 65",
+    "(L. also ‘a partic. gesture’ [esp. of an archer in shooting]; ‘boiling water’; ‘semen virile’; ‘gold’).",
+    "haraRa &amp;c. See p. 1289."
+  ],
+  "tamam": [
+    "tamam ind. so as to faint away, Pāṇ. vi, 4, 93."
+  ],
+  "tama": [
+    "1. tama m. (Pāṇ. vii, 3, 34, Kāś.) = tamas (‘the ascending node’, VarBṛ. [?] Jyot.), L., Sch.",
+    "(= °mAla) Xanthochymus pictorius, L.",
+    "= °makA, L.",
+    "tama n. (= °mas) darkness, L.",
+    "the point of the foot, L.",
+    "2. tama an affix forming the superl. degree of adjectives and rarely of substantives (ka/Rva-, &amp;c.), Suśr. i, 20, 11",
+    "tama mfn. most desired, Kir., ii, 14"
+  ],
+  "Aca": [
+    "Aca m. N. of a man, Rājat.",
+    "See Aca-parAca and Acopaca ss.vv."
+  ],
+  "sahya": [
+    "sahya mfn. to be borne or endured, endurable, tolerable, resistible, MBh.; R. &amp;c.",
+    "able to bear, equal to, W.",
+    "powerful, strong, ib.",
+    "sweet, agreeable, W.",
+    "sahya m. N. of one of the 7 principal ranges of mountains in India (see kula-giri)",
+    "of a mountainous district (in which the Go-dāvarī rises in the N.W. of the Deccan), MBh.; VarBṛS. &amp;c.",
+    "of a son of Vivasvat (v.l. mahya), MBh.",
+    "sahya (am), n. help, assistance (oftener sAhya), MBh.; Hariv.",
+    "health, convalescence, L."
+  ],
+  "kzaya": [
+    "kza/ya See √ 1. 2. and 4. kzi.",
+    "1. kza/ya m. ‘dominion’, Sāy. (on, RV. vii, 46, 2).",
+    "2. kza/ya mfn. dwelling, residing, RV. iii, 2, 13; viii, 64, 4",
+    "kza/ya m. an abode, dwelling-place, seat, house (cf. uru- and su-kza/ya, ra/Ta-, divikzaya/), RV.; VS. v, 38; TS.; Pāṇ.; MBh.; R.; BhP.",
+    "the house of Yama (cf. yama-kz°, vEvasvata-kz°)",
+    "abode in Yama's dominion Comm. on R. (ed. Bomb.) ii, 109, 11",
+    "(= kziti/) family, race, RV. i, 123, 1.",
+    "3. kzaya/ (the accent is on the last syllable in the sense ‘destruction’, accord. to Pāṇ. iii, 3, 56 and vi, 1, 63.) m. (Pāṇ. vi, 1, 201) loss, waste, wane, diminution, destruction, decay, wasting or wearing away (often ifc.), Mn.; MBh. &amp;c.",
+    "fall (as of prices, opposed to vfdDi, e.g. kzayo vfdDiS ca paRyAnAm, ‘the fall and rise in the price of commodities’), Yājñ. ii, 258",
+    "removal, W.",
+    "end, termination (e.g. nidrA-kz°, the end of sleep, R. vi, 105, 14; dina-kzaye, at the end of day, MBh. i, 699; R. iv, 3, 10; jIvita-kzaye, at the end of life, Daś.; AyuzaH kz° id., Ragh.; kzayaM √ gam, √ yA, √ i, or upa√ i, to become less, be diminished, go to destruction, come to an end, perish, Nal.; R.; Suśr.; VarBṛS.; Daś.; Amar.; Hit.; kzayaM√ nI, to destroy, R. v, 36, 51)",
+    "consumption, phthisis pulmonalis, Suśr.; Hcat.",
+    "sickness in general, L.",
+    "the destruction of the universe, Pañcat.",
+    "(in alg.) a negative quantity, minus, Āryabh.",
+    "= -mAsa, Jyot.",
+    "= kzayAha, Gaṇit.",
+    "N. of a prince, VP.",
+    "kzaya/ (am), n. N. of the last year in the sixty years' Bṛhaspati cycle, VarBṛS."
+  ],
+  "malla": [
+    "malla m. a wrestler or boxer by profession (the offspring of an out-caste Kṣatriya by a Kṣ° female who was previously the wife of another out-caste, Mn. x, 22; xii, 45), an athlete, a very strong man, MBh.; Hariv.; Var. &amp;c.",
+    "N. of a king called Nārāyaṇa, Cat.",
+    "of the 21st Arhat of the future Utsarpiṇī, L.",
+    "of an Asura (see mallAsura)",
+    "of various men, Rājat.",
+    "a vessel, boiler, Divyāv. (also f(I). , L.)",
+    "the remnant of an oblation, L.",
+    "a kind of fish (= kapAlin), L.",
+    "the cheek and temples, L.",
+    "pl. N. of a people, MBh.; Hariv. &amp;c.",
+    "malla mfn. strong, robust, L.",
+    "good, excellent, L."
   ],
   "vajra": [
     "va/jra m. n. ‘the hard or mighty one’, a thunderbolt (esp. that of Indra, said to have been formed out of the bones of the Ṛṣi Dadhīca or Dadhīci [q.v.], and shaped like a circular discus, or in later times regarded as having the form of two transverse bolts crossing each other thus x; sometimes also applied to similar weapons used by various gods or superhuman beings, or to any mythical weapon destructive of spells or charms, also to manyu, ‘wrath’, RV. or [with apAm] to a jet of water, AV. &amp;c. &amp;c.; also applied to a thunderbolt in general or to the lightning evolved from the centrifugal energy of the circular th° of Indra when launched at a foe; in Northern Buddhist countries it is shaped like a dumb-bell and called Dorje; see MWB. 201; 322 &amp;c.), RV. &amp;c. &amp;c.",
@@ -817,10 +1789,45 @@
     "shaped like a kind of cross (cf. above), forked, zigzag, ib.",
     "vajra [cf. Zd. vazra, ‘a club’.]"
   ],
+  "dAva": [
+    "dAva/ m. (fr. √ 2. du, Pāṇ. iii, 1, 142) conflagration, esp. a forest conflagration, ŚBr.; MBh. &amp;c.",
+    "fire, heat",
+    "distress, L.",
+    "dAva/ m. n. a forest, MBh. (always connected with fire), Ragh. ii, 8."
+  ],
   "aMhas": [
     "a/Mhas n. anxiety, trouble, RV. &amp;c.",
     "sin, L.",
     "[cf. aGa/, A/gas; Gk. ἄχνυμαι, ἄχος, ἄγος.]"
+  ],
+  "Sama": [
+    "Sama m. tranquillity, calmness, rest, equanimity, quietude or quietism, absence of passion, abstraction from external objects through intense meditation (SamaM √ kf, ‘to calm one's self’, ‘be tranquil’), Mn.; MBh. &amp;c.",
+    "peace, peace with (sArDam), MBh.",
+    "Quietism or Tranquillity (personified as a son of Dharma and husband of Prāpti), MBh.",
+    "tranquillization, pacification, allayment, alleviation, cessation, extinction, MBh.; Kāv. &amp;c.",
+    "absence of sexual passion or excitement, impotence, TāṇḍBr.",
+    "alleviation or cure of disease, convalescence, W.",
+    "final happiness, emancipation from all the illusions of existence, L.",
+    "indifference, apathy, Rājat.",
+    "the hand (cf. Saya), L.",
+    "imprecation, malediction (w.r. for Sapa), L.",
+    "N. of a king of the Nandi-vegas, MBh.",
+    "of a son of Andhaka, Hariv.",
+    "of a son of Dharma-sūtra, BhP.",
+    "Sa/ma mfn. tame, domestic, RV. i, 32, 15; 33, 15."
+  ],
+  "ASaka": [
+    "ASaka mfn. eating (cf. an°.)"
+  ],
+  "Samana": [
+    "Samana mf(I)n. calming, tranquillizing, soothing, allaying, extinguishing, destroying, KātyŚr.; MBh. &amp;c.",
+    "Samana m. ‘settler, destroyer’, N. of Yama, Daś.",
+    "a kind of antelope, L.",
+    "a kind of pea, L.",
+    "Samana n. the act of calming, appeasing, allaying, tranquillization, pacification, extinction, destruction, Kauś.; MBh. &amp;c. killing, slaying, immolation, Kauś.",
+    "chewing, swallowing, L.",
+    "a mode of sipping water (prob. for camana), MW.",
+    "malediction, reviling (w.r. for Sapana), W."
   ],
   "aSani": [
     "aSa/ni f. (rarely m., R.; Pāṇ., Sch.) the thunderbolt, a flash of lightning, RV. &amp;c.",
@@ -830,6 +1837,10 @@
     "aSa/ni m. one of the nine names of Rudra, PārGṛ.",
     "N. of Śiva, MBh. xiii",
     "aSa/ni (ayas), m. pl. N. of a warrior tribe, (g. parSv-Adi, q.v.)"
+  ],
+  "jawa": [
+    "jawa mfn. wearing twisted locks of hair g. arSa-Adi",
+    "jawa m. metrically for °wA, Hariv. 9551"
   ],
   "ina": [
     "ina/ mfn. (fr. √ i, Uṇ. iii, 2; or fr. in = √ inv), able, strong, energetic, determined, bold",
@@ -842,8 +1853,50 @@
     "the sun",
     "the lunar mansion Hasta, L."
   ],
+  "maha": [
+    "1. maha/ mfn. great, mighty, strong, abundant, RV.",
+    "maha/ m. (cf. maKa, maGa) a feast, festival, MBh.",
+    "the festival of spring, Śiś.; Hariv.; Var.",
+    "a partic. Ekāha, ŚāṅkhŚr.",
+    "a sacrifice, L.",
+    "a buffalo, L.",
+    "light, lustre, brilliance, L.",
+    "maha/ n. pl. great deeds, RV.",
+    "2. maha in comp. for mahA before f and before r for f."
+  ],
+  "nanda": [
+    "na/nda m. joy, delight, happiness (also pl.), AV.; VS. &amp;c.",
+    "(in mus.) a flute 7 inches long",
+    "N. of one of Yudhiṣṭhira's 2 drums, MBh.",
+    "of one of Kubera's 9 gems, L.",
+    "a son (in gopa- add.; cf. nandana)",
+    "N. of Viṣṇu, MBh.",
+    "of one of Skanda's attendants, ib.",
+    "of a Nāga, ib.",
+    "(also -ka)",
+    "of a Buddh. deity, Lalit.",
+    "of an attendant on Dakṣa, BhP.",
+    "of a son of Dhṛtarāṣṭra (also -ka), MBh.",
+    "of a step-brother and disciple of Gautama Buddha, MWB. 441",
+    "of a son of Vasu-deva, Pur.",
+    "of the foster-father of Kṛṣṇa and ancestor of Durgā, MBh.; Hariv.; Pur. &amp;c. (also -ka, L.)",
+    "of a leader of the Sātvatas, BhP.",
+    "of a king of Pāṭali-putra and founder of a dynasty consisting of 9 successive princes, HPariś.; Pur.; Kathās.; Pañc. &amp;c.",
+    "of the number 9 (because of the 9 Nandas), Jyot.",
+    "of sev. scholars and authors, Cat.",
+    "of a mountain, BhP. (cf. -parvata and nandi-giri)",
+    "na/nda n. a kind of house, Gal."
+  ],
   "AnI": [
     "A-√ nI P. -nayati (1. pl. A/-nayAmasi, AV. v, 25, 8; Impv. 2. sg. A/-naya, 3. sg. A/-nayatu; pf. A/-ninAya, AV. v, 17, 2, and A-ninA/ya, RV. viii, 21, 9 ; inf. -netavE/, ŚBr. ii, 1, 14, 16) Ā. (1. sg. -naye, R.) to lead towards or near; to bring, carry to a place (acc. or loc.); to fetch, RV.; AV.; SV.; ŚBr.; MBh.; R.; Śak. &amp;c.; (perf. periphr. -nayAmAsa, MBh. iii, 2282) to cause to bring or fetch; to bring back or take back, MBh.; R.; to pour in, mix in RV.; VS.; ŚBr. &amp;c.; to bring any one to, reduce to any state, MBh.; to deduce, calculate; to use, employ, prove: Caus. P. -nAyayati, to cause to be brought or fetched or led near, MBh.; R.; Ragh.; Kathās. &amp;c.: Desid. -ninIzati, to intend or wish to bring near, BhP. x, 89, 42."
+  ],
+  "rama": [
+    "rama mfn. pleasing, delighting, rejoicing (only ifc.; cf. mano-r°)",
+    "dear, beloved, W.",
+    "rama m. (only L.) joy",
+    "a lover, husband, spouse",
+    "Kāma-deva, the god of love",
+    "the red-flowering Aśoka"
   ],
   "aSma": [
     "1. aSma ifc. for 2. a/Sman, a stone, Pāṇ. v, 4, 94.",
@@ -859,6 +1912,44 @@
     "3. DI cl. 4. Ā. DIyate, to contain, hold (Pass. of √ 1. DA?); to slight, disregard; to propitiate (?), Dhātup. xxvi, 37.",
     "4. DI/ f. for dI, splendour, RV. iii, 34, 5; vi, 3, 3."
   ],
+  "Aha": [
+    "1. Aha ind. an interjection",
+    "a particle implying reproof",
+    "severity",
+    "command",
+    "casting",
+    "sending, L.",
+    "2. A/ha perf. 3. sg. of the defect. √ 1. ah, q.v."
+  ],
+  "vaSa": [
+    "1. va/Sa m. will, wish, desire, RV. &amp;c. &amp;c. (also pl. va/SAn a/nu or a/nu va/Sa, ‘according to wish or will, at pleasure’)",
+    "authority, power, control, dominion (in AV. personified), ib. (acc. with verbs of going, e.g. with √ i, anu-√ i, √ gam, A-√ gam, √ ya, A-√ pad, A-√ sTA &amp;c., ‘to fall into a person's [gen.] power, become subject or give way to’; acc. with √ nI, A-√ nI and pra-√ yuj, or loc. with √ kf, √ laB or Caus. of √ sTA or saM-√ sTA, ‘to reduce to subjection, subdue’; loc. with √ BU, √ vft, √ sTA and saM-√ sTA, ‘to be in a person's [gen.] power’; vaSena, °SAt, and °Sa-taH, with gen. or ifc., ‘by command of, by force of, on account of, by means of, according to’)",
+    "birth, origin, L.",
+    "a brothel, L. (cf. veSa)",
+    "Carissa Carandas, L.",
+    "the son of a Vaiśya and a Karaṇī, L.",
+    "N. of a Ṛṣi preserved by the Aśvins, RV.",
+    "(with aSvya) of the supposed author of RV. viii, 46 (in ŚBr. &amp;c. also of this hymn itself)",
+    "= vAlmIki, Gal.",
+    "pl. N. of a people, AitBr.; MBh.",
+    "va/Sa mf(A)n. willing, submissive, obedient, subject to or dependent on (gen.), Kathās.; BhP.; Pañcat.",
+    "docile, L.",
+    "free, licentious, L.",
+    "2. vaSa n. (cf. vasA) liquid fat, grease, AV.; AitBr.; Kāṭh."
+  ],
+  "Ira": [
+    "Ira m. wind.",
+    "Ira mfn. driving, chasing, Nalac."
+  ],
+  "mAdana": [
+    "mA/dana mfn. exhilarating, delighting, RV.",
+    "maddening, intoxicating, Suśr.",
+    "mA/dana m. the god of love, L.",
+    "Vangueria Spinosa, L.",
+    "the thorn-apple, L.",
+    "mA/dana n. intoxication, exhilaration, L.",
+    "‘stupefier’, N. of a mythical weapon, R. (v.l. madana)."
+  ],
   "Ba": [
     "1. Ba aspirate of ba.",
     "2. Ba (in gram.) N. of the weakest base of nouns (as opp. to pada and aNga, q.v.) i.e. of the base before the vowel terminations except in strong cases, before feminine suffixes, and before Taddhitas beginning with vowels or y, Pāṇ. i, 4, 18 &amp;c.",
@@ -867,6 +1958,44 @@
     "semblance, delusion, error, L.",
     "Ba n. a star, planet, asterism, lunar a° or mansion (and so also the number 27; cf. nakzatra), sign of the zodiac, GṛS.; Sūryas.; Var.; Śatr. &amp;c.",
     "5. Ba m. (prob. onomat.) a bee, L."
+  ],
+  "ejat": [
+    "e/jat mfn. (pres. p. of the above)",
+    "e/jat (t), n. anything moving or living, RV.; AV."
+  ],
+  "aha": [
+    "1. a/ha ind. (as a particle implying ascertainment, affirmation, certainty, &amp;c.) surely, certainly, RV.; AV.; ŚBr.",
+    "(as explaining, defining) namely, ŚBr.",
+    "(as admitting, limiting, &amp;c.) it is true, I grant, granted, indeed, at least, ŚBr. [For the rules of accentuation necessitated in a phrase by the particle a/ha cf. Pāṇ. viii, 1, 24 seqq.]",
+    "(also) a particle answering to ha in a preceding sentence (ha — aha = μὲν — δέ), Gaṇar.",
+    "2. a/ha n. (only Ved.; nom. pl. a/hA, RV.; AV.; gen. pl. a/hAnAm, RV. viii, 22, 13) = a/har, q.v., a day",
+    "often ifc. m(aha/). (e.g. dvAdaSAha/, try-aha/, zaq-aha/, &amp;c.) or n. (e.g. puRyAha/, BadrAha/, and sudinAha)",
+    "See also ahna s.v."
+  ],
+  "dadA": [
+    "dadA ind. an exclamation, JaimUp."
+  ],
+  "Saya": [
+    "Saya mf(A)n. (fr. √ 1. SI) lying, sleeping, resting, abiding (ifc. after adv. or subst. in loc. case or sense; see aDaH-S°, kuSe-S, giri-S° &amp;c.)",
+    "Saya m. sleep, sleeping, Dhātup. xxiv, 60 (cf. divA-S°)",
+    "a bed, couch (see vIra-S°)",
+    "a snake (accord. to some, the boa constrictor), L.",
+    "a lizard, chameleon, L.",
+    "the hand (= hasta, also as a measure of length), VarBṛS.; Naiṣ.; KātyŚr., Sch.",
+    "= paRa, L.",
+    "abuse, imprecation, L. (prob. w.r. for Sapa)",
+    "pl. N. of a people, MBh."
+  ],
+  "Aya": [
+    "Aya/ m. (fr. A-√ i), arrival, approach, RV. ii, 38, 10; ChUp.",
+    "income, revenue",
+    "gain, profit, Pāṇ.; Mn.; Yājñ.; MBh.; Hit. &amp;c.",
+    "the eleventh lunar mansion, VarBṛS.",
+    "a die, Jyot.",
+    "the number four, ib.",
+    "N. of a kind of formulas inserted at particular occasions of a sacrifice, ŚāṅkhŚr. Comm.",
+    "the guard of the women's apartments, L.",
+    "Aya &amp;c. See p. 147, col. 3."
   ],
   "raTa": [
     "1. ra/Ta m. (√ 4. f) ‘goer’, a chariot, car, esp. a two-wheeled war-chariot (lighter and swifter than the anas, q.v.), any vehicle or equipage or carriage (applied also to the vehicles of the gods), waggon, cart, RV. &amp;c. &amp;c. (ifc. f(A). )",
@@ -957,6 +2086,56 @@
     "sa (to be similarly prefixed to the following)",
     "sa (to be similarly prefixed to the following) :"
   ],
+  "vaSA": [
+    "vaSA , (A), f., see below",
+    "vaSA/ f. (rather fr. √ vAS, as ‘the lowing animal’, than fr. √ vaS) a cow (esp. barren), RV.; AV.; Br.; GṛŚrS.",
+    "(with a/vI) a ewe, TS.; TBr.",
+    "a female elephant, Vikr.; Kathās.",
+    "a barren woman, Mn. viii, 28",
+    "any woman or wife, L.",
+    "a daughter, L.",
+    "Premna Spinosa and Longifolia, L.",
+    "vaSA [cf. accord. to some, Lat. vacca.]"
+  ],
+  "Atata": [
+    "A/-tata mfn. spread, extended, stretched or drawn (as a bow or bow string), RV.",
+    "long (as a way), ChUp.",
+    "fixed on, clinging to (loc.), RV. i, 22, 20; 105, 9; PraśnaUp. (cf. a/n-At°.)"
+  ],
+  "sTAna": [
+    "sTA/na n. (also said to be m., Siddh.) the act of standing, standing firmly, being fixed or stationary, AV. &amp;c. &amp;c.",
+    "position or posture of the body (in shooting &amp;c.), R.",
+    "staying, abiding, being in or on (loc. or comp.), Daś.; Kām.; Hariv.; Sāh.",
+    "storing-place or storage (of goods), Mn. viii, 401",
+    "firm bearing (of troops), sustaining a charge (as opp. to yudDa, ‘charging’), ib. vii, 190",
+    "state, condition (ifc. = ‘being in the state of’), Up.; BhP.",
+    "continued existence, continuance in the same state (i.e. in a kind of neutral state unmarked by loss or gain), continuing as or as long as (with instr.), MBh.; R.; BhP.",
+    "a state of perfect tranquillity, Sarvad.",
+    "station, rank, office, appointment, dignity, degree, MaitrUp.; Mn.; MBh. &amp;c.",
+    "place of standing or staying, any place, spot, locality, abode, dwelling, house, site (sTAne sTAne or sTAne sTAnezu, ‘in different places’, ‘here and there’), RV. &amp;c. &amp;c.",
+    "place or room, stead (sTAne with gen. or ifc. ‘in place of’, ‘instead of’, ‘in lieu of’; ripu-sTAne-√ vft, ‘to act in the place of an enemy’; vilocana-sTAna-gata, ‘acting the part of eyes’; also sTAna ifc. = ‘taking the place of’, ‘acting as’, ‘representing’ or ‘represented by’ e.g. pitf-sT°, ‘acting as a father’ or ‘represented by a f°’; iyaN-uvaN-sTAna, ‘repr° by iy or uv’ [as I and U, Pāṇ. i, 4, 4]; in Pāṇini's grammar the gen. case is often used alone, when the word sTAne has to be supplied, e.g. hanter jaH, ‘ja is to be substituted in place of han’, i, 1, 49), AitBr.; GṛŚrS. &amp;c.",
+    "place for, receptacle of (gen.), Mn.; MBh. &amp;c.",
+    "proper or right place (sTAne, ‘in the right place or at the right time, seasonably, justly’), PañcavBr. &amp;c. &amp;c. (cf. g. svar-Adi)",
+    "province, region, domain, sphere (of gods or virtuous men; said to be in one of three places, viz. ‘earth’ or ‘atmosphere’ or ‘heaven’; accord. to some that of virtuous Brāhmans is called Prājāpatya; of Kṣatriyas, Aindra; of Vaiśyas, Māruta; of Śūdras, Gāndharva), Nir.; VarBṛS.",
+    "the main support or strength or chief constituent of a kingdom (said to be four, viz. ‘army’, ‘treasury’, ‘city’, ‘territory’), Mn. vii, 56",
+    "a stronghold, fortress, Pañcat.",
+    "the place or organ of utterance of any sound (said to be 8 in number, viz. kaRWa, ‘throat’; tAlu, ‘palate’; mUrDan, ‘top of palate’; danta, ‘teeth’; ozWa, ‘lips’; kaRWa-tAlu, ‘throat and palate’; kaRW'-ozWa, ‘throat and lips’; dant'-ozWa, ‘teeth and lips’; to which are added nAsikA, ‘nose’, said to be the place of utterance of true Anusvāra, and uras, ‘chest’, of Visarga), Pāṇ. i, 1, 9, Sch.; Prāt.; Sarvad.",
+    "any organ of sense (e.g. the eye), BhP.",
+    "the pitch or key of the voice, note, tone (of which accord. to RPrāt., there are three [see mandra], or accord. to TPrāt., seven; vInA cyutA sTAnAt, ‘a lute out of tune’), ŚrS.; Prāt.; MBh. &amp;c.",
+    "shape, form, appearance (as of the moon), VarBṛS.",
+    "the part or character of an actor, MW.",
+    "case, occurrence (nedaM sTAnaM vidyate, ‘this case does not occur’), Yājñ.; Pañcat.; Vajracch.",
+    "occasion, opportunity for (gen. or comp.; °ne ind. ‘occasionally’), ŚrS.; MBh. &amp;c.",
+    "cause or object of (gen. or comp., e.g. Sulka-sTAna, ‘an object of toll’; pUjA- or mAnya-sT°, ‘an object of honour’; also applied to persons; °ne ind. ‘because of’, ‘on account of’), MBh.; Pañcat.; Kathās.",
+    "a section or division (e.g. of medicine), Car.; Suśr. &amp;c.",
+    "an astrol. mansion or its subdivision, VarBṛS.",
+    "= kAryotsarga, Śīl.",
+    "an open place in a town, plain, square, W.",
+    "a holy place, MW.",
+    "an altar, ib.",
+    "N. of a Gandharva king, R.",
+    "sTAna , sTAnin, sTApaka, °pana &amp;c. See p. 1263."
+  ],
   "jaka": [
     "jaka N. of a Brāhman, Rājat. viii, 474."
   ],
@@ -972,8 +2151,34 @@
     "sva [cf. Gk. ἕ, ὅς, σϕός; Lat. se, sovos, suus; Goth. sik; Germ. sich &amp;c.]",
     "2. sva Nom. P. svati (pf. svAm-Asa) = sva ivAcarati, he acts like himself or his kindred, Vop. xxi, 7."
   ],
+  "rAsa": [
+    "rAsa m. uproar, noise, din, L.",
+    "N. of a partic. rustic dance practised by cowherds, (esp.) the dance practised by Kṛṣṇa and the Gopīs, Hariv.; Pur.; Gīt. &amp;c. (cf. rAsaka)",
+    "any sport or play, L.",
+    "a legend (?), in narmadA-sundarI-r° (q.v.)",
+    "= BAzA-SfNKalaka, L."
+  ],
   "Ayin": [
     "Ayi/n mfn. coming or hastening near, TS. ii, 4, 7, 1."
+  ],
+  "rAma": [
+    "rAma mf(A/)n. (prob. ‘causing rest’, and in most meanings fr. √ ram) dark, dark-coloured, black (cf. rAtri), AV.; TĀr. (rAmaH SakuniH. a black bird, crow, KāṭhGṛ.; Viṣṇ.)",
+    "white (?), L.",
+    "pleasing, pleasant, charming, lovely, beautiful, MBh.; Kāv. &amp;c.",
+    "rAma m. a kind of deer, Car.",
+    "a horse, L.",
+    "a lover, VarBṛS.",
+    "pleasure, joy, delight, BhP.",
+    "N. of Varuṇa, L.",
+    "N. of various mythical personages (in Veda two Rāmas are mentioned with the patr. Mārgaveya and Aupatasvini; another R°s with the patr. Jāmadagnya [cf. below] is the supposed author of RV. x, 110; in later times three R°s are celebrated, viz. 1. Paraśu-rāma [q.v.], who forms the 6th Avatāra of Viṣṇu and is sometimes called Jāmadagnya, as son of the sage Jamad-agni by Reṇukā, and sometimes Bhārgava, as descended from Bhṛgu; 2. Rāma-candra [see below]; 3. Bala-rāma [q.v.], ‘the strong Rāma’, also called Halāyudha and regarded as elder brother of Kṛṣṇa [RTL. 112] accord. to Jainas a Rāma is enumerated among the 9 white Balas; and in VP. a R°s is mentioned among the 7 Ṛṣis of the 8th Manv-antara), RV. &amp;c. &amp;c. N. of a king of Malla-pura, Cat.",
+    "of a king of Śṛṅga-vera and patron of Nāgeśa, ib.",
+    "of various authors and teachers (also with AcArya, upADyAya, kavi, cakra-vartin, jyotir-vid, jyOtizaka, tarka-vAg-ISa, dIkzita, dEva-jYa, paRqita, Bawwa, BawwAcArya, vAjapeyin, Sarman, SAstrin, saMyamin, sUri &amp;c.), Cat.",
+    "N. of the number ‘three’ (on account of the 3 Rāmas), Hcat. (rAmasya izuH, a kind of cane = rAmakaRqa, L.)",
+    "pl. N. of a people, VP.",
+    "rAma n. id., ib.",
+    "the leaf of Laurus Cassia, L.",
+    "Chenopodium Album, L.",
+    "= kuzWa, L."
   ],
   "asra": [
     "1. asra/ mfn. (√ 2. as), throwing, TBr.",
@@ -994,6 +2199,13 @@
     "a-jaya m. N. of Viṣṇu",
     "of a lexicographer",
     "of a river"
+  ],
+  "nada": [
+    "nada/ m. a roarer, bellower, thunderer, crier, neigher &amp;c. (as a cloud, horse, bull, met. a man, i, 179, 4), RV.",
+    "N. of RV. viii, 58, 2 (beginning with nadam), ŚBr.; ŚāṅkhŚr.",
+    "a river (if thought of as male ifc. ind (-nadam). ; cf. nadI), Mn.; MBh. &amp;c.",
+    "= naqa, reed, RV. i, 32, 8",
+    "(accord. to some also, ‘the penis’)."
   ],
   "vARI": [
     "vARI (I), f. See below",
@@ -1018,6 +2230,43 @@
   "ajAda": [
     "ajAda m. ‘goat-eater’, the ancestor of a warrior tribe, Pāṇ. iv, 1, 171"
   ],
+  "amA": [
+    "amA/ See ss.vv.",
+    "1. amA/ ind. (Ved. instr. fr. 2. a/ma, q.v.) (chiefly Ved.) at home, in the house, in the house of (gen.), with, RV. &amp;c.",
+    "together, Pāṇ. iii, 1, 122",
+    "amA/ (A) f. = amA-vAsyA/, q.v. Comm. on Ragh. xiv, 80 (in a verse quoted from Vyāsa) Comm. on Sūryas.",
+    "2. a-mA (√ 3. mA) f. (= a-pramARa) not an authority, not a standard of action, Nyāyam."
+  ],
+  "DAna": [
+    "DA/na mfn. containing, holding (cf. uda-)",
+    "DA/na n. receptacle, case, seat (cf. agni-, kzura-, rajju- &amp;c.; °nam akto/s prob. = womb or bosom of the night, RV. iii, 7, 6)"
+  ],
+  "vava": [
+    "vava See bava."
+  ],
+  "saha": [
+    "1. saha/ mf(A)n. powerful, mighty, RV.",
+    "(ifc.) overcoming, vanquishing, MBh.",
+    "bearing, enduring, withstanding, defying, equal to, a match for (gen. or comp.), MBh.; Kāv. &amp;c.",
+    "causing, effecting, stimulating, exerting, Śiś.",
+    "able to, capable of (inf. or comp.), Kālid.; Śiś.; Kathās.",
+    "saha/ m. the month Mārgaśīrṣa (see sahas), VS.; ŚBr.; Car.",
+    "a partic. Agni, MBh.",
+    "a species of plant, AV.",
+    "N. of a son of Manu, Hariv.",
+    "of a son of Prāṇa and Ūrjasvatī, BhP.",
+    "of a son of Dhṛtarāṣṭra, MBh.",
+    "of a son of Kṛṣṇa and Mādrī, BhP.",
+    "saha/ n. = bala, L.",
+    "kind of salt, L.",
+    "2. saha/ ind. (prob. fr. 7. sa + DA, which in Veda may become Da; cf. 1. saDa) together with, along with, with (with √ grah and A-√ dA, ‘to take with one’; with √ dA, ‘to give to take away with one’; with kftvA and acc., ‘taking with one’, ‘in the company of’; often as a prepos. governing instr. case, but generally placed after the governed word, e.g. tena saha, ‘along with him’ ; exceptionally with abl., e.g. ESvaryAt saha, ‘with sovereignty’, Cāṇ. 104)",
+    "in common, in company, jointly, conjointly, in concert (often used as a prefix in comp., expressing ‘community of action’, e.g. sahADyayana, q.v.; or forming adjectives expressing ‘the companion of an action’, e.g. saha-cara, q.v.)",
+    "at the same time or simultaneously with (prefixed to adverbs of time, e.g. saha-pUrvAhRam, q.v.; rarely ifc., e.g. vEnateya-s°, ‘with Vainateya’, Hariv.), RV. &amp;c. &amp;c.",
+    "saha/ m. a companion, L."
+  ],
+  "anA": [
+    "anA/ ind. (fr. pronom. base a), hereby, thus, indeed, RV."
+  ],
   "asattva": [
     "1. a-sat—tva n. id., NṛsUp.",
     "non-presence, absence, Nyāyam.",
@@ -1026,6 +2275,26 @@
   "AKAna": [
     "A-KAna m. = A-Kana, Pāṇ. iii, 3, 125.",
     "A-KAna See A/-Ka."
+  ],
+  "dada": [
+    "dada mf(A)n. (Pāṇ. iii, 1, 139) ‘giving’, see aBayaM-",
+    "DanaM-dadA."
+  ],
+  "vaha": [
+    "va/ha mf(A)n. (ifc.) carrying, bearing, conveying, bringing, causing, producing, effecting (cf. ganDa-, dAru-, puRya-v° &amp;c.)",
+    "flowing through or into or towards (cf. para-loka-v°, sarva-loka-v° &amp;c.)",
+    "bearing along (said of rivers), Hcat.",
+    "bearing (a name), Kull. on Mn. iv, 203 (in a quotation)",
+    "exposing one's self to (heat &amp;c.), MBh.",
+    "va/ha m. the act of bearing or conveying (cf. dur-, suKa-v°)",
+    "the shoulder of an ox or any draught animal, AV.; VS.; Br.; MBh.",
+    "the shoulder-piece of a yoke, AV.; ŚBr.",
+    "a horse, L.",
+    "a male river, L.",
+    "a road, way, L.",
+    "wind, L.",
+    "the breathing of a cow, L.",
+    "a weight or measure of four Droṇas, L."
   ],
   "Adahana": [
     "A-da/hana n. a place where anything is burnt, AV. xii, 5, 48; ĀśvGṛ.; Kauś."
@@ -1039,8 +2308,62 @@
     "ara/RI du. f. the two Araṇis (used for kindling the fire), RV. &amp;c.",
     "ara/RI f. = 1. ara/Ri, RV. v, 9, 3, &amp;c."
   ],
+  "vara": [
+    "1. va/ra m. (fr. √ 1. vf), ‘environing’, ‘enclosing’, circumference, space, room, RV.; AV.; TS. (va/ra A/ pfTivyA/H, on the wide earth)",
+    "stopping, checking, RV. i, 143, 5.",
+    "2. vara/ mf(A)n. (fr. √ 2. vf) choosing (see patiM-varA, svayaM-varA)",
+    "vara/ m. ‘chooser’, one who solicits a girl in marriage, suitor, lover, bridegroom, husband (rarely ‘son-in-law’), RV. &amp;c. &amp;c.",
+    "a bridegroom's friend, MW.",
+    "a dissolute man (= vita or ziqga), L.",
+    "va/ra (va/ra), mf(A)n. ‘select’, choicest, valuable, precious, best, most excellent or eminent among (gen. loc. abl., or comp.) or for (gen.), ŚrS.; MBh. &amp;c.",
+    "(ifc.) royal, princely, Jātakam.",
+    "better, preferable, better than (abl., rarely gen.) or among (abl.), Mn.; MBh. &amp;c.",
+    "eldest, W.",
+    "va/ra m. (rarely n.; ifc. f(A). ) ‘act or object of choosing’, election, wish, request",
+    "va/ra m. boon, gift, reward, benefit, blessing, favour (va/rAya, va/ram A/, pra/ti va/ram or va/raM varam, ‘according to wish, to one's heart's content’; mad-varAt, ‘in consequence of the boon granted by me’; va/raM-√ vf, ‘to choose a boon’; varaM-√ yAc or A-√ kANkz or √ brU or Caus. of pra-√ arT, ‘to prefer a request’; va/raM√ dA, ‘to grant a boon or blessing’; varam pra-√ dA or pra-√ yam id.; varaM-√ laB, ‘to receive a boon or reward’), RV. &amp;c. &amp;c.",
+    "a benefit, advantage, privilege, Daś.",
+    "charity, alms, VarBṛS.",
+    "a dowry, Pañcat.",
+    "a kind of grain (= varata), KātyŚr., Sch.",
+    "bdellium, L.",
+    "a sparrow, L.",
+    "N. of a son of Śvaphalka, VP.",
+    "va/ra n. saffron, BhP. (In comp. not always separable from 1. vara.)",
+    "vara &amp;c. See p. 921, col. 1.",
+    "vara &amp;c. See p. 922, col. 1, and p. 923."
+  ],
+  "paMsana": [
+    "paM°saka, paM°sana, prob. w.r. for pAMsaka, °sana."
+  ],
+  "antam": [
+    "a/ntam ind. as far as (ifc., e.g. udakAntam, as far as the water)"
+  ],
+  "nawa": [
+    "nawa m. (fr. prec.; but cf. Uṇ. iv, 104) actor, dancer, mime, MBh.; Kāv. &amp;c.",
+    "N. of a partic. caste (sons of degraded Kṣatriyas, Mn. x, 22)",
+    "Calosanthes Indica, L.",
+    "Jonesia Asoka, L.",
+    "a sort of reed (= kizku-parvan), L.",
+    "(in music) N. of a Rāga",
+    "N. of a man (who with his brother Bhaṭa built a Vihāra), Buddh."
+  ],
+  "BAsa": [
+    "BAsa/ m. light, lustre, brightness (often ifc.), MBh.; Hariv.; Kathās.",
+    "impression made on the mind, fancy, MW.",
+    "a bird of prey, vulture (L. = Sakunta, kukkuwa, gfDra &amp;c.), AdbhBr.; Āpast.; MBh.; Hariv. &amp;c. (w.r. BAza)",
+    "a cow-shed, L.",
+    "N. of a man, Rājat.",
+    "of a dramatic poet (also called Bhāsaka), Mālav.; Hcar. &amp;c.",
+    "of a son of a minister of king Candra-prabha, Kathās.",
+    "of a Dānava, ib.",
+    "of a mountain, MBh.",
+    "BAsa/ n. (m., TBr.) N. of a Sāman, Br.; ŚrS."
+  ],
   "ravat": [
     "ravat See under √ 1. ru."
+  ],
+  "SAmam": [
+    "SAmam See √ 1. Sam."
   ],
   "tamra": [
     "tamra/ mf(A/)n. oppressing, darkening, x, 73, 5.",
@@ -1063,14 +2386,170 @@
     "thundering, Śiś. vi, 38; Kathās.",
     "N. of a people, VarBṛS."
   ],
+  "maTan": [
+    "maTan (only instr. maTnA), a piece of wood for producing fire by attrition, BhP."
+  ],
+  "Sada": [
+    "Sada m. falling (see parRa-S)",
+    "produce, revenue, Gaut.",
+    "a partic. Ekāha, ĀśvŚr.",
+    "any edible vegetable product (Pala-mUtAdi), L."
+  ],
+  "hanana": [
+    "hanana mf(I)n. killing, a killer, slayer, Hariv.",
+    "hanana m. (prob.) a drum-stick, ŚāṅkhŚr.",
+    "a kind of worm, L.",
+    "hanana n. the act of striking or hitting, Nir. i, 1; 7",
+    "striking off, Mālatīm.",
+    "killing, destroying, removing, dispelling, Hariv.; Kāv.; BhP.",
+    "multiplication, Āryabh., Sch."
+  ],
+  "yan": [
+    "yan in comp. for yad."
+  ],
+  "vAma": [
+    "1. vAma m. (for 2. and 3. See col. 2) the act of vomiting g. jvalAdi",
+    "2. vAma/ mf(I/ or A)n. (fr. √ 1. van; for 1. See col. 1) lovely, dear, pleasant, agreeable, fair, beautiful, splendid, noble, RV. &amp;c. &amp;c.",
+    "(ifc.) striving after, eager for, intent upon, fond of Kāv.; Kathās.; Rājat.",
+    "vAma/ m. the female breast, L.",
+    "the god of love, L.",
+    "N. of Śiva, BhP.",
+    "of a Rudra, ib.",
+    "of Varuṇa, L.",
+    "(with Śaivas) = vAma-deva-guhya, Sarvad.",
+    "of a son of Ṛcīka, MBh. (B. rAma)",
+    "of a son of Kṛṣṇa and Bhadrā, BhP.",
+    "of a prince (son of Dharma), Cat.",
+    "of a son of Bhaṭṭa-nārāyaṇa, Kṣitīś. (cf. -deva)",
+    "of one of the Moon's horses, VP.",
+    "vAma/ m. or n. a kind of pot-herb, Chenopodium Album, L.",
+    "vAma/ n. a lovely thing, any dear or desirable good (as gold, horses &amp;c.), wealth, fortune, RV.; AV.; Br.; ChUp.",
+    "vAma/ mfn. relating to a mare, Pat. (cf. under I f. above).",
+    "3. vA/ma mf(A)n. (perhaps originally identical with 2. above) left, not right, being or situated on the left side, ŚBr. &amp;c. &amp;c. (the quivering of the left eye or arm is supposed to be a good omen in women and of the left arm a bad omen in men)",
+    "reverse, adverse, contrary, opposite, unfavourable, Kāv.; Kathās.",
+    "crooked, oblique (am ind. sideways), BhP.",
+    "refractory, coy (in love), Sāh.",
+    "acting in the opposite way or differently, Śak. iv, 18",
+    "hard, cruel, Kāv.; Pur.",
+    "vile, wicked, base, low, bad, Kir.",
+    "vA/ma m. or n. the left side (vAmAd dakziRam, from the left to the right; vAmena, on the left side), Kāv.; Kathās.",
+    "vA/ma m. the left hand, RāmatUp.",
+    "a snake, L.",
+    "an animal, sentient being, L.",
+    "vA/ma n. adversity, misfortune, Kathās.",
+    "the left-hand practices of the followers of the Tantras (= vAmAcAra, q.v.), Cat."
+  ],
   "madra": [
     "madra/ m. a country to the north-west of Hindūstan proper, or a king (pl. the people) of this c°, ŚBr. &amp;c. &amp;c.",
     "N. of a son of Śibi (the progenitor of the Madras), Pur.",
     "madra/ n. joy, happiness (madraM tasya or tasmE, ‘joy to him!’, cf. n. of Badra), Pāṇ. ii, 3, 73.",
     "madra &amp;c. See col. 1."
   ],
+  "mazam": [
+    "mazam ind. (with Caus. of √ 1. kf) to grind to powder, pulverize, ŚāṅkhGṛ. (v.l. °zim)."
+  ],
+  "trARa": [
+    "trARa mfn. protected, Pāṇ. viii, 2, 56",
+    "trARa n. protecting, preserving, protection, defence, shelter, help (often ifc.), ChUp.; Mn.; MBh. &amp;c.",
+    "protection for the body, armour, helmet &amp;c., iii, 12092",
+    "= trAyamARA/, L.",
+    "trARa cf. aNguli-, udara-, uras- &amp;c."
+  ],
+  "Cada": [
+    "Cada mfn. ifc. covering, BhP. x, 83, 36",
+    "Cada m. a cover, covering (ifc.), R. vii, 23, 4, 32",
+    "cf. alpa-, uttara-, uraS-, Gana-, tanu-, danta-, daSana-, vadana-",
+    "Cada m. (ifc. f(A). ) a wing, Nal. ix, 12",
+    "Cada m. a leaf, MBh.; R.; Pañcat.; BhP.; Prab. iv, 27/28",
+    "cf. a-yuk-, kara-, karkaSa-, &amp;c.",
+    "asra-bindu- &amp; Ayata-cCadA",
+    "the lip, L.",
+    "Xanthochymus pictorius, L.",
+    "the plant granTi-parRa, L.",
+    "Cada n. feathers, Bālar. v, 13."
+  ],
+  "Sala": [
+    "Sala/ mfn. (connection with above very doubtful) = dravaRa-samarTa, Nir., Sch.",
+    "Sala/ m. a staff, TBr.",
+    "a dart, spear, L.",
+    "a kind of animal, Pañcar. (accord. to L. ‘a camel’ or ‘an ass’)",
+    "= kzetraBid, L.",
+    "= viDi, L.",
+    "N. of Bhṛṅgi (one of Śiva's attendants), L.",
+    "of Brahmā, W.",
+    "of a serpent-demon, MBh.",
+    "of a son of Dhṛtarāṣṭra, ib.",
+    "of a son of Soma-datta, ib.",
+    "of a son of Parīkṣit, ib.",
+    "of a son of Śuna-hotra, Hariv.",
+    "Sala/ m. or n. the quill of a porcupine, L.",
+    "Sala/ m. a partic. measure of length (cf. tri-, paYcaS°. &amp;c.)"
+  ],
+  "mAm": [
+    "mA/m acc. sg. of 3. ma, q.v."
+  ],
   "maYjana": [
     "maYjana m. the son of a Śūdra and a Vaṭi, L."
+  ],
+  "sfta": [
+    "sfta/ mfn. (cf. sUrta) going, running &amp;c. (see Bujaga-SiSu-sfta), Hariv.",
+    "gone, passed away (see comp.)",
+    "(with bahis) one who has slipped or come out, Kathās.",
+    "sfta/ n. (ifc. f(A). ) going, moving",
+    "sfta/ n. flight, escape, MBh."
+  ],
+  "KA": [
+    "KA/ A/, f. a fountain, well, RV. ii, 28, 5 (KA/m fta/sya, cf. Zend ashahe khāo) &amp; vi, 36, 4",
+    "KA mfn. digging (ifc., e.g. kUpa-; bisa-KA/), Pāṇ. iii, 2, 67.",
+    "KA See √ Kan, p. 337, col. 1."
+  ],
+  "nava": [
+    "1. na/va mf(A)n. (prob. fr. 1. nu/) new, fresh, recent, young, modern (opp. to sana, purARa), RV. &amp;c. &amp;c. (often in comp. with a subst., e.g. navAnna cf. Pāṇ. ii, 1, 49; or with a pp. in the sense of ‘newly, just, lately’ e.g. navodita, below)",
+    "na/va m. a young monk, a novice, Buddh.",
+    "a crow, L.",
+    "a red-flowered Punar-navā, L.",
+    "N. of a son of Uśīnara and Navā, Hariv.",
+    "of a son of Viloman, VP.",
+    "na/va n. new grain, Kauś.",
+    "nava [cf. Zd. nava; Gk. νέος for νέϝος; Lat. novus; Lith. naújas; Slav. nǒvǔ; Goth. niujis; Angl.Sax. nîwe; HGerm. niuwi; niuwe, neu; Eng. new.]",
+    "2. nava m. (√ 4. nu) praise, celebration, L.",
+    "3. nava m. (√ 5. nu) sneezing, Car.",
+    "4. na/va in tri-Rava, q.v. &amp;c. in comp. = °van."
+  ],
+  "rasa": [
+    "ra/sa m. (ifc. f(A). ) the sap or juice of plants, juice of fruit, any liquid or fluid, the best or finest or prime part of anything, essence, marrow, RV. &amp;c. &amp;c.",
+    "water, liquor, drink, MBh.; Kāv. &amp;c.",
+    "juice of the sugar-cane, syrup, Suśr.",
+    "any mixture, draught, elixir, potion, R.; BhP.",
+    "melted butter, L.",
+    "(with or scil. gavAm) milk, MBh.",
+    "(with or scil. vizasya) poison, Daś.; Rājat.",
+    "nectar, L.",
+    "soup, broth, L.",
+    "a constituent fluid or essential juice of the body, serum, (esp.) the primary juice called chyle (formed from the food and changed by the bile into blood), ib.",
+    "mercury, quicksilver (sometimes regarded as a kind of quintessence of the human body, else where as the seminal fluid of Śiva), Sarvad.",
+    "semen virile, RV. i, 105, 2",
+    "myrrh, L.",
+    "any mineral or metallic salt, Cat.",
+    "a metal or mineral in a state of fusion (cf. upa-, mahA-r°)",
+    "gold, L.",
+    "Vangueria Spinosa, L.",
+    "a species of amaranth, L.",
+    "green onion, L.",
+    "resin, L.",
+    "= amfta, L.",
+    "taste, flavour (as the principal quality of fluids, of which there are 6 original kinds, viz. maDura, sweet; amla, sour; lavaRa, salt; kawuka, pungent; tikta, bitter; and kazAya, astringent; sometimes 63 varieties are distinguished, viz. beside the 6 original ones, 15 mixtures of 2, 20 of 3, 15 of 4, 6 of 5, and 1 of 6 flavours), ŚBr. &amp;c. &amp;c.",
+    "N. of the number ‘six’, VarBṛS.; Śrutab.",
+    "any object of taste, condiment, sauce, spice, seasoning, MBh.; Kāv. &amp;c.",
+    "the tongue (as the organ of taste), BhP.",
+    "taste or inclination or fondness for (loc. with or scil. upari, or comp.), love, affection, desire, MBh.; Kāv. &amp;c.",
+    "charm, pleasure, delight, ib.",
+    "(in rhet.) the taste or character of a work, the feeling or sentiment prevailing in it (from 8 to 10 Rasas are generally enumerated, viz. SfNgAra, love; vIra, heroism; bIBatsa, disgust; rOdra, anger or fury; hAsya, mirth; BayAnaka, terror; karuRa, pity; adButa, wonder; SAnta, tranquillity or contentment; vAtsalya, paternal fondness; the last or last two are sometimes omitted; cf. under BAva), Bhar.; Daśar.; Kāvyād. &amp;c.",
+    "the prevailing sentiment in human character, Uttarar.; Rājat.",
+    "(with Vaiṣṇavas) disposition of the heart or mind, religious sentiment (there are 5 Rasas or Ratis forming the 5 degrees of Bakti, q.v., viz. SAnti, dAsya, sAKya, vAtsalya, and mADurya), W.",
+    "a kind of metre, Piṅg.",
+    "N. of the sacred syllable, ‘Om’, ŚāṅkhGṛ.",
+    "the son of a Niṣāda and a Śanakī, L."
   ],
   "aSva": [
     "1. a/Sva m. (2. rarely 3 RV.) (√ 1. aS, Uṇ.) ifc. f. a horse, stallion, RV. &amp;c.",
@@ -1117,8 +2596,29 @@
     "in comparison with",
     "(with acc.) over, upon, concerning."
   ],
+  "ahata": [
+    "a/-hata mfn. unhurt, uninjured, AV. xii, 1, 11; VS.",
+    "not beaten (as a drum), AdbhBr.",
+    "unbeaten (as clothes in washing), unwashed, new, ŚBr. &amp;c.",
+    "unblemished, unsoiled, BhP.",
+    "a/-hata n. unwashed or new clothes."
+  ],
+  "vaca": [
+    "vaca mfn. speaking, talking (see ku-v°)",
+    "vaca m. a parrot, L.",
+    "= sUrya, the sun, L.",
+    "= kAraRa, L.",
+    "vaca n. the act of speaking, speech (see dur-v°)."
+  ],
+  "BARa": [
+    "BARa m. (√ BaR) recitation (esp. of the Buddhist law), MWB. 44",
+    "N. of a sort of dramatic entertainment (in which only one of the interlocutors appears on the scene, or a narrative of some intrigue told either by the hero or a third person), Daśar.; Sāh.; Pratāp. (cf. IW. 471)."
+  ],
   "ravARa": [
     "ravARa See under √ 1. ru."
+  ],
+  "AsIna": [
+    "AsIna mfn. sitting, seated."
   ],
   "rahasa": [
     "rahasa See anu-, ava-, and tapta-r°."
@@ -1133,6 +2633,44 @@
   "talva": [
     "talva n. scent arising from the rubbing of fragrant substances, W."
   ],
+  "lava": [
+    "la/va m. (√ 1. lU) the act of cutting, reaping (of corn), mowing, plucking or gathering (of flowers &amp;c.), Das, Nalod.",
+    "that which is cut or shorn off, a shorn fleece, wool, hair, Mn.; Ragh.",
+    "anything cut off, a section, fragment, piece, particle, bit, little piece (am ind. a little; lavam api, even a little), MBh.; Kāv. &amp;c. (cf. padAti-l°)",
+    "a minute division of time, the 60th of a twinkling, half a second, a moment (accord. to others 1/4000 or 1/5400 or 1/20250 of a Muhūrta), ib.",
+    "(in astron.) a degree, Gol.",
+    "(in alg.) the numerator of a fraction, Col.",
+    "the space of 2 Kāṣṭhās, L.",
+    "loss, destruction, L.",
+    "sport, L. (cf. lala)",
+    "Perdix Chinensis, W.",
+    "N. of a son of Rāmacandra and Sītā (he and his twin-brother Kuśa were brought up by the sage Vālmīki and taught by him to repeat his Rāmāyaṇa at assemblies; cf. kuSI-lava), R.; Ragh.; Uttarar.; Pur.",
+    "of a king of Kaśmīra (father of Kuśa), Rājat.",
+    "la/va n. (only L.) nutmeg",
+    "cloves",
+    "the root of Andropogon Muricatus",
+    "a little (cf. m.).",
+    "lava &amp;c. See p. 898, cols. 2, 3."
+  ],
+  "sahat": [
+    "sa/hat mfn. mighty, strong, RV. viii, 40, 1",
+    "lasting, solid, ib. v, 23, 1."
+  ],
+  "dA": [
+    "dA f. id., L.",
+    "dA f. id., L.",
+    "dA f. heat, pain, L.",
+    "1. dA cl. 3. da/dAti (pl. °dati, RV. &amp;c.; Ā. datte, Pañcat. i, 4, 19/20 12, 7; Subh.; 1. sg. dadmi, MBh. xii; Hariv.; R. i f.; Impv. da/dAtu pl. °dahu; 2. sg. dadDi/, RV. i f.; iv, vi, viii, x; dehi/ [Pāṇ. vi, 4, 119] RV. iii f., viii, x; AV. v, xviii f. &amp;c. ; 2. pl. da/dAta, RV. vii, 57, 6, °tana, x, 36, 10, datta/, 51, 8; VS.; AV. &amp;c.; 2. du. °tta/m, RV. i, 34, 6; AV. &amp;c.; Pot. dadyA/t, AV. &amp;c.; impf. a/dadAt; pl. a/dadur, RV. vi, x; AV. v, 18, 1; 2. du. a/dattam, RV. &amp;c.; 2. pl. °ttana, i, 139, 7, a/dadAta, x, 64, 12; Subj. da/dat, ii, v, vii f., x, °das, vii f. °dan, AV. vi, 24, 1 p. m. nom. sg. da/dat pl. °tas, RV. &amp;c.; p. Ā. da/dAna, v, 33, 9; °na/, i, 148, 2; v, 2, 3; sg. dadati, ii, 35, 10; MBh. iii, 13422; pl. °danti, xii f.; Impv. °da, ix; MārkP.; °data, Siṃhās.; Pot. °det, Parāś. vi, 19; impf. a/dadat, AV. xii, 4, 23; MBh.; R.; Ā. sg. da/date, RV. i, 24, 7; AV. x, 8, 36; pl. °dante, 35; VS. viii, 31; Impv. sg. °datAm, RV. iii, 53, 17; °dasva, MBh.; Hariv. &amp;c.; impf. pl. a/dadanta, RV. vii, 33, 11; AV. xiv; p. da/damAna, RV. i, 41, 9; iv, 26, 6; aor. a/dAt [Pāṇ. ii, 4, 77], dat, a/dur, du/r &amp;c.; Subj. 2. du. dAsaTas, RV. viii, 40, 1 [cf. Naigh. ii, 30]; Pot. 1. pl. dezma, VS. ii, 32; pf. dadO/, °du/r, °da/Tur, °datur, °do/, RV. &amp;c.; Pass. °de/, iv, 34 &amp; 37; AV. x, 2, 16; dadade, °dAte, °dire, Pāṇ. vi, 4, 126, Kāś.; p. gen. dadu/zas, RV. i, viii, °zAm, vi; nom. °dvA/n, x, 132, 3; °dAvan, AV. v, 11, 1; acc. °divA/Msam, ix, 5, 10 [cf. Vop. xxvi, 133]; fut. p. dAsya/t, AV. vi, 71, 3; Ā. °syate, °syante, 1. sg. °sye, MBh.; Hariv.; R.; MārkP.; Prec. deyAt, Pāṇ. vi, 4, 67; inf. dAva/ne, RV.; dA/tos, vii, 4, 6; °tave, vii-ix; AV. iii, 20, 5; dA/tavE/ [Pāṇ. vi, 1, 200; Siddh.] RV. iv, 21, 9; °tum, v; AV. &amp;c.: ind.p. dattvA/ya [Pāṇ. vii, 1, 47, Kāś.] RV. x, 85, 33; °ttvA/, AV. &amp;c.; -dA/ya [Pāṇ. vi, 4, 69] RV. &amp;c.: Pass. dIyate [Pāṇ. vi, 4, 62]; p. °ya/mAna, AV. ix; aor. adAyi, Pāṇ. vii, 3, 33, Kāś.; Prec. dAsIzwa, dAyis°, vi, 4, 62) cl. 1. dA/ti (RV. iv-vii; Impv. °tu, 15, 11; cf. Pāṇ. vi, 1, 8, Vārtt. 3, Pat.; ii, 4, 76, Kāś.) to give, bestow, grant, yield, impart, present, offer to (dat., in later language also gen. or loc.), RV. &amp;c.; to give (a daughter, kanyAm) in marriage, Mn. v, ix; Yājñ.; MBh. &amp;c.; to hand over, Mn. viii, 186 &amp; 234; (with haste), Kathās.; to give back, 222 f.; MBh. iii; Pañcat.; VP.; Kathās. lxxiv; to pay (daRqam, ‘a fine’, Mn. viii f.; fRam, ‘a debt’, viii; Yājñ. ii, 45); to give up, cede (Asanam, ‘one's seat’), Mn. iv, 54; (panTAnam or mArgam, ‘to give up the road, allow to pass’), viii, 275 &amp; R. v, 94, 8; to sell (with instr. of the price), i; Nal. xiv, 21; VarBṛS. xlii, 11; to sacrifice (AtmAnam, ‘one's self’, Kathās. xxii, 227; At° KedAya, ‘to give one's self up to grief’, v, 57); to offer (an oblation &amp;c.), Mn.; Yājñ.; R. &amp;c.; to communicate, teach, utter (blessings, ASizas, Śak.; MārkP.), give (answer, prati-vacas, °canam, praty-uttaram, Nal.; Śak. &amp;c.), speak (satyaM vacas, the truth, Yājñ. ii, 200; vacam, to address a speech to [dat.] Śak. vi, 5); to permit, allow (with inf.), MBh. i; Śak. vi, 22; to permit sexual intercourse, ŚBr. xiv, 9, 4, 7; to place, put, apply (in med.), Mn.; Yājñ.; MBh. &amp;c.; to add, Pañcat. ii, 6, 5; Sūryas.; VarBṛS.; Laghuj.; with varam, ‘to grant a boon’, ŚBr. xi; KātyŚr.; MBh. &amp;c.; Soham, ‘to cause grief’, xiii; R. ii; avakASam, ‘to give room or space, allow to enter’, Yājñ. ii, 276; Mṛcch.; Ragh. &amp;c.; prARAn or jIvitam, ‘to spare any one's life’, MBh.; Kathās. xviii, 275; talam or °lAn, to slap with the palms of the hands, MBh. iii, ix; Hariv. 15741; °la-prahAram, to strike with the palm, Pañcat. iv, 2, 0/1 tAlam, to beat time with the hands, MBh. i; Bhaṭṭ.; saMjYAm, to make a sign, Mṛcch.; saMketakam, to make an appointment, Pañcat. ii, 4, 3/4 samayam, to propose an agreement, Kathās. xviii, 139; upamAm, to compare with [gen.] Cāṇ.; pawaham, to proclaim with the drum, Kathās. lxxiii, 357; Sabdam, to make a noise, call out, Vet. iv, 2/3; SApam, to utter a curse, MBh.; R. &amp;c.; gAlIH. id., Bhartṛ.; anuyAtram, to accompany, Kathās. xviii, 197; AliNganane, pariramBaRam, to embrace, 209; Gīt. iii, 8; Jampam, to jump, Hit.; SrAdDam, to perform a Śrāddha, MBh. xiv; R. ii; vratakam, to accomplish a vow, Hariv.; yudDam, niy°, saMgrAmam, to give battle, fight with, MBh.; Hariv.; R.; AjYAm, AdeSam, to give an order, command, i; BrahmaP.; Vet.; saMdeSam, to give information, Kathās. xvii, 161; prayogam, to give a dramatic representation, Mālav. i, 12/13 vftim, to fence in Mn. viii, 240; Kull.; darSanam, to show one's self, Prab. iii, 0/1; dfzwim, dfSam, akzi, cakzus, to fix the eyes on (loc.), Śak. i, 6; Kathās.; Dhūrtas.; Śṛṅgārat.; Sāh.; karRam, to give ear, listen, Śak.; Kathās.; manas, to direct the mind to (loc.), MBh. xii, 2526; kare kapolam, to rest the cheek on the hand, Kāraṇḍ. xviii, 73; nigaqAni to put on or apply fetters, Mṛcch. vii, 6/7 pAvakam, to set on fire; agnIn to consume by fire, Mn. v, 168; SAram, to move a chess-man, Daś. vii, 137; argalam, to draw a bolt, bar, Kathās.; Rājat. vi, 96; jAnu, to kneel upon (gen.), MBh. iii f.; padam, to tread upon [loc.] Bhartṛ.; Hit. ii, 12, 25; SŚaṃkar. i, 38; to direct the steps, Amar. 74; vizam, to poison, Pañcar. i, 14, 80 (with acc.!); garam id., VP. iv, 3, 16 (with gen.); — Ā. to carry, hold, keep, preserve, RV.; AV.; VS.; to show, SV. i, 2, 1, 4, 7 (aor. adadizwa; aded° fr. √ diS, RV.) : Caus. dApayati (Pāṇ. vii, 3, 36; aor. adIdapat, 4, 1 and 58, Kāś.) to cause to give or be given, cause to bestow or present or give up, oblige to pay, make restore, VS. ix, 24; AV. iii, 20, 8; Mn. &amp;c.; to demand from (abl.), Mn. viii, 47; to cause to utter or speak, Hariv. 15782; Yājñ. ii, 6/7 GozaRAm, to cause to be made known, Kathās. lxiv, 86; to cause to place or advance, xii, 160; to cause to perform, v, 112 to cause to be put on (loc.), MBh. i, 5724 : Desid. di/tsati (Pāṇ. vii, 4, 54 and 58; p. di/dAsat, RV. x, 151, 2; di/tsat, ii, vii-ix; AV. v, 7, 6; MBh.; Pot. °tseyam, RV. viii; MBh.; pf. 2. sg. didAsiTa, AitBr. viii, 21; ŚāṅkhŚr. xvi, 16; cf. ŚBr. xiii, 7, 1, 15) to wish to give, be ready to bestow, RV. &amp;c.; to wish to give in marriage, MBh. &amp;c.: Intens. dedIyate, Pāṇ. vi, 4, 66, Kāś.;",
+    "dA [cf. δίδωμι; Lat. do; &amp;c.]",
+    "2. dA/ m. a giver, RV. v, 41, 1 (dat. de/), vi, 16, 26 (nom. dA/s)",
+    "dA/ mfn. ifc. ‘giving, granting’, see an-aSva-, a-Bikza-, aSva-, Atma-, &amp;c. -dA/; a/n-ASIr-.",
+    "3. dA For √ do, to cut q.v.",
+    "4. dA cl. 4. P. dya/ti (cf. A- √ 4. dA), to bind, only in dIzva, VS. xxxviii, 3 [cf. δέω δίδημι].",
+    "5. dA For √ de, q.v.",
+    "6. dA f. (√ de), protection, defence, L.",
+    "7. dA For √ dE, q.v.",
+    "8. dA f. (√ dE) cleansing, purifying, L."
+  ],
   "ASasana": [
     "A-Sa/sana n. (√ Sas), cutting up (a killed animal), RV.; AV.; ŚBr."
   ],
@@ -1146,9 +2684,31 @@
     "fat, RV. x, 18, 7",
     "A/Yjana mfn. having the colour of the collyrium used for the eyes, MBh. v, 1708"
   ],
+  "daDa": [
+    "daDa mfn., iii, 1, 139 ‘giving’, see iqA-, ilA-."
+  ],
+  "pASa": [
+    "pA/Sa m. (once n. ifc. f(A). ; fr. √ 3. paS) a snare, trap, noose, tie, bond, cord, chain, fetter (lit. and fig.), RV. &amp;c. &amp;c.",
+    "(esp.) the noose as attribute of Śiva or Yama, RTL. 81; 290",
+    "(with Jainas) anything that binds or fetters the soul i.e. the outer world, nature, Sarvad. (cf. also, RTL. 89)",
+    "selvage, edge, border (of anything woven), ŚrGṛS.",
+    "a die, dice, MBh.",
+    "(in astrol.) a partic. constellation",
+    "a partic. land-measure, Inscr.",
+    "(ifc. it expresses either contempt, e.g. Cattra-p°, ‘a shabby umbrella’, or admiration, e.g. karRa-p°, ‘a beautiful ear’; after a word signifying, ‘hair’ abundance, quantity, e.g. keSa-p°, ‘a mass of hair’)"
+  ],
   "tajja": [
     "taj-ja &amp;c. See ib.",
     "taj—ja mfn. sprung from (that i.e. from) Sanskṛt (as Prākṛt or other words), Vāgbh. ii, 2"
+  ],
+  "rA": [
+    "rA (A), f. (only L.) amorous play (= viBrama)",
+    "giving",
+    "gold",
+    "1. rA or rAs cl. 2. P. (Dhātup. xxiv, 49) rA/ti (Ved. also Ā. rAte/; Impv. rirIhi, rarAsva, rarIDvam; p. rarARa; 3. sg. ra/rate and rAsate; pf. rarima/, rare/; aor. a/rAsma Subj. rA/sat &amp;c. Pot. rAsIya; Class. forms are only pr. rAti; fut. rAtA, BhP.; rAsyati, Vop., and inf. rAtave, BhP.), to grant, give, bestow, impart, yield, surrender, RV.; &amp;c.",
+    "2. rA (ifc.) granting, bestowing, BhP.",
+    "3. rA/ f., see 3. rE.",
+    "4. rA See under 3. ra."
   ],
   "aTA": [
     "a/Ta or a/TA (or Ved. a/TA), ind. (probably fr. pronom. base a) an auspicious and inceptive particle (not easily expressed in English), now; then; moreover; rather; certainly; but; else; what? how else? &amp;c."
@@ -1156,18 +2716,62 @@
   "rezma": [
     "rezma in comp. for rezman."
   ],
+  "aya": [
+    "a/ya m. going (only ifc. cf. aByastam a/ya)",
+    "(with gavAm) ‘the going or the turn of the cows’, N. of a periodical sacrifice, MBh.",
+    "a move towards the right at chess, Pat. (cf. anAnaya)",
+    "Ved. a die, RV. x, 166, 9; AV. &amp;c.",
+    "the number ‘four’",
+    "good luck, favourable fortune, Nalod."
+  ],
   "ravasa": [
     "ravasa See purU-r°."
   ],
   "saMtrARa": [
     "saM-trARa n. saving, rescuing, MārkP."
   ],
+  "kaMsa": [
+    "kaMsa/ as, am, m. n. (√ kam, Uṇ. iii, 62), a vessel made of metal, drinking vessel, cup, goblet, AV. x, 10, 5; AitBr.; ŚBr. &amp;c.",
+    "(a noun ending in as followed by kaMsa in a compound does not change its final, cf. ayas-kaMsa, &amp;c., Pāṇ. viii, 3, 46)",
+    "a particular measure (= two Āḍhakas, Car.; = one Āḍhaka, L.)",
+    "a metal, tutanag or white copper, brass, bell-metal",
+    "kaMsa/ (as), m. N. of a king of Mathurā (son of Ugra-sena and cousin of the Devakī who was mother of Kṛṣṇa [Ugra-sena being brother of Devaka, who was father of Devakī]; he is usually called the uncle, but was really a cousin of Kṛṣṇa, and became his implacable enemy because it had been prophesied to Kaṃsa that he would be killed by a child of Devakī; as the foe of the deity he is identified with the Asura Kālanemi; and, as he was ultimately slain by Kṛṣṇa, the latter receives epithets like kaMsa-jit, conqueror of Kaṃsa, &amp;c.), MBh.; VP.; BhP. &amp;c.",
+    "N. of a place g. takzaSilAdi, Pāṇ. iv, 3, 93"
+  ],
   "mAntra": [
     "mAntra mf(I)n. (fr. mantra) proper or peculiar to Vedic or magical texts, MW."
+  ],
+  "mAsa": [
+    "mA/sa m. (or n., Siddh.) the moon (see pUrRa-m°)",
+    "a month or the 12th part of the Hindū year (there are 4 kinds of months, viz. the solar, sOra; the natural, sAvana; the stellar, nAkzatra, and the lunar, cAndra; the latter, which is the most usual and consists of 30 Tithis, being itself of two kinds as reckoned from the new or full moon, cf. IW. 179; for the names of the months see ib. 173 n. 3), RV. &amp;c. &amp;c. (mAsam, for a month; mAsam ekam, for one month; mAsena, in the course of a month; mAse, in a m° = after the lapse of a m°)",
+    "a symbolical N. for the number ‘twelve’, Sūryas."
   ],
   "sadasya": [
     "sadasya^ m. ‘present in the sacrificial enclosure’, an assessor, spectator, member of an assembly (at a sacrifice), a superintending priest, the seventeenth priest (whose duties accord. to the Kuṣītakins, are merely to look on and correct mistakes), TS.; Br.; GṛŚrS.; MBh.; BhP.",
     "a person belonging to a learned court-circle, Jātakam."
+  ],
+  "DA": [
+    "DA f. in 2. tiro-DA/",
+    "dur-DA/ (qq.vv.)",
+    "1. DA cl. 3. P. Ā. da/DAti, Datte/, RV. &amp;c. &amp;c. (P. du. daDva/s, DatTa/s, Datta/s [Pāṇ. viii, 2, 38]; pl. daDma/si or °ma/s, DatTa/, dADati; impf. a/daDAt pl. °Dur, 2. pl. a/Datta or a/daDAta, RV. vii, 33, 4; Subj. da/Dat or °DAt [Pāṇ. vii, 3, 70, Kāś.], °Das, °Datas, °Dan; Pot. daDyA/t; Impv. dADAtu pl. °Datu; 2. sg. Dehi/ [fr. DadDi; cf. Pāṇ. vi, 4, 119] or DattAt, RV. iii, 8, 1; 2. pl. Datta/, i, 64, 15, Dattana, i, 20, 7, da/DAta, vii, 32, 13, or °tana, x, 36, 13 [cf. Pāṇ. vii, 1, 45, Sch.]; p. da/Dat, °ti m. pl. °tas; Ā. 1. sg. daDe/ [at once 3. sg. = Datte/, RV. i, 149, 5 &amp;c. and = pf. Ā.], 2. sg. Da/tse, viii, 85, 5 or Datse/, AV. v, 7, 2; 2. 3. du. daDA/Te, °DA/te; 2. pl. °DiDve/ [cf. pf.]; 3. pl. da/Date, RV. v, 41, 2; impf. a/Datta, °tTAs; Subj. da/Dase, viii, 32, 6 [Pāṇ. iii, 4, 96, Kāś.]; Pot. da/DIta, RV. i, 40, 2 or daDIta/, v, 66, 1; Impv. 2. sg. Datsva, x, 87, 2 or daDizva, iii, 40, 5 &amp;c.; 2. pl. DadDvam [Pāṇ. viii, 2, 38, Kāś.] or daDiDvam, RV. vii, 34, 10, &amp;c.; 3. pl. daDatAm, AV. viii, 8, 3; p. da/DAna); rarely cl. 1. P. Ā. daDati, °te, RV.; MBh.; only thrice cl. 2. P. DA/ti, RV.; and once cl. 4. Ā. Pot. DAyeta, MaitrUp. (pf. P. daDO/, °DA/Ta, °Datur, °DimA/ or °Dima/, °Dur, RV. &amp;c.; Ā. daDe/ [cf. pr.], daDize/ or Dize, RV. i, 56, 6; 2. 3. du. daDA/Te, °DA/te, 2. pl. daDiDve/ [cf. pr.]; 3. pl. daDire/, daDre, x, 82, 5; 6, or Dire, i, 166, 10 &amp;c.; p. da/DAna [cf. pr.]; aor. P. a/DAt, DA/t, DA/s; aDu/r, Du/r, RV. &amp;c.; Pot. DeyAm, °yur; Detana, RV.; TBr.; 2. sg. DAyIs, RV. i, 147, 5; Impv. DA/tu [cf. Pāṇ. vi, 1, 8 Vārtt. 3; Pat.]; 2. pl. DA/ta or °tana, 3. pl. DAntu, RV.; Ā. aDita, °TAs, aDItAm, aDImahi, DImahi, Dimahe, DAmahe, RV.; 3. sg. ahita, hita, AV.; TĀr.; Subj. De/Te, RV. i, 158, 2, DETe, vi, 67, 7; Impv. DizvA/ or Dizva/, ii, 11, 18, &amp;c.; P. aDat, SV.; Dat, RV.; P. DAsur Subj. °saTas and °saTa, RV.; Ā. aDizi, °zata, Br.; Pot. DizIya, ib. [Pāṇ. vii, 4, 45]; DezIya, MaitrS.; fut. DAsyati, °te or DAtA, Br. &amp;c.; inf. DA/tum, Br. &amp;c.; Ved. also °tave, °tavE/, °tos; Diya/DyE, RV.; Class. also -Ditum; ind.p. DitvA/, Br.; hitvA [Pāṇ. vii, 4, 42], -DA/ya and -DA/m, AV. : Pass. DIya/te, RV. &amp;c. [Pāṇ. vi, 4, 66], p. DIya/mAna, RV. i, 155, 2 ; aor. a/DAyi, DA/yi, RV. [Pāṇ. vii, 3, 33, Kāś.]; Prec. DAsIzwa or DAyizIzwa [vi, 4, 62]) to put, place, set, lay in or on (loc.), RV. &amp;c. &amp;c. (with daRqam, to inflict punishment on [with loc. MBh. v, 1075, with gen. R. v, 28, 7]; with tat-padavyAm padam, to put one's foot in another's footstep i.e. imitate, equal, Kāvyād. ii, 64); to take or bring or help to (loc. or dat.; with Are/, to remove), RV.; AV.; ŚBr.; (Ā.) to direct or fix the mind or attention (cintAm, manas, matim, samADim &amp;c.) upon, think of (loc. or dat.), fix or resolve upon (loc. dat. acc. with prati or a sentence closed with iti), RV.; Mn.; MBh.; Kāv.; BhP.; to destine for, bestow on, present or impart to (loc. dat. or gen.), RV.; Br.; MBh. &amp;c. (Pass. to be given or granted, fall to one's [dat.] lot or share, RV. i, 81, 3); to appoint, establish, constitute, RV.; ŚBr.; to render (with double acc.), RV. vii, 31, 12; Bhartṛ. iii, 82; to make, produce, generate, create, cause, effect, perform, execute, RV.; TBr.; ŚvetUp. &amp;c. (aor. with pUrayAm, mantrayAm, varayAm &amp;c. = pUrayAm &amp;c. cakAra); to seize, take hold of, hold, bear, support, wear, put on (clothes), RV.; AV.; Kāv.; BhP. &amp;c.; (Ā.) to accept, obtain, conceive (esp. in the womb), get, take (with o/kas or ca/nas, to take pleasure or delight in [loc. or dat.]), RV.; AV.; Br.; to assume, have, possess, show, exhibit, incur, undergo, RV.; Hariv.; Kāv.; Hit. etc. : Caus. -DApayati, Pāṇ. vii, 3, 36 (see antar-DA, Srad-DA &amp;c.) : Desid. Di/tsati, °te (Pāṇ. vii, 4, 54), to wish to put in or lay on (loc.), RV.; AitBr. (Class. Pass. Ditsyate; Ditsya See s.v.); di/Dizati, °te, to wish to give or present, RV.; (Ā.) to wish to gain, strive after (p. di/DizARa, x, 114, 1), ib. : with avadya/m, to bid defiance, ib. iv, 18, 7 (cf. diDizA/yya, diDizu/) : Intens. deDIyate, Pāṇ. vi, 4, 66.",
+    "DA [cf. Zd. dā, dadaiti; Gk. θε-, θη-, τίθημι; Lith. dedù, dë́ti; Slav. dedją, děti; Old Sax. duan, dôn, Angl.Sax. dôn, Engl. to do; Germ. tuan; tuon, thun.]",
+    "2. DA mfn. putting, placing, bestowing, holding, having, causing &amp;c. (ifc.; cf. 2. Da)",
+    "DA m. placer, bestower, holder, supporter &amp;c.",
+    "N. of Brahmā or Bṛhas-pati, L.",
+    "DA (A), f. See 2. Da",
+    "instr. (= nom.) perhaps in the suffix DA (which forms adverbs from numerals, e.g. eka-DA/, dvi/-DA &amp;c.)"
+  ],
+  "pAna": [
+    "1. pA/na n. drinking (esp. d° spirituous liquors), draught, RV. (only ifc.), AV. &amp;c. &amp;c.",
+    "drinking the saliva i.e. kissing, Kāv. (cf. aDara-)",
+    "a drink, beverage, ŚBr.; Mn.; MBh. &amp;c.",
+    "a drinking-vessel, cup, L.",
+    "a canal, L.",
+    "pA/na m. a distiller or vender of spirituous liquors, an inn-keeper, L.",
+    "2. pAna mfn. observing, keeping (see tanU-)",
+    "pAna n. protection, defence (see ib. and vAta-).",
+    "1. 2. pAna See p. 613, cols. 1 and 2.",
+    "3. pAna m. = apAna, breathing out, expiration, L."
   ],
   "Anata": [
     "A-nata &amp;c. See under A-√ nam next page.",
@@ -1188,6 +2792,23 @@
     "nAra/ n. a multitude of men, L.",
     "dry ginger, L."
   ],
+  "mahA": [
+    "mahA (A), f. a cow, L.",
+    "Ichnocarpus Frutescens, L.",
+    "mahA/ in comp. for mahat (in RV. ii, 22, 1 and iii, 23; 49, 1 used for mahat as an independent word in acc. sg. mahA/m = mahAntam).",
+    "mahA mahA-kaNkara &amp;c. See p. 794, col. 3."
+  ],
+  "rAta": [
+    "rAta/ mfn. given, presented, bestowed, RV. &amp;c. &amp;c. (often ifc.; cf. asmad-, deva-, brahma-r°. &amp;c.)",
+    "rAta/ m. N. of a teacher, Piṅg., Sch.",
+    "rAta rAti &amp;c. See p. 871, col. 3."
+  ],
+  "araRa": [
+    "1. a/raRa mf(I)n. (√ f), foreign, distant, RV.; AV.; ŚBr.",
+    "a/raRa n. (only for the etym. of araRi) the being fitted (as a piece of wood), Nir.",
+    "a refuge, BhP.",
+    "2. a-raRa mfn. without fighting (as death i.e. natural death), Bhaṭṭ."
+  ],
   "vARija": [
     "vARija/ m. (also written bARija/; fr. vaRij) a merchant, trader, TBr.; MBh. (cf. Pāṇ. vi, 2, 13) the submarine fire (supposed to be at the south-pole), L."
   ],
@@ -1204,11 +2825,38 @@
     "the firmament, RV. v, 30, 8; 56, 4; vii, 88, 2",
     "aSman [cf. Zd. asman; Pers. aṣmān; Lith. akmů; Slav. kamy]."
   ],
+  "maraRa": [
+    "maraRa n. the act of dying, death, (ifc. dying by; °RaM √ 1. kf Ā. kurute, to die), ŚrS.; Mn.; MBh. &amp;c.",
+    "passing away, cessation (as of lightning or rain), AitBr.",
+    "(in astrol.) the 8th mansion, VarBṛS., Sch.",
+    "a kind of poison, L. (prob. w.r. for mAraRa)",
+    "a refuge, asylum, BhP. (prob. w.r. for SaraRa)."
+  ],
   "mayas": [
     "ma/yas n. (prob. fr. √ 3. mA) refreshment, enjoyment, pleasure, delight, RV.; VS.; TBr."
   ],
+  "maTana": [
+    "maTana mf(I, once A)n. rubbing, stirring, shaking, harassing, destroying (with gen. or ifc.), MBh.; R. &amp;c.",
+    "maTana m. Premna Spinosa (the wood of which is used to produce fire by attrition), L.",
+    "maTana n. the act of rubbing, friction, BhP.",
+    "stirring or whirling round, churning or producing by churning, MBh.; R.; Pur.",
+    "hurting, annoying, injury, destruction, R.; Ratnāv."
+  ],
   "aSvada": [
     "aSva—da mfn. giving horses, Mn. iv, 231."
+  ],
+  "Bawa": [
+    "Bawa m. (fr. Bfta) a mercenary, hired soldier, warrior, combatant, MBh.; Kāv. &amp;c.",
+    "a servant, slave, Kāvyād.; VP.",
+    "a humpback, Gal.",
+    "N. of a serpent-demon, Buddh.",
+    "= arya-Bawa (cf. below)",
+    "pl. N. of a degraded tribe, L. (cf. Bawwa, Baqa, BaRqa; according to some ‘a person whose father is a Brāhman and whose mother is a Naṭī’)"
+  ],
+  "Amaya": [
+    "Amaya m. sickness, disease, ŚBr.; KātyŚr.; Yājñ.; R. &amp;c.",
+    "indigestion, L.",
+    "Amaya n. the medicinal plant Costus Speciosus, Bhpr."
   ],
   "dan": [
     "da/n, da/nas. See da/t, 2. &amp; 1. dam.",
@@ -1220,8 +2868,45 @@
     "absence of deceit",
     "straightforwardness."
   ],
+  "atana": [
+    "atana m. a passer on Nir.",
+    "atana n. act of passing on Nir."
+  ],
+  "Cinna": [
+    "Cinna/ mfn. cut off, cut, divided, torn, cut through, perforated, AV. &amp;c.",
+    "opened (a wound), Suśr.",
+    "interrupted, not contiguous, Bhag. vi, 36; R. iii, 50, 12; VarBṛS.",
+    "disturbed (kiM naS Cinnam, ‘what is there in this to disturb us?’ there is nothing to care about, Amar.), Hariv. 16258; Mṛcch.",
+    "? (said of the belly of a leach), Suśr.",
+    "limited by (in comp.), Bhartṛ. iii, 20",
+    "taken away or out of R. ii, 56, 23; Ragh. xii, 80",
+    "disappeared, Kathās. lxi, 47",
+    "ifc. decaying or exhausted by, Buddh.; L."
+  ],
+  "tata": [
+    "1. tata/ m. (cf. tAta) chiefly Ved. a father (familiar expression corresponding to nanA/, mother), RV. viii, 91, 5 f.; ix, 112, 3; AV.; TS. iii; TBr. &amp;c. (voc. [like tAta] also term of affection addressed to a son, AitBr. v, 14, 3; vii, 14, 8).",
+    "2. tata/ mfn., vi, 4, 37 extended, stretched, spread, diffused, expanded, RV. &amp;c.",
+    "spreading over, extending to, W.",
+    "covered over by (instr. or in comp.), Laghuj. ii, 16; Kir. v, 11; Śiś. ix, 23",
+    "protracted, W.",
+    "bent (a bow), MBh. i, 49, 25; iv, 5, 1",
+    "spreading, wide, L.",
+    "composed (a tale), i, 2455",
+    "performed (a ceremony), RV. &amp;c.",
+    "tata/ m. wind, L.",
+    "tata/ n. any stringed instrument, L.",
+    "a metre of 4 × 12 syllables."
+  ],
   "Atma": [
     "Atma (in comp. for Atma/n; also rarely ifc., e.g. aDy-Atma, aDy-Atma/m)."
+  ],
+  "kavya": [
+    "1. kavya/ mfn. (= kavi, Kāś. on Pāṇ. v, 4, 30) wise, RV. x, 15, 9 (at, VS. xxii, 2 read kavyA/H)",
+    "a sacrificer, sacrificial priest, RV. ix, 91, 2",
+    "N. of a class of deities associated with Aṅgiras and Ṛkvan [Gmn.; a class of manes], RV. x, 14, 3; AV.",
+    "N. of one of the seven sages of the fourth Manv-antara, Hariv.",
+    "(am), n. (generally in connection with havya See havya-kavya) ‘what must be offered to the wise’, an oblation of food to deceased ancestors, MBh.; Mn.",
+    "2. kavya Nom. P. kavyati, to be wise, Pāṇ. vii, 4, 39."
   ],
   "udDAna": [
     "1. ud-DAna n. (√ 2. hA), the act of leaving, abandonment, TāṇḍyaBr.",
@@ -1249,11 +2934,58 @@
     "(in phil.) mental blindness, Jain.",
     "(also) envelopment (in phil.), Divyāv. 378, 4; Dharmas. 115; IW. 109"
   ],
+  "ramaRa": [
+    "ramaRa mf(I)n. pleasing, charming, delightful, BhP.",
+    "ramaRa m. a lover, husband (cf. kzapA-r°), MBh.; Kāv. &amp;c.",
+    "Kāma-deva, the god of love, L.",
+    "an ass, L.",
+    "a testicle, L.",
+    "a tree similar to the Melia Bukayun, L.",
+    "= tinduka, L.",
+    "N. of Aruṇa or the charioteer of the Sun, L.",
+    "of a mythical son of Manoharā, MBh.; Hariv.",
+    "of a man, Pravar.",
+    "pl. N. of a people (cf. ramaWa), MBh.",
+    "ramaRa n. pleasure, joy, Subh.",
+    "dalliance, amorous sport, sexual union, copulation, Nir.; Śukas.",
+    "decoying (of deer), Śiś. vi, 9 (cf. Pat. on Pāṇ. vi, 4, 24, Vārtt. 3)",
+    "(ifc.) gladdening, delighting, BhP.",
+    "the hinder parts, pudenda (= jaGana), L.",
+    "the root of Trichosanthes Dioeca, L.",
+    "N. of a forest, Hariv.",
+    "of a town, Divyāv."
+  ],
+  "SAsana": [
+    "SA/sana mf(I)n. punishing, a punisher, chastiser (see pAka-, pura-, rukmi-, smara-S°)",
+    "teaching, instructing, an instructor, BhP.",
+    "SA/sana (am), n. (ifc. f(A). ) punishment, chastisement, correction (SAsanaM-√ kf, to inflict punishment), Baudh.; Mn.; MBh. &amp;c.",
+    "government, dominion, rule over (comp.), MBh.; Kāv. &amp;c.",
+    "an order, command, edict, enactment, decree, direction (SAsanaM-√ kf [kANkz, Baudh.] or SAsane-√ vft or sTA, ‘to obey orders’; SAsanAt with gen., ‘by command of’; f(SAsanA). Sch. on Śiś. xiv, 36), RV. &amp;c. &amp;c.",
+    "a royal edict, grant, charter (usually a grant of land or of partic. privileges, and often inscribed on stone or copper), Yājñ.; Kāv.; Rājat. &amp;c.",
+    "a writing, deed, written contract or agreement, W.",
+    "any written book or work of authority, scripture (= SAstra), ib.",
+    "teaching, instruction, discipline, doctrine (also = ‘faith’, ‘religion’), MBh.; Kām.; Kathās.",
+    "a message (see comp.)",
+    "self-control, W."
+  ],
   "sakza": [
     "sakza mfn. (fr. √ sah) overpowering, TS.; TBr."
   ],
   "jaWala": [
     "ja/Wala (= 2. jaWa/ra, ‘cavity [of waters], ocean’, Sāy.), i, 182, 6."
+  ],
+  "DAra": [
+    "1. DAra mf(I)n. (√ Df) holding, supporting, containing (ifc.; cf. karRa-, Cattra-, tulA- &amp;c.)",
+    "DAra m. N. of Viṣṇu, L.",
+    "debt, L.",
+    "2. DAra m. or n. (√ 1. DAv) stream, gush (cf. tEla- [add.] and toya-)",
+    "DAra mfn. coming down in a stream or as rain, Suśr.; Bhpr.",
+    "3. DAra m. a sort of stone, L.",
+    "edge, boundary, L. (cf. 2. DArA)",
+    "deep place, depth, W. (to 1. DAra?)."
+  ],
+  "raha": [
+    "raha m. = 2. rahas, L."
   ],
   "Anama": [
     "A-nama m. bending, stretching (a bow), L.",
@@ -1287,6 +3019,16 @@
   "adaBa": [
     "a-da/Ba mfn. not injuring, benevolent, RV. v, 86, 5."
   ],
+  "cApa": [
+    "cApa m. n. (fr. capa, g. tAlAdi) a bow, Mn. vii, 192; MBh. &amp;c.",
+    "(in geom.) an arc, Sūryas. ii f., vi, xi",
+    "Sagittarius, VarBṛS.",
+    "a rainbow (cf. indraSakra-), BhP. i, 11, 28",
+    "a kind of astron. instrument, Gol. xi, 2 and 5",
+    "a particular constellation (= Danus), VarBṛ. xii, 18",
+    "a partic. measure of length, Daś.",
+    "cApa m. N. of a family."
+  ],
   "yavi[n]": [
     "yavika, yavin or yavila, mfn. fr. 3. yava, g. tundAdi."
   ],
@@ -1295,6 +3037,25 @@
     "what bears or conveys, Mn.; Bhag.; R.; Pañcat. &amp;c.",
     "A-vaha m. N. of one of the seven winds or bands of air (that which is usually assigned to the Buvar-loka or atmospheric region between the BUr-loka and svar-loka), Hariv.",
     "one of the seven tongues of fire."
+  ],
+  "aja": [
+    "1. aja/ m. a drove, troop (of Maruts), AV.",
+    "a driver, mover, instigator, leader",
+    "N. of Indra, of Rudra, of one of the Maruts [aja/ e/ka-pA/, RV., and aja/ e/ka-pAda, AV.], of Agni, of the sun, of Brahmā, of Viṣṇu, of Śiva, of Kāma (cf. 2. a-ja)",
+    "the leader of a flock",
+    "a he-goat, ram [cf. Gk. αἴξ,αἰγός; Lith. oẓys]",
+    "the sign Aries",
+    "the vehicle of Agni",
+    "beam of the sun (Pūṣan)",
+    "N. of a descendant of Viśvāmitra, and of Daśaratha's or Dīrghabāhu's father",
+    "N. of a mineral substance",
+    "of a kind of rice",
+    "of the moon",
+    "N. of a people, RV. vii, 18, 19",
+    "of a class of Ṛṣis, MBh.",
+    "2. a-ja/ mfn. not born, existing from all eternity",
+    "a-ja/ m. N. of the first uncreated being, RV.; AV.",
+    "Brahmā, Viṣṇu, Śiva, Kāma"
   ],
   "amatra": [
     "a/matra mfn. violent, strong, firm, RV. i, 61, 9 and iv, 23, 6",
@@ -1310,6 +3071,9 @@
     "a part of a sacrifice, L.",
     "fighting, war."
   ],
+  "cana": [
+    "cana/ ind. (ca na/, SV.) and not, also not, even not, not even (this particle is placed after the word to which it gives force; a preceding verb is accentuated [Pāṇ. viii, 1, 57]; in Vedic language it is generally, but not always, found without any other neg. particle, whereas in the later language another neg. is usually added, e.g. A/paS cana/pra/ minanti vrata/M vAM, ‘not even the waters violate your ordinance’, RV. ii, 24, 12; nA/ha vivyAca pfTivI/ canE/naM, ‘the earth even does not contain him’, iii, 36, 4; in class. Sanskṛt it is only used after the interrogatives ka/, katara/, katama/, kaTam, ka/d, kadA/, kim, ku/tas, kva, making them indefinite), RV.; AV. &amp;c. also, RV. i, 139, 2; vi, 26, 7; viii, 78, 10."
+  ],
   "azwama": [
     "azwama/ mf(I/)n. the eighth, RV. ii, 5, 2; x, 114, 9; AV. &amp;c.;",
     "azwama/ (as), m. (Pāṇ. v, 3, 51 seq.) the eighth part, Mn. x, 120",
@@ -1322,6 +3086,19 @@
     "a place for public meetings, large assembly-room or hall, palace, court of a king or of justice, council-chamber, gambling-house &amp;c., ib.",
     "a house for lodging and accommodating travellers, Mn.; MBh.; &amp;c.; an eating-house (see mahA-s°).",
     "saBA [cf. Goth. sibja; Germ. sippa, Sippe; Angl.Sax. sibb; Eng. god-sib, gossip.]"
+  ],
+  "rezaRa": [
+    "1. rezaRa n. the howl of a wolf, howling, yelling, roaring, L.",
+    "2. rezaRa/ mfn. injuring, hurting, RV.",
+    "rezaRa/ n. injury, damage, failure, Nir.; Dhātup."
+  ],
+  "dAha": [
+    "dAha m. (fr. √ dah) burning, combustion, conflagration, heat, KātyŚr.; Mn.; Yājñ.; MBh.; R. &amp;c.",
+    "place of cremation, Vas. xix, 26",
+    "glowing, redness (of the sky, cf. dig-), Mn.; MBh.; VarBṛS. &amp;c.",
+    "cauterizing, cautery (of a wound), Suśr.; Mālav. iv, 4",
+    "internal heat, fever, Suśr.",
+    "pl. N. of a people (v.l. for vEdeha), VāyuP. 1"
   ],
   "apara": [
     "1. a-para mfn. having nothing beyond or after, having no rival or superior.",
@@ -1347,6 +3124,14 @@
   "hanman": [
     "ha/nman m. or n. a stroke, blow, thrust, RV."
   ],
+  "dava": [
+    "dava m. (√ 2. du) a wood on fire, BhP. viii, 6, 13",
+    "fire, L., Sch.",
+    "burning, heat, Car. i, 20",
+    "fever, W.",
+    "a forest, L.",
+    "cf. dAva."
+  ],
   "samAna": [
     "sam-Ana/ m. (for samAna and sa-mAna See p. 1160) one of the five vital airs (that which circulates about the navel and is essential to digestion; it is personified as a son of Sādhya), AV.; &amp;c.",
     "samAna/ mf(I/, or A)n. (connected with 1. and 2. sama; in RV. v, 87, 4 abl. sg. samAna/smAt for samAnA/t See 1. sama; for sam-ana See sam-√ an, for sa-mAna See col. 3) same, identical, uniform, one (= eka, L.), RV. &amp;c. &amp;c.",
@@ -1364,8 +3149,18 @@
     "with anger, BhP.",
     "2. sa-mAna mfn. (for 1. See above) having the same measure, L."
   ],
+  "IrRa": [
+    "IrRa mfn. See ud-IrRa."
+  ],
   "astamana": [
     "astamana n. (a corruption of astam-a/yana, q.v.), setting, MBh.; R. &amp;c."
+  ],
+  "majja": [
+    "1. majja mfn. sinking, diving (in uda-majja; see Odamajji).",
+    "2. majja in comp. for majjan."
+  ],
+  "yaja": [
+    "yaja m. a word formed to explain yajus, ŚBr."
   ],
   "antara": [
     "a/ntara mf(A)n. being in the interior, interior",
@@ -1394,6 +3189,9 @@
     "antara [cf. Goth. anthar, Thema anthara; Lith. antra-s, ‘the second’; Lat. alter].",
     "antara [cf. Goth. anthar, Theme anthara; Lith. antra-s, ‘the second’; Lat. alter]."
   ],
+  "SAma": [
+    "SAma mfn. (√ 1. Sam) appeasing, curing, having curative properties, MW."
+  ],
   "saYji": [
     "saYji g. yavAdi."
   ],
@@ -1414,6 +3212,13 @@
     "BA [cf. √ Ban, BAz, BAs; Gk. ϕημί, ϕάσκω; Lat. fāri &amp;c.; Germ. Bann; Eng. ban.]",
     "2. BA/ f. (nom. prob. BA/s) light, brightness, splendour &amp;c. (cf. f. of 4. Ba), VS.; ŚBr.",
     "BA/ m. the sun, L. (cf. 2. BAs)."
+  ],
+  "tamA": [
+    "tamA f. night, L.",
+    "Xanthochymus pictorius, L."
+  ],
+  "unnam": [
+    "un-√ nam (ud-√ nam) P. -namati, to bend upwards, raise one's self, rise, ascend, Prab.; Mṛcch.; Pañcat.; Bhartṛ. &amp;c.; to raise up, lift up, Pañcat. : Caus. -namayati, or -nAmayati, to bend upwards, raise, erect, elevate, MBh.; R.; Śak.; Kathās. &amp;c."
   ],
   "tad": [
     "ta/d (nom. and acc. sg. n. of and base in comp. for 2. ta/ from which latter all the cases of this pron. are formed except nom. sg. m. sa/s or sa/ &amp; f. sA/; instr. pl. tE/s, AV. &amp;c.; Ved. te/Bis, RV.; AV. &amp;c.) m. he f. she n. it, that, this (often correlative of ya/ generally standing in the preceding clause, e.g. yasya budDiH sa balavAn, ‘of whom there is intellect he is strong’; sometimes, for the sake of emphasis, connected with the 1st and 2nd personal pronouns, with other demonstratives and with relatives, e.g. so 'ham, ‘I that very person, I myself’ [tasya = mama, Nal. xv, 10]; tAv imO, ‘those very two’; tad etad AKyAnam, ‘that very tale’, AitBr. vii, 18; yat tat kAraRam, ‘that very reason which’, Mn. i, 11; yA sA SrI, ‘that very fortune which’, MBh. vii, 427), RV. &amp;c.",
@@ -1440,6 +3245,15 @@
     "N. of Śiva, MW.",
     "of a son of Atri, VāyuP."
   ],
+  "janana": [
+    "ja/nana mf(I)n. ifc. generating, begetting, producing, causing, Mn. ix, 81; MBh.; Hariv. &amp;c.",
+    "ja/nana m. a progenitor, creator, RV. ii, 40, 1",
+    "ja/nana n. birth, coming into existence, TāṇḍyaBr. xxi, 9; KātyŚr.; Mn. &amp;c.",
+    "‘birth’ i.e. life (pUrvaj° = °nAntara), Kum. i, 54",
+    "production, causation, R. : Kum. i, 43; Sāṃkhyak.; Sarvad.",
+    "race, lineage, L.",
+    "ja/nana cf. indra-, meDA-."
+  ],
   "zaq": [
     "zaq in comp. for zaz."
   ],
@@ -1447,14 +3261,96 @@
     "vastra n. (or m. g. arDarcAdi; ifc. f(A). ) cloth, clothes, garment, raiment, dress, cover, RV. &amp;c. &amp;c.",
     "vastra n. a leaf of the cinnamon tree, L."
   ],
+  "aYjaka": [
+    "aYjaka m. N. of a son of Vipracitti, VP."
+  ],
   "ABa": [
     "(mfn.) ifc. like, resembling, appearing, R.; Kāvyād.; Śiś. &amp;c. (e.g. hemABa, shining like gold);"
+  ],
+  "ava": [
+    "1. a/va m. favour, RV. i, 128, 5",
+    "(cf. nirava/t.)",
+    "2. a/va ind. (as a prefix to verbs and verbal nouns expresses) off, away, down, RV. &amp;c.",
+    "(exceptionally as a preposition with abl.) down from, AV. vii, 55, 1",
+    "(for another use of this preposition See ava-kokila.)",
+    "3. ava (only gen. du. avo/r with vAm, ‘of you both’, corresponding to sa/ tva/m, ‘thou’, &amp;c.), this, RV. vi, 67, 11; vii, 67, 4 and (vA for vAm), x, 132, 5",
+    "ava [Zd. pron. ava; Slav. ovo; cf. also the syllable, αὐ in αὐ-τός, αὖ, αὖθι, &amp;c.; Lat. au-t, au-tem, &amp;c.]"
+  ],
+  "mAra": [
+    "mAra mfn. (√ mf) killing, destroying",
+    "mAra m. death, pestilence, VarBṛS.; AV.Pariś.",
+    "slaying, killing, Rājat. (cf. paSu-m°)",
+    "an obstacle, hindrance, Vās.",
+    "the passion of love, god of love, Hariv.; Kāv.; Kathās.",
+    "(with Buddhists) the Destroyer, Evil One (who tempts men to indulge their passions and is the great enemy of the Buddha and his religion; four Māras are enumerated in Dharmas. 80, viz. skanDa-, kleSa-, devaputra-, and mftyu-m°; but the later Buddhist theory of races of gods led to the figment of millions of Māras ruled over by a chief Māra), MWB. 208 &amp;c.",
+    "the thorn-apple, L."
   ],
   "Danvacara": [
     "Danva—cara/ mfn. going in a desert land, RV. v, 36, 1."
   ],
+  "ISana": [
+    "ISana n. commanding, reigning, ŚvetUp."
+  ],
+  "rarARa": [
+    "ra/rARa mfn. (√ rA) distributing, bestowing, bountiful, liberal, RV.",
+    "rarARa and rarAvan. See p. 868, col. 3."
+  ],
+  "mada": [
+    "ma/da m. hilarity, rapture, excitement, inspiration, intoxication, RV. &amp;c. &amp;c.",
+    "(du. with madasya N. of 2 Sāmans, ĀrṣBr.)",
+    "ardent passion for (comp.), MBh.",
+    "(ifc. f. A) sexual desire or enjoyment, wantonness, lust, ruttishness, rut (esp. of an elephant), MBh.; Kāv. &amp;c.",
+    "pride, arrogance, presumption, conceit of or about (gen. or comp.), ib.",
+    "any exhilarating or intoxicating drink, spirituous liquor, wine, Soma, RV. &amp;c. &amp;c.,",
+    "honey, Ragh.",
+    "the fluid or juice that exudes from a rutting elephant's temples, MBh.; Kāv. &amp;c.",
+    "semen virile, L.",
+    "musk, L.",
+    "any beautiful object, L.",
+    "a river, L.",
+    "N. of the 7th astrol. mansion, Var.",
+    "Intoxication or Insanity personified (as a monster created by Cyavana), MBh.",
+    "N. of a son of Brahmā, VP.",
+    "of a Dānava, Hariv.",
+    "of a servant of Śiva, BhP.",
+    "ma/da n. N. of 2 Sāmans, ĀrṣBr."
+  ],
+  "dAta": [
+    "1. dAta mfn. ‘given’, see tvA/-.",
+    "2. dAta mfn. cut off, mowed (barhis), Pāṇ. vii, 4, 46, Sch.",
+    "3. dAta mfn. cleansed, purified, Pāṇ. vii, 4, 46 (cf. ava-, vyava-).",
+    "4. dAta m. pl. N. of a school of AV."
+  ],
+  "Anaka": [
+    "Anaka m. (etym. doubtful), a large military drum beaten at one end",
+    "a double drum",
+    "a small drum or tabor, Bhag.; Hariv.",
+    "a thunder-cloud or a cloud to which the thunder is ascribed, L.",
+    "Anaka mfn. energetic, T."
+  ],
+  "kA": [
+    "1. kA onomat. imitation of the cry of the ass, BhP. x, 15, 30.",
+    "2. kA = 2. ka/d and 1. ku in comp. to express depreciation, e.g. kAkza, kA-paTa, kApuruza, kozRa, qq.vv. Pāṇ. vi, 3, 104; Vop. vi, 93.",
+    "3. kA = √ kan (perf. cake, cakAna/; see kA/yamAna s.v.), to seek, desire, yearn, love (with acc. and dat.), RV.; to like, enjoy, be satisfied with (loc. gen. or inst.), RV. : Intens. (p. cAka/t) to please, be sought after, be wished for, satisfy, RV. x, 29, 1 (cf. anu-, A-, saM- √ 3. kA, kAti.)"
+  ],
+  "ravamARa": [
+    "ravamARa See under √ 1. ru."
+  ],
   "mIra": [
     "mIra m. the sea, ocean, Uṇ. ii, 25, Sch. (L. also ‘a partic. part of a mountain; a limit, boundary; a drink, beverage’)."
+  ],
+  "manTa": [
+    "manTa &amp;c. See under √ manT.",
+    "manTa m. stirring round, churning, Kāv.; Kathās.",
+    "shaking about, agitating, Ragh.; Uttarar.",
+    "killing, slaying, Bālar.",
+    "a drink in which other ingredients are mixed by stirring, mixed beverage (usually parched barley-meal stirred round in milk; but also applied to a partic. medicinal preparation), RV. &amp;c. &amp;c.",
+    "a spoon for stirring, ĀśvGṛ.; Kauś.",
+    "a churning-stick, MBh.; Pāṇ. vii, 2, 18",
+    "a kind of antelope, ṢaḍvBr.",
+    "the sun or a sun-ray, L.",
+    "a partic. disease of the eye, excretion of rheum, L.",
+    "manTa n. an instrument for kindling fire, by friction, MBh."
   ],
   "raTya": [
     "ra/Tya mfn. (or raTya^) belonging or relating to a carriage or chariot, accustomed to it &amp;c. (with Aji/, ‘a chariot-race’), RV.; ŚBr.",
@@ -1474,6 +3370,20 @@
     "copper, Kauś.; Mn. &amp;c.",
     "a coppery receptacle, MBh. ii, 61, 29",
     "= -dru, W. (cf. R. ii, 83, 17)"
+  ],
+  "sava": [
+    "1. sava/ m. (fr. √ 3. su) pressing out the juice of the Soma plant, RV.; ŚBr.; ŚāṅkhŚr.",
+    "pouring it out, L.",
+    "the moon, L.",
+    "sava/ n. the juice or honey of flowers, L.",
+    "2. sava/ m. (fr. √ 1. sU) one who sets in motion or impels, an instigator, stimulator, commander, VS.; ŚBr.",
+    "sava/ m. the sun (cf. savitf), L.",
+    "setting in motion, vivification, instigation, impulse, command, order (esp. applied to the activity of Savitṛ; dat. savA/ya, ‘for setting in motion’), RV.; AV.; VS.; TBr.",
+    "N. of partic. initiatory rites, inauguration, consecration, Br.",
+    "a kind of sacrifice, Kauś.",
+    "any sacrifice, MBh.",
+    "a year (?), BhP. (see bahu-s°).",
+    "3. sava m. (fr. √ 2. sU) offspring, progeny, L."
   ],
   "aYjas": [
     "a/Yjas n. ointment, a mixture, RV. i, 132, 2",
@@ -1495,21 +3405,184 @@
   "upya": [
     "upya mfn. (cf. under √ 2. vap) to be scattered or sown, KātyŚr."
   ],
+  "carI": [
+    "carI (I), f. a young woman (cf. carawi), L.",
+    "= digambaraprasidDA, g. gOrAdi",
+    "also ifc. See anu- and sahacarI."
+  ],
+  "samam": [
+    "sama/m (a/m), ind. in like manner, alike, equally, similarly, RV. &amp;c. &amp;c.",
+    "together with or at the same time with or in accordance with (instr. or comp.), ŚBr.; Mn.; MBh. &amp;c.",
+    "just, exactly, precisely, Mn.; VarBṛS.; BhP.",
+    "honestly, fairly, R.",
+    "1. samam &amp;c. See 2. sama, p. 1152.",
+    "2. sam-√ am Ā. -amate, to ask eagerly, solicit, win over, RV.; to fix or settle firmly, ib.; to ally or connect one's self with, AV."
+  ],
+  "BaRa": [
+    "BaRa See dur-BaRa."
+  ],
+  "sama": [
+    "1. sama mfn. (connected with 7. sa and with 2. sama/ and samAna; cf. samaha, used as pron.: declined like sarva, e.g. samasmE, RV. vi, 51, 6) any, every, RV.",
+    "sama [cf. Gk. ἁμός, ἀμός; Goth. suma; Angl.Sax. sum; Eng. some.]",
+    "2. sama/ mf(A/)n. (prob. originally identical with prec.; cf. samAna) even, smooth, flat, plain, level, parallel (karRa-s°, ‘on a level with the ear’; BUmi- or BUmeH samaM-√ kf, ‘to make level with the earth’), RV. &amp;c. &amp;c.",
+    "same, equal, similar, like, equivalent, like to or identical or homogeneous with (instr., e.g. mayA sama, ‘like to me’; or gen., rarely abl.), like in or with regard to anything (instr. gen. loc., or -tas, or comp.; samaM-√ kf, ‘to make equal, balance’), ib.",
+    "always the same, constant, unchanged, fair, impartial towards (loc. or gen.), ib.",
+    "even (not ‘odd’), a pair, VarBṛS.",
+    "having the right measure, regular, normal, right, straight (samaM-√ kf, ‘to put right or in order’), AitBr. &amp;c. &amp;c.",
+    "equable, neutral, indifferent, VarBṛS.",
+    "equally distant from extremes, ordinary, common, middling, Mn.; MBh. &amp;c.",
+    "just, upright, good, straight, honest, ib.",
+    "easy, convenient, Pañcat.",
+    "full, complete, whole, entire, L.",
+    "sama/ m. peace (perhaps w.r. for Sama), R.; Kām.",
+    "the point of intersection of the horizon and the meridian line, Gol.",
+    "N. of partic. zodiacal signs (esp. Vṛṣa, Karkaṭa, Kanyā, Vṛścika, Makara, and Mīna), MW.",
+    "a kind of straight line placed over a numerical figure to mark the process of extracting the square root, ib.",
+    "(in music) a kind of time, Saṃgīt.",
+    "a grass-conflagration, L.",
+    "a Jina, Gal.",
+    "N. of a son of Dharma, VP.",
+    "of a son of Dhṛtarāṣṭra, MBh.",
+    "of a king of the Nandi-vegas (v.l. Sama), ib.",
+    "sama/ (am), n. level ground, a plain (same/ BU/myAH, ‘on level ground’), AV.; ŚBr.; Mn.; MBh.; R.",
+    "equability, equanimity, imperturbability, MBh.",
+    "likeness, similarity, equality (ena, ‘equally, in the same manner’), Kāś. on Pāṇ. ii, 3, 18",
+    "right measure or proportion (ena, ‘exactly, precisely’), ŚBr.",
+    "settlement, compensation, Mn. viii, 177",
+    "good circumstances, Mṛcch.",
+    "(in rhet.) a partic. figure, sameness of objects compared to one another, Pratāp.; Kuval.",
+    "(in geom.) a mean proportional segment (described as a fourth proportional to the two perpendiculars and the link or segment, and used for solving problems in a trapezium), Col.",
+    "= samA f. a year (see pApa-s°, puRya-s°, and su-zama)",
+    "sama [cf. Gk. ἅμα, ὁμός, ὁμαλός; Lat. similis; Germ. same, -sam; Eng. same.]",
+    "3. sa-ma mfn. (fr. 7. sa + mA) ‘together with Lakṣmi’, happy, prosperous, Nalod."
+  ],
   "udDana": [
     "ud-Dana m. (√ han) a wooden swordlike instrument for stirring boiled rice, L."
   ],
   "raDra": [
     "raDra/ mfn. willing, pliant, obedient, RV. (others ‘weary’ or ‘wealthy’ or ‘a miser’ or ‘officious’ or ‘active’ &amp;c.)"
   ],
+  "Asada": [
+    "A-sada m. approaching, meeting (see dur-°)."
+  ],
+  "sarva": [
+    "sa/rva mf(A)n. (perhaps connected with sAra, q.v.; inflected as a pronoun except nom. acc. sg. n. sarvam, and serving as a model for a series of pronominals, cf. sarva-nAman) whole, entire, all, every (m. sg. ‘every one’; pl. ‘all’; n. sg. ‘everything’; sometimes strengthened by viSva [which if alone in RV. appears in the meaning ‘all’, ‘every’, ‘every one’] and niKila; sarve'pi, ‘all together’; sarvaH ko'pi, ‘every one so ever’; gavAM sarvam, ‘all that comes from cows’; sarva with a negation = ‘not any’, ‘no’, ‘none’ or ‘not every one’, ‘not everything’), RV. &amp;c. &amp;c.",
+    "of all sorts, manifold, various, different, MBh. &amp;c.",
+    "(with another adjective or in comp.; cf. below) altogether, wholly, completely, in all parts, everywhere, RV.; ChUp. &amp;c.",
+    "sa/rva m. (declined like a subst.) N. of Śiva, MBh.",
+    "of Kṛṣṇa, Bhag.",
+    "of a Muni, Cat.",
+    "pl. N. of a people, MārkP.",
+    "sa/rva n. water, Naigh. i, 12.",
+    "sarva [cf. Gk. ὅλος for ὁλϝος Lat. salvus.]"
+  ],
+  "kaSa": [
+    "ka/Sa m. a species of rodent animal, VS.; TS. (cf. kaSIkA/)",
+    "a whip, thong, MBh. (cf. prakaSa/)",
+    "ka/Sa m. pl. N. of a people, BhP. (ed. Bomb.)"
+  ],
   "avatAna": [
     "ava-tAna/ m. ‘unbending of a bow’, N. of the verses, VS. xiv, 54-63; ŚBr.",
     "a cover (spread over climbing plants), MBh. ii, 355; R. v, 16, 28",
     "N. of a man, Pāṇ. ii, 4, 67, Kāś."
   ],
+  "mAnana": [
+    "mAnana mfn. (fr. Caus.) honouring, serving as a token of respect, Nir.",
+    "mAnana n. and f(A). paying honour, showing respect, MBh.; Kāv. &amp;c.",
+    "mAnana mAnanIya &amp;c. See col. 2."
+  ],
+  "sarvam": [
+    "sa/rvam (am), ind. (with sarveRa) completely, Divyāv."
+  ],
   "tAma": [
     "tAma m. (√ tam) = BIzaRa, L.",
     "= doza, L.",
     "anxiety, distress, W."
+  ],
+  "vawa": [
+    "vawa m. (perhaps Prākṛt for vfta, ‘surrounded, covered’; cf. nyag-roDa) the Banyan or Indian fig tree (Ficus Indica), MBh.; Kāv. &amp;c., RTL. 337 (also said to be n.)",
+    "a sort of bird, BhP.",
+    "a small shell, the Cypraea Moneta or cowry, L.",
+    "a pawn (in chess), L.",
+    "sulphur, L.",
+    "= sAmya, L.",
+    "N. of a Tīrtha, Viṣṇ.",
+    "of one of Skanda's attendants, MBh.",
+    "the son of a Vaiśya and a Venukī, L. (also n. and f(I). )",
+    "a string, rope, tie, L. (only vawa ibc., and paYca-v°, q.v.)",
+    "a small lump, globule &amp;c. = vawaka, ŚārṅgS."
+  ],
+  "badDa": [
+    "badDa &amp;c. See p. 720, col. 2.",
+    "badDa/ mfn. bound, tied, fixed, fastened, chained, fettered, RV. &amp;c. &amp;c.",
+    "captured, imprisoned, caught, confined, ib. (SatAt, ‘for a debt of a hundred’, Pāṇ. ii, 3, 24, Sch.)",
+    "bound by the fetters of existence or evil, Kap.",
+    "hanged, hung, R.",
+    "tied up (as a braid of hair), Megh.",
+    "(ifc.) stopped, checked, obstructed, impeded, restrained, suppressed, MBh.; Kāv. &amp;c.",
+    "girt with, ŚāṅkhŚr.",
+    "(with instr. or ifc.) inlaid or studded with, set in MBh.; Kāv. &amp;c.",
+    "attached to, riveted or fixed on (loc.), ib.",
+    "joined, united, combined, formed, produced, ib.",
+    "composed (as verses), R.",
+    "(esp. ibc.; cf. below) conceived, formed, entertained, manifested, shown, betrayed, visible, apparent (cf. jAta ibc.), MBh.; Kāv. &amp;c.",
+    "clenched (as the fist), Hariv.; R.",
+    "folded (as the hands), Mṛcch.",
+    "contracted (as friendship or enmity), R.; Śak.",
+    "taken up (as an abode), Rājat.",
+    "built, constructed (as a bridge), R.; Ragh.",
+    "embanked (as a river), Rājat.",
+    "congealed, clotted (as blood; opp. to drava), Suśr.",
+    "alloyed (as quicksilver), L.",
+    "badDa/ m. or n. ? (with Jainas) that which binds or fetters the embodied spirit (viz. the connection of the soul with deeds), MW."
+  ],
+  "SAmana": [
+    "SAmana mfn. extinguishing, destroying, Pañcat. iii, 31 (v.l. for Samana)",
+    "SAmana m. N. of Yama (= Samana), W.",
+    "SAmana n. a sedative, Car.",
+    "tranquillity, peace, W.",
+    "killing, slaughter, ib.",
+    "end (°naM-√ yA, to go to an end, be destroyed), MW."
+  ],
+  "veDana": [
+    "veDana n. piercing, hitting (with an arrow), MBh.",
+    "penetration, excavation, MW.",
+    "affecting with (instr.), Śaṃk.",
+    "depth (cf. 2. veDa), MBh.",
+    "puncturing, pricking, wounding, MW."
+  ],
+  "varya": [
+    "va/rya mf(A)n. (fr. √ 2. vf) to be chosen, eligible, to be asked or obtained in marriage, Pāṇ. iii, 1, 101, Sch.",
+    "excellent, eminent, chief, principal, best of (gen. or comp.), MBh.; Kāv. &amp;c.",
+    "va/rya m. the god of love, L."
+  ],
+  "Bava": [
+    "Bava/ m. (√ BU) coming into existence, birth, production, origin (= BAva, Vop.; ifc., with f(A). = arising or produced from, being in, relating to), Yājñ.; MBh.; Kāv. &amp;c.",
+    "becoming, turning into (comp.), Kāṭh.",
+    "being, state of being, existence, life (= sat-tA, L.), ŚārṅgP. (cf. BavAntara)",
+    "worldly existence, the world (= saMsAra, L.), Kāv.; Pur.",
+    "(with Buddhists) continuity of becoming (a link in the twelvefold chain of causation), Dharmas. 42 (MWB. 102)",
+    "well-being, prosperity, welfare, excellence (= Sreyas, L.), MBh.; Kāv. &amp;c.",
+    "obtaining, acquisition (= Apti, prApti), L.",
+    "a god, deity, W.",
+    "N. of Agni, ŚBr.",
+    "of a deity attending on Rudra and frequently connected with Śarva (later N. of Śiva or a form of Śiva; or N. of a Rudra, and as such of the number 11 or of the 11th lunar mansion, Gol.; Var., Sch.; du. BavO = Bhava i.e. Śiva and his wife Bhavānī, BhP.; cf. Vām. v, 2, 1), AV. &amp;c. &amp;c.",
+    "of the 1st and 4th Kalpa, Cat.",
+    "of a Sādhya, VP.",
+    "of a king, MBh.",
+    "of a son of Pratihartṛ, VP.",
+    "of Viloman, ib.",
+    "of a rich man, Buddh.",
+    "of an author, Cat.",
+    "Bava/ n. the fruit of Dillenia Speciosa, L.",
+    "= Bavya, Bavizya, BAvana, L.",
+    "Bava &amp;c. See p. 748 &amp;c."
+  ],
+  "yata": [
+    "yata See under √ yam, p. 845.",
+    "yata/ mfn. restrained, held in, held forth, kept down or limited, subdued, governed, controlled &amp;c., RV. &amp;c. &amp;c. (cf. comp. below)",
+    "yata/ n. restraint (?) See yataM-kara/",
+    "the spurring or guiding of an elephant by means of the rider's feet, L."
   ],
   "jani": [
     "ja/ni, °nI, f. a woman, wife (gen. °nyur, RV. x, 10, 3), RV. (pl. also fig. ‘the fingers’), VS.",
@@ -1547,6 +3620,16 @@
   "sadAra": [
     "sa—dAra mfn. accompanied by a wife, ĀpŚr.; Ragh."
   ],
+  "caya": [
+    "1. &amp; 2. caya, &amp;c. See √ 1. &amp; 3. ci.",
+    "1. caya mfn. ‘collecting’, see vftaM-",
+    "caya m. (iii, 3, 56, Kāś.; g. vfzAdi) a mound of earth (raised to form the foundation of a building or raised as a rampart), MBh. iii, 11699; Hariv.; R.; Pañcat.",
+    "a cover, covering, W.",
+    "a heap, pile, collection, multitude, assemblage, MBh.; Hariv. &amp;c.",
+    "(in med.) accumulation of the humors (cf. saM-), Suśr.",
+    "the amount by which each term increases, common increase or difference of the terms, Bījag. (cf. agni-).",
+    "2. caya mfn. ifc. ‘revenging’, see fRaM-."
+  ],
   "ucca": [
     "ucca mfn. (said to be fr. ca fr. √ aYc with 1. ud), high, lofty, elevated",
     "tall, MBh.; Kum.; Śiś.; Kathās. &amp;c.",
@@ -1567,6 +3650,9 @@
     "slander, reviling, L.",
     "(used in explaining Dvani), Kpr."
   ],
+  "tatara": [
+    "ta—tara mfn. (compar.) that one (of two), Pāṇ. v, 3, 92."
+  ],
   "mahman": [
     "mahma/n m. greatness, AV.",
     "mahma/n , mahya. See p. 803, col. 3."
@@ -1586,16 +3672,47 @@
     "dAhana n. (fr. the Caus.) causing to burn or be burnt, reducing to ashes, MBh. i, 403; BhP. xii, 12, 40",
     "cauterizing, W."
   ],
+  "vyaya": [
+    "vyaya mfn. (or vy-aya, fr. 3. vi + √ 5. i) passing away, mutable, liable to change or decay (only as opp. to or connected with a-vyaya), Mn.; MBh.; Pur.",
+    "vyaya m. (ifc. f(A). ) disappearance, decay, ruin, loss, MBh.; Kāv. &amp;c.",
+    "vyaya m. spending, expense, outlay, disbursement (opp. to Aya, ‘income’, and often with koSasya, vittasya, Danasya &amp;c.; without a gen. = ‘extravagance, waste, prodigality’; with loc. or ifc. = ‘outlay for or in’), Mn.; MBh. &amp;c.",
+    "cost, sacrifice of (gen. or comp.; vyayena ifc. = ‘at the cost of’), R.; Kālid.",
+    "wealth, money, Yājñ. ii, 276",
+    "(in gram.) inflection, declension, Nir.",
+    "N. of the 20th (or 54th) year of Jupiter's cycle, VarBṛS. of a serpent-demon, MBh.",
+    "of Pradhāna, MW.",
+    "vyaya m. or n. = -gfha, VarBṛS."
+  ],
   "SaSI": [
     "SaSI f. N. of an Apsaras, Kāraṇḍ.",
     "1. SaSI f. See under SaSa.",
     "2. SaSI in comp. for SaSa."
   ],
+  "SARa": [
+    "1. SARa m. (or f(A). ; fr. √ So cf. SAna) a whetstone, grindstone, touchstone, Kāv.; Rājat.",
+    "a saw, L.",
+    "2. SARa m. (or f(A). ) a weight of four Māṣas, Hariv.; Bhpr.",
+    "3. SARa/ mf(I)n. (fr. SaRa) made of hemp or Bengal flax, hempen, flaxen, ŚBr. &amp;c. &amp;c.",
+    "SARa/ m. or n. a hempen garment, Gaut."
+  ],
   "rIra": [
     "rIra m. N. of Śiva, Cat."
   ],
+  "aSana": [
+    "1. aSana mfn. reaching, reaching across, Nir.",
+    "2. a/Sana n. eating, ŚBr. &amp;c.",
+    "food, ŚBr. &amp;c. (often ifc., e.g. mUla-PalASana mf(A)n. having roots and fruit for food, Mn. &amp;c.)",
+    "aSana See √ 1. and √ 2. aS.",
+    "3. aSana for 2. asana, q.v."
+  ],
+  "navana": [
+    "navana n. (ifc. f(A). ) the act of praising, laudation, Nalod."
+  ],
   "nAv": [
     "nAv in comp. for 2. nO before vowels."
+  ],
+  "Adam": [
+    "A-√ dam See da/Msu-patnI."
   ],
   "tu": [
     "1. tu cl. 2. (tOti, Dhātup.; fut. 2nd totA or tavitA, Vop.) to have authority, be strong, RV. i, 94, 2 (pf. tUtAva cf. Naigh. iv, 1; Pāṇ. vi, 1, 7, Kāś.); to go, Dhātup.; to injure, ib. : Caus. (aor. tUtot, 2. sg. °tos) to make strong or efficient, RV. ii, 20, 5; vi, 26, 4; cf. ut-, saM-; tava/s, &amp;c., tIvra/;",
@@ -1625,13 +3742,86 @@
     "cf. arunDatI, Ba/drayu/va, vi/-, vitta/-, suma/j-, sapta/-",
     "a- and dvi-jA/ni."
   ],
+  "havana": [
+    "1. havana m. (for 2. See p. 1294, col. 1) fire or Agni the god of fire, L.",
+    "a fire-receptacle (= f.), L.",
+    "havana (am), n. the act of offering an oblation with fire, sacrifice, MBh.; Hariv.",
+    "a sacrificial ladle, Vait.",
+    "2. ha/vana m. N. of a Rudra, MBh.; Hariv.",
+    "ha/vana n. calling, invocation, summons, RV.; Pañcar.",
+    "challenging or challenge to battle, MW.",
+    "havala and havava, N. of partic. high numbers, Buddh.",
+    "havana &amp;c. See p. 1293, col. 2."
+  ],
+  "matta": [
+    "matta &amp;c. See p. 777, col. 3.",
+    "matta/ mfn. excited with joy, overjoyed, delighted, drunk, intoxicated (lit. and fig.), AV. &amp;c. &amp;c.",
+    "excited by sexual passion or desire, in rut, ruttish (as an elephant), MBh.; R. &amp;c.",
+    "furious, mad, insane, ib.",
+    "matta/ m. a buffalo, L.",
+    "the Indian cuckoo, L.",
+    "a drunkard, L.",
+    "a ruttish or furious elephant, L.",
+    "a madman, L.",
+    "a thorn-apple, L.",
+    "N. of a Rākṣasa, R.",
+    "matta [cf. Lat. mattus, drunk]."
+  ],
   "(sa)mparI": [
     "sam-parI (-pari- √ 5. i) P. -paryeti, to go round, circumambulate, R.; to embrace, contain, AV.; to deliberate, ponder, KaṭhUp."
+  ],
+  "gAna": [
+    "gAna n. singing, song, KātyŚr.; Lāṭy. i, vii; Hariv. 11793; Śiś. ix, 54",
+    "a sound, L. (cf. araRya-, Uha-, Uhya-.)",
+    "gAna 1."
+  ],
+  "akza": [
+    "1. a/kza m. an axle, axis (in this sense also n., L.)",
+    "a wheel, car, cart",
+    "the beam of a balance or string which holds the pivot of the beam",
+    "a snake, L.",
+    "terrestrial latitude (cf. -karRa, -BA, -BAga)",
+    "the collar-bone, ŚBr.",
+    "the temporal bone, Yājñ.",
+    "N. of a measure (= 104 aṅgula);",
+    "(also) a chariot, Dharmaś.",
+    "akza [cf. Lat. axis; Gk. ἄξων; Old Germ. ahsa; Mod. Germ. Achse; Lith. assis.]",
+    "2. akza/ m. (√ 1. aS, Uṇ.) a die for gambling",
+    "a cube",
+    "a seed of which rosaries are made (cf. indrAkza, rudrAkza)",
+    "the Elaeocarpus Ganitrus, producing that seed",
+    "a weight called karza, equal to 16 māṣas",
+    "Beleric Myrobalan (Terminalia Belerica), the seed of which is used as a die",
+    "a N. of the number 5",
+    "akza/ n. sochal salt",
+    "blue vitriol (from its cube-like crystals), L.",
+    "3. akza n. an organ of sense",
+    "sensual perception, L.",
+    "akza m. the soul, L.",
+    "knowledge, religious knowledge, L.",
+    "a lawsuit, L.",
+    "a person born blind, L.",
+    "N. of Garuḍa, L.",
+    "of a son of Rāvaṇa",
+    "of a son of Nara, &amp;c.",
+    "akza, akza-caraRa, &amp;c. See col. 3.",
+    "4. akza n. [only ifc. (f(I). ) for akzi], the eye."
   ],
   "ota": [
     "ota (A-uta) mfn. interwoven, BhP.; MuṇḍUp.",
     "1. o/ta (for 2. See col. 3) mfn. addressed, invoked, summoned, AV.",
     "2. o/ta (for 1. See 4. o) p.p. of A-√ ve, p. 156, col. 2."
+  ],
+  "sAma": [
+    "1. sAma n. (fr. 1. sama, of which it is also the Vṛddhi form in comp.) likeness, similarity, L.",
+    "2. sAma mfn. undigested, crude, not sufficiently prepared or matured (a morbid state of the humours), Car.; Bhpr.",
+    "3. sAma in comp. for 2. sAman.",
+    "4. sAma in comp. for 3. sAman.",
+    "5. sAma (ifc.) = 3. sAman (see anu-, ava-s°)."
+  ],
+  "vavra": [
+    "vavra/ mfn. (fr. √ 1. vf) hiding or concealing one's self, RV.",
+    "vavra/ m. ‘hiding-place’, a cavern, hole, cave, ib."
   ],
   "vAmana": [
     "vAmana/ mf(A)n. (of doubtful derivation) dwarfish, small or short in stature, a dwarf, VS. &amp;c. &amp;c.",
@@ -1685,6 +3875,30 @@
     "descendants, race, lineage, family.",
     "anv-aya See p. 46, col. 1."
   ],
+  "vala": [
+    "1. vala/ m. ‘enclosure’, a cave, cavern, RV.; AV.; Br.",
+    "a cloud, Naigh. i, 10",
+    "a beam or pole, KātyŚr., Sch.",
+    "N. of a demon (brother of Vṛtra, and conquered by Indra; in later language called bala, q.v.)",
+    "2. vala = vali (see Sata-vala)."
+  ],
+  "kAna": [
+    "kAna n. sound (cf. kvARa), L."
+  ],
+  "dala": [
+    "dala n. (m., L.) a piece torn or split off, fragment (cf. aRqa, carma-, dvi-, veRu-), Suśr. v, 3, 22; vi, 5, 4; Śiś. iv, 44 (ifc. f(A). ), Naiṣ. vii, 31",
+    "‘part’, a degree, VarBṛ. xvii, 4",
+    "a half (cf. aDara-, ahar-, dyu-), VarBṛS.; Suśr. i, 7; Sūryas.",
+    "a hemistich",
+    "‘unfolding itself’, a small shoot, blade, petal, leaf (often ifc. in names of plants), MBh.; R. &amp;c.",
+    "cinnamon leaf, L.",
+    "unclean gold, Bhpr. v, 26, 2",
+    "a clump, heap, L.",
+    "a detachment, W.",
+    "= utseDa, °Davad-vastu, avadravya (apad°, W.), L.",
+    "dividing, splitting, W.",
+    "dala m. N. of a prince, MBh. iii, 13178; VP. iv, 4, 47,"
+  ],
   "saras": [
     "sa/ras n. ‘anything flowing or fluid’, a lake, large sheet of water, pond, pool, tank, RV. &amp;c. &amp;c. a trough, pail, RV.",
     "water, Naigh. i, 2",
@@ -1707,6 +3921,20 @@
     "at the time of, upon, up to, in, above (with loc., e.g. upa sAnuzu, on the tops of the mountains)",
     "with, together with, at the same time with, according to (with inst., e.g. upa DarmaBiH, according to the rules of duty), RV.; AV.; ŚBr. upa, besides the meanings given above, is said by native authorities to imply disease, extinction; ornament; command; reproof; undertaking; giving; killing; diffusing; wish; power; effort; resemblance, &amp;c.;",
     "upa [cf. Zd. upa; Gk. ὑπό; Lat. sub; Goth. uf; Old Germ. oba; Mod. Germ. ob in Obdach, obliegen, &amp;c.]"
+  ],
+  "yava": [
+    "1. ya/va m. the first half of a month (generally in pl.; accord. to Comm. = pUrva-pakzAH; also written yAva), VS.; ŚBr.; Kāṭh.",
+    "2. ya/va mfn. (√ 1. yu) warding off, averting, AV.; Yājñ.",
+    "3. ya/va m. barley (in the earliest times, prob. any grain or corn yielding flour or meal; pl. barley-corns), RV. &amp;c. &amp;c.",
+    "a barley-corn (either as a measure of length = 1/6 or 1/8 of an Aṅgula, VarBṛS.; or as a weight = 6 or 12 mustard seeds = 1/2 Guñjā, Mn.; Yājñ.)",
+    "any grain of seed or seed corn, Bhpr.",
+    "(in palmistry) a figure or mark on the hand resembling a barley-corn (supposed to indicate good fortune), VarBṛS.",
+    "N. of a partic. astron. Yoga (when the favourable planets are situated in the 4th and 10th mansions and the unfavourable ones in the 1st and 7th), ib.",
+    "speed, velocity, W. (prob. w.r. for java); a double convex lens, ib.",
+    "yava [cf. Zd. yava; Gk. ζειά; Lith. javaí.]"
+  ],
+  "camana": [
+    "camana n. sipping, Jaim. iii, 5, 22, Sch."
   ],
   "tala": [
     "tala (m., L.) n. (√ stf) surface, level, flat roof (of a house), MBh. &amp;c. (chiefly ifc. [f(A). , R. v, 13] cf. naBas-, mahI- &amp;c.)",
@@ -1734,8 +3962,49 @@
   "varRaja": [
     "varRa—ja mfn. produced from castes, VarBṛS."
   ],
+  "ahan": [
+    "a/han n. the base of the weak and some other cases of a/har, q.v., e.g. instr. a/hnA [once ahanA/, RV. i, 123, 4]",
+    "dat. a/hne",
+    "loc. a/han (Ved.) or a/hani, or ahni, &amp;c.",
+    "nom. du. a/hanI (see also s.v. a/har) and pl. a/hAni",
+    "only Ved. are the middle cases of the pl. a/haByas [RV.], a/haBis [RV., nine times], and a/hasu [RV. i, 124, 9], while the later language forms them fr. the base a/has, q.v."
+  ],
+  "samA": [
+    "samA , (A), f. a year, see samA p. 1153",
+    "sa/mA f. (of 2. sama above) a year, RV. &amp;c. &amp;c. (also sama n. in pApa-sa/ma, puRya-s°, su-za/ma)",
+    "a half-year, AV.",
+    "season, weather, AitBr.; Kauś.; Nir.",
+    "a day, MW.",
+    "samA See p. 1153, col. 2."
+  ],
+  "param": [
+    "pa/ram (am), ind. afterwards, later",
+    "(with abl.) beyond, after (e.g. paraM vijYAnAt, beyond human knowledge; astam-ayAt p°, after sunset; mattaH p°, after me; ataH p° or param ataH, after this, farther on, hereafter, next; itaH p°, henceforward, from now; tataH p° or tataS ca p°, after that, thereupon; nAsmAt p° [for mAsmAt p°], no more of this, enough), MBh.; Kāv. &amp;c.",
+    "in a high degree, excessively, greatly, completely, ib.",
+    "rather, most willingly, by all means, ib.",
+    "I will, so be it, Divyāv.",
+    "at the most, at the utmost, merely, no more than, nothing but, ib.",
+    "but, however, otherwise (paraM tu or paraM kiM tu id.; yadi p°, if at all, perhaps, at any rate; na-p°, not-but; na p°araM-api, not only-but also; paraM na-api na, not only not-but not even; na p°araM-yAvat, not only-but even), ib."
+  ],
+  "nATa": [
+    "nATa/ n. refuge, help, AV.; TBr.",
+    "nATa/ m. a protector, patron, possessor, owner, lord (often ifc., esp. in names of gods and men, e.g. goviNda-, jagan- &amp;c.; but also mf(A)n. possessed of occupied by, furnished with, cf. sa-)",
+    "nATa/ m. a husband (esp. in voc.), MBh.; Kāv. &amp;c.",
+    "a rope passed through the nose of a draft ox, L.",
+    "N. of sev. authors, Cat."
+  ],
+  "adana": [
+    "a/dana n. act of eating",
+    "food, RV. vi, 59, 3.",
+    "a/dana adanIya. See √ ad."
+  ],
   "naktan": [
     "nakta/n (only °ta/Bis), night, RV. vii, 104, 18."
+  ],
+  "sAha": [
+    "1. sAha mfn. (fr. √ sah) powerful, mighty, RV.",
+    "(also zAha ifc.) resisting, conquering, subduing, MBh.",
+    "2. sAha m. = شاه (see pradIpa- and maDukara-s°)."
   ],
   "vallaBa": [
     "vallaBa mf(A)n. (Uṇ. iii, 125) beloved above all, desired, dear to (gen. loc., or comp.), MBh.; Kāv. &amp;c.",
@@ -1749,6 +4018,15 @@
     "of the founder of a Vaiṣṇava sect (= vallaBAcArya, q.v.)",
     "of a grammarian and various other writers and teachers (also with gaRaka and nyAyAcArya), Cat."
   ],
+  "Baya": [
+    "Baya/ n. (√ BI) fear, alarm, dread apprehension",
+    "fear of (abl. gen. or comp.) or for (comp.), RV. &amp;c. &amp;c. (°yAt ind. ‘from fear’; BayaM-√ kf with abl. ‘to have fear of’; BayaM-√ dA, ‘to cause fear, terrify’)",
+    "sg. and pl. terror, dismay, danger, peril, distress",
+    "danger from (abl. or comp.) or to, (comp.), ib.",
+    "the blossom of Trapa Bispinosa, L.",
+    "Baya/ m. sickness, disease, L.",
+    "Baya/ m. Fear personified (as a Vasu, a son of Nir-ṛti or Ni-kṛti, a prince of the Yavanas and husband of the daughter of Time), Pur. (also n.; and f(A). as a daughter of Kāla or Vaivasvata, and wife of the Rākṣasa Heti)."
+  ],
   "saMjvara": [
     "saM-jvara m. great heat or fever (also applied to the heat of anger or any violent agitation; °raM-√ kf, ‘to feel agitated’), Mn. (in a-s°, q.v.), Kāv.; Kathās. &amp;c."
   ],
@@ -1761,6 +4039,47 @@
     "(or kavaza ElUza) N. of a Ṛṣi (son of Ilūṣa by a slave girl, and author of several hymns in the tenth Maṇḍala of the Ṛg-veda; when the Ṛṣis were performing a sacrifice on the banks of the Sarasvatī he was expelled as an impostor and as unworthy to drink of the water, being the son of a slave; it was only when the gods had shown him special favour that he was readmitted to their society), RV. vii, 18, 12; AitBr. ii, 19",
     "N. of a Muni, BhP.",
     "N. of the author of a Dharma-śāstra."
+  ],
+  "asamAna": [
+    "a/-samAna mf(A)n. unequal (by birth or in qualities), different, VS. v, 23, &amp;c.",
+    "incomparable, Daś.",
+    "a/-samAna n. not a similar or corresponding condition, Mṛcch.",
+    "a/-samAna See ib."
+  ],
+  "sAra": [
+    "1. sAra m. (fr. √ sf) course, motion (see pUrva-s°)",
+    "stretching out, extension, Kālac.",
+    "sAra mfn. driving away, destroying, Bālar. ii, 60/61",
+    "2. sA/ra m. n. (ifc. f(A). ; perhaps to be connected with 1. sAra above; prob. fr. a lost root meaning ‘to be strong’) the core or pith or solid interior of anything, RV. &amp;c. &amp;c.",
+    "firmness, strength, power, energy, AV. &amp;c. &amp;c.",
+    "the substance or essence or marrow or cream or heart or essential part of anything, best part, quintessence (ifc. = ‘chiefly consisting of or depending on &amp;c.’ [cf. para] e.g. Darma-sAraM jagat, ‘the world chiefly depends on justice’; tUzRIM-sAra mfn. ‘chiefly silent’; sArat sAram, ‘the very best’), AitBr. &amp;c. &amp;c.",
+    "the real meaning, main point, MW.",
+    "a compendium, summary, epitome (often ifc. in titles of books)",
+    "a chief-ingredient or constituent part of the body (causing the peculiarities of temperament; reckoned to be 7, viz. sattva, Sukra, majjan, asTi, medas, mAMsa, rakta), Suśr.; VarBṛS.",
+    "any ingredient, Suśr.",
+    "nectar, R.; BhP.",
+    "cream, curds, L.",
+    "worth, value (eRa, ‘in consideration of’, ‘according to’), Mn.; Yājñ. &amp;c.",
+    "wealth, property, goods, riches, Kāv.; Pur.; Rājat.",
+    "(in rhet.) a kind of climax (uttarottaram utkarzaH), Sāh.; Kpr.",
+    "resin used as a perfume, Suśr.; ŚārṅgS.",
+    "water, Vās.",
+    "dung, Kṛṣis.",
+    "the matter formed in a boil or ulcer, pus, MW.",
+    "impure carbonate of soda, ib.",
+    "a confederate prince, ally, VarBṛS.",
+    "(= 1. SAra) a piece at chess or backgammon &amp;c.",
+    "sA/ra mf(A)n. hard, firm solid strong, MBh.; Kāv. &amp;c.",
+    "precious, valuable, Daś.",
+    "good, sound, best, excellent, BhP.; Pañcar.",
+    "sound (as an argument, thoroughly proved), W.",
+    "full of (instr.), VarBṛS.",
+    "motley, speckled (= SAra), Suśr.; Kād.",
+    "3. sAra mfn. having spokes, Śulbas."
+  ],
+  "fca": [
+    "fca ifc. = 2. f/c, verse, sacred verse (cf. tryfca, &amp;c.)",
+    "fca m. N. of a king, VP."
   ],
   "uzRa": [
     "uzRa/ mf(A, rarely I)n. (Uṇ. iii, 2) hot, warm",
@@ -1777,6 +4096,17 @@
   "Ajani": [
     "A/jani f. a stick for driving, AV. iii, 25, 5."
   ],
+  "astam": [
+    "a/stam ind. at home, home, RV. &amp;c., especially used with verbs, e.g. a/stam-√ i [a/stam e/ti; pr. p. astaM-ya/t, AV.; ŚBr.; fut. p. astam-ezya/t, AV.; perf. p. a/stamita See below s.v.]; a/staM-√ gam [a/stam ga/cCati, AV. &amp;c.; perf. p. astaM-gata, MBh. &amp;c., once in reversed order gata astaM, R. i, 33, 21] or astaM-√ yA [pr. p. -yAt, Mn. iv, 37] to go down, set, RV.; AV. &amp;c."
+  ],
+  "amavat": [
+    "a/ma—vat mfn. (a/ma-) impetuous, violent, strong, RV.",
+    "a/ma—vat (vat), ind. impetuously, RV. v, 58, 1.",
+    "a/ma-vat See 1. a/ma."
+  ],
+  "sadA": [
+    "sa/dA ind. always, ever, every time, continually, perpetually (with na, ‘never’), RV. &amp;c. &amp;c."
+  ],
   "AhAva": [
     "A-hAva &amp;c. See A-√ hu &amp; A-√ hve.",
     "1. A-hAva/ m. a trough, pail, vessel, RV.",
@@ -1785,6 +4115,10 @@
     "2. A-hAva m. a particular invocation (SoMsAvom corrupt from SaMsAva, ‘let us two pray!’) by which the Hotṛ addresses the Adhvaryu, AitBr.; ĀśvŚr. (cf. A-hvAna)",
     "battle, war, L.",
     "(for 1. A-hAva See A-√ hu.)"
+  ],
+  "Danva": [
+    "Danva n. = Da/nvan (Uṇ. iv, 95, Sch.; esp. at the beginning and at the end of comp.; cf. izu-, tisf-, priya-.; also f(A). in DanvABis, Hariv. 7315 v.l. °vIBis)",
+    "Danva m. N. of a man, Rājat. v, 51; 56."
   ],
   "ASA": [
     "1. A-SA/ f. wish, desire, hope, expectation, prospect, AV.; ŚBr.; ChUp.; R.; Śak.; Kathās.; Pañcat. &amp;c.",
@@ -1795,6 +4129,13 @@
   ],
   "nat": [
     "nat mfn. (√ nam) bowing, bowing one's self (ifc.), MW."
+  ],
+  "jA": [
+    "jA f. a race, tribe, AV. v, 11, 10",
+    "ifc. a daughter, MBh. &amp;c.",
+    "cf. jA.",
+    "jA mfn. (Ved. for 2. ja cf. Pāṇ. iii, 2, 67) ifc. ‘born, produced’, see agra-, adri-, apsu-jA/ &amp;c.",
+    "jA (A/s), m. f. offspring, pl. descendants, RV."
   ],
   "sAva": [
     "sAva/ m. (fr. √ 3. su) a Soma libation (cf. prAtaH- and sahasra-s°), RV."
@@ -1815,14 +4156,50 @@
     "the third lunar mansion or Kṛttikā (?).",
     "2. anala Nom. P. °lati, to become fire, Subh."
   ],
+  "aka": [
+    "1. aka the suffix aka (akac).",
+    "2. a/-ka n. unhappiness, pain, trouble, TS.",
+    "sin, L."
+  ],
   "yajas": [
     "ya/jas n. worship, sacrifice, RV. viii, 40, 4 (= yAga, Sāy.)"
+  ],
+  "radDa": [
+    "radDa radDf. See below.",
+    "radDa/ mfn. subdued, overcome, RV.",
+    "hurt, injured, W."
+  ],
+  "dAda": [
+    "dAda m. (√ dad) gift, donation, MBh. ix, 2117; 2269 (B. dAya), Śiś. xix, 114."
   ],
   "ASI": [
     "1. ASI f. = 1. ASi/s, L.",
     "(for 2. ASI See 2. ASis.)",
     "2. ASI f. = 2. ASis, L.",
     "3. A-√ SI Ā. (irr. -Sa/ye [3. sg.] RV.; AV. : Impv. 3. sg. A-SayAm, AV. v, 25, 9; 3. pl. -Serate, Vikr.) to lie or rest on or round: P. (impf. 3. pl. ASayan) to wish, BhP. ix, 1, 37 [perhaps this form is rather a Nom. from 1. ASA?] : Caus. (impf. A/SISayat) to lay or put upon, R."
+  ],
+  "Sarva": [
+    "Sarva/ m. (fr. Sa/ru) N. of a god who kills people with arrows (mentioned together with Bhava and other names of Rudra-Śiva)",
+    "N. of the god Śiva (often in the later language; esp. in the form Kṣitimūrti; du. Śarva and Śarvāṇī cf. Vām. v, 2, 21), AV. &amp;c. &amp;c.",
+    "of one of the 11 Rudras, VP.",
+    "of Viṣṇu, MW.",
+    "of a son of Dhanuṣa, VP.",
+    "of a poet, Sadukt.",
+    "pl. N. of a people, MārkP. (w.r. sarva)",
+    "Sarva , Sarvaka &amp;c. See p. 1057, col. 1"
+  ],
+  "paRa": [
+    "paRa m. (ifc. f(A). ) play, gaming, playing for a stake, a bet or a wager (with gen.; loc. or ifc.; paRaM-√ kf, to make a bet; paRe ni-√ as, to stake at play), Yājñ.; MBh.; R. &amp;c.",
+    "a compact, stipulation, agreement, treaty, Kathās.; Vet.; Hit.",
+    "the thing staked or the sum played for, wages, hire, reward, MBh.; Mṛcch.; Kathās.",
+    "a weight of copper used as a coin (= 20 Māṣas = 4 Kākinīs), Mn.; Yājñ.",
+    "a partic. measure, Pāṇ. iii, 3, 66 (‘a handful’ Sch.)",
+    "a commodity for sale, L.",
+    "price, L.",
+    "wealth, property, L.",
+    "business, L.",
+    "a publican or distiller, L.",
+    "a house, dwelling (gfha w.r. for glaha?), L."
   ],
   "AnAya": [
     "A-nAya m. a fisherman's net, Pāṇ.",
@@ -1841,6 +4218,12 @@
   ],
   "avacara": [
     "ava-cara m. the dominion or sphere or department of (in comp. See kAmAvacara, DyAnAv°, &amp;c.), Buddh. (cf. tAlAvacara and yajYAvacara/.)"
+  ],
+  "CAya": [
+    "CAya m. granting shade (Śiva), MBh. xii, 10374",
+    "CAya n. (Pāṇ. ii, 4, 22 and 25; vi, 2, 14) ifc. (especially after a word to be taken in the gen.) shadow, Mn. iii, 274; Ragh. iv, 20; vii, 4; xii, 50",
+    "reflection, Naiṣ. vi, 34",
+    "colour, complexion, beauty, Megh. 102"
   ],
   "ni": [
     "1. ni/ ind. down, back, in, into, within (except, AV. x, 8, 7 always prefixed either to verbs or to nouns; in the latter case it has also the meaning of negation or privation [cf. ‘down-hearted’ = heartless]; sometimes w.r. for nis)",
@@ -1879,6 +4262,40 @@
     "Avaya/ (as), m. arrival, T.",
     "one who arrives, T.",
     "N. of a country, L."
+  ],
+  "mata": [
+    "mata mataM-ga &amp;c. See under √ man, p. 783, col. 1.",
+    "mata/ mfn. thought, believed, imagined, supposed, understood, RV. &amp;c. &amp;c.",
+    "regarded or considered as, taken or passing for (nom. or adv.), Mn.; MBh. &amp;c.",
+    "thought fit or right, approved, Yājñ.; Kāv.; Kām.",
+    "honoured, esteemed, respected, liked (with gen. Pāṇ. iii, 2, 188), Ragh.; Kām.",
+    "desired, intended, R.",
+    "mata/ m. N. of a son of Śambara, Hariv. (v.l. mana)",
+    "mata/ n. a thought, idea, opinion, sentiment, view, belief, doctrine, MBh.; Kāv. &amp;c.",
+    "intention, design, purpose, wish, MBh.; BhP.",
+    "commendation, approbation, sanction, L.",
+    "knowledge, W.",
+    "Agallochum, L."
+  ],
+  "vAra": [
+    "1. vA/ra m. (earlier form of vAla, q.v.) the hair of any animal's tail (esp. of a horse's tail, = οὐρά), RV.",
+    "vA/ra m. n. sg. and pl. a hair-sieve, ib.",
+    "2. vAra m. (fr. √ 1. vf) keeping back, restraining (also mfn. ifc. = difficult to be restrained, TBr.; cf. dur-v°)",
+    "anything which covers or surrounds or restrains, a cover, MW.",
+    "anything which causes an obstruction, a gate, door-way, W.",
+    "anything enclosed or circumscribed in space or time, esp. an appointed place (e.g. sva-vAraM samA-√ sTA, to occupy one's proper place), R.",
+    "the time fixed or appointed for anything (accord. to some fr. √ 2. vf, to choose), a person's turn, MBh.; Kāv. &amp;c. (often, esp. with numerals, = times, e.g. varAMs trIn or vara-trayam, three times; BUriBir vArEH or BUri-vArAn or bahu-vAram or vAraM vAram or vAraM vAreRa, many times, often, repeatedly)",
+    "the turn of a day (under the regency of a planet), a day of the week (they are Āditya-, Soma-, Maṅgala-, Budha-, Guru-, Śukra-, and Śani-vāra; cf. IW. 178 n. 1), Gaṇit.; Yājñ., Sch.; Kāv. &amp;c. (cf. dina and divasa-v°)",
+    "a moment, occasion, opportunity, W.",
+    "a multitude, quantity (see bARa-v°)",
+    "an arrow, L.",
+    "Achyranthes Aspera, L.",
+    "N. of Śiva, L.",
+    "vAra n. a vessel for holding spirituous liquor, L.",
+    "a partic. artificial poison, L.",
+    "3. vA/ra m. (fr. √ 2. vf) choice (see vAre-vfta)",
+    "anything chosen or choice or exquisite, goods, treasure, RV. (often ifc.; cf. aSasta-, fDad-, dAti-v° &amp;c.)",
+    "N. of a poet, Cat."
   ],
   "kamala": [
     "ka/mala mfn. (Comm. on Uṇ. i, 106) pale-red, rose-coloured, TS. vii, 3, 18, 1",
@@ -1953,6 +4370,42 @@
     "a/Sru n. (us m. only once, ŚBr. vi and once, R.) a tear, RV. x, 95, 12 and 13; AV. &amp;c. with √ muc, or √ kf [MBh. xii, 12491] or √ vft, Caus. [R.] to shed tears",
     "aSru [supposed to stand for daSru fr. √ daMS: cf. Gk. δάκρυ; Lat. lacryma for dacryma; Goth. tagrs; Eng. tear; Mod. Germ. Zähre]."
   ],
+  "vana": [
+    "1. va/na n. (once m., R. v, 50, 2; for 2. See p. 919, col. 1) a forest, wood, grove, thicket, quantity of lotuses or other plants growing in a thick cluster (but in older language also applied to a single tree), RV. &amp;c. &amp;c.",
+    "plenty, abundance, R.; Kathās.",
+    "a foreign or distant land, RV. vii, 1, 19 (cf. araRya)",
+    "wood, timber, RV.",
+    "a wooden vessel or barrel (for the Soma juice), RV. (?)",
+    "a cloud (as the vessel in the sky), ib.",
+    "(prob.) the body of a carriage, RV. viii, 34, 18",
+    "water, Naigh. i, 12",
+    "a fountain, spring, L.",
+    "abode, Nalod.",
+    "Cyperus Rotundus, VarBṛS.",
+    "= raSmi, a ray of light, Naigh. i, 4",
+    "(prob.) longing, earnest desire, KenUp.",
+    "va/na m. N. of a son of Uśīnara, BhP.",
+    "of one of the 10 orders of mendicants founded by Śaṃkarācārya (the members of which affix vana to their names, cf. rArmendra-v°), W.",
+    "2. vana ind. g. cAdi."
+  ],
+  "Atan": [
+    "A-√ tan P. (2. sg. -tanozi; impf. A/tanot; perf. -tatAna; p. m. pl. -tanva/ntas; perf. p. m. sg. -tatanvA/n) to extend or stretch over, penetrate, spread, overspread (said of the light), illuminate, RV.; (perf. 2. sg. -tata/nTa) to seek to reach, RV. x, 1, 7; to be ready for, wait on (acc.), RV. v, 79, 3; (aor. Subj. -tanat) to stop any one, RV. i, 91, 23 : P. Ā. (3. pl. -tanvate; perf. 1. sg. -tatane) to extend (a texture), spread, stretch (a bow for shooting), RV.; AV. &amp;c.: P. to diffuse; to bestow upon, RV.; BhP. &amp;c.; to effect, produce, Hariv. 4635; BhP. &amp;c.: Caus. (Impv. 2. sg. -tAnayA) to stretch, AV."
+  ],
+  "SaraRa": [
+    "1. SaraRa m. (for 2. See p. 1057, col. 1) one of the arrows of Kāma-deva, Cat.",
+    "SaraRa n. falling asunder, bursting, falling in Vop.",
+    "killing, slaying, L.",
+    "what slays or injures, MW.",
+    "2. SaraRa/ mfn. (fr. √ Sf for Sri; for 1. See p. 1056) protecting, guarding, defending, RV.; AV.",
+    "SaraRa/ m. N. of a serpent-demon, MBh.",
+    "of a poet, Gīt. (cf. -deva)",
+    "of a king, Buddh.",
+    "SaraRa/ f(A and I). N. of various plants &amp;c. (prob. w.r. for saraRA, °RI, q.v.)",
+    "SaraRa/ n. (ifc. f(A). ), shelter, place of shelter or refuge or rest, hut, house, habitation, abode, lair (of an animal), home, asylum, RV. &amp;c. &amp;c.",
+    "SaraRa/ n. refuge, protection, refuge with (SaraRaM √ gam or yA or i &amp;c., ‘to go to any one for protection, seek refuge with’ [acc. or gen.]; often ifc.), Mn.; MBh. &amp;c.",
+    "water, L.",
+    "(with indrasya) N. of a Sāman, ĀrṣBr. 2."
+  ],
   "vaSya": [
     "vaSya mfn. to be subjected &amp;c.",
     "subdued, tamed, humbled",
@@ -1983,9 +4436,28 @@
     "N. of a son of Dharma, VP.",
     "(with Śāktas) N. of the author of a Mantra, Cat."
   ],
+  "jaga": [
+    "jaga n. = gat, KauṣUp. i, 3."
+  ],
+  "stana": [
+    "sta/na m. (or n. g. arDarcAdi ifc. A or I; derivation doubtful, but prob. connected with √ stan, from the hollow resonance of the human breast), the female breast (either human or animal), teat, dug, udder, RV. &amp;c. &amp;c.",
+    "the nipple (of the female or the male breast), Suśr.",
+    "a kind of pin or peg on a vessel shaped like a teat, ŚBr."
+  ],
   "sajya": [
     "sa—jya See s.v., col. 2.",
     "sa-jya mfn. (fr. 7. sa + 3. jyA/, q.v.) having a bow-string, strung (as a bow), placed on the bow-string (as an arrow), Kauś.; MBh. : R. &amp;c."
+  ],
+  "ayA": [
+    "ayA/ ind. (fr. pronom. base a = ana/yA), in this manner, thus, RV."
+  ],
+  "aha[m]": [
+    "aha/m nom. sg., ‘I’, RV. &amp;c.",
+    "= ahaMkaraRa, q.v., (hence declinable gen. ahamas, &amp;c.), BhP.",
+    "aham [Zd. azem; Gk. ἐγώ; Goth. ik; Mod. Germ. ich; Lith. asz; Slav. az]."
+  ],
+  "rIRa": [
+    "rIRa mfn. melted, dissolved, vanished, Śiś."
   ],
   "vahas": [
     "va/has n. the shoulder of a draught animal, ŚBr. (v.l. for vaha/)."
@@ -2029,6 +4501,12 @@
   "yavasa": [
     "ya/vasa m. n. grass, fodder, pasturage, RV.; &amp;c.",
     "yavasa &amp;c. See p. 847, col. 3."
+  ],
+  "arA": [
+    "arA f. (= A/rA), an awl Comm. on MBh. xv, 19."
+  ],
+  "vaya": [
+    "vaya m. (fr. √ ve) one who weaves, a weaver, L."
   ],
   "upayama": [
     "upa-yama m. (Pāṇ. iii, 3, 63) appropriation, taking possession of",

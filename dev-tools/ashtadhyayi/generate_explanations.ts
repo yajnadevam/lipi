@@ -158,15 +158,16 @@ function replace(word: string, characters: string[]) {
 
         prakriyaResults[word] = krutResults.concat(kartariResults)
 
+        if(sanitizedWord in mwMap) {
+            mwResults[word] = mwMap[sanitizedWord]
+        }
+        
+        if (prakriyaResults[word].length == 0 && !(word in mwResults)) {            
+            unknown.push(word)
+        }
+
         if (prakriyaResults[word].length == 0) {
             delete prakriyaResults[word]
-
-            // Try MW
-            if(sanitizedWord in mwMap) {
-                mwResults[word] = mwMap[sanitizedWord]
-            } else {
-                unknown.push(word)
-            }            
         }
         process.stdout.write(`Completed ${(++count / uniqueWords.size * 100).toFixed(2)}% \r`)
     }
