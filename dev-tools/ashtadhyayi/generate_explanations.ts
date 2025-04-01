@@ -25,6 +25,12 @@ function generateMwMap() {
             
             if(bodyMatch) {
                 let bodyContent = bodyMatch[1].trim();
+
+                // Convert content within <s> tag to Devanagari
+                bodyContent = bodyContent.replace(/<s>(.*?)<\/s>/g, (match, content) => {
+                    return Sanscript.t(content, SLP1, DEVANAGARI);
+                });
+
                 bodyContent = bodyContent.replace(/<[^>]+>/g, '');
                 bodyContent = bodyContent.replace(/\s+/g, ' ').trim();
                 if(!(key1 in mwMap)) {
@@ -51,9 +57,6 @@ async function readCSV(filePath: string): Promise<any[]> {
                 escape: '"',               // Escapes double quotes as ""
               }))
             .on('data', (row) => {
-                if(row['id'] == '2551.1') {
-                    console.log(row)
-                }                
                 results.push(row);
             })
             .on('end', () => {
