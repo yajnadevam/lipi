@@ -1,6 +1,6 @@
 import fs from 'fs';
-import csvParser from 'csv-parser';
-// import { XMLParser } from 'fast-xml-parser'
+import { parse } from 'csv-parse';
+
 import Sanscript from "@indic-transliteration/sanscript";
 import dhatudata from './assets/data.json'
 import dhatuforms from './assets/dhatuforms_vidyut_shuddha_krut.json';
@@ -41,8 +41,19 @@ async function readCSV(filePath: string): Promise<any[]> {
     return new Promise((resolve, reject) => {
         const results: any[] = [];
         fs.createReadStream(filePath)
-            .pipe(csvParser())
+            .pipe(parse({
+                columns: true,             // Use first row as header
+                // skip_empty_lines: true,    // Skip blank lines
+                relax_column_count: true,  // Tolerate missing or extra columns
+                trim: true,                // Trim whitespace
+                relax_quotes: true,        // Allows mismatched quotes
+                quote: '"',
+                escape: '"',               // Escapes double quotes as ""
+              }))
             .on('data', (row) => {
+                if(row['id'] == '2551.1') {
+                    console.log(row)
+                }                
                 results.push(row);
             })
             .on('end', () => {
@@ -158,8 +169,13 @@ function getPrakriyaMatches(devanagariWord) {
     let count = 0
     for (const word of uniqueWords) {
         const sanitizedWord = replace(word, ['[', ']', '(', ')'])
-        const replaceRegex = /(sya|s|m)$/i
+        const replaceRegex = /(sya|s|m|Aya)$/i
         const declensionRemovedWord = sanitizedWord.replace(replaceRegex, "")
+
+        // If word is already processed then skip
+        if (word in prakriyaResults || word in mwResults || unknown.includes(word)) {
+            continue
+        }
         
         let res = getPrakriyaMatches(Sanscript.t(sanitizedWord, SLP1, DEVANAGARI))
         if (res.length === 0) {
