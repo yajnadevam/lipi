@@ -33,6 +33,8 @@ function generateMwMap() {
 
                 bodyContent = bodyContent.replace(/<[^>]+>/g, '');
                 bodyContent = bodyContent.replace(/\s+/g, ' ').trim();
+                bodyContent = bodyContent.replaceAll('&amp;', '&')
+                
                 if(!(key1 in mwMap)) {
                     mwMap[key1] = []
                 }
