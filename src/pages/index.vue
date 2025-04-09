@@ -282,7 +282,11 @@
                       )
                       .join(" + ")
                   }}
-                  <span>[{{ step.rule.source }}:{{ step.rule.code }}]</span>
+                  <a
+                    :href="'https://ashtadhyayi.com/sutraani/' + step.rule.code"
+                    target="_blank"
+                    >[{{ step.rule.code }}]</a
+                  >
                 </div>
               </template>
               <div class="prakriya-steps">
@@ -1062,8 +1066,9 @@ export default {
     },
     deriveKrdantas(krdantaInput, dhatu, pratyaya, devanagariWord) {
       const { formLabel, ...rest } = krdantaInput;
+      console.log(vidyut.deriveKrdantas(rest));
       return vidyut.deriveKrdantas(rest).map((result) => ({
-        steps: result.history,
+        steps: result.history.filter((h) => h.rule.source == "ashtadhyayi"),
         title: `${dhatu} + ${pratyaya}`,
         result: Sanscript.t(result.text, "slp1", "devanagari"),
         finalResult:
@@ -1297,6 +1302,9 @@ export default {
 .prakriya-steps {
   font-size: 14pt;
   line-height: 30pt;
+  a {
+    color: inherit;
+  }
 }
 
 .explanation-description {
