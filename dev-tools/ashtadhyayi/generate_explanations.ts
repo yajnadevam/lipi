@@ -22,18 +22,23 @@ function generateMwMap() {
         if (keyMatch) {
             const key1 = keyMatch[1];
             const bodyMatch = line.match(/<body>(.*?)<\/body>/);
-            
+            const linkMatch = line.match(/<L>(\d+)<\/L>/);
+
             if(bodyMatch) {
                 let bodyContent = bodyMatch[1].trim();
 
                 // Convert content within <s> tag to Devanagari
                 bodyContent = bodyContent.replace(/<s>(.*?)<\/s>/g, (match, content) => {
-                    return Sanscript.t(content, SLP1, DEVANAGARI);
+                    return Sanscript.t(content.replaceAll('/', ''), SLP1, DEVANAGARI);
                 });
 
-                bodyContent = bodyContent.replace(/<[^>]+>/g, '');
+                // bodyContent = bodyContent.replace(/<[^>]+>/g, '');
                 bodyContent = bodyContent.replace(/\s+/g, ' ').trim();
                 bodyContent = bodyContent.replaceAll('&amp;', '&')
+
+                if (linkMatch) {
+                    bodyContent += `<L>[ID=${linkMatch[1]}]</L>`
+                }                
                 
                 if(!(key1 in mwMap)) {
                     mwMap[key1] = []

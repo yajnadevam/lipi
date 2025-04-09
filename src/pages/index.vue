@@ -238,7 +238,7 @@
             class="mw-meaning"
             v-for="meaning in explanationDialogContent.mwDialogContent.content"
           >
-            {{ meaning }}
+            <span v-html="meaning"></span>
           </div>
           <v-divider></v-divider>
         </template>
@@ -1317,5 +1317,17 @@ export default {
 .mw-meaning {
   font-size: 14pt;
   line-height: 28pt;
+
+  lex {
+    text-decoration: underline;
+  }
+
+  ls {
+    color: #8080ff;
+  }
+  L {
+    background-color: #eeeeee;
+    font-size: 12pt;
+  }
 }
 </style>
