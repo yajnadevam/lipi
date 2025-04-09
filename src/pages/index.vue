@@ -1326,8 +1326,15 @@ export default {
     color: #8080ff;
   }
   L {
-    background-color: #eeeeee;
     font-size: 12pt;
   }
+}
+
+.v-theme--light L {
+  background-color: #eeeeee;
+}
+
+.v-theme--dark L {
+  background-color: #aaaaaa;
 }
 </style>
