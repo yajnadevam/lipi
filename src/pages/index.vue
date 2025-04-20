@@ -135,7 +135,7 @@
                 <span
                   v-if="word.link == true"
                   class="sanskrit-link"
-                  @click="showExplanation(word.word)"
+                  @click="showExplanation(word.word, item.id)"
                 >
                   {{ word.word }}
                 </span>
@@ -353,12 +353,30 @@ import prakriyaMap from "../assets/data/prakriyas.json";
 import mwMap from "../assets/data/mw.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
+import words from "../assets/data/words.csv?raw";
 
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
 // Will be initialized after mount
 let vidyut;
+
+const wordsMap = {};
+csv2json(words).forEach((value) => {
+  const { code, word, seal_id, ...rest } = value;
+  if (code) {
+    if (!wordsMap[word]) {
+      wordsMap[word] = {};
+    }
+
+    wordsMap[word][seal_id] = {
+      code,
+      ...rest,
+    };
+  }
+});
+
+console.log(wordsMap);
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -1092,47 +1110,68 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    getPrakriyaExplanation(devanagariWord, slp1Word) {
+    getPrakriyaExplanation(devanagariWord, slp1Word, filterParams) {
       const prakriyaKeys = prakriyaMap[slp1Word];
-      const prakriyas = prakriyaKeys.map((prakriyaKey) => {
-        const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
-          prakriyaKey;
+      const prakriyas = prakriyaKeys
+        .filter((prakriyaKey) => {
+          if (!filterParams) return true;
+          const { code, pratyaya, kartari, form } = prakriyaKey;
+          console.log({ filterParams, prakriyaKey });
 
-        let input;
-        let result;
-        let ashtadhyayiLink;
-        if (type === "krdanta") {
-          input = this.generateKrdantaInput(
-            code,
-            Sanscript.t(pratyaya, "devanagari", "slp1"),
-            form
-          );
-          result = this.deriveKrdantas(input, dhatu, pratyaya, devanagariWord);
-          ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
+          if (
+            filterParams.code == code &&
+            ((filterParams.pratyaya && filterParams.pratyaya == pratyaya) ||
+              (filterParams.kartari && filterParams.kartari == kartari)) &&
+            filterParams.form == form
+          ) {
+            return true;
+          }
+          return false;
+        })
+        .map((prakriyaKey) => {
+          const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
+            prakriyaKey;
+
+          let input;
+          let result;
+          let ashtadhyayiLink;
+          if (type === "krdanta") {
+            input = this.generateKrdantaInput(
+              code,
+              Sanscript.t(pratyaya, "devanagari", "slp1"),
+              form
+            );
+            result = this.deriveKrdantas(
+              input,
+              dhatu,
+              pratyaya,
+              devanagariWord
+            );
+            ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
+              code,
+              index,
+              pratyaya
+            );
+          } else if (type === "kartari") {
+            input = this.generateTinantaInput(code, kartari, form);
+            result = this.deriveTinantas(input, dhatu, devanagariWord);
+            ashtadhyayiLink = this.getKartariAshtadhyayiLink(
+              code,
+              index,
+              kartari,
+              form
+            );
+          }
+
+          return {
+            dhatu,
             code,
             index,
-            pratyaya
-          );
-        } else if (type === "kartari") {
-          input = this.generateTinantaInput(code, kartari, form);
-          result = this.deriveTinantas(input, dhatu, devanagariWord);
-          ashtadhyayiLink = this.getKartariAshtadhyayiLink(
-            code,
-            index,
-            kartari,
-            form
-          );
-        }
-
-        return {
-          dhatu,
-          code,
-          index,
-          artha,
-          ashtadhyayiLink,
-          ...result,
-        };
-      });
+            artha,
+            ashtadhyayiLink,
+            ...result,
+          };
+        });
       return {
         prakriyas,
       };
@@ -1142,14 +1181,40 @@ export default {
         content: mwMap[slp1Word],
       };
     },
-    showExplanation(devanagariWord) {
+    showExplanation(devanagariWord, sealId) {
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
-      const mwDialogContent = mwMap[slp1Word]
+      console.log(slp1Word, wordsMap[slp1Word]);
+
+      // Get all prakriyas and MW meaning
+      let mwDialogContent = mwMap[slp1Word]
         ? this.getMwExplanation(slp1Word)
         : null;
-      const prakriyaDialogContent = prakriyaMap[slp1Word]
-        ? this.getPrakriyaExplanation(devanagariWord, slp1Word)
-        : null;
+      let prakriyaDialogContent;
+
+      // Filter out only specific definition
+      if (wordsMap[slp1Word]) {
+        const { code, form, kartari, pratyaya } =
+          wordsMap[slp1Word][sealId] ?? wordsMap[slp1Word]["*"];
+        if (code == "MW") {
+          prakriyaDialogContent = null;
+        } else {
+          prakriyaDialogContent = this.getPrakriyaExplanation(
+            devanagariWord,
+            slp1Word,
+            {
+              code,
+              form,
+              kartari,
+              pratyaya,
+            }
+          );
+        }
+        console.log("needs to be derived here", prakriyaDialogContent);
+      } else {
+        prakriyaDialogContent = prakriyaMap[slp1Word]
+          ? this.getPrakriyaExplanation(devanagariWord, slp1Word)
+          : null;
+      }
 
       this.explanationDialogContent = {
         devanagariWord,
