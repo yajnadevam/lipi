@@ -823,7 +823,7 @@ export default {
       clearTimeout(this.debounceTimeout);
       this.debounceTimeout = setTimeout(() => {
         this.updateSearch(value);
-      }, 1000);
+      }, 250);
     };
   },
   // eslint-disable-next-line vue/order-in-components
