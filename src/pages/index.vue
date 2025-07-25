@@ -123,7 +123,7 @@
                   v-model="search"
                   clearable
                   :clear-icon="icons.clear"
-                  @update:model-value="updateSearch"
+                  @update:model-value="debouncedUpdateSearch"
                   @click:clear="clearSearch"
                   label="Search Indus valley inscriptions"
                 />
@@ -818,6 +818,13 @@ export default {
     this.optionCanonical = localStorage.getItem("canonical") === "true";
     this.optionBroken = localStorage.getItem("broken") === "true";
     this.lightTheme = localStorage.getItem("theme") == "light";
+
+    this.debouncedUpdateSearch = (value) => {
+      clearTimeout(this.debounceTimeout);
+      this.debounceTimeout = setTimeout(() => {
+        this.updateSearch(value);
+      }, 750);
+    };
   },
   // eslint-disable-next-line vue/order-in-components
   mounted() {
