@@ -248,12 +248,12 @@
             >Ashtadhyayi derivation of
             {{ explanationDialogContent.devanagariWord }}</span
           >
-          <template
-            v-for="prakriya in explanationDialogContent.prakriyaDialogContent
-              .prakriyas"
-          >
-            <div class="prakriya-container">
-              <span class="explanation-title"
+          <!-- <template
+            v-for="prakriya in explanationDialogContent.prakriyaDialogContent"
+          > -->
+          <div class="prakriya-container">
+            <!-- TODO: Needs to properly link to Ashtadhyayi website -->
+            <!-- <span class="explanation-title"
                 >{{ prakriya.title }} [{{ prakriya.code }}]
               </span>
               <a
@@ -261,43 +261,54 @@
                 :href="prakriya.ashtadhyayiLink"
                 target="_blank"
                 ><v-icon>mdi-open-in-new</v-icon></a
-              >
+              > 
 
               <div class="prakriya-steps">
-                {{ prakriya.dhatu }} [{{ prakriya.artha }}]
-              </div>
+                {{ prakriya.dhatu }}
+              </div> -->
 
-              <template v-for="(step, index) in prakriya.steps">
-                <div class="prakriya-steps">
-                  <v-icon>mdi-arrow-right</v-icon>
-                  {{
-                    step.result
-                      .filter((r) => r.text != "")
-                      .map((r) =>
-                        Sanscript.t(
-                          r.text.replaceAll("\\", "").replaceAll("^", ""),
-                          "slp1",
-                          "devanagari"
-                        )
+            <template
+              v-for="(step, index) in explanationDialogContent
+                .prakriyaDialogContent.steps"
+            >
+              <div class="prakriya-steps">
+                <v-icon>mdi-arrow-right</v-icon>
+                {{
+                  step.result
+                    .filter((r) => r.text != "")
+                    .map((r) =>
+                      Sanscript.t(
+                        r.text.replaceAll("\\", "").replaceAll("^", ""),
+                        "slp1",
+                        "devanagari"
                       )
-                      .join(" + ")
-                  }}
-                  <a
-                    :href="'https://ashtadhyayi.com/sutraani/' + step.rule.code"
-                    target="_blank"
-                    >[{{ step.rule.code }}]</a
-                  >
-                </div>
-              </template>
-              <div class="prakriya-steps">
-                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.result }}
+                    )
+                    .join(" + ")
+                }}
+                <a
+                  :href="'https://ashtadhyayi.com/sutraani/' + step.rule.code"
+                  target="_blank"
+                  >[{{ step.rule.code }}]</a
+                >
               </div>
-              <div v-if="prakriya.finalResult != null" class="prakriya-steps">
-                <v-icon>mdi-arrow-right</v-icon> {{ prakriya.finalResult }}
-              </div>
+            </template>
+            <div class="prakriya-steps">
+              <v-icon>mdi-arrow-right</v-icon>
+              {{ explanationDialogContent.prakriyaDialogContent.result }}
             </div>
-            <v-divider></v-divider>
-          </template>
+            <!-- <div
+              v-if="
+                explanationDialogContent.prakriyaDialogContent.finalResult !=
+                null
+              "
+              class="prakriya-steps"
+            >
+              <v-icon>mdi-arrow-right</v-icon>
+              {{ explanationDialogContent.prakriyaDialogContent.finalResult }}
+            </div> -->
+          </div>
+          <v-divider></v-divider>
+          <!-- </template> -->
         </template>
       </v-card-text>
       <v-card-actions class="explanation-dialog-bottom">
@@ -375,8 +386,6 @@ csv2json(words).forEach((value) => {
     };
   }
 });
-
-console.log(wordsMap);
 
 const urllist = csv2json(urls);
 const urlMap = {};
@@ -953,13 +962,16 @@ export default {
     },
     checkExplanationExists(word) {
       const slp1Word = Sanscript.t(word, "devanagari", "slp1");
-      if (prakriyaMap[slp1Word] || mwMap[slp1Word]) {
+      // if (wordsMap[slp1Word] || mwMap[slp1Word]) {
+      if (wordsMap[slp1Word]) {
         return { word, link: true };
       }
       return { word };
     },
     // Todo: Maybe refactor better ?
+    // This function determines if words in the Sanskrit transliteration need to be linked because they have prakriya or MW definitions
     renderSanskrit(sanskrit) {
+      // We are only interested in parts[0] which is the Sanskrit text
       const parts = sanskrit.split("\n");
       let sanskritResult = [];
       let word = "";
@@ -974,6 +986,7 @@ export default {
       }
       sanskritResult.push(this.checkExplanationExists(word));
       sanskritResult.push({ word: "\n" });
+      // parts[1] is the IAST text which will be appeneded as is as
       sanskritResult.push({ word: parts[1] });
       return sanskritResult;
     },
@@ -1013,54 +1026,63 @@ export default {
 
       const formMap = [
         {
+          // 0
           purusha: "Prathama",
           purushaLabel: "प्रथमपुरुषः",
           vacana: "Eka",
           vacanaLabel: "एकवचनम्",
         },
         {
+          // 1
           purusha: "Prathama",
           purushaLabel: "प्रथमपुरुषः",
           vacana: "Dvi",
           vacanaLabel: "द्विवचनम्",
         },
         {
+          // 2
           purusha: "Prathama",
           purushaLabel: "प्रथमपुरुषः",
           vacana: "Bahu",
           vacanaLabel: "बहुवचनम्",
         },
         {
+          // 3
           purusha: "Madhyama",
           purushaLabel: "मध्यमपुरुषः",
           vacana: "Eka",
           vacanaLabel: "एकवचनम्",
         },
         {
+          // 4
           purusha: "Madhyama",
           purushaLabel: "मध्यमपुरुषः",
           vacana: "Dvi",
           vacanaLabel: "द्विवचनम्",
         },
         {
+          // 5
           purusha: "Madhyama",
           purushaLabel: "मध्यमपुरुषः",
           vacana: "Bahu",
           vacanaLabel: "बहुवचनम्",
         },
         {
+          // 6
           purusha: "Uttama",
           purushaLabel: "उत्तमपुरुषः",
           vacana: "Eka",
           vacanaLabel: "एकवचनम्",
         },
         {
+          // 7
           purusha: "Uttama",
           purushaLabel: "उत्तमपुरुषः",
           vacana: "Dvi",
           vacanaLabel: "द्विवचनम्",
         },
         {
+          // 8
           purusha: "Uttama",
           purushaLabel: "उत्तमपुरुषः",
           vacana: "Bahu",
@@ -1082,10 +1104,16 @@ export default {
         upasarga: [],
       };
     },
-    deriveKrdantas(krdantaInput, dhatu, pratyaya, devanagariWord) {
+    deriveKrdantas2(krdantaInput, dhatu, pratyaya, devanagariWord, subantha) {
       const { formLabel, ...rest } = krdantaInput;
-      console.log(vidyut.deriveKrdantas(rest));
-      return vidyut.deriveKrdantas(rest).map((result) => ({
+      const input = {
+        upapada: subantha,
+        ...rest,
+      };
+
+      console.log("input to derive krdantas", input);
+
+      return vidyut.deriveKrdantas(input).map((result) => ({
         steps: result.history.filter((h) => h.rule.source == "ashtadhyayi"),
         title: `${dhatu} + ${pratyaya}`,
         result: Sanscript.t(result.text, "slp1", "devanagari"),
@@ -1093,7 +1121,7 @@ export default {
           formLabel != null ? `${formLabel} ${devanagariWord}` : null,
       }))[0];
     },
-    deriveTinantas(tinantaInput, dhatu, devanagariWord) {
+    deriveTinantas2(tinantaInput, dhatu, devanagariWord) {
       const { lakaraLabel, purushaLabel, vacanaLabel, ...rest } = tinantaInput;
       return vidyut
         .deriveTinantas(rest)
@@ -1111,6 +1139,8 @@ export default {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
     getPrakriyaExplanation(devanagariWord, slp1Word, filterParams) {
+      console.log("comes here to get prakriya explanation");
+
       const prakriyaKeys = prakriyaMap[slp1Word];
       const prakriyas = prakriyaKeys
         .filter((prakriyaKey) => {
@@ -1141,12 +1171,25 @@ export default {
               Sanscript.t(pratyaya, "devanagari", "slp1"),
               form
             );
+
+            console.log("this is the input", input, code, form, pratyaya);
             result = this.deriveKrdantas(
               input,
               dhatu,
               pratyaya,
               devanagariWord
             );
+
+            const subantha_result = vidyut.deriveSubantas({
+              pratipadika: "hara",
+              linga: "Pum",
+              vibhakti: "Trtiya", // 0 to 7
+              vacana: "Eka",
+            });
+
+            console.log("this is the krdanta result", result);
+            console.log("this is the subantha result", subantha_result);
+
             ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
               code,
               index,
@@ -1176,6 +1219,145 @@ export default {
         prakriyas,
       };
     },
+    getPurusha() {},
+    getGender(gender) {
+      const genderMap = {
+        1: "Pum",
+        2: "Stri",
+        3: "Napumsaka",
+      };
+      return genderMap[gender];
+    },
+    getVacana(vacana) {
+      const vacanaMap = {
+        0: "Eka",
+        1: "Dvi",
+        2: "Bahu",
+      };
+      // Please note vacana needs to be decremented by 1 to match vidyut
+      return vacanaMap[vacana - 1];
+    },
+    getVibhakti(vibhakti) {
+      const vibhaktiMap = {
+        0: "Prathama",
+        1: "Dvitiya",
+        2: "Trtiya",
+        3: "Caturthi",
+        4: "Panchami",
+        5: "Sasthi",
+        6: "Saptami",
+        7: "Sambodhana",
+      };
+      // Please note vibhakti needs to be decremented by 1 to match vidyut
+      return vibhaktiMap[vibhakti - 1];
+    },
+    getPurusha(purusha) {
+      const purushaMap = {
+        0: "Prathama",
+        1: "Madhyama",
+        2: "Uttama",
+      };
+      // Please note purusha needs to be decremented by 1 to match vidyut
+      return purushaMap[purusha - 1];
+    },
+    getLakara(lakara) {
+      const lakaraMap = {
+        plat: { name: "Lat", label: "लट्लकारः" },
+        plit: { name: "Lit", label: "लिट्लकारः" },
+        plut: { name: "Lut", label: "लुट्लकारः" },
+        plrut: { name: "Lrt", label: "लृट्लकारः" },
+        plot: { name: "Lot", label: "लोट्लकारः" },
+        plang: { name: "Lan", label: "लङ्लकारः" },
+        pvidhiling: { name: "VidhiLin", label: "विधिलिङ्लकारः" },
+        pashirling: { name: "AshirLin", label: "आशीर्लिङ्लकारः" },
+        plung: { name: "Lun", label: "लुङ्लकारः" },
+        plrung: { name: "Lrn", label: "लृङ्लकारः" },
+      };
+      return lakaraMap[lakara];
+    },
+    deriveSubantas(devanagariResult, slp1Word, gender, vacana, vibhakti) {
+      const devanagariWord = Sanscript.t(slp1Word, "slp1", "devanagari");
+      const subanta_result = vidyut
+        .deriveSubantas({
+          pratipadika: slp1Word,
+          linga: this.getGender(gender),
+          vacana: this.getVacana(vacana),
+          vibhakti: this.getVibhakti(vibhakti),
+        })
+        .map((result) => ({
+          steps: result.history,
+          // Todo: Need to add linga, vacana and vibhakthi
+          title: `${devanagariWord}`,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }));
+
+      console.log("subanta result", subanta_result, devanagariResult);
+      return subanta_result.filter((res) => res.result == devanagariResult)[0];
+    },
+    deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {
+      const krdanta_result = vidyut
+        .deriveKrdantas({
+          code,
+          krt: Sanscript.t(pratyaya, "devanagari", "slp1"),
+          sanadi: [],
+          upasarga: [],
+          lakara: null,
+          prayoga: null,
+        })
+        .map((result) => ({
+          steps: result.history,
+          // Todo: Need to add linga, vacana and vibhakthi
+          title: `${devanagariResult}`,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }));
+
+      console.log("krdanta result", krdanta_result);
+
+      // Need to do further Subanta derivation
+      if (gender && vacana && vibhakti) {
+        const dhatu = vidyut.deriveDhatus(code)[0].text;
+        for (var i = 0; i < krdanta_result.length; i++) {
+          const subanta_result = this.deriveSubantas(
+            devanagariResult,
+            Sanscript.t(krdanta_result[i].result, "devanagari", "slp1"),
+            gender,
+            vacana,
+            vibhakti
+          );
+          console.log("this is the further subanta result", subanta_result);
+          krdanta_result[i] = {
+            steps: krdanta_result[i].steps.concat(subanta_result.steps),
+            title: subanta_result.title,
+            result: subanta_result.result,
+          };
+        }
+      }
+      console.log("final krdanta result", krdanta_result);
+      return krdanta_result.filter((res) => res.result == devanagariResult)[0];
+    },
+    deriveTinantas(devanagariResult, code, kartari, vacana, purusha) {
+      const lakara = this.getLakara(kartari);
+
+      const tinanta_result = vidyut
+        .deriveTinantas({
+          code,
+          lakara: lakara["name"],
+          prayoga: "Kartari",
+          vacana: this.getVacana(vacana),
+          purusha: this.getPurusha(purusha),
+          pada: null,
+          sanadi: [],
+          upasarga: [],
+        })
+        .map((result) => ({
+          steps: result.history,
+          // Todo: Need to add linga, vacana and vibhakthi
+          title: `${devanagariResult}`,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }));
+      console.log("tinanta result", tinanta_result);
+      return tinanta_result.filter((res) => res.result == devanagariResult)[0];
+    },
     getMwExplanation(slp1Word) {
       return {
         content: mwMap[slp1Word],
@@ -1183,38 +1365,56 @@ export default {
     },
     showExplanation(devanagariWord, sealId) {
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
-      console.log(slp1Word, wordsMap[slp1Word]);
+      let mwDialogContent = null;
+      let prakriyaDialogContent = null;
 
-      // Get all prakriyas and MW meaning
-      let mwDialogContent = mwMap[slp1Word]
-        ? this.getMwExplanation(slp1Word)
-        : null;
-      let prakriyaDialogContent;
+      const {
+        code,
+        modifier,
+        pratyaya,
+        kartari,
+        gender,
+        vacana,
+        purusha,
+        vibhakti,
+      } = wordsMap[slp1Word][sealId] ?? wordsMap[slp1Word]["*"];
+      const [type, word] = code.split(":");
 
-      // Filter out only specific definition
-      if (wordsMap[slp1Word]) {
-        const { code, form, kartari, pratyaya } =
-          wordsMap[slp1Word][sealId] ?? wordsMap[slp1Word]["*"];
-        if (code == "MW") {
-          prakriyaDialogContent = null;
-        } else {
-          prakriyaDialogContent = this.getPrakriyaExplanation(
-            devanagariWord,
-            slp1Word,
-            {
-              code,
-              form,
-              kartari,
-              pratyaya,
-            }
-          );
-        }
-        console.log("needs to be derived here", prakriyaDialogContent);
-      } else {
-        prakriyaDialogContent = prakriyaMap[slp1Word]
-          ? this.getPrakriyaExplanation(devanagariWord, slp1Word)
-          : null;
+      if (type == "MW") {
+        mwDialogContent = this.getMwExplanation(word);
       }
+
+      switch (modifier) {
+        case "sup":
+          prakriyaDialogContent = this.deriveSubantas(
+            devanagariWord,
+            word,
+            gender,
+            vacana,
+            vibhakti
+          );
+          break;
+        case "krt":
+          prakriyaDialogContent = this.deriveKrdantas(
+            devanagariWord,
+            type,
+            pratyaya,
+            gender,
+            vacana,
+            vibhakti
+          );
+          break;
+        case "tin":
+          prakriyaDialogContent = this.deriveTinantas(
+            devanagariWord,
+            type,
+            kartari,
+            vacana,
+            purusha
+          );
+          break;
+      }
+      console.log(prakriyaDialogContent);
 
       this.explanationDialogContent = {
         devanagariWord,
@@ -1241,6 +1441,14 @@ export default {
     await initVidyut();
     const dhatupathaText = await (await fetch(dhatupatha)).text();
     vidyut = Vidyut.init(dhatupathaText);
+
+    // const result = vidyut.deriveSubantas({
+    //   pratipadika: "kArya",
+    //   linga: "Pum",
+    //   vibhakti: "Dvitiya", // 0 to 7
+    //   vacana: "Eka",
+    // });
+    // console.log("this is the result", result);
 
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
