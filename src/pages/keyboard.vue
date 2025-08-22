@@ -81,21 +81,6 @@
               <span>Devanagari: {{ translation }}</span>
             </div>
           </template>
-          <!-- <v-data-table
-            :items="items"
-            :headers="headers"
-            item-value="input"
-            disable-pagination
-            :items-per-page="-1"
-            :hide-default-footer="true"
-          >
-            <template v-slot:item.expected="{ item }">
-              <div class="indus-input" v-html="item.expected"></div>
-            </template>
-            <template v-slot:item.actual="{ item }">
-              <div class="indus-input" v-html="item.actual"></div>
-            </template>
-          </v-data-table> -->
         </div>
       </v-main>
     </v-layout>
@@ -234,7 +219,7 @@ export default {
       }
 
       function massage(t) {
-        return t.split("\n").join(" \n ");
+        return "\u200B" + t.split("\n").join("\u200B\n\u200B") + "\u200B";
       }
 
       if (this.formatValue.value == DEVANAGARI) {
@@ -293,7 +278,7 @@ export default {
   font-family: indus_input;
   font-size: 24pt;
   white-space: pre;
-  font-feature-settings: "dlig" 1;
+  font-feature-settings: "dlig" 1, "calt" 1;
   text-wrap: wrap;
 }
 .indus-brahmi-input {
@@ -303,20 +288,6 @@ export default {
   font-feature-settings: "dlig" 1;
   text-wrap: wrap;
   text-align: right;
-}
-.indus-input:after {
-  content: " ";
-}
-.indus-input:before {
-  content: " ";
-}
-.indus-input-test {
-  font-family: indus_input;
-  font-weight: normal;
-  font-size: normal;
-  white-space: pre;
-  font-size: 24pt;
-  font-feature-settings: "dlig" on, "fina" on;
 }
 .indus {
   font-family: indus_scriptregular;
@@ -359,7 +330,6 @@ export default {
   display: flex;
   flex-direction: column;
   width: 90%;
-  /* margin-bottom: 15pt; */
   gap: 10pt;
 }
 .output-container div {

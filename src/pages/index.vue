@@ -123,7 +123,7 @@
                   v-model="search"
                   clearable
                   :clear-icon="icons.clear"
-                  @update:model-value="updateSearch"
+                  @update:model-value="debouncedUpdateSearch"
                   @click:clear="clearSearch"
                   label="Search Indus valley inscriptions"
                 />
@@ -930,6 +930,19 @@ export default {
     persistBroken(value) {
       localStorage.setItem("broken", value);
     },
+    updateUrl(searchTerm) {
+      const params = new URLSearchParams(window.location.search);
+      if (searchTerm) {
+        params.set("search", searchTerm);
+      } else {
+        params.delete("search");
+      }
+
+      const newUrl = searchTerm
+        ? `${window.location.pathname}?${params.toString()}`
+        : window.location.pathname;
+      history.replaceState({}, "", newUrl);
+    },
     updateSearch(value) {
       if (value !== "" && value !== null) {
         this.oldPageNum = this.oldPageNum || this.pageNum;
@@ -937,6 +950,7 @@ export default {
       } else {
         this.clearSearch();
       }
+      this.updateUrl(value);
     },
     clearSearch() {
       if ((this.search === null || this.search === "") && this.oldPageNum) {
@@ -1425,12 +1439,27 @@ export default {
     },
   },
   created() {
+    // Get from query string parameter or from localStorage if either exists. Preference is given to query string parameter
+    function getSearchTerm() {
+      const params = new URLSearchParams(window.location.search);
+      const searchTerm = params.get("search");
+      return searchTerm ?? localStorage.getItem("search");
+    }
+
     this.pageNum = localStorage.getItem("page");
-    this.search = localStorage.getItem("search");
+    this.search = getSearchTerm();
+
     this.sortBy = JSON.parse(localStorage.getItem("sort")) || this.sortBy;
     this.optionCanonical = localStorage.getItem("canonical") === "true";
     this.optionBroken = localStorage.getItem("broken") === "true";
     this.lightTheme = localStorage.getItem("theme") == "light";
+
+    this.debouncedUpdateSearch = (value) => {
+      clearTimeout(this.debounceTimeout);
+      this.debounceTimeout = setTimeout(() => {
+        this.updateSearch(value);
+      }, 750);
+    };
   },
   // eslint-disable-next-line vue/order-in-components
   async mounted() {
