@@ -358,7 +358,7 @@ import { csv2json } from "json-2-csv";
 import Key from "../components/Key.vue";
 import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
-import urls from "../assets/data/urls.csv?raw";
+//import urls from "../assets/data/urls.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
 import mwMap from "../assets/data/mw.json";
@@ -387,11 +387,11 @@ csv2json(words).forEach((value) => {
   }
 });
 
-const urllist = csv2json(urls);
-const urlMap = {};
-urllist.forEach((item) => {
-  urlMap[item.key] = item.url;
-});
+//const urllist = csv2json(urls);
+// const urlMap = {};
+// urllist.forEach((item) => {
+//   urlMap[item.key] = item.url;
+// });
 const inx = csv2json(incx, {
   keys: [
     "id",
