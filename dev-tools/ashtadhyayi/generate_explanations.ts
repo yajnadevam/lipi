@@ -11,6 +11,7 @@ const DEVANAGARI = 'devanagari'
 const SLP1 = 'slp1'
 const mwMap = generateMwMap()
 
+const ADDITIONAL_WORDS = ['asmad']
 
 function generateMwMap() {
     const mwMap = {}
@@ -87,6 +88,11 @@ async function getUniqueWords(): Promise<Set<string>> {
             }            
         }        
     }
+
+    for(let i = 0; i < ADDITIONAL_WORDS.length; i++) {
+        words.add(ADDITIONAL_WORDS[i])
+    }
+
     return words
 }
 
@@ -156,6 +162,7 @@ function replace(word: string, characters: string[]) {
     return word
 }
 
+// @ts-ignore TS6133
 function getPrakriyaMatches(devanagariWord) {
     const krutMatches = getAllVidyutKrutMatches(devanagariWord)
     let krutResults: any[] = []
@@ -187,18 +194,18 @@ function getPrakriyaMatches(devanagariWord) {
             continue
         }
         
-        let res = getPrakriyaMatches(Sanscript.t(sanitizedWord, SLP1, DEVANAGARI))
-        if (res.length === 0) {
-            // the way i see it, tadditha 2ndary affixes are not easily found and the declensions are not easily found. 
-            // i think at least for declension, it is a substring, ie if the word ends in /s/, /m/, /sya/ etc, you could clip 
-            // that off and see if something matches. We could add the tadittas as well, 
-            // i think its mostly matup (-vat, vān), ini (ī) and a couple of rare ones like tasil. 
-            // they could probably all be handled similarly
-            // for example: दमनवतम् is damana + matup + accusative.
-            res = getPrakriyaMatches(Sanscript.t(declensionRemovedWord, SLP1, DEVANAGARI))
-        }        
+        // let res = getPrakriyaMatches(Sanscript.t(sanitizedWord, SLP1, DEVANAGARI))
+        // if (res.length === 0) {
+        //     // the way i see it, tadditha 2ndary affixes are not easily found and the declensions are not easily found. 
+        //     // i think at least for declension, it is a substring, ie if the word ends in /s/, /m/, /sya/ etc, you could clip 
+        //     // that off and see if something matches. We could add the tadittas as well, 
+        //     // i think its mostly matup (-vat, vān), ini (ī) and a couple of rare ones like tasil. 
+        //     // they could probably all be handled similarly
+        //     // for example: दमनवतम् is damana + matup + accusative.
+        //     res = getPrakriyaMatches(Sanscript.t(declensionRemovedWord, SLP1, DEVANAGARI))
+        // }        
 
-        prakriyaResults[word] = res
+        // prakriyaResults[word] = res
 
         if (sanitizedWord in mwMap) {
             mwResults[word] = mwMap[sanitizedWord]
@@ -206,19 +213,19 @@ function getPrakriyaMatches(devanagariWord) {
             mwResults[word] = mwMap[declensionRemovedWord]
         }
         
-        if (prakriyaResults[word].length == 0 && !(word in mwResults)) {            
-            unknown.push(word)
-        }
+        // if (prakriyaResults[word].length == 0 && !(word in mwResults)) {            
+        //     unknown.push(word)
+        // }
 
-        if (prakriyaResults[word].length == 0) {
-            delete prakriyaResults[word]
-        }
+        // if (prakriyaResults[word].length == 0) {
+        //     delete prakriyaResults[word]
+        // }
         process.stdout.write(`Completed ${(++count / uniqueWords.size * 100).toFixed(2)}% \r`)
     }
 
-    console.log(`\n\nPrakriyas successfully generated: ${Object.keys(prakriyaResults).length}\nMW Matches: ${Object.keys(mwResults).length}\nUnsuccessful: ${unknown.length}\nTotal: ${uniqueWords.size}\n`)
+    // console.log(`\n\nPrakriyas successfully generated: ${Object.keys(prakriyaResults).length}\nMW Matches: ${Object.keys(mwResults).length}\nUnsuccessful: ${unknown.length}\nTotal: ${uniqueWords.size}\n`)
 
-    await writeFile('./src/assets/data/prakriyas.json', JSON.stringify(prakriyaResults, null, 2))
+    // await writeFile('./src/assets/data/prakriyas.json', JSON.stringify(prakriyaResults, null, 2))
     await writeFile('./src/assets/data/mw.json', JSON.stringify(mwResults, null, 2))
-    await writeFile('./src/assets/data/unknown.txt', unknown.join('\n'))    
+    // await writeFile('./src/assets/data/unknown.txt', unknown.join('\n'))    
 })()

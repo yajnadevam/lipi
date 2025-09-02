@@ -168,6 +168,16 @@
     "fear, <ls>MBh. v, 4622</ls><info lex=\"inh\"/>",
     "दर <lex>n.</lex> poison (<ab>v.l.</ab> धर), <ls>L.</ls><info lex=\"n\"/>"
   ],
+  "idDa": [
+    "इद्ध इध्म &c. See √ इन्ध्.<info hui=\"a\"/><L>[ID=28829]</L>",
+    "इद्ध <lex>mfn.</lex> kindled, lighted, alight<info lex=\"m:f:n\"/><info hui=\"b\"/><listinfo n=\"sup\"/><L>[ID=29259]</L>",
+    "shining, glowing, blazing, <ls>RV.</ls>; <ls>Mn.</ls>; <ls>ChUp.</ls>; <ls>Ratnāv.</ls> &c.<info lex=\"inh\"/><L>[ID=29260]</L>",
+    "clean, clear, bright<info lex=\"inh\"/><L>[ID=29261]</L>",
+    "wonderful, <ls>L.</ls><info lex=\"inh\"/><L>[ID=29262]</L>",
+    "vehement, fierce, <ls>Kir.</ls><info n=\"sup\"/><info lex=\"inh\"/>",
+    "इद्ध (अम्), <lex>n.</lex> sunshine, light, heat<info lex=\"n\"/><L>[ID=29263]</L>",
+    "a wonder, <ls>L.</ls><info lex=\"inh\"/><L>[ID=29264]</L>"
+  ],
   "acala": [
     "अ-चल <lex>mf(आ)n.</lex> not moving, immovable<info lex=\"m:f#A:n\"/><L>[ID=1790]</L>",
     "अ-चल <lex>m.</lex> a mountain, rock<info lex=\"m\"/><L>[ID=1791]</L>",
@@ -5260,6 +5270,25 @@
     "उद्धान <lex>n.</lex> the act of ejecting, vomiting, <ls>L.</ls><info lex=\"n\"/><L>[ID=33131]</L>",
     "a fire-place, <ls>L.</ls><info lex=\"inh\"/><L>[ID=33132]</L>"
   ],
+  "anudam": [
+    "अनु-द See अनानुद.<L>[ID=6423]</L>"
+  ],
+  "nala": [
+    "नल <lex>m.</lex> (<ab>cf.</ab> नड, नळ) a species of reed, <bot>Amphidonax Karka</bot> (8-12 feet high), <ls>Gobh.</ls>; <ls>MBh.</ls> &c.<info lex=\"m\"/><L>[ID=104380]</L>",
+    "a measure of length, <ls>MBh.</ls> (<ab>v.l.</ab> तल)<info lex=\"inh\"/><L>[ID=104381]</L>",
+    "a <ab>partic.</ab> form of constellation in which all the planets or stars are grouped in double mansions, <ls>Var.</ls><info lex=\"inh\"/><L>[ID=104382]</L>",
+    "the 50th year of the cycle of Jupiter which lasts 60 years, <ls>Cat.</ls><info lex=\"inh\"/><L>[ID=104383]</L>",
+    "<ab>N.</ab> of a divine being mentioned with <s1>Yama</s1>, <ls>Karmapr.</ls> (= पितृ-देव, or -दैव, <ls>L.</ls>; a deified progenitor, <ls>W.</ls>)<info lex=\"inh\"/><L>[ID=104384]</L>",
+    "of a <s1>Daitya</s1>, <ls>BrahmaP.</ls><info lex=\"inh\"/><L>[ID=104385]</L>",
+    "of a king of the <s1>Niṣadha</s1>s (son of <s1>Vīra-sena</s1> and husband of <s1>Damayantī</s1>), <ls>MBh.</ls>; <ls>Pur.</ls><info lex=\"inh\"/><L>[ID=104386]</L>",
+    "of a son of <s1>Niṣadha</s1> and father of <s1>Nabha</s1> or <s1>Nabhas</s1>, <ls>Hariv.</ls>; <ls>Ragh.</ls>; <ls>VP.</ls><info lex=\"inh\"/><L>[ID=104387]</L>",
+    "of a descendant of the latter <s1>Nala</s1> (<ab n=\"son\">s°</ab> of <s1>Su-dhanvan</s1> and <ab n=\"father\">f°</ab> of <s1>Uktha</s1>), <ls>Hariv.</ls>; <ls>VP.</ls><info lex=\"inh\"/><L>[ID=104388]</L>",
+    "of a son of <s1>Yadu</s1>, <ls>Pur.</ls><info lex=\"inh\"/><L>[ID=104389]</L>",
+    "of a monkey-chief (son of <s1>Tvaṣṭṛ</s1> or <s1>Viśva-karman</s1>; <ab>cf.</ab> -सेतु), <ls>MBh.</ls>; <ls>R.</ls><info lex=\"inh\"/><L>[ID=104390]</L>",
+    "of a <ab>medic.</ab> author, <ls>Cat.</ls><info lex=\"inh\"/><L>[ID=104391]</L>",
+    "नल <lex>n.</lex> the blossom of <bot>Nelumbium Speciosum</bot>, <ls>L.</ls> (<ab>cf.</ab> नलिन, °नी)<info lex=\"n\"/><L>[ID=104393]</L>",
+    "smell, odour, <ls>L.</ls> (<ab>cf.</ab> √ नल्). <info lex=\"inh\"/><L>[ID=104394]</L>"
+  ],
   "sTAna[m]": [
     "स्थान <lex>n.</lex> (also said to be <lex type=\"hwalt\">m.</lex>, <ls>Siddh.</ls>) the act of standing, standing firmly, being fixed or stationary, <ls>AV.</ls> &c. &c.<info lex=\"m:n\"/><info hui=\"a\"/><L>[ID=255374]</L>",
     "position or posture of the body (in shooting &c.), <ls>R.</ls><info lex=\"inh\"/><L>[ID=255375]</L>",
@@ -5333,6 +5362,9 @@
   "anazwam": [
     "अ-नष्ट <lex>mfn.</lex> undestroyed, unimpaired.<info lex=\"m:f:n\"/><info hui=\"a\"/><L>[ID=5391]</L>",
     "अ-नष्ट <lex>n.</lex> ‘I hope you have not lost anything’ (used in greeting a <s1>Vaiśya</s1>), <ls>Āpast.</ls><info n=\"sup\"/><info lex=\"n\"/><info hui=\"b\"/>"
+  ],
+  "dattra": [
+    "दत्त्र <lex>n.</lex> (<s1>Indra</s1>'s) gift, <ls>RV. iii, 36, 9</ls>; <ls n=\"RV.\">iv, 17, 6</ls>; <ls n=\"RV.\">viii, 49, 2.</ls><info lex=\"n\"/><L>[ID=89869]</L>"
   ],
   "naSa": [
     "<hom>1.</hom> नश See दुर्-णश, दू-णश.<info hui=\"1\"/><L>[ID=104758]</L>",
@@ -7151,10 +7183,6 @@
     "killing (an animal), <ls>AV.</ls><info lex=\"inh\"/><L>[ID=28306]</L>",
     "a stick for beating a drum, <ls>AV. xx, 133, 1.</ls><info lex=\"inh\"/><L>[ID=28307]</L>"
   ],
-  "vavra": [
-    "वव्र <lex>mfn.</lex> (<ab>fr.</ab> √ <hom>1.</hom> वृ) hiding or concealing one's self, <ls>RV.</ls><info lex=\"m:f:n\"/><L>[ID=188385]</L>",
-    "वव्र <lex>m.</lex> ‘hiding-place’, a cavern, hole, cave, <ls>ib.</ls><info lex=\"m\"/><L>[ID=188386]</L>"
-  ],
   "vAmana": [
     "वामन <lex>mf(आ)n.</lex> (of doubtful derivation) dwarfish, small or short in stature, a dwarf, <ls>VS.</ls> &c. &c.<info lex=\"m:f#A:n\"/><L>[ID=191096]</L>",
     "small, minute, short (also of days), <ls>MBh.</ls>; <ls>Kāv.</ls> &c.<info lex=\"inh\"/><L>[ID=191097]</L>",
@@ -7746,16 +7774,6 @@
     "= अहंकरण, <ab>q.v.</ab>, (hence declinable <ab>gen.</ab> अहमस्, &c.), <ls>BhP.</ls><L>[ID=21660]</L>",
     "अहम् [<lang>Zd.</lang> <etym>azem</etym>; <lang>Gk.</lang> <gk>ἐγώ</gk>; <lang>Goth.</lang> <etym>ik</etym>; <lang>Mod. Germ.</lang> <etym>ich</etym>; <lang>Lith.</lang> <etym>asz</etym>; <lang>Slav.</lang> <etym>az</etym>]."
   ],
-  "idDa": [
-    "इद्ध इध्म &c. See √ इन्ध्.<info hui=\"a\"/><L>[ID=28829]</L>",
-    "इद्ध <lex>mfn.</lex> kindled, lighted, alight<info lex=\"m:f:n\"/><info hui=\"b\"/><listinfo n=\"sup\"/><L>[ID=29259]</L>",
-    "shining, glowing, blazing, <ls>RV.</ls>; <ls>Mn.</ls>; <ls>ChUp.</ls>; <ls>Ratnāv.</ls> &c.<info lex=\"inh\"/><L>[ID=29260]</L>",
-    "clean, clear, bright<info lex=\"inh\"/><L>[ID=29261]</L>",
-    "wonderful, <ls>L.</ls><info lex=\"inh\"/><L>[ID=29262]</L>",
-    "vehement, fierce, <ls>Kir.</ls><info n=\"sup\"/><info lex=\"inh\"/>",
-    "इद्ध (अम्), <lex>n.</lex> sunshine, light, heat<info lex=\"n\"/><L>[ID=29263]</L>",
-    "a wonder, <ls>L.</ls><info lex=\"inh\"/><L>[ID=29264]</L>"
-  ],
   "nAma": [
     "<hom>1.</hom> नाम <lex>ind.</lex> (<ab>acc.</ab> of नामन्) by name <ab>i.e.</ab> named, called, <ls>RV.</ls> &c. &c. (also with नामतस् and नाम्ना)<info lex=\"ind\"/><info hui=\"1\"/><L>[ID=105725]</L>",
     "indeed, certainly, really, of course, <ls>ib.</ls><info lex=\"inh\"/>",
@@ -7835,5 +7853,9 @@
   "sayana[m]": [
     "सयन <lex>n.</lex> binding, <ls>Nir.</ls><info lex=\"n\"/><L>[ID=237407]</L>",
     "सयन <lex>m.</lex> <ab>N.</ab> of a son of <s1>Viśvāmitra</s1>, <ls>MBh.</ls> (<ab>B.</ab> सेयन). <info lex=\"m\"/><L>[ID=237408]</L>"
+  ],
+  "asmad": [
+    "अस्मद् base of the first person <ab>pl.</ab>, as used in <ab>comp.</ab><info lexcat=\"LEXID=pron,STEM=asmad\"/><L>[ID=21500]</L>",
+    "also by native grammarians considered to be the base of the cases अस्मान् &c. (see above). <info lexcat=\"LEXID=pron,STEM=asmad\"/>"
   ]
 }

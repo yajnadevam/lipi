@@ -17,7 +17,7 @@ id,word,seal_id,code,modifier,pratyaya,kartari,gender,vacana,purusha,vibhakti
 17,vaha,*,01.1159,tin,,plot,,1,2,
 18,mAMsaja,*,MW:mAMsaja,sup,,,1,1,,8
 19,ASa,*,MW:ASa,sup,,,1,1,,8
-20,varam,*,MW:vara,sup,,,1,1,,8
+20,varam,*,MW:vara,sup,,,1,1,,2
 21,dAma,*,MW:dAman,sup,,,3,1,,8
 22,mana,2551.1,04.0073,krt,ac,,1,1,,8
 23,kaMsam,*,MW:kaMsa,sup,,,1,1,,2
@@ -25,7 +25,8 @@ id,word,seal_id,code,modifier,pratyaya,kartari,gender,vacana,purusha,vibhakti
 25,ranDana,*,MW:ranDana,sup,,,1,1,,8
 26,SatadA,*,MW:SatadA,sup,,,1,1,,1
 27,Ama,*,01.0536,tin,,plot,,1,1,,
-28,ca,*,MW:ca,sup,,,1,1,,0
+28,ca,*,MW:ca,,,,,,,
 29,varAn,*,MW:vara,sup,,,1,3,,2
 30,udaya,*,MW:udaya,sup,,,1,1,,8
 31,nAman,*,MW:nAman,sup,,,3,1,,8
+32,naraM,*,MW:nara,sup,,,1,1,,2
