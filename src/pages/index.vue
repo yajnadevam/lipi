@@ -1146,6 +1146,7 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
+    // Todo: Deprecate and delete this function
     getPrakriyaExplanation(devanagariWord, slp1Word, filterParams) {
       console.log("comes here to get prakriya explanation");
 
@@ -1372,10 +1373,14 @@ export default {
       };
     },
     showExplanation(devanagariWord, sealId) {
+      // If the word ends with anusvara subtitue with /m/ since that's what AA understands
+      if (devanagariWord.endsWith("ं")) {
+        devanagariWord = devanagariWord.replace(/ं$/, "म्");
+      }
+
       const slp1Word = Sanscript.t(devanagariWord, "devanagari", "slp1");
       let mwDialogContent = null;
       let prakriyaDialogContent = null;
-
       const {
         code,
         modifier,
@@ -1386,9 +1391,10 @@ export default {
         purusha,
         vibhakti,
       } = wordsMap[slp1Word][sealId] ?? wordsMap[slp1Word]["*"];
-      const [type, word] = code.split(":");
+      const [type, word] = code.toString().split(":");
 
       if (type == "MW") {
+        console.log("this is the devanagari word", word);
         mwDialogContent = this.getMwExplanation(word);
       }
 
