@@ -22,7 +22,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 21.1,Blk-3,Lower Indus,Bala-kot,--,--,--,3 BLK-1975,-,-,-,- -,-,-,-,square,-,partly damaged,Bull1:II,SAN,SEAL:S,1,Poor,N,R/L,??,5,2,,,,25,25,0,+000-388-233-000-000+,
 22.1,Blk-4,Lower Indus,Bala-kot,--,--,--,2 BLK- 222,-,-,-,- -,-,-,-,square,-,complete,Bull1:II,SAN,SEAL:S,1,Poor,Y,R/L,SC,5,5,,,,27,27,0,+527-554-298-368-634+,tana-lAsam,Roarer's[RV] dance[Rt]
 23.1,Blk-6,Lower Indus,Bala-kot,--,--,--,3 BLK- 189,-,-,-,- -,-,-,Red,-,-,complete,None,None,BNGL,1,Poor,Y,R/L,SC,2,2,,,,0,0,0,+750-798+,Ahan,"O Slayer[आ-√हन् क्विप्]"
-24.1,Blk-5,Lower Indus,Bala-kot,--,--,--,4 BLK- 21,-,-,-,- -,PBVF,-,-,square,rectangular,complete,Bull3,S520,SEAL:S,1,Good,Y,NR,NU,1,1,,,,21,20.5,3 - 10,+415+,ta[m],him[√तद्]
+24.1,Blk-5,Lower Indus,Bala-kot,--,--,--,4 BLK- 21,-,-,-,- -,PBVF,-,-,square,rectangular,complete,Bull3,S520,SEAL:S,1,Good,Y,NR,NU,1,1,,,,21,20.5,3 - 10,+415+,ta,"O roarer[तन् vns]"
 25.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,-Figure 68.02,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,R/L,??,1,0,,,,0,0,0,+000+
 26.1,-,Eastern Headwaters,Banawali,--,--,--,BNL 11448,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,-,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,17,17,11,+520-001+,Ana,"O breath[TS][=prāṇa/Rudra Praśna Up. 2.9 प्राण रुद्रोऽसि]"
 27.1,B-1,Eastern Headwaters,Banawali,--,--,--,BNL1 1027,Period 3C-2,-,-,- -,PBSG,Steatite,White,square,-,complete,Bull1:O,HAF,SEAL:S,1,Fair,Y,R/L,LP,7,7,,,,35.1,35.6,8.1,+090-740-220-002-368-550-821+,rarAsa navamAna,(He) roars[√रस् लिट् 1s] O wanderer[√नु शानच्]
@@ -30,7 +30,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 29.1,B-4,Eastern Headwaters,Banawali,--,--,--,BNL 5473,Period 3C-2,-,-,- -,PB,-,-,square,-,complete,Bull3,S390,SEAL:S,1,Poor,Y,R/L,SC,2,2,,,,16,16,0,+740-797+,ref:23.1
 30.1,B-5,Eastern Headwaters,Banawali,--,--,--,BNL 9903,Period 2,II,-,- -,PBRF,-,-,square,rectangular,complete,Bull3,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,13,13,26 - 54.6,+002-817+,rava,"O Roarer[√रु अच्]"
 31.1,B-7,Eastern Headwaters,Banawali,--,--,--,BNL 551,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Buff,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,,22.8,21.8,3.5 - 7.2,+002-817+,ref:30.1
-32.1,B-8,Eastern Headwaters,Banawali,--,--,--,BNL 312,Period 3C-2,-,-,- -,PBVG,Steatite,-,square,rectangular,complete,Goat:4,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,3.5-7 (estimated),21.5,21.3,3.8 - 7,+740-061+,tana,"O Destroyer[√तन् अच्]"
+32.1,B-8,Eastern Headwaters,Banawali,--,--,--,BNL 312,Period 3C-2,-,-,- -,PBVG,Steatite,-,square,rectangular,complsete,Goat:4,None,SEAL:S,1,Fair,Y,R/L,SS,2,2,,,3.5-7 (estimated),21.5,21.3,3.8 - 7,+740-061+,tana,"O Destroyer[√तन् अच्]"
 33.1,B-9,Eastern Headwaters,Banawali,--,--,--,BNL1 1028,Period 3C-2,-,-,- -,PBVF,Steatite,White,square,rectangular,complete,Goat:3,None,SEAL:S,1,Fair,Y,R/L,PN,2,2,,,4.5-8 (estimated),22.8,21,4.9 - 8,+390-004+,ref:17.1
 34.1,B-10,Eastern Headwaters,Banawali,--,--,--,BNL 9204,Period 2,II,-,- -,PBVF,Steatite,-,square,-,complete,Goat:3,S390,SEAL:S,1,Fair,Y,NR,NU,1,1,,,,14.3,12.5,3.1 - 6.9,+007+,ha,Verily[Ved]
 35.1,B-12,Eastern Headwaters,Banawali,--,--,--,BNL 5132,Period 3C-2,-,-,- -,PBRF,Steatite,-,square,rectangular,complete,Goat:2,S017,SEAL:S,1,Good,Y,NR,TS,1,1,,,4-8 (estimated),18.9,18.7,4.2 - 8,+411+,ra,giving[Śiś]
@@ -3985,7 +3985,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3128.1,M-701,Lower Indus,Mohenjo-daro,DKE,Trench E-,-1048/2019,DK-E 2401059,-,-,-,-7.0 ft,PB,Steatite,White,square,-,fragment,Bull1:W,SAN,SEAL:S,1,Poor,N,R/L,??,3+?,2,1.25,,,31.8,0,0,]000-002-824+
 3129.1,M-702,Lower Indus,Mohenjo-daro,DKG. (N),27II,20-,DK11860206,Period 3C-3,Late,III,-8.3 ft,PB,Steatite,-,square,-,fragment,Bull1,SAN,SEAL:S,1,Poor,?,R/L,UC,2+?,2,,1.33,0.35,0,33.8,8.9,]368-286+
 3130.1,M-703,Lower Indus,Mohenjo-daro,DKG. (S),5I,2-,DK3980438,Period 3C-1,Intermediate,II,-13.2 ft,PB,Steatite,-,square,-,fragment,Bull1:W,SAF,SEAL:S,1,Fair,N,R/L,??,6,4,1.3,1.3,0.3,33,33,7.6,+000-000-233-235-002-817+
-3131.1,M-704,Lower Indus,Mohenjo-daro,DKG. (S),10I,10-,DK6377351,Period 3C-2,Intermediate,I,-11.1 ft,PB,Steatite,-,square,-,chipped,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,SC,2,2,1.3,1.3,0.45,33,33,11.4,+400-131+,yEH,"by who[यद्]"
+3131.1,M-704,Lower Indus,Mohenjo-daro,DKG. (S),10I,10-,DK6377351,Period 3C-2,Intermediate,I,-11.1 ft,PB,Steatite,-,square,-,chipped,Bull1:W,SAF,SEAL:S,1,Good,Y,R/L,SC,2,2,1.3,1.3,0.45,33,33,11.4,+400-131+,yE,"for her[इ dfs]"
 3132.1,M-705,Lower Indus,Mohenjo-daro,DKG. (S),2II,22-,DK5331272,Period 3C-4,Late,III,-9.4 ft,PB,Steatite,-,square,-,complete,Bull1:W,SAF,SEAL:S,1,Fair,Y,R/L,MT,4,4,1.38,1.35,0.4,35.1,34.3,10.2,+740-772-240-803+,ref:3041.1
 3133.1,M-706,Lower Indus,Mohenjo-daro,HRB,5XXIII,10-,HR 4385097,-,-,-,-2.0 ft,PB,Steatite,White,square,-,complete,Bull1:W,SAN,SEAL:S,1,Poor,Y,R/L,SP,6,6,1.2,1.2,,30.5,30.5,0,+740-773-240-002-861-031+,Aravam taram,"The roaring[Pāṇ] saving[MBh] one"
 3134.1,M-708,Lower Indus,Mohenjo-daro,DKG. (S),4-,16-,DK8923666,Period 3B-2,Early,I,-21.6 ft,PB,Steatite,-,square,-,chipped,Bull1:W,S,SEAL:S,1,Fair,Y,R/L,IT,5,5,1.21,1.21,0.31,30.7,30.7,7.9,+740-061-002-390-140+,taravatam,"She that has Shiva[तर मतुप् afs]"
