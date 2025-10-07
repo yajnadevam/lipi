@@ -1228,7 +1228,6 @@ export default {
         prakriyas,
       };
     },
-    getPurusha() {},
     getGender(gender) {
       const genderMap = {
         1: "Pum",
