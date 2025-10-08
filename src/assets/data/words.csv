@@ -34,8 +34,8 @@ id,word,seal_id,code,modifier,pratyaya,kartari,gender,vacana,purusha,vibhakti,co
 33,mahaM,*,MW:maha,sup,,,1,1,,2,done
 34,mAKaM,*,MW:mAKa,sup,,,3,1,,2,DOESNT SEEM TO WORK
 35,Asa,*,01.1029,tin,,plit,,1,1,,done
-36,nadan,*,01.0056,krt,Satf,,1,1,,1,DOESNT SEEM TO WORK
-43,nadat,*,01.0056,krt,Satf,,1,1,,1,WORK DOESNT SEEM TO EXIST IN CORPUS
+36,nadan,*,01.0056,krt,Satf,,1,1,,1,FAILS BECAUSE IT NEEDS TO DERIVE RULE 7.1.70 WHICH IT IS UNABLE TO DO SO https://ashtadhyayi.com/dhatu/01.0056?tab=krut&scroll=dhatuform-1010056-krut-%E0%A4%B6%E0%A4%A4%E0%A5%83&scrollcolor=cyan&scrolloffset=400
+43,nadat,*,01.0056,krt,Satf,,1,1,,1,DOESNT SEEM TO EXIST IN CORPUS
 37,kam,*,MW:kam,,,,,,,,done
 38,dAta,*,MW:dAta,sup,,,1,1,,8,done
 39,tat,*,MW:tat,,,,,,,,done
@@ -174,7 +174,6 @@ id,word,seal_id,code,modifier,pratyaya,kartari,gender,vacana,purusha,vibhakti,co
 172,Gana,*,MW:Gana,,,,,,,,
 173,hana,*,MW:hana,,,,,,,,
 174,hAna,*,MW:hAna,,,,,,,,
-175,hara,*,MW:hara,,,,,,,,
 176,haraRa,*,MW:haraRa,,,,,,,,
 177,harAt,*,MW:harAt,,,,,,,,
 178,hata,*,MW:hata,,,,,,,,

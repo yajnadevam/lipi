@@ -1294,8 +1294,6 @@ export default {
         })
         .map((result) => ({
           steps: result.history,
-          // Todo: Need to add linga, vacana and vibhakthi
-          title: `${devanagariWord}`,
           result: Sanscript.t(result.text, "slp1", "devanagari"),
         }));
 
@@ -1393,7 +1391,6 @@ export default {
       const [type, word] = code.toString().split(":");
 
       if (type == "MW") {
-        console.log("this is the devanagari word", word);
         mwDialogContent = this.getMwExplanation(word);
       }
 
