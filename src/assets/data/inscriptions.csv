@@ -181,7 +181,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 176.1,H-1085,Inter-Riverine,Harappa,--,--,--,-764,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:s,1,Poor,Y,R/L,ZN,2,2,,,,0,0,0,+235-033+,jAm,"The destroyer[√जै अच्]"
 177.1,-,Inter-Riverine,Harappa,--,--,--,-CIII:033,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,4+?,3,,,,0,0,0,]000-055-033-033+
 178.1,-,Inter-Riverine,Harappa,--,--,--,-652,-,-,-,- -,-,Faience,White,rectangular-rounded,rectangular,complete,None,None,TAB:B,1,Poor,N,-,??,3,1,1.05,0.45,,26.7,11.4,0,+000-000-033+
-179.1,H-1462,Inter-Riverine,Harappa,--,--,--,G279784,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,AN,1,1,,,,0,0,0,+090+,a,(voc.)[T]
+179.1,H-1462,Inter-Riverine,Harappa,--,--,--,G279784,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,AN,1,1,,,,0,0,0,+090+,A,"The who breathes[√अन् nms]"
 180.1,M-584,Lower Indus,Mohenjo-daro,--,--,--,DK4807779,-,-,-,- -,-,Copper,-,rectangular,-,complete,Anth,-,TAB:C,1,Poor,N,R/L,??,7,3,,,,33,23.5,0,+740-900-000-407-000-000-000+
 181.1,H-1422,Inter-Riverine,Harappa,--,--,--,8013752,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,R/L,SS,2,2,,,,0,0,0,+740-142+,ref:26.1
 182.1,H-1461,Inter-Riverine,Harappa,--,--,--,-754,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,TS,1,1,,,,0,0,0,+156+,yaH,him[यद्]
@@ -399,11 +399,11 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 334.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8857-10Figure 67.04,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+034+,ref:307.2
 335.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8859-11Figure 68.06,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,TS,1,1,,,,0,0,0,+550+,ref:196.1
 336.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8859-50Figure 69.08,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,?,NR,UC,1+?,1,,,,0,0,0,]705+,ref:26.1
-337.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8864-75Figure 67.05,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+033+,ja,born[Mn]
+337.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8864-75Figure 67.05,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+033+,jaH,"O Wanderer[√जृ vms]"
 338.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8885-02Figure 68.13,Period 3,3,-,- -,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,?,R/L,UC,4+?,4,,,,0,0,0,+740-066-090-400[
 339.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8890-91Figure 67.01,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+001+,ref:179.1
 340.1,-,Inter-Riverine,Harappa,ETrench 11,--,--,H99-8890-92Figure 67.06,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+001+,ref:179.1
-341.1,-,Inter-Riverine,Harappa,FTrench 41,--,--,H99-9108-56 57Figure 75.14,Period 3,3,-,- -,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+002+,va,similar[MBh]
+341.1,-,Inter-Riverine,Harappa,FTrench 41,--,--,H99-9108-56 57Figure 75.14,Period 3,3,-,- -,-,Clay,Red,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+002+,vaH,"O concealer[√वृ vms]"
 342.1,-,Inter-Riverine,Harappa,FTrench 41,--,--,H99-9201-25Figure 75.10,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+002+,ref:341.1
 343.1,-,Inter-Riverine,Harappa,FTrench 43,--,--,H99-9702-72Figure 52.02,Period 3C,3,C,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+032+,ref:34.1
 344.1,-,Inter-Riverine,Harappa,FTrench 43,--,--,H99-9722-35Figure 53.03,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,Y,NR,NU,1,1,,,,0,0,0,+004+,ref:334.1
@@ -4841,7 +4841,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 3932.2,H-2137,Inter-Riverine,Harappa,ETrench 10W/11,--,--,H95-2480Figure 30.09,Period 3B/C,3,B/C,- -,-,Steatite,-,rectangular,rectangular,complete,None,None,TAB:I,2,Fair,Y,R/L,SS,3,3,,,,13,8,2.5,+740-100-176+,ref:306.1
 3933.1,H-2242,Inter-Riverine,Harappa,ETrench 55,--,--,H2000-4501Figure 46.04,Period 3B/C,3,B/C,- -,-,-,-,-,-,fragment,Bult,None,TAB:I,1,Poor,?,-,UC,1+?,1,,,,0,0,0,]856[
 3934.1,H-2282,Inter-Riverine,Harappa,--,--,--,H98-8314-0111,-,3/4,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,Y,R/L,NU,3,3,,,,0,0,0,+034-032-032+,saha ca,"O bearer[√सह् अच्]"
-3935.1,H-2283,Inter-Riverine,Harappa,--,--,--,H96-3189,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,Y,R/L,NU,2,2,,,,0,0,0,+034-999-034+,ref:1059.1
+3935.1,H-2283,Inter-Riverine,Harappa,--,--,--,H96-3189,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,Y,R/L,NU,2,2,,,,0,0,0,+034-999-034+,ca ca,"Though yet[Vikr]"
 3936.1,H-2284,Inter-Riverine,Harappa,--,--,--,H95-2943,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,Y,NR,NU,1,1,,,,0,0,0,+006+,ref:34.1
 3937.1,H-2289,Inter-Riverine,Harappa,--,--,--,H95-2951,Period 3,3,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Good,Y,NR,NU,1,1,,,,0,0,0,+033+,ref:337.1
 3938.1,H-2263,Inter-Riverine,Harappa,--,--,--,H95-2661640-0501,Period 3B,3,B,- -,-,Clay,-,-,-,complete,-,None,POT:T:g,1,Good,Y,NR,NU,1,1,,,,0,0,0,+034+,ref:334.1
@@ -5432,7 +5432,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5296.1,K-171,Inter-Riverine,Kalibangan,--,--,--,-,Period 3,2,-,surface -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Fair,?,-,UC,1+?,1,,,,105,53,0,+035[
 5297.1,K-172,Inter-Riverine,Kalibangan,KLB-2-,--,XB1-,KLB2 21640,Period 3C,2,Late,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Poor,N,-,??,2+?,1,,,,0,0,0,]000-033+
 5298.1,K-173,Inter-Riverine,Kalibangan,KLB-2-,--,YA16 Qd.1 (IA)-,KLB2 21639,Period 3C,2,Late,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Fair,?,-,UC,3+?,3,,,,132,75,10 - 28,]033-033-003+
-5299.1,K-174,Inter-Riverine,Kalibangan,KLB-2-,--,B8 Qd.4 (2)-,KLB2 21565,Period 3C,2,Late,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Poor,Y,SYM,NU,2,2,,,,112,46,5 - 19,+034-999-034+,ref:1059.1
+5299.1,K-174,Inter-Riverine,Kalibangan,KLB-2-,--,B8 Qd.4 (2)-,KLB2 21565,Period 3C,2,Late,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Poor,Y,SYM,NU,2,2,,,,112,46,5 - 19,+034-999-034+,ref:3935.1
 5300.1,K-175,Inter-Riverine,Kalibangan,KLB-2-,--,--,-,Period 3,2,-,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Poor,?,-,UC,1+?,1,,,,0,0,0,]039[
 5301.1,K-176,Inter-Riverine,Kalibangan,KLB-2-,--,ZC18 Qd.3 (2)-,KLB2 21656,Period 3C,2,Late,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Fair,?,-,UC,2+?,2,,,,79,61,8 - 15,]007-034[
 5302.1,K-177,Inter-Riverine,Kalibangan,KLB-2-,--,XA9-,KLB2 21757,Period 3B,2,Early,- -,-,Clay,-,-,-,fragment,-,-,POT:T:g,1,Poor,?,-,UC,1+?,1,,,,0,0,0,+515[,ref:34.1
@@ -5635,7 +5635,7 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 5531.2,M-2035,Lower Indus,Mohenjo-daro,DKG. (S),9VI/VIII,--,DK8244CII:3,Period 3B/C,Intermediate,III,-16.8 ft,NN,Faience,Yellow,cuboid,rectangular,slightly chipped,Mult,-,TAG:C,2,Poor,N,-,??,3,0,0.89,0.75,0.62,22.6,19.1,15.7,+000-000-000+
 5532.1,M-2066,Lower Indus,Mohenjo-daro,DK-,--,--,DK8554,-,-,-,- -,-,Ceramic,-,-,-,complete,None,None,POT:T:g,1,Poor,N,L/R,??,3,2,,,,600,580,0,+000-004-033+
 5533.1,M-2094,Lower Indus,Mohenjo-daro,DKG. (S),8III,37-,DK12824CV:12,Period 3C-2,Intermediate,I,-11 ft,-,Ivory,-,conical,squarish,complete,Beye,None,ROD,1,Fair,Y,NR,PN,3,3,2.18,0.28,,55.4,7.1,6,+390-390-390+,rarara,"O Possessing[śiś], effecting[śiś] and giving[śiś] one"
-5534.1,M-2123,Lower Indus,Mohenjo-daro,DK-,--,--,DK7800,-,-,-,- -,-,Copper,-,-,-,slightly chipped,None,None,IMPL,1,Fair,Y,T/B,NU,2,2,,,,0,0,0,+004/004+,ref:1059.1
+5534.1,M-2123,Lower Indus,Mohenjo-daro,DK-,--,--,DK7800,-,-,-,- -,-,Copper,-,-,-,slightly chipped,None,None,IMPL,1,Fair,Y,T/B,NU,2,2,,,,0,0,0,+004/004+,ref:3935.1
 5539.1,Rjd-76,Gujarat/Kutch,Rodji,--,--,--,-Lot 22021,-,C,-,- -,-,Terracotta,-,-,-,fragment,-,-,POT:T:g,1,Poor,?,-,UC,1+?,1,65,35,,0,0,0,]455[
 5541.1,-,Gujarat/Kutch,Shikarpur,--,--,--,-,-,-,-,- -,-,Clay,Black,-,-,fragment,-,-,POT:T:p,1,Fair,N,R/L,??,3+?,2,,,,0,0,0,+002-861-000[
 5542.1,-,Lower Indus,Bala-kot,--,--,--,-,-,-,-,- -,-,Ceramic,Black,-,-,fragment,-,-,POT:T:p,1,Fair,Y,R/L,SS,2,2,,,,0,0,0,+820-033+,ref:464.1
