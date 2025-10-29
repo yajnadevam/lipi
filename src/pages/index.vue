@@ -1058,8 +1058,8 @@ export default {
         }));
 
       console.log(subanta_result);
-      return subanta_result[0];
-      // return subanta_result.filter((res) => res.result == devanagariResult)[0];
+      // return subanta_result[0];
+      return subanta_result.filter((res) => res.result == devanagariResult)[0];
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {
       const dhatu = {
@@ -1137,6 +1137,7 @@ export default {
           result: Sanscript.t(result.text, "slp1", "devanagari"),
         }));
       console.log("tinanta result", tinanta_result);
+      // return tinanta_result[0];
       return tinanta_result.filter((res) => res.result == devanagariResult)[0];
     },
     getMwExplanation(slp1Word) {

@@ -1,14 +1,14 @@
 id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,purusha,vibhakti,comment
 1,hara,*,hara,sup,hf,Bhvadi,ac,,,Pum,Eka,,Sambodhana,DONE
 2,rava,*,rava,sup,ru,Adadi,ap,,,Pum,Eka,,Sambodhana,DONE check derivation steps specifically those like 36
-4,asmi,*,,tin,asa~,Adadi,,Lat,Parasmaipada,,Eka,Uttama,,DONE
+4,asmi,*,,tin,asa~,Adadi,,Lat,Parasmaipada,,Eka,Uttama,,"DONE, Not sure if adding the a~ is the right way to go but it matches the derivation"
 5,ravasya,*,,sup,ru,Adadi,ac,,,Pum,Eka,,Sasthi,
 6,vawAt,*,vawa,sup,vawa,,,,,Pum,Eka,,Panchami,DONE only used basic prathipadika
-7,mAKAni,*,MW:mAKa,sup,,,,,,3,3,,1,
-8,calata,*,1.0924,tin,,,,plot,,,3,2,,
-9,amam,*,MW:ama,sup,,,,,,1,1,,2,
-10,mana,2832.1,1.1078,tin,,,,plot,,,1,2,,There are many instances and there are different derivations so the link needs to only be present if there is a valid entry
-11,sakza,*,MW:sakza,sup,,,,,,1,1,,8,need to verify
+7,mAKAni,*,mAKa,sup,maK,Bhvadi,GaY,,,Napumsaka,Bahu,,Prathama,NEED MORE WORK
+8,calataH,*,,tin,cala~,Tudadi,,Lat,Parasmaipada,,Dvi,Prathama,,"DONE, Not sure if adding the a~ is the right way to go but it matches the derivation"
+9,amam,*,ama,sup,ama~,Bhvadi,ac,,,Pum,Eka,,Dvitiya,Done
+10,mana,2832.1,,tin,mnA,Bhvadi,,Lot,Parasmaipada,,Eka,Madhyama,,UNABLE TO DERIVE MAYBE NEEDS TO PROBABLY BE RAISED
+11,sakza,*,sakza,sup,,,,,,1,1,,8,CANNOT BE FOUND IN AA
 12,naram,*,MW:nara,sup,,,,,,1,1,,2,done
 13,jaWala,*,MW:jaWala,sup,,,,,,1,1,,8,need to verify
 14,DAra,*,MW:DAra,sup,,,,,,1,1,,8,need to verify
@@ -325,7 +325,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 325,saha,*,MW:saha,,,,,,,,,,,
 326,sAha,*,MW:sAha,,,,,,,,,,,
 327,sahat,*,MW:sahat,,,,,,,,,,,
-328,sakza,*,MW:sakza,,,,,,,,,,,
 329,sala,*,MW:sala,,,,,,,,,,,
 330,sam,*,MW:sam,,,,,,,,,,,
 331,saM,*,MW:saM,,,,,,,,,,,
