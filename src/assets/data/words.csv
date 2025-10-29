@@ -3,7 +3,7 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 2,rava,*,rava,sup,ru,Adadi,ap,,,Pum,Eka,,Sambodhana,DONE check derivation steps specifically those like 36
 4,asmi,*,,tin,asa~,Adadi,,Lat,Parasmaipada,,Eka,Uttama,,DONE
 5,ravasya,*,,sup,ru,Adadi,ac,,,Pum,Eka,,Sasthi,
-6,vawAt,*,MW:vawa,sup,,,,,,1,1,,5,
+6,vawAt,*,vawa,sup,vawa,,,,,Pum,Eka,,Panchami,DONE only used basic prathipadika
 7,mAKAni,*,MW:mAKa,sup,,,,,,3,3,,1,
 8,calata,*,1.0924,tin,,,,plot,,,3,2,,
 9,amam,*,MW:ama,sup,,,,,,1,1,,2,

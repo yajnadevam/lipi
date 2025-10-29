@@ -1028,6 +1028,7 @@ export default {
       purusha, // Todo: Is this required?
       vibhakti
     ) {
+      let subanta_result;
       if (pratyaya) {
         const pratipadika = {
           krdanta: {
@@ -1037,27 +1038,31 @@ export default {
         };
 
         console.log("this is pratipadika", pratipadika);
-
-        const subanta_result = vidyut
-          .deriveSubantas({
-            pratipadika,
-            linga,
-            vacana,
-            vibhakti,
-          })
-          .map((result) => ({
-            steps: result.history,
-            result: Sanscript.t(result.text, "slp1", "devanagari"),
-          }));
-
-        console.log(subanta_result);
-        return subanta_result.filter(
-          (res) => res.result == devanagariResult
-        )[0];
+        subanta_result = vidyut.deriveSubantas({
+          pratipadika,
+          linga,
+          vacana,
+          vibhakti,
+        });
+      } else {
+        subanta_result = vidyut.deriveSubantas({
+          pratipadika: {
+            basic: aupadeshika,
+          },
+          linga,
+          vacana,
+          vibhakti,
+        });
       }
 
-      // Todo: Need to handle default case
-      return null;
+      subanta_result = subanta_result.map((result) => ({
+        steps: result.history,
+        result: Sanscript.t(result.text, "slp1", "devanagari"),
+      }));
+
+      console.log(subanta_result);
+      return subanta_result[0];
+      // return subanta_result.filter((res) => res.result == devanagariResult)[0];
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {
       const dhatu = {
