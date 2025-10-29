@@ -1008,12 +1008,12 @@ export default {
       };
       return lakaraMap[lakara];
     },
-    createDhatu(aupadeshika, gana) {
+    createDhatu(aupadeshika, gana, sanadi = []) {
       return {
         aupadeshika,
         gana,
         antargana: null,
-        sanadi: [],
+        sanadi,
         prefixes: [],
       };
     },
@@ -1022,43 +1022,40 @@ export default {
       aupadeshika,
       gana,
       pratyaya,
+      sanadi = [],
       lakara, // Todo: Is this required?
       linga,
       vacana,
       purusha, // Todo: Is this required?
       vibhakti
     ) {
-      let subanta_result;
+      let pratipadika;
       if (pratyaya) {
-        const pratipadika = {
+        pratipadika = {
           krdanta: {
-            dhatu: this.createDhatu(aupadeshika, gana),
+            dhatu: this.createDhatu(aupadeshika, gana, sanadi),
             krt: pratyaya,
           },
         };
 
         console.log("this is pratipadika", pratipadika);
-        subanta_result = vidyut.deriveSubantas({
+      } else {
+        pratipadika = {
+          basic: aupadeshika,
+        };
+      }
+
+      const subanta_result = vidyut
+        .deriveSubantas({
           pratipadika,
           linga,
           vacana,
           vibhakti,
-        });
-      } else {
-        subanta_result = vidyut.deriveSubantas({
-          pratipadika: {
-            basic: aupadeshika,
-          },
-          linga,
-          vacana,
-          vibhakti,
-        });
-      }
-
-      subanta_result = subanta_result.map((result) => ({
-        steps: result.history,
-        result: Sanscript.t(result.text, "slp1", "devanagari"),
-      }));
+        })
+        .map((result) => ({
+          steps: result.history,
+          result: Sanscript.t(result.text, "slp1", "devanagari"),
+        }));
 
       console.log(subanta_result);
       return subanta_result[0];
@@ -1162,6 +1159,7 @@ export default {
         aupadeshika,
         gana,
         pratyaya,
+        sanadi,
         lakara,
         pada,
         linga,
@@ -1179,6 +1177,7 @@ export default {
         aupadeshika,
         gana,
         pratyaya,
+        sanadi,
         lakara,
         pada,
         linga,
@@ -1198,6 +1197,7 @@ export default {
             aupadeshika,
             gana,
             pratyaya,
+            [sanadi],
             lakara,
             linga,
             vacana,
