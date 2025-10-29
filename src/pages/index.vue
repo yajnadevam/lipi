@@ -365,22 +365,26 @@ import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 import words from "../assets/data/words.csv?raw";
 
+import { filterInscriptions } from "@/scripts/index/filter";
+import { renderSanskrit } from "@/scripts/index/explanation";
+
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
 // Will be initialized after mount
 let vidyut;
 
+// Todo: This can be removed
 const wordsMap = {};
 csv2json(words).forEach((value) => {
-  const { code, word, seal_id, ...rest } = value;
-  if (code) {
+  const { word, seal_id, ...rest } = value;
+  if (word) {
     if (!wordsMap[word]) {
       wordsMap[word] = {};
     }
 
     wordsMap[word][seal_id] = {
-      code,
+      word,
       ...rest,
     };
   }
@@ -722,183 +726,8 @@ export default {
         ? this.expanded.splice(itemIndex, 1)
         : this.expanded.push(item.id);
     },
-    isIncompleteRegex(query) {
-      return (
-        (query.startsWith("/") || query.endsWith("/")) &&
-        !(query.startsWith("/") && query.endsWith("/"))
-      );
-    },
-    filterInscriptions(_value, query, item) {
-      if (query == null) return false;
-      const keys = Object.keys(item.columns).filter(
-        (value) => value != "text" && value != "canonized"
-      );
-      const fields = query.trim().split(/\s+/);
-      const rawValue = toRefs(item.raw);
-
-      // Iterate through every segment of the query
-      for (let f = 0; f < fields.length; f++) {
-        let useCanonical = true;
-        let queryTerm = fields[f];
-
-        // Columnar Query
-        if (queryTerm.indexOf(":") > -1) {
-          let [column, q] = queryTerm.split(":");
-
-          // If glyph search then we just disable canonical and modify the query and process in the subsequent sections
-          // as regex query or simple string match
-          if (column === "glyph") {
-            if (q.length == 0) continue;
-            useCanonical = false;
-            queryTerm = q;
-          } else {
-            // If the column is valid, that is, it exists in the data try to match or else ignore this queryTerm
-            if (rawValue[column]) {
-              let value = rawValue[column].value;
-
-              // If column is site and value is unknown substitute null value
-              if (
-                column === "site" &&
-                value.toLocaleLowerCase() === "unknown"
-              ) {
-                value = null;
-              }
-
-              // Rewrite unicorn as bull1 since that's the internal name
-              if (column === "symbol" && q.toLocaleLowerCase() === "unicorn") {
-                q = "bull1";
-              }
-
-              if (!this.filterPart(value, q ? q : "**", item, useCanonical)) {
-                return false;
-              }
-            }
-            continue;
-          }
-        }
-
-        // Filter regex expressions if they are incomplete
-        if (this.isIncompleteRegex(queryTerm)) {
-          continue;
-        }
-
-        const signColumn = useCanonical
-          ? rawValue["canonized"].value
-          : rawValue["text"].value;
-
-        // Regex Query
-        if (queryTerm.startsWith("/") && queryTerm.endsWith("/")) {
-          let [sanskrit, translation] = item.columns["sanskrit"].split("\n");
-          sanskrit = sanskrit ? sanskrit.replaceAll("—", " ") : "";
-          translation = translation ? translation.replaceAll("—", " ") : "";
-          if (
-            !(
-              this.filterRegex(signColumn, queryTerm, item, useCanonical) ||
-              this.filterRegex(sanskrit, queryTerm, item, useCanonical) ||
-              this.filterRegex(translation, queryTerm, item, useCanonical)
-            )
-          ) {
-            return false;
-          }
-          continue;
-        }
-
-        // First check in sign column text or canonized dependeing on useCanonical flag, then iterate through all other
-        // columns if a match is not found
-        let found = this.filterPart(signColumn, queryTerm, item, useCanonical);
-        if (!found) {
-          // Iterate through every column in the row except text and canonized
-          for (let i = 0; queryTerm && i < keys.length; i++) {
-            if (
-              this.filterPart(
-                item.columns[keys[i]],
-                queryTerm,
-                item,
-                useCanonical
-              )
-            ) {
-              found = true;
-              break;
-            }
-          }
-        }
-
-        if (!found) return false;
-      }
-      return true;
-    },
-    isValidValueAndQuery(value, query) {
-      return value != null && query != null && query.length > 0;
-    },
-    isCompleteOrBrokenIsAllowed(item) {
-      return (
-        item.raw.complete === "Y" ||
-        (this.optionBroken &&
-          (item.raw.complete === "N" || item.raw.complete === "?"))
-      );
-    },
-    filterRegex(value, query, item, useCanonical) {
-      if (
-        !this.isValidValueAndQuery(value, query) ||
-        !this.isCompleteOrBrokenIsAllowed(item)
-      ) {
-        return false;
-      }
-
-      const pattern = query.slice(1, -1); // Remove the slashes
-      const regex = new RegExp(pattern);
-
-      let canonicalMatch = false;
-      if (useCanonical) {
-        let canonizedPattern = "";
-        for (let i = 0; i < pattern.length; i++) {
-          if (pattern.charCodeAt(i) >= 0xe000) {
-            canonizedPattern += canonized(pattern.charAt(i));
-          } else {
-            canonizedPattern += pattern.charAt(i);
-          }
-        }
-
-        const canonizedRegex = new RegExp(canonizedPattern);
-        canonicalMatch = canonizedRegex.test(canonized(value));
-      }
-
-      return regex.test(value) || canonicalMatch;
-    },
-    filterPart(value, query, item, useCanonical) {
-      if (
-        !this.isValidValueAndQuery(value, query) ||
-        !this.isCompleteOrBrokenIsAllowed(item)
-      ) {
-        return false;
-      }
-
-      // If query is any (represented as **) then filter out rows that have no value (empty)
-      // Please note * is used to find yet to be translated seals so we are using ** for any
-      if (query === "**")
-        return value !== "" && value !== null && value !== "undefined";
-
-      // Not sure if this check is really necessary
-      const isValueStringOrNumber =
-        typeof value === "string" || typeof value === "number";
-
-      const matchesLength = query === "L" + value;
-      const matchesSubstring =
-        value
-          .toString()
-          .toLocaleLowerCase()
-          .indexOf(query.toLocaleLowerCase()) !== -1;
-
-      const matchesCanonical =
-        query.charCodeAt(0) >= 0xe000 &&
-        useCanonical &&
-        canonized(value).indexOf(canonized(query)) !== -1;
-
-      return (
-        isValueStringOrNumber &&
-        (matchesLength || matchesSubstring || matchesCanonical)
-      );
-    },
+    filterInscriptions: (value, query, item) =>
+      filterInscriptions(value, query, item, this.optionBroken),
     itemrow(item) {
       return item.item.complete === "Y"
         ? { class: "primary--text" }
@@ -968,36 +797,9 @@ export default {
 
       return `seal-mat-${material} seal-mat-${material}-${color}`;
     },
-    checkExplanationExists(word) {
-      const slp1Word = Sanscript.t(word, "devanagari", "slp1");
-      // if (wordsMap[slp1Word] || mwMap[slp1Word]) {
-      if (wordsMap[slp1Word]) {
-        return { word, link: true };
-      }
-      return { word };
-    },
     // Todo: Maybe refactor better ?
     // This function determines if words in the Sanskrit transliteration need to be linked because they have prakriya or MW definitions
-    renderSanskrit(sanskrit) {
-      // We are only interested in parts[0] which is the Sanskrit text
-      const parts = sanskrit.split("\n");
-      let sanskritResult = [];
-      let word = "";
-      for (let i = 0; i < parts[0].length; i++) {
-        if (parts[0][i] === "—" || parts[0][i] === " ") {
-          sanskritResult.push(this.checkExplanationExists(word));
-          sanskritResult.push({ word: parts[0][i] });
-          word = "";
-        } else {
-          word += parts[0][i];
-        }
-      }
-      sanskritResult.push(this.checkExplanationExists(word));
-      sanskritResult.push({ word: "\n" });
-      // parts[1] is the IAST text which will be appeneded as is as
-      sanskritResult.push({ word: parts[1] });
-      return sanskritResult;
-    },
+    renderSanskrit: renderSanskrit,
     generateKrdantaInput(code, krt, form) {
       let formLabel = null;
       if (form == 1) {
@@ -1146,96 +948,16 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    // Todo: Deprecate and delete this function
-    getPrakriyaExplanation(devanagariWord, slp1Word, filterParams) {
-      console.log("comes here to get prakriya explanation");
-
-      const prakriyaKeys = prakriyaMap[slp1Word];
-      const prakriyas = prakriyaKeys
-        .filter((prakriyaKey) => {
-          if (!filterParams) return true;
-          const { code, pratyaya, kartari, form } = prakriyaKey;
-          console.log({ filterParams, prakriyaKey });
-
-          if (
-            filterParams.code == code &&
-            ((filterParams.pratyaya && filterParams.pratyaya == pratyaya) ||
-              (filterParams.kartari && filterParams.kartari == kartari)) &&
-            filterParams.form == form
-          ) {
-            return true;
-          }
-          return false;
-        })
-        .map((prakriyaKey) => {
-          const { type, code, pratyaya, kartari, form, dhatu, index, artha } =
-            prakriyaKey;
-
-          let input;
-          let result;
-          let ashtadhyayiLink;
-          if (type === "krdanta") {
-            input = this.generateKrdantaInput(
-              code,
-              Sanscript.t(pratyaya, "devanagari", "slp1"),
-              form
-            );
-
-            console.log("this is the input", input, code, form, pratyaya);
-            result = this.deriveKrdantas(
-              input,
-              dhatu,
-              pratyaya,
-              devanagariWord
-            );
-
-            const subantha_result = vidyut.deriveSubantas({
-              pratipadika: "hara",
-              linga: "Pum",
-              vibhakti: "Trtiya", // 0 to 7
-              vacana: "Eka",
-            });
-
-            console.log("this is the krdanta result", result);
-            console.log("this is the subantha result", subantha_result);
-
-            ashtadhyayiLink = this.getKrdantaAshtadhyayiLink(
-              code,
-              index,
-              pratyaya
-            );
-          } else if (type === "kartari") {
-            input = this.generateTinantaInput(code, kartari, form);
-            result = this.deriveTinantas(input, dhatu, devanagariWord);
-            ashtadhyayiLink = this.getKartariAshtadhyayiLink(
-              code,
-              index,
-              kartari,
-              form
-            );
-          }
-
-          return {
-            dhatu,
-            code,
-            index,
-            artha,
-            ashtadhyayiLink,
-            ...result,
-          };
-        });
-      return {
-        prakriyas,
-      };
-    },
-    getGender(gender) {
-      const genderMap = {
+    // Todo: maybe no longer required
+    getLinga(linga) {
+      const lingaMap = {
         1: "Pum",
         2: "Stri",
         3: "Napumsaka",
       };
-      return genderMap[gender];
+      return lingaMap[linga];
     },
+    // Todo: maybe no longer required
     getVacana(vacana) {
       const vacanaMap = {
         0: "Eka",
@@ -1245,6 +967,7 @@ export default {
       // Please note vacana needs to be decremented by 1 to match vidyut
       return vacanaMap[vacana - 1];
     },
+    // Todo: maybe no longer required
     getVibhakti(vibhakti) {
       const vibhaktiMap = {
         0: "Prathama",
@@ -1259,6 +982,7 @@ export default {
       // Please note vibhakti needs to be decremented by 1 to match vidyut
       return vibhaktiMap[vibhakti - 1];
     },
+    // Todo: maybe no longer required
     getPurusha(purusha) {
       const purushaMap = {
         0: "Prathama",
@@ -1268,6 +992,7 @@ export default {
       // Please note purusha needs to be decremented by 1 to match vidyut
       return purushaMap[purusha - 1];
     },
+    // Todo: maybe no longer required
     getLakara(lakara) {
       const lakaraMap = {
         plat: { name: "Lat", label: "लट्लकारः" },
@@ -1283,27 +1008,69 @@ export default {
       };
       return lakaraMap[lakara];
     },
-    deriveSubantas(devanagariResult, slp1Word, gender, vacana, vibhakti) {
-      const devanagariWord = Sanscript.t(slp1Word, "slp1", "devanagari");
-      const subanta_result = vidyut
-        .deriveSubantas({
-          pratipadika: slp1Word,
-          linga: this.getGender(gender),
-          vacana: this.getVacana(vacana),
-          vibhakti: this.getVibhakti(vibhakti),
-        })
-        .map((result) => ({
-          steps: result.history,
-          result: Sanscript.t(result.text, "slp1", "devanagari"),
-        }));
+    createDhatu(aupadeshika, gana) {
+      return {
+        aupadeshika,
+        gana,
+        antargana: null,
+        sanadi: [],
+        prefixes: [],
+      };
+    },
+    deriveSubantas(
+      devanagariResult,
+      aupadeshika,
+      gana,
+      pratyaya,
+      lakara, // Todo: Is this required?
+      linga,
+      vacana,
+      purusha, // Todo: Is this required?
+      vibhakti
+    ) {
+      if (pratyaya) {
+        const pratipadika = {
+          krdanta: {
+            dhatu: this.createDhatu(aupadeshika, gana),
+            krt: pratyaya,
+          },
+        };
 
-      console.log("subanta result", subanta_result, devanagariResult);
-      return subanta_result.filter((res) => res.result == devanagariResult)[0];
+        console.log("this is pratipadika", pratipadika);
+
+        const subanta_result = vidyut
+          .deriveSubantas({
+            pratipadika,
+            linga,
+            vacana,
+            vibhakti,
+          })
+          .map((result) => ({
+            steps: result.history,
+            result: Sanscript.t(result.text, "slp1", "devanagari"),
+          }));
+
+        console.log(subanta_result);
+        return subanta_result.filter(
+          (res) => res.result == devanagariResult
+        )[0];
+      }
+
+      // Todo: Need to handle default case
+      return null;
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {
+      const dhatu = {
+        aupadeshika: code,
+        gana: "Bhvadi",
+        sanadi: [],
+        prefixes: [],
+        antargana: null,
+      };
+
       const krdanta_result = vidyut
         .deriveKrdantas({
-          code,
+          dhatu: dhatu,
           krt: Sanscript.t(pratyaya, "devanagari", "slp1"),
           sanadi: [],
           upasarga: [],
@@ -1341,17 +1108,23 @@ export default {
       console.log("final krdanta result", krdanta_result);
       return krdanta_result.filter((res) => res.result == devanagariResult)[0];
     },
-    deriveTinantas(devanagariResult, code, kartari, vacana, purusha) {
-      const lakara = this.getLakara(kartari);
-
+    deriveTinantas(
+      devanagariResult,
+      aupadeshika,
+      gana,
+      lakara,
+      pada,
+      vacana,
+      purusha
+    ) {
       const tinanta_result = vidyut
         .deriveTinantas({
-          code,
-          lakara: lakara["name"],
-          prayoga: "Kartari",
-          vacana: this.getVacana(vacana),
-          purusha: this.getPurusha(purusha),
-          pada: null,
+          dhatu: this.createDhatu(aupadeshika, gana),
+          lakara,
+          vacana,
+          purusha,
+          prayoga: "Kartari", // Todo: Can this change?
+          pada,
           sanadi: [],
           upasarga: [],
         })
@@ -1379,28 +1152,51 @@ export default {
       let mwDialogContent = null;
       let prakriyaDialogContent = null;
       const {
-        code,
+        mw,
         modifier,
+        aupadeshika,
+        gana,
         pratyaya,
-        kartari,
-        gender,
+        lakara,
+        pada,
+        linga,
         vacana,
         purusha,
         vibhakti,
       } = wordsMap[slp1Word][sealId] ?? wordsMap[slp1Word]["*"];
-      const [type, word] = code.toString().split(":");
 
-      if (type == "MW") {
-        mwDialogContent = this.getMwExplanation(word);
+      // Todo: We probably dont need this anymore
+      // const [type, word] = code.toString().split(":");
+
+      console.log(
+        mw,
+        modifier,
+        aupadeshika,
+        gana,
+        pratyaya,
+        lakara,
+        pada,
+        linga,
+        vacana,
+        purusha,
+        vibhakti
+      );
+
+      if (mw) {
+        mwDialogContent = this.getMwExplanation(mw);
       }
 
       switch (modifier) {
         case "sup":
           prakriyaDialogContent = this.deriveSubantas(
             devanagariWord,
-            word,
-            gender,
+            aupadeshika,
+            gana,
+            pratyaya,
+            lakara,
+            linga,
             vacana,
+            purusha,
             vibhakti
           );
           break;
@@ -1409,7 +1205,7 @@ export default {
             devanagariWord,
             type,
             pratyaya,
-            gender,
+            linga,
             vacana,
             vibhakti
           );
@@ -1417,8 +1213,10 @@ export default {
         case "tin":
           prakriyaDialogContent = this.deriveTinantas(
             devanagariWord,
-            type,
-            kartari,
+            aupadeshika,
+            gana,
+            lakara,
+            pada,
             vacana,
             purusha
           );

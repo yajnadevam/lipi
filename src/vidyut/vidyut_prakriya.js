@@ -167,6 +167,55 @@ function isLikeNone(x) {
     return x === undefined || x === null;
 }
 /**
+ * Defines an *antargaṇa*.
+ *
+ * The dhatus in the Dhatupatha are organized in ten large *gaṇa*s or classes. Within these larger
+ * *gaṇa*s, certain *antargaṇa*s or subclasses have extra properties that affect the derivations
+ * they produce. For example, dhatus in the *kuṭādi antargaṇa* generally do not allow *guṇa* vowel
+ * changes.
+ *
+ * Since most dhatus appear exactly once per *gaṇa*, this crate can usually infer whether a dhatu
+ * is in a specific *antargaṇa*. However, some *gaṇa*s have dhatus that repeat, and these
+ * repeating dhatus cause ambiguities for our code. (For example, `juqa~` appears twice in
+ * *tudādigaṇa*: once in *kuṭādi* and once outside of it.)
+ *
+ * To avoid this ambiguity, we require that certain *antargaṇa*s are declared up-front.
+ *
+ * (Can we disambiguate by checking the dhatu's index within its gana? Unfortunately, no. There is
+ * no canonical version of the Dhatupatha, and we cannot expect that a dhatu's index is consistent
+ * across all of these versions. So we thought it better to avoid hard-coding indices or requiring
+ * callers to follow our specific conventions.)
+ * @enum {0 | 1 | 2 | 3 | 4}
+ */
+export const Antargana = Object.freeze({
+    /**
+     * *Antargaṇa* of *bhū* gana. A dhatu in this *antargaṇa* uses a shortened vowel when
+     * followed by *ṇic-pratyaya*.
+     */
+    Ghatadi: 0, "0": "Ghatadi",
+    /**
+     * *Antargaṇa* of *tud* gana. Pratyayas that follow dhatus in *kuṭādi-gaṇa* will generally be
+     * marked `Nit` per 1.2.1. Required because of duplicates like `juqa~`.
+     */
+    Kutadi: 1, "1": "Kutadi",
+    /**
+     * *Antargaṇa* of *cur* gana ending with `zvada~` / `svAda~`. A dhatu in this *antargaṇa*
+     * optionaly uses *ṇic-pratyaya* when taking an object. Required because of duplicates like
+     * `tuji~`.
+     */
+    Asvadiya: 2, "2": "Asvadiya",
+    /**
+     * *Antargaṇa* of *cur* gana ending with `Dfza~`. A dhatu in this *antargaṇa* optionally uses
+     * *ṇic-pratyaya*. Required because of duplicates like `SraTa~`.
+     */
+    Adhrshiya: 3, "3": "Adhrshiya",
+    /**
+     * *Antargaṇa* of *cur* gana ending with `kusma~`. A dhatu in this *antargaṇa* is always
+     * *ātmanepadī*. Required because of duplicates like `daSi~`.
+     */
+    Akusmiya: 4, "4": "Akusmiya",
+});
+/**
  * The complete list of ordinary *kṛt pratyaya*s.
  *
  * Rust's naming convention is to start enum values with capital letters. However, we allow mixed
@@ -2973,34 +3022,11 @@ export class Vidyut {
      * Creates a new API manager.
      *
      * This constructor is not called `new` because `new` is a reserved word in JavaScript.
-     * @param {string} dhatupatha
      * @returns {Vidyut}
      */
-    static init(dhatupatha) {
-        const ptr0 = passStringToWasm0(dhatupatha, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.vidyut_init(ptr0, len0);
+    static init() {
+        const ret = wasm.vidyut_init();
         return Vidyut.__wrap(ret);
-    }
-    /**
-     * Wrapper for `Vyakarana::derive_tinantas`.
-     *
-     * TODO: how might we reduce the number of arguments here?
-     * @param {any} val
-     * @returns {any}
-     */
-    deriveTinantas(val) {
-        const ret = wasm.vidyut_deriveTinantas(this.__wbg_ptr, val);
-        return ret;
-    }
-    /**
-     * Wrapper for `Vyakarana::derive_subantas`.
-     * @param {any} val
-     * @returns {any}
-     */
-    deriveSubantas(val) {
-        const ret = wasm.vidyut_deriveSubantas(this.__wbg_ptr, val);
-        return ret;
     }
     /**
      * Wrapper for `Vyakarana::derive_krdantas`.
@@ -3013,13 +3039,31 @@ export class Vidyut {
     }
     /**
      * Wrapper for `Vyakarana::derive_dhatus`.
-     * @param {string} code
+     * @param {any} val
      * @returns {any}
      */
-    deriveDhatus(code) {
-        const ptr0 = passStringToWasm0(code, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.vidyut_deriveDhatus(this.__wbg_ptr, ptr0, len0);
+    deriveDhatus(val) {
+        const ret = wasm.vidyut_deriveDhatus(this.__wbg_ptr, val);
+        return ret;
+    }
+    /**
+     * Wrapper for `Vyakarana::derive_subantas`.
+     * @param {any} val
+     * @returns {any}
+     */
+    deriveSubantas(val) {
+        const ret = wasm.vidyut_deriveSubantas(this.__wbg_ptr, val);
+        return ret;
+    }
+    /**
+     * Wrapper for `Vyakarana::derive_tinantas`.
+     *
+     * TODO: how might we reduce the number of arguments here?
+     * @param {any} val
+     * @returns {any}
+     */
+    deriveTinantas(val) {
+        const ret = wasm.vidyut_deriveTinantas(this.__wbg_ptr, val);
         return ret;
     }
 }

@@ -1,6 +1,54 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
+ * Defines an *antargaṇa*.
+ *
+ * The dhatus in the Dhatupatha are organized in ten large *gaṇa*s or classes. Within these larger
+ * *gaṇa*s, certain *antargaṇa*s or subclasses have extra properties that affect the derivations
+ * they produce. For example, dhatus in the *kuṭādi antargaṇa* generally do not allow *guṇa* vowel
+ * changes.
+ *
+ * Since most dhatus appear exactly once per *gaṇa*, this crate can usually infer whether a dhatu
+ * is in a specific *antargaṇa*. However, some *gaṇa*s have dhatus that repeat, and these
+ * repeating dhatus cause ambiguities for our code. (For example, `juqa~` appears twice in
+ * *tudādigaṇa*: once in *kuṭādi* and once outside of it.)
+ *
+ * To avoid this ambiguity, we require that certain *antargaṇa*s are declared up-front.
+ *
+ * (Can we disambiguate by checking the dhatu's index within its gana? Unfortunately, no. There is
+ * no canonical version of the Dhatupatha, and we cannot expect that a dhatu's index is consistent
+ * across all of these versions. So we thought it better to avoid hard-coding indices or requiring
+ * callers to follow our specific conventions.)
+ */
+export enum Antargana {
+  /**
+   * *Antargaṇa* of *bhū* gana. A dhatu in this *antargaṇa* uses a shortened vowel when
+   * followed by *ṇic-pratyaya*.
+   */
+  Ghatadi = 0,
+  /**
+   * *Antargaṇa* of *tud* gana. Pratyayas that follow dhatus in *kuṭādi-gaṇa* will generally be
+   * marked `Nit` per 1.2.1. Required because of duplicates like `juqa~`.
+   */
+  Kutadi = 1,
+  /**
+   * *Antargaṇa* of *cur* gana ending with `zvada~` / `svAda~`. A dhatu in this *antargaṇa*
+   * optionaly uses *ṇic-pratyaya* when taking an object. Required because of duplicates like
+   * `tuji~`.
+   */
+  Asvadiya = 2,
+  /**
+   * *Antargaṇa* of *cur* gana ending with `Dfza~`. A dhatu in this *antargaṇa* optionally uses
+   * *ṇic-pratyaya*. Required because of duplicates like `SraTa~`.
+   */
+  Adhrshiya = 3,
+  /**
+   * *Antargaṇa* of *cur* gana ending with `kusma~`. A dhatu in this *antargaṇa* is always
+   * *ātmanepadī*. Required because of duplicates like `daSi~`.
+   */
+  Akusmiya = 4,
+}
+/**
  * The complete list of ordinary *kṛt pratyaya*s.
  *
  * Rust's naming convention is to start enum values with capital letters. However, we allow mixed
@@ -2774,17 +2822,7 @@ export class Vidyut {
    *
    * This constructor is not called `new` because `new` is a reserved word in JavaScript.
    */
-  static init(dhatupatha: string): Vidyut;
-  /**
-   * Wrapper for `Vyakarana::derive_tinantas`.
-   *
-   * TODO: how might we reduce the number of arguments here?
-   */
-  deriveTinantas(val: any): any;
-  /**
-   * Wrapper for `Vyakarana::derive_subantas`.
-   */
-  deriveSubantas(val: any): any;
+  static init(): Vidyut;
   /**
    * Wrapper for `Vyakarana::derive_krdantas`.
    */
@@ -2792,7 +2830,17 @@ export class Vidyut {
   /**
    * Wrapper for `Vyakarana::derive_dhatus`.
    */
-  deriveDhatus(code: string): any;
+  deriveDhatus(val: any): any;
+  /**
+   * Wrapper for `Vyakarana::derive_subantas`.
+   */
+  deriveSubantas(val: any): any;
+  /**
+   * Wrapper for `Vyakarana::derive_tinantas`.
+   *
+   * TODO: how might we reduce the number of arguments here?
+   */
+  deriveTinantas(val: any): any;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -2800,11 +2848,11 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly __wbg_vidyut_free: (a: number, b: number) => void;
-  readonly vidyut_init: (a: number, b: number) => number;
-  readonly vidyut_deriveTinantas: (a: number, b: any) => any;
-  readonly vidyut_deriveSubantas: (a: number, b: any) => any;
+  readonly vidyut_init: () => number;
   readonly vidyut_deriveKrdantas: (a: number, b: any) => any;
-  readonly vidyut_deriveDhatus: (a: number, b: number, c: number) => any;
+  readonly vidyut_deriveDhatus: (a: number, b: any) => any;
+  readonly vidyut_deriveSubantas: (a: number, b: any) => any;
+  readonly vidyut_deriveTinantas: (a: number, b: any) => any;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_export_2: WebAssembly.Table;
