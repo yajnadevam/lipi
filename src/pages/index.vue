@@ -1197,7 +1197,7 @@ export default {
             aupadeshika,
             gana,
             pratyaya,
-            [sanadi],
+            sanadi ? [sanadi] : [],
             lakara,
             linga,
             vacana,
