@@ -8,7 +8,7 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 8,calataH,*,,tin,cala~,Tudadi,,Lat,Parasmaipada,,Dvi,Prathama,,"DONE, Not sure if adding the a~ is the right way to go but it matches the derivation"
 9,amam,*,ama,sup,ama~,Bhvadi,ac,,,Pum,Eka,,Dvitiya,Done
 10,mana,2832.1,,tin,mnA,Bhvadi,,Lot,Parasmaipada,,Eka,Madhyama,,UNABLE TO DERIVE MAYBE NEEDS TO PROBABLY BE RAISED
-11,sakza,*,sakza,sup,,,,,,Pum,Eka,,Sambodhana,CANNOT BE FOUND IN AA
+11,sakza,*,sakza,sup,sah,Bhvadi,,,,Pum,Eka,,Sambodhana,CANNOT BE FOUND IN AA
 12,naram,*,nara,sup,nF,Kryadi,ac,,,Pum,Eka,,Dvitiya,DONE
 13,jaWala,*,jaWala,sup,,,,,,Pum,Eka,,Sambodhana,UNABLE TO DERIVE
 14,DAra,*,DAra,sup,Df,Tudadi,GaY,,,Pum,Eka,,Sambodhana,DONE
@@ -19,14 +19,15 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 19,ASa,*,ASa,sup,aSUa~,Svadi,GaY,,,Pum,Eka,,Sambodhana,NOT SURE HOW TO DERIVE THIS
 20,varam,*,vara,sup,vf,Bhvadi,ac,,,Pum,Eka,,Dvitiya,DONE
 21,dAma,*,dAman,sup,dEp,Bhvadi,ac,,,Napumsaka,Eka,,Sambodhana,THIS SHOULD PROBABLY BE CONVERTED TO KRDANTA SINCE THE CURRENT INPUT DERIVES /do/ AND NOT /dAma/
-22,mana,2551.1,4.0073,krt,,,ac,,,1,1,,8,
-23,kaMsaM,*,MW:kaMsa,sup,,,,,,3,1,,2,
-24,naH,*,MW:asmad,sup,,,,,,1,3,,4,
-25,ranDana,*,MW:ranDana,sup,,,,,,1,1,,8,
-26,SatadA,*,MW:SatadA,sup,,,,,,1,1,,1,
-27,Ama,*,1.0536,tin,,,,plot,,,1,1,,
-28,ca,*,MW:ca,,,,,,,,,,,
-29,varAn,*,MW:vara,sup,,,,,,1,3,,2,
+22,mana,2551.1,4.0073,krt,,,ac,,,1,1,,8,NEED MORE WORK
+23,kaMsaM,*,kaMsa,sup,kasi~,Adadi,ac,,,Napumsaka,Eka,,Dvitiya,DONE
+23,kaMsam,*,kaMsa,sup,kasi~,Adadi,ac,,,Napumsaka,Eka,,Dvitiya,DONE
+24,naH,*,asmad,sup,asmad,,,,,Pum,Bahu,,Caturthi,NEED MORE WORK
+25,ranDana,*,ranDana,sup,raDa~,Curadi,lyuw,,,Pum,Eka,,Sambodhana,DONE
+26,SatadA,*,SatadA,sup,,,,,,1,1,,1,CANNOT BE FOUND IN AA
+27,Ama,*,Ama,tin,ama~,Bhvadi,,Lit,Parasmaipada,,Eka,Prathama,,DONE
+28,ca,*,ca,,,,,,,,,,,DONE
+29,varAn,*,vara,sup,,,,,,Pum,Bahu,,Dvitiya,NEED MORE WORK
 30,udaya,*,MW:udaya,sup,,,,,,1,1,,8,
 31,nAman,*,MW:nAman,sup,,,,,,3,1,,8,
 32,naraM,*,MW:nara,sup,,,,,,1,1,,2,
@@ -41,7 +42,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 39,tat,*,MW:tat,,,,,,,,,,,
 40,dadanam,*,1.0017,krt,,,lyuw,,,3,1,,2,
 41,aYjas,*,MW:aYjas,,,,,,,,,,,
-42,kaMsam,*,MW:kaMsa,sup,,,,,,3,1,,2,
 43,saram,*,MW:sara,sup,,,,,,1,1,,2,
 44,saraM,*,MW:sara,sup,,,,,,1,1,,2,
 45,modAn,*,MW:moda,sup,,,,,,1,3,,2,
@@ -62,7 +62,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 60,Aka,*,MW:Aka,,,,,,,,,,,
 61,ama,*,MW:ama,,,,,,,,,,,
 62,Am,*,MW:Am,,,,,,,,,,,
-63,Ama,*,1.0536,tin,,,,plit,,,1,3,,
 64,Amana,*,MW:Amana,,,,,,,,,,,
 65,amatra,*,MW:amatra,,,,,,,,,,,
 66,amavat,*,MW:amavat,,,,,,,,,,,
@@ -348,7 +347,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 356,sAta,*,MW:sAta,,,,,,,,,,,
 357,sAtA,*,MW:sAtA,,,,,,,,,,,
 358,Sata,*,MW:Sata,,,,,,,,,,,
-359,SatadA,*,MW:SatadA,,,,,,,,,,,
 360,sava,*,MW:sava,,,,,,,,,,,
 361,sva,*,MW:sva,,,,,,,,,,,
 362,svaDA,*,MW:svaDA,,,,,,,,,,,
@@ -404,7 +402,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 413,vamajA,*,MW:vamajA,,,,,,,,,,,
 414,vana,*,MW:vana,,,,,,,,,,,
 415,vapa,*,MW:vapa,,,,,,,,,,,
-416,vara,*,MW:vara,,,,,,,,,,,
 417,varAraka,*,MW:varAraka,,,,,,,,,,,
 418,varma,*,MW:varma,,,,,,,,,,,
 419,varRa,*,MW:varRa,,,,,,,,,,,
