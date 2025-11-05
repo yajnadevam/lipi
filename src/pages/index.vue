@@ -948,66 +948,6 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    // Todo: maybe no longer required
-    getLinga(linga) {
-      const lingaMap = {
-        1: "Pum",
-        2: "Stri",
-        3: "Napumsaka",
-      };
-      return lingaMap[linga];
-    },
-    // Todo: maybe no longer required
-    getVacana(vacana) {
-      const vacanaMap = {
-        0: "Eka",
-        1: "Dvi",
-        2: "Bahu",
-      };
-      // Please note vacana needs to be decremented by 1 to match vidyut
-      return vacanaMap[vacana - 1];
-    },
-    // Todo: maybe no longer required
-    getVibhakti(vibhakti) {
-      const vibhaktiMap = {
-        0: "Prathama",
-        1: "Dvitiya",
-        2: "Trtiya",
-        3: "Caturthi",
-        4: "Panchami",
-        5: "Sasthi",
-        6: "Saptami",
-        7: "Sambodhana",
-      };
-      // Please note vibhakti needs to be decremented by 1 to match vidyut
-      return vibhaktiMap[vibhakti - 1];
-    },
-    // Todo: maybe no longer required
-    getPurusha(purusha) {
-      const purushaMap = {
-        0: "Prathama",
-        1: "Madhyama",
-        2: "Uttama",
-      };
-      // Please note purusha needs to be decremented by 1 to match vidyut
-      return purushaMap[purusha - 1];
-    },
-    // Todo: maybe no longer required
-    getLakara(lakara) {
-      const lakaraMap = {
-        plat: { name: "Lat", label: "लट्लकारः" },
-        plit: { name: "Lit", label: "लिट्लकारः" },
-        plut: { name: "Lut", label: "लुट्लकारः" },
-        plrut: { name: "Lrt", label: "लृट्लकारः" },
-        plot: { name: "Lot", label: "लोट्लकारः" },
-        plang: { name: "Lan", label: "लङ्लकारः" },
-        pvidhiling: { name: "VidhiLin", label: "विधिलिङ्लकारः" },
-        pashirling: { name: "AshirLin", label: "आशीर्लिङ्लकारः" },
-        plung: { name: "Lun", label: "लुङ्लकारः" },
-        plrung: { name: "Lrn", label: "लृङ्लकारः" },
-      };
-      return lakaraMap[lakara];
-    },
     createDhatu(aupadeshika, gana, sanadi = []) {
       return {
         aupadeshika,
