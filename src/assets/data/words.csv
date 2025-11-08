@@ -215,7 +215,6 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 214,mahat,*,mahat,,,,,,,,,,,DONE
 215,maja,*,maja,,,,,,,,,,,DONE
 216,majja,*,majja,,,,,,,,,,,DONE
-217,mAKa,*,mAKa,,,,,,,,,,,DONE
 218,malAMSa,*,malAMSa,,,,,,,,,,,DONE
 219,malla,*,malla,,,,,,,,,,,DONE
 220,mana,*,mana,,,,,,,,,,,DONE
@@ -470,87 +469,86 @@ id,word,seal_id,mw,modifier,aupadeshika,gana,pratyaya,lakara,pada,linga,vacana,p
 469,vanaja,*,vanaja,,,,,,,,,,,DONE
 470,dasma,*,dasma,,,,,,,,,,,DONE
 471,arka,*,arka,,,,,,,,,,,DONE
-472,CadAni,*,Cada,sup,,,,,,3,3,,1,
-473,mokzam,*,MW:mokza,sup,,,,,,1,1,,2,
-474,BAM,*,MW:BA,sup,,,,,,2,1,,2,
-475,BAm,*,MW:BA,sup,,,,,,2,1,,2,
-476,mantra,*,10.0199,tin,,,,Lot,,,1,2,,
-477,saham,*,MW:saha,sup,,,,,,1,1,,2,
-478,AYjanAya,*,MW:AYjana,sup,,,,,,3,1,,4,
-479,naman,*,1.1136,krt,,,Satr,,,1,1,,8,
-480,dAhavan,*,MW:dAhavat,sup,,,,,,1,1,,8,
-481,ya,*,ya,,,,,,,,,,,
+472,CadAni,*,Cada,sup,Cada,Bhvadi,,,,Napumsaka,Bahu,,Prathama,DONE
+473,mokzam,*,mokza,sup,mokza,Bhvadi,,,,Pum,Eka,,Dvitiya,DONE
+474,BAM,*,BA,sup,BA,Bhvadi,,,,Stri,Eka,,Dvitiya,DONE
+475,BAm,*,BA,sup,BA,Bhvadi,,,,Stri,Eka,,Dvitiya,DONE
+476,mantra,*,,tin,,,,Lot,Parasmaipada,,Eka,Madhyama,,NEED MORE WORK
+477,saham,*,saha,sup,saha,Bhvadi,,,,Pum,Eka,,Dvitiya,DONE
+478,AYjanAya,*,AYjana,sup,AYjana,Bhvadi,,,,Napumsaka,Eka,,Caturthi,DONE
+479,naman,*,,sup,Rama~,Bhvadi,Satf,,,Pum,Eka,,Sambodhana,DONE
+480,dAhavan,*,dAhavat,sup,,Bhvadi,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+481,ya,*,ya,,,,,,,,,,,DONE
 482,naSana,*,naSana,,,,,,,,,,,DONE
 483,i,*,i,,,,,,,,,,,DONE
 484,badDa,*,badDa,,,,,,,,,,,DONE
-485,baBa,*,2.0046,tin,,,,Lit,,,3,2,,
-486,aha,*,aha,,,,,,,,,,,
-487,ananan,*,2.0065,krt,,,Satr,,,1,1,,8,
-488,saraH,*,MW:sara,sup,,,,,,1,1,,1,
-490,aYca,*,1.1,krt,,,ac,,,1,1,,8,
+485,baBa,*,,tin,BA,Adadi,,Lit,Parasmaipada,,Bahu,Madhyama,,DONE
+487,ananan,*,,sup,,Bhvadi,Satf,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+488,saraH,*,sara,sup,sf,Bhvadi,ac,,,Pum,Eka,,Prathama,DONE
+490,aYca,*,,sup,ancu~,Bhvadi,ac,,,Pum,Eka,,Sambodhana,DONE
 491,hanman,*,hanman,,,,,,,,,,,DONE
 492,hanana,*,hanana,,,,,,,,,,,DONE
 493,aDana,*,aDana,,,,,,,,,,,DONE
-494,akaka,*,1.0901,,,,vun,,,1,1,,8,
+494,akaka,*,,sup,aka~,Bhvadi,vun,,,Pum,Eka,,Sambodhana,DONE
 495,anAs,*,anAs,,,,,,,,,,,DONE
 496,SamanI,*,SamanI,,,,,,,,,,,DONE
 497,tatra,*,tatra,,,,,,,,,,,DONE
-498,amAya,*,MW:ama,sup,,,,,,1,1,,4,
+498,amAya,*,ama,sup,ama,Bhvadi,,,,Pum,Eka,,Caturthi,DONE
 499,araja,*,araja,,,,,,,,,,,DONE
-500,aman,*,MW:aman,sup,,,,,,1,1,,8,
+500,aman,*,MW:aman,sup,,,,,,Pum,Eka,,Sambodhana,DONE
 501,Aya,*,Aya,,,,,,,,,,,DONE
-502,ASak,*,MW:ASak,sup,,,,,,1,1,,8,
-503,Ira,*,2.0008,krt,,,ac,,,1,1,,8,
-504,caka,*,1.0892,krt,,,ac,,,1,1,,8,
+502,ASak,*,ASak,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+503,Ira,*,,sup,Ira~,Adadi,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+504,caka,*,1.0892,krt,,,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
 505,jaga,*,jaga,,,,,,,,,,,DONE
 506,Canna,*,Canna,,,,,,,,,,,DONE
-507,cAnana,*,10.0378,krt,,,lyuw,,,3,1,,8,
-508,caza,*,1.1034,krt,,,ac,,,1,1,,8,
+507,cAnana,*,,sup,cana~,Curadi,lyuw,,,Napumsaka,Eka,,Sambodhana,DONE
+508,caza,*,1.1034,krt,,,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
 509,janman,*,janman,,,,,,,,,,,DONE
-510,jA,*,MW:jan,sup,,,,,,1,1,,1,
-511,tatAna,*,8.0001,tin,,,,Lit,,,1,3,,
-512,tanmanaH,*,MW:tanmanas,sup,,,,,,1,1,,1,
-513,tamA,*,MW:tama,,,,,,,,,,,
-514,taya,*,1.0551,krt,,,ac,,,1,1,,8,
-515,tAravah,*,MW:tArava,sup,,,,,,1,1,,1,
+510,jA,*,jan,sup,jE,Bhvadi,ac,,,Pum,Eka,,Prathama,"NEED MORE WORK, PROBABLY STRI INSTEAD OF PUM?"
+511,tatAna,*,,tin,tanu~,Tanadi,,Lit,Parasmaipada,,Eka,Uttama,,DONE
+512,tanmanaH,*,tanmanas,sup,,,,,,Pum,Eka,,Prathama,NEED MORE WORK
+513,tamA,*,tama,sup,tamu~,Divadi,ac,,,Stri,Eka,,Prathama,DONE
+514,taya,*,1.0551,krt,,,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+515,tAravah,*,tArava,sup,,,,,,Pum,Eka,,Prathama,NEED MORE WORK
 516,ti,*,ti,,,,,,,,,,,DONE
 517,trARa,*,trARa,,,,,,,,,,,DONE
-518,daDad,*,3.0011,krt,,,Satr,,,1,1,,8,
+518,daDad,*,,sup,quDAY,Juhotyadi,Satf,,,Pum,Eka,,Sambodhana,DONE
 519,nASanI,*,nASanI,,,,,,,,,,,DONE
 520,jajja,*,jajja,,,,,,,,,,,DONE
-521,tawya,*,1.0345,krt,,,lyap,,,1,1,,8,
-522,tawaM,*,MW:tawa,sup,,,,,,1,1,,2,
-523,tawam,*,MW:tawa,sup,,,,,,1,1,,2,
+521,tawya,*,1.0345,krt,,,lyap,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+522,tawaM,*,tawa,sup,tawa~,Bhvadi,ac,,,Pum,Eka,,Dvitiya,DONE
+523,tawam,*,tawa,sup,tawa~,Bhvadi,ac,,,Pum,Eka,,Dvitiya,DONE
 524,vaDa,*,vaDa,,,,,,,,,,,DONE
 525,vaSa,*,vaSa,,,,,,,,,,,DONE
 526,ISana,*,ISana,,,,,,,,,,,DONE
-527,naBa,*,1.0855,krt,,,ac,,,1,1,,8,
-528,manaH,*,MW:manas,sup,,,,,,1,1,,8,
-529,maKa,*,MW:maKa,sup,,,,,,1,1,,8,
-530,yaH,*,MW:yad,sup,,,,,,1,1,,1,
-531,yAH,*,MW:yad,sup,,,,,,1,3,,1,
-532,yE,*,MW:i,sup,,,,,,2,1,,4,
-533,yata,*,MW:yata,sup,,,,,,1,1,,8,
-534,yaya,*,2.0057,sup,,,,,,1,1,,8,
-535,rara,*,1.1057,tin,,,,Lit,,,3,2,,
-536,rarARa,*,1.0513,tin,,,,Lit,,,1,3,,
-537,rAH,*,1.1057,krt,,,ac,,,1,1,,1,
-538,rAsa,*,1.0713,krt,,,ac,,,1,1,,8,
-539,Saya,*,MW:Saya,sup,,,,,,1,1,,8,
-540,SaSI,*,MW:SaSin,sup,,,,,,1,1,,1,
-541,SAtana,*,MW:SAtana,sup,,,,,,1,1,,8,
-542,saKa,*,MW:saKa,sup,,,,,,1,1,,8,
-543,sadasya,*,MW:sadasya,sup,,,,,,1,1,,8,
-544,saBa,*,MW:saBa,sup,,,,,,1,1,,8,
-545,han,*,MW:han,sup,,,,,,1,1,,8,
-546,namanam,*,MW:namana,sup,,,,,,3,1,,2,
-547,ttiH,*,MW:tti,sup,,,,,,2,1,,1,
-548,Ananam,*,MW:Anana,sup,,,,,,3,1,,2,
-549,mIra,*,MW:mIra,sup,,,,,,1,1,,8,
-550,hA,*,MW:han,sup,,,,,,1,1,,1,
-551,maH,*,MW:mA,sup,,,,,,1,1,,5,
-552,raH,*,MW:rA,sup,,,,,,1,1,,5,
-553,saH,*,MW:sf,sup,,,,,,1,1,,8,
-554,jayI,*,MW:jayin,sup,,,,,,1,1,,1,
-555,javat,*,MW:javas,sup,,,,,,3,1,,1,
-556,aSnan,*,9.0059,krt,,,Satf,,,1,1,,1,
+527,naBa,*,1.0855,krt,,,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+528,manaH,*,manas,sup,mana~,Divadi,ac,,,Pum,Eka,,Prathama,DONE
+529,maKa,*,maKa,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+530,yaH,*,yad,sup,yad,Bhvadi,,,,Pum,Eka,,Prathama,DONE
+531,yAH,*,yad,sup,yad,Bhvadi,,,,Stri,Bahu,,Prathama,DONE
+532,yE,*,i,sup,yad,Bhvadi,,,,Stri,Eka,,Caturthi,NEED MORE WORK
+533,yata,*,yata,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+534,yaya,*,2.0057,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+535,rara,*,,tin,rE,Bhvadi,,Lit,Parasmaipada,,Bahu,Madhyama,,DONE
+536,rarARa,*,,tin,raRa~,Bhvadi,,Lit,Parasmaipada,,Eka,Uttama,,DONE
+537,rAH,*,,sup,rE,Bhvadi,ac,,,Pum,Eka,,Prathama,DONE
+538,rAsa,*,1.0713,krt,,,ac,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+539,Saya,*,Saya,sup,SIN,Adadi,ac,,,Pum,Eka,,Sambodhana,DONE
+540,SaSI,*,SaSin,sup,SaSin,Bhvadi,,,,Pum,Eka,,Prathama,DONE
+541,SAtana,*,SAtana,sup,sadx~,Bhvadi,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+542,saKa,*,saKa,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+543,sadasya,*,sadasya,sup,sadasya,Bhvadi,,,,Pum,Eka,,Sambodhana,DONE
+544,saBa,*,saBa,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+545,han,*,han,sup,hana~,Adadi,lyuw,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+546,namanam,*,namana,sup,Rama~,Bhvadi,lyuw,,,Napumsaka,Eka,,Dvitiya,DONE
+547,ttiH,*,tti,sup,taya~,Bhvadi,ktin,,,Stri,Eka,,Prathama,DONE
+548,Ananam,*,Anana,sup,ana~,Adadi,lyuw,,,Napumsaka,Eka,,Dvitiya,NEED MORE WORK
+549,mIra,*,mIra,sup,,,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+550,hA,*,han,sup,o~hAk,Juhotyadi,,,,Pum,Eka,,Prathama,NEED MORE WORK
+551,maH,*,mA,sup,,,,,,Pum,Eka,,Panchami,NEED MORE WORK
+552,raH,*,rA,sup,,,,,,Pum,Eka,,Panchami,NEED MORE WORK
+553,saH,*,sf,sup,tad,Bhvadi,,,,Pum,Eka,,Sambodhana,NEED MORE WORK
+554,jayI,*,jayin,sup,,,,,,Pum,Eka,,Prathama,NEED MORE WORK
+555,javat,*,javas,sup,,,,,,Napumsaka,Eka,,Prathama,NEED MORE WORK
+556,aSnan,*,,sup,aSa~,Kryadi,Satf,,,Pum,Eka,,Prathama,DONE
