@@ -365,7 +365,7 @@ import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 import words from "../assets/data/words.csv?raw";
 
-import { filterInscriptions } from "@/scripts/index/filter";
+import { filter } from "@/scripts/index/filter";
 import { renderSanskrit } from "@/scripts/index/explanation";
 
 // eslint-disable-next-line import/first
@@ -726,8 +726,9 @@ export default {
         ? this.expanded.splice(itemIndex, 1)
         : this.expanded.push(item.id);
     },
-    filterInscriptions: (value, query, item) =>
-      filterInscriptions(value, query, item, this.optionBroken),
+    filterInscriptions(value, query, item) {
+      return filter(value, query, item, this.optionBroken);
+    },
     itemrow(item) {
       return item.item.complete === "Y"
         ? { class: "primary--text" }
@@ -856,7 +857,6 @@ export default {
         }));
 
       console.log(subanta_result);
-      // return subanta_result[0];
       return subanta_result.filter((res) => res.result == devanagariResult)[0];
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {

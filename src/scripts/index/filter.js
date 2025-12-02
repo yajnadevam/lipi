@@ -228,7 +228,7 @@ function xlitize(text) {
 }
 // Todo: ADDED VERBATIM FROM INDEX VUE NEED TO SORT OUT LATER END
 
-export const filterInscriptions = (_value, query, item, optionBroken) => {
+export const filter = (_value, query, item, optionBroken) => {
   // Helper Functions
   function isValidValueAndQuery(value, query) {
     return value != null && query != null && query.length > 0;
