@@ -365,7 +365,7 @@ import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 import words from "../assets/data/words.csv?raw";
 
-import { filterInscriptions } from "@/scripts/index/filter";
+import { filter } from "@/scripts/index/filter";
 import { renderSanskrit } from "@/scripts/index/explanation";
 
 // eslint-disable-next-line import/first
@@ -726,8 +726,9 @@ export default {
         ? this.expanded.splice(itemIndex, 1)
         : this.expanded.push(item.id);
     },
-    filterInscriptions: (value, query, item) =>
-      filterInscriptions(value, query, item, this.optionBroken),
+    filterInscriptions(value, query, item) {
+      return filter(value, query, item, this.optionBroken);
+    },
     itemrow(item) {
       return item.item.complete === "Y"
         ? { class: "primary--text" }
@@ -800,148 +801,6 @@ export default {
     // Todo: Maybe refactor better ?
     // This function determines if words in the Sanskrit transliteration need to be linked because they have prakriya or MW definitions
     renderSanskrit: renderSanskrit,
-    generateKrdantaInput(code, krt, form) {
-      let formLabel = null;
-      if (form == 1) {
-        formLabel = "(पुं)";
-      } else if (form == 2) {
-        formLabel = "(स्त्री)";
-      } else if (form == 3) {
-        formLabel = "(नपुं)";
-      }
-
-      return {
-        code: code, // example dhatu code
-        krt: krt, // BaseKrt
-        sanadi: [], // Sanadi is an array of strings
-        upasarga: [], // array of strings
-        lakara: null, // or something like "Lat" if required
-        prayoga: null, // or "Kartari", etc.
-        formLabel,
-      };
-    },
-    generateTinantaInput(code, lakara, form) {
-      const lakaraMap = {
-        plat: { name: "Lat", label: "लट्लकारः" },
-        plit: { name: "Lit", label: "लिट्लकारः" },
-        plut: { name: "Lut", label: "लुट्लकारः" },
-        plrut: { name: "Lrt", label: "लृट्लकारः" },
-        plot: { name: "Lot", label: "लोट्लकारः" },
-        plang: { name: "Lan", label: "लङ्लकारः" },
-        pvidhiling: { name: "VidhiLin", label: "विधिलिङ्लकारः" },
-        pashirling: { name: "AshirLin", label: "आशीर्लिङ्लकारः" },
-        plung: { name: "Lun", label: "लुङ्लकारः" },
-        plrung: { name: "Lrn", label: "लृङ्लकारः" },
-      };
-
-      const formMap = [
-        {
-          // 0
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
-          vacana: "Eka",
-          vacanaLabel: "एकवचनम्",
-        },
-        {
-          // 1
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
-          vacana: "Dvi",
-          vacanaLabel: "द्विवचनम्",
-        },
-        {
-          // 2
-          purusha: "Prathama",
-          purushaLabel: "प्रथमपुरुषः",
-          vacana: "Bahu",
-          vacanaLabel: "बहुवचनम्",
-        },
-        {
-          // 3
-          purusha: "Madhyama",
-          purushaLabel: "मध्यमपुरुषः",
-          vacana: "Eka",
-          vacanaLabel: "एकवचनम्",
-        },
-        {
-          // 4
-          purusha: "Madhyama",
-          purushaLabel: "मध्यमपुरुषः",
-          vacana: "Dvi",
-          vacanaLabel: "द्विवचनम्",
-        },
-        {
-          // 5
-          purusha: "Madhyama",
-          purushaLabel: "मध्यमपुरुषः",
-          vacana: "Bahu",
-          vacanaLabel: "बहुवचनम्",
-        },
-        {
-          // 6
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
-          vacana: "Eka",
-          vacanaLabel: "एकवचनम्",
-        },
-        {
-          // 7
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
-          vacana: "Dvi",
-          vacanaLabel: "द्विवचनम्",
-        },
-        {
-          // 8
-          purusha: "Uttama",
-          purushaLabel: "उत्तमपुरुषः",
-          vacana: "Bahu",
-          vacanaLabel: "बहुवचनम्",
-        },
-      ];
-
-      return {
-        code,
-        lakara: lakaraMap[lakara].name,
-        lakaraLabel: lakaraMap[lakara].label,
-        prayoga: "Kartari",
-        purusha: formMap[form].purusha,
-        vacana: formMap[form].vacana,
-        purushaLabel: formMap[form].purushaLabel,
-        vacanaLabel: formMap[form].vacanaLabel,
-        pada: null,
-        sanadi: [],
-        upasarga: [],
-      };
-    },
-    deriveKrdantas2(krdantaInput, dhatu, pratyaya, devanagariWord, subantha) {
-      const { formLabel, ...rest } = krdantaInput;
-      const input = {
-        upapada: subantha,
-        ...rest,
-      };
-
-      console.log("input to derive krdantas", input);
-
-      return vidyut.deriveKrdantas(input).map((result) => ({
-        steps: result.history.filter((h) => h.rule.source == "ashtadhyayi"),
-        title: `${dhatu} + ${pratyaya}`,
-        result: Sanscript.t(result.text, "slp1", "devanagari"),
-        finalResult:
-          formLabel != null ? `${formLabel} ${devanagariWord}` : null,
-      }))[0];
-    },
-    deriveTinantas2(tinantaInput, dhatu, devanagariWord) {
-      const { lakaraLabel, purushaLabel, vacanaLabel, ...rest } = tinantaInput;
-      return vidyut
-        .deriveTinantas(rest)
-        .map((result) => ({
-          steps: result.history,
-          title: `${dhatu}, ${purushaLabel}, ${vacanaLabel}`,
-          result: Sanscript.t(result.text, "slp1", "devanagari"),
-        }))
-        .filter((res) => res.result == devanagariWord)[0];
-    },
     getKrdantaAshtadhyayiLink(code, index, pratyaya) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=krut&scroll=dhatuform-${index}-krut-${pratyaya}&scrollcolor=cyan&scrolloffset=400`;
     },
@@ -998,7 +857,6 @@ export default {
         }));
 
       console.log(subanta_result);
-      // return subanta_result[0];
       return subanta_result.filter((res) => res.result == devanagariResult)[0];
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {

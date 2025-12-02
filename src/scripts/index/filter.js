@@ -228,7 +228,7 @@ function xlitize(text) {
 }
 // Todo: ADDED VERBATIM FROM INDEX VUE NEED TO SORT OUT LATER END
 
-export const filterInscriptions = (_value, query, item, optionBroken) => {
+export const filter = (_value, query, item, optionBroken) => {
   // Helper Functions
   function isValidValueAndQuery(value, query) {
     return value != null && query != null && query.length > 0;
@@ -271,7 +271,20 @@ export const filterInscriptions = (_value, query, item, optionBroken) => {
     return regex.test(value) || canonicalMatch;
   }
 
-  function filterPart(value, query, item, useCanonical) {
+  // Todo: this operation is done for each data point maybe its more efficient to have the query part (q) pre-processed
+  function matchLength(query, value, item) {
+    if (query.startsWith("L")) {
+      const q = query
+        .substring(1)
+        .split("-")
+        .map((x) => parseInt(x));
+      const v = parseInt(value);
+      return !isNaN(v) && v >= Math.min(...q) && v <= Math.max(...q);
+    }
+    return false;
+  }
+
+  function filterPart(value, column, query, item, useCanonical) {
     if (
       !isValidValueAndQuery(value, query) ||
       !isCompleteOrBrokenIsAllowed(item)
@@ -288,7 +301,8 @@ export const filterInscriptions = (_value, query, item, optionBroken) => {
     const isValueStringOrNumber =
       typeof value === "string" || typeof value === "number";
 
-    const matchesLength = query === "L" + value;
+    const matchesLength =
+      column === "textlength" && matchLength(query, value, item);
     const matchesSubstring =
       value
         .toString()
@@ -352,7 +366,7 @@ export const filterInscriptions = (_value, query, item, optionBroken) => {
             q = "bull1";
           }
 
-          if (!filterPart(value, q ? q : "**", item, useCanonical)) {
+          if (!filterPart(value, column, q ? q : "**", item, useCanonical)) {
             return false;
           }
         }
@@ -386,13 +400,22 @@ export const filterInscriptions = (_value, query, item, optionBroken) => {
       continue;
     }
 
+    // Todo: Instead of checking all columns maybe check only targeted columns to speed up the search process
     // First check in sign column text or canonized dependeing on useCanonical flag, then iterate through all other
     // columns if a match is not found
-    let found = filterPart(signColumn, queryTerm, item, useCanonical);
+    let found = filterPart(signColumn, "sign", queryTerm, item, useCanonical);
     if (!found) {
       // Iterate through every column in the row except text and canonized
       for (let i = 0; queryTerm && i < keys.length; i++) {
-        if (filterPart(item.columns[keys[i]], queryTerm, item, useCanonical)) {
+        if (
+          filterPart(
+            item.columns[keys[i]],
+            keys[i],
+            queryTerm,
+            item,
+            useCanonical
+          )
+        ) {
           found = true;
           break;
         }
