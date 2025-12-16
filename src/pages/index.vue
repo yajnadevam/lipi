@@ -736,13 +736,9 @@ export default {
     },
     pageChange(newPage) {
       const isSearching = this.search !== null && this.search !== "";
-      if (isSearching) {
-        this.pageNum = newPage;
-      } else {
         localStorage.setItem("page", newPage);
-        this.pageNum = this.oldPageNum || newPage;
+        this.pageNum = newPage;
         this.oldPageNum = null;
-      }
     },
     sortChange(newSort) {
       localStorage.setItem("sort", JSON.stringify(newSort));
