@@ -45,43 +45,9 @@
       </v-list>
     </v-menu>
 
-    <v-btn icon>
-      <v-icon :icon="activeFab.icon"></v-icon>
-    </v-btn>
   </v-toolbar>
   <HeaderLinks />
 
-  <v-navigation-drawer v-model="drawer" location="right" temporary>
-    <v-list-item title="Allograph values"></v-list-item>
-    <v-fab
-      @click.stop="drawer = !drawer"
-      :key="activeFab.icon"
-      :color="activeFab.color"
-      :icon="activeFab.icon"
-      class="ms-1 mb-1"
-      location="top right"
-      size="40"
-      app
-      appear
-    ></v-fab>
-    <v-divider></v-divider>
-
-    <v-list density="compact" nav>
-      <Key />
-    </v-list>
-  </v-navigation-drawer>
-  <v-fab
-    @click.stop="drawer = !drawer"
-    :key="activeFab.icon"
-    :color="activeFab.color"
-    :icon="activeFab.icon"
-    class="ms-1 mb-1"
-    location="top right"
-    size="40"
-    absolute
-    app
-    appear
-  ></v-fab>
 
   <v-card>
     <v-layout>
@@ -109,13 +75,10 @@
           >
             <template #top>
               <v-progress-linear
-                height="25"
+                height="2"
                 :model-value="complete"
                 color="green"
               >
-                <template v-slot:default="{ value }">
-                  <strong>{{ Math.ceil(value) }}% translated</strong>
-                </template>
               </v-progress-linear>
               <div class="pa-2 search-container">
                 <v-text-field
