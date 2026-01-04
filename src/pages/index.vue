@@ -393,7 +393,7 @@ xlitarray.forEach((element) => {
   xlitmap[element.sign] = {};
   xlitmap[element.sign].xlit = element.xlit;
   xlitmap[element.sign].canonical = element.canonical;
-  xlitmap[element.sign].random = mkrandom(fullrandom ? iso : slp);
+  xlitmap[element.sign].random = mkrandom(fullrandom ? slp : slp);
   xlitmap[element.sign].regex = element.regex || element.xlit;
   canonMap[characterize(element.sign)] = characterize(element.canonical);
 });
