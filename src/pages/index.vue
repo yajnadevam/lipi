@@ -44,10 +44,8 @@
         </v-list-item-title>
       </v-list>
     </v-menu>
-
   </v-toolbar>
   <HeaderLinks />
-
 
   <v-card>
     <v-layout>
@@ -699,9 +697,9 @@ export default {
     },
     pageChange(newPage) {
       const isSearching = this.search !== null && this.search !== "";
-        localStorage.setItem("page", newPage);
-        this.pageNum = newPage;
-        this.oldPageNum = null;
+      localStorage.setItem("page", newPage);
+      this.pageNum = newPage;
+      this.oldPageNum = null;
     },
     sortChange(newSort) {
       localStorage.setItem("sort", JSON.stringify(newSort));
@@ -1027,14 +1025,6 @@ export default {
     await initVidyut();
     const dhatupathaText = await (await fetch(dhatupatha)).text();
     vidyut = Vidyut.init(dhatupathaText);
-
-    // const result = vidyut.deriveSubantas({
-    //   pratipadika: "kArya",
-    //   linga: "Pum",
-    //   vibhakti: "Dvitiya", // 0 to 7
-    //   vacana: "Eka",
-    // });
-    // console.log("this is the result", result);
 
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
