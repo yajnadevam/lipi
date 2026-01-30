@@ -148,6 +148,23 @@
                 <td></td>
                 <td></td>
               </tr>
+              <!-- Row for Lemmas -->
+              <tr
+                v-if="lemmasMap[item.id] && lemmasMap[item.id].length > 0"
+                class="expanded-content"
+              >
+                <td colspan="12">
+                  <v-table class="lemma-table" density="compact">
+                    <tbody>
+                      <tr v-for="(lemma, idx) in lemmasMap[item.id]" :key="idx">
+                        <td class="sanskrit">{{ toDevanagari(lemma.form) }}</td>
+                        <td>{{ lemma.translation_lexeme }}</td>
+                        <td>{{ lemma.analysis }}</td>
+                      </tr>
+                    </tbody>
+                  </v-table>
+                </td>
+              </tr>
               <!-- Row for Seal Images -->
               <tr
                 v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0"
@@ -321,6 +338,7 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
+import lemmasCsv from "../../ivc-lemma-per-inscription.csv?raw";
 import mwMap from "../assets/data/mw.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
@@ -350,6 +368,18 @@ csv2json(words).forEach((value) => {
     };
   }
 });
+
+// Lemma per inscription lookup map (inscription_id -> array of lemmas)
+const lemmasMap = {}
+csv2json(lemmasCsv).forEach(row => {
+  const id = row.inscription_id
+  if (id) {
+    if (!lemmasMap[id]) {
+      lemmasMap[id] = []
+    }
+    lemmasMap[id].push(row)
+  }
+})
 
 const inx = csv2json(incx, {
   keys: [
@@ -641,6 +671,7 @@ export default {
       fullrandom: fullrandom,
       showExplanationDialog: false,
       explanationDialogContent: {},
+      lemmasMap,
     };
   },
   computed: {
@@ -671,6 +702,10 @@ export default {
   },
 
   methods: {
+    toDevanagari (slp1Text) {
+      if (!slp1Text) return ''
+      return Sanscript.t(slp1Text, 'slp1', 'devanagari')
+    },
     chevLeft() {
       return this.icons.chevLeft;
     },
@@ -1193,5 +1228,16 @@ export default {
 
 .v-theme--dark L {
   background-color: #aaaaaa;
+}
+
+.lemma-table {
+  margin: 10px 0;
+  font-size: 12pt;
+  background: transparent !important;
+}
+
+.lemma-table td {
+  padding: 4px 8px;
+  background: transparent !important;
 }
 </style>

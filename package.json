@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/sync_mw_stems.js",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint . --fix --ignore-path .gitignore",
+    "sync-mw": "node scripts/sync_mw_stems.js",
     "generate_explanations": "ts-node dev-tools/ashtadhyayi/generate_explanations.ts"
   },
   "dependencies": {

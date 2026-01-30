@@ -11,7 +11,6 @@ declare module 'vue' {
     HeaderLinks: typeof import('./components/HeaderLinks.vue')['default']
     Ichar: typeof import('./components/ichar.vue')['default']
     Key: typeof import('./components/Key.vue')['default']
-    LoadingScreen: typeof import('./components/LoadingScreen.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     Schar: typeof import('./components/schar.vue')['default']
