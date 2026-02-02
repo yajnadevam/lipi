@@ -2818,19 +2818,13 @@ export class Vidyut {
   private constructor();
   free(): void;
   /**
-   * Creates a new API manager.
-   *
-   * This constructor is not called `new` because `new` is a reserved word in JavaScript.
+   * Wrapper for `Vyakarana::derive_dhatus`.
    */
-  static init(): Vidyut;
+  deriveDhatus(val: any): any;
   /**
    * Wrapper for `Vyakarana::derive_krdantas`.
    */
   deriveKrdantas(val: any): any;
-  /**
-   * Wrapper for `Vyakarana::derive_dhatus`.
-   */
-  deriveDhatus(val: any): any;
   /**
    * Wrapper for `Vyakarana::derive_subantas`.
    */
@@ -2841,6 +2835,16 @@ export class Vidyut {
    * TODO: how might we reduce the number of arguments here?
    */
   deriveTinantas(val: any): any;
+  /**
+   * Wrapper for `Vyakarana::derive_taddhitantas`.
+   */
+  deriveTaddhitantas(val: any): any;
+  /**
+   * Creates a new API manager.
+   *
+   * This constructor is not called `new` because `new` is a reserved word in JavaScript.
+   */
+  static init(): Vidyut;
 }
 
 export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembly.Module;
@@ -2848,11 +2852,12 @@ export type InitInput = RequestInfo | URL | Response | BufferSource | WebAssembl
 export interface InitOutput {
   readonly memory: WebAssembly.Memory;
   readonly __wbg_vidyut_free: (a: number, b: number) => void;
-  readonly vidyut_init: () => number;
-  readonly vidyut_deriveKrdantas: (a: number, b: any) => any;
   readonly vidyut_deriveDhatus: (a: number, b: any) => any;
+  readonly vidyut_deriveKrdantas: (a: number, b: any) => any;
   readonly vidyut_deriveSubantas: (a: number, b: any) => any;
+  readonly vidyut_deriveTaddhitantas: (a: number, b: any) => any;
   readonly vidyut_deriveTinantas: (a: number, b: any) => any;
+  readonly vidyut_init: () => number;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __externref_table_alloc: () => number;
   readonly __wbindgen_export_2: WebAssembly.Table;

@@ -10056,5 +10056,100 @@
     "¦ = <lex type=\"hwinfo\">f.</lex>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=184488]</L>",
     "vaNka ¦ <lex>mfn.</lex> (for vA<srs/>kra) crooked, deceitful, <ls>Bcar. xi, 46</ls>.<info n=\"sup\"/><info lex=\"m:f:n\"/><L>[ID=184488.1]</L>",
     "vaNka ¦ &c. See under √ <hom>2.</hom> vak, <ab>col.</ab> 2.<info hui=\"b\"/><L>[ID=184571]</L>"
+  ],
+  "Sakya": [
+    "Sakya ¦ <lex>mf(A)n.</lex> able, possible, practicable, capable of being (with <ab>inf.</ab> in <ab>pass.</ab> sense, <ab>e.g.</ab> na sA SakyA netum balAt, ‘she cannot be conducted by force’; tan mayA Sakyam pratipattum, ‘that is able to be acquired by me’; the form Sakyam may also be used with a <ab>nom.</ab> case which is in a different gender or number, <ab>e.g.</ab> SakyaM Sva-mAMsA<srs/>diBir api kzut pratihantum, ‘hunger can be appeased even by dog's flesh &c.’; <ab>cf.</ab> <ls>Vām. v, 2, 25</ls>), <ls>MBh.</ls>; <ls>Kāv.</ls> &c.<info lex=\"m:f#A:n\"/><L>[ID=211037]</L>",
+    "¦ to be conquered or subdued, liable to be compelled to (<ab>inf.</ab>), <ls>MBh.</ls><info lex=\"inh\"/><L>[ID=211038]</L>",
+    "¦ explicit, direct, literal (as the meaning of a word or sentence, <ab>opp.</ab> to lakzya and vyaNgya), <ls>Alaṃkāraś.</ls><info lex=\"inh\"/><L>[ID=211039]</L>"
+  ],
+  "vahana": [
+    "vahana ¦ <lex>mfn.</lex> bearing, carrying, conveying (see rAja-v°)<info lex=\"m:f:n\"/><L>[ID=189284]</L>",
+    "vahana ¦ <lex>n.</lex> the act of bearing, carrying, conveying, bringing, <ls>MBh.</ls>; <ls>Kāv.</ls>; <ls>VarBṛS.</ls><info lex=\"n\"/><L>[ID=189285]</L>",
+    "¦ the flowing (of water), <ls>Nir. vi, 2</ls><info lex=\"inh\"/><L>[ID=189286]</L>",
+    "¦ a ship, vessel, boat, <ls>Kathās.</ls><info lex=\"inh\"/><L>[ID=189287]</L>",
+    "¦ the undermost part of a column, <ls>VarBṛS.</ls><info lex=\"inh\"/><L>[ID=189288]</L>",
+    "¦ a square chariot with a pole, <ls>L.</ls><info lex=\"inh\"/><L>[ID=189289]</L>"
+  ],
+  "ralarola": [
+    "ralarola ¦ (<ab>prob.</ab>) <lex>m.</lex> howling, wailing, lamenting, <ls>HPariś.</ls><info lex=\"m\"/><L>[ID=175299]</L>"
+  ],
+  "aSnat": [
+    "aSna/t ¦ <lex>mfn.</lex> eating, consuming, <ls>RV. vii, 67, 7</ls> & <ls n=\"RV.\">viii, 5, 31</ls> &c.; (<ab>cf.</ab> a/n-aSnat.)<info lex=\"m:f:n\"/><L>[ID=19700]</L>"
+  ],
+  "avamata": [
+    "ava-mata ¦ <lex>mfn.</lex> despised, disregarded, contemned, <ls>Mn. vii, 150</ls>, &c.<info lex=\"m:f:n\"/><L>[ID=17769]</L>"
+  ],
+  "Atta": [
+    "A-tta ¦ See A- √ <hom>1.</hom> dA.<info hui=\"a\"/><L>[ID=23452]</L>",
+    "A-tta ¦ <lex>mfn.</lex> (<ls>Pāṇ. vii, 4, 47</ls>) taken, obtained, <ls>ChUp.</ls>; <ls>Kathās.</ls><info lex=\"m:f:n\"/><info hui=\"b\"/><L>[ID=23764]</L>",
+    "¦ taken away or off, withdrawn from, <ls>ŚBr.</ls>; <ls>AitBr.</ls> &c.<info lex=\"inh\"/><L>[ID=23765]</L>",
+    "¦ seized, grasped, <ls>ChUp.</ls>; <ls>Lāṭy.</ls> &c.<info lex=\"inh\"/><L>[ID=23766]</L>",
+    "¦ perceived, felt, <ls>Mālav.</ls><info lex=\"inh\"/><L>[ID=23767]</L>",
+    "¦ undertaken, begun, <ls>MBh. xiii, 3567.</ls><info lex=\"inh\"/><L>[ID=23768]</L>"
+  ],
+  "BAjya": [
+    "BAjya ¦ <lex>mfn.</lex> to be shared or distributed &c.<info lex=\"m:f:n\"/><L>[ID=149728]</L>",
+    "¦ (in <ab>arithm.</ab>) to be divided, as <ab>subst.</ab> = a dividend, <ls>Siddhāntaś.</ls><info lex=\"inh\"/><L>[ID=149729]</L>"
+  ],
+  "ADmAta": [
+    "A-DmAta ¦ <lex>mf(A)n.</lex> inflated, blown, puffed up<info lex=\"m:f#A:n\"/><L>[ID=24260]</L>",
+    "¦ sounded, sounding<info lex=\"inh\"/><L>[ID=24261]</L>",
+    "¦ heated, burnt.<info lex=\"inh\"/><L>[ID=24262]</L>"
+  ],
+  "mAyin": [
+    "mAyi/n ¦ <lex>mfn.</lex> artful, skilled in art or enchantment, cunning, deceptive, illusory (°yi-tA <lex type=\"phw\">f.</lex>), <ls>RV.</ls>; <ls>AV.</ls>; <ls>ŚvetUp.</ls> &c.<info phwchild=\"163182.1\"/><info lex=\"m:f:n\"/><L>[ID=163173]</L>",
+    "¦ subject to illusion, <ls>BhP.</ls><info lex=\"inh\"/><L>[ID=163174]</L>",
+    "mAyi/n ¦ <lex>m.</lex> a conjurer, juggler, magician, <ls>Kathās.</ls><info lex=\"m\"/><L>[ID=163175]</L>",
+    "¦ a cheat, deceiver, <ls>W.</ls><info lex=\"inh\"/><L>[ID=163176]</L>",
+    "¦ <ab>N.</ab> of <s1>Brahmā</s1>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=163177]</L>",
+    "¦ of <s1>Śiva</s1>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=163178]</L>",
+    "¦ of <s1>Agni</s1>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=163179]</L>",
+    "¦ of <s1>Kāma</s1>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=163180]</L>",
+    "mAyi/n ¦ <lex>n.</lex> magic, magical art, <ls>BhP.</ls> (<ab>cf.</ab> durm°)<info lex=\"n\"/><L>[ID=163181]</L>",
+    "¦ a gall-nut, <ls>L.</ls><info lex=\"inh\"/><L>[ID=163182]</L>"
+  ],
+  "dAnin": [
+    "dAnin ¦ <lex>mfn.</lex> giving, liberal, <ls>BhP.</ls><info lex=\"m:f:n\"/><L>[ID=91317]</L>",
+    "¦ having or receiving gifts (<ab>cf.</ab> agre-). <info lex=\"inh\"/><L>[ID=91318]</L>"
+  ],
+  "SaSin": [
+    "SaSin ¦ <lex>m.</lex> ‘containing a hare’, the moon, <ls>ŚvetUp.</ls>; <ls>MBh.</ls>; <ls>Kāv.</ls> &c.<info lex=\"m\"/><L>[ID=214478]</L>",
+    "¦ <ab>N.</ab> of the number one, <ls>VarBṛS.</ls><info lex=\"inh\"/><L>[ID=214479]</L>",
+    "¦ camphor, <ls>Hcat.</ls><info lex=\"inh\"/><L>[ID=214480]</L>",
+    "¦ a kind of metre, <ls>Col.</ls><info lex=\"inh\"/><L>[ID=214481]</L>",
+    "¦ <ab>N.</ab> of a man, <ls>Kathās.</ls><info lex=\"inh\"/><L>[ID=214482]</L>",
+    "¦ the emblem of a <ab>partic.</ab> <s1>Arhat</s1> or <s1>Jina</s1>, <ls>W.</ls><info lex=\"inh\"/><L>[ID=214483]</L>"
+  ],
+  "avama": [
+    "avama/ ¦ <lex>mf(A/)n.</lex> undermost, inferior, lowest base, <ls>RV.</ls> &c.<info lex=\"m:f#A:n\"/><L>[ID=17761]</L>",
+    "¦ next, intimate, <ls>RV.</ls><info lex=\"inh\"/><L>[ID=17762]</L>",
+    "¦ last, youngest, <ls>RV. vi, 21, 5</ls>, (<ab>ifc.</ab> with numerals) less by, <ls>RPrāt.</ls><info lex=\"inh\"/><L>[ID=17763]</L>",
+    "avama/ ¦ (am), <lex>n.</lex> (<ab>scil.</ab> dina) or (Ani) <ab>pl.</ab> the difference (expressed in days of twenty-four hours) existing between the lunar months and the corresponding solar ones, <ls>VarBṛS.</ls> &c.<info lex=\"n\"/><L>[ID=17764]</L>"
+  ],
+  "sAdi": [
+    "<hom>1.</hom> sAdi ¦ <lex>m.</lex> (for <hom>2.</hom> See <ab>s.v.</ab>) a horseman, <ls>MBh.</ls><info lex=\"m\"/><L>[ID=230662]</L>",
+    "¦ a charioteer, <ls>L.</ls><info lex=\"inh\"/><L>[ID=230663]</L>",
+    "¦ a warrior, <ls>L.</ls><info lex=\"inh\"/><L>[ID=230664]</L>",
+    "¦ wind, <ls>L.</ls><info lex=\"inh\"/><L>[ID=230665]</L>",
+    "¦ a dispirited or melancholy person, <ls>L.</ls><info lex=\"inh\"/><L>[ID=230666]</L>",
+    "<hom>2.</hom> sA<srs/>di ¦ <lex>mfn.</lex> having a beginning (-tva <lex type=\"phw\">n.</lex>), <ls>Kap.</ls><info phwchild=\"241478.1\"/><info lex=\"m:f:n\"/><L>[ID=241478]</L>",
+    "sAdi , ¦ sAdita, sAdin &c. See <pcol>p. 1139, col. 1</pcol>.<info hui=\"a\"/><L>[ID=241480]</L>"
+  ],
+  "anuda": [
+    "anu-da ¦ See anAnuda/.<L>[ID=6423]</L>"
+  ],
+  "lala": [
+    "lala ¦ <lex>mfn.</lex> sporting, playful, <ls>W.</ls><info lex=\"m:f:n\"/><L>[ID=181588]</L>",
+    "¦ lolling, wagging, <ls>ib.</ls><info lex=\"inh\"/><L>[ID=181589]</L>",
+    "¦ wishing, desirous, <ls>ib.</ls><info lex=\"inh\"/><L>[ID=181590]</L>",
+    "lala ¦ <lex>m.</lex> a <ab>partic.</ab> fragrant substance, <ls>Gal.</ls><info lex=\"m\"/><L>[ID=181591]</L>",
+    "lala ¦ <lex>n.</lex> a shoot, sprout, <ls>L.</ls><info lex=\"n\"/><L>[ID=181592]</L>",
+    "¦ a garden, <ls>L.</ls><info lex=\"inh\"/><L>[ID=181593]</L>"
+  ],
+  "sTa": [
+    "sTa . ¦ See <pcol>p. 1262, col. 3</pcol>.<info hui=\"a\"/><L>[ID=255152]</L>",
+    "sTa ¦ <lex>mf(A)n.</lex> (or zWa) (only <ab>ifc.</ab>) standing, staying, abiding, being situated in, existing or being in or on or among (see agni-, garBa-, jala-, naraka-, rAjya-sTa &c.)<info lex=\"m:f#A:n\"/><info hui=\"b\"/><L>[ID=255323]</L>",
+    "¦ occupied with, engaged in, devoted to performing, practising (see DyAna-, yajYa-, yoga-, savana-sTa &c.)<info lex=\"inh\"/><L>[ID=255323.1]</L>",
+    "¦ a place, ground (<ab>ibc.</ab> = sTala), <ls>L.</ls><info lex=\"inh\"/><L>[ID=255323.2]</L>"
   ]
 }
