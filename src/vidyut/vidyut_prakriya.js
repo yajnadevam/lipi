@@ -3057,6 +3057,15 @@ export class Vidyut {
         return ret;
     }
     /**
+     * Wrapper for `Vyakarana::derive_stryantas`.
+     * @param {any} val
+     * @returns {any}
+     */
+    deriveStryantas(val) {
+        const ret = wasm.vidyut_deriveStryantas(this.__wbg_ptr, val);
+        return ret;
+    }
+    /**
      * Wrapper for `Vyakarana::derive_taddhitantas`.
      * @param {any} val
      * @returns {any}
@@ -3119,6 +3128,9 @@ function __wbg_get_imports() {
         const ret = arg0.call(arg1);
         return ret;
     }, arguments) };
+    imports.wbg.__wbg_debug_fac91d3e1dcb5682 = function(arg0, arg1) {
+        console.debug(getStringFromWasm0(arg0, arg1));
+    };
     imports.wbg.__wbg_done_f22c1561fa919baa = function(arg0) {
         const ret = arg0.done;
         return ret;

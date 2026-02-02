@@ -2836,6 +2836,10 @@ export class Vidyut {
    */
   deriveTinantas(val: any): any;
   /**
+   * Wrapper for `Vyakarana::derive_stryantas`.
+   */
+  deriveStryantas(val: any): any;
+  /**
    * Wrapper for `Vyakarana::derive_taddhitantas`.
    */
   deriveTaddhitantas(val: any): any;
@@ -2854,6 +2858,7 @@ export interface InitOutput {
   readonly __wbg_vidyut_free: (a: number, b: number) => void;
   readonly vidyut_deriveDhatus: (a: number, b: any) => any;
   readonly vidyut_deriveKrdantas: (a: number, b: any) => any;
+  readonly vidyut_deriveStryantas: (a: number, b: any) => any;
   readonly vidyut_deriveSubantas: (a: number, b: any) => any;
   readonly vidyut_deriveTaddhitantas: (a: number, b: any) => any;
   readonly vidyut_deriveTinantas: (a: number, b: any) => any;
