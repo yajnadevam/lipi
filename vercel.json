@@ -1,3 +1,17 @@
 {
+    "headers": [
+        {
+            "source": "/assets/:path*.wasm",
+            "headers": [
+                { "key": "Content-Type", "value": "application/wasm" }
+            ]
+        },
+        {
+            "source": "/assets/:path*.tsv",
+            "headers": [
+                { "key": "Content-Type", "value": "text/tab-separated-values" }
+            ]
+        }
+    ],
     "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
