@@ -92,7 +92,8 @@
             </template>
 
             <template v-slot:item.sanskrit="{ item }">
-              <template v-for="word in renderSanskrit(item.sanskrit)">
+              <span v-if="item.cuneiform" class="cuneiform">{{ item.sanskrit }}</span>
+              <template v-else v-for="word in renderSanskrit(item.sanskrit)">
                 <span
                   v-if="word.link == true"
                   class="sanskrit-link"
@@ -366,6 +367,7 @@ import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
 import lemmasCsv from "../../ivc-lemma-per-inscription.csv?raw";
 import mwMap from "../assets/data/mw.json";
+import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 import words from "../assets/data/words.csv?raw";
@@ -473,7 +475,17 @@ inx.forEach((el) => {
   decipheredCount += el.translation ? 1 : 0;
   el.canonized = canonized.canon;
   //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
-  if (el.sanskrit) {
+  if (el.translation && /[\u{12000}-\u{1236E}]/u.test(el.translation)) {
+    // Cuneiform entry: parse translation to extract script + transliteration
+    const cuneMatch = el.translation.match(/^([\u{12000}-\u{1254F}\s\u2082]+)\s*\[([^:]+):\s*'([^']+)',?\s*(.+)\]/u)
+    if (cuneMatch) {
+      el.cuneiform = true
+      el.sanskrit = cuneMatch[1].trim() + '\n' + cuneMatch[3]
+      el.translation = cuneMatch[4].replace(/\]\s*$/, '').trim()
+    } else {
+      el.sanskrit = "*" + analyzed.str.split("-").reverse().join("")
+    }
+  } else if (el.sanskrit && el.sanskrit.trim()) {
     if (el.sanskrit.startsWith("ref:")) {
       el.lemmaRef = el.sanskrit.substring(4);
       Object.assign(el, resolve(el.sanskrit));
@@ -736,15 +748,36 @@ export default {
         .split('\n')[0]
         .replace(/<[^>]*>/g, '')
         .replace(/\([^)]*\)/g, '')
+        .replace(/&c\.\s*/g, '')
         .replace(/\s+/g, ' ')
         .trim()
+    },
+    getMwLex (mwKey) {
+      const entries = mwMap[mwKey]
+      if (!entries) return ''
+      for (const e of entries) {
+        const m = e.match(/<lex>([^<]+)<\/lex>/)
+        if (m) return m[1]
+      }
+      return ''
+    },
+    cleanMwWithLex (mwKey, raw) {
+      const cleaned = this.cleanMwEntry(raw)
+      if (/<lex>/.test(raw)) return cleaned
+      const lex = this.getMwLex(mwKey)
+      if (!lex) return cleaned
+      // Insert lex after Devanagari headword if present, otherwise prepend
+      if (/^[\u0900-\u097F]/.test(cleaned)) {
+        return cleaned.replace(/^([\u0900-\u097F\u0901-\u0963\u0966-\u096F\u200D]+)\s*/, '$1 ' + lex + ' ')
+      }
+      return lex + ' ' + cleaned
     },
     findMwLineById (mwKey, id) {
       const entries = mwMap[mwKey]
       if (!entries || !entries.length) return null
       if (id) {
         const match = entries.find(e => e.includes('[ID=' + id + ']'))
-        if (match) return this.cleanMwEntry(match)
+        if (match) return this.cleanMwWithLex(mwKey, match)
       }
       return null
     },
@@ -752,10 +785,20 @@ export default {
       const entries = mwMap[mwKey]
       if (!entries || !entries.length) return null
       if (target) {
-        const match = entries.find(e => e.toLowerCase().includes(target.toLowerCase()))
-        if (match) return this.cleanMwEntry(match)
+        const lc = target.toLowerCase()
+        const match = entries.find(e => e.toLowerCase().includes(lc))
+        if (match) return this.cleanMwWithLex(mwKey, match)
+        const stem = lc.replace(/(er|or|ing|ed|tion|ness|ment|ous|ive|able|ful)$/, '')
+        if (stem !== lc) {
+          const stemMatch = entries.find(e => e.toLowerCase().includes(stem))
+          if (stemMatch) return this.cleanMwWithLex(mwKey, stemMatch)
+        }
       }
-      return this.cleanMwEntry(entries[0])
+      return this.cleanMwWithLex(mwKey, entries[0])
+    },
+    withDevanagari (slp1Key, text) {
+      if (!text || /^[\u0900-\u097F]/.test(text)) return text
+      return this.toDevanagari(slp1Key) + ' ' + text
     },
     getLemmaReference (lemma) {
       if (!lemma.analysis) return '--'
@@ -764,15 +807,24 @@ export default {
         const parts = lemma.analysis.split('.')
         const mwKey = parts[1]
         const mwId = parts[2] ? parts[2].split(' ')[0] : null
-        return this.findMwLineById(mwKey, mwId) ||
-          this.findMwLineByText(mwKey, target) || '--'
+        const ref = this.findMwLineById(mwKey, mwId) ||
+          this.findMwLineByText(mwKey, target)
+        return ref ? this.withDevanagari(mwKey, ref) : '--'
       }
       if (lemma.analysis.startsWith('DHATU.')) {
         const dhatuRaw = lemma.analysis.split('.')[1]
+        const dhatuClean = dhatuRaw.includes('~')
+          ? dhatuRaw.replace(/[aiufFeEoO]?[~^\\]+/g, '')
+          : dhatuRaw
+        // Look up in dhatu dictionary (keyed by dhatupatha form)
+        const dhatuEntries = dhatuMap[dhatuRaw] ||
+          (dhatuRaw.includes('-') && dhatuMap[dhatuRaw.split('-').pop()])
+        if (dhatuEntries) return '\u221A' + this.toDevanagari(dhatuClean) + ' ' + dhatuEntries[0]
+        // Fallback: try clean form in MW
         const dhatuKey = dhatuRaw.replace(/[~^]/g, '')
         const result = this.findMwLineByText(dhatuKey, target) ||
           (dhatuKey.includes('-') && this.findMwLineByText(dhatuKey.split('-').pop(), target))
-        return result || '--'
+        return result ? '\u221A' + this.toDevanagari(dhatuClean) + ' ' + result : '--'
       }
       return '--'
     },
@@ -1311,6 +1363,11 @@ export default {
 
 .v-theme--dark L {
   background-color: #aaaaaa;
+}
+
+.cuneiform {
+  white-space: pre;
+  font-size: 14pt;
 }
 
 .interlinear-container {
