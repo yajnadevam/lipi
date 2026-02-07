@@ -148,21 +148,47 @@
                 <td></td>
                 <td></td>
               </tr>
-              <!-- Row for Lemmas -->
+              <!-- Interlinear Gloss (Padapatha) -->
               <tr
-                v-if="lemmasMap[item.id] && lemmasMap[item.id].length > 0"
+                v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
                 class="expanded-content"
               >
                 <td colspan="12">
-                  <v-table class="lemma-table" density="compact">
-                    <tbody>
-                      <tr v-for="(lemma, idx) in lemmasMap[item.id]" :key="idx">
-                        <td class="sanskrit">{{ toDevanagari(lemma.form) }}</td>
-                        <td>{{ lemma.translation_lexeme }}</td>
-                        <td>{{ lemma.analysis }}</td>
-                      </tr>
-                    </tbody>
-                  </v-table>
+                  <div class="interlinear-container">
+                    <div
+                      v-for="(lemma, idx) in lemmasMap[item.lemmaRef || item.id]"
+                      :key="idx"
+                      class="interlinear-word"
+                    >
+                      <span class="interlinear-form-row">
+                        <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
+                        <v-tooltip v-if="lemma.analysis" location="top">
+                          <template v-slot:activator="{ props }">
+                            <span v-bind="props" class="verify-icon">&#x2713;</span>
+                          </template>
+                          {{ getLemmaReference(lemma) }}
+                        </v-tooltip>
+                      </span>
+                      <span class="interlinear-analysis-row">
+                        <span
+                          class="interlinear-analysis"
+                          :contenteditable="isDev && !item.lemmaRef"
+                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'analysis', $event.target.textContent)"
+                          @keydown.enter.prevent="$event.target.blur()"
+                        >{{ lemma.analysis }}</span>
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                      </span>
+                      <span class="interlinear-meaning-row">
+                        <span
+                          class="interlinear-meaning"
+                          :contenteditable="isDev && !item.lemmaRef"
+                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'translation_lexeme', $event.target.textContent)"
+                          @keydown.enter.prevent="$event.target.blur()"
+                        >{{ lemma.translation_lexeme }}</span>
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                      </span>
+                    </div>
+                  </div>
                 </td>
               </tr>
               <!-- Row for Seal Images -->
@@ -369,10 +395,11 @@ csv2json(words).forEach((value) => {
   }
 });
 
-// Lemma per inscription lookup map (inscription_id -> array of lemmas)
+// Lemma per inscription lookup map (id -> array of lemmas)
 const lemmasMap = {}
-csv2json(lemmasCsv).forEach(row => {
-  const id = row.inscription_id
+// Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
+csv2json(lemmasCsv.replace(/\r\n/g, '\n')).forEach(row => {
+  const id = row.id
   if (id) {
     if (!lemmasMap[id]) {
       lemmasMap[id] = []
@@ -448,6 +475,7 @@ inx.forEach((el) => {
   //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
   if (el.sanskrit) {
     if (el.sanskrit.startsWith("ref:")) {
+      el.lemmaRef = el.sanskrit.substring(4);
       Object.assign(el, resolve(el.sanskrit));
     } else {
       // console.log(">>", Sanscript.t(el.sanskrit, "slp1", "iast"));
@@ -672,6 +700,7 @@ export default {
       showExplanationDialog: false,
       explanationDialogContent: {},
       lemmasMap,
+      isDev: import.meta.env.DEV,
     };
   },
   computed: {
@@ -702,6 +731,60 @@ export default {
   },
 
   methods: {
+    cleanMwEntry (text) {
+      return text
+        .split('\n')[0]
+        .replace(/<[^>]*>/g, '')
+        .replace(/\([^)]*\)/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+    },
+    findMwLineById (mwKey, id) {
+      const entries = mwMap[mwKey]
+      if (!entries || !entries.length) return null
+      if (id) {
+        const match = entries.find(e => e.includes('[ID=' + id + ']'))
+        if (match) return this.cleanMwEntry(match)
+      }
+      return null
+    },
+    findMwLineByText (mwKey, target) {
+      const entries = mwMap[mwKey]
+      if (!entries || !entries.length) return null
+      if (target) {
+        const match = entries.find(e => e.toLowerCase().includes(target.toLowerCase()))
+        if (match) return this.cleanMwEntry(match)
+      }
+      return this.cleanMwEntry(entries[0])
+    },
+    getLemmaReference (lemma) {
+      if (!lemma.analysis) return '--'
+      const target = lemma.translation_lexeme
+      if (lemma.analysis.startsWith('MW.') || lemma.analysis.startsWith('INDC.')) {
+        const parts = lemma.analysis.split('.')
+        const mwKey = parts[1]
+        const mwId = parts[2] ? parts[2].split(' ')[0] : null
+        return this.findMwLineById(mwKey, mwId) ||
+          this.findMwLineByText(mwKey, target) || '--'
+      }
+      if (lemma.analysis.startsWith('DHATU.')) {
+        const dhatuRaw = lemma.analysis.split('.')[1]
+        const dhatuKey = dhatuRaw.replace(/[~^]/g, '')
+        const result = this.findMwLineByText(dhatuKey, target) ||
+          (dhatuKey.includes('-') && this.findMwLineByText(dhatuKey.split('-').pop(), target))
+        return result || '--'
+      }
+      return '--'
+    },
+    saveLemmaField (id, idx, field, value) {
+      // eslint-disable-next-line no-misleading-character-class
+      const cleaned = value.replace(/[\u200B\u200C\u200D\uFEFF\u00A0]/g, '').trim()
+      fetch('/api/update-lemma', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, idx, field, value: cleaned }),
+      })
+    },
     toDevanagari (slp1Text) {
       if (!slp1Text) return ''
       return Sanscript.t(slp1Text, 'slp1', 'devanagari')
@@ -999,7 +1082,7 @@ export default {
         case "krt":
           prakriyaDialogContent = this.deriveKrdantas(
             devanagariWord,
-            type,
+            aupadeshika,
             pratyaya,
             linga,
             vacana,
@@ -1230,14 +1313,56 @@ export default {
   background-color: #aaaaaa;
 }
 
-.lemma-table {
-  margin: 10px 0;
-  font-size: 12pt;
-  background: transparent !important;
+.interlinear-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 16px;
+  padding: 8px 0;
 }
 
-.lemma-table td {
-  padding: 4px 8px;
-  background: transparent !important;
+.interlinear-word {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.interlinear-form-row {
+  display: flex;
+  align-items: center;
+}
+
+.interlinear-form {
+  font-size: 14pt;
+  font-weight: 500;
+}
+
+.verify-icon {
+  font-size: 9pt;
+  color: #4caf50;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.interlinear-analysis {
+  font-size: 9pt;
+  color: #9a938a;
+}
+
+.interlinear-analysis-row,
+.interlinear-meaning-row {
+  display: flex;
+  align-items: center;
+}
+
+.edit-icon {
+  font-size: 8pt;
+  opacity: 0.4;
+  margin-left: 2px;
+}
+
+.interlinear-meaning {
+  font-size: 9pt;
+  font-style: italic;
+  color: #5a8a5a;
 }
 </style>
