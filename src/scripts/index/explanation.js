@@ -36,16 +36,20 @@ export const renderSanskrit = (sanskrit) => {
   let word = "";
   for (let i = 0; i < parts[0].length; i++) {
     if (parts[0][i] === "—" || parts[0][i] === " ") {
-      sanskritResult.push(checkExplanationExists(word));
+      sanskritResult.push({ word });
       sanskritResult.push({ word: parts[0][i] });
+      word = "";
+    } else if (parts[0][i] === ";") {
+      sanskritResult.push({ word });
+      sanskritResult.push({ word: "\n" });
       word = "";
     } else {
       word += parts[0][i];
     }
   }
-  sanskritResult.push(checkExplanationExists(word));
+  sanskritResult.push({ word });
   sanskritResult.push({ word: "\n" });
-  // parts[1] is the IAST text which will be appeneded as is as
-  sanskritResult.push({ word: parts[1] });
+  // parts[1] is the IAST text which will be appended as is
+  sanskritResult.push({ word: parts[1] ? parts[1].replaceAll(";", "\n") : parts[1] });
   return sanskritResult;
 };

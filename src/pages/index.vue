@@ -50,7 +50,26 @@
   <v-card>
     <v-layout>
       <v-main>
-        <div class="d-flex justify-center align-center h-100">
+        <!-- Shared: Progress bar + Search -->
+        <v-progress-linear
+          height="2"
+          :model-value="complete"
+          color="green"
+        />
+        <div class="pa-2 search-container">
+          <v-text-field
+            id="search"
+            v-model="search"
+            clearable
+            :clear-icon="icons.clear"
+            @update:model-value="debouncedUpdateSearch"
+            @click:clear="clearSearch"
+            label="Search Indus valley inscriptions"
+          />
+        </div>
+
+        <!-- DESKTOP: Data table -->
+        <div v-if="!mobile">
           <v-data-table
             ref="target"
             v-model:expanded="expanded"
@@ -71,26 +90,6 @@
             @update:sort-by="sortChange"
             mobile-breakpoint="200"
           >
-            <template #top>
-              <v-progress-linear
-                height="2"
-                :model-value="complete"
-                color="green"
-              >
-              </v-progress-linear>
-              <div class="pa-2 search-container">
-                <v-text-field
-                  id="search"
-                  v-model="search"
-                  clearable
-                  :clear-icon="icons.clear"
-                  @update:model-value="debouncedUpdateSearch"
-                  @click:clear="clearSearch"
-                  label="Search Indus valley inscriptions"
-                />
-              </div>
-            </template>
-
             <template v-slot:item.sanskrit="{ item }">
               <span v-if="item.cuneiform" class="cuneiform">{{ item.sanskrit }}</span>
               <template v-else v-for="word in renderSanskrit(item.sanskrit)">
@@ -223,6 +222,196 @@
             </template>
           </v-data-table>
         </div>
+
+        <!-- MOBILE: Sort chips + Card layout -->
+        <div v-else class="mobile-view">
+          <!-- Sort chips -->
+          <div class="pa-2 d-flex align-center">
+            <v-chip
+              v-for="(option, oi) in mobileSortOptions"
+              :key="option.key"
+              size="small"
+              variant="outlined"
+              :color="sortBy.length && sortBy[0].key === option.key ? 'primary' : undefined"
+              class="mr-2"
+              @click="toggleMobileSort(option.key)"
+            >
+              {{ option.title }}
+              <v-icon
+                v-if="sortBy.length && sortBy[0].key === option.key"
+                end
+                :icon="sortBy[0].order === 'asc' ? icons.arrowUp : icons.arrowDown"
+                size="x-small"
+              />
+            </v-chip>
+          </div>
+
+          <!-- Cards -->
+          <v-expansion-panels variant="accordion" multiple>
+            <v-expansion-panel
+              v-for="item in mobilePageItems"
+              :key="item.id"
+              :class="item.complete === 'Y' ? '' : 'text-red'"
+            >
+              <v-expansion-panel-title class="mobile-panel-title">
+                <div class="mobile-card-header">
+                  <!-- Left: seal image carousel -->
+                  <div class="mobile-card-left">
+                    <div
+                      v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1"
+                      class="carousel-wrapper"
+                    >
+                      <v-carousel
+                        v-model="carouselIndex[item.cisi]"
+                        class="mobile-seal-carousel"
+                        height="100"
+                        hide-delimiters
+                        :show-arrows="false"
+                        :touch="false"
+                      >
+                        <v-carousel-item
+                          v-for="(img, index) in sealImages[item.cisi]"
+                          :key="index"
+                        >
+                          <v-img
+                            :src="`/seal_images/${img}`"
+                            contain
+                            height="100"
+                            class="mobile-seal-image"
+                            :class="getSealClasses(item)"
+                          />
+                        </v-carousel-item>
+                      </v-carousel>
+                      <div class="carousel-click-left" @click.stop="carouselNav(item.cisi, -1)" />
+                      <div class="carousel-click-right" @click.stop="carouselNav(item.cisi, 1)" />
+                      <div class="mobile-carousel-counter">
+                        {{ (carouselIndex[item.cisi] || 0) + 1 }}/{{ sealImages[item.cisi].length }}
+                      </div>
+                      <div class="mobile-zoom-icon" @click.stop="openZoom(sealImages[item.cisi][carouselIndex[item.cisi] || 0], item)">
+                        <v-icon size="14" color="white">mdi-magnify-plus-outline</v-icon>
+                      </div>
+                    </div>
+                    <div
+                      v-else-if="sealImages[item.cisi] && sealImages[item.cisi].length === 1"
+                      class="carousel-wrapper"
+                    >
+                      <v-img
+                        :src="`/seal_images/${sealImages[item.cisi][0]}`"
+                        contain
+                        class="mobile-seal-image"
+                        :class="getSealClasses(item)"
+                      />
+                      <div class="mobile-zoom-icon" @click.stop="openZoom(sealImages[item.cisi][0], item)">
+                        <v-icon size="14" color="white">mdi-magnify-plus-outline</v-icon>
+                      </div>
+                    </div>
+                    <div v-else class="mobile-no-image">
+                      <v-icon color="grey" size="32">mdi-image-off</v-icon>
+                    </div>
+                  </div>
+                  <!-- Right: inscription + transliterations -->
+                  <div class="mobile-card-right">
+                    <div class="indus mobile-indus-text">
+                      {{ optionCanonical ? item.canonized : item.text }}
+                    </div>
+                    <div class="mobile-sanskrit-preview">
+                      <span v-if="item.cuneiform" class="cuneiform">{{ item.sanskrit }}</span>
+                      <template v-else v-for="word in renderSanskrit(item.sanskrit)">
+                        <span
+                          v-if="word.link == true"
+                          class="sanskrit-link"
+                          @click.stop="showExplanation(word.word, item.id)"
+                        >{{ word.word }}</span>
+                        <span v-else>{{ word.word }}</span>
+                      </template>
+                    </div>
+                    <div v-if="item.translation" class="mobile-translation-preview">
+                      {{ item.translation }}
+                    </div>
+                  </div>
+                </div>
+              </v-expansion-panel-title>
+
+              <v-expansion-panel-text>
+                <div class="mobile-expanded-wrapper">
+                  <div class="mobile-detail-row">
+                    <span class="mobile-label">Seal ID:</span> {{ item.id }}
+                    <span class="mobile-label ml-4">CISI:</span> {{ item.cisi }}
+                    <span class="mobile-label ml-4">Site:</span> {{ item.site }}
+                  </div>
+                  <div class="mobile-detail-row sanskrit">
+                    <span class="mobile-label">L{{ item.textlength }}:</span> {{ item.description }}
+                  </div>
+                  <div v-if="item.translation" class="mobile-detail-row">
+                    <span class="mobile-label">Translation:</span> {{ item.translation }}
+                  </div>
+                  <div v-if="item.notes" class="mobile-detail-row">
+                    <span class="mobile-label">Notes:</span> {{ item.notes }}
+                  </div>
+                  <!-- Interlinear Gloss -->
+                  <div
+                    v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
+                    class="mobile-interlinear"
+                  >
+                    <div class="interlinear-container">
+                      <div
+                        v-for="(lemma, idx) in lemmasMap[item.lemmaRef || item.id]"
+                        :key="idx"
+                        class="interlinear-word"
+                      >
+                        <span class="interlinear-form-row">
+                          <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
+                          <v-tooltip
+                            v-if="lemma.analysis"
+                            location="top"
+                            :model-value="activeTooltip === (item.id + '-' + idx)"
+                            :open-on-click="false"
+                            :open-on-hover="false"
+                          >
+                            <template v-slot:activator="{ props }">
+                              <span v-bind="props" class="verify-icon" @click.stop="toggleTooltip(item.id + '-' + idx)">&#x2713;</span>
+                            </template>
+                            {{ getLemmaReference(lemma) }}
+                          </v-tooltip>
+                        </span>
+                        <span class="interlinear-analysis-row">
+                          <span
+                            class="interlinear-analysis"
+                            :contenteditable="isDev && !item.lemmaRef"
+                            @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'analysis', $event.target.textContent)"
+                            @keydown.enter.prevent="$event.target.blur()"
+                          >{{ lemma.analysis }}</span>
+                          <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                        </span>
+                        <span class="interlinear-meaning-row">
+                          <span
+                            class="interlinear-meaning"
+                            :contenteditable="isDev && !item.lemmaRef"
+                            @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'translation_lexeme', $event.target.textContent)"
+                            @keydown.enter.prevent="$event.target.blur()"
+                          >{{ lemma.translation_lexeme }}</span>
+                          <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+
+          <!-- Mobile pagination -->
+          <div class="d-flex justify-center mt-4 mb-4">
+            <v-pagination
+              v-model="pageNum"
+              :length="mobileTotalPages"
+              @update:model-value="pageChange"
+              :total-visible="5"
+              density="comfortable"
+            />
+          </div>
+        </div>
+
       </v-main>
     </v-layout>
   </v-card>
@@ -341,6 +530,17 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+
+  <v-dialog v-model="showZoomDialog" max-width="90vw">
+    <v-card class="zoom-dialog-card" @click="showZoomDialog = false">
+      <v-img
+        :src="zoomImageSrc ? `/seal_images/${zoomImageSrc}` : ''"
+        contain
+        max-height="80vh"
+        :class="zoomImageClasses"
+      />
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup>
@@ -349,8 +549,9 @@ import "@mdi/font/css/materialdesignicons.css";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
 import { mdiOpenInNew } from "@mdi/js";
 import sealImages from "@/assets/data/seal_id_and_image_mapping.json"; // Ensure the file is in `assets`
-import { useTheme } from "vuetify";
+import { useTheme, useDisplay } from "vuetify";
 const theme = useTheme();
+const { mobile } = useDisplay();
 theme.global.name.value = localStorage.getItem("theme") || "dark";
 
 function toggleTheme() {
@@ -424,6 +625,7 @@ const inx = csv2json(incx, {
     "translation",
     "notes",
     "symbol",
+    "type",
     "phase",
     "period",
   ],
@@ -459,6 +661,8 @@ xlitarray.forEach((element) => {
   mkregex(xlitmap[element.sign]);
 });
 
+const SLASH_SEP = String.fromCharCode(0xe3e7).repeat(4);
+
 inx.forEach((el) => {
   const analyzed = xlitize(el.text);
   el.description = analyzed.description;
@@ -466,14 +670,20 @@ inx.forEach((el) => {
   el.regex = analyzed.regex;
   const canonized = canonize(el.text);
   el.text = canonized.str; // jsize(el.text)
+  if (el.text.includes(SLASH_SEP)) {
+    el.text = el.text.split(SLASH_SEP).reverse().join("\n");
+  }
   el.textlength = parseInt(el["text length"]);
+  el.canonized = canonized.canon;
+  if (el.canonized.includes(SLASH_SEP)) {
+    el.canonized = el.canonized.split(SLASH_SEP).reverse().join("\n");
+  }
   el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
   totalLen += el.complete === "Y" ? el.textlength : 0;
   totalCount += el.complete === "Y" ? 1 : 0;
   decipheredLen += el.complete === "Y" && el.sanskrit ? el.textlength : 0;
   // if (el.translation) console.log(el.translation)
   decipheredCount += el.translation ? 1 : 0;
-  el.canonized = canonized.canon;
   //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
   if (el.translation && /[\u{12000}-\u{1236E}]/u.test(el.translation)) {
     // Cuneiform entry: parse translation to extract script + transliteration
@@ -671,6 +881,8 @@ export default {
         collapse: [
           "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z",
         ],
+        arrowUp: ['M4,12L5.41,13.41L11,7.83V20H13V7.83L18.58,13.42L20,12L12,4L4,12Z'],
+        arrowDown: ['M20,12L18.59,10.59L13,16.17V4H11V16.17L5.42,10.58L4,12L12,20L20,12Z'],
         cog: [
           "M 12 15.5 A 3.5 3.5 0 0 1 8.5 12 A 3.5 3.5 0 0 1 12 8.5 A 3.5 3.5 0 0 1 15.5 12 A 3.5 3.5 0 0 1 12 15.5 M 19.43 12.97 C 19.47 12.65 19.5 12.33 19.5 12 C 19.5 11.67 19.47 11.34 19.43 11 L 21.54 9.37 C 21.73 9.22 21.78 8.95 21.66 8.73 L 19.66 5.27 C 19.54 5.05 19.27 4.96 19.05 5.05 L 16.56 6.05 C 16.04 5.66 15.5 5.32 14.87 5.07 L 14.5 2.42 C 14.46 2.18 14.25 2 14 2 H 10 C 9.75 2 9.54 2.18 9.5 2.42 L 9.13 5.07 C 8.5 5.32 7.96 5.66 7.44 6.05 L 4.95 5.05 C 4.73 4.96 4.46 5.05 4.34 5.27 L 2.34 8.73 C 2.21 8.95 2.27 9.22 2.46 9.37 L 4.57 11 C 4.53 11.34 4.5 11.67 4.5 12 C 4.5 12.33 4.53 12.65 4.57 12.97 L 2.46 14.63 C 2.27 14.78 2.21 15.05 2.34 15.27 L 4.34 18.73 C 4.46 18.95 4.73 19.03 4.95 18.95 L 7.44 17.94 C 7.96 18.34 8.5 18.68 9.13 18.93 L 9.5 21.58 C 9.54 21.82 9.75 22 10 22 H 14 C 14.25 22 14.46 21.82 14.5 21.58 L 14.87 18.93 C 15.5 18.67 16.04 18.34 16.56 17.94 L 19.05 18.95 C 19.27 19.03 19.54 18.95 19.66 18.73 L 21.66 15.27 C 21.78 15.05 21.73 14.78 21.54 14.63 L 19.43 12.97 Z",
         ],
@@ -713,6 +925,17 @@ export default {
       explanationDialogContent: {},
       lemmasMap,
       isDev: import.meta.env.DEV,
+      carouselIndex: {},
+      showZoomDialog: false,
+      zoomImageSrc: null,
+      zoomImageClasses: '',
+      activeTooltip: null,
+      mobileSortOptions: [
+        { title: 'Length', key: 'textlength' },
+        { title: 'Seal ID', key: 'id' },
+        { title: 'CISI', key: 'cisi' },
+        { title: 'Sanskrit', key: 'sanskrit' },
+      ],
     };
   },
   computed: {
@@ -740,9 +963,61 @@ export default {
       });
       return this.headers;
     },
+    filteredAndSearched() {
+      if (!this.search) return this.filtered;
+      return this.filtered.filter(item => {
+        const columns = {};
+        this.headers.forEach(h => { if (h.key) columns[h.key] = item[h.key] || ''; });
+        const wrapped = { raw: item, columns };
+        return filter(null, this.search, wrapped, this.optionBroken);
+      });
+    },
+    sortedMobileItems() {
+      const items = [...this.filteredAndSearched];
+      if (this.sortBy.length === 0) return items;
+      const { key, order } = this.sortBy[0];
+      items.sort((a, b) => {
+        const va = a[key], vb = b[key];
+        if (typeof va === 'number' && typeof vb === 'number') {
+          return order === 'asc' ? va - vb : vb - va;
+        }
+        const sa = (va || '').toString(), sb = (vb || '').toString();
+        return order === 'asc' ? sa.localeCompare(sb) : sb.localeCompare(sa);
+      });
+      return items;
+    },
+    mobilePageItems() {
+      const perPage = 10;
+      const start = (this.pageNum - 1) * perPage;
+      return this.sortedMobileItems.slice(start, start + perPage);
+    },
+    mobileTotalPages() {
+      return Math.ceil(this.sortedMobileItems.length / 10);
+    },
   },
 
   methods: {
+    openZoom (imgFile, item) {
+      this.zoomImageSrc = imgFile
+      this.zoomImageClasses = this.getSealClasses(item)
+      this.showZoomDialog = true
+    },
+    carouselNav (cisi, dir) {
+      const len = sealImages[cisi] ? sealImages[cisi].length : 0
+      if (!len) return
+      const cur = this.carouselIndex[cisi] || 0
+      this.carouselIndex[cisi] = (cur + dir + len) % len
+    },
+    toggleTooltip (key) {
+      this.activeTooltip = this.activeTooltip === key ? null : key
+    },
+    toggleMobileSort (key) {
+      if (this.sortBy.length && this.sortBy[0].key === key) {
+        this.sortBy = [{ key, order: this.sortBy[0].order === 'asc' ? 'desc' : 'asc' }]
+      } else {
+        this.sortBy = [{ key, order: 'desc' }]
+      }
+    },
     cleanMwEntry (text) {
       return text
         .split('\n')[0]
@@ -831,11 +1106,15 @@ export default {
     saveLemmaField (id, idx, field, value) {
       // eslint-disable-next-line no-misleading-character-class
       const cleaned = value.replace(/[\u200B\u200C\u200D\uFEFF\u00A0]/g, '').trim()
+      console.log('saveLemmaField', { id, idx, field, value: cleaned })
       fetch('/api/update-lemma', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id, idx, field, value: cleaned }),
       })
+        .then(r => r.json())
+        .then(data => console.log('saveLemmaField result:', data))
+        .catch(err => console.error('saveLemmaField error:', err))
     },
     toDevanagari (slp1Text) {
       if (!slp1Text) return ''
@@ -1171,7 +1450,7 @@ export default {
       return searchTerm ?? localStorage.getItem("search");
     }
 
-    this.pageNum = localStorage.getItem("page");
+    this.pageNum = parseInt(localStorage.getItem("page")) || 1;
     this.search = getSearchTerm();
 
     this.sortBy = JSON.parse(localStorage.getItem("sort")) || this.sortBy;
@@ -1421,5 +1700,199 @@ export default {
   font-size: 9pt;
   font-style: italic;
   color: #5a8a5a;
+}
+
+/* Mobile card layout */
+.mobile-view {
+  padding: 0 4px;
+}
+
+.mobile-card-header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.mobile-card-left {
+  flex: 0 0 33%;
+  max-width: 33%;
+}
+
+.mobile-card-right {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.mobile-seal-carousel {
+  border-radius: 4px;
+  width: 100%;
+}
+
+.carousel-click-left,
+.carousel-click-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.carousel-click-left {
+  left: 0;
+}
+
+.carousel-click-right {
+  right: 0;
+}
+
+.mobile-carousel-counter {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 1px 5px;
+  border-radius: 8px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.mobile-zoom-icon {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.zoom-dialog-card {
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.mobile-seal-image {
+  border-radius: 4px;
+  width: 100%;
+  max-height: 100px;
+}
+
+.mobile-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+  border-radius: 4px;
+  border: 1px dashed rgba(128, 128, 128, 0.3);
+}
+
+.mobile-indus-text {
+  font-size: 18pt;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.mobile-sanskrit-preview {
+  font-size: 13pt;
+  word-spacing: 3pt;
+  white-space: pre-wrap;
+  text-align: center;
+}
+
+.mobile-panel-title {
+  padding: 12px;
+  min-height: unset;
+}
+
+.mobile-detail-row {
+  padding: 4px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.mobile-label {
+  font-weight: 600;
+  opacity: 0.7;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.mobile-expanded-wrapper {
+  text-align: left;
+}
+
+.mobile-view .v-expansion-panel-text__wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.mobile-interlinear {
+  padding: 8px 0;
+  border-top: 1px solid rgba(128, 128, 128, 0.2);
+  margin-top: 8px;
+}
+
+.mobile-interlinear .interlinear-container {
+  gap: 16px 10px;
+}
+
+.v-theme--dark .mobile-view .v-expansion-panel-title {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.v-theme--light .mobile-view .v-expansion-panel-title {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.mobile-translation-preview {
+  display: none;
+  font-size: 11pt;
+  white-space: pre-wrap;
+}
+
+/* Wider mobile: inscription + Sanskrit side by side, right/left aligned */
+@media (min-width: 600px) {
+  .mobile-card-right {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .mobile-indus-text {
+    flex: 1 1 0;
+    text-align: right;
+  }
+  .mobile-sanskrit-preview {
+    flex: 1 1 0;
+    text-align: left;
+  }
+}
+
+/* Show translation column at wider widths */
+@media (min-width: 900px) {
+  .mobile-translation-preview {
+    display: block;
+    flex: 1 1 0;
+    text-align: left;
+  }
 }
 </style>

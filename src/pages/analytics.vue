@@ -217,7 +217,8 @@ let mwIndex = new Set()
 let initError = null
 
 try {
-  lemmas = csv2json(lemmasCsv)
+  // Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
+  lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
   mwIndex = new Set(Object.keys(mwJson))
 } catch (e) {
   console.error('Failed to initialize data:', e)
@@ -326,7 +327,7 @@ export default {
       invalidType: '',
       invalidEntries: [],
       invalidTableHeaders: [
-        { title: 'ID', key: 'inscription_id', sortable: true },
+        { title: 'ID', key: 'id', sortable: true },
         { title: 'Form', key: 'form', sortable: true },
         { title: 'Analysis', key: 'analysis', sortable: true },
         { title: 'Issue', key: 'issue', sortable: true },
@@ -1177,6 +1178,10 @@ export default {
                 issue: `vidyut: ${validation.expected}`,
               })
             }
+            // Debug: log MW+TAD validation results
+            if (form === 'damanavatam') {
+              console.log('damanavatam validation:', { form, baseStem, tadSuffixes, vibhakti, linga, vacana, validation })
+            }
           } else if (caseMatch && analysis.startsWith('PRON.')) {
             // PRON entry with case info - validate with Vidyut
             const [, vibhakti, linga, vacana] = caseMatch
@@ -1203,7 +1208,8 @@ export default {
         // Note: non-word entries (type !== 'word') are not counted in declension validation
 
         // Meaning validation (check if translation_lexeme is present)
-        if (row.translation_lexeme && row.translation_lexeme.trim()) {
+        const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+        if (lexeme) {
           validMeanings++
         } else {
           invalidMeanings++
@@ -1270,7 +1276,8 @@ export default {
               }
             }
           } else if (type === 'meanings') {
-            if (!row.translation_lexeme || !row.translation_lexeme.trim()) {
+            const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+            if (!lexeme) {
               this.invalidEntries.push({
                 ...row,
                 issue: 'Missing translation/meaning',

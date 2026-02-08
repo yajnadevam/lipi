@@ -20,6 +20,7 @@ const inx = csv2json(incx, {
     "translation",
     "notes",
     "symbol",
+    "type",
     "phase",
     "period",
   ],
@@ -343,7 +344,9 @@ export const filter = (_value, query, item, optionBroken) => {
 
     // Columnar Query
     if (queryTerm.indexOf(":") > -1) {
-      let [column, q] = queryTerm.split(":");
+      const colonIdx = queryTerm.indexOf(":");
+      let column = queryTerm.substring(0, colonIdx);
+      let q = queryTerm.substring(colonIdx + 1);
 
       // If glyph search then we just disable canonical and modify the query and process in the subsequent sections
       // as regex query or simple string match

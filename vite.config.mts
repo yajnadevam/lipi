@@ -63,6 +63,12 @@ export default defineConfig({
               )
               writeFileSync(csvPath, header + '\n' + lines.join('\n') + '\n')
 
+              // Invalidate Vite's transform cache so next page refresh picks up changes
+              const mods = server.moduleGraph.getModulesByFile(csvPath)
+              if (mods) {
+                mods.forEach(m => server.moduleGraph.invalidateModule(m))
+              }
+
               res.setHeader('Content-Type', 'application/json')
               res.end(JSON.stringify({ ok: true }))
             } catch (e) {
