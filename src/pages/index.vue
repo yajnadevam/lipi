@@ -51,11 +51,7 @@
     <v-layout>
       <v-main>
         <!-- Shared: Progress bar + Search -->
-        <v-progress-linear
-          height="2"
-          :model-value="complete"
-          color="green"
-        />
+        <v-progress-linear height="2" :model-value="complete" color="green" />
         <div class="pa-2 search-container">
           <v-text-field
             id="search"
@@ -91,7 +87,9 @@
             mobile-breakpoint="200"
           >
             <template v-slot:item.sanskrit="{ item }">
-              <span v-if="item.cuneiform" class="cuneiform">{{ item.sanskrit }}</span>
+              <span v-if="item.cuneiform" class="cuneiform">{{
+                item.sanskrit
+              }}</span>
               <template v-else v-for="word in renderSanskrit(item.sanskrit)">
                 <span
                   v-if="word.link == true"
@@ -156,12 +154,16 @@
                 <td colspan="12">
                   <div class="interlinear-container">
                     <div
-                      v-for="(lemma, idx) in lemmasMap[item.lemmaRef || item.id]"
+                      v-for="(lemma, idx) in lemmasMap[
+                        item.lemmaRef || item.id
+                      ]"
                       :key="idx"
                       class="interlinear-word"
                     >
                       <span class="interlinear-form-row">
-                        <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
+                        <span class="interlinear-form sanskrit">{{
+                          toDevanagari(lemma.form)
+                        }}</span>
                         <v-tooltip v-if="lemma.analysis" location="top">
                           <template v-slot:activator="{ props }">
                             <v-icon v-bind="props" class="verify-icon" size="12">mdi-information-outline</v-icon>
@@ -174,19 +176,43 @@
                         <span
                           class="interlinear-analysis"
                           :contenteditable="isDev && !item.lemmaRef"
-                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'analysis', $event.target.textContent)"
+                          @blur="
+                            isDev &&
+                            !item.lemmaRef &&
+                            saveLemmaField(
+                              item.id,
+                              idx,
+                              'analysis',
+                              $event.target.textContent,
+                            )
+                          "
                           @keydown.enter.prevent="$event.target.blur()"
-                        >{{ lemma.analysis }}</span>
-                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                          >{{ lemma.analysis }}</span
+                        >
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon"
+                          >&#x270E;</span
+                        >
                       </span>
                       <span class="interlinear-meaning-row">
                         <span
                           class="interlinear-meaning"
                           :contenteditable="isDev && !item.lemmaRef"
-                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'translation_lexeme', $event.target.textContent)"
+                          @blur="
+                            isDev &&
+                            !item.lemmaRef &&
+                            saveLemmaField(
+                              item.id,
+                              idx,
+                              'translation_lexeme',
+                              $event.target.textContent,
+                            )
+                          "
                           @keydown.enter.prevent="$event.target.blur()"
-                        >{{ lemma.translation_lexeme }}</span>
-                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                          >{{ lemma.translation_lexeme }}</span
+                        >
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon"
+                          >&#x270E;</span
+                        >
                       </span>
                     </div>
                   </div>
@@ -203,7 +229,7 @@
                       <v-col
                         v-for="(img, index) in sealImages[item.cisi].slice(
                           0,
-                          2
+                          2,
                         )"
                         :key="index"
                         :cols="6"
@@ -233,7 +259,11 @@
               :key="option.key"
               size="small"
               variant="outlined"
-              :color="sortBy.length && sortBy[0].key === option.key ? 'primary' : undefined"
+              :color="
+                sortBy.length && sortBy[0].key === option.key
+                  ? 'primary'
+                  : undefined
+              "
               class="mr-2"
               @click="toggleMobileSort(option.key)"
             >
@@ -241,7 +271,9 @@
               <v-icon
                 v-if="sortBy.length && sortBy[0].key === option.key"
                 end
-                :icon="sortBy[0].order === 'asc' ? icons.arrowUp : icons.arrowDown"
+                :icon="
+                  sortBy[0].order === 'asc' ? icons.arrowUp : icons.arrowDown
+                "
                 size="x-small"
               />
             </v-chip>
@@ -259,15 +291,6 @@
                 <div class="mobile-card-header">
                   <!-- Left: seal image carousel -->
                   <div class="mobile-card-left">
-                    <div class="mobile-card-id-row">
-                      <div class="carousel-nav-btn" v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" @click.stop="carouselNav(item.cisi, -1)">
-                        <v-icon size="14" color="white">mdi-chevron-left</v-icon>
-                      </div>
-                      <span class="mobile-card-id">{{ item.id }}</span>
-                      <div class="carousel-nav-btn" v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" @click.stop="carouselNav(item.cisi, 1)">
-                        <v-icon size="14" color="white">mdi-chevron-right</v-icon>
-                      </div>
-                    </div>
                     <div
                       v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1"
                       class="carousel-wrapper"
@@ -295,11 +318,16 @@
                         </v-carousel-item>
                       </v-carousel>
                       <div class="mobile-carousel-counter">
-                        {{ (carouselIndex[item.cisi] || 0) + 1 }}/{{ sealImages[item.cisi].length }}
+                        {{ (carouselIndex[item.cisi] || 0) + 1 }}/{{
+                          sealImages[item.cisi].length
+                        }}
                       </div>
                     </div>
                     <div
-                      v-else-if="sealImages[item.cisi] && sealImages[item.cisi].length === 1"
+                      v-else-if="
+                        sealImages[item.cisi] &&
+                        sealImages[item.cisi].length === 1
+                      "
                       class="carousel-wrapper"
                       @click.stop="openZoom(sealImages[item.cisi][0], item)"
                     >
@@ -320,17 +348,26 @@
                       {{ optionCanonical ? item.canonized : item.text }}
                     </div>
                     <div class="mobile-sanskrit-preview">
-                      <span v-if="item.cuneiform" class="cuneiform">{{ item.sanskrit }}</span>
-                      <template v-else v-for="word in renderSanskrit(item.sanskrit)">
+                      <span v-if="item.cuneiform" class="cuneiform">{{
+                        item.sanskrit
+                      }}</span>
+                      <template
+                        v-else
+                        v-for="word in renderSanskrit(item.sanskrit)"
+                      >
                         <span
                           v-if="word.link == true"
                           class="sanskrit-link"
                           @click.stop="showExplanation(word.word, item.id)"
-                        >{{ word.word }}</span>
+                          >{{ word.word }}</span
+                        >
                         <span v-else>{{ word.word }}</span>
                       </template>
                     </div>
-                    <div v-if="item.translation" class="mobile-translation-preview">
+                    <div
+                      v-if="item.translation"
+                      class="mobile-translation-preview"
+                    >
                       {{ item.translation }}
                     </div>
                   </div>
@@ -421,7 +458,6 @@
             />
           </div>
         </div>
-
       </v-main>
     </v-layout>
   </v-card>
@@ -484,8 +520,8 @@
                       Sanscript.t(
                         r.text.replaceAll("\\", "").replaceAll("^", ""),
                         "slp1",
-                        "devanagari"
-                      )
+                        "devanagari",
+                      ),
                     )
                     .join(" + ")
                 }}
@@ -609,17 +645,17 @@ csv2json(words).forEach((value) => {
 });
 
 // Lemma per inscription lookup map (id -> array of lemmas)
-const lemmasMap = {}
+const lemmasMap = {};
 // Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
-csv2json(lemmasCsv.replace(/\r\n/g, '\n')).forEach(row => {
-  const id = row.id
+csv2json(lemmasCsv.replace(/\r\n/g, "\n")).forEach((row) => {
+  const id = row.id;
   if (id) {
     if (!lemmasMap[id]) {
-      lemmasMap[id] = []
+      lemmasMap[id] = [];
     }
-    lemmasMap[id].push(row)
+    lemmasMap[id].push(row);
   }
-})
+});
 
 const inx = csv2json(incx, {
   keys: [
@@ -643,7 +679,7 @@ const inx = csv2json(incx, {
 const iso = Sanscript.t(
   "aAiIuUoOfFxXEOMHkKgGNcCjJYwWqQRtTdDnpPbBmyrlvSzshL",
   "slp1",
-  "iast"
+  "iast",
 );
 const slp = "aiukgcjtdnpbmyrlvsmst";
 const xlitarray = csv2json(xlits);
@@ -697,13 +733,15 @@ inx.forEach((el) => {
   //  if(el.complete === 'N' && el.sanskrit) console.log(">>", el.id, "L", el.textlength, 'C:', el.complete, 'X:', el.translation, 'D:', decipheredLen, 'T:', totalLen)
   if (el.translation && /[\u{12000}-\u{1236E}]/u.test(el.translation)) {
     // Cuneiform entry: parse translation to extract script + transliteration
-    const cuneMatch = el.translation.match(/^([\u{12000}-\u{1254F}\s\u2082]+)\s*\[([^:]+):\s*'([^']+)',?\s*(.+)\]/u)
+    const cuneMatch = el.translation.match(
+      /^([\u{12000}-\u{1254F}\s\u2082]+)\s*\[([^:]+):\s*'([^']+)',?\s*(.+)\]/u,
+    );
     if (cuneMatch) {
-      el.cuneiform = true
-      el.sanskrit = cuneMatch[1].trim() + '\n' + cuneMatch[3]
-      el.translation = cuneMatch[4].replace(/\]\s*$/, '').trim()
+      el.cuneiform = true;
+      el.sanskrit = cuneMatch[1].trim() + "\n" + cuneMatch[3];
+      el.translation = cuneMatch[4].replace(/\]\s*$/, "").trim();
     } else {
-      el.sanskrit = "*" + analyzed.str.split("-").reverse().join("")
+      el.sanskrit = "*" + analyzed.str.split("-").reverse().join("");
     }
   } else if (el.sanskrit && el.sanskrit.trim()) {
     if (el.sanskrit.startsWith("ref:")) {
@@ -891,8 +929,12 @@ export default {
         collapse: [
           "M7.41,15.41L12,10.83L16.59,15.41L18,14L12,8L6,14L7.41,15.41Z",
         ],
-        arrowUp: ['M4,12L5.41,13.41L11,7.83V20H13V7.83L18.58,13.42L20,12L12,4L4,12Z'],
-        arrowDown: ['M20,12L18.59,10.59L13,16.17V4H11V16.17L5.42,10.58L4,12L12,20L20,12Z'],
+        arrowUp: [
+          "M4,12L5.41,13.41L11,7.83V20H13V7.83L18.58,13.42L20,12L12,4L4,12Z",
+        ],
+        arrowDown: [
+          "M20,12L18.59,10.59L13,16.17V4H11V16.17L5.42,10.58L4,12L12,20L20,12Z",
+        ],
         cog: [
           "M 12 15.5 A 3.5 3.5 0 0 1 8.5 12 A 3.5 3.5 0 0 1 12 8.5 A 3.5 3.5 0 0 1 15.5 12 A 3.5 3.5 0 0 1 12 15.5 M 19.43 12.97 C 19.47 12.65 19.5 12.33 19.5 12 C 19.5 11.67 19.47 11.34 19.43 11 L 21.54 9.37 C 21.73 9.22 21.78 8.95 21.66 8.73 L 19.66 5.27 C 19.54 5.05 19.27 4.96 19.05 5.05 L 16.56 6.05 C 16.04 5.66 15.5 5.32 14.87 5.07 L 14.5 2.42 C 14.46 2.18 14.25 2 14 2 H 10 C 9.75 2 9.54 2.18 9.5 2.42 L 9.13 5.07 C 8.5 5.32 7.96 5.66 7.44 6.05 L 4.95 5.05 C 4.73 4.96 4.46 5.05 4.34 5.27 L 2.34 8.73 C 2.21 8.95 2.27 9.22 2.46 9.37 L 4.57 11 C 4.53 11.34 4.5 11.67 4.5 12 C 4.5 12.33 4.53 12.65 4.57 12.97 L 2.46 14.63 C 2.27 14.78 2.21 15.05 2.34 15.27 L 4.34 18.73 C 4.46 18.95 4.73 19.03 4.95 18.95 L 7.44 17.94 C 7.96 18.34 8.5 18.68 9.13 18.93 L 9.5 21.58 C 9.54 21.82 9.75 22 10 22 H 14 C 14.25 22 14.46 21.82 14.5 21.58 L 14.87 18.93 C 15.5 18.67 16.04 18.34 16.56 17.94 L 19.05 18.95 C 19.27 19.03 19.54 18.95 19.66 18.73 L 21.66 15.27 C 21.78 15.05 21.73 14.78 21.54 14.63 L 19.43 12.97 Z",
         ],
@@ -907,14 +949,15 @@ export default {
       oldPageNum: null,
       expanded: [],
       headers: [
-        { title: "Seal ID", key: "id" },
-        { title: "CISI ID", key: "cisi" },
-        { title: "Len", key: "textlength" },
+        { title: "Seal ID", key: "id", width: "85px" },
+        { title: "CISI ID", key: "cisi", width: "130px" },
+        { title: "Len", key: "textlength", width: "40px" },
         {
           title: "Inscription(R to L)",
           key: "text",
           align: "end",
           cellProps: { class: "indus" },
+          width: "400px",
         },
         { title: "Transliteration", key: "description", align: " d-none" },
         { title: "Notes", key: "notes", align: " d-none" },
@@ -922,9 +965,10 @@ export default {
           title: "Sanskrit(L to R)",
           key: "sanskrit",
           cellProps: { class: "sanskrit" },
+          width: "400px",
         },
         { title: "Translation", key: "translation" },
-        { title: "", key: "data-table-expand" },
+        { title: "", key: "data-table-expand", width: "50px" },
       ],
       items: inx,
       optionCanonical: false,
@@ -938,13 +982,13 @@ export default {
       carouselIndex: {},
       showZoomDialog: false,
       zoomImageSrc: null,
-      zoomImageClasses: '',
+      zoomImageClasses: "",
       activeTooltip: null,
       mobileSortOptions: [
-        { title: 'Length', key: 'textlength' },
-        { title: 'Seal ID', key: 'id' },
-        { title: 'CISI', key: 'cisi' },
-        { title: 'Sanskrit', key: 'sanskrit' },
+        { title: "Length", key: "textlength" },
+        { title: "Seal ID", key: "id" },
+        { title: "CISI", key: "cisi" },
+        { title: "Sanskrit", key: "sanskrit" },
       ],
       expandedCards: new Set(),
     };
@@ -976,9 +1020,11 @@ export default {
     },
     filteredAndSearched() {
       if (!this.search) return this.filtered;
-      return this.filtered.filter(item => {
+      return this.filtered.filter((item) => {
         const columns = {};
-        this.headers.forEach(h => { if (h.key) columns[h.key] = item[h.key] || ''; });
+        this.headers.forEach((h) => {
+          if (h.key) columns[h.key] = item[h.key] || "";
+        });
         const wrapped = { raw: item, columns };
         return filter(null, this.search, wrapped, this.optionBroken);
       });
@@ -988,12 +1034,14 @@ export default {
       if (this.sortBy.length === 0) return items;
       const { key, order } = this.sortBy[0];
       items.sort((a, b) => {
-        const va = a[key], vb = b[key];
-        if (typeof va === 'number' && typeof vb === 'number') {
-          return order === 'asc' ? va - vb : vb - va;
+        const va = a[key],
+          vb = b[key];
+        if (typeof va === "number" && typeof vb === "number") {
+          return order === "asc" ? va - vb : vb - va;
         }
-        const sa = (va || '').toString(), sb = (vb || '').toString();
-        return order === 'asc' ? sa.localeCompare(sb) : sb.localeCompare(sa);
+        const sa = (va || "").toString(),
+          sb = (vb || "").toString();
+        return order === "asc" ? sa.localeCompare(sb) : sb.localeCompare(sa);
       });
       return items;
     },
@@ -1008,19 +1056,19 @@ export default {
   },
 
   methods: {
-    openZoom (imgFile, item) {
-      this.zoomImageSrc = imgFile
-      this.zoomImageClasses = this.getSealClasses(item)
-      this.showZoomDialog = true
+    openZoom(imgFile, item) {
+      this.zoomImageSrc = imgFile;
+      this.zoomImageClasses = this.getSealClasses(item);
+      this.showZoomDialog = true;
     },
-    carouselNav (cisi, dir) {
-      const len = sealImages[cisi] ? sealImages[cisi].length : 0
-      if (!len) return
-      const cur = this.carouselIndex[cisi] || 0
-      this.carouselIndex[cisi] = (cur + dir + len) % len
+    carouselNav(cisi, dir) {
+      const len = sealImages[cisi] ? sealImages[cisi].length : 0;
+      if (!len) return;
+      const cur = this.carouselIndex[cisi] || 0;
+      this.carouselIndex[cisi] = (cur + dir + len) % len;
     },
-    toggleTooltip (key) {
-      this.activeTooltip = this.activeTooltip === key ? null : key
+    toggleTooltip(key) {
+      this.activeTooltip = this.activeTooltip === key ? null : key;
     },
     toggleCard (id) {
       if (this.expandedCards.has(id)) {
@@ -1032,68 +1080,76 @@ export default {
     },
     toggleMobileSort (key) {
       if (this.sortBy.length && this.sortBy[0].key === key) {
-        this.sortBy = [{ key, order: this.sortBy[0].order === 'asc' ? 'desc' : 'asc' }]
+        this.sortBy = [
+          { key, order: this.sortBy[0].order === "asc" ? "desc" : "asc" },
+        ];
       } else {
-        this.sortBy = [{ key, order: 'desc' }]
+        this.sortBy = [{ key, order: "desc" }];
       }
       this.pageNum = 1
     },
-    cleanMwEntry (text) {
+    cleanMwEntry(text) {
       return text
-        .split('\n')[0]
-        .replace(/<[^>]*>/g, '')
-        .replace(/\([^)]*\)/g, '')
-        .replace(/&c\.\s*/g, '')
-        .replace(/\s+/g, ' ')
-        .trim()
+        .split("\n")[0]
+        .replace(/<[^>]*>/g, "")
+        .replace(/\([^)]*\)/g, "")
+        .replace(/&c\.\s*/g, "")
+        .replace(/\s+/g, " ")
+        .trim();
     },
-    getMwLex (mwKey) {
-      const entries = mwMap[mwKey]
-      if (!entries) return ''
+    getMwLex(mwKey) {
+      const entries = mwMap[mwKey];
+      if (!entries) return "";
       for (const e of entries) {
-        const m = e.match(/<lex>([^<]+)<\/lex>/)
-        if (m) return m[1]
+        const m = e.match(/<lex>([^<]+)<\/lex>/);
+        if (m) return m[1];
       }
-      return ''
+      return "";
     },
-    cleanMwWithLex (mwKey, raw) {
-      const cleaned = this.cleanMwEntry(raw)
-      if (/<lex>/.test(raw)) return cleaned
-      const lex = this.getMwLex(mwKey)
-      if (!lex) return cleaned
+    cleanMwWithLex(mwKey, raw) {
+      const cleaned = this.cleanMwEntry(raw);
+      if (/<lex>/.test(raw)) return cleaned;
+      const lex = this.getMwLex(mwKey);
+      if (!lex) return cleaned;
       // Insert lex after Devanagari headword if present, otherwise prepend
       if (/^[\u0900-\u097F]/.test(cleaned)) {
-        return cleaned.replace(/^([\u0900-\u097F\u0901-\u0963\u0966-\u096F\u200D]+)\s*/, '$1 ' + lex + ' ')
+        return cleaned.replace(
+          /^([\u0900-\u097F\u0901-\u0963\u0966-\u096F\u200D]+)\s*/,
+          "$1 " + lex + " ",
+        );
       }
-      return lex + ' ' + cleaned
+      return lex + " " + cleaned;
     },
-    findMwLineById (mwKey, id) {
-      const entries = mwMap[mwKey]
-      if (!entries || !entries.length) return null
+    findMwLineById(mwKey, id) {
+      const entries = mwMap[mwKey];
+      if (!entries || !entries.length) return null;
       if (id) {
-        const match = entries.find(e => e.includes('[ID=' + id + ']'))
-        if (match) return this.cleanMwWithLex(mwKey, match)
+        const match = entries.find((e) => e.includes("[ID=" + id + "]"));
+        if (match) return this.cleanMwWithLex(mwKey, match);
       }
-      return null
+      return null;
     },
-    findMwLineByText (mwKey, target) {
-      const entries = mwMap[mwKey]
-      if (!entries || !entries.length) return null
+    findMwLineByText(mwKey, target) {
+      const entries = mwMap[mwKey];
+      if (!entries || !entries.length) return null;
       if (target) {
-        const lc = target.toLowerCase()
-        const match = entries.find(e => e.toLowerCase().includes(lc))
-        if (match) return this.cleanMwWithLex(mwKey, match)
-        const stem = lc.replace(/(er|or|ing|ed|tion|ness|ment|ous|ive|able|ful)$/, '')
+        const lc = target.toLowerCase();
+        const match = entries.find((e) => e.toLowerCase().includes(lc));
+        if (match) return this.cleanMwWithLex(mwKey, match);
+        const stem = lc.replace(
+          /(er|or|ing|ed|tion|ness|ment|ous|ive|able|ful)$/,
+          "",
+        );
         if (stem !== lc) {
-          const stemMatch = entries.find(e => e.toLowerCase().includes(stem))
-          if (stemMatch) return this.cleanMwWithLex(mwKey, stemMatch)
+          const stemMatch = entries.find((e) => e.toLowerCase().includes(stem));
+          if (stemMatch) return this.cleanMwWithLex(mwKey, stemMatch);
         }
       }
-      return this.cleanMwWithLex(mwKey, entries[0])
+      return this.cleanMwWithLex(mwKey, entries[0]);
     },
-    withDevanagari (slp1Key, text) {
-      if (!text || /^[\u0900-\u097F]/.test(text)) return text
-      return this.toDevanagari(slp1Key) + ' ' + text
+    withDevanagari(slp1Key, text) {
+      if (!text || /^[\u0900-\u097F]/.test(text)) return text;
+      return this.toDevanagari(slp1Key) + " " + text;
     },
     getLemmaReference (lemma) {
       if (!lemma.analysis) return '--'
@@ -1108,22 +1164,30 @@ export default {
           this.findMwLineByText(lookupKey, target)
         return ref ? this.withDevanagari(mwKey, ref) : '--'
       }
-      if (lemma.analysis.startsWith('DHATU.')) {
-        const dhatuRaw = lemma.analysis.split('.')[1]
-        const dhatuClean = dhatuRaw.includes('~')
-          ? dhatuRaw.replace(/[aiufFeEoO]?[~^\\]+/g, '')
-          : dhatuRaw
+      if (lemma.analysis.startsWith("DHATU.")) {
+        const dhatuRaw = lemma.analysis.split(".")[1];
+        const dhatuClean = dhatuRaw.includes("~")
+          ? dhatuRaw.replace(/[aiufFeEoO]?[~^\\]+/g, "")
+          : dhatuRaw;
         // Look up in dhatu dictionary (keyed by dhatupatha form)
-        const dhatuEntries = dhatuMap[dhatuRaw] ||
-          (dhatuRaw.includes('-') && dhatuMap[dhatuRaw.split('-').pop()])
-        if (dhatuEntries) return '\u221A' + this.toDevanagari(dhatuClean) + ' ' + dhatuEntries[0]
+        const dhatuEntries =
+          dhatuMap[dhatuRaw] ||
+          (dhatuRaw.includes("-") && dhatuMap[dhatuRaw.split("-").pop()]);
+        if (dhatuEntries)
+          return (
+            "\u221A" + this.toDevanagari(dhatuClean) + " " + dhatuEntries[0]
+          );
         // Fallback: try clean form in MW
-        const dhatuKey = dhatuRaw.replace(/[~^]/g, '')
-        const result = this.findMwLineByText(dhatuKey, target) ||
-          (dhatuKey.includes('-') && this.findMwLineByText(dhatuKey.split('-').pop(), target))
-        return result ? '\u221A' + this.toDevanagari(dhatuClean) + ' ' + result : '--'
+        const dhatuKey = dhatuRaw.replace(/[~^]/g, "");
+        const result =
+          this.findMwLineByText(dhatuKey, target) ||
+          (dhatuKey.includes("-") &&
+            this.findMwLineByText(dhatuKey.split("-").pop(), target));
+        return result
+          ? "\u221A" + this.toDevanagari(dhatuClean) + " " + result
+          : "--";
       }
-      return '--'
+      return "--";
     },
     hasVidyutBadge (analysis) {
       if (!analysis) return false
@@ -1131,20 +1195,22 @@ export default {
     },
     saveLemmaField (id, idx, field, value) {
       // eslint-disable-next-line no-misleading-character-class
-      const cleaned = value.replace(/[\u200B\u200C\u200D\uFEFF\u00A0]/g, '').trim()
-      console.log('saveLemmaField', { id, idx, field, value: cleaned })
-      fetch('/api/update-lemma', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const cleaned = value
+        .replace(/[\u200B\u200C\u200D\uFEFF\u00A0]/g, "")
+        .trim();
+      console.log("saveLemmaField", { id, idx, field, value: cleaned });
+      fetch("/api/update-lemma", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id, idx, field, value: cleaned }),
       })
-        .then(r => r.json())
-        .then(data => console.log('saveLemmaField result:', data))
-        .catch(err => console.error('saveLemmaField error:', err))
+        .then((r) => r.json())
+        .then((data) => console.log("saveLemmaField result:", data))
+        .catch((err) => console.error("saveLemmaField error:", err));
     },
-    toDevanagari (slp1Text) {
-      if (!slp1Text) return ''
-      return Sanscript.t(slp1Text, 'slp1', 'devanagari')
+    toDevanagari(slp1Text) {
+      if (!slp1Text) return "";
+      return Sanscript.t(slp1Text, "slp1", "devanagari");
     },
     chevLeft() {
       return this.icons.chevLeft;
@@ -1259,7 +1325,7 @@ export default {
       linga,
       vacana,
       purusha, // Todo: Is this required?
-      vibhakti
+      vibhakti,
     ) {
       let pratipadika;
       if (pratyaya) {
@@ -1328,7 +1394,7 @@ export default {
             Sanscript.t(krdanta_result[i].result, "devanagari", "slp1"),
             gender,
             vacana,
-            vibhakti
+            vibhakti,
           );
           console.log("this is the further subanta result", subanta_result);
           krdanta_result[i] = {
@@ -1348,7 +1414,7 @@ export default {
       lakara,
       pada,
       vacana,
-      purusha
+      purusha,
     ) {
       const tinanta_result = vidyut
         .deriveTinantas({
@@ -1415,7 +1481,7 @@ export default {
         linga,
         vacana,
         purusha,
-        vibhakti
+        vibhakti,
       );
 
       if (mw) {
@@ -1434,7 +1500,7 @@ export default {
             linga,
             vacana,
             purusha,
-            vibhakti
+            vibhakti,
           );
           break;
         case "krt":
@@ -1444,7 +1510,7 @@ export default {
             pratyaya,
             linga,
             vacana,
-            vibhakti
+            vibhakti,
           );
           break;
         case "tin":
@@ -1455,7 +1521,7 @@ export default {
             lakara,
             pada,
             vacana,
-            purusha
+            purusha,
           );
           break;
       }
@@ -1539,6 +1605,16 @@ export default {
 }
 .v-toolbar-title__placeholder {
   overflow: visible !important;
+}
+
+.v-data-table table {
+  /* table-layout: fixed; */
+  width: 100%;
+}
+
+.v-data-table table tr th,
+.v-data-table table tr td {
+  padding: 0 8px !important;
 }
 
 .hover-image {
