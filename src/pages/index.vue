@@ -291,6 +291,15 @@
                 <div class="mobile-card-header">
                   <!-- Left: seal image carousel -->
                   <div class="mobile-card-left">
+                    <div class="mobile-card-id-row">
+                      <div v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" class="carousel-nav-btn" @click.stop="carouselNav(item.cisi, -1)">
+                        <v-icon color="white" size="14">mdi-chevron-left</v-icon>
+                      </div>
+                      <span class="mobile-card-id">{{ item.id }}</span>
+                      <div v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" class="carousel-nav-btn" @click.stop="carouselNav(item.cisi, 1)">
+                        <v-icon color="white" size="14">mdi-chevron-right</v-icon>
+                      </div>
+                    </div>
                     <div
                       v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1"
                       class="carousel-wrapper"
