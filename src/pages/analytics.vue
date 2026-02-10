@@ -206,7 +206,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useTheme } from 'vuetify'
 import { csv2json } from 'json-2-csv'
-import lemmasCsv from '../../ivc-lemma-per-inscription.csv?raw'
+import lemmasCsv from '../../glossing.csv?raw'
 import mwJson from '../assets/data/mw.json'
 import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
 import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'

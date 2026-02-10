@@ -21,7 +21,7 @@ export default defineConfig({
     {
       name: 'lemma-editor',
       configureServer(server) {
-        const csvPath = pathResolve(__dirname, 'ivc-lemma-per-inscription.csv')
+        const csvPath = pathResolve(__dirname, 'glossing.csv')
 
         server.middlewares.use('/api/update-lemma', (req, res) => {
           if (req.method !== 'POST') {
@@ -137,7 +137,7 @@ export default defineConfig({
   server: {
     port: 3000,
     watch: {
-      ignored: ['**/ivc-lemma-per-inscription.csv'],
+      ignored: ['**/glossing.csv'],
     },
   },
   assetsInclude: ['**/*.tsv', '**/*.wasm']

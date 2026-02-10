@@ -164,10 +164,11 @@
                         <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
                         <v-tooltip v-if="lemma.analysis" location="top">
                           <template v-slot:activator="{ props }">
-                            <span v-bind="props" class="verify-icon">&#x2713;</span>
+                            <v-icon v-bind="props" class="verify-icon" size="12">mdi-information-outline</v-icon>
                           </template>
                           {{ getLemmaReference(lemma) }}
                         </v-tooltip>
+                        <span v-if="hasVidyutBadge(lemma.analysis)" class="vidyut-badge">vidyut &#x2713;</span>
                       </span>
                       <span class="interlinear-analysis-row">
                         <span
@@ -247,16 +248,26 @@
           </div>
 
           <!-- Cards -->
-          <v-expansion-panels variant="accordion" multiple>
-            <v-expansion-panel
+          <div class="mobile-cards">
+            <div
               v-for="item in mobilePageItems"
               :key="item.id"
+              class="mobile-card"
               :class="item.complete === 'Y' ? '' : 'text-red'"
             >
-              <v-expansion-panel-title class="mobile-panel-title">
+              <div class="mobile-panel-title">
                 <div class="mobile-card-header">
                   <!-- Left: seal image carousel -->
                   <div class="mobile-card-left">
+                    <div class="mobile-card-id-row">
+                      <div class="carousel-nav-btn" v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" @click.stop="carouselNav(item.cisi, -1)">
+                        <v-icon size="14" color="white">mdi-chevron-left</v-icon>
+                      </div>
+                      <span class="mobile-card-id">{{ item.id }}</span>
+                      <div class="carousel-nav-btn" v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1" @click.stop="carouselNav(item.cisi, 1)">
+                        <v-icon size="14" color="white">mdi-chevron-right</v-icon>
+                      </div>
+                    </div>
                     <div
                       v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 1"
                       class="carousel-wrapper"
@@ -268,6 +279,7 @@
                         hide-delimiters
                         :show-arrows="false"
                         :touch="false"
+                        @click.stop="openZoom(sealImages[item.cisi][carouselIndex[item.cisi] || 0], item)"
                       >
                         <v-carousel-item
                           v-for="(img, index) in sealImages[item.cisi]"
@@ -282,18 +294,14 @@
                           />
                         </v-carousel-item>
                       </v-carousel>
-                      <div class="carousel-click-left" @click.stop="carouselNav(item.cisi, -1)" />
-                      <div class="carousel-click-right" @click.stop="carouselNav(item.cisi, 1)" />
                       <div class="mobile-carousel-counter">
                         {{ (carouselIndex[item.cisi] || 0) + 1 }}/{{ sealImages[item.cisi].length }}
-                      </div>
-                      <div class="mobile-zoom-icon" @click.stop="openZoom(sealImages[item.cisi][carouselIndex[item.cisi] || 0], item)">
-                        <v-icon size="14" color="white">mdi-magnify-plus-outline</v-icon>
                       </div>
                     </div>
                     <div
                       v-else-if="sealImages[item.cisi] && sealImages[item.cisi].length === 1"
                       class="carousel-wrapper"
+                      @click.stop="openZoom(sealImages[item.cisi][0], item)"
                     >
                       <v-img
                         :src="`/seal_images/${sealImages[item.cisi][0]}`"
@@ -301,9 +309,6 @@
                         class="mobile-seal-image"
                         :class="getSealClasses(item)"
                       />
-                      <div class="mobile-zoom-icon" @click.stop="openZoom(sealImages[item.cisi][0], item)">
-                        <v-icon size="14" color="white">mdi-magnify-plus-outline</v-icon>
-                      </div>
                     </div>
                     <div v-else class="mobile-no-image">
                       <v-icon color="grey" size="32">mdi-image-off</v-icon>
@@ -329,76 +334,81 @@
                       {{ item.translation }}
                     </div>
                   </div>
+                  <!-- Expand toggle -->
+                  <div class="mobile-expand-btn" @click="toggleCard(item.id)">
+                    <v-icon size="20">{{ expandedCards.has(item.id) ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                  </div>
                 </div>
-              </v-expansion-panel-title>
+              </div>
 
-              <v-expansion-panel-text>
+              <div v-if="expandedCards.has(item.id)" class="mobile-expanded-outer" @click="activeTooltip = null">
                 <div class="mobile-expanded-wrapper">
-                  <div class="mobile-detail-row">
-                    <span class="mobile-label">Seal ID:</span> {{ item.id }}
-                    <span class="mobile-label ml-4">CISI:</span> {{ item.cisi }}
-                    <span class="mobile-label ml-4">Site:</span> {{ item.site }}
-                  </div>
-                  <div class="mobile-detail-row sanskrit">
-                    <span class="mobile-label">L{{ item.textlength }}:</span> {{ item.description }}
-                  </div>
-                  <div v-if="item.translation" class="mobile-detail-row">
-                    <span class="mobile-label">Translation:</span> {{ item.translation }}
-                  </div>
-                  <div v-if="item.notes" class="mobile-detail-row">
-                    <span class="mobile-label">Notes:</span> {{ item.notes }}
-                  </div>
-                  <!-- Interlinear Gloss -->
-                  <div
-                    v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
-                    class="mobile-interlinear"
-                  >
-                    <div class="interlinear-container">
-                      <div
-                        v-for="(lemma, idx) in lemmasMap[item.lemmaRef || item.id]"
-                        :key="idx"
-                        class="interlinear-word"
-                      >
-                        <span class="interlinear-form-row">
-                          <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
-                          <v-tooltip
-                            v-if="lemma.analysis"
-                            location="top"
-                            :model-value="activeTooltip === (item.id + '-' + idx)"
-                            :open-on-click="false"
-                            :open-on-hover="false"
-                          >
-                            <template v-slot:activator="{ props }">
-                              <span v-bind="props" class="verify-icon" @click.stop="toggleTooltip(item.id + '-' + idx)">&#x2713;</span>
-                            </template>
-                            {{ getLemmaReference(lemma) }}
-                          </v-tooltip>
-                        </span>
-                        <span class="interlinear-analysis-row">
-                          <span
-                            class="interlinear-analysis"
-                            :contenteditable="isDev && !item.lemmaRef"
-                            @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'analysis', $event.target.textContent)"
-                            @keydown.enter.prevent="$event.target.blur()"
-                          >{{ lemma.analysis }}</span>
-                          <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
-                        </span>
-                        <span class="interlinear-meaning-row">
-                          <span
-                            class="interlinear-meaning"
-                            :contenteditable="isDev && !item.lemmaRef"
-                            @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'translation_lexeme', $event.target.textContent)"
-                            @keydown.enter.prevent="$event.target.blur()"
-                          >{{ lemma.translation_lexeme }}</span>
-                          <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
-                        </span>
-                      </div>
+                <div class="mobile-detail-row">
+                  <span class="mobile-label">Seal ID:</span> {{ item.id }}
+                  <span class="mobile-label ml-4">CISI:</span> {{ item.cisi }}
+                  <span class="mobile-label ml-4">Site:</span> {{ item.site }}
+                </div>
+                <div class="mobile-detail-row sanskrit">
+                  <span class="mobile-label">L{{ item.textlength }}:</span> {{ item.description }}
+                </div>
+                <div v-if="item.translation" class="mobile-detail-row">
+                  <span class="mobile-label">Translation:</span> {{ item.translation }}
+                </div>
+                <div v-if="item.notes" class="mobile-detail-row">
+                  <span class="mobile-label">Notes:</span> {{ item.notes }}
+                </div>
+                <!-- Interlinear Gloss -->
+                <div
+                  v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
+                  class="mobile-interlinear"
+                >
+                  <div class="interlinear-container">
+                    <div
+                      v-for="(lemma, idx) in lemmasMap[item.lemmaRef || item.id]"
+                      :key="idx"
+                      class="interlinear-word"
+                    >
+                      <span class="interlinear-form-row">
+                        <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
+                        <v-tooltip
+                          v-if="lemma.analysis"
+                          location="top"
+                          :model-value="activeTooltip === (item.id + '-' + idx)"
+                          :open-on-click="false"
+                          :open-on-hover="false"
+                        >
+                          <template v-slot:activator="{ props }">
+                            <v-icon v-bind="props" class="verify-icon" size="12" @click.stop="toggleTooltip(item.id + '-' + idx)">mdi-information-outline</v-icon>
+                          </template>
+                          {{ getLemmaReference(lemma) }}
+                        </v-tooltip>
+                        <span v-if="hasVidyutBadge(lemma.analysis)" class="vidyut-badge">vidyut &#x2713;</span>
+                      </span>
+                      <span class="interlinear-analysis-row">
+                        <span
+                          class="interlinear-analysis"
+                          :contenteditable="isDev && !item.lemmaRef"
+                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'analysis', $event.target.textContent)"
+                          @keydown.enter.prevent="$event.target.blur()"
+                        >{{ lemma.analysis }}</span>
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                      </span>
+                      <span class="interlinear-meaning-row">
+                        <span
+                          class="interlinear-meaning"
+                          :contenteditable="isDev && !item.lemmaRef"
+                          @blur="isDev && !item.lemmaRef && saveLemmaField(item.id, idx, 'translation_lexeme', $event.target.textContent)"
+                          @keydown.enter.prevent="$event.target.blur()"
+                        >{{ lemma.translation_lexeme }}</span>
+                        <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
+                      </span>
                     </div>
                   </div>
                 </div>
-              </v-expansion-panel-text>
-            </v-expansion-panel>
-          </v-expansion-panels>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <!-- Mobile pagination -->
           <div class="d-flex justify-center mt-4 mb-4">
@@ -566,7 +576,7 @@ import HeaderLinks from "../components/HeaderLinks.vue";
 import incx from "../assets/data/inscriptions.csv?raw";
 import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
-import lemmasCsv from "../../ivc-lemma-per-inscription.csv?raw";
+import lemmasCsv from "../../glossing.csv?raw";
 import mwMap from "../assets/data/mw.json";
 import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
@@ -936,6 +946,7 @@ export default {
         { title: 'CISI', key: 'cisi' },
         { title: 'Sanskrit', key: 'sanskrit' },
       ],
+      expandedCards: new Set(),
     };
   },
   computed: {
@@ -1011,12 +1022,21 @@ export default {
     toggleTooltip (key) {
       this.activeTooltip = this.activeTooltip === key ? null : key
     },
+    toggleCard (id) {
+      if (this.expandedCards.has(id)) {
+        this.expandedCards.delete(id)
+      } else {
+        this.expandedCards.add(id)
+      }
+      this.expandedCards = new Set(this.expandedCards)
+    },
     toggleMobileSort (key) {
       if (this.sortBy.length && this.sortBy[0].key === key) {
         this.sortBy = [{ key, order: this.sortBy[0].order === 'asc' ? 'desc' : 'asc' }]
       } else {
         this.sortBy = [{ key, order: 'desc' }]
       }
+      this.pageNum = 1
     },
     cleanMwEntry (text) {
       return text
@@ -1082,8 +1102,10 @@ export default {
         const parts = lemma.analysis.split('.')
         const mwKey = parts[1]
         const mwId = parts[2] ? parts[2].split(' ')[0] : null
-        const ref = this.findMwLineById(mwKey, mwId) ||
-          this.findMwLineByText(mwKey, target)
+        // If key has prefix (e.g. A-dA), look up the root (dA) in MW
+        const lookupKey = mwKey.includes('-') ? mwKey.split('-').pop() : mwKey
+        const ref = this.findMwLineById(lookupKey, mwId) ||
+          this.findMwLineByText(lookupKey, target)
         return ref ? this.withDevanagari(mwKey, ref) : '--'
       }
       if (lemma.analysis.startsWith('DHATU.')) {
@@ -1102,6 +1124,10 @@ export default {
         return result ? '\u221A' + this.toDevanagari(dhatuClean) + ' ' + result : '--'
       }
       return '--'
+    },
+    hasVidyutBadge (analysis) {
+      if (!analysis) return false
+      return analysis.includes('DHATU.') || /\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/.test(analysis)
     },
     saveLemmaField (id, idx, field, value) {
       // eslint-disable-next-line no-misleading-character-class
@@ -1153,6 +1179,7 @@ export default {
     sortChange(newSort) {
       localStorage.setItem("sort", JSON.stringify(newSort));
       this.sortBy = newSort;
+      this.pageNum = 1;
     },
     persistCanonical(value) {
       localStorage.setItem("canonical", value);
@@ -1673,10 +1700,21 @@ export default {
 }
 
 .verify-icon {
-  font-size: 9pt;
   color: #4caf50;
   cursor: pointer;
   margin-left: 3px;
+}
+
+.vidyut-badge {
+  font-size: 7pt;
+  color: #8a6dbf;
+  border: 1px solid #8a6dbf;
+  border-radius: 4px;
+  padding: 0 3px;
+  margin-left: 3px;
+  white-space: nowrap;
+  line-height: 1.4;
+  vertical-align: middle;
 }
 
 .interlinear-analysis {
@@ -1738,22 +1776,32 @@ export default {
   width: 100%;
 }
 
-.carousel-click-left,
-.carousel-click-right {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50%;
-  z-index: 2;
+.mobile-card-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.mobile-card-id {
+  font-size: 10px;
+  opacity: 0.7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.carousel-nav-btn {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-}
-
-.carousel-click-left {
-  left: 0;
-}
-
-.carousel-click-right {
-  right: 0;
 }
 
 .mobile-carousel-counter {
@@ -1769,20 +1817,6 @@ export default {
   z-index: 3;
 }
 
-.mobile-zoom-icon {
-  position: absolute;
-  bottom: 2px;
-  right: 4px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 3;
-}
 
 .zoom-dialog-card {
   background: transparent;
@@ -1819,9 +1853,25 @@ export default {
   text-align: center;
 }
 
+.mobile-cards {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobile-card {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
 .mobile-panel-title {
   padding: 12px;
-  min-height: unset;
+}
+
+.mobile-expand-btn {
+  flex: 0 0 auto;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0.6;
+  align-self: flex-start;
 }
 
 .mobile-detail-row {
@@ -1837,13 +1887,14 @@ export default {
   text-transform: uppercase;
 }
 
-.mobile-expanded-wrapper {
-  text-align: left;
-}
-
-.mobile-view .v-expansion-panel-text__wrapper {
+.mobile-expanded-outer {
   display: flex;
   justify-content: center;
+}
+
+.mobile-expanded-wrapper {
+  text-align: left;
+  padding: 0 12px 12px;
 }
 
 .mobile-interlinear {
@@ -1856,11 +1907,11 @@ export default {
   gap: 16px 10px;
 }
 
-.v-theme--dark .mobile-view .v-expansion-panel-title {
+.v-theme--dark .mobile-card {
   background-color: rgba(255, 255, 255, 0.03);
 }
 
-.v-theme--light .mobile-view .v-expansion-panel-title {
+.v-theme--light .mobile-card {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
