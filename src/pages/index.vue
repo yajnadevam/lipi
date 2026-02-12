@@ -1227,11 +1227,14 @@ export default {
       for (const [id, lemmas] of Object.entries(this.lemmasMap)) {
         for (let idx = 0; idx < lemmas.length; idx++) {
           const lemma = lemmas[idx]
-          if (!lemma.analysis || !derivablePattern.test(lemma.analysis)) continue
+          if (!lemma.analysis) continue
+          const isDerivable = derivablePattern.test(lemma.analysis)
+          const isStemProbe = !isDerivable && lemma.type === 'stem' && /\bMW\.|\bPRON\./.test(lemma.analysis)
+          if (!isDerivable && !isStemProbe) continue
           const key = id + '-' + idx
           let dr = null
           try {
-            dr = derive(vidyut, lemma.analysis, lemma.form, { dhatuIndex: dhatuIdx, wordsMap, itemId: id })
+            dr = derive(vidyut, lemma.analysis, lemma.form, { dhatuIndex: dhatuIdx, wordsMap, itemId: id, type: lemma.type })
           } catch (e) {
             console.warn(`vidyut derivation failed for ${id}/${lemma.form}:`, e.message || e)
           }
@@ -1241,7 +1244,7 @@ export default {
               result: Sanscript.t(dr.text, 'slp1', 'devanagari'),
               success: dr.match,
             }
-          } else {
+          } else if (!isStemProbe) {
             results[key] = { steps: [], result: '(unable to derive)', success: false }
           }
         }

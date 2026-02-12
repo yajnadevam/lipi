@@ -109,6 +109,41 @@ export function lookupDhatu (index, key) {
   return index.get(key) || null
 }
 
+// Valid BaseKrt pratyaya values (from vidyut WASM enum)
+const VALID_KRT = new Set([
+  'a', 'aN', 'ac', 'aR', 'aDyE', 'aDyEn', 'atfn', 'aTuc', 'ani', 'anIyar', 'ap', 'ase', 'asen',
+  'Aluc', 'Aru', 'ika', 'ikavaka', 'iY', 'itra', 'in_', 'ini', 'izRuc', 'u', 'ukaY', 'Uka',
+  'ka', 'kaY', 'kaDyE', 'kaDyEn', 'kamul', 'kasun', 'kap', 'kase', 'kasen', 'kAnac', 'ki', 'kin',
+  'kurac', 'kelimar', 'kta', 'ktavatu', 'ktic', 'ktin', 'ktri', 'ktvA', 'knu', 'kmarac', 'kyap',
+  'kru', 'krukan', 'klukan', 'kvanip', 'kvarap', 'kvasu', 'ksnu', 'kvin', 'kvip',
+  'Kac', 'KaS', 'Kal', 'KizRuc', 'KukaY', 'Kyun', 'Ga', 'GaY', 'GinuR', 'Gurac', 'Nvanip',
+  'cAnaS', 'Yyuw', 'wa', 'wak', 'qa', 'qara', 'qu', 'Ra', 'Ramul', 'Rini', 'Ryat', 'Ryuw',
+  'Rvi', 'Rvuc', 'Rvul', 'taveN', 'taven', 'tavE', 'tavya', 'tavyat', 'tumun', 'tfc', 'tfn',
+  'tosun', 'Takan', 'naN', 'najiN', 'nan', 'ni', 'manin', 'ya', 'yat', 'yuc', 'ra', 'ru',
+  'lyu', 'lyuw', 'vanip', 'varac', 'vic', 'viw', 'vuY', 'vun', 'zAkan', 'zwran', 'zvun',
+  'Sa', 'Satf', 'SaDyE', 'SaDyEn', 'SAnac', 'SAnan', 'se', 'sen',
+])
+
+// Valid Taddhita pratyaya values (from vidyut WASM enum)
+const VALID_TAD = new Set([
+  'a', 'akac', 'ac', 'aWac', 'aR', 'aY', 'at', 'atasuc', 'anic', 'ap', 'asic', 'astAti',
+  'Akinic', 'Arak', 'iY', 'itac', 'inac', 'ini', 'imanic', 'ila', 'ilac', 'izWan',
+  'Ikak', 'Ikan', 'Iyasun', 'eRya', 'Erak', 'ka', 'kak', 'kawac', 'kan', 'kap', 'kalpap',
+  'kftvasuc', 'kuwArac', 'kuRap', 'Ka', 'KaY', 'Ga', 'Gac', 'Gan', 'Gas', 'caRap', 'caraw',
+  'cuYcup', 'cPaY', 'cvi', 'Ca', 'CaR', 'Cas', 'jAtIyar', 'jAhac', 'Ya', 'YiWa', 'Yya',
+  'YyaN', 'Yyaw', 'wac', 'waq', 'wiWan', 'wIwac', 'weRyaR', 'wyaR', 'wyu', 'wyul', 'wlaY',
+  'Wak', 'Wac', 'WaY', 'Wan', 'Wap', 'qaw', 'qati', 'qatarac', 'qatamac', 'qupac', 'qmatup',
+  'qyaR', 'qvalac', 'qvun', 'Qak', 'QakaY', 'Qa', 'QaY', 'Qinuk', 'Qrak', 'Ra', 'Rini',
+  'Rya', 'tamap', 'tayap', 'tarap', 'tal', 'tasi', 'tasil', 'ti', 'tikan', 'tIya', 'tyak',
+  'tyakan', 'tyap', 'tyu', 'tyul', 'tral', 'trA', 'tva', 'Tamu', 'Tyan', 'TAl', 'daGnac',
+  'dA', 'dAnIm', 'deSya', 'deSIyar', 'dvayasac', 'DA', 'na', 'naY', 'nAwac', 'Pak', 'PaY',
+  'PiY', 'bahuc', 'biqac', 'birIsac', 'Baktal', 'Brawac', 'ma', 'matup', 'map', 'mayaw',
+  'mAtrac', 'pASap', 'piwac', 'ya', 'yak', 'yaY', 'yat', 'yan', 'yus', 'ra', 'rUpap', 'rhil',
+  'rUpya', 'lac', 'vati', 'vatup', 'vaya', 'valac', 'vini', 'viDal', 'vuk', 'vuY', 'vun',
+  'vyat', 'vyan', 'Sa', 'SaNkawac', 'SAlac', 'Sas', 'za', 'zkan', 'zwarac', 'zWac', 'zWan',
+  'zWal', 'zPak', 'zyaN', 'zyaY', 'sa', 'sna', 'sAti', 'suc', 'snaY', 'ha',
+])
+
 // --- Internal helpers ---
 
 /** Try to find matching aupadeshika forms, with IT marker stripping fallback */
@@ -191,6 +226,9 @@ function deriveKrdantaStems (vidyut, dhatu, pratyaya, upasargas) {
 }
 
 function deriveTaddhitaChain (vidyut, baseStem, tadSuffixes, baseSteps, linga, vacana, vibhakti, slp1Form) {
+  // Validate all taddhita suffixes before any WASM calls
+  if (tadSuffixes.some(s => !VALID_TAD.has(s))) return null
+
   let currentStem = baseStem
   let allSteps = [...baseSteps]
 
@@ -360,23 +398,33 @@ function deriveStriSubanta (vidyut, slp1Form, dhatu, pratyaya, linga, vacana, vi
  * @returns {{ steps: Array, text: string, match: boolean } | null}
  */
 export function derive (vidyut, analysis, slp1Form, options = {}) {
-  const { dhatuIndex, wordsMap, itemId } = options
+  const { dhatuIndex, wordsMap, itemId, type } = options
+
+  // Normalize: strip hyphens from form (upasarga display convention)
+  slp1Form = slp1Form.replace(/-/g, '')
 
   // Handle NEG: strip it, derive base, prepend a-/an-
   const hasNeg = /\bNEG\b/.test(analysis)
   if (hasNeg) {
     const cleanAnalysis = analysis.replace(/\s*\bNEG\b/, '')
-    const baseResult = deriveCore(vidyut, cleanAnalysis, slp1Form, dhatuIndex, wordsMap, itemId)
+    // Strip the negation prefix from slp1Form so the base derivation gets the un-negated form
+    let baseForm = slp1Form
+    if (slp1Form.startsWith('an') && /^[aAiIuUfFxXeEoO]/.test(slp1Form.slice(2))) {
+      baseForm = slp1Form.slice(2)
+    } else if (slp1Form.startsWith('a') && !/^[aAiIuUfFxXeEoO]/.test(slp1Form.slice(1))) {
+      baseForm = slp1Form.slice(1)
+    }
+    const baseResult = deriveCore(vidyut, cleanAnalysis, baseForm, dhatuIndex, wordsMap, itemId, type)
     if (!baseResult) return null
     const isVowel = /^[aAiIuUfFxXeEoO]/.test(baseResult.text)
     const negated = (isVowel ? 'an' : 'a') + baseResult.text
     return makeResult(baseResult.steps, negated, slp1Form)
   }
 
-  return deriveCore(vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId)
+  return deriveCore(vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, type)
 }
 
-function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId) {
+function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, type) {
   try {
     const parts = analysis.split(' ')
 
@@ -435,6 +483,7 @@ function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId) {
         const krtParts = krtPart.split('.')
         let pratyaya = krtParts[krtParts.length - 1]
         if (pratyaya === 'lyap') pratyaya = 'ktvA'
+        if (!VALID_KRT.has(pratyaya)) return null
         const sanadi = krtParts.length > 2 ? krtParts.slice(1, -1) : []
 
         const aupadeshikaForms = resolveAupadeshika(dhatuIndex, root)
@@ -534,6 +583,24 @@ function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId) {
         // Standard basic pratipadika
         const dhatu = { aupadeshika, gana: null, antargana: null, sanadi: [], prefixes: [] }
         return deriveSubanta(vidyut, slp1Form, dhatu, null, [], [], linga, vacana, vibhakti)
+      }
+
+      // MW/PRON stem validation: only for 'stem' type, consonant-ending stems
+      if (type !== 'stem' || /[aAiIuUfFxXeEoO]$/.test(aupadeshika)) return null
+      for (const probeLinga of ['Pum', 'Napumsaka', 'Stri']) {
+        try {
+          const results = vidyut.deriveSubantas({
+            pratipadika: { basic: aupadeshika },
+            linga: probeLinga,
+            vacana: 'Eka',
+            vibhakti: 'Prathama',
+          })
+          if (results && results.length > 0) {
+            // Stem probe: success means vidyut recognizes this pratipadika.
+            // Don't compare inflected form to stem — just mark as match.
+            return { steps: results[0].history, text: slp1Form, match: true }
+          }
+        } catch (_) { /* try next gender */ }
       }
     }
 
