@@ -10250,5 +10250,31 @@
   ],
   "calatva": [
     "cala—tva ¦ <lex>n.</lex> <ab>id.</ab>, <ls>Hariv. 2893</ls>; <ls>Megh. 94.</ls><info lex=\"n\"/><L>[ID=72613]</L>"
+  ],
+  "aSin": [
+    "aSin ¦ <lex>mfn.</lex> reaching far, lasting long, <ls>Nir.</ls><info lex=\"m:f:n\"/><info hui=\"a\"/><L>[ID=19415]</L>",
+    "aSin ¦ See √ <hom>1.</hom> aS.<info hui=\"b\"/><L>[ID=19548]</L>"
+  ],
+  "mahi": [
+    "<hom>1.</hom> ma/hi ¦ <lex>mfn.</lex> (only <ab>nom.</ab> <ab>acc.</ab> <ab>sg.</ab> <lex type=\"hwinfo\">n.</lex>) = maha/t, great, <ls>RV.</ls>; <ls>AV.</ls>; <ls>VS.</ls><info lex=\"m:f:n\"/><L>[ID=161394]</L>",
+    "ma/hi ¦ <lex>ind.</lex> greatly, very, exceedingly, much, <ls>ib.</ls>; <ls>ŚāṅkhŚr.</ls><info lex=\"ind\"/><L>[ID=161395]</L>",
+    "ma/hi ¦ <lex>m.</lex> <lex type=\"hw\">n.</lex> greatness, <ls>BhP.</ls><info lex=\"m:n\"/><L>[ID=161396]</L>",
+    "ma/hi ¦ <lex>m.</lex> = mahat, intellect, <ls>ib.</ls><info lex=\"m\"/><L>[ID=161397]</L>",
+    "ma/hi ¦ <lex>f.</lex> = <hom>1.</hom> mahI/, the earth, <ls>L.</ls> (in <ab>comp.</ab> not always separable from <hom>1.</hom> mahi/n, <ab>q.v.</ab>)<info lex=\"f\"/><L>[ID=161398]</L>",
+    "<hom>2.</hom> mahi ¦ in <ab>comp.</ab> for mahI.<L>[ID=161416]</L>",
+    "<hom>3.</hom> mahi ¦ in <ab>comp.</ab> for <hom>2.</hom> mahin.<L>[ID=161420]</L>",
+    "mahi ¦ mahi-keru &c. See <pcol>p. 802, col. 3</pcol>.<info hui=\"a\"/><L>[ID=161642]</L>"
+  ],
+  "daSaraTa": [
+    "da/Sa—raTa ¦ (da/S°), <lex>mfn.</lex> having 10 chariots, <ls>RV. i, 126, 4</ls><info lex=\"m:f:n\"/><L>[ID=90931]</L>",
+    "da/Sa—raTa ¦ <lex>m.</lex> <ab>N.</ab> of <s1>Rāma</s1>'s father (descendant of <s1>Ikṣvāku</s1>, sovereign of <s1>Ayodhyā</s1>), <ls>R. i</ls>; <ls n=\"R.\">ii, 63 f.</ls> (death of <s1 n=\"Durgā\">D°</s1>), <ls>Jātakam. 461</ls>; <ls>Hariv. 821 f.</ls>; <ls>Ragh. viii, 29</ls> (-pUrva-raTa), <ls>BhP. ix, 10, 1</ls>; <ls>VP. iv, 4, 40</ls> and <ls n=\"VP. iv,\">18, 3</ls><info lex=\"m\"/><L>[ID=90931.05]</L>",
+    "¦ <ab>N.</ab> of an ancestor of <s1>Rāma</s1>'s father, <ls n=\"VP. iv,\">4, 38</ls><info lex=\"inh\"/><L>[ID=90931.10]</L>",
+    "¦ of a son of <s1>Nava-ratha</s1>, <ls n=\"VP. iv,\">12, 16</ls>; <ls>BhP. ix, 24, 4</ls>; <ls>Hariv. 1993</ls><info lex=\"inh\"/><L>[ID=90931.15]</L>",
+    "¦ of <s1>Roma-</s1> or <s1>Loma-pāda</s1>, <ls n=\"Hariv.\">1696</ls>; <ls>VP. iv, 18, 3</ls><info lex=\"inh\"/><L>[ID=90931.20]</L>",
+    "¦ of a son of <s1>Su-yaśas</s1>, <ls n=\"VP. iv,\">24, 8</ls> (dAS° <ab>v.l.</ab>) and <ls>Inscr.</ls> (in <lang>Prākṛt</lang> <i>dasalatha</i>)<info lex=\"inh\"/><L>[ID=90931.25]</L>",
+    "da/Sa—raTa ¦ <lex>n.</lex> the body, <ls>Npr.</ls><info lex=\"n\"/><L>[ID=90931.30]</L>"
+  ],
+  "ada": [
+    "ada or adaka, ¦ <lex>mfn.</lex> chiefly <ab>ifc.</ab>, eating.<info lex=\"m:f:n\"/><L>[ID=3582]</L>"
   ]
 }

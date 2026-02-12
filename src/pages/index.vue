@@ -164,13 +164,8 @@
                         <span class="interlinear-form sanskrit">{{
                           toDevanagari(lemma.form)
                         }}</span>
-                        <v-tooltip v-if="lemma.analysis" location="top">
-                          <template v-slot:activator="{ props }">
-                            <v-icon v-bind="props" class="verify-icon" size="12">mdi-information-outline</v-icon>
-                          </template>
-                          {{ getLemmaReference(lemma) }}
-                        </v-tooltip>
-                        <span v-if="hasVidyutBadge(lemma.analysis)" class="vidyut-badge">vidyut &#x2713;</span>
+                        <v-icon v-if="lemma.analysis" class="verify-icon" size="12" @click="toggleReference(item.id + '-' + idx)">mdi-information-outline</v-icon>
+                        <span v-if="vidyutResults[(item.lemmaRef || item.id) + '-' + idx]" :class="['vidyut-badge', 'vidyut-badge-clickable', vidyutResults[(item.lemmaRef || item.id) + '-' + idx].success ? 'vidyut-badge-success' : 'vidyut-badge-fail']" @click="toggleVidyutBadge(lemma, item.id, (item.lemmaRef || item.id), idx)">vidyut {{ vidyutResults[(item.lemmaRef || item.id) + '-' + idx].success ? '✓' : '✗' }}</span>
                       </span>
                       <span class="interlinear-analysis-row">
                         <span
@@ -214,6 +209,18 @@
                           >&#x270E;</span
                         >
                       </span>
+                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">{{ getLemmaReference(lemma) }}</div>
+                      <div v-if="vidyutExpansions[item.id + '-' + idx]" class="vidyut-derivation">
+                        <template v-for="(step, si) in vidyutExpansions[item.id + '-' + idx].steps" :key="si">
+                          <div class="vidyut-step">
+                            → {{ step.result.filter(r => r.text != '').map(r => toDevanagari(r.text.replaceAll('\\', '').replaceAll('^', ''))).join(' + ') }}
+                            <a class="vidyut-rule-link" :href="'https://ashtadhyayi.com/sutraani/' + step.rule.code" target="_blank">[{{ step.rule.code }}]</a>
+                          </div>
+                        </template>
+                        <div class="vidyut-step vidyut-result">
+                          → {{ vidyutExpansions[item.id + '-' + idx].result }}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </td>
@@ -416,19 +423,8 @@
                     >
                       <span class="interlinear-form-row">
                         <span class="interlinear-form sanskrit">{{ toDevanagari(lemma.form) }}</span>
-                        <v-tooltip
-                          v-if="lemma.analysis"
-                          location="top"
-                          :model-value="activeTooltip === (item.id + '-' + idx)"
-                          :open-on-click="false"
-                          :open-on-hover="false"
-                        >
-                          <template v-slot:activator="{ props }">
-                            <v-icon v-bind="props" class="verify-icon" size="12" @click.stop="toggleTooltip(item.id + '-' + idx)">mdi-information-outline</v-icon>
-                          </template>
-                          {{ getLemmaReference(lemma) }}
-                        </v-tooltip>
-                        <span v-if="hasVidyutBadge(lemma.analysis)" class="vidyut-badge">vidyut &#x2713;</span>
+                        <v-icon v-if="lemma.analysis" class="verify-icon" size="12" @click.stop="toggleReference(item.id + '-' + idx)">mdi-information-outline</v-icon>
+                        <span v-if="vidyutResults[(item.lemmaRef || item.id) + '-' + idx]" :class="['vidyut-badge', 'vidyut-badge-clickable', vidyutResults[(item.lemmaRef || item.id) + '-' + idx].success ? 'vidyut-badge-success' : 'vidyut-badge-fail']" @click.stop="toggleVidyutBadge(lemma, item.id, (item.lemmaRef || item.id), idx)">vidyut {{ vidyutResults[(item.lemmaRef || item.id) + '-' + idx].success ? '✓' : '✗' }}</span>
                       </span>
                       <span class="interlinear-analysis-row">
                         <span
@@ -448,6 +444,18 @@
                         >{{ lemma.translation_lexeme }}</span>
                         <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
                       </span>
+                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">{{ getLemmaReference(lemma) }}</div>
+                        <div v-if="vidyutExpansions[item.id + '-' + idx]" class="vidyut-derivation">
+                          <template v-for="(step, si) in vidyutExpansions[item.id + '-' + idx].steps" :key="si">
+                            <div class="vidyut-step">
+                              → {{ step.result.filter(r => r.text != '').map(r => toDevanagari(r.text.replaceAll('\\', '').replaceAll('^', ''))).join(' + ') }}
+                              <a class="vidyut-rule-link" :href="'https://ashtadhyayi.com/sutraani/' + step.rule.code" target="_blank">[{{ step.rule.code }}]</a>
+                            </div>
+                          </template>
+                          <div class="vidyut-step vidyut-result">
+                            → {{ vidyutExpansions[item.id + '-' + idx].result }}
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -630,12 +638,13 @@ import words from "../assets/data/words.csv?raw";
 
 import { filter } from "@/scripts/index/filter";
 import { renderSanskrit } from "@/scripts/index/explanation";
-
+import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
 
 // Will be initialized after mount
-let vidyut;
+let vidyut
+let dhatuIdx
 
 // Todo: This can be removed
 const wordsMap = {};
@@ -1000,6 +1009,9 @@ export default {
         { title: "Sanskrit", key: "sanskrit" },
       ],
       expandedCards: new Set(),
+      vidyutExpansions: {},
+      vidyutResults: {},
+      expandedRefs: {},
     };
   },
   computed: {
@@ -1198,10 +1210,56 @@ export default {
       }
       return "--";
     },
-    hasVidyutBadge (analysis) {
-      if (!analysis) return false
-      return analysis.includes('DHATU.') || /\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/.test(analysis)
+    toggleVidyutBadge (lemma, itemId, sourceId, idx) {
+      const key = itemId + '-' + idx
+      if (this.vidyutExpansions[key]) {
+        this.vidyutExpansions[key] = null
+      } else {
+        this.vidyutExpansions[key] = this.vidyutResults[sourceId + '-' + idx]
+      }
     },
+    toggleReference (key) {
+      this.expandedRefs[key] = !this.expandedRefs[key]
+    },
+    precomputeVidyutResults () {
+      const results = {}
+      const derivablePattern = /\bDHATU\.|\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/
+      for (const [id, lemmas] of Object.entries(this.lemmasMap)) {
+        for (let idx = 0; idx < lemmas.length; idx++) {
+          const lemma = lemmas[idx]
+          if (!lemma.analysis || !derivablePattern.test(lemma.analysis)) continue
+          const key = id + '-' + idx
+          let dr = null
+          try {
+            dr = derive(vidyut, lemma.analysis, lemma.form, { dhatuIndex: dhatuIdx, wordsMap, itemId: id })
+          } catch (e) {
+            console.warn(`vidyut derivation failed for ${id}/${lemma.form}:`, e.message || e)
+          }
+          if (dr) {
+            results[key] = {
+              steps: dr.steps,
+              result: Sanscript.t(dr.text, 'slp1', 'devanagari'),
+              success: dr.match,
+            }
+          } else {
+            results[key] = { steps: [], result: '(unable to derive)', success: false }
+          }
+        }
+      }
+      // Single reactive assignment instead of per-entry updates
+      this.vidyutResults = results
+      const failures = Object.entries(results)
+        .filter(([, r]) => !r.success)
+        .map(([key, r]) => {
+          const [id] = key.split('-')
+          const idx = parseInt(key.split('-').pop())
+          const lemma = this.lemmasMap[id]?.[idx]
+          return `${id} ${lemma?.form}: expected ${this.toDevanagari(lemma?.form)} got ${r.result} | ${lemma?.analysis}`
+        })
+      console.log(`vidyut: ${Object.keys(results).length} total, ${Object.keys(results).length - failures.length} pass, ${failures.length} fail`)
+      if (failures.length) console.table(failures)
+    },
+    // deriveFromAnalysis and _deriveCore removed — now in shared module @/scripts/vidyut-derive
     saveLemmaField (id, idx, field, value) {
       // eslint-disable-next-line no-misleading-character-class
       const cleaned = value
@@ -1278,6 +1336,7 @@ export default {
     updateSearch(value) {
       if (value !== "" && value !== null) {
         this.oldPageNum = this.oldPageNum || this.pageNum;
+        this.pageNum = 1
         localStorage.setItem("search", this.search);
       } else {
         this.clearSearch();
@@ -1315,13 +1374,19 @@ export default {
     getKartariAshtadhyayiLink(code, index, kartari, form) {
       return `https://ashtadhyayi.com/dhatu/${code}?tab=ting&scroll=dhatuform-${index}-ting-${kartari}-${form}&scrollcolor=cyan&scrolloffset=400`;
     },
-    createDhatu(aupadeshika, gana, sanadi = []) {
+    createDhatu(aupadeshika, gana, sanadi = [], prefixes = []) {
+      // Parse upasarga from aupadeshika if present (e.g., "A-hana~" → prefix "A", root "hana~")
+      if (aupadeshika && aupadeshika.includes('-')) {
+        const segments = aupadeshika.split('-')
+        prefixes = [...prefixes, ...segments.slice(0, -1)]
+        aupadeshika = segments[segments.length - 1]
+      }
       return {
         aupadeshika,
         gana,
         antargana: null,
         sanadi,
-        prefixes: [],
+        prefixes,
       };
     },
     deriveSubantas(
@@ -1335,17 +1400,17 @@ export default {
       vacana,
       purusha, // Todo: Is this required?
       vibhakti,
+      upasargas = [],
     ) {
       let pratipadika;
       if (pratyaya) {
         pratipadika = {
           krdanta: {
-            dhatu: this.createDhatu(aupadeshika, gana, sanadi),
+            dhatu: this.createDhatu(aupadeshika, gana, sanadi, upasargas),
             krt: pratyaya,
+            prefixes: upasargas,
           },
         };
-
-        console.log("this is pratipadika", pratipadika);
       } else {
         pratipadika = {
           basic: aupadeshika,
@@ -1353,19 +1418,32 @@ export default {
       }
 
       const subanta_result = vidyut
-        .deriveSubantas({
-          pratipadika,
-          linga,
-          vacana,
-          vibhakti,
-        })
+        .deriveSubantas({ pratipadika, linga, vacana, vibhakti })
         .map((result) => ({
           steps: result.history,
           result: Sanscript.t(result.text, "slp1", "devanagari"),
         }));
+      const match = subanta_result.filter((res) => res.result == devanagariResult)[0]
+      if (match) return match
 
-      console.log(subanta_result);
-      return subanta_result.filter((res) => res.result == devanagariResult)[0];
+      // Fallback: try basic pratipadika with derived krdanta stems
+      if (pratyaya) {
+        const dhatu = this.createDhatu(aupadeshika, gana, sanadi, upasargas)
+        const krdStems = vidyut.deriveKrdantas({ dhatu, krt: pratyaya, sanadi: [], upasarga: upasargas, lakara: null, prayoga: null })
+        for (const kr of krdStems) {
+          const basicResults = vidyut
+            .deriveSubantas({ pratipadika: { basic: kr.text }, linga, vacana, vibhakti })
+            .map((r) => ({
+              steps: kr.history.concat(r.history),
+              result: Sanscript.t(r.text, "slp1", "devanagari"),
+            }))
+          const basicMatch = basicResults.filter((res) => res.result == devanagariResult)[0]
+          if (basicMatch) return basicMatch
+        }
+      }
+
+      // No match — return first result for diagnostic display
+      return subanta_result[0]
     },
     deriveKrdantas(devanagariResult, code, pratyaya, gender, vacana, vibhakti) {
       const dhatu = {
@@ -1424,17 +1502,19 @@ export default {
       pada,
       vacana,
       purusha,
+      upasargas = [],
     ) {
+      const dhatu = this.createDhatu(aupadeshika, gana, [], upasargas)
       const tinanta_result = vidyut
         .deriveTinantas({
-          dhatu: this.createDhatu(aupadeshika, gana),
+          dhatu,
           lakara,
           vacana,
           purusha,
           prayoga: "Kartari", // Todo: Can this change?
           pada,
           sanadi: [],
-          upasarga: [],
+          upasarga: dhatu.prefixes,
         })
         .map((result) => ({
           steps: result.history,
@@ -1442,9 +1522,11 @@ export default {
           title: `${devanagariResult}`,
           result: Sanscript.t(result.text, "slp1", "devanagari"),
         }));
-      console.log("tinanta result", tinanta_result);
-      // return tinanta_result[0];
-      return tinanta_result.filter((res) => res.result == devanagariResult)[0];
+      const match = tinanta_result.filter((res) => res.result == devanagariResult)[0]
+      if (!match && tinanta_result.length > 0) {
+        console.log(`tinanta no match for ${devanagariResult}: got [${tinanta_result.map(r => r.result).join(', ')}]`)
+      }
+      return match || tinanta_result[0] || null;
     },
     getMwExplanation(slp1Word) {
       return {
@@ -1566,6 +1648,9 @@ export default {
         this.updateSearch(value);
       }, 750);
     };
+
+    // Reset to page 1 when a search is active (search + stale pageNum = empty table)
+    if (this.search) this.pageNum = 1
   },
   // eslint-disable-next-line vue/order-in-components
   async mounted() {
@@ -1576,6 +1661,10 @@ export default {
     await initVidyut();
     const dhatupathaText = await (await fetch(dhatupatha)).text();
     vidyut = Vidyut.init(dhatupathaText);
+    dhatuIdx = buildDhatuIndex(dhatupathaText)
+
+    // Pre-compute all vidyut derivations to determine badge success/failure
+    this.precomputeVidyutResults()
 
     setTimeout(function () {
       const splashScreen = document.querySelector(".splash");
@@ -1792,14 +1881,71 @@ export default {
 
 .vidyut-badge {
   font-size: 7pt;
-  color: #8a6dbf;
-  border: 1px solid #8a6dbf;
   border-radius: 4px;
   padding: 0 3px;
   margin-left: 3px;
   white-space: nowrap;
   line-height: 1.4;
   vertical-align: middle;
+  border: 1px solid;
+}
+
+.vidyut-badge-success {
+  color: #8a6dbf;
+  border-color: #8a6dbf;
+}
+
+.vidyut-badge-fail {
+  color: #c0392b;
+  border-color: #c0392b;
+}
+
+.vidyut-badge-clickable {
+  cursor: pointer;
+}
+.vidyut-badge-success.vidyut-badge-clickable:hover {
+  background: rgba(138, 109, 191, 0.15);
+}
+.vidyut-badge-fail.vidyut-badge-clickable:hover {
+  background: rgba(192, 57, 43, 0.15);
+}
+
+.lemma-reference {
+  width: 0;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  font-size: 8pt;
+  color: #4caf50;
+  padding: 2px 0;
+}
+
+.vidyut-derivation {
+  width: 0;
+  min-width: 100%;
+  overflow-wrap: break-word;
+  padding: 4px 0 2px;
+  margin-top: 2px;
+  border-top: 1px dashed rgba(138, 109, 191, 0.3);
+}
+
+.vidyut-step {
+  font-size: 9pt;
+  line-height: 1.6;
+  color: #8a6dbf;
+}
+
+.vidyut-result {
+  font-weight: 600;
+}
+
+.vidyut-rule-link {
+  color: inherit;
+  opacity: 0.7;
+  font-size: 8pt;
+  text-decoration: none;
+}
+.vidyut-rule-link:hover {
+  opacity: 1;
 }
 
 .interlinear-analysis {
