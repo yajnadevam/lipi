@@ -37,8 +37,8 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 32.1,tana,stem,roarer,DHATU.tanu~.Curadi KRT.ac Voc.M.S,O Destroyer[√तन् अच्],"तन n. offspring, posterity, i, 39, 7"
 34.1,saH,word,"to sleep, RV",MW.sas.239787 Voc.M.S,O swift one[=Rudra; √सृ],"to sleep, RV"
 35.1,ra,word,generous,MW.ra.173014 Voc.M.S,O generous one[śiś],"2. ra  a cretic , Piṅg."
-37.1,sa,stem,"7. स ind.  an inseparable prefix expressing ‘junction’, ‘conjunction’, ‘posse...",MW.sa.225596,Salava's[MBh] sign[RV][sa-lava = with Rudra],"7. स ind.  an inseparable prefix expressing ‘junction’, ‘conjunction’, ‘possession’ , ‘similarity’, ‘equality’"
-37.1,lava,stem,"लव m.  the act of cutting, reaping , mowing, plucking or gathering , Das, Nalod.",MW.lava.181832,Salava's[MBh] sign[RV][sa-lava = with Rudra],"लव m.  the act of cutting, reaping , mowing, plucking or gathering , Das, Nalod."
+37.1,sa,stem,with,INDC.sa.225596.1,Salava's[MBh] sign[RV][sa-lava = with Rudra],"7. स ind.  an inseparable prefix expressing ‘junction’, ‘conjunction’, ‘possession’ , ‘similarity’, ‘equality’"
+37.1,lava,stem,cutting,MW.lava.181832,Salava's[MBh] sign[RV][sa-lava = with Rudra],"लव m.  the act of cutting, reaping , mowing, plucking or gathering , Das, Nalod."
 37.1,nAman,word,sign,MW.nAman.105825 Voc.M.S,Salava's[MBh] sign[RV][sa-lava = with Rudra],"नामन् n.  a characteristic mark or sign, form, nature, kind, manner, RV."
 39.1,han,word,Killer,MW.han.260418 Voc.M.S,O Killer[RV],"2. हन् mfn. killing, a killer, slayer"
 40.1,kam,word,blessed,MW.kam.43756.1 Nom.M.S,O blessed[RV] victor[√जि अच्],
@@ -61,7 +61,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 64.1,dama,word,men,MW.dama.90249 Voc.M.S,"O who is Restrained[ŚBr], Kind to men[RV], Destroyer[√नश्], Roarer[Nir]","दम m.  house, home , RV."
 64.1,Anava,word,to men,MW.Anava.24487 Voc.M.S,"O who is Restrained[ŚBr], Kind to men[RV], Destroyer[√नश्], Roarer[Nir]","to men, RV"
 64.1,nASa,word,men,MW.nASa.106197 Voc.M.S,"O who is Restrained[ŚBr], Kind to men[RV], Destroyer[√नश्], Roarer[Nir]","2. नाश m.  the being lost, loss, disappearance, destruction, annihilation, ruin, death, Br."
-64.1,nadana,word,"नदन mfn. sounding, Nir. v, 2.",MW.nadana.103323 Voc.M.S,"O who is Restrained[ŚBr], Kind to men[RV], Destroyer[√नश्], Roarer[Nir]","नदन mfn. sounding, Nir. v, 2."
+64.1,nadana,word,sounding,MW.nadana.103323 Voc.M.S,"O who is Restrained[ŚBr], Kind to men[RV], Destroyer[√नश्], Roarer[Nir]","नदन mfn. sounding, Nir. v, 2."
 65.1,ama,stem,Powerful,MW.ama.13749,O Powerful[RV] killer[RV],"1. अम m. impetuosity, violence, strength, power, RV."
 65.1,han,word,killer,MW.han.260418 Voc.M.S,O Powerful[RV] killer[RV],"2. हन् mfn. killing, a killer, slayer"
 66.1,damam,stem,self-control,MW.dama.90251 CMP,O one possessing[MBh] self-control[ŚBr],"दम m. self-command, self-restraint, self-control, ŚBr. xiv, 8, 2, 4 , TUp."
@@ -78,18 +78,18 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 71.1,rava,word,Roaring,DHATU.ru. KRT.ac Voc.M.S,O Roaring[√रु अच्] benevolent[RV] spirit[MBh],
 71.1,Amana,stem,Sickness,MW.Amana.25439,O Roaring[√रु अच्] benevolent[RV] spirit[MBh],
 71.1,mAnasa,word,spirit,MW.mAnasa.162924 Voc.M.S,O Roaring[√रु अच्] benevolent[RV] spirit[MBh],"to the mind or spirit, mental, spiritual , VS"
-72.1,Ahanana,word,"killing , AV.",MW.Ahanana.28306 Voc.M.S,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","killing , AV."
+72.1,Ahanana,word,killing,MW.Ahanana.28306 Voc.M.S,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","killing , AV."
 72.1,ASa,stem,food,MW.ASa.27354,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","2. आश m. , food"
 72.1,hara,word,ravisher,MW.hara.260680 Voc.M.S,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","of a monkey, R."
-72.1,Asa,word,"the lower part of the body behind, posteriors, ChUp.",MW.Asa.27853 Voc.M.S,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","the lower part of the body behind, posteriors, ChUp."
+72.1,Asa,word,preside,MW.Asa.27853 Voc.M.S,"O Killer[AV], O food[RV] ravisher[RV], O Presider[√आस्][annāda]","the lower part of the body behind, posteriors, ChUp."
 73.1,anna,stem,food,MW.anna.8479,"O food[RV] bestower[RV][SR: andhasaspati], O Presider[√आस् अच्]","a/nna , n. food or victuals, especially boiled rice"
 73.1,dAna,word,food,MW.dAna.91370 Voc.M.S,"O food[RV] bestower[RV][SR: andhasaspati], O Presider[√आस् अच्]",दान m.  distribution of food or of a sacrificial meal
-73.1,Asa,word,"the lower part of the body behind, posteriors, ChUp.",MW.Asa.27853 Voc.M.S,"O food[RV] bestower[RV][SR: andhasaspati], O Presider[√आस् अच्]","the lower part of the body behind, posteriors, ChUp."
+73.1,Asa,word,presider,MW.Asa.27853 Voc.M.S,"O food[RV] bestower[RV][SR: andhasaspati], O Presider[√आस् अच्]","the lower part of the body behind, posteriors, ChUp."
 75.1,rasa,stem,Roarer,MW.rasa.175488,Roarer[VarBṛS] salutations[RV],"juice of the sugar-cane, syrup, Suśr."
 75.1,namana,word,salutations,MW.namana.103839 Voc.M.S,Roarer[VarBṛS] salutations[RV],"bending , Sāh."
 76.1,rava,stem,roar,MW.rava.175305,"O roarer[RV, Pañcat]","रव m.  a roar, yell, cry, howl , RV. &c. &c."
 76.1,da,word,giver,MW.da.89220 Voc.M.S,"O roarer[RV, Pañcat]","द m. n. a gift, L."
-77.1,mAnya,word,"to be respected or honoured, worthy of honour, respectable, venerable, Mn",MW.mAnya.162827 Voc.M.S,Honored[MBh],"to be respected or honoured, worthy of honour, respectable, venerable, Mn"
+77.1,mAnya,word,honoured,MW.mAnya.162827 Voc.M.S,Honored[MBh],"to be respected or honoured, worthy of honour, respectable, venerable, Mn"
 79.1,tfRe,word,plant,MW.tfRa.86539 Loc.M.S,(Rudra) in the plant[RV; SR: oṣadhīṣu],"tf/Ra n. . ) grass, herb, any gramineous plant, blade of grass, straw , RV. &c."
 80.1,vama,word,emitter,MW.vama.186418 Voc.M.S,O emitter[√वम् अच्],"वम mfn. vomiting, ejecting, giving out, W."
 81.1,rava,word,Roaring,DHATU.ru. KRT.ac Voc.M.S,O Roaring[√रु अच्] destroyer[AV; मथ् शतृ],
@@ -110,7 +110,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 94.1,Ava,word,power,DHATU.ava~. TIN.liw.1.S,My I gain power[√अव् लिट् 1s] there[RV] O honored one[आ-√मान् अच्],
 94.1,A,stem,fully,MW.A.22011,My I gain power[√अव् लोट् 1s] there[RV] O honored one[आ-√मान् अच्],
 94.1,mAna,word,one,DHATU.mAna~.Curadi KRT.GaY Voc.M.S,My I gain power[√अव् लोट् 1s] there[RV] O honored one[आ-√मान् अच्],
-94.1,tatra,word,Used for the loc. of,INDC.tatra.81977,My I gain power[√अव् लोट् 1s] there[RV] O honored one[आ-√मान् अच्],
+94.1,tatra,word,there,INDC.tatra.81977,My I gain power[√अव् लोट् 1s] there[RV] O honored one[आ-√मान् अच्],
 96.1,madana,stem,ma,MW.madana.155460,O Destroyer[मष् शतृॅं] of Kāma[MBh],"मदन m. . ) passion, love or the god of love, MBh."
 96.1,mazan,word,destroyer,DHATU.maza~. KRT.Satf Voc.M.S,O Destroyer[मष् शतृॅं] of Kāma[MBh],
 97.1,maYja,stem,roarer,DHATU.maYja~. KRT.ac Voc.M.S,O Roarer[√मञ्ज्] to be appeased[MW],
@@ -120,7 +120,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 99.1,dame,word,house,MW.dama.90254 Loc.M.S,Tanva(author RV 10.93) is wisdom[RV] in the house[RV],"N. of a brother of Damayantī, Nal. i, 9"
 99.1,manmanaH,word,wisdom,MW.manman Gen.N.S,Tanva(author RV 10.93) is wisdom[RV] of the house[RV],
 99.1,tanvaH,word,N. of the author of a Sāman,MW.tanva.82603 Nom.M.S,Tanva(author RV 10.93) is wisdom[RV] in the house[RV],तन्व m. N. of the author of a Sāman
-100.1,damana,word,"दमन mfn. ifc. taming, subduing, overpowering, MBh. viii",MW.damana.90271 Voc.M.S,"O subduer[MBh], O unthwartable[RV 8.92.8 Indra]","दमन mfn. ifc. taming, subduing, overpowering, MBh. viii"
+100.1,damana,word,subduing,MW.damana.90271 Voc.M.S,"O subduer[MBh], O unthwartable[RV 8.92.8 Indra]","दमन mfn. ifc. taming, subduing, overpowering, MBh. viii"
 100.1,avarya,word,unthwartable,DHATU.vara. KRT.yat NEG Voc.M.S,"O subduer[MBh], O unthwartable[RV 8.92.8 Indra]",
 101.1,carma,word,shield,MW.carman.72544 Acc.N.S,shield[MBh] like[RV],"a shield, MBh."
 101.1,samam,word,like,MW.sama.232990 Acc.N.S,shield[MBh] like[RV],"to or identical or homogeneous with , like in or with regard to anything , ib"
@@ -136,8 +136,8 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 110.1,vajat,stem,mighty,DHATU.vaja~. KRT.Satf,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]",
 110.1,taqa,word,Punisher,DHATU.taqa~.Curadi KRT.ac Voc.M.S,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]",
 110.1,acala,stem,Immovable,MW.acala.1790,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]","अ-चल mfn. not moving, immovable"
-110.1,radDa,stem,रद्ध रद्धृ. See below.,MW.radDa.174808,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]",रद्ध रद्धृ. See below.
-110.1,da,word,mighty,MW.da.89220 Voc.M.S,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]","द m. n. a gift, L."
+110.1,radDa,stem,subdued,MW.radDa.174808,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]",रद्ध रद्धृ. See below.
+110.1,da,word,giver,MW.da.89220 Voc.M.S,"O mighty[√वज् शतृ] Punisher[√तड् अच्], O Immovable[VP] Subduer[RV]","द m. n. a gift, L."
 111.1,rasataH,word,Roaring,MW.rasa TAD.tasil,O Roaring one[√रस् तसिल्] who bends (bows)[√नम् शतृ]; O possessor of all things[MBh],
 111.1,naman,word,things,DHATU.Ra\ma~. KRT.Satf  Voc.M.S,O Roaring one[√रस् तसिल्] who bends (bows)[√नम् शतृ]; O possessor of all things[MBh],
 111.1,sam,stem,bends,MW.sam.232986,O Roaring one[√रस् तसिल्] who bends (bows)[√नम् शतृ]; O possessor of all things[MBh],"to be disturbed , Dhātup"
@@ -150,12 +150,12 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 121.1,raPya,stem,confluence,DHATU.raPa~.Bhvadi KRT.yat,O driver[√ऋ अच्] of the confluence[RV] that should flow[RV],
 121.1,ara,word,confluence,MW.ara.15007 Voc.M.S,O driver[√ऋ अच्] of the confluence[RV] that should flow[RV],"अर m. the spoke or radius of a wheel, RV. &c.?"
 123.1,rata,word,pleased,MW.rata.174224 Voc.M.S,O my pleased[BhP] Kāma[Mbh],"रत रति &c. See under √ रम्, p. 867, cols. 2, 3."
-123.1,mama,word,My[MW:asmad Gen.Sg.],PRON.asmad. Gen.M.S,O my pleased[BhP] Kāma[Mbh],
-123.1,madana,word,K,MW.madana.155461 Voc.M.S,O my pleased[BhP] Kāma[Mbh],"a kind of embrace, L."
+123.1,mama,word,My,PRON.asmad. Gen.M.S,O my pleased[BhP] Kāma[Mbh],
+123.1,madana,word,Kāma,MW.madana.155461 Voc.M.S,O my pleased[BhP] Kāma[Mbh],"a kind of embrace, L."
 124.1,pra,stem,forward,MW.pra.129752.1,O loud Roarer[प्र-√रु अच्],"forward, in front, on, forth"
 124.1,rava,word,Roarer,MW.rava.175305 Voc.M.S,O loud Roarer[प्र-√रु अच्],"रव m.  a roar, yell, cry, howl , RV. &c. &c."
 125.1,ana,stem,breath,MW.ana.4783,O who holds destruction[RV ध्वस्र इनि] of breath/Prāṇa[ŚBr],"अन m. breath, respiration, ŚBr."
-125.1,DvasrI,word,"Dvasra/ mfn. = °sira/, RV.",MW.Dvasra.102563 TAD.ini Nom.M.S,O who holds destruction[RV ध्वस्र इनि] of breath/Prāṇa[ŚBr],"Dvasra/ mfn. = °sira/, RV."
+125.1,DvasrI,word,decaying,MW.Dvasra.102563 TAD.ini Nom.M.S,O who holds destruction[RV ध्वस्र इनि] of breath/Prāṇa[ŚBr],"Dvasra/ mfn. = °sira/, RV."
 127.1,sadaya,word,merciful,MW.sadaya.230686 Voc.M.S,O merciful one[SkandaP: N. of Vishnu],"स—दय mfn. merciful, compassionate, kind, gentle , Kāv."
 128.1,naya,word,leader,MW.naya.103925 Voc.M.S,O leader (of army)[R; senāpati:Sri Rudram],"a kind of game and a sort of dice or men for playing it, L."
 129.1,tA,word,Roarer,MW.tan.82220 Nom.M.S,The Roarer[√तन् nms],"to resound, roar, RV?"
@@ -175,14 +175,14 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 136.1,hara,word,Seizer,MW.hara.260678 Voc.M.S,O roaring[√रु अच्] Seizer[MBh],"हर m. ‘Seizer’, ‘Destroyer’, N. of Śiva, ĀśvGṛ."
 137.1,anan,word,breathes,DHATU.ana~. KRT.Satf Nom.M.S,One who breathes[√अन् शतृ RV 10.129.2],
 138.1,maYjanam,word,one,DHATU.maYja~. KRT.lyuw Acc.M.S,The Roar[√मञ्ज् ल्युट्],
-139.1,varAn,word,"va/rA , f. N. of various plants and vegetable products , Suśr.",MW.varA.186779.40 Acc.M.P,The most excellent ones[MBh],"va/rA , f. N. of various plants and vegetable products , Suśr."
+139.1,varAn,word,excellent,MW.varA.186779.40 Acc.M.P,The most excellent ones[MBh],"va/rA , f. N. of various plants and vegetable products , Suśr."
 144.1,raka,stem,gem,MW.raka.173044,gem[W] of chosen[MBh] gems entrance[Mcar],रक m. the sun gem
 144.1,vara,stem,chosen,MW.vara.203979,gem[W] of chosen[MBh] gems entrance[Mcar],"वर &c. See p. 921, col. 1."
 144.1,raka,stem,gem,MW.raka.173044,gem[W] of chosen[MBh] gems entrance[Mcar],रक m. the sun gem
 144.1,araraH,word,of,MW.arara.15189 Nom.M.S,gem[W] of chosen[MBh] gems entrance[Mcar],"अरर , n. id., Mcar."
 145.1,rava,word,Roarer,DHATU.ru. KRT.ac Voc.M.S,"O Roarer[√रु अच्], O fearless one[ŚBr][two names of Shiva]",
 145.1,aBaya,word,fearless,MW.aBaya.11125 Voc.M.S,"O Roarer[√रु अच्], O fearless one[ŚBr][two names of Shiva]","अ-भय mfn. fearless, undaunted, ŚBr. xiv"
-149.1,mama,word,My[MW:asmad Gen.Sg.],PRON.asmad. Gen.M.S,my[RV],
+149.1,mama,word,My,PRON.asmad. Gen.M.S,my[RV],
 150.1,parRa,word,foliage,MW.parRa.119473 Voc.M.S,O green foliage[RV; SR:harikeśa],"a leaf , RV. &c. &c. . , but in N. of plants f."
 153.1,kara,word,creator,MW.kara.44037.1 Voc.M.S,O creator[AV],
 157.1,hAna,word,destroyer,MW.hAna.262517 Voc.M.S,O destroyer[Bhartṛ; √हा क्त; agentive AA 3.3.174],"want, lack, Kap.?"
@@ -192,12 +192,12 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 159.1,da,word,generous,MW.da.89220 Voc.M.S,O generous one[MS],"द m. n. a gift, L."
 162.2,maja,word,Roarer,DHATU.maja~. KRT.ac Voc.M.S,O Roarer[√मज् अच्],
 170.1,cAnam,word,Destroyer,DHATU.cana~. KRT.ac Acc.M.S,The Destroyer[√चन् अच्],
-176.1,jAm,word,"जा f. a race, tribe, AV. v, 11, 10",MW.jA.76162 Acc.M.S,The destroyer[√जै अच्],"जा f. a race, tribe, AV. v, 11, 10"
+176.1,jAm,word,destroyer,MW.jA.76162 Acc.M.S,The destroyer[√जै अच्],"जा f. a race, tribe, AV. v, 11, 10"
 179.1,A,word,breathes,MW.an.4782 Nom.M.S,The who breathes[√अन् nms],"to breathe, respire, gasp"
 182.1,yaH,word,wind,MW.ya.168984 Nom.M.S,Prajāpati (कः)[यः आत्मदा RV 10.121],wind
 191.1,i,word,interj,MW.I.29693 Voc.M.S,(interj)[Pāṇ],3. ई ind. an interjection of pain or anger
 193.1,vana,stem,Roaring,MW.vana.185718,O Roaring[वन् अच्] Prāna[√अन् शतृ; T],"plenty, abundance, R."
-193.1,anan,word,na,DHATU.ana~. KRT.Satf Nom.M.S,O Roaring[वन् अच्] Prāna[√अन् शतृ; T],
+193.1,anan,word,breath,DHATU.ana~. KRT.Satf Nom.M.S,O Roaring[वन् अच्] Prāna[√अन् शतृ; T],
 194.1,Una,word,Small,MW.Una Voc.M.S,O Small one[AV =kṣulla=Rudra]; O one who breathes[RV 10.129.2],
 194.1,anan,word,breathes,DHATU.ana~. KRT.Satf Voc.M.S,O Small one[AV =kṣulla=Rudra]; O one who breathes[RV 10.129.2],
 195.1,dAna,word,giving in marriage,MW.dAna.91242 Voc.M.S,O bountiful one[RV 7.27.4]; O one who breathes[RV 10.129.2],giving in marriage
@@ -207,9 +207,9 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 198.1,mAna,word,The,MW.mAna.161764 Voc.M.S,The excellent[TS] honored[MBh] one,"मान See p. 809, col. 3."
 198.2,caRa,word,Injurer,MW.caRa.70884 Voc.M.S,O Injurer[√चण् अच्],"चण mfn. ifc.  renowned or famous for, HPariś. viii, 195"
 199.1,kaMsam,word,cup,MW.kaMsa.41370 Acc.M.S,Honor[मन् लोट्] the (Soma) cup,"कंस अस्, अम्, m. n. , a vessel made of metal, drinking vessel, cup, goblet, AV. x, 10, 5"
-199.1,mana,word,"N. of a son of Śambara, Hariv. .",MW.mana.156713 Voc.M.S,Honor[मन् लोट्] the (Soma) cup,"N. of a son of Śambara, Hariv. ."
+199.1,mana,word,honor,MW.mana.156713 Voc.M.S,Honor[मन् लोट्] the (Soma) cup,"N. of a son of Śambara, Hariv. ."
 201.1,ka,word,Prajāpati,MW.ka.41336.05 Voc.M.S,O Prajāpati[RV; VS; TS],
-202.1,Sam,word,"to toil at, fatigue or exert one's self , RV",MW.Sam Nom.M.S,Bless us[RV],
+202.1,Sam,word,bless,Bless us[RV],
 202.1,naH,word,us,INDC.nas.104827,Bless us[RV],
 205.1,sajjana,word,good,MW.sajjana.229682 Voc.M.S,O good one[Mn; SR: śiva],"सज्—जन m. a good or virtuous or wise man, Mn. &c. &c."
 212.1,jana,word,Generator,MW.jana.76736 Voc.M.S,O Generator[RV],"जन mfn. ‘generating’, see पुरं-"
@@ -223,11 +223,11 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 222.2,A,stem,mighty,MW.A.22012,O mighty[RV] Bearer[धृ शतृ],"3. A m. N. of Śiva, L."
 222.2,saha,stem,mighty,MW.saha.239969,O mighty[RV] Bearer[धृ शतृ],"1. सह mfn. powerful, mighty, RV."
 222.2,Daran,word,Bearer,DHATU.DfY.Bhvadi KRT.Satf Voc.M.S,O mighty[RV] Bearer[धृ शतृ],
-225.1,mama,word,My[MW:asmad Gen.Sg.],PRON.asmad. Gen.M.S,O My[RV] Killer (breath[Nir] destroyer[RV]),
+225.1,mama,word,My,PRON.asmad. Gen.M.S,O My[RV] Killer (breath[Nir] destroyer[RV]),
 225.1,anana,stem,breath,MW.anana.4785,O My[RV] Killer (breath[Nir] destroyer[RV]),"anana n. breathing, living, Nir."
 225.1,han,word,Killer,MW.han.260418 Voc.M.S,O My[RV] Killer (breath[Nir] destroyer[RV]),"2. हन् mfn. killing, a killer, slayer"
 228.1,he,word,Pr,MW.heman.263142 Voc.F.D,O Prāṇa[T],"he/man &c. See 2. he/man p. 1304, col. 1."
-228.1,Ana,word,"आन m. , face",MW.Ana.24313 Voc.M.S,O Prāṇa[T],"आन m. , face"
+228.1,Ana,word,face,MW.Ana.24313 Voc.M.S,O Prāṇa[T],"आन m. , face"
 232.1,para,word,Supreme,MW.para.116012 Voc.M.S,O Supreme one[RV],"better or worse than, superior or inferior to, best or worst, highest, supreme, chief , RV. &c. &c."
 233.1,nAna,word,"nAna m. N. of a man , Cat.",MW.nAna.105506 Voc.M.S,"Protect (me) always[√नय् यङ्लुगन्ते लोट् 2s], O Wanderer[√चर् अच्]","nAna m. N. of a man , Cat."
 233.1,cara,word,Wanderer,MW.cara.72176 Voc.M.S,"Protect (me) always[√नय् यङ्लुगन्ते लोट् 2s], O Wanderer[√चर् अच्]","movable, shaking, unsteady, W."
@@ -262,13 +262,13 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 284.1,Ana,word,breath,MW.Ana.24316 Voc.M.S,O Roarers[√रु अच्] breath[T][=Prāṇa/Brahman],"exhaling the breath through the nose, T."
 288.1,rasan,word,roarer,DHATU.rasa~. KRT.Satf Nom.M.S,O roarer[√रस् शतृ],
 290.1,aYja,word,annointer,DHATU.aji~. KRT.ac Voc.M.S,O annointer[=भिषक् √अञ्ज् + अच्],
-291.1,sattama,stem,"sa/t—tama , mfn. very good or right, the best, first, chief of , Br.",MW.sattama.229576,The excellent[RV] oblation[Hariv] of the best[ChUp] Soma[RV],"sa/t—tama , mfn. very good or right, the best, first, chief of , Br."
+291.1,sattama,stem,excellent,MW.sattama.229576,The excellent[RV] oblation[Hariv] of the best[ChUp] Soma[RV],"sa/t—tama , mfn. very good or right, the best, first, chief of , Br."
 291.1,mada,stem,Soma,MW.mada.155337,The excellent[RV] oblation[Hariv] of the best[ChUp] Soma[RV],"any exhilarating or intoxicating drink, spirituous liquor, wine, Soma, RV. &c. &c.,"
 291.1,mAKa,stem,oblation,MW.mAKa.161941,The excellent[RV] oblation[Hariv] of the best[ChUp] Soma[RV],"माख  n.  any relationship based upon an oblation offered in common, Hariv. ."
 291.1,varam,word,best,MW.varam.186779.16 Nom.M.S,The excellent[RV] oblation[Hariv] of the best[ChUp] Soma[RV],
 292.1,jawAm,word,hair,MW.jawA.76521 Acc.M.S,hair braids(worn by Shiva)[MBh],"jawA f. the hair twisted together , PārGṛ. ii, 6"
-293.1,harivat,stem,"ha/ri—vat , mfn. possessing Hari, MW.",MW.harivat.261182.1,Indra's[harivat = Name of Indra; RV] sign[=nāman RV] [sandhi त् + न = न्न ],"ha/ri—vat , mfn. possessing Hari, MW."
-293.1,nAma,word,By name i.e. named,INDC.nAma.105725,Indra's[harivat = Name of Indra; RV] sign[=nāman RV] [sandhi त् + न = न्न ],
+293.1,harivat,stem,Indra,MW.harivat.261182.1,Indra's[harivat = Name of Indra; RV] sign[=nāman RV] [sandhi त् + न = न्न ],"ha/ri—vat , mfn. possessing Hari, MW."
+293.1,nAma,word,named,INDC.nAma.105725,Indra's[harivat = Name of Indra; RV] sign[=nāman RV] [sandhi त् + न = न्न ],
 294.1,maha,stem,great,MW.maha.159155,The great[RV] accomplisher[RV],"1. maha/ mfn. great, mighty, strong, abundant, RV."
 294.1,dasram,word,accomplisher,MW.dasra.91140 Acc.M.S,The great[RV] accomplisher[RV],
 295.1,id,word,indeed,INDC.id.28800.1,Indeed[Ved] O bearer[Mbh],
@@ -276,7 +276,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 297.1,mammana,word,ever meditating,DHATU.manu~\. KRT.yaN.ac Voc.M.S,O ever meditating one[√मन् यङि अच्](Rudra),
 300.1,rARa,stem,roaring,MW.rARa.177022,The roaring[√रण् घञ्] destroyer[Bhartṛ],"राण m. n.  murmuring, L."
 300.1,hAna,word,destroyer,MW.hAna.262517 Voc.M.S,The roaring[√रण् घञ्] destroyer[Bhartṛ],"want, lack, Kap."
-300.2,imam,word,this[MW:idam],PRON.idam.28801.2 Acc.M.S,This destroyer[BhP],
+300.2,imam,word,this,PRON.idam.28801.2 Acc.M.S,This destroyer[BhP],
 300.2,mfjam,word,"mfja mfn.  wiping off, removing, destroying , BhP.",MW.mfja.167123 Acc.M.S,This destroyer[BhP],"mfja mfn.  wiping off, removing, destroying , BhP."
 303.1,rava,stem,man,MW.rava.175305,O Rudra-born man,"रव m.  a roar, yell, cry, howl , RV. &c. &c."
 303.1,ja,stem,man,MW.ja.76168,O Rudra-born man,"ज m. speed, L."
@@ -300,11 +300,11 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 337.1,jaH,word,Wanderer,MW.ja.76167 Nom.M.S,O Wanderer[√जृ vms],"eaten, W."
 341.1,vaH,word,your[yuṣmad gp],PRON.yuzmad. Gen.P,O concealer[√वृ vms],
 355.1,hA,word,Killer,DHATU.hana~. KRT.kvip Nom.M.S,The Killer[nms. √हन्],
-364.1,jajja,word,"जज्ज mfn.  laughing, Uṇ. iv, 77, Sch.",MW.jajja.76504 Voc.M.S,O Swift one[DaivBr],
+364.1,jajja,word,swift,MW.jajja.76504 Voc.M.S,O Swift one[DaivBr],
 365.1,anan,word,breathes,DHATU.ana~. KRT.Satf Nom.M.S,One who breathes[√अन् शतृ RV 10.129.2],
-370.1,ADava,word,आ-धव &c. See under आ-√ धु.,MW.ADava.24097 Voc.M.S,"O Stirrer[RV], O universal[RV] spirit[VS]",आ-धव &c. See under आ-√ धु.
-370.1,sammanaH,word,"सम्-मनस् mfn.  unanimous, of one mind, RV.",MW.sammanas.237118 Voc.M.S,"O Stirrer[RV], O universal[RV] spirit[VS]",
-370.2,imam,word,[MW:idam],PRON.idam.28801.2 Acc.M.S,This (Soma) cup,
+370.1,ADava,word,Stirrer,MW.ADava.24097 Voc.M.S,"O Stirrer[RV], O universal[RV] spirit[VS]",आ-धव &c. See under आ-√ धु.
+370.1,sammanaH,word,of one mind,MW.sammanas.237118 Voc.M.S,"O Stirrer[RV], O universal[RV] spirit[VS]",
+370.2,imam,word,this,PRON.idam.28801.2 Acc.M.S,This (Soma) cup,
 370.2,aMSam,word,portion,MW.aMSa.10 Acc.M.S,This (Soma) cup,"अंश m. , a share, portion, part, party"
 371.2,tAna,word,destroyer,MW.tAna.83833 Voc.M.S,O destroyer[√तन् अच्],
 372.1,ajA,word,nature,MW.ajA.1944 Nom.F.S,Unborn nature/Prākṛti[ŚvetUp],"N. of a plant whose bulbs resemble the udder of a goat, Suśr."
@@ -1645,7 +1645,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 2375.1,vaDasna,word,"vaDasna/ m. or n.  = va/Dar, RV.",MW.vaDasna.185627 Voc.M.S,O one whose favorite[Kāv] (weapon) is vajra[RV 9.52.3],"vaDasna/ m. or n.  = va/Dar, RV."
 2377.1,Sasta,stem,praised,MW.Sasta.210873,The praised[RV] Killer[Rājat],"praised, commended, approved, MBh."
 2377.1,mAram,word,The,MW.mAra.163215 Acc.M.S,The praised[RV] Killer[Rājat],"मार mfn.  killing, destroying"
-2378.1,rala,stem,"ralarola  m. howling, wailing, lamenting, HPariś.",USER|MW.ralarola. |Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś],
+2378.1,rala,stem,wailing,USER|MW.ralarola. |Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś],
 2378.1,ra,word,giver,MW.ra.173014 Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś],"2. ra  a cretic , Piṅg."
 2380.1,aka,stem,"sin, L.",MW.aka.137,"O wanderer[√अक् अच्] with a splendid[RV; =Shiva, Bhp] form[RV]","sin, L."
 2380.1,vAma,stem,splendid,MW.vAma.190969,"O wanderer[√अक् अच्] with a splendid[RV; =Shiva, Bhp] form[RV]","2. वाम mfn.  lovely, dear, pleasant, agreeable, fair, beautiful, splendid, noble, RV. &c. &c."
@@ -2999,7 +2999,7 @@ id,form,type,translation_lexeme,analysis,translation,mw_lexeme
 3468.1,ama,stem,mighty,MW.ama.13750,O powerful[RV] mighty one[RV],"depriving of sensation, fright, terror, RV."
 3468.1,mahan,word,"महन् n. greatness, might, power, abundance , RV.",MW.mahan.159265 Voc.M.S,O powerful[RV] mighty one[RV],"महन् n. greatness, might, power, abundance , RV."
 3469.1,tamata,word,desirous,MW.tamata.82889 Voc.M.S,"O desirous one[Uṇ; =prajāpati, PañcavBr]","तमत mfn. desirous of Uṇ. iii, 109, Sch."
-3473.1,tatanaH,word,Expand,USER|DHATU.tanu~^.Tanadi TIN.lew.2.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]",
+3473.1,tatanaH,word,Expand,USER|DHATU.tanu~.Tanadi TIN.lew.2.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]",
 3473.1,Arava,word,Roarer,MW.Arava.26220 Voc.M.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]","crash, sound, R. &c."
 3474.1,tat,word,that,INDC.tat.81779,In that excellent[MBh] man[TS][=Indra RV 8.40.2 śaviṣṭham nṛṇām],
 3474.1,naravare,word,excellent,MW.naravara.104121 Loc.M.S,In that excellent[MBh] man[TS][=Indra RV 8.40.2 śaviṣṭham nṛṇām],nara—vara m. an excellent m°

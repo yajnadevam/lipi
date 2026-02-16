@@ -967,26 +967,29 @@ export default {
       oldPageNum: null,
       expanded: [],
       headers: [
-        { title: "Seal ID", key: "id", width: "85px" },
-        { title: "CISI ID", key: "cisi", width: "130px" },
+        { title: "Seal ID", key: "id", width: "70px" },
+        { title: "CISI ID", key: "cisi", width: "100px" },
         { title: "Len", key: "textlength", width: "40px" },
         {
           title: "Inscription(R to L)",
           key: "text",
-          align: "end",
+          align: "center",
           cellProps: { class: "indus" },
-          width: "400px",
+          headerProps: { class: 'indus-header' },
+          width: 'calc((100% - 250px) / 3)',
         },
         { title: "Transliteration", key: "description", align: " d-none" },
         { title: "Notes", key: "notes", align: " d-none" },
         {
           title: "Sanskrit(L to R)",
           key: "sanskrit",
+          align: "center",
           cellProps: { class: "sanskrit" },
-          width: "400px",
+          headerProps: { class: 'sanskrit-header' },
+          width: 'calc((100% - 250px) / 3)',
         },
-        { title: "Translation", key: "translation" },
-        { title: "", key: "data-table-expand", width: "50px" },
+        { title: "Translation", key: "translation", width: 'calc((100% - 250px) / 3)' },
+        { title: "", key: "data-table-expand", width: "40px" },
       ],
       items: inx,
       optionCanonical: false,
@@ -1690,10 +1693,12 @@ export default {
   font-family: indus_scriptregular;
   font-size: 24pt;
   font-display: swap;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .sanskrit {
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
 .random {
   white-space: pre;
@@ -1709,13 +1714,22 @@ export default {
 }
 
 .v-data-table table {
-  /* table-layout: fixed; */
+  table-layout: fixed;
   width: 100%;
 }
 
 .v-data-table table tr th,
 .v-data-table table tr td {
   padding: 0 8px !important;
+}
+
+/* Inter-column spacing between Inscription and Sanskrit */
+.v-data-table table tr td.indus,
+.v-data-table table tr th.indus-header,
+.v-data-table table tr td.sanskrit,
+.v-data-table table tr th.sanskrit-header {
+  padding-left: 1.5vw !important;
+  padding-right: 1.5vw !important;
 }
 
 .hover-image {
@@ -2160,7 +2174,7 @@ export default {
   .mobile-card-right {
     flex-direction: row;
     align-items: flex-start;
-    gap: 12px;
+    gap: 3vw;
   }
   .mobile-indus-text {
     flex: 1 1 0;
