@@ -319,6 +319,9 @@ function deriveSubanta (vidyut, slp1Form, dhatu, pratyaya, sanadi, upasargas, li
     } catch (_) { /* fall through */ }
 
     // 2. Try basic pratipadika with derived krdanta stems
+    //    Skip when sanadi is present — basic pratipadika loses derivation context
+    //    (e.g. yaNluk's 8.2.23 exception won't apply, causing false matches)
+    if (sanadi && sanadi.length > 0) return fallback
     try {
       const krdStems = deriveKrdantaStems(vidyut, dhatu, pratyaya, upasargas)
       for (const kr of krdStems) {
@@ -424,186 +427,203 @@ export function derive (vidyut, analysis, slp1Form, options = {}) {
   return deriveCore(vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, type)
 }
 
+/** Parse an analysis string into its component parts */
+function parseAnalysis (analysis) {
+  const parts = analysis.split(' ')
+
+  let linga = null; let vacana = null; let vibhakti = null
+  const cgnPart = parts.find(p => /^(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]$/.test(p))
+  if (cgnPart) {
+    const [c, g, n] = cgnPart.split('.')
+    vibhakti = CASE_MAP[c]
+    linga = GENDER_MAP[g]
+    vacana = NUMBER_MAP[n]
+  }
+
+  const tadPart = parts.find(p => p.startsWith('TAD.'))
+  const tadSuffixes = tadPart ? tadPart.replace('TAD.', '').split('.') : null
+  const striPart = parts.find(p => p.startsWith('STRI.'))
+  const krtPart = parts.find(p => p.startsWith('KRT.'))
+  const tinPart = parts.find(p => p.startsWith('TIN.'))
+
+  return { parts, linga, vacana, vibhakti, cgnPart, tadSuffixes, striPart, krtPart, tinPart }
+}
+
+/** Handle DHATU entries: parse root/gana/upasargas, dispatch to TIN or KRT */
+function deriveDhatu (vidyut, slp1Form, parsed, dhatuIndex, wordsMap, itemId) {
+  const dhatuStr = parsed.parts[0].replace(/\.$/, '')
+  const dhatuParts = dhatuStr.split('.')
+  let root = dhatuParts[1]
+  let gana = dhatuParts.length > 2 ? (GANA_NUM_MAP[dhatuParts[2]] || dhatuParts[2]) : null
+
+  const segments = root.split('-')
+  const upasargas = segments.slice(0, -1)
+  root = segments[segments.length - 1]
+
+  if (!gana) {
+    if (wordsMap) {
+      const wordEntry = wordsMap[slp1Form]?.[itemId] ?? wordsMap[slp1Form]?.['*']
+      gana = wordEntry?.gana || 'Bhvadi'
+    } else {
+      gana = 'Bhvadi'
+    }
+  }
+
+  if (parsed.tinPart) {
+    const tinParts = parsed.tinPart.split('.')
+    const lakara = LAKARA_MAP[tinParts[1]] || tinParts[1]
+    const purusha = PURUSHA_MAP[tinParts[2]]
+    const tinVacana = NUMBER_MAP[tinParts[3]]
+    return deriveTinanta(vidyut, slp1Form, root, gana, lakara, tinVacana, purusha, upasargas, dhatuIndex)
+  }
+
+  if (parsed.krtPart) {
+    return deriveDhatuKrt(vidyut, slp1Form, root, gana, upasargas, parsed, dhatuIndex)
+  }
+
+  return null
+}
+
+/** Try a single dhatu+krt combination, dispatching to the appropriate sub-case */
+function tryKrtVariant (vidyut, slp1Form, dhatu, pratyaya, sanadi, upasargas, parsed) {
+  const { linga, vacana, vibhakti, tadSuffixes, striPart } = parsed
+
+  if (tadSuffixes) {
+    return deriveKrtTaddhita(vidyut, slp1Form, dhatu, pratyaya, upasargas, tadSuffixes, linga, vacana, vibhakti)
+  }
+  if (striPart) {
+    return deriveStriSubanta(vidyut, slp1Form, dhatu, pratyaya, linga, vacana, vibhakti)
+  }
+  if (linga && vacana && vibhakti) {
+    return deriveSubanta(vidyut, slp1Form, dhatu, pratyaya, sanadi, upasargas, linga, vacana, vibhakti)
+  }
+  // KRT only → stem derivation, return best match
+  const krdResults = deriveKrdantaStems(vidyut, dhatu, pratyaya, upasargas)
+  let fallback = null
+  for (const r of krdResults) {
+    const res = makeResult(r.history, r.text, slp1Form)
+    if (res.match) return res
+    if (!fallback) fallback = res
+  }
+  return fallback
+}
+
+/** Derive krdanta stems then apply taddhita chain, returning best match */
+function deriveKrtTaddhita (vidyut, slp1Form, dhatu, pratyaya, upasargas, tadSuffixes, linga, vacana, vibhakti) {
+  const krdResults = deriveKrdantaStems(vidyut, dhatu, pratyaya, upasargas)
+  let fallback = null
+  for (const kr of krdResults) {
+    const tadResult = deriveTaddhitaChain(
+      vidyut, kr.text, tadSuffixes, kr.history,
+      linga, vacana, vibhakti, slp1Form,
+    )
+    if (tadResult && tadResult.match) return tadResult
+    if (tadResult && !fallback) fallback = tadResult
+  }
+  return fallback
+}
+
+/** Handle DHATU+KRT: parse krt, then search aupadeshika × gana combinations */
+function deriveDhatuKrt (vidyut, slp1Form, root, gana, upasargas, parsed, dhatuIndex) {
+  const krtParts = parsed.krtPart.split('.')
+  let pratyaya = krtParts[krtParts.length - 1]
+  if (pratyaya === 'lyap') pratyaya = 'ktvA'
+  if (!VALID_KRT.has(pratyaya)) return null
+  const sanadi = krtParts.length > 2 ? krtParts.slice(1, -1) : []
+
+  const aupadeshikaForms = resolveAupadeshika(dhatuIndex, root)
+  let fallback = null
+
+  for (const aupa of aupadeshikaForms) {
+    if (!aupa || aupa.length === 0 || aupa.length > 20) continue
+
+    for (const tryGana of ganasToTry(gana)) {
+      try {
+        const dhatu = createDhatu(aupa, tryGana, sanadi, upasargas)
+        const result = tryKrtVariant(vidyut, slp1Form, dhatu, pratyaya, sanadi, upasargas, parsed)
+        if (result && result.match) return result
+        if (result && !fallback) fallback = result
+      } catch (_) { /* try next gana */ }
+    }
+  }
+
+  return fallback
+}
+
+/** Handle MW/PRON entries: dispatch to TAD, feminine, standard subanta, or stem probe */
+function deriveMwPron (vidyut, slp1Form, parsed, type) {
+  const { linga, vacana, vibhakti, cgnPart, tadSuffixes } = parsed
+  const mwParts = parsed.parts[0].split('.')
+  const aupadeshika = mwParts[1].replace(/-/g, '')
+
+  if (tadSuffixes) {
+    return deriveTaddhitaChain(vidyut, aupadeshika, tadSuffixes, [], linga, vacana, vibhakti, slp1Form)
+  }
+
+  if (linga && vacana && vibhakti) {
+    const cgnShort = cgnPart?.split('.')[1]
+    if (cgnShort === 'F' && (aupadeshika.endsWith('A') || aupadeshika.endsWith('I') || aupadeshika.endsWith('U'))) {
+      return deriveFeminineSubanta(vidyut, slp1Form, aupadeshika, linga, vacana, vibhakti)
+    }
+    const dhatu = { aupadeshika, gana: null, antargana: null, sanadi: [], prefixes: [] }
+    return deriveSubanta(vidyut, slp1Form, dhatu, null, [], [], linga, vacana, vibhakti)
+  }
+
+  return stemProbe(vidyut, slp1Form, aupadeshika, type)
+}
+
+/** Decline a feminine stem using nyāp pratipadika with basic fallback */
+function deriveFeminineSubanta (vidyut, slp1Form, aupadeshika, linga, vacana, vibhakti) {
+  let fallback = null
+  try {
+    const results = vidyut.deriveSubantas({
+      pratipadika: { nyap: aupadeshika }, linga, vacana, vibhakti,
+    })
+    for (const r of results) {
+      if (r.text === slp1Form) return makeResult(r.history, r.text, slp1Form)
+      if (!fallback) fallback = makeResult(r.history, r.text, slp1Form)
+    }
+  } catch (_) { /* fall through to basic */ }
+  try {
+    const results = vidyut.deriveSubantas({
+      pratipadika: { basic: aupadeshika }, linga, vacana, vibhakti,
+    })
+    for (const r of results) {
+      if (r.text === slp1Form) return makeResult(r.history, r.text, slp1Form)
+      if (!fallback) fallback = makeResult(r.history, r.text, slp1Form)
+    }
+  } catch (_) { /* no results */ }
+  return fallback
+}
+
+/** Validate consonant-ending MW/PRON stems by probing declension */
+function stemProbe (vidyut, slp1Form, aupadeshika, type) {
+  if (type !== 'stem' || /[aAiIuUfFxXeEoO]$/.test(aupadeshika)) return null
+  for (const probeLinga of ['Pum', 'Napumsaka', 'Stri']) {
+    try {
+      const results = vidyut.deriveSubantas({
+        pratipadika: { basic: aupadeshika },
+        linga: probeLinga,
+        vacana: 'Eka',
+        vibhakti: 'Prathama',
+      })
+      if (results && results.length > 0) {
+        return { steps: results[0].history, text: slp1Form, match: true }
+      }
+    } catch (_) { /* try next gender */ }
+  }
+  return null
+}
+
 function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, type) {
   try {
-    const parts = analysis.split(' ')
-
-    // Extract Case.Gender.Number
-    let linga = null; let vacana = null; let vibhakti = null
-    const cgnPart = parts.find(p => /^(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]$/.test(p))
-    if (cgnPart) {
-      const [c, g, n] = cgnPart.split('.')
-      vibhakti = CASE_MAP[c]
-      linga = GENDER_MAP[g]
-      vacana = NUMBER_MAP[n]
+    const parsed = parseAnalysis(analysis)
+    if (parsed.parts[0].startsWith('DHATU.')) {
+      return deriveDhatu(vidyut, slp1Form, parsed, dhatuIndex, wordsMap, itemId)
     }
-
-    // Extract TAD, STRI suffixes
-    const tadPart = parts.find(p => p.startsWith('TAD.'))
-    const tadSuffixes = tadPart ? tadPart.replace('TAD.', '').split('.') : null
-
-    const striPart = parts.find(p => p.startsWith('STRI.'))
-
-    // --- DHATU entries ---
-    if (parts[0].startsWith('DHATU.')) {
-      const dhatuStr = parts[0].replace(/\.$/, '')
-      const dhatuParts = dhatuStr.split('.')
-      let root = dhatuParts[1]
-      let gana = dhatuParts.length > 2 ? (GANA_NUM_MAP[dhatuParts[2]] || dhatuParts[2]) : null
-
-      // Parse upasarga prefix: A-hana~ → upasargas=['A'], root='hana~'
-      const segments = root.split('-')
-      const upasargas = segments.slice(0, -1)
-      root = segments[segments.length - 1]
-
-      // Gana fallback
-      if (!gana) {
-        if (wordsMap) {
-          const wordEntry = wordsMap[slp1Form]?.[itemId] ?? wordsMap[slp1Form]?.['*']
-          gana = wordEntry?.gana || 'Bhvadi'
-        } else {
-          gana = 'Bhvadi'
-        }
-      }
-
-      const krtPart = parts.find(p => p.startsWith('KRT.'))
-      const tinPart = parts.find(p => p.startsWith('TIN.'))
-
-      // DHATU + TIN → tinanta
-      if (tinPart) {
-        const tinParts = tinPart.split('.')
-        const lakara = LAKARA_MAP[tinParts[1]] || tinParts[1]
-        const purusha = PURUSHA_MAP[tinParts[2]]
-        const tinVacana = NUMBER_MAP[tinParts[3]]
-        return deriveTinanta(vidyut, slp1Form, root, gana, lakara, tinVacana, purusha, upasargas, dhatuIndex)
-      }
-
-      // DHATU + KRT
-      if (krtPart) {
-        const krtParts = krtPart.split('.')
-        let pratyaya = krtParts[krtParts.length - 1]
-        if (pratyaya === 'lyap') pratyaya = 'ktvA'
-        if (!VALID_KRT.has(pratyaya)) return null
-        const sanadi = krtParts.length > 2 ? krtParts.slice(1, -1) : []
-
-        const aupadeshikaForms = resolveAupadeshika(dhatuIndex, root)
-        let fallback = null
-
-        for (const aupa of aupadeshikaForms) {
-          if (!aupa || aupa.length === 0 || aupa.length > 20) continue
-
-          for (const tryGana of ganasToTry(gana)) {
-            try {
-              const dhatu = createDhatu(aupa, tryGana, sanadi, upasargas)
-
-              // DHATU + KRT + TAD
-              if (tadSuffixes) {
-                const krdResults = deriveKrdantaStems(vidyut, dhatu, pratyaya, upasargas)
-                for (const kr of krdResults) {
-                  const tadResult = deriveTaddhitaChain(
-                    vidyut, kr.text, tadSuffixes, kr.history,
-                    linga, vacana, vibhakti, slp1Form,
-                  )
-                  if (tadResult && tadResult.match) return tadResult
-                  if (tadResult && !fallback) fallback = tadResult
-                }
-                continue
-              }
-
-              // DHATU + KRT + STRI
-              if (striPart) {
-                const result = deriveStriSubanta(vidyut, slp1Form, dhatu, pratyaya, linga, vacana, vibhakti)
-                if (result && result.match) return result
-                if (result && !fallback) fallback = result
-                continue
-              }
-
-              // DHATU + KRT + case → subanta
-              if (linga && vacana && vibhakti) {
-                const result = deriveSubanta(vidyut, slp1Form, dhatu, pratyaya, sanadi, upasargas, linga, vacana, vibhakti)
-                if (result && result.match) return result
-                if (result && !fallback) fallback = result
-                continue
-              }
-
-              // DHATU + KRT only → stem derivation
-              const krdResults = deriveKrdantaStems(vidyut, dhatu, pratyaya, upasargas)
-              for (const r of krdResults) {
-                const res = makeResult(r.history, r.text, slp1Form)
-                if (res.match) return res
-                if (!fallback) fallback = res
-              }
-            } catch (_) { /* try next gana */ }
-          }
-        }
-
-        return fallback
-      }
+    if (parsed.parts[0].startsWith('MW.') || parsed.parts[0].startsWith('PRON.')) {
+      return deriveMwPron(vidyut, slp1Form, parsed, type)
     }
-
-    // --- MW/PRON entries ---
-    if (parts[0].startsWith('MW.') || parts[0].startsWith('PRON.')) {
-      const mwParts = parts[0].split('.')
-      // Strip hyphens: MW.A-dA → stem 'AdA'
-      const aupadeshika = mwParts[1].replace(/-/g, '')
-
-      // MW/PRON + TAD
-      if (tadSuffixes) {
-        return deriveTaddhitaChain(vidyut, aupadeshika, tadSuffixes, [], linga, vacana, vibhakti, slp1Form)
-      }
-
-      // MW/PRON + case → basic subanta
-      if (linga && vacana && vibhakti) {
-        // nyāp feminine: stems ending in A/I/U with feminine gender
-        const cgnShort = cgnPart?.split('.')[1]
-        if (cgnShort === 'F' && (aupadeshika.endsWith('A') || aupadeshika.endsWith('I') || aupadeshika.endsWith('U'))) {
-          let fallback = null
-          // Try nyap pratipadika first
-          try {
-            const results = vidyut.deriveSubantas({
-              pratipadika: { nyap: aupadeshika }, linga, vacana, vibhakti,
-            })
-            for (const r of results) {
-              if (r.text === slp1Form) return makeResult(r.history, r.text, slp1Form)
-              if (!fallback) fallback = makeResult(r.history, r.text, slp1Form)
-            }
-          } catch (_) { /* fall through to basic */ }
-          // Also try basic pratipadika
-          try {
-            const results = vidyut.deriveSubantas({
-              pratipadika: { basic: aupadeshika }, linga, vacana, vibhakti,
-            })
-            for (const r of results) {
-              if (r.text === slp1Form) return makeResult(r.history, r.text, slp1Form)
-              if (!fallback) fallback = makeResult(r.history, r.text, slp1Form)
-            }
-          } catch (_) { /* no results */ }
-          return fallback
-        }
-        // Standard basic pratipadika
-        const dhatu = { aupadeshika, gana: null, antargana: null, sanadi: [], prefixes: [] }
-        return deriveSubanta(vidyut, slp1Form, dhatu, null, [], [], linga, vacana, vibhakti)
-      }
-
-      // MW/PRON stem validation: only for 'stem' type, consonant-ending stems
-      if (type !== 'stem' || /[aAiIuUfFxXeEoO]$/.test(aupadeshika)) return null
-      for (const probeLinga of ['Pum', 'Napumsaka', 'Stri']) {
-        try {
-          const results = vidyut.deriveSubantas({
-            pratipadika: { basic: aupadeshika },
-            linga: probeLinga,
-            vacana: 'Eka',
-            vibhakti: 'Prathama',
-          })
-          if (results && results.length > 0) {
-            // Stem probe: success means vidyut recognizes this pratipadika.
-            // Don't compare inflected form to stem — just mark as match.
-            return { steps: results[0].history, text: slp1Form, match: true }
-          }
-        } catch (_) { /* try next gender */ }
-      }
-    }
-
     return null
   } catch (e) {
     return null

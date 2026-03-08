@@ -635,7 +635,6 @@ import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
 import words from "../assets/data/words.csv?raw";
-
 import { filter } from "@/scripts/index/filter";
 import { renderSanskrit } from "@/scripts/index/explanation";
 import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
@@ -2168,6 +2167,7 @@ export default {
   font-size: 11pt;
   white-space: pre-wrap;
 }
+
 
 /* Wider mobile: inscription + Sanskrit side by side, right/left aligned */
 @media (min-width: 600px) {

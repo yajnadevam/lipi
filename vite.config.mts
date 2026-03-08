@@ -11,13 +11,158 @@ import liveReload from 'vite-plugin-live-reload'
 // Utilities
 import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
-import { readFileSync, writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { parse } from 'csv-parse/sync'
 import { resolve as pathResolve } from 'node:path'
+
+// --- MW auto-sync: keeps mw.json in sync with glossing.csv ---
+const MW_DICT_PATH = '/Users/brr/analysis/mw.txt'
+const MW_JSON_PATH = pathResolve(__dirname, 'src/assets/data/mw.json')
+const CSV_PATH = pathResolve(__dirname, 'glossing.csv')
+
+let mwDictCache: Record<string, { lid: string, content: string }[]> | null = null
+
+function loadMwDict () {
+  if (mwDictCache) return mwDictCache
+  if (!existsSync(MW_DICT_PATH)) {
+    console.warn('[mw-sync] MW dictionary not found at', MW_DICT_PATH)
+    return null
+  }
+  console.log('[mw-sync] Loading MW dictionary (one-time)...')
+  const mwTxt = readFileSync(MW_DICT_PATH, 'utf8')
+  const entries = mwTxt.split('<LEND>')
+  const dict: Record<string, { lid: string, content: string }[]> = {}
+  for (const entry of entries) {
+    const k1Match = entry.match(/<k1>([^<]+)/)
+    if (!k1Match) continue
+    const k1 = k1Match[1]
+    const lines = entry.trim().split('\n')
+    if (lines.length < 2) continue
+    const content = lines.slice(1).join('\n').trim()
+    const lMatch = lines[0].match(/<L>([^<]+)/)
+    const lid = lMatch ? lMatch[1] : ''
+    if (!dict[k1]) dict[k1] = []
+    dict[k1].push({ lid, content })
+  }
+  console.log(`[mw-sync] Cached ${Object.keys(dict).length} MW stems`)
+  mwDictCache = dict
+  return dict
+}
+
+function syncMwEntries () {
+  const mwJson = JSON.parse(readFileSync(MW_JSON_PATH, 'utf8'))
+  const csvRaw = readFileSync(CSV_PATH, 'utf8')
+  const rows = parse(csvRaw, { columns: true, relax_quotes: true, relax_column_count: true })
+
+  // Collect all stems and IDs referenced in glossing.csv
+  const needed = new Map<string, Set<string>>() // stem → Set of MW IDs
+  for (const row of rows) {
+    const analysis = (row.analysis || '') as string
+    const m = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+))?/)
+    if (!m) continue
+    const stem = m[1]
+    const id = m[2]
+    if (!needed.has(stem)) needed.set(stem, new Set())
+    if (id) needed.get(stem)!.add(id)
+  }
+
+  // Find what's missing
+  const missingStems = new Set<string>()
+  const missingIds = new Map<string, Set<string>>() // stem → missing IDs
+  for (const [stem, ids] of needed) {
+    const existing = mwJson[stem] as string[] | undefined
+    if (!existing || existing.length === 0) {
+      missingStems.add(stem)
+    } else if (ids.size > 0) {
+      for (const id of ids) {
+        if (!existing.some((e: string) => e.includes(`[ID=${id}]`))) {
+          if (!missingIds.has(stem)) missingIds.set(stem, new Set())
+          missingIds.get(stem)!.add(id)
+        }
+      }
+    }
+  }
+
+  if (missingStems.size === 0 && missingIds.size === 0) return false
+
+  const dict = loadMwDict()
+  if (!dict) return false
+
+  let added = 0
+  // Add entirely missing stems
+  for (const stem of missingStems) {
+    const cleanStem = stem.replace(/,$/, '')
+    if (!dict[cleanStem]) {
+      console.warn(`[mw-sync] Stem "${cleanStem}" not found in MW dictionary`)
+      continue
+    }
+    mwJson[cleanStem] = dict[cleanStem].map(e => {
+      let c = e.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
+      if (e.lid) c += `<L>[ID=${e.lid}]</L>`
+      return c
+    })
+    added += dict[cleanStem].length
+    console.log(`[mw-sync] Added stem "${cleanStem}" (${dict[cleanStem].length} entries)`)
+  }
+
+  // Add missing IDs to existing stems
+  for (const [stem, ids] of missingIds) {
+    const cleanStem = stem.replace(/,$/, '')
+    if (!dict[cleanStem]) continue
+    const existing = mwJson[cleanStem] as string[]
+    for (const id of ids) {
+      const dictEntry = dict[cleanStem].find(e => e.lid === id)
+      if (!dictEntry) {
+        console.warn(`[mw-sync] ID ${id} for "${cleanStem}" not found in MW dictionary`)
+        continue
+      }
+      let c = dictEntry.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
+      if (dictEntry.lid) c += `<L>[ID=${dictEntry.lid}]</L>`
+      existing.push(c)
+      added++
+      console.log(`[mw-sync] Added ID ${id} to "${cleanStem}"`)
+    }
+  }
+
+  if (added > 0) {
+    writeFileSync(MW_JSON_PATH, JSON.stringify(mwJson, null, 2))
+    console.log(`[mw-sync] Updated mw.json (+${added} entries)`)
+    return true
+  }
+  return false
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    {
+      name: 'mw-sync',
+      configureServer(server) {
+        // Run sync once on startup
+        try {
+          if (syncMwEntries()) {
+            const mwMods = server.moduleGraph.getModulesByFile(MW_JSON_PATH)
+            if (mwMods) mwMods.forEach(m => server.moduleGraph.invalidateModule(m))
+          }
+        } catch (e) {
+          console.error('[mw-sync] Initial sync failed:', e)
+        }
+
+        // Watch glossing.csv for changes
+        server.watcher.on('change', (file) => {
+          if (pathResolve(file) !== CSV_PATH) return
+          try {
+            if (syncMwEntries()) {
+              const mwMods = server.moduleGraph.getModulesByFile(MW_JSON_PATH)
+              if (mwMods) mwMods.forEach(m => server.moduleGraph.invalidateModule(m))
+              console.log('[mw-sync] mw.json cache invalidated')
+            }
+          } catch (e) {
+            console.error('[mw-sync] Sync failed:', e)
+          }
+        })
+      }
+    },
     {
       name: 'lemma-editor',
       configureServer(server) {

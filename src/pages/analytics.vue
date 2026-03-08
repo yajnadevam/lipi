@@ -8,194 +8,234 @@
     <v-layout>
       <v-main>
         <v-container>
-        <!-- Loading State -->
-        <v-row v-if="!vidyutReady">
-          <v-col cols="12">
-            <v-card class="pa-4">
-              <v-card-title class="text-h5 text-center">
-                <v-progress-circular indeterminate class="mr-2"></v-progress-circular>
-                Initializing Vidyut...
-              </v-card-title>
-              <v-card-subtitle class="text-center">
-                Loading Sanskrit validation engine
-              </v-card-subtitle>
-            </v-card>
-          </v-col>
-        </v-row>
+          <!-- Loading State -->
+          <v-row v-if="!vidyutReady">
+            <v-col cols="12">
+              <v-card class="pa-4">
+                <v-card-title class="text-h5 text-center">
+                  <v-progress-circular indeterminate class="mr-2"></v-progress-circular>
+                  Initializing Vidyut...
+                </v-card-title>
+                <v-card-subtitle class="text-center">
+                  Loading Sanskrit validation engine
+                </v-card-subtitle>
+              </v-card>
+            </v-col>
+          </v-row>
 
-        <template v-else>
-        <!-- Total Words Card -->
-        <v-row>
-          <v-col cols="12">
-            <v-card class="pa-4">
-              <v-card-title class="text-h4 text-center">
-                {{ stats.totalWords }} lemmas
-              </v-card-title>
-              <v-card-subtitle class="text-center">
-                Total lemma entries in the corpus
-              </v-card-subtitle>
-            </v-card>
-          </v-col>
-        </v-row>
+          <template v-else>
+            <!-- Total Words Card -->
+            <v-row>
+              <v-col cols="12">
+                <v-card class="pa-4">
+                  <v-card-title class="text-h4 text-center">
+                    {{ stats.totalWords }} lemmas
+                  </v-card-title>
+                  <v-card-subtitle class="text-center">
+                    Total lemma entries in the corpus
+                  </v-card-subtitle>
+                </v-card>
+              </v-col>
+            </v-row>
 
-        <!-- Pie Chart: Word Type Distribution -->
-        <v-row class="mt-4">
-          <v-col cols="12" md="6">
-            <v-card class="pa-4">
-              <v-card-title>Word Type Distribution</v-card-title>
-              <div class="pie-chart-container">
-                <svg viewBox="0 0 200 200" class="pie-chart">
-                  <g transform="translate(100, 100)">
-                    <path
-                      v-for="(slice, idx) in pieSlices"
-                      :key="idx"
-                      :d="slice.path"
-                      :fill="slice.color"
-                      :stroke="isDark ? '#1e1e1e' : '#fff'"
-                      stroke-width="2"
-                      class="pie-slice"
-                      @mouseenter="hoveredSlice = idx"
-                      @mouseleave="hoveredSlice = null"
-                    />
-                  </g>
-                </svg>
-                <div class="pie-legend">
-                  <div
-                    v-for="(slice, idx) in pieSlices"
-                    :key="idx"
-                    class="legend-item"
-                    :class="{ highlighted: hoveredSlice === idx }"
+            <!-- Pie Chart: Word Type Distribution -->
+            <v-row class="mt-4">
+              <v-col cols="12" md="6">
+                <v-card class="pa-4">
+                  <v-card-title>Word Type Distribution</v-card-title>
+                  <div class="pie-chart-container">
+                    <svg viewBox="0 0 200 200" class="pie-chart">
+                      <g transform="translate(100, 100)">
+                        <path
+                          v-for="(slice, idx) in pieSlices"
+                          :key="idx"
+                          :d="slice.path"
+                          :fill="slice.color"
+                          :stroke="isDark ? '#1e1e1e' : '#fff'"
+                          stroke-width="2"
+                          class="pie-slice"
+                          @mouseenter="hoveredSlice = idx"
+                          @mouseleave="hoveredSlice = null"
+                        />
+                      </g>
+                    </svg>
+                    <div class="pie-legend">
+                      <div
+                        v-for="(slice, idx) in pieSlices"
+                        :key="idx"
+                        class="legend-item"
+                        :class="{ highlighted: hoveredSlice === idx }"
+                      >
+                        <span class="legend-color" :style="{ backgroundColor: slice.color }"></span>
+                        <span class="legend-label">{{ slice.label }}</span>
+                        <span class="legend-value">{{ slice.count }} ({{ slice.percent.toFixed(1) }}%)</span>
+                      </div>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+
+              <!-- Validation Bars -->
+              <v-col cols="12" md="6">
+                <v-card class="pa-4">
+                  <v-card-title>Validation Status</v-card-title>
+                  <div class="validation-bars">
+                    <!-- Stems Validation -->
+                    <div class="validation-row" @click="toggleInvalid('stems')">
+                      <div class="validation-label">Valid MW Stems ({{ stats.totalStemsCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validStemsPercent + '%' }"
+                        >
+                          {{ stats.validStemsCount }} ({{ stats.validStemsPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validStemsPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validStemsPercent) + '%' }"
+                        >
+                          {{ stats.invalidStemsCount }} ({{ (100 - stats.validStemsPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Derived Stems Validation (Vidyut) -->
+                    <div class="validation-row" @click="toggleInvalid('derivedStems')">
+                      <div class="validation-label">Valid Krdanta/Taddhita Derivations ({{ stats.totalDerivedStemsCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validDerivedStemsPercent + '%' }"
+                        >
+                          {{ stats.validDerivedStemsCount }} ({{ stats.validDerivedStemsPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validDerivedStemsPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validDerivedStemsPercent) + '%' }"
+                        >
+                          {{ stats.invalidDerivedStemsCount }} ({{ (100 - stats.validDerivedStemsPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Declensions Validation -->
+                    <div class="validation-row" @click="toggleInvalid('declensions')">
+                      <div class="validation-label">Valid Declensions ({{ stats.totalDeclensionsCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validDeclensionsPercent + '%' }"
+                        >
+                          {{ stats.validDeclensionsCount }} ({{ stats.validDeclensionsPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validDeclensionsPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validDeclensionsPercent) + '%' }"
+                        >
+                          {{ stats.invalidDeclensionsCount }} ({{ (100 - stats.validDeclensionsPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Meanings Validation -->
+                    <div class="validation-row" @click="toggleInvalid('meanings')">
+                      <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validMeaningsPercent + '%' }"
+                        >
+                          {{ stats.validMeaningsCount }} ({{ stats.validMeaningsPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validMeaningsPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validMeaningsPercent) + '%' }"
+                        >
+                          {{ stats.invalidMeaningsCount }} ({{ (100 - stats.validMeaningsPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Word Coverage Validation -->
+                    <div class="validation-row" @click="toggleInvalid('coverage')">
+                      <div class="validation-label">Word Coverage ({{ stats.totalCoverageCount }} inscriptions)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validCoveragePercent + '%' }"
+                        >
+                          {{ stats.validCoverageCount }} ({{ stats.validCoveragePercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validCoveragePercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validCoveragePercent) + '%' }"
+                        >
+                          {{ stats.invalidCoverageCount }} ({{ (100 - stats.validCoveragePercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Lexeme in Translation Validation -->
+                    <div class="validation-row" @click="toggleInvalid('lexemes')">
+                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validLexemePercent + '%' }"
+                        >
+                          {{ stats.validLexemeCount }} ({{ stats.validLexemePercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validLexemePercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validLexemePercent) + '%' }"
+                        >
+                          {{ stats.invalidLexemeCount }} ({{ (100 - stats.validLexemePercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <v-card-text class="text-caption text-center mt-2">
+                    Click any bar to see invalid entries
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
+
+            <!-- Invalid Entries Dialog -->
+            <v-dialog v-model="showInvalidDialog" max-width="900">
+              <v-card>
+                <v-card-title class="d-flex justify-space-between align-center">
+                  <span>Invalid {{ invalidType }} ({{ invalidEntries.length }} entries, {{ uniqueInvalidCount }} unique)</span>
+                  <v-btn icon @click="showInvalidDialog = false">
+                    <v-icon>mdi-close</v-icon>
+                  </v-btn>
+                </v-card-title>
+                <v-divider />
+                <v-card-text style="max-height: 500px; overflow-y: auto;">
+                  <v-data-table
+                    :headers="invalidTableHeaders"
+                    :items="invalidEntries"
+                    :items-per-page="50"
+                    density="compact"
+                    class="invalid-entries-table"
                   >
-                    <span class="legend-color" :style="{ backgroundColor: slice.color }"></span>
-                    <span class="legend-label">{{ slice.label }}</span>
-                    <span class="legend-value">{{ slice.count }} ({{ slice.percent.toFixed(1) }}%)</span>
-                  </div>
-                </div>
-              </div>
-            </v-card>
-          </v-col>
-
-          <!-- Validation Bars -->
-          <v-col cols="12" md="6">
-            <v-card class="pa-4">
-              <v-card-title>Validation Status</v-card-title>
-              <div class="validation-bars">
-                <!-- Stems Validation -->
-                <div class="validation-row" @click="toggleInvalid('stems')">
-                  <div class="validation-label">Valid MW Stems ({{ stats.totalStemsCount }} checked)</div>
-                  <div class="validation-bar-container">
-                    <div
-                      class="validation-bar valid"
-                      :style="{ width: stats.validStemsPercent + '%' }"
-                    >
-                      {{ stats.validStemsCount }} ({{ stats.validStemsPercent.toFixed(1) }}%)
-                    </div>
-                    <div
-                      v-if="stats.validStemsPercent < 100"
-                      class="validation-bar invalid"
-                      :style="{ width: (100 - stats.validStemsPercent) + '%' }"
-                    >
-                      {{ stats.invalidStemsCount }} ({{ (100 - stats.validStemsPercent).toFixed(1) }}%)
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Derived Stems Validation (Vidyut) -->
-                <div class="validation-row" @click="toggleInvalid('derivedStems')">
-                  <div class="validation-label">Valid Krdanta/Taddhita Derivations ({{ stats.totalDerivedStemsCount }} checked)</div>
-                  <div class="validation-bar-container">
-                    <div
-                      class="validation-bar valid"
-                      :style="{ width: stats.validDerivedStemsPercent + '%' }"
-                    >
-                      {{ stats.validDerivedStemsCount }} ({{ stats.validDerivedStemsPercent.toFixed(1) }}%)
-                    </div>
-                    <div
-                      v-if="stats.validDerivedStemsPercent < 100"
-                      class="validation-bar invalid"
-                      :style="{ width: (100 - stats.validDerivedStemsPercent) + '%' }"
-                    >
-                      {{ stats.invalidDerivedStemsCount }} ({{ (100 - stats.validDerivedStemsPercent).toFixed(1) }}%)
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Declensions Validation -->
-                <div class="validation-row" @click="toggleInvalid('declensions')">
-                  <div class="validation-label">Valid Declensions ({{ stats.totalDeclensionsCount }} checked)</div>
-                  <div class="validation-bar-container">
-                    <div
-                      class="validation-bar valid"
-                      :style="{ width: stats.validDeclensionsPercent + '%' }"
-                    >
-                      {{ stats.validDeclensionsCount }} ({{ stats.validDeclensionsPercent.toFixed(1) }}%)
-                    </div>
-                    <div
-                      v-if="stats.validDeclensionsPercent < 100"
-                      class="validation-bar invalid"
-                      :style="{ width: (100 - stats.validDeclensionsPercent) + '%' }"
-                    >
-                      {{ stats.invalidDeclensionsCount }} ({{ (100 - stats.validDeclensionsPercent).toFixed(1) }}%)
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Meanings Validation -->
-                <div class="validation-row" @click="toggleInvalid('meanings')">
-                  <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} checked)</div>
-                  <div class="validation-bar-container">
-                    <div
-                      class="validation-bar valid"
-                      :style="{ width: stats.validMeaningsPercent + '%' }"
-                    >
-                      {{ stats.validMeaningsCount }} ({{ stats.validMeaningsPercent.toFixed(1) }}%)
-                    </div>
-                    <div
-                      v-if="stats.validMeaningsPercent < 100"
-                      class="validation-bar invalid"
-                      :style="{ width: (100 - stats.validMeaningsPercent) + '%' }"
-                    >
-                      {{ stats.invalidMeaningsCount }} ({{ (100 - stats.validMeaningsPercent).toFixed(1) }}%)
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <v-card-text class="text-caption text-center mt-2">
-                Click any bar to see invalid entries
-              </v-card-text>
-            </v-card>
-          </v-col>
-        </v-row>
-
-        <!-- Invalid Entries Dialog -->
-        <v-dialog v-model="showInvalidDialog" max-width="900">
-          <v-card>
-            <v-card-title class="d-flex justify-space-between align-center">
-              <span>Invalid {{ invalidType }} ({{ invalidEntries.length }} entries, {{ uniqueInvalidCount }} unique)</span>
-              <v-btn icon @click="showInvalidDialog = false">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </v-card-title>
-            <v-divider />
-            <v-card-text style="max-height: 500px; overflow-y: auto;">
-              <v-data-table
-                :headers="invalidTableHeaders"
-                :items="invalidEntries"
-                :items-per-page="50"
-                density="compact"
-                class="invalid-entries-table"
-              >
-                <template #[`item.analysis`]="{ item }">
-                  <span class="text-caption">{{ item.analysis }}</span>
-                </template>
-                <template #[`item.issue`]="{ item }">
-                  <span class="text-caption text-error">{{ item.issue }}</span>
-                </template>
-              </v-data-table>
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-        </template>
+                    <template #[`item.analysis`]="{ item }">
+                      <span class="text-caption">{{ item.analysis }}</span>
+                    </template>
+                    <template #[`item.issue`]="{ item }">
+                      <span class="text-caption text-error">{{ item.issue }}</span>
+                    </template>
+                  </v-data-table>
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+          </template>
         </v-container>
       </v-main>
     </v-layout>
@@ -203,80 +243,491 @@
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
-import { useTheme } from 'vuetify'
-import { csv2json } from 'json-2-csv'
-import lemmasCsv from '../../glossing.csv?raw'
-import mwJson from '../assets/data/mw.json'
-import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
-import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'
-import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
+  import { ref, computed, onMounted } from 'vue'
+  import { useTheme } from 'vuetify'
+  import { csv2json } from 'json-2-csv'
+  import lemmasCsv from '../../glossing.csv?raw'
+  import inscriptionsCsv from '../assets/data/inscriptions.csv?raw'
+  import mwJson from '../assets/data/mw.json'
+  import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
+  import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'
+  import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
 
-// Parse lemmas data (lazy init to catch errors)
-let lemmas = []
-let mwIndex = new Set()
-let initError = null
+  // Parse lemmas data (lazy init to catch errors)
+  let lemmas = []
+  let inscriptions = []
+  let mwIndex = new Set()
+  let initError = null
 
-try {
-  // Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
-  lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
-  mwIndex = new Set(Object.keys(mwJson))
-} catch (e) {
-  console.error('Failed to initialize data:', e)
-  initError = e.message
-}
+  try {
+    // Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
+    lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
+    inscriptions = csv2json(inscriptionsCsv.replace(/\r\n/g, '\n'))
+    mwIndex = new Set(Object.keys(mwJson))
+  } catch (e) {
+    console.error('Failed to initialize data:', e)
+    initError = e.message
+  }
 
-// Vidyut instance (set after initialization)
-let vidyut = null
+  function extractMeaning(lexeme) {
+    if (!lexeme) return null
+    const cleaned = lexeme.replace(/\[[^\]]*\]/g, '').trim()
+    const match = cleaned.match(/^([^/]+)/)
+    return match ? match[1].trim() : cleaned
+  }
 
-// Dhatu lookup index: maps simplified form (e.g., "Sad") to aupadeshika (e.g., "za\\dx~")
-let dhatuIndex = null
-
-
-export default {
-  name: 'AnalyticsPage',
-  data() {
-    return {
-      vidyutReady: false,
-      hoveredSlice: null,
-      showInvalidDialog: false,
-      invalidType: '',
-      invalidEntries: [],
-      invalidTableHeaders: [
-        { title: 'ID', key: 'id', sortable: true },
-        { title: 'Form', key: 'form', sortable: true },
-        { title: 'Analysis', key: 'analysis', sortable: true },
-        { title: 'Issue', key: 'issue', sortable: true },
-      ],
-      // Cached validation results
-      validationCache: null,
-      invalidDerivedStemsList: [],
-      invalidDeclensionsList: [],
+  // Synonym groups for common MW translation equivalences
+  const SYNONYM_GROUPS = [
+    ['mighty', 'might', 'power', 'powerful', 'strength', 'strong', 'force', 'potent'],
+    ['swift', 'speed', 'quick', 'fast', 'rapid'],
+    ['still', 'motionless', 'stiff', 'torpid', 'immobile'],
+    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty'],
+    ['wander', 'wanderer', 'movable', 'moving', 'roam', 'roaming'],
+    ['great', 'grand', 'large', 'vast', 'abundant'],
+    ['kill', 'killer', 'slay', 'slayer', 'destroy', 'destroyer', 'destruction'],
+    ['water', 'waters', 'wave', 'flood', 'stream', 'river', 'ocean', 'sea'],
+    ['roar', 'roarer', 'roaring', 'cry', 'howl', 'yell', 'sound'],
+    ['shine', 'shining', 'glow', 'glowing', 'blaze', 'blazing', 'bright', 'radiant', 'lustre'],
+    ['tranquil', 'calm', 'peace', 'peaceful', 'quiet', 'rest', 'serene'],
+    ['meditate', 'meditator', 'opinion', 'notion', 'conception', 'idea', 'thought'],
+    ['breathe', 'breath', 'breathing', 'exhale', 'exhaling'],
+    ['bear', 'bearer', 'carry', 'support', 'supporting'],
+    ['give', 'giver', 'giving', 'bestow', 'grant'],
+    ['please', 'pleasing', 'delight', 'delighting', 'rejoicing', 'joy'],
+    ['gold', 'golden'],
+    ['leaf', 'foliage'],
+    ['bow', 'bowing', 'salute', 'saluting', 'homage'],
+    ['soul', 'spirit', 'self'],
+    ['honor', 'honour', 'respect', 'worship', 'reverence'],
+    ['subdue', 'subduing', 'conquer', 'conquering', 'tame', 'taming'],
+    ['well', 'excellent'],
+    ['that', 'the', 'this', 'those', 'these'],
+    ['who', 'whom', 'whose', 'which'],
+  ]
+  const synonymMap = new Map()
+  for (const group of SYNONYM_GROUPS) {
+    for (const word of group) {
+      synonymMap.set(word, group)
     }
-  },
-  computed: {
-    isDark() {
-      return this.$vuetify.theme.global.current.dark
-    },
-    uniqueInvalidCount() {
-      const uniqueValues = new Set()
-      for (const entry of this.invalidEntries) {
-        if (this.invalidType === 'stems') {
-          const mwMatch = (entry.analysis || '').match(/MW\.([^.\s]+)/)
-          if (mwMatch) uniqueValues.add(mwMatch[1])
-        } else if (this.invalidType === 'derivedStems') {
-          uniqueValues.add(entry.analysis)
-        } else if (this.invalidType === 'declensions') {
-          uniqueValues.add(entry.form)
-        } else if (this.invalidType === 'meanings') {
-          uniqueValues.add(entry.form)
+  }
+
+  function stemWord(word) {
+    for (const suf of ['ness', 'ment', 'tion', 'sion', 'ful', 'ous', 'ive', 'ing', 'er', 'ed', 'ly', 'al', 'ity']) {
+      if (word.endsWith(suf) && word.length > suf.length + 2) {
+        return word.slice(0, -suf.length)
+      }
+    }
+    if (word.endsWith('s') && word.length > 4) return word.slice(0, -1)
+    return word
+  }
+
+  function meaningInDictionary(lexemeMeaning, dictMeaning) {
+    if (!lexemeMeaning || !dictMeaning) return true
+
+    const lexLower = lexemeMeaning.toLowerCase()
+    const dictLower = dictMeaning.replace(/<[^>]+>/g, ' ').toLowerCase()
+
+    if (dictLower.includes(lexLower)) return true
+
+    const lexWords = lexLower.split(/[\s,;.]+/).filter(w => w.length > 2)
+    const dictWords = dictLower.split(/[\s,;.'()+]+/).filter(w => w.length >= 3)
+
+    for (const word of lexWords) {
+      if (dictLower.includes(word)) return true
+      // 4-char prefix substring
+      if (word.length >= 4 && dictLower.includes(word.slice(0, 4))) return true
+      // 3-char prefix word-level match
+      if (dictWords.some(dw => dw.startsWith(word.slice(0, 3)))) return true
+      // Stemmed match: "roarer" → "roar", "powerful" → "power"
+      const stem = stemWord(word)
+      if (stem !== word && stem.length >= 3 && dictLower.includes(stem)) return true
+      // Synonym check
+      const synonyms = synonymMap.get(word) || synonymMap.get(stem)
+      if (synonyms) {
+        for (const syn of synonyms) {
+          if (dictLower.includes(syn)) return true
         }
       }
-      return uniqueValues.size
+    }
+
+    return false
+  }
+
+  // Vidyut instance (set after initialization)
+  let vidyut = null
+
+  // Dhatu lookup index: maps simplified form (e.g., "Sad") to aupadeshika (e.g., "za\\dx~")
+  let dhatuIndex = null
+
+  function classifyTypes (rows) {
+    let mwCount = 0
+    let dhatuKrtCount = 0
+    let tinCount = 0
+    let userCount = 0
+    for (const row of rows) {
+      const analysis = row.analysis || ''
+      if (analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.')) {
+        mwCount++
+      } else if (analysis.startsWith('DHATU.')) {
+        if (analysis.includes('KRT.')) {
+          dhatuKrtCount++
+        } else if (analysis.includes('TIN.')) {
+          tinCount++
+        }
+      } else if (analysis.startsWith('USER')) {
+        userCount++
+      }
+    }
+    return { mwCount, dhatuKrtCount, tinCount, userCount }
+  }
+
+  function validateStems (rows) {
+    let valid = 0
+    let invalid = 0
+    for (const row of rows) {
+      const mwMatch = (row.analysis || '').match(/MW\.([^.\s]+)/)
+      if (mwMatch) {
+        if (mwIndex.has(mwMatch[1])) {
+          valid++
+        } else {
+          invalid++
+        }
+      }
+    }
+    return { valid, invalid }
+  }
+
+  function validateDerivations (rows) {
+    let validDerived = 0
+    let invalidDerived = 0
+    let validDecl = 0
+    let invalidDecl = 0
+    const invalidDerivedList = []
+    const invalidDeclList = []
+    const derivablePattern = /\bDHATU\.|\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/
+
+    for (const row of rows) {
+      const analysis = row.analysis || ''
+      const form = row.form || ''
+      const hasDhatu = analysis.startsWith('DHATU.')
+      const hasKrt = analysis.includes('KRT.')
+      const hasTad = analysis.includes('TAD.')
+      const mwMatch = analysis.match(/MW\.([^.\s]+)/)
+      const isDerivable = analysis && form && derivablePattern.test(analysis)
+      const caseMatch = analysis.match(/\b(Nom|Voc|Acc|Ins|Dat|Abl|Gen|Loc)\.(M|F|N)\.(S|D|P)\b/)
+
+      if (isDerivable) {
+        let result = null
+        try {
+          result = derive(vidyut, analysis, form, { dhatuIndex })
+        } catch (_) { /* derivation error */ }
+
+        if (hasDhatu && hasKrt && !caseMatch) {
+          if (result?.match) {
+            validDerived++
+          } else {
+            invalidDerived++
+            invalidDerivedList.push({ ...row, issue: result ? `got "${result.text}"` : 'no derivation' })
+          }
+        } else if (caseMatch || (hasDhatu && analysis.includes('TIN.'))) {
+          if (result?.match) {
+            validDecl++
+          } else {
+            invalidDecl++
+            invalidDeclList.push({ ...row, issue: `vidyut: got "${result?.text || 'no derivation'}"` })
+          }
+        } else if (hasDhatu && hasKrt) {
+          if (result?.match) {
+            validDerived++
+          } else {
+            invalidDerived++
+            invalidDerivedList.push({ ...row, issue: result ? `got "${result.text}"` : 'no derivation' })
+          }
+        }
+      } else if (mwMatch && hasTad && !caseMatch) {
+        if (mwIndex.has(mwMatch[1])) {
+          validDerived++
+        } else {
+          invalidDerived++
+          invalidDerivedList.push({ ...row, issue: `MW stem "${mwMatch[1]}" not in dictionary` })
+        }
+      }
+    }
+    return { validDerived, invalidDerived, validDecl, invalidDecl, invalidDerivedList, invalidDeclList }
+  }
+
+  function validateCoverage (glossingRows, inscriptionRows) {
+    // Build glossing index: id → Set of forms
+    const glossingById = new Map()
+    const glossingLexemes = new Map() // id → [{form, lexeme}]
+    for (const row of glossingRows) {
+      const id = row.id
+      if (!id) continue
+      if (!glossingById.has(id)) glossingById.set(id, new Set())
+      glossingById.get(id).add(row.form || '')
+      if (!glossingLexemes.has(id)) glossingLexemes.set(id, [])
+      const lex = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+      if (lex) glossingLexemes.get(id).push({ form: row.form, lexeme: lex })
+    }
+
+    let validCoverage = 0
+    let invalidCoverage = 0
+    const invalidCoverageList = []
+    let validLexeme = 0
+    let invalidLexeme = 0
+    const invalidLexemeList = []
+
+    for (const insc of inscriptionRows) {
+      const id = insc.id
+      const sanskrit = (insc.sanskrit || '').trim()
+      const translation = (insc.translation || '').trim()
+
+      // Skip empty, ref:, or untranslated inscriptions
+      if (!sanskrit || sanskrit.startsWith('ref:') || !translation) continue
+
+      // --- Word Coverage: every word/compound member has a glossing entry ---
+      const glossForms = glossingById.get(id)
+      const words = sanskrit.split(/\s+/)
+      const allMembers = []
+      for (const word of words) {
+        for (const member of word.split('-')) {
+          if (member) allMembers.push(member)
+        }
+      }
+
+      if (!glossForms || glossForms.size === 0) {
+        invalidCoverage++
+        invalidCoverageList.push({ id, form: sanskrit, analysis: '', issue: 'No glossing entries for this inscription' })
+      } else {
+        const missing = allMembers.filter(m => !glossForms.has(m))
+        if (missing.length === 0) {
+          validCoverage++
+        } else {
+          invalidCoverage++
+          invalidCoverageList.push({ id, form: sanskrit, analysis: '', issue: `Missing glossing: ${missing.join(', ')}` })
+        }
+      }
+
+      // --- Lexeme-in-Translation: each lexeme appears in the inscription translation ---
+      const lexemes = glossingLexemes.get(id) || []
+      for (const { form, lexeme } of lexemes) {
+        const meaning = extractMeaning(lexeme)
+        if (!meaning || meaning.length < 2) continue
+        // Strip bracketed refs from translation for matching
+        const cleanTranslation = translation.replace(/\[[^\]]*\]/g, ' ')
+        if (meaningInDictionary(meaning, cleanTranslation)) {
+          validLexeme++
+        } else {
+          invalidLexeme++
+          invalidLexemeList.push({ id, form, analysis: lexeme, issue: `"${meaning}" not found in: "${cleanTranslation.substring(0, 80).trim()}…"` })
+        }
+      }
+    }
+
+    return {
+      validCoverage,
+      invalidCoverage,
+      invalidCoverageList,
+      validLexeme,
+      invalidLexeme,
+      invalidLexemeList,
+    }
+  }
+
+  function validateMeanings (rows) {
+    let valid = 0
+    let invalid = 0
+    const invalidList = []
+
+    for (const row of rows) {
+      const analysis = row.analysis || ''
+      // Skip DHATU entries — no MW dictionary entry for verbal roots
+      if (analysis.startsWith('DHATU.')) continue
+
+      // Extract stem and MW ID from analysis: MW.stem.id, PRON.stem.id, INDC.stem.id
+      const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+))?/)
+      if (!mwMatch) continue
+
+      const stem = mwMatch[1]
+      const mwId = mwMatch[2]
+      const allEntries = mwJson[stem]
+      if (!allEntries || allEntries.length === 0) continue
+
+      const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+      if (!lexeme) {
+        invalid++
+        invalidList.push({ ...row, issue: 'Missing translation_lexeme' })
+        continue
+      }
+
+      const meaning = extractMeaning(lexeme)
+      if (!meaning || meaning.length < 2) continue
+
+      // If the lexeme is the word itself (used as-is in translation), it's valid
+      if (meaning.toLowerCase() === (row.form || '').toLowerCase() || meaning.toLowerCase() === stem.toLowerCase()) {
+        valid++
+        continue
+      }
+
+      // Try the specific MW ID first, then fall back to all entries for the stem
+      let dictDef = null
+      if (mwId) {
+        dictDef = allEntries.find(e => e.includes(`[ID=${mwId}]`))
+      }
+
+      let matched = false
+      if (dictDef) {
+        matched = meaningInDictionary(meaning, dictDef)
+      }
+      if (!matched) {
+        matched = allEntries.some(e => meaningInDictionary(meaning, e))
+      }
+
+      if (matched) {
+        valid++
+      } else {
+        const snippet = (dictDef || allEntries[0] || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').substring(0, 80)
+        invalid++
+        invalidList.push({ ...row, issue: `"${lexeme}" not found in: "${snippet}…"` })
+      }
+    }
+    return { valid, invalid, invalidList }
+  }
+
+  export default {
+    name: 'AnalyticsPage',
+    data() {
+      return {
+        vidyutReady: false,
+        hoveredSlice: null,
+        showInvalidDialog: false,
+        invalidType: '',
+        invalidEntries: [],
+        invalidTableHeaders: [
+          { title: 'ID', key: 'id', sortable: true },
+          { title: 'Form', key: 'form', sortable: true },
+          { title: 'Analysis', key: 'analysis', sortable: true },
+          { title: 'Issue', key: 'issue', sortable: true },
+        ],
+        // Cached validation results
+        validationCache: null,
+        invalidDerivedStemsList: [],
+        invalidDeclensionsList: [],
+        invalidMeaningsList: [],
+        invalidCoverageList: [],
+        invalidLexemeList: [],
+      }
     },
-    stats() {
-      if (!this.validationCache) {
-        return {
+    computed: {
+      isDark() {
+        return this.$vuetify.theme.global.current.dark
+      },
+      uniqueInvalidCount() {
+        const uniqueValues = new Set()
+        for (const entry of this.invalidEntries) {
+          if (this.invalidType === 'stems') {
+            const mwMatch = (entry.analysis || '').match(/MW\.([^.\s]+)/)
+            if (mwMatch) uniqueValues.add(mwMatch[1])
+          } else if (this.invalidType === 'derivedStems') {
+            uniqueValues.add(entry.analysis)
+          } else if (this.invalidType === 'declensions') {
+            uniqueValues.add(entry.form)
+          } else if (this.invalidType === 'meanings') {
+            uniqueValues.add(entry.form)
+          } else if (this.invalidType === 'coverage') {
+            uniqueValues.add(entry.id)
+          } else if (this.invalidType === 'lexemes') {
+            uniqueValues.add(entry.id + ':' + entry.form)
+          }
+        }
+        return uniqueValues.size
+      },
+      stats() {
+        if (!this.validationCache) {
+          return {
+            totalWords: lemmas.length,
+            mwCount: 0,
+            dhatuKrtCount: 0,
+            tinCount: 0,
+            userCount: 0,
+            mwPercent: 0,
+            dhatuKrtPercent: 0,
+            tinPercent: 0,
+            userPercent: 0,
+            validStemsPercent: 100,
+            validDerivedStemsPercent: 100,
+            validDeclensionsPercent: 100,
+            validMeaningsPercent: 100,
+            validCoveragePercent: 100,
+            validLexemePercent: 100,
+          }
+        }
+        return this.validationCache
+      },
+      pieSlices() {
+        const pieColors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#607D8B']
+        const data = [
+          { label: 'MW Dictionary', percent: this.stats.mwPercent, count: this.stats.mwCount, color: pieColors[0] },
+          { label: 'DHATU+KRT', percent: this.stats.dhatuKrtPercent, count: this.stats.dhatuKrtCount, color: pieColors[1] },
+          { label: 'TIN', percent: this.stats.tinPercent, count: this.stats.tinCount, color: pieColors[2] },
+          { label: 'USER', percent: this.stats.userPercent, count: this.stats.userCount, color: pieColors[3] },
+        ]
+
+        // Generate SVG paths
+        let startAngle = -90
+        const radius = 80
+
+        return data.map((item) => {
+          const angle = (item.percent / 100) * 360
+          const endAngle = startAngle + angle
+
+          const startRad = (startAngle * Math.PI) / 180
+          const endRad = (endAngle * Math.PI) / 180
+
+          const x1 = radius * Math.cos(startRad)
+          const y1 = radius * Math.sin(startRad)
+          const x2 = radius * Math.cos(endRad)
+          const y2 = radius * Math.sin(endRad)
+
+          const largeArc = angle > 180 ? 1 : 0
+
+          const path = `M 0 0 L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`
+
+          startAngle = endAngle
+
+          return {
+            ...item,
+            path,
+          }
+        })
+      },
+    },
+    async mounted() {
+      // Initialize theme
+      this.$vuetify.theme.global.name = localStorage.getItem('theme') || 'dark'
+
+      // Hide the splash screen
+      const splashScreen = document.querySelector('.splash')
+      if (splashScreen) splashScreen.classList.add('hidden')
+
+      // Initialize Vidyut
+      try {
+        await initVidyut()
+        const dhatupathaText = await (await fetch(dhatupatha)).text()
+        vidyut = Vidyut.init(dhatupathaText)
+
+        // Build dhatu lookup index
+        dhatuIndex = buildDhatuIndex(dhatupathaText)
+
+        this.vidyutReady = true
+
+        // Run validation
+        this.runValidation()
+      } catch (e) {
+        console.error('Failed to initialize Vidyut:', e)
+        // Still mark as ready but show error state
+        this.vidyutReady = true
+        this.validationCache = {
           totalWords: lemmas.length,
           mwCount: 0,
           dhatuKrtCount: 0,
@@ -286,304 +737,131 @@ export default {
           dhatuKrtPercent: 0,
           tinPercent: 0,
           userPercent: 0,
-          validStemsPercent: 100,
-          validDerivedStemsPercent: 100,
-          validDeclensionsPercent: 100,
-          validMeaningsPercent: 100,
+          validStemsPercent: 0,
+          validDerivedStemsPercent: 0,
+          validDeclensionsPercent: 0,
+          validMeaningsPercent: 0,
+          validStemsCount: 0,
+          invalidStemsCount: 0,
+          totalStemsCount: 0,
+          validDerivedStemsCount: 0,
+          invalidDerivedStemsCount: 0,
+          totalDerivedStemsCount: 0,
+          validDeclensionsCount: 0,
+          invalidDeclensionsCount: 0,
+          totalDeclensionsCount: 0,
+          validMeaningsCount: 0,
+          invalidMeaningsCount: 0,
+          totalMeaningsCount: 0,
+          validCoveragePercent: 0,
+          validCoverageCount: 0,
+          invalidCoverageCount: 0,
+          totalCoverageCount: 0,
+          validLexemePercent: 0,
+          validLexemeCount: 0,
+          invalidLexemeCount: 0,
+          totalLexemeCount: 0,
+          error: `Failed to initialize Vidyut: ${e.message}`
         }
       }
-      return this.validationCache
     },
-    pieSlices() {
-      const pieColors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#607D8B']
-      const data = [
-        { label: 'MW Dictionary', percent: this.stats.mwPercent, count: this.stats.mwCount, color: pieColors[0] },
-        { label: 'DHATU+KRT', percent: this.stats.dhatuKrtPercent, count: this.stats.dhatuKrtCount, color: pieColors[1] },
-        { label: 'TIN', percent: this.stats.tinPercent, count: this.stats.tinCount, color: pieColors[2] },
-        { label: 'USER', percent: this.stats.userPercent, count: this.stats.userCount, color: pieColors[3] },
-      ]
+    methods: {
 
-      // Generate SVG paths
-      let startAngle = -90
-      const radius = 80
+      runValidation () {
+        const total = lemmas.length
+        const types = classifyTypes(lemmas)
+        const stems = validateStems(lemmas)
+        const derivations = validateDerivations(lemmas)
+        const meanings = validateMeanings(lemmas)
+        const coverage = validateCoverage(lemmas, inscriptions)
 
-      return data.map((item) => {
-        const angle = (item.percent / 100) * 360
-        const endAngle = startAngle + angle
+        this.invalidDerivedStemsList = derivations.invalidDerivedList
+        this.invalidDeclensionsList = derivations.invalidDeclList
+        this.invalidMeaningsList = meanings.invalidList
+        this.invalidCoverageList = coverage.invalidCoverageList
+        this.invalidLexemeList = coverage.invalidLexemeList
 
-        const startRad = (startAngle * Math.PI) / 180
-        const endRad = (endAngle * Math.PI) / 180
+        const totalStems = stems.valid + stems.invalid
+        const totalDerivedStems = derivations.validDerived + derivations.invalidDerived
+        const totalDeclensions = derivations.validDecl + derivations.invalidDecl
+        const totalMeanings = meanings.valid + meanings.invalid
+        const totalCoverage = coverage.validCoverage + coverage.invalidCoverage
+        const totalLexeme = coverage.validLexeme + coverage.invalidLexeme
 
-        const x1 = radius * Math.cos(startRad)
-        const y1 = radius * Math.sin(startRad)
-        const x2 = radius * Math.cos(endRad)
-        const y2 = radius * Math.sin(endRad)
-
-        const largeArc = angle > 180 ? 1 : 0
-
-        const path = `M 0 0 L ${x1} ${y1} A ${radius} ${radius} 0 ${largeArc} 1 ${x2} ${y2} Z`
-
-        startAngle = endAngle
-
-        return {
-          ...item,
-          path,
+        this.validationCache = {
+          totalWords: total,
+          mwCount: types.mwCount,
+          dhatuKrtCount: types.dhatuKrtCount,
+          tinCount: types.tinCount,
+          userCount: types.userCount,
+          mwPercent: (types.mwCount / total) * 100,
+          dhatuKrtPercent: (types.dhatuKrtCount / total) * 100,
+          tinPercent: (types.tinCount / total) * 100,
+          userPercent: (types.userCount / total) * 100,
+          validStemsPercent: totalStems > 0 ? (stems.valid / totalStems) * 100 : 100,
+          validDerivedStemsPercent: totalDerivedStems > 0 ? (derivations.validDerived / totalDerivedStems) * 100 : 100,
+          validDeclensionsPercent: totalDeclensions > 0 ? (derivations.validDecl / totalDeclensions) * 100 : 100,
+          validMeaningsPercent: totalMeanings > 0 ? (meanings.valid / totalMeanings) * 100 : 100,
+          validCoveragePercent: totalCoverage > 0 ? (coverage.validCoverage / totalCoverage) * 100 : 100,
+          validLexemePercent: totalLexeme > 0 ? (coverage.validLexeme / totalLexeme) * 100 : 100,
+          validStemsCount: stems.valid,
+          invalidStemsCount: stems.invalid,
+          totalStemsCount: totalStems,
+          validDerivedStemsCount: derivations.validDerived,
+          invalidDerivedStemsCount: derivations.invalidDerived,
+          totalDerivedStemsCount: totalDerivedStems,
+          validDeclensionsCount: derivations.validDecl,
+          invalidDeclensionsCount: derivations.invalidDecl,
+          totalDeclensionsCount: totalDeclensions,
+          validMeaningsCount: meanings.valid,
+          invalidMeaningsCount: meanings.invalid,
+          totalMeaningsCount: totalMeanings,
+          validCoverageCount: coverage.validCoverage,
+          invalidCoverageCount: coverage.invalidCoverage,
+          totalCoverageCount: totalCoverage,
+          validLexemeCount: coverage.validLexeme,
+          invalidLexemeCount: coverage.invalidLexeme,
+          totalLexemeCount: totalLexeme,
         }
-      })
-    },
-  },
-  async mounted() {
-    // Initialize theme
-    this.$vuetify.theme.global.name = localStorage.getItem('theme') || 'dark'
+      },
 
-    // Hide the splash screen
-    const splashScreen = document.querySelector('.splash')
-    if (splashScreen) splashScreen.classList.add('hidden')
+      toggleInvalid(type) {
+        this.invalidType = type
+        this.invalidEntries = []
 
-    // Initialize Vidyut
-    try {
-      await initVidyut()
-      const dhatupathaText = await (await fetch(dhatupatha)).text()
-      vidyut = Vidyut.init(dhatupathaText)
-
-      // Build dhatu lookup index
-      dhatuIndex = buildDhatuIndex(dhatupathaText)
-
-      this.vidyutReady = true
-
-      // Run validation
-      this.runValidation()
-    } catch (e) {
-      console.error('Failed to initialize Vidyut:', e)
-      // Still mark as ready but show error state
-      this.vidyutReady = true
-      this.validationCache = {
-        totalWords: lemmas.length,
-        mwCount: 0,
-        dhatuKrtCount: 0,
-        tinCount: 0,
-        userCount: 0,
-        mwPercent: 0,
-        dhatuKrtPercent: 0,
-        tinPercent: 0,
-        userPercent: 0,
-        validStemsPercent: 0,
-        validDerivedStemsPercent: 0,
-        validDeclensionsPercent: 0,
-        validMeaningsPercent: 0,
-        validStemsCount: 0,
-        invalidStemsCount: 0,
-        totalStemsCount: 0,
-        validDerivedStemsCount: 0,
-        invalidDerivedStemsCount: 0,
-        totalDerivedStemsCount: 0,
-        validDeclensionsCount: 0,
-        invalidDeclensionsCount: 0,
-        totalDeclensionsCount: 0,
-        validMeaningsCount: 0,
-        invalidMeaningsCount: 0,
-        totalMeaningsCount: 0,
-        error: `Failed to initialize Vidyut: ${e.message}`
-      }
-    }
-  },
-  methods: {
-
-    runValidation() {
-      const total = lemmas.length
-      let mwCount = 0
-      let dhatuKrtCount = 0
-      let tinCount = 0
-      let userCount = 0
-
-      let validStems = 0
-      let invalidStems = 0
-      let validDerivedStems = 0
-      let invalidDerivedStems = 0
-      let validDeclensions = 0
-      let invalidDeclensions = 0
-      let validMeanings = 0
-      let invalidMeanings = 0
-
-      // Store invalid entries for later display
-      this.invalidDerivedStemsList = []
-      this.invalidDeclensionsList = []
-
-      for (const row of lemmas) {
-        const analysis = row.analysis || ''
-        const form = row.form || ''
-
-        // Type classification
-        if (analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.')) {
-          mwCount++
-        } else if (analysis.startsWith('DHATU.')) {
-          if (analysis.includes('KRT.')) {
-            dhatuKrtCount++
-          } else if (analysis.includes('TIN.')) {
-            tinCount++
-          }
-        } else if (analysis.startsWith('USER')) {
-          userCount++
-        }
-
-        // Stem validation (check if MW stem exists in dictionary)
-        // Only validate entries that actually reference MW stems
-        const mwMatch = analysis.match(/MW\.([^.\s]+)/)
-        if (mwMatch) {
-          const stem = mwMatch[1]
-          if (mwIndex.has(stem)) {
-            validStems++
-          } else {
-            invalidStems++
-          }
-        }
-        // Note: DHATU and other entries are not counted in MW stem validation
-
-        // Derived stems validation (DHATU+KRT, MW+TAD, DHATU+KRT+TAD)
-        const hasDhatu = analysis.startsWith('DHATU.')
-        const hasKrt = analysis.includes('KRT.')
-        const hasTad = analysis.includes('TAD.')
-
-        // Unified vidyut derivation validation via shared module
-        const derivablePattern = /\bDHATU\.|\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/
-        const isDerivable = analysis && form && derivablePattern.test(analysis)
-        const caseMatch = analysis.match(/\b(Nom|Voc|Acc|Ins|Dat|Abl|Gen|Loc)\.(M|F|N)\.(S|D|P)\b/)
-
-        if (isDerivable) {
-          let result = null
-          try {
-            result = derive(vidyut, analysis, form, { dhatuIndex })
-          } catch (_) { /* derivation error */ }
-
-          // Classify into derived stems or declension validation
-          if (hasDhatu && hasKrt && !caseMatch) {
-            // DHATU+KRT without case — stem validation
-            if (result?.match) {
-              validDerivedStems++
-            } else {
-              invalidDerivedStems++
-              this.invalidDerivedStemsList.push({
-                ...row,
-                issue: result ? `got "${result.text}"` : 'no derivation',
-              })
-            }
-          } else if (caseMatch || (hasDhatu && analysis.includes('TIN.'))) {
-            // Declension or TIN validation
-            if (result?.match) {
-              validDeclensions++
-            } else {
-              invalidDeclensions++
-              this.invalidDeclensionsList.push({
-                ...row,
-                issue: `vidyut: got "${result?.text || 'no derivation'}"`,
-              })
-            }
-          } else if (hasDhatu && hasKrt) {
-            // DHATU+KRT+case counted above via caseMatch branch
-            if (result?.match) {
-              validDerivedStems++
-            } else {
-              invalidDerivedStems++
-              this.invalidDerivedStemsList.push({
-                ...row,
-                issue: result ? `got "${result.text}"` : 'no derivation',
-              })
-            }
-          }
-        } else if (mwMatch && hasTad && !caseMatch) {
-          // MW+TAD without case — just check MW stem exists
-          if (mwIndex.has(mwMatch[1])) {
-            validDerivedStems++
-          } else {
-            invalidDerivedStems++
-            this.invalidDerivedStemsList.push({ ...row, issue: `MW stem "${mwMatch[1]}" not in dictionary` })
-          }
-        }
-
-        // Meaning validation (check if translation_lexeme is present)
-        const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
-        if (lexeme) {
-          validMeanings++
+        if (type === 'derivedStems') {
+          this.invalidEntries = this.invalidDerivedStemsList || []
+        } else if (type === 'declensions') {
+          this.invalidEntries = this.invalidDeclensionsList || []
+        } else if (type === 'meanings') {
+          this.invalidEntries = this.invalidMeaningsList || []
+        } else if (type === 'coverage') {
+          this.invalidEntries = this.invalidCoverageList || []
+        } else if (type === 'lexemes') {
+          this.invalidEntries = this.invalidLexemeList || []
         } else {
-          invalidMeanings++
-        }
-      }
+          for (const row of lemmas) {
+            const analysis = row.analysis || ''
 
-      const totalStems = validStems + invalidStems
-      const totalDerivedStems = validDerivedStems + invalidDerivedStems
-      const totalDeclensions = validDeclensions + invalidDeclensions
-      const totalMeanings = validMeanings + invalidMeanings
-
-      this.validationCache = {
-        totalWords: total,
-        mwCount,
-        dhatuKrtCount,
-        tinCount,
-        userCount,
-        mwPercent: (mwCount / total) * 100,
-        dhatuKrtPercent: (dhatuKrtCount / total) * 100,
-        tinPercent: (tinCount / total) * 100,
-        userPercent: (userCount / total) * 100,
-        validStemsPercent: totalStems > 0 ? (validStems / totalStems) * 100 : 100,
-        validDerivedStemsPercent: totalDerivedStems > 0 ? (validDerivedStems / totalDerivedStems) * 100 : 100,
-        validDeclensionsPercent: totalDeclensions > 0 ? (validDeclensions / totalDeclensions) * 100 : 100,
-        validMeaningsPercent: totalMeanings > 0 ? (validMeanings / totalMeanings) * 100 : 100,
-        validStemsCount: validStems,
-        invalidStemsCount: invalidStems,
-        totalStemsCount: totalStems,
-        validDerivedStemsCount: validDerivedStems,
-        invalidDerivedStemsCount: invalidDerivedStems,
-        totalDerivedStemsCount: totalDerivedStems,
-        validDeclensionsCount: validDeclensions,
-        invalidDeclensionsCount: invalidDeclensions,
-        totalDeclensionsCount: totalDeclensions,
-        validMeaningsCount: validMeanings,
-        invalidMeaningsCount: invalidMeanings,
-        totalMeaningsCount: totalMeanings,
-      }
-    },
-
-    toggleInvalid(type) {
-      this.invalidType = type
-      this.invalidEntries = []
-
-      if (type === 'derivedStems') {
-        // Use pre-computed list
-        this.invalidEntries = this.invalidDerivedStemsList || []
-      } else if (type === 'declensions') {
-        // Use pre-computed list
-        this.invalidEntries = this.invalidDeclensionsList || []
-      } else {
-        for (const row of lemmas) {
-          const analysis = row.analysis || ''
-
-          if (type === 'stems') {
-            const mwMatch = analysis.match(/MW\.([^.\s]+)/)
-            if (mwMatch) {
-              const stem = mwMatch[1]
-              if (!mwIndex.has(stem)) {
-                this.invalidEntries.push({
-                  ...row,
-                  issue: `MW stem "${stem}" not found in dictionary`,
-                })
+            if (type === 'stems') {
+              const mwMatch = analysis.match(/MW\.([^.\s]+)/)
+              if (mwMatch) {
+                const stem = mwMatch[1]
+                if (!mwIndex.has(stem)) {
+                  this.invalidEntries.push({
+                    ...row,
+                    issue: `MW stem "${stem}" not found in dictionary`,
+                  })
+                }
               }
             }
-          } else if (type === 'meanings') {
-            const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
-            if (!lexeme) {
-              this.invalidEntries.push({
-                ...row,
-                issue: 'Missing translation/meaning',
-              })
-            }
           }
         }
-      }
 
-      this.showInvalidDialog = true
+        this.showInvalidDialog = true
+      },
     },
-  },
-}
+  }
 </script>
 
 <style scoped>
