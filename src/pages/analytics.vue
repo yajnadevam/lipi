@@ -456,8 +456,12 @@
     return { validDerived, invalidDerived, validDecl, invalidDecl, invalidDerivedList, invalidDeclList }
   }
 
+  function normalizeSibilants (str) {
+    return str.replace(/[sSzhH]/g, 's').replace(/M/g, 'm')
+  }
+
   function validateCoverage (glossingRows, inscriptionRows) {
-    // Build glossing index: id → Set of forms
+    // Build glossing index: id → Set of forms (both original and normalized)
     const glossingById = new Map()
     const glossingLexemes = new Map() // id → [{form, lexeme}]
     for (const row of glossingRows) {
@@ -465,6 +469,7 @@
       if (!id) continue
       if (!glossingById.has(id)) glossingById.set(id, new Set())
       glossingById.get(id).add(row.form || '')
+      glossingById.get(id).add(normalizeSibilants(row.form || ''))
       if (!glossingLexemes.has(id)) glossingLexemes.set(id, [])
       const lex = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
       if (lex) glossingLexemes.get(id).push({ form: row.form, lexeme: lex })
@@ -499,7 +504,7 @@
         invalidCoverage++
         invalidCoverageList.push({ id, form: sanskrit, analysis: '', issue: 'No glossing entries for this inscription' })
       } else {
-        const missing = allMembers.filter(m => !glossForms.has(m))
+        const missing = allMembers.filter(m => !glossForms.has(m) && !glossForms.has(normalizeSibilants(m)))
         if (missing.length === 0) {
           validCoverage++
         } else {
