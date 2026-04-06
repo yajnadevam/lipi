@@ -7906,7 +7906,8 @@
   "amata": [
     "अ-मत <lex>mfn.</lex> not to be thought of, not to be perceived by the mind, <ls>Kena-Up.</ls><info lex=\"m:f:n\"/><L>[ID=13728]</L>",
     "अ-मत <lex>mfn.</lex> not approved of, <ls>Mn. iv, 176</ls><info lex=\"m:f:n\"/><L>[ID=13729]</L>",
-    "¦ death, <ls>L.</ls><info lex=\"inh\"/><L>[ID=13754]</L>"
+    "¦ death, <ls>L.</ls><info lex=\"inh\"/><L>[ID=13754]</L>",
+    "<hom>2.</hom> a/-mata ¦ <lex>mfn.</lex> (√ man), not felt, not perceptible by the mind, <ls>ŚBr. xiv</ls><info lex=\"m:f:n\"/><L>[ID=13780]</L>"
   ],
   "Ena": [
     "एण <lex>m.</lex> (<ab>fr.</ab> √ इ), a species of deer, the (black) antelope, <ls>AV. v, 14, 11</ls>; <ls>ŚBr.</ls> &c.<info lex=\"m\"/><L>[ID=39043]</L>",
@@ -10388,5 +10389,13 @@
     "¦ the earth, ground, soil, <ls>Kāv.</ls><info lex=\"inh\"/><L>[ID=175843]</L>",
     "¦ the tongue, <ls>L.</ls><info lex=\"inh\"/><L>[ID=175844]</L>",
     "¦ <ab>N.</ab> of various plants (<bot>Clypea Hernandifolia</bot>; <bot>Boswellia Thurifera</bot>; <bot>Panicum Italicum</bot>; a vine or grape; = kAkolI), <ls>L.</ls><info lex=\"inh\"/><L>[ID=175845]</L>"
+  ],
+  "ahar": [
+    "a/har ¦ <lex>n.</lex> (the weak cases come <ab>fr.</ab> a/han, <ab>q.v.</ab>, the middle ones <ab>fr.</ab> a/has [see below] or in <ls>RV.</ls> also <ab>fr.</ab> a/han, <ab>q.v.</ab>) a day, <ls>RV.</ls> &c.<info lex=\"n\"/><L>[ID=21710]</L>",
+    "¦ a sacrificial or festival day, portion of a sacrifice appointed for one day's performance, <ls>AitBr.</ls> &c. (often <ab>ifc.</ab>, as dvAdaSA<srs/>ha/, &c. See <ab>s.v.</ab> <hom>2.</hom> a/ha)<info lex=\"inh\"/><L>[ID=21711]</L>",
+    "¦ day personified as one of the eight <s1>Vasu</s1>s, <ls>MBh. i, 2582</ls> <ab>seqq.</ab><info lex=\"inh\"/><L>[ID=21712]</L>",
+    "¦ <ab>N.</ab> of an <s1>Āṅgirasa</s1>, <ls>KāṭhAnukr.</ls><info lex=\"inh\"/><L>[ID=21713]</L>",
+    "¦ of a <s1>Tīrtha</s1>, <ls>MBh. iii, 6070</ls><info lex=\"inh\"/><L>[ID=21714]</L>",
+    "¦ (a/hanI) <ab>nom.</ab> <ab>du.</ab> day and night, <ls>RV.</ls>; <ls>AV. xiii, 2, 3</ls> (<ab>cf.</ab> a/haS ca kfzRa/m a/har a/rjunam ca, ‘the black and the white day’ <ab>i.e.</ab> night and day, <ls>RV. vi, 9, 1</ls>)<info lex=\"inh\"/><L>[ID=21715]</L>"
   ]
 }

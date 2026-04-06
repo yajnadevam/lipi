@@ -252,6 +252,7 @@
   import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
   import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'
   import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
+  import Sanscript from '@indic-transliteration/sanscript'
 
   // Parse lemmas data (lazy init to catch errors)
   let lemmas = []
@@ -281,7 +282,7 @@
     ['mighty', 'might', 'power', 'powerful', 'strength', 'strong', 'force', 'potent'],
     ['swift', 'speed', 'quick', 'fast', 'rapid'],
     ['still', 'motionless', 'stiff', 'torpid', 'immobile'],
-    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty'],
+    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty', 'beneficent', 'friendly'],
     ['wander', 'wanderer', 'movable', 'moving', 'roam', 'roaming'],
     ['great', 'grand', 'large', 'vast', 'abundant'],
     ['kill', 'killer', 'slay', 'slayer', 'destroy', 'destroyer', 'destruction'],
@@ -303,6 +304,7 @@
     ['well', 'excellent'],
     ['that', 'the', 'this', 'those', 'these'],
     ['who', 'whom', 'whose', 'which'],
+    ['path', 'road'],
   ]
   const synonymMap = new Map()
   for (const group of SYNONYM_GROUPS) {
@@ -326,8 +328,19 @@
 
     const lexLower = lexemeMeaning.toLowerCase()
     const dictLower = dictMeaning.replace(/<[^>]+>/g, ' ').toLowerCase()
+    // Raw dictionary text (XML stripped but case preserved) for Devanagari matching
+    const dictRaw = dictMeaning.replace(/<[^>]+>/g, '')
 
     if (dictLower.includes(lexLower)) return true
+
+    // IAST transliterated terms (e.g. "Prāṇa") → check Devanagari in dictionary
+    const iastRe = /[āīūṛṝḷḹṃḥñṅṇṭḍśṣ]/i
+    if (iastRe.test(lexemeMeaning)) {
+      try {
+        const deva = Sanscript.t(lexemeMeaning.toLowerCase(), 'iast', 'devanagari')
+        if (dictRaw.includes(deva)) return true
+      } catch (_) { /* ignore transliteration errors */ }
+    }
 
     const lexWords = lexLower.split(/[\s,;.]+/).filter(w => w.length > 2)
     const dictWords = dictLower.split(/[\s,;.'()+]+/).filter(w => w.length >= 3)
@@ -338,6 +351,23 @@
       if (word.length >= 4 && dictLower.includes(word.slice(0, 4))) return true
       // 3-char prefix word-level match
       if (dictWords.some(dw => dw.startsWith(word.slice(0, 3)))) return true
+      // Negation prefix: "unborn" ↔ "not born", "immortal" ↔ "not mortal"
+      const negPrefixes = [
+        { pre: 'un', base: w => w.slice(2) },
+        { pre: 'im', base: w => w.slice(2) },
+        { pre: 'in', base: w => w.slice(2) },
+        { pre: 'ir', base: w => w.slice(2) },
+        { pre: 'il', base: w => w.slice(2) },
+        { pre: 'non', base: w => w.slice(3) },
+      ]
+      for (const { pre, base } of negPrefixes) {
+        if (word.startsWith(pre) && word.length > pre.length + 2) {
+          const root = base(word)
+          if (dictLower.includes('not ' + root) || dictLower.includes('not ' + stemWord(root))) return true
+          // Also match dictionary "un"/"in"/etc. variants
+          if (dictLower.includes(word)) return true
+        }
+      }
       // Stemmed match: "roarer" → "roar", "powerful" → "power"
       const stem = stemWord(word)
       if (stem !== word && stem.length >= 3 && dictLower.includes(stem)) return true
