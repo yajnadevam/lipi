@@ -35,6 +35,15 @@
         </v-list-item-title>
         <v-list-item-title>
           <v-switch
+            v-model="optionSandhi"
+            color="primary"
+            label="Sandhi"
+            @update:model-value="persistSandhi"
+          >
+          </v-switch>
+        </v-list-item-title>
+        <v-list-item-title>
+          <v-switch
             v-model="lightTheme"
             color="primary"
             label="Light Theme"
@@ -126,33 +135,24 @@
 
             <template v-slot:expanded-row="{ columns, item }">
               <tr class="expanded-content">
-                <td></td>
-                <td>{{ item.site }}</td>
-                <td></td>
-                <td class="sanskrit" style="text-align: right">
-                  {{ item.description }}
-                </td>
-                <td></td>
-                <td>{{ item.notes }}</td>
-                <td></td>
-              </tr>
-              <tr v-if="fullrandom">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="random" style="text-align: right">
-                  {{ item.random }}
-                </td>
-                <td></td>
-                <td></td>
-              </tr>
-              <!-- Interlinear Gloss (Padapatha) -->
-              <tr
-                v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
-                class="expanded-content"
-              >
-                <td colspan="12">
-                  <div class="interlinear-container">
+                <td :colspan="columns.length" style="padding: 0 !important">
+                  <!-- Info row -->
+                  <div class="expanded-info-row">
+                    <span v-if="item.site" class="expanded-site">{{ item.site }}</span>
+                    <span class="sanskrit expanded-description">{{ item.description }}</span>
+                    <span v-if="item.notes" class="expanded-notes">{{ item.notes }}</span>
+                  </div>
+
+                  <!-- Random -->
+                  <div v-if="fullrandom" class="random" style="text-align: right; padding: 0 8px">
+                    {{ item.random }}
+                  </div>
+
+                  <!-- Interlinear Gloss (Padapatha) -->
+                  <div
+                    v-if="(lemmasMap[item.lemmaRef || item.id] || []).length > 0"
+                    class="interlinear-container"
+                  >
                     <div
                       v-for="(lemma, idx) in lemmasMap[
                         item.lemmaRef || item.id
@@ -223,21 +223,15 @@
                       </div>
                     </div>
                   </div>
-                </td>
-              </tr>
-              <!-- Row for Seal Images -->
-              <tr
-                v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0"
-                class="expanded-content"
-              >
-                <td colspan="12" class="text-center">
-                  <v-container>
-                    <v-row justify="center">
+
+                  <!-- Seal Images -->
+                  <div
+                    v-if="sealImages[item.cisi] && sealImages[item.cisi].length > 0"
+                    class="text-center"
+                  >
+                    <v-row justify="center" class="ma-0">
                       <v-col
-                        v-for="(img, index) in sealImages[item.cisi].slice(
-                          0,
-                          2,
-                        )"
+                        v-for="(img, index) in sealImages[item.cisi].slice(0, 2)"
                         :key="index"
                         :cols="6"
                         class="image-container"
@@ -250,7 +244,7 @@
                         />
                       </v-col>
                     </v-row>
-                  </v-container>
+                  </div>
                 </td>
               </tr>
             </template>
@@ -634,6 +628,7 @@ import mwMap from "../assets/data/mw.json";
 import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
+import initSandhi, { Sandhi } from "../vidyut/vidyut_sandhi.js";
 import words from "../assets/data/words.csv?raw";
 import { filter } from "@/scripts/index/filter";
 import { renderSanskrit } from "@/scripts/index/explanation";
@@ -644,6 +639,7 @@ import Sanscript from "@indic-transliteration/sanscript";
 // Will be initialized after mount
 let vidyut
 let dhatuIdx
+let sandhiEngine
 
 // Todo: This can be removed
 const wordsMap = {};
@@ -741,6 +737,8 @@ inx.forEach((el) => {
   if (el.canonized.includes(SLASH_SEP)) {
     el.canonized = el.canonized.split(SLASH_SEP).reverse().join("\n");
   }
+  // Store original SLP1 for sandhi toggle
+  el.sanskritSlp1 = el.sanskrit || null;
   el.sanskrit = el.sanskrit ? el.sanskrit.replaceAll("-", "—") : el.sanskrit;
   totalLen += el.complete === "Y" ? el.textlength : 0;
   totalCount += el.complete === "Y" ? 1 : 0;
@@ -757,12 +755,15 @@ inx.forEach((el) => {
       el.cuneiform = true;
       el.sanskrit = cuneMatch[1].trim() + "\n" + cuneMatch[3];
       el.translation = cuneMatch[4].replace(/\]\s*$/, "").trim();
+      el.sanskritSlp1 = null; // Not SLP1 — cuneiform
     } else {
       el.sanskrit = "*" + analyzed.str.split("-").reverse().join("");
+      el.sanskritSlp1 = null;
     }
   } else if (el.sanskrit && el.sanskrit.trim()) {
-    if (el.sanskrit.startsWith("ref:")) {
+    if (el.sanskritSlp1 && el.sanskritSlp1.startsWith("ref:")) {
       el.lemmaRef = el.sanskrit.substring(4);
+      el.sanskritSlp1 = null; // Resolved in applySandhi via lemmaRef
       Object.assign(el, resolve(el.sanskrit));
     } else {
       // console.log(">>", Sanscript.t(el.sanskrit, "slp1", "iast"));
@@ -773,6 +774,7 @@ inx.forEach((el) => {
     }
   } else {
     el.sanskrit = "*" + analyzed.str.split("-").reverse().join(""); // el.description.replaceAll('-', '')
+    el.sanskritSlp1 = null;
   }
   // if(el.sanskrit) {
   //   el.sanskrit = el.sanskrit.split(/—|\s/).map((key) => {
@@ -993,6 +995,7 @@ export default {
       items: inx,
       optionCanonical: false,
       optionBroken: false,
+      optionSandhi: false,
       lightTheme: false,
       fullrandom: fullrandom,
       showExplanationDialog: false,
@@ -1325,6 +1328,40 @@ export default {
     persistBroken(value) {
       localStorage.setItem("broken", value);
     },
+    persistSandhi(value) {
+      localStorage.setItem("sandhi", value);
+      this.applySandhi();
+    },
+    applySandhi() {
+      for (const el of this.items) {
+        if (el.sanskritSlp1) {
+          if (this.optionSandhi && sandhiEngine) {
+            const words = el.sanskritSlp1.split('-');
+            let joined = words[0] || '';
+            for (let i = 1; i < words.length; i++) {
+              joined = sandhiEngine.join(joined, words[i]);
+            }
+            el.sanskrit =
+              Sanscript.t(joined, 'slp1', 'devanagari') +
+              '\n' +
+              Sanscript.t(joined, 'slp1', 'iast');
+          } else {
+            const slp1 = el.sanskritSlp1.replaceAll('-', '—');
+            el.sanskrit =
+              Sanscript.t(slp1, 'slp1', 'devanagari') +
+              '\n' +
+              Sanscript.t(slp1, 'slp1', 'iast');
+          }
+        }
+      }
+      // Second pass: update ref entries from their targets
+      for (const el of this.items) {
+        if (el.lemmaRef) {
+          const referred = inxMap[el.lemmaRef];
+          if (referred) el.sanskrit = referred.sanskrit;
+        }
+      }
+    },
     updateUrl(searchTerm) {
       const params = new URLSearchParams(window.location.search);
       if (searchTerm) {
@@ -1645,6 +1682,7 @@ export default {
     this.sortBy = JSON.parse(localStorage.getItem("sort")) || this.sortBy;
     this.optionCanonical = localStorage.getItem("canonical") === "true";
     this.optionBroken = localStorage.getItem("broken") === "true";
+    this.optionSandhi = localStorage.getItem("sandhi") === "true";
     this.lightTheme = localStorage.getItem("theme") == "light";
 
     this.debouncedUpdateSearch = (value) => {
@@ -1663,10 +1701,14 @@ export default {
       const classes = Array.from(event.target.classList);
       if (classes.includes("indus1")) this.pasteSearch();
     });
-    await initVidyut();
+    await Promise.all([initVidyut(), initSandhi()]);
     const dhatupathaText = await (await fetch(dhatupatha)).text();
     vidyut = Vidyut.init(dhatupathaText);
     dhatuIdx = buildDhatuIndex(dhatupathaText)
+    sandhiEngine = Sandhi.init();
+
+    // Apply sandhi if the setting was persisted
+    if (this.optionSandhi) this.applySandhi();
 
     // Pre-compute all vidyut derivations to determine badge success/failure
     this.precomputeVidyutResults()
@@ -1712,9 +1754,15 @@ export default {
   overflow: visible !important;
 }
 
-.v-data-table table {
-  table-layout: fixed;
-  width: 100%;
+.v-data-table,
+.v-data-table > .v-table,
+.v-data-table .v-table__wrapper,
+.v-data-table .v-table__wrapper > table {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+.v-data-table .v-table__wrapper > table {
+  table-layout: fixed !important;
 }
 
 .v-data-table table tr th,
@@ -1754,6 +1802,22 @@ export default {
     background: black;
     color: yellow;
   }
+}
+
+.expanded-info-row {
+  display: flex;
+  gap: 24px;
+  padding: 4px 8px;
+  width: 100%;
+}
+.expanded-site {
+  white-space: nowrap;
+}
+.expanded-description {
+  text-align: center;
+}
+.expanded-notes {
+  margin-left: auto;
 }
 
 .search-container {

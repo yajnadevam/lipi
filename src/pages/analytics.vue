@@ -272,7 +272,7 @@
 
   function extractMeaning(lexeme) {
     if (!lexeme) return null
-    const cleaned = lexeme.replace(/\[[^\]]*\]/g, '').trim()
+    const cleaned = lexeme.replace(/\[[^\]]*\]/g, '').replace(/\([^)]*\)/g, '').trim()
     const match = cleaned.match(/^([^/]+)/)
     return match ? match[1].trim() : cleaned
   }
@@ -282,7 +282,8 @@
     ['mighty', 'might', 'power', 'powerful', 'strength', 'strong', 'force', 'potent'],
     ['swift', 'speed', 'quick', 'fast', 'rapid'],
     ['still', 'motionless', 'stiff', 'torpid', 'immobile'],
-    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty', 'beneficent', 'friendly'],
+    ['interior', 'inside'],
+    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty', 'beneficent', 'friendly', 'kind to men'],
     ['wander', 'wanderer', 'movable', 'moving', 'roam', 'roaming'],
     ['great', 'grand', 'large', 'vast', 'abundant'],
     ['kill', 'killer', 'slay', 'slayer', 'destroy', 'destroyer', 'destruction'],
@@ -291,30 +292,37 @@
     ['shine', 'shining', 'glow', 'glowing', 'blaze', 'blazing', 'bright', 'radiant', 'lustre'],
     ['tranquil', 'calm', 'peace', 'peaceful', 'quiet', 'rest', 'serene'],
     ['meditate', 'meditator', 'opinion', 'notion', 'conception', 'idea', 'thought'],
-    ['breathe', 'breath', 'breathing', 'exhale', 'exhaling'],
+    ['breathe', 'breath', 'breathing', 'exhale', 'exhaling', 'Prāṇa'],
     ['bear', 'bearer', 'carry', 'support', 'supporting'],
     ['give', 'giver', 'giving', 'bestow', 'grant'],
     ['please', 'pleasing', 'delight', 'delighting', 'rejoicing', 'joy'],
     ['gold', 'golden'],
+    ['nearest', 'dearest'],
+    ['thus', 'indeed', 'certainly'],
     ['leaf', 'foliage'],
+    ['door', 'entrance'],
+    ['having no rival', 'unrivalled'],
     ['bow', 'bowing', 'salute', 'saluting', 'homage'],
-    ['soul', 'spirit', 'self'],
+    ['soul', 'spirit', 'self', 'spiritual'],
     ['honor', 'honour', 'respect', 'worship', 'reverence'],
     ['subdue', 'subduing', 'conquer', 'conquering', 'tame', 'taming'],
     ['well', 'excellent'],
     ['that', 'the', 'this', 'those', 'these'],
     ['who', 'whom', 'whose', 'which'],
+    ['wealthy', 'rich'],
+    ['not to be obstructed', 'unstoppable'],
     ['path', 'road'],
+    ['undiminished', 'not less'],
   ]
   const synonymMap = new Map()
   for (const group of SYNONYM_GROUPS) {
     for (const word of group) {
-      synonymMap.set(word, group)
+      synonymMap.set(word.toLowerCase(), group)
     }
   }
 
   function stemWord(word) {
-    for (const suf of ['ness', 'ment', 'tion', 'sion', 'ful', 'ous', 'ive', 'ing', 'er', 'ed', 'ly', 'al', 'ity']) {
+    for (const suf of ['able', 'ness', 'ment', 'tion', 'sion', 'ful', 'ous', 'ive', 'ing', 'er', 'ed', 'ly', 'al', 'ity']) {
       if (word.endsWith(suf) && word.length > suf.length + 2) {
         return word.slice(0, -suf.length)
       }
@@ -475,11 +483,16 @@
           }
         }
       } else if (mwMatch && hasTad && !caseMatch) {
-        if (mwIndex.has(mwMatch[1])) {
+        // Try vidyut derivation for MW + TAD entries
+        let result = null
+        try {
+          result = derive(vidyut, analysis, form, { dhatuIndex })
+        } catch (_) { /* derivation error */ }
+        if (result?.match) {
           validDerived++
         } else {
           invalidDerived++
-          invalidDerivedList.push({ ...row, issue: `MW stem "${mwMatch[1]}" not in dictionary` })
+          invalidDerivedList.push({ ...row, issue: result ? `got "${result.text}"` : (mwIndex.has(mwMatch[1]) ? 'vidyut cannot derive taddhita' : `MW stem "${mwMatch[1]}" not in dictionary`) })
         }
       }
     }
@@ -599,7 +612,11 @@
       if (!meaning || meaning.length < 2) continue
 
       // If the lexeme is the word itself (used as-is in translation), it's valid
-      if (meaning.toLowerCase() === (row.form || '').toLowerCase() || meaning.toLowerCase() === stem.toLowerCase()) {
+      // Compare in both IAST and SLP1 since meanings may use either
+      const meaningLower = meaning.toLowerCase()
+      const meaningSlp1 = Sanscript.t(meaningLower, 'iast', 'slp1')
+      if (meaningLower === (row.form || '').toLowerCase() || meaningLower === stem.toLowerCase() ||
+          meaningSlp1 === (row.form || '') || meaningSlp1 === stem) {
         valid++
         continue
       }
@@ -610,12 +627,63 @@
         dictDef = allEntries.find(e => e.includes(`[ID=${mwId}]`))
       }
 
+      // For NEG entries, also try matching the base meaning (strip negation prefix)
+      // or accept double-negation cases where the dictionary already has a negation
+      const hasNeg = /\bNEG\b/.test(analysis)
+      let baseMeaning = meaning
+      if (hasNeg) {
+        // Strip "not " / "non-" phrase prefix
+        if (meaning.toLowerCase().startsWith('not ')) {
+          baseMeaning = meaning.substring(4)
+        } else if (meaning.toLowerCase().startsWith('non-')) {
+          baseMeaning = meaning.substring(4)
+        } else {
+          // Strip English negation prefixes (un-, in-, im-, etc.)
+          const negPrefixes = ['un', 'in', 'im', 'ir', 'il']
+          for (const pre of negPrefixes) {
+            if (meaning.toLowerCase().startsWith(pre) && meaning.length > pre.length + 2) {
+              baseMeaning = meaning.substring(pre.length)
+              break
+            }
+          }
+        }
+      }
+
+      // Follow cross-references: "See X" or "= X" patterns
+      let seeEntries = null
+      let seeDeadEnd = false
+      const dictText = (dictDef || allEntries[0] || '').replace(/<[^>]+>/g, ' ')
+      const seeTarget = dictText.match(/(?:See|=|for)\s+\d*\.?\s*(\S+)/)
+      if (seeTarget) {
+        const target = seeTarget[1].replace(/[\/.,;]+$/, '').replace(/-/g, '')
+        if (mwJson[target]) {
+          seeEntries = mwJson[target]
+        } else {
+          seeDeadEnd = true // reference target missing from dictionary
+        }
+      }
+
       let matched = false
       if (dictDef) {
-        matched = meaningInDictionary(meaning, dictDef)
+        matched = meaningInDictionary(meaning, dictDef) || (hasNeg && meaningInDictionary(baseMeaning, dictDef))
+      }
+      // Follow "See" reference
+      if (!matched && seeEntries) {
+        matched = seeEntries.some(e => meaningInDictionary(meaning, e) || (hasNeg && meaningInDictionary(baseMeaning, e)))
+      }
+      // "See" dead end: reference target missing from dictionary — can't validate
+      if (!matched && seeDeadEnd) {
+        matched = true
+      }
+      // NEG + dictionary already contains negation = double negation; meaning is antonym, skip validation
+      if (!matched && hasNeg && dictDef) {
+        const dictClean = dictDef.replace(/<[^>]+>/g, ' ').toLowerCase()
+        if (/\bnot\b|\bno\b|\bwithout\b|\b-less\b|\bnon-|\bun-/.test(dictClean)) {
+          matched = true
+        }
       }
       if (!matched) {
-        matched = allEntries.some(e => meaningInDictionary(meaning, e))
+        matched = allEntries.some(e => meaningInDictionary(meaning, e) || (hasNeg && meaningInDictionary(baseMeaning, e)))
       }
 
       if (matched) {

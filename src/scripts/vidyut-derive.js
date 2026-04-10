@@ -179,9 +179,15 @@ function ganasToTry (gana) {
   return ALL_GANAS
 }
 
+/** Normalize final -s/-r to visarga (-H) for pausa comparison */
+function pausaNormalize (s) {
+  if (!s) return s
+  return s.replace(/[sr]$/, 'H')
+}
+
 /** Make a result object */
 function makeResult (steps, text, slp1Form) {
-  return { steps, text, match: text === slp1Form }
+  return { steps, text, match: text === slp1Form || pausaNormalize(text) === pausaNormalize(slp1Form) }
 }
 
 // --- Derivation sub-routines ---
@@ -296,8 +302,15 @@ function deriveTaddhitaChain (vidyut, baseStem, tadSuffixes, baseSteps, linga, v
       taddhita: finalSuffix,
     })
     if (results && results.length > 0) {
+      // Check all results for a match, not just the first
+      for (const r of results) {
+        const rm = makeResult(allSteps.concat(r.history), r.text, slp1Form)
+        if (rm.match) return rm
+      }
+      console.warn(`taddhita ${currentStem}+${finalSuffix}: vidyut produced [${results.map(r => r.text).join(', ')}], expected ${slp1Form}`)
       return makeResult(allSteps.concat(results[0].history), results[0].text, slp1Form)
     }
+    console.warn(`taddhita ${currentStem}+${finalSuffix}: vidyut returned no results, expected ${slp1Form}`)
     return null
   }
 }
@@ -558,6 +571,20 @@ function deriveMwPron (vidyut, slp1Form, parsed, type) {
 
   if (tadSuffixes) {
     return deriveTaddhitaChain(vidyut, aupadeshika, tadSuffixes, [], linga, vacana, vibhakti, slp1Form)
+  }
+
+  if (parsed.striPart) {
+    try {
+      const results = vidyut.deriveStryantas({ basic: aupadeshika })
+      let fallback = null
+      for (const r of (results || [])) {
+        const rm = makeResult(r.history, r.text, slp1Form)
+        if (rm.match) return rm
+        if (!fallback) fallback = rm
+      }
+      return fallback
+    } catch (_) { /* stryantas failed */ }
+    return null
   }
 
   if (linga && vacana && vibhakti) {
