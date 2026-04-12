@@ -1212,7 +1212,7 @@ id,form,type,translation_lexeme,analysis,translation
 1893.1,rava,stem,roar,MW.rava.175305,that[AV] roarer[=rava-ra; RV; śiṣ]
 1893.1,la,word,cutter,MW.la.180313 Voc.M.S,that[AV] roarer[rava]
 1895.1,yaya,word,wanderer,DHATU.yaya~\. KRT.ac Voc.M.S,O wanderer[√यय् अच्]
-1896.1,Irya,stem,powerful,MW.Irya.29774,O powerful[RV] warrior[√जज् अच्][L>R] 
+1896.1,Irya,stem,moving,DHATU.Ira~.Adadi KRT.yat,O powerful[RV] warrior[√जज् अच्][L>R] 
 1896.1,jaja,word,warrior,DHATU.jaja~. KRT.ac Voc.M.S,O powerful[RV] warrior[√जज् अच्][L>R] 
 1897.1,jara,stem,destroyer,MW.jara.77595,Rudra's[√जॄ अच्] consuming[√पा शतृ] of the omentum[Pāṇ][Paraskara-grihya-sutra]
 1897.1,vapa,stem,omentum,MW.vapa,Rudra's[√जॄ अच्] consuming[√पा शतृ] of the omentum[Pāṇ][Paraskara-grihya-sutra]
@@ -3468,9 +3468,9 @@ id,form,type,translation_lexeme,analysis,translation
 5358.1,ra,word,giver,MW.ra.173014 Voc.M.S,"O Roarer[√रु अच्], O giver[śis] of perception[Vedāntas][SR: prāṇānāṃ granthiḥ]"
 5360.1,damana,stem,subduing,MW.damana.90271,"O Subduing[MBh] meditator[√मन् अच्]"
 5360.1,mana,word,meditator,MW.mana.156713 Voc.M.S,"O Subduing[MBh] meditator[√मन् अच्]"
-5361.1,iqA,stem,stirs,MW.iqA.28693,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
-5361.1,cala,stem,move,MW.cala.72592,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
-5361.1,vAha,stem,bring,MW.vAha.192702,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
+5361.1,iqA,stem,iḍā,MW.iqA.28693,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
+5361.1,cala,stem,moving,MW.cala.72588,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
+5361.1,vAha,stem,bearing,MW.vAha.192702,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
 5361.1,nAman,word,renown,MW.nAman.105827 Voc.M.S,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
 5361.1,hantf,word,killer,MW.hantf.260454 Voc.N.S,"O reknowned[RV] one who stirs[MBh] and brings forth[Kathās] the libation[ŚBr], O killer[RV]"
 5364.1,rIRa,word,flowing,MW.rIRa.178180 Voc.M.S,O flowing one[Śiś; SR: nadi]
@@ -3481,8 +3481,7 @@ id,form,type,translation_lexeme,analysis,translation
 5384.1,eka,stem,one,MW.eka.39169,O burning one[√दह् अच्] with the unique[RV] radiance[MBh]
 5384.1,BAm,word,radiance,MW.BA.147502.2 Acc.M.S,O burning one[√दह् अच्] with the unique[RV] radiance[MBh]
 5404.1,sadaH,word,assembly,MW.sada.230552 Nom.M.S,Sacrifice assembly[RV 10.15.11]
-5428.1,E,word,Interjection,INDC.E.40292,Indeed[MaitrS] her[इदम् afs][sandhi ऐ इ = आ इ]
-5428.1,iyam,word,her,MW.iyam.29337 Nom.M.S,Indeed[MaitrS] her[इदम् afs][sandhi ऐ इ = आ इ]
+5428.1,Eya,word,quantity,DHATU.i.Adadi KRT.kvip TAD.Rya Nom.M.S,Indeed[MaitrS] her[इदम् afs][sandhi ऐ इ = आ इ]
 5451.1,fdDa,stem,abundant,MW.fdDa.38931,The one with abundant[RV] might[RV]
 5451.1,amam,word,might,MW.ama.13749 Acc.M.S,The one with abundant[RV] might[RV]
 5453.1,rata,word,pleased,MW.rata.174224 Voc.M.S,O pleased one[BhP]
