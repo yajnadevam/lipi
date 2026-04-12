@@ -262,8 +262,18 @@
 
   try {
     // Convert CRLF to LF - json-2-csv doesn't handle CRLF properly
+    const allInscriptions = csv2json(inscriptionsCsv.replace(/\r\n/g, '\n'))
+    const excludedIds = new Set()
+    for (const row of allInscriptions) {
+      const text = (row.text || '').trim()
+      if (!text) continue
+      if (text.startsWith(']') || text.endsWith('[') || text.includes('000')) {
+        excludedIds.add(row.id)
+      }
+    }
+    inscriptions = allInscriptions.filter(row => !excludedIds.has(row.id))
     lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
-    inscriptions = csv2json(inscriptionsCsv.replace(/\r\n/g, '\n'))
+      .filter(row => !excludedIds.has(row.id))
     mwIndex = new Set(Object.keys(mwJson))
   } catch (e) {
     console.error('Failed to initialize data:', e)
@@ -294,11 +304,23 @@
     ['meditate', 'meditator', 'opinion', 'notion', 'conception', 'idea', 'thought'],
     ['breathe', 'breath', 'breathing', 'exhale', 'exhaling', 'Prāṇa'],
     ['bear', 'bearer', 'carry', 'support', 'supporting'],
+    ['relationship based upon an oblation', 'sacrifice'],
+    ['concealing', 'covering'],
+    ['pierced', 'perforated'],
+    ['holding', 'bearer'],
+    ['getting rid of', 'destroying', 'destroyer', 'killer'],
+    ['gush', 'spread'],
+    ['not contiguous', 'separated'],
     ['give', 'giver', 'giving', 'bestow', 'grant'],
     ['please', 'pleasing', 'delight', 'delighting', 'rejoicing', 'joy'],
     ['gold', 'golden'],
     ['nearest', 'dearest'],
     ['thus', 'indeed', 'certainly'],
+    ['salutations', 'bending'],
+    ['cutting up (a killed animal)', 'slaughter'],
+    ['firmament', 'sky'],
+    ['ejecting', 'emitting'],
+    ['causing pain or affliction', 'punisher'],
     ['leaf', 'foliage'],
     ['door', 'entrance'],
     ['having no rival', 'unrivalled'],
@@ -591,6 +613,9 @@
       const analysis = row.analysis || ''
       // Skip DHATU entries — no MW dictionary entry for verbal roots
       if (analysis.startsWith('DHATU.')) continue
+      // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
+      // form correctness is already validated by vidyut in validateDerivations
+      if (analysis.startsWith('PRON.')) continue
 
       // Extract stem and MW ID from analysis: MW.stem.id, PRON.stem.id, INDC.stem.id
       const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+))?/)
