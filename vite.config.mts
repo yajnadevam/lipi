@@ -21,6 +21,7 @@ const MW_JSON_PATH = pathResolve(__dirname, 'src/assets/data/mw.json')
 const CSV_PATH = pathResolve(__dirname, 'glossing.csv')
 
 let mwDictCache: Record<string, { lid: string, content: string }[]> | null = null
+let mwByLidCache: Record<string, { stem: string, content: string }> | null = null
 
 function loadMwDict () {
   if (mwDictCache) return mwDictCache
@@ -32,6 +33,7 @@ function loadMwDict () {
   const mwTxt = readFileSync(MW_DICT_PATH, 'utf8')
   const entries = mwTxt.split('<LEND>')
   const dict: Record<string, { lid: string, content: string }[]> = {}
+  const byLid: Record<string, { stem: string, content: string }> = {}
   for (const entry of entries) {
     const k1Match = entry.match(/<k1>([^<]+)/)
     if (!k1Match) continue
@@ -43,9 +45,11 @@ function loadMwDict () {
     const lid = lMatch ? lMatch[1] : ''
     if (!dict[k1]) dict[k1] = []
     dict[k1].push({ lid, content })
+    if (lid) byLid[lid] = { stem: k1, content }
   }
-  console.log(`[mw-sync] Cached ${Object.keys(dict).length} MW stems`)
+  console.log(`[mw-sync] Cached ${Object.keys(dict).length} MW stems, ${Object.keys(byLid).length} LIDs`)
   mwDictCache = dict
+  mwByLidCache = byLid
   return dict
 }
 
@@ -83,8 +87,6 @@ function syncMwEntries () {
     }
   }
 
-  if (missingStems.size === 0 && missingIds.size === 0) return false
-
   const dict = loadMwDict()
   if (!dict) return false
 
@@ -121,6 +123,51 @@ function syncMwEntries () {
       existing.push(c)
       added++
       console.log(`[mw-sync] Added ID ${id} to "${cleanStem}"`)
+    }
+  }
+
+  // Second pass: resolve `id.` (idem) references. Any entry currently in
+  // mw.json whose text contains a standalone `id.` defers to the previous MW
+  // line. Pull the prior-LID entry into mw.json so validateMeanings can
+  // resolve the reference without a dead-end fallback.
+  //
+  // The prior-LID entry may belong to a different stem (MW's alphabetical
+  // ordering typically interleaves morphological variants), so we stash it
+  // under a synthetic `@id/<lid>` stem key to avoid colliding with genuine
+  // stem entries — the analytics.vue lookup is purely by numeric ID, so the
+  // stem key name doesn't matter for validation.
+  const mwByLid = mwByLidCache
+  if (mwByLid) {
+    const existingLids = new Set<string>()
+    for (const entries of Object.values(mwJson) as string[][]) {
+      for (const e of entries) {
+        const m = e.match(/\[ID=(\d+)\]/)
+        if (m) existingLids.add(m[1])
+      }
+    }
+    const idDefers: { lid: string, prevLid: string }[] = []
+    for (const entries of Object.values(mwJson) as string[][]) {
+      for (const e of entries) {
+        // Strip XML-ish tags before testing — raw entries contain `<ab>id.</ab>,`
+        // which would otherwise break the `id.\s*[,;.]` adjacency check.
+        const cleaned = e.replace(/<[^>]+>/g, ' ')
+        if (!/\bid\.\s*[,;.]/.test(cleaned)) continue
+        const m = e.match(/\[ID=(\d+)\]/)
+        if (!m) continue
+        const prev = String(Number(m[1]) - 1)
+        if (!existingLids.has(prev)) idDefers.push({ lid: m[1], prevLid: prev })
+      }
+    }
+    for (const { prevLid } of idDefers) {
+      const priorEntry = mwByLid[prevLid]
+      if (!priorEntry) continue
+      let c = priorEntry.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
+      c += `<L>[ID=${prevLid}]</L>`
+      const bucket = `@id/${prevLid}`
+      mwJson[bucket] = [c]
+      existingLids.add(prevLid)
+      added++
+      console.log(`[mw-sync] Added prior-id ${prevLid} (from "${priorEntry.stem}") → @id/${prevLid}`)
     }
   }
 

@@ -249,6 +249,7 @@
   import lemmasCsv from '../../glossing.csv?raw'
   import inscriptionsCsv from '../assets/data/inscriptions.csv?raw'
   import mwJson from '../assets/data/mw.json'
+  import dhatuJson from '../assets/data/dhatu.json'
   import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
   import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'
   import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
@@ -308,6 +309,13 @@
     ['concealing', 'covering'],
     ['pierced', 'perforated'],
     ['holding', 'bearer'],
+    ['glowing', 'resplendent'],
+    ['a particle of interrogation', 'who'],
+    ['shaken, agitated, whirling', 'stormy'],
+    ['go', 'wander', 'moving'],
+    ['wearing twisted locks of hair', 'braided'],
+    ['the god of love', 'Kāma'],
+    ['fully', 'complete'],
     ['getting rid of', 'destroying', 'destroyer', 'killer'],
     ['gush', 'spread'],
     ['not contiguous', 'separated'],
@@ -609,13 +617,54 @@
     let invalid = 0
     const invalidList = []
 
+    // Build an ID → entry index so we can follow `id.` (idem) cross-references
+    // to the previous MW entry by numeric ID.
+    const mwById = new Map()
+    for (const entries of Object.values(mwJson)) {
+      for (const e of entries) {
+        const m = e.match(/\[ID=(\d+)\]/)
+        if (m) mwById.set(Number(m[1]), e)
+      }
+    }
+
     for (const row of rows) {
       const analysis = row.analysis || ''
-      // Skip DHATU entries — no MW dictionary entry for verbal roots
-      if (analysis.startsWith('DHATU.')) continue
       // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
       // form correctness is already validated by vidyut in validateDerivations
       if (analysis.startsWith('PRON.')) continue
+
+      // DHATU meaning validation is temporarily disabled — flip
+      // DHATU_VALIDATION_ENABLED to true to re-enable. All lookup logic below
+      // is retained so nothing needs to be re-derived when we switch it back on.
+      const DHATU_VALIDATION_ENABLED = false
+      if (analysis.startsWith('DHATU.') && !DHATU_VALIDATION_ENABLED) continue
+
+      // DHATU entries: validate against dhatu.json (composed dhātu meanings)
+      // rather than MW (which doesn't gloss verbal roots in English).
+      if (analysis.startsWith('DHATU.')) {
+        const dhatuTok = analysis.substring(6).split(/\s+/)[0]
+        // Strip upasargas (everything before the last '-' segment)
+        const segs = dhatuTok.split('-')
+        const rootGana = segs[segs.length - 1]
+        const lastDot = rootGana.lastIndexOf('.')
+        const root = lastDot === -1 ? rootGana : rootGana.substring(0, lastDot)
+        const gana = lastDot === -1 ? '' : rootGana.substring(lastDot + 1)
+        const dhatuMeanings = (gana && dhatuJson[`${root}.${gana}`]) || dhatuJson[root]
+        if (!dhatuMeanings) continue // unknown dhātu — skip rather than flag
+        const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+        if (!lexeme) continue
+        const meaning = extractMeaning(lexeme)
+        if (!meaning || meaning.length < 2) continue
+        // Strip "to " prefixes from dhātu glosses to avoid spurious matches
+        const dhatuText = dhatuMeanings.replace(/\bto\s+/g, '')
+        if (meaningInDictionary(meaning, dhatuText)) {
+          valid++
+        } else {
+          invalid++
+          invalidList.push({ ...row, issue: `"${lexeme}" not in dhātu glosses: "${dhatuText.substring(0, 80).trim()}…"` })
+        }
+        continue
+      }
 
       // Extract stem and MW ID from analysis: MW.stem.id, PRON.stem.id, INDC.stem.id
       const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+))?/)
@@ -685,6 +734,20 @@
           seeEntries = mwJson[target]
         } else {
           seeDeadEnd = true // reference target missing from dictionary
+        }
+      }
+
+      // Follow `id.` (idem) references — entry defers to the previous MW line.
+      // Find the entry with ID = (current ID - 1) in our ID index. If we can't
+      // find it locally, let the row fall through to normal flagging rather
+      // than silently dead-ending — the mw-sync plugin should pull prior-id
+      // entries in on dev server restart; a persistent miss here is a real
+      // data bug the user needs to see, not a dead end to paper over.
+      if (!seeEntries && /\bid\.\s*[,;.]/.test(dictText)) {
+        const idMatch = (dictDef || '').match(/\[ID=(\d+)\]/)
+        if (idMatch) {
+          const prevEntry = mwById.get(Number(idMatch[1]) - 1)
+          if (prevEntry) seeEntries = [prevEntry]
         }
       }
 

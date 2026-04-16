@@ -10518,5 +10518,23 @@
     "¦ so much, only so much<info lex=\"inh\"/><L>[ID=29331]</L>",
     "¦ of such extent, <ls>RV.</ls>; <ls>TS.</ls>; <ls>ŚBr.</ls>; <ls>AitBr.</ls>; <ls>Pañcat.</ls>; <ls>Ragh.</ls> &c.; <info lex=\"inh\"/><L>[ID=29332]</L>",
     "iyat, ¦ [<ab>cf.</ab> the syllable <etym>iens</etym> or <etym>ies</etym> in such <lang>Lat.</lang> words as <etym>totiens</etym>, <etym>toties</etym>, <etym>quotiens</etym>, <etym>quoties</etym>, and in numeral adverbs as <etym>quinquies</etym>.]<L>[ID=29332.1]</L>"
+  ],
+  "@id/70282": [
+    "<hom>1.</hom> ca—kAra ¦ <lex>m.</lex> the letter or sound ca.<info lex=\"m\"/><L>[ID=70282]</L>"
+  ],
+  "@id/177288": [
+    "rAmI ¦ <lex>f.</lex> darkness, night, <ls>RV.</ls><info lex=\"f\"/><info hui=\"a\"/><L>[ID=177288]</L>"
+  ],
+  "@id/20547": [
+    "a-sat—tA ¦ <lex>f.</lex> nonexistence, <ls>L.</ls><info lex=\"f\"/><L>[ID=20547]</L>"
+  ],
+  "@id/170147": [
+    "yaTA ¦ yaTA<srs/>MSa-tas &c. See <ab>p.</ab> 841, <ab>cols.</ab> 2 and 3 &c.<info hui=\"b\"/><L>[ID=170147]</L>"
+  ],
+  "@id/90245": [
+    "daBra—budDi ¦ <lex>mfn.</lex>, <ls>BhP. vi, 7.</ls><info lex=\"m:f:n\"/><L>[ID=90245]</L>"
+  ],
+  "@id/72612": [
+    "cala—tA ¦ <lex>f.</lex> shaking, tremulous motion, <ls>Suśr. i, 32, 1.</ls><info lex=\"f\"/><L>[ID=72612]</L>"
   ]
 }

@@ -209,7 +209,12 @@
                           >&#x270E;</span
                         >
                       </span>
-                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">{{ getLemmaReference(lemma) }}</div>
+                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">
+                        {{ getLemmaReference(lemma) }}
+                        <span v-if="getLemmaSutras(lemma).length" class="lemma-sutras">
+                          <a v-for="s in getLemmaSutras(lemma)" :key="s" class="vidyut-rule-link" :href="'https://ashtadhyayi.com/sutraani/' + s" target="_blank">[{{ s }}]</a>
+                        </span>
+                      </div>
                       <div v-if="vidyutExpansions[item.id + '-' + idx]" class="vidyut-derivation">
                         <template v-for="(step, si) in vidyutExpansions[item.id + '-' + idx].steps" :key="si">
                           <div class="vidyut-step">
@@ -438,7 +443,12 @@
                         >{{ lemma.translation_lexeme }}</span>
                         <span v-if="isDev && !item.lemmaRef" class="edit-icon">&#x270E;</span>
                       </span>
-                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">{{ getLemmaReference(lemma) }}</div>
+                      <div v-if="expandedRefs[item.id + '-' + idx]" class="lemma-reference">
+                        {{ getLemmaReference(lemma) }}
+                        <span v-if="getLemmaSutras(lemma).length" class="lemma-sutras">
+                          <a v-for="s in getLemmaSutras(lemma)" :key="s" class="vidyut-rule-link" :href="'https://ashtadhyayi.com/sutraani/' + s" target="_blank">[{{ s }}]</a>
+                        </span>
+                      </div>
                         <div v-if="vidyutExpansions[item.id + '-' + idx]" class="vidyut-derivation">
                           <template v-for="(step, si) in vidyutExpansions[item.id + '-' + idx].steps" :key="si">
                             <div class="vidyut-step">
@@ -1177,6 +1187,13 @@ export default {
       if (!text || /^[\u0900-\u097F]/.test(text)) return text;
       return this.toDevanagari(slp1Key) + " " + text;
     },
+    getLemmaSutras (lemma) {
+      if (!lemma.analysis) return []
+      return lemma.analysis
+        .split(/\s+/)
+        .filter(p => p.startsWith('SUTRA.'))
+        .map(p => p.slice(6))
+    },
     getLemmaReference (lemma) {
       if (!lemma.analysis) return '--'
       const target = lemma.translation_lexeme
@@ -1195,6 +1212,32 @@ export default {
         const dhatuClean = dhatuRaw.includes("~")
           ? dhatuRaw.replace(/[aiufFeEoO]?[~^\\]+/g, "")
           : dhatuRaw;
+        // If the DHATU analysis also carries an explicit MW reference, prefer
+        // that MW entry over the dhātupāṭha gloss — the user-supplied ID is
+        // the authoritative lookup. Two forms are accepted:
+        //   MW.stem.id   — fully qualified (e.g., `MW.jana.76735`)
+        //   MW.id        — bare ID, implicitly tied to the DHATU stem
+        //                  (e.g., `MW.104757` paired with `DHATU.naSa~.Bhvadi`)
+        const mwRefFull = lemma.analysis.match(/\bMW\.([a-zA-Z~^\\][^.\s]*)(?:\.(\d+))?/);
+        if (mwRefFull) {
+          const mwKey = mwRefFull[1];
+          const mwId = mwRefFull[2];
+          const lookupKey = mwKey.includes("-") ? mwKey.split("-").pop() : mwKey;
+          const ref = this.findMwLineById(lookupKey, mwId) ||
+            this.findMwLineByText(lookupKey, target);
+          if (ref) return this.withDevanagari(mwKey, ref);
+        }
+        const mwRefBareId = lemma.analysis.match(/\bMW\.(\d+)\b/);
+        if (mwRefBareId) {
+          const id = mwRefBareId[1];
+          // Scan mwMap for the entry with this ID; use its stem key for rendering.
+          for (const [stem, entries] of Object.entries(mwMap)) {
+            const match = entries.find(e => e.includes("[ID=" + id + "]"));
+            if (match) {
+              return this.withDevanagari(stem, this.cleanMwWithLex(stem, match));
+            }
+          }
+        }
         // Look up in dhatu dictionary (keyed by dhatupatha form)
         const dhatuEntries =
           dhatuMap[dhatuRaw] ||
