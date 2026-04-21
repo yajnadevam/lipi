@@ -250,6 +250,7 @@
   import inscriptionsCsv from '../assets/data/inscriptions.csv?raw'
   import mwJson from '../assets/data/mw.json'
   import dhatuJson from '../assets/data/dhatu.json'
+  import synonymGroups from '../assets/data/synonym_groups.json'
   import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
   import dhatupatha from '../assets/vidyut/vidyut_dhatupatha_5.tsv'
   import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
@@ -288,66 +289,16 @@
     return match ? match[1].trim() : cleaned
   }
 
-  // Synonym groups for common MW translation equivalences
-  const SYNONYM_GROUPS = [
-    ['mighty', 'might', 'power', 'powerful', 'strength', 'strong', 'force', 'potent'],
-    ['swift', 'speed', 'quick', 'fast', 'rapid'],
-    ['still', 'motionless', 'stiff', 'torpid', 'immobile'],
-    ['interior', 'inside'],
-    ['generous', 'giving', 'bestowing', 'liberal', 'bountiful', 'bounty', 'beneficent', 'friendly', 'kind to men'],
-    ['wander', 'wanderer', 'movable', 'moving', 'roam', 'roaming'],
-    ['great', 'grand', 'large', 'vast', 'abundant'],
-    ['kill', 'killer', 'slay', 'slayer', 'destroy', 'destroyer', 'destruction'],
-    ['water', 'waters', 'wave', 'flood', 'stream', 'river', 'ocean', 'sea'],
-    ['roar', 'roarer', 'roaring', 'cry', 'howl', 'yell', 'sound'],
-    ['shine', 'shining', 'glow', 'glowing', 'blaze', 'blazing', 'bright', 'radiant', 'lustre'],
-    ['tranquil', 'calm', 'peace', 'peaceful', 'quiet', 'rest', 'serene'],
-    ['meditate', 'meditator', 'opinion', 'notion', 'conception', 'idea', 'thought'],
-    ['breathe', 'breath', 'breathing', 'exhale', 'exhaling', 'Prāṇa'],
-    ['bear', 'bearer', 'carry', 'support', 'supporting'],
-    ['relationship based upon an oblation', 'sacrifice'],
-    ['concealing', 'covering'],
-    ['pierced', 'perforated'],
-    ['holding', 'bearer'],
-    ['glowing', 'resplendent'],
-    ['a particle of interrogation', 'who'],
-    ['shaken, agitated, whirling', 'stormy'],
-    ['go', 'wander', 'moving'],
-    ['wearing twisted locks of hair', 'braided'],
-    ['the god of love', 'Kāma'],
-    ['fully', 'complete'],
-    ['getting rid of', 'destroying', 'destroyer', 'killer'],
-    ['gush', 'spread'],
-    ['not contiguous', 'separated'],
-    ['give', 'giver', 'giving', 'bestow', 'grant'],
-    ['please', 'pleasing', 'delight', 'delighting', 'rejoicing', 'joy'],
-    ['gold', 'golden'],
-    ['nearest', 'dearest'],
-    ['thus', 'indeed', 'certainly'],
-    ['salutations', 'bending'],
-    ['cutting up (a killed animal)', 'slaughter'],
-    ['firmament', 'sky'],
-    ['ejecting', 'emitting'],
-    ['causing pain or affliction', 'punisher'],
-    ['leaf', 'foliage'],
-    ['door', 'entrance'],
-    ['having no rival', 'unrivalled'],
-    ['bow', 'bowing', 'salute', 'saluting', 'homage'],
-    ['soul', 'spirit', 'self', 'spiritual'],
-    ['honor', 'honour', 'respect', 'worship', 'reverence'],
-    ['subdue', 'subduing', 'conquer', 'conquering', 'tame', 'taming'],
-    ['well', 'excellent'],
-    ['that', 'the', 'this', 'those', 'these'],
-    ['who', 'whom', 'whose', 'which'],
-    ['wealthy', 'rich'],
-    ['not to be obstructed', 'unstoppable'],
-    ['path', 'road'],
-    ['undiminished', 'not less'],
-  ]
+  // Each row starts with the MW dictionary phrase (where applicable);
+  // the remaining entries are synonyms that may appear in English translations.
+  // A word may belong to multiple rows — the map stores all groups per key.
   const synonymMap = new Map()
-  for (const group of SYNONYM_GROUPS) {
+  for (const group of synonymGroups) {
     for (const word of group) {
-      synonymMap.set(word.toLowerCase(), group)
+      const key = word.toLowerCase()
+      const existing = synonymMap.get(key)
+      if (existing) existing.push(group)
+      else synonymMap.set(key, [group])
     }
   }
 
@@ -409,11 +360,13 @@
       // Stemmed match: "roarer" → "roar", "powerful" → "power"
       const stem = stemWord(word)
       if (stem !== word && stem.length >= 3 && dictLower.includes(stem)) return true
-      // Synonym check
-      const synonyms = synonymMap.get(word) || synonymMap.get(stem)
-      if (synonyms) {
-        for (const syn of synonyms) {
-          if (dictLower.includes(syn)) return true
+      // Synonym check — a word may belong to multiple groups, so check each.
+      const groups = synonymMap.get(word) || synonymMap.get(stem)
+      if (groups) {
+        for (const group of groups) {
+          for (const syn of group) {
+            if (dictLower.includes(syn.toLowerCase())) return true
+          }
         }
       }
     }

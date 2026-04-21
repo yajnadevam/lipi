@@ -192,7 +192,7 @@ function makeResult (steps, text, slp1Form) {
 
 // --- Derivation sub-routines ---
 
-function deriveTinanta (vidyut, slp1Form, root, gana, lakara, vacana, purusha, upasargas, dhatuIndex) {
+function deriveTinanta (vidyut, slp1Form, root, gana, lakara, vacana, purusha, upasargas, sanadi, dhatuIndex) {
   const aupadeshikaForms = resolveAupadeshika(dhatuIndex, root)
   let fallback = null
 
@@ -200,7 +200,7 @@ function deriveTinanta (vidyut, slp1Form, root, gana, lakara, vacana, purusha, u
     for (const tryGana of ganasToTry(gana)) {
       for (const pada of ['Parasmaipada', 'Atmanepada']) {
         try {
-          const dhatu = createDhatu(aupa, tryGana, [], upasargas)
+          const dhatu = createDhatu(aupa, tryGana, sanadi, upasargas)
           const results = vidyut.deriveTinantas({
             dhatu,
             lakara,
@@ -208,7 +208,7 @@ function deriveTinanta (vidyut, slp1Form, root, gana, lakara, vacana, purusha, u
             purusha,
             prayoga: 'Kartari',
             pada,
-            sanadi: [],
+            sanadi,
             upasarga: dhatu.prefixes,
           })
           for (const r of results) {
@@ -483,11 +483,16 @@ function deriveDhatu (vidyut, slp1Form, parsed, dhatuIndex, wordsMap, itemId) {
   }
 
   if (parsed.tinPart) {
+    // TIN[.<sanadi>...].<lakara>.<purusha>.<vacana>
     const tinParts = parsed.tinPart.split('.')
-    const lakara = LAKARA_MAP[tinParts[1]] || tinParts[1]
-    const purusha = PURUSHA_MAP[tinParts[2]]
-    const tinVacana = NUMBER_MAP[tinParts[3]]
-    return deriveTinanta(vidyut, slp1Form, root, gana, lakara, tinVacana, purusha, upasargas, dhatuIndex)
+    const vacanaTok = tinParts[tinParts.length - 1]
+    const purushaTok = tinParts[tinParts.length - 2]
+    const lakaraTok = tinParts[tinParts.length - 3]
+    const sanadi = tinParts.slice(1, -3)
+    const lakara = LAKARA_MAP[lakaraTok] || lakaraTok
+    const purusha = PURUSHA_MAP[purushaTok]
+    const tinVacana = NUMBER_MAP[vacanaTok]
+    return deriveTinanta(vidyut, slp1Form, root, gana, lakara, tinVacana, purusha, upasargas, sanadi, dhatuIndex)
   }
 
   if (parsed.krtPart) {
