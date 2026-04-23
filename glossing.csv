@@ -970,7 +970,7 @@ id,form,type,translation_lexeme,analysis,translation
 1414.1,taqan,word,punisher,DHATU.taqa~.Bhvadi KRT.Satf Nom.M.S,O Roaring[√रु अच्] punisher[√तड् शतृ]
 1415.1,rAma,stem,lovely,MW.rAma.177265,O lovely[MBh] draught of Soma[RV]
 1415.1,pAna,word,draught,MW.pAna.120867 Voc.M.S,O lovely[MBh] draught of Soma[RV]
-1416.1,Sam,word,bless,MW.Sam Nom.M.S,"Bless[RV] (us), O calmness-filled[MBh] one"
+1416.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O calmness-filled[MBh] one"
 1416.1,Samamaya,stem,calmness,MW.Sama.212912 TAD.mayaw Voc.M.S,"Bless[RV] (us), O calmness-filled[MBh] one"
 1417.1,Apa,word,Vasus,MW.Apa.24818 Voc.M.S,vedic deity(Vasus)[MBh]  
 1422.1,tva,stem,many,MW.tva.88922,O one Having[MBh] several[RV] (Soma) drinks[RV]
@@ -980,7 +980,7 @@ id,form,type,translation_lexeme,analysis,translation
 1423.1,mAnaka,word,honorer,DHATU.mAna~.Curadi KRT.Rvul Voc.M.S,O one who honors[√मन् ण्वुल्] the heavens[RV]
 1430.1,A,stem,Complete,MW.A.22015.90,Complete[Ragh] honor[√मन् घञ्]
 1430.1,mAnaH,word,honor,MW.mAna.162722 Nom.M.S,Complete[Ragh] honor[√मन् घञ्]
-1432.1,Sam,word,Bless,MW.Sam Nom.M.S,Bless[RV] (us) O Shiva[MBh]
+1432.1,SaM,stem,auspicious,INDC.SaM.213070,Bless[RV] (us) O Shiva[MBh]
 1432.1,hara,word,śiva,MW.hara.260675 Voc.M.S,Bless[RV] (us) O Shiva[MBh]
 1434.1,rava,stem,Roaring,DHATU.ru. KRT.ac Voc.M.S,O Roaring[√रु अच्] destroying[MBh] meditating one[√मन् अच्]
 1434.1,Samana,stem,meditating,MW.Samana.212956,O Roaring[√रु अच्] destroying[MBh] meditating one[√मन् अच्]
@@ -1243,7 +1243,7 @@ id,form,type,translation_lexeme,analysis,translation
 1920.1,dA,stem,generous,MW.dA.89221,O Generous[RV] punisher[RV]
 1920.1,Atapa,word,punisher,MW.Atapa.23357 Voc.M.S,O Generous[RV] punisher[RV]
 1921.1,jAra,word,consumer,MW.jAra.79000 Voc.M.S,O one who consumes[Nir.; AV 19.55.5: annāda]
-1923.1,Sam,word,bless,MW.Sam.212911 Nom.M.S,"bless[RV] (us), O killer[√हन् अच्]"
+1923.1,SaM,stem,auspicious,INDC.SaM.213070,"bless[RV] (us), O killer[√हन् अच्]"
 1923.1,hana,word,killer,DHATU.hana~. KRT.ac Voc.M.S,"bless[RV] (us), O killer[√हन् अच्]"
 1927.1,A,stem,fully,MW.A.22015.50,O swift[DaivBr; मतुप्] giver[Pāṇ](Shiva)
 1927.1,jajjavat,stem,swift,MW.jajja.76504 TAD.matup,O swift[DaivBr; मतुप्] giver[Pāṇ](Shiva)
@@ -1410,7 +1410,7 @@ id,form,type,translation_lexeme,analysis,translation
 2185.1,A,stem,fully,MW.A.22015.45,The roaring[√अम् शतृ] thrower[=Rudra;āsin Wörterbuch]
 2185.1,manasi,word,understanding,MW.manas.156776 Loc.N.S,The roaring[√अम् शतृ] thrower[=Rudra;āsin Wörterbuch]
 2187.1,taqa,word,Punisher,DHATU.taqa~.Curadi KRT.ac Voc.M.S,O Punisher(of Kāma)[√तड् अच् ]
-2189.1,Sam,word,Bless,MW.Sam Nom.M.S,"Bless[RV] (us), O Cleaver[√दृ अच्](Indra)"
+2189.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O Cleaver[√दृ अच्](Indra)"
 2189.1,dara,word,Cleaver,DHATU.df. KRT.ac Voc.M.S,"Bless[RV] (us), O Cleaver[√दृ अच्](Indra)"
 2192.1,damana,stem,Subduer,MW.damana.90271,O Subduer[Mbh] worthy of praise[√पन्]
 2192.1,pAR,word,praise,DHATU.paRa~.Bhvadi MW.paR.114550 KRT.kvip Voc.M.S,O Subduer[Mbh] worthy of praise[√पन्]
@@ -1717,7 +1717,7 @@ id,form,type,translation_lexeme,analysis,translation
 2432.1,mada,stem,passion,MW.mada.155334,O dispeller[RV] of passion[MBh]
 2432.1,han,word,destroyer,MW.han.260297.1 Voc.M.S,O dispeller[RV] of passion[MBh]
 2435.1,ravavAn,word,bearer,DHATU.ru. KRT.ac TAD.matup Nom.M.S,The roar bearer[√रु अच् मतुप्]
-2436.1,Sam,word,Bless,MW.Sam Nom.M.S,"bless[RV] (us), O Roarer[√रण् अच्]"
+2436.1,SaM,stem,auspicious,INDC.SaM.213070,"bless[RV] (us), O Roarer[√रण् अच्]"
 2436.1,raRa,word,roaring,MW.raRa.174198 Voc.M.S,"bless[RV] (us), O Roarer[√रण् अच्]"
 2438.1,ravata,word,roaring,MW.ravata.175329 Voc.M.S,roaring[ĀpŚr] 
 2439.1,mAmAham,word,worshipper,DHATU.mAhf~.Bhvadi KRT.yaNluk.ac Acc.M.S,The ever measurer[√माह् यङ्लुकि अच्]
@@ -2207,7 +2207,7 @@ id,form,type,translation_lexeme,analysis,translation
 2757.1,ca,word,also,INDC.ca.70283,"O Gift-giver[RV, MBh √मन् क्विप्], May I enjoy[√अश् लिट् 1s, Bhag 9.20] this cup[AV] roaringly![√नद् शतृ]"
 2757.1,ASa,word,enjoy,DHATU.aSa~.Kryadi TIN.liw.1.S,"O Gift-giver[RV, MBh √मन् क्विप्], May I enjoy[√अश् लिट् 1s, Bhag 9.20] this cup[AV] roaringly![√नद् शतृ]"
 2757.1,nadan,word,sounding,DHATU.Rada~.Bhvadi KRT.Satf  Voc.M.S,"O Gift-giver[RV, MBh √मन् क्विप्], May I enjoy[√अश् लिट् 1s, Bhag 9.20] this cup[AV] roaringly![√नद् शतृ]"
-2759.1,Sam,word,bless,MW.Sam Nom.M.S,"Bless[RV] (us), O Roaring one[√मञ्ज् शतृॅं]"
+2759.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O Roaring one[√मञ्ज् शतृॅं]"
 2759.1,maYjana,word,roaring,DHATU.maYja~. KRT.lyuw Voc.M.S,"Bless[RV] (us), O Roaring one[√मञ्ज् शतृॅं]"
 2762.1,Anava,stem,kind to men,MW.Anava.24487,O benevolent[RV] mighty[RV] bearer[√धृ शतृ]
 2762.1,ama,stem,mighty,MW.ama.13749,O benevolent[RV] mighty[RV] bearer[√धृ शतृ]
@@ -2270,14 +2270,14 @@ id,form,type,translation_lexeme,analysis,translation
 2795.1,maTram,word,stormy,MW.maTra.155217 Acc.M.S,The Mighty[Nir] Churner[RV]
 2796.1,ud,stem,superlative,INDC.ud.32058.2,O superlative[AV] Roarer[√रण् अच्]
 2796.1,raRa,word,roaring,MW.raRa.174198 Voc.M.S,O superlative[AV] Roarer[√रण् अच्]
-2797.1,Sam,word,bless,INDC.Sam,"Bless[RV] (us), O creator[√जन् अच्]"
+2797.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O creator[√जन् अच्]"
 2797.1,jana,word,creator,MW.jana.76737 Voc.M.S,"Bless[RV] (us), O creator[√जन् अच्]"
 2799.1,rava,stem,roaring,DHATU.ru. KRT.ac Voc.M.S,The roaring[√रु अच्] wanderer[√चर् अच्]
 2799.1,caram,word,wanderer,MW.cara.72176 Acc.M.S,The roaring[√रु अच्] wanderer[√चर् अच्]
-2801.1,tadannam,word,food,MW.tadanna.82061 Acc.M.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
+2801.1,taqanam,word,shining,DHATU.taqa~.Curadi KRT.lyuw Acc.N.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
 2801.1,manu,stem,wise,MW.manu.156870,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
-2801.1,ama,word,powerful,MW.ama.13749 Voc.M.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
-2801.1,Sam,word,bless,MW.Sam Nom.M.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
+2801.1,ama,stem,powerful,MW.ama.13749 Voc.M.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
+2801.1,han,word,destroyer,MW.han.260297 Voc.M.S,"Bless[RV] the regular food[RV], O wise powerful[मनु अम] one"
 2802.1,ud,word,up,INDC.ud.32058.2,indeed O uplifter[RV उद्-√धन् अच्]
 2802.1,udDAna,word,uplift,MW.udDAna.33130 Voc.M.S,indeed O uplifter[RV उद्-√धन् अच्]
 2803.1,raRAya,word,Roarer,DHATU.raRa~. KRT.ac Dat.M.S,For the Roarer[√रण् अच्]
@@ -2528,7 +2528,7 @@ id,form,type,translation_lexeme,analysis,translation
 2977.1,A,stem,fully,MW.A.22011,The anointing[√अञ्ज् वुन्] braided[MBh] praiseworthy one[√नु ल्युट् इनि]
 2977.1,jawa,stem,braided,MW.jawa.76519,The anointing[√अञ्ज् वुन्] braided[MBh] praiseworthy one[√नु ल्युट् इनि]
 2977.1,navanI,word,praiseworthy,MW.navana.104615 TAD.ini Nom.M.S,The anointing[√अञ्ज् वुन्] braided[MBh] praiseworthy one[√नु ल्युट् इनि]
-2981.1,Sam,word,bless,MW.Sam Nom.M.S,"Bless[RV] (us), O shining one[√भा शतृ]"
+2981.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O shining one[√भा शतृ]"
 2981.1,BAn,word,shining,DHATU.BA. KRT.Satf Voc.M.S,"Bless[RV] (us), O shining one[√भा शतृ]"
 2983.1,tma,stem,soul,MW.tman.87332,O one who holds[MBh] the Prāṇa[RV 1.63.8]
 2983.1,Dara,word,hold,MW.Dara.99749 Voc.M.S,O one who holds[MBh] the Prāṇa[RV 1.63.8]
@@ -2679,7 +2679,8 @@ id,form,type,translation_lexeme,analysis,translation
 3126.1,upyavatAm,word,strewn,MW.upya.186303 TAD.matup Gen.M.P,of those[मतुप्] strewn[KātyŚr] aside[SR: nivapantu]
 3127.1,tana,stem,roarer,DHATU.tanu~.Curadi KRT.ac,The Roaring[√तन् अच्] bountiful[RV] one
 3127.1,rarARa,word,bountiful,MW.rarARa.175295 Voc.M.S,The Roaring[√तन् अच्] bountiful[RV] one
-3131.1,yE,word,her,DHATU.IN.Adadi MW.i.28539 Dat.F.S,for she who arises[इ dfs]
+3131.1,yA,word,who,PRON.yad Nom.F.S,for she who arises[इ dfs]
+3131.1,E,word,interjection,INDC.E,for she who arises[इ dfs]
 3133.1,Arava,stem,roaring,MW.Arava.26220,The roaring[Pāṇ] stormy one[RV][SR: reṣmiya]
 3133.1,maTram,word,stormy,MW.maTra.155217 Acc.M.S,The roaring[Pāṇ] stormy one[RV][SR: reṣmiya]
 3134.1,taru,stem,swiftly,MW.taru.83258,O one that runs[अत् शतृ] swiftly[RV]
@@ -3051,7 +3052,7 @@ id,form,type,translation_lexeme,analysis,translation
 3525.1,DAna,word,holder,MW.DAna.100750 Voc.M.S,"O holder[RV] of knowledge[RV,MBh][brahmaṇaspati]"
 3529.1,satAt,word,sacrificial vessel,MW.sata Abl.M.S,"From the sacrificial vessel[VS], I brought hither[आ-√वह् लङ् 1s], anointing well[RV 1.64.1 सम्-√अञ्ज् शतृ]"
 3529.1,Avaham,word,brought,DHATU.A-vaha~.Bhvadi TIN.laN.1.S,"From the sacrificial vessel[VS], I brought hither[आ-√वह् लङ् 1s], anointing well[RV 1.64.1 सम्-√अञ्ज् शतृ]"
-3529.1,sam,stem,well,MW.sam,"From the sacrificial vessel[VS], I brought hither[आ-√वह् लङ् 1s], anointing well[RV 1.64.1 सम्-√अञ्ज् शतृ]"
+3529.1,sam,stem,fully,MW.sam.232987,"From the sacrificial vessel[VS], I brought hither[आ-√वह् लङ् 1s], anointing well[RV 1.64.1 सम्-√अञ्ज् शतृ]"
 3529.1,aYjan,word,anoint,DHATU.anjU~.Rudhadi KRT.Satf Nom.M.S,"From the sacrificial vessel[VS], I brought hither[आ-√वह् लङ् 1s], anointing well[RV 1.64.1 सम्-√अञ्ज् शतृ]"
 3536.1,yUpa,word,sacrificial,MW.yUpa.172270 Voc.M.S,sacrificial post[RV]
 3537.1,kam,word,Excellent,MW.kam.43756.1 Nom.M.S,O excellent[RV] honored[MBh] one
@@ -3485,7 +3486,7 @@ id,form,type,translation_lexeme,analysis,translation
 5451.1,fdDa,stem,abundant,MW.fdDa.38931,The one with abundant[RV] might[RV]
 5451.1,amam,word,might,MW.ama.13749 Acc.M.S,The one with abundant[RV] might[RV]
 5453.1,rata,word,pleased,MW.rata.174224 Voc.M.S,O pleased one[BhP]
-5456.1,Sam,word,bless,MW.Sam Nom.M.S,"Bless[RV] (us), O beneficent one[TS]"
+5456.1,SaM,stem,auspicious,INDC.SaM.213070,"Bless[RV] (us), O beneficent one[TS]"
 5456.1,Amana,word,Sickness,MW.Amana.25439 Voc.M.S,"Bless[RV] (us), O beneficent one[TS]"
 5461.1,Ananam,word,face,MW.Anana.24319 Acc.M.S,The face[R] [SR: parācīnā mukhā]
 5481.1,la,word,cutting,MW.la.180313 Voc.M.S,O cutting one[W]
