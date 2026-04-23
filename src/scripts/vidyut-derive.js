@@ -568,7 +568,7 @@ function deriveDhatuKrt (vidyut, slp1Form, root, gana, upasargas, parsed, dhatuI
   return fallback
 }
 
-/** Handle MW/PRON entries: dispatch to TAD, feminine, standard subanta, or stem probe */
+/** Handle MW/PRON/Apte entries: dispatch to TAD, feminine, standard subanta, or stem probe */
 function deriveMwPron (vidyut, slp1Form, parsed, type) {
   const { linga, vacana, vibhakti, cgnPart, tadSuffixes } = parsed
   const mwParts = parsed.parts[0].split('.')
@@ -653,7 +653,7 @@ function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, t
     if (parsed.parts[0].startsWith('DHATU.')) {
       return deriveDhatu(vidyut, slp1Form, parsed, dhatuIndex, wordsMap, itemId)
     }
-    if (parsed.parts[0].startsWith('MW.') || parsed.parts[0].startsWith('PRON.')) {
+    if (parsed.parts[0].startsWith('MW.') || parsed.parts[0].startsWith('PRON.') || parsed.parts[0].startsWith('Apte.')) {
       return deriveMwPron(vidyut, slp1Form, parsed, type)
     }
     return null

@@ -635,6 +635,7 @@ import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
 import lemmasCsv from "../../glossing.csv?raw";
 import mwMap from "../assets/data/mw.json";
+import apteMap from "../assets/data/apte.json";
 import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
@@ -1197,6 +1198,16 @@ export default {
     getLemmaReference (lemma) {
       if (!lemma.analysis) return '--'
       const target = lemma.translation_lexeme
+      if (lemma.analysis.startsWith('Apte.')) {
+        const parts = lemma.analysis.split('.')
+        const apteKey = parts[1]
+        const lookupKey = apteKey.includes('-') ? apteKey.split('-').pop() : apteKey
+        const glosses = apteMap[lookupKey]
+        if (glosses && glosses.length) {
+          return this.withDevanagari(apteKey, glosses.join('; '))
+        }
+        return '--'
+      }
       if (lemma.analysis.startsWith('MW.') || lemma.analysis.startsWith('INDC.')) {
         const parts = lemma.analysis.split('.')
         const mwKey = parts[1]
@@ -1277,7 +1288,7 @@ export default {
           const lemma = lemmas[idx]
           if (!lemma.analysis) continue
           const isDerivable = derivablePattern.test(lemma.analysis)
-          const isStemProbe = !isDerivable && lemma.type === 'stem' && /\bMW\.|\bPRON\./.test(lemma.analysis)
+          const isStemProbe = !isDerivable && lemma.type === 'stem' && /\bMW\.|\bPRON\.|\bApte\./.test(lemma.analysis)
           if (!isDerivable && !isStemProbe) continue
           const key = id + '-' + idx
           let dr = null

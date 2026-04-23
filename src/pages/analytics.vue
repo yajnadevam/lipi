@@ -224,6 +224,7 @@
                     :items-per-page="50"
                     density="compact"
                     class="invalid-entries-table"
+                    item-value="_key"
                   >
                     <template #[`item.analysis`]="{ item }">
                       <span class="text-caption">{{ item.analysis }}</span>
@@ -249,6 +250,7 @@
   import lemmasCsv from '../../glossing.csv?raw'
   import inscriptionsCsv from '../assets/data/inscriptions.csv?raw'
   import mwJson from '../assets/data/mw.json'
+  import apteJson from '../assets/data/apte.json'
   import dhatuJson from '../assets/data/dhatu.json'
   import synonymGroups from '../assets/data/synonym_groups.json'
   import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
@@ -260,6 +262,7 @@
   let lemmas = []
   let inscriptions = []
   let mwIndex = new Set()
+  let apteIndex = new Set()
   let initError = null
 
   try {
@@ -277,6 +280,7 @@
     lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
       .filter(row => !excludedIds.has(row.id))
     mwIndex = new Set(Object.keys(mwJson))
+    apteIndex = new Set(Object.keys(apteJson))
   } catch (e) {
     console.error('Failed to initialize data:', e)
     initError = e.message
@@ -387,7 +391,7 @@
     let userCount = 0
     for (const row of rows) {
       const analysis = row.analysis || ''
-      if (analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.')) {
+      if (analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.') || analysis.startsWith('Apte.')) {
         mwCount++
       } else if (analysis.startsWith('DHATU.')) {
         if (analysis.includes('KRT.')) {
@@ -406,7 +410,14 @@
     let valid = 0
     let invalid = 0
     for (const row of rows) {
-      const mwMatch = (row.analysis || '').match(/MW\.([^.\s]+)/)
+      const analysis = row.analysis || ''
+      const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
+      if (apteMatch) {
+        if (apteIndex.has(apteMatch[1])) valid++
+        else invalid++
+        continue
+      }
+      const mwMatch = analysis.match(/\bMW\.([^.\s]+)/)
       if (mwMatch) {
         if (mwIndex.has(mwMatch[1])) {
           valid++
@@ -615,6 +626,34 @@
         } else {
           invalid++
           invalidList.push({ ...row, issue: `"${lexeme}" not in dhātu glosses: "${dhatuText.substring(0, 80).trim()}…"` })
+        }
+        continue
+      }
+
+      // Apte entries validate against apte.json (simple gloss list, no IDs).
+      // The translation_lexeme must match one of the stored glosses directly.
+      const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
+      if (apteMatch) {
+        const apteStem = apteMatch[1]
+        const glosses = apteJson[apteStem]
+        const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
+        if (!glosses || glosses.length === 0) {
+          invalid++
+          invalidList.push({ ...row, issue: `"${apteStem}" not in apte.json` })
+          continue
+        }
+        if (!lexeme) {
+          invalid++
+          invalidList.push({ ...row, issue: 'Missing translation_lexeme' })
+          continue
+        }
+        const meaning = extractMeaning(lexeme) || lexeme
+        const lc = meaning.toLowerCase()
+        if (glosses.some(g => g.toLowerCase() === lc)) {
+          valid++
+        } else {
+          invalid++
+          invalidList.push({ ...row, issue: `"${lexeme}" not in Apte glosses: ${glosses.join(', ')}` })
         }
         continue
       }
@@ -971,18 +1010,18 @@
 
       toggleInvalid(type) {
         this.invalidType = type
-        this.invalidEntries = []
+        let entries = []
 
         if (type === 'derivedStems') {
-          this.invalidEntries = this.invalidDerivedStemsList || []
+          entries = this.invalidDerivedStemsList || []
         } else if (type === 'declensions') {
-          this.invalidEntries = this.invalidDeclensionsList || []
+          entries = this.invalidDeclensionsList || []
         } else if (type === 'meanings') {
-          this.invalidEntries = this.invalidMeaningsList || []
+          entries = this.invalidMeaningsList || []
         } else if (type === 'coverage') {
-          this.invalidEntries = this.invalidCoverageList || []
+          entries = this.invalidCoverageList || []
         } else if (type === 'lexemes') {
-          this.invalidEntries = this.invalidLexemeList || []
+          entries = this.invalidLexemeList || []
         } else {
           for (const row of lemmas) {
             const analysis = row.analysis || ''
@@ -992,7 +1031,7 @@
               if (mwMatch) {
                 const stem = mwMatch[1]
                 if (!mwIndex.has(stem)) {
-                  this.invalidEntries.push({
+                  entries.push({
                     ...row,
                     issue: `MW stem "${stem}" not found in dictionary`,
                   })
@@ -1002,6 +1041,11 @@
           }
         }
 
+        // Stamp each entry with a unique _key so v-data-table sort keeps rows
+        // stable. Without this, multiple items sharing the same `id` collide
+        // in Vuetify's internal keying and repeated header clicks visually
+        // duplicate whichever row won the tie.
+        this.invalidEntries = entries.map((e, i) => ({ ...e, _key: i }))
         this.showInvalidDialog = true
       },
     },
