@@ -3222,7 +3222,7 @@ id,form,type,translation_lexeme,analysis,translation
 3826.1,ap,word,waters,MW.ap.8929 Voc.M.S,"Indeed, the waters[RV; SR: yo rudro apsu]"
 3836.1,radDa,word,174808,MW.radDa.174808 Voc.M.S,O Subduer[Bhaṭṭ]
 3842.1,akakAH,word,wanderers,DHATU.aka~. KRT.vun Nom.M.P,The wanderers(maruts) [√अक् वुन्]
-3852.1,yajaH,word,sacrifice,MW.yaja.169116 Nom.M.S,A sacrifice[RV]
+3852.1,yajaH,word,sacrifice,MW.yajas.169159 Nom.M.S,A sacrifice[RV]
 3854.1,dama,stem,Subduing,MW.dama.90250,Subduing[MBh] knower[√मन् अच्]
 3854.1,mana,word,spirit,MW.mana.156714 Voc.M.S,Subduing[MBh] spirit[√मन् अच्]
 3856.1,ajan,word,wander,DHATU.aja~. KRT.Satf Nom.M.S,O wanderer[√अज् शतृ]
@@ -3351,7 +3351,7 @@ id,form,type,translation_lexeme,analysis,translation
 4164.1,A,stem,fully,MW.A.22015.40,"O universal impeller[√अज् अच्], O invincible[RV] one [SR: śipiviṣṭa]"
 4164.1,vaya,word,driver,DHATU.aja~.Bhvadi MW.aj.1927 KRT.ac Voc.M.S,"O universal impeller[√अज् अच्], O invincible[RV] one [SR: śipiviṣṭa]"
 4164.1,ajaya,word,invincible,MW.ajaya.2077 Voc.M.S,"O universal impeller[√अज् अच्], O invincible[RV] one [SR: śipiviṣṭa]"
-4166.1,yaja,stem,yajña,MW.yaja.169116,The presider[MBh] of the yajna[RV][=Rudra]
+4166.1,yaja,stem,sacrifice,MW.yaja.169116,The presider[MBh] of the yajna[RV][=Rudra]
 4166.1,para,word,presider,MW.para.116006 Voc.M.S,The presider[MBh] of the yajna[RV][=Rudra]
 4172.1,yAH,word,those,MW.yA.168992 Abl.M.S,Those[RV]
 4173.1,vayya,stem,friendly,MW.vayya.186559,O friendly[RV] speech[RV] giver[śiś]

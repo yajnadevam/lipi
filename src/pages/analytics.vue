@@ -721,11 +721,17 @@
         }
       }
 
-      // Follow cross-references: "See X" or "= X" patterns
+      // Follow cross-references. Use precise MW idioms — the bare word "for"
+      // matches too many non-references ("used for the loc.", "for kindling")
+      // so it's omitted in favour of the abbreviated forms MW actually uses to
+      // signal a pointer ("in comp. for X", "ifc. for X", "w.r. for X",
+      // "metrically for X", "formed to explain X"), plus "See X" and "= X".
       let seeEntries = null
       let seeDeadEnd = false
       const dictText = (dictDef || allEntries[0] || '').replace(/<[^>]+>/g, ' ')
-      const seeTarget = dictText.match(/(?:See|=|for)\s+\d*\.?\s*(\S+)/)
+      const seeTarget = dictText.match(
+        /(?:See|=|in\s+comp\.\s+for|ifc\.\s+for|w\.r\.\s+for|metrically\s+for|formed\s+to\s+explain)\s+\d*\.?\s*(\S+)/,
+      )
       if (seeTarget) {
         const target = seeTarget[1].replace(/[\/.,;]+$/, '').replace(/-/g, '')
         if (mwJson[target]) {
