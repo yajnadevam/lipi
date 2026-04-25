@@ -635,7 +635,7 @@ import xlits from "../assets/data/xlits.csv?raw";
 import prakriyaMap from "../assets/data/prakriyas.json";
 import lemmasCsv from "../../glossing.csv?raw";
 import mwMap from "../assets/data/mw.json";
-import apteMap from "../assets/data/apte.json";
+import lexicons from "../assets/data/lexicons.json";
 import dhatuMap from "../assets/data/dhatu.json";
 import dhatupatha from "../assets/vidyut/vidyut_dhatupatha_5.tsv";
 import initVidyut, { Vidyut } from "../vidyut/vidyut_prakriya.js";
@@ -646,6 +646,11 @@ import { renderSanskrit } from "@/scripts/index/explanation";
 import { buildDhatuIndex, derive } from '@/scripts/vidyut-derive'
 // eslint-disable-next-line import/first
 import Sanscript from "@indic-transliteration/sanscript";
+
+const lexiconSources = new Set()
+for (const entries of Object.values(lexicons)) {
+  for (const entry of entries) lexiconSources.add(entry.source)
+}
 
 // Will be initialized after mount
 let vidyut
@@ -1198,13 +1203,18 @@ export default {
     getLemmaReference (lemma) {
       if (!lemma.analysis) return '--'
       const target = lemma.translation_lexeme
-      if (lemma.analysis.startsWith('Apte.')) {
+      // External lexicon lookup. The analysis prefix doubles as the source tag
+      // (e.g. `Apte.raRaka`), and we dispatch only for sources we actually have
+      // entries for in lexicons.json.
+      const dictPrefixMatch = lemma.analysis.match(/^([A-Z][A-Za-z]+)\./)
+      if (dictPrefixMatch && lexiconSources.has(dictPrefixMatch[1])) {
+        const source = dictPrefixMatch[1]
         const parts = lemma.analysis.split('.')
-        const apteKey = parts[1]
-        const lookupKey = apteKey.includes('-') ? apteKey.split('-').pop() : apteKey
-        const glosses = apteMap[lookupKey]
-        if (glosses && glosses.length) {
-          return this.withDevanagari(apteKey, glosses.join('; '))
+        const key = parts[1]
+        const lookupKey = key.includes('-') ? key.split('-').pop() : key
+        const entries = (lexicons[lookupKey] || []).filter(e => e.source === source)
+        if (entries.length) {
+          return this.withDevanagari(key, entries.map(e => e.gloss).join('; '))
         }
         return '--'
       }

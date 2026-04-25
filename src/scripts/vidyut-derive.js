@@ -653,7 +653,10 @@ function deriveCore (vidyut, analysis, slp1Form, dhatuIndex, wordsMap, itemId, t
     if (parsed.parts[0].startsWith('DHATU.')) {
       return deriveDhatu(vidyut, slp1Form, parsed, dhatuIndex, wordsMap, itemId)
     }
-    if (parsed.parts[0].startsWith('MW.') || parsed.parts[0].startsWith('PRON.') || parsed.parts[0].startsWith('Apte.')) {
+    // Dictionary-style entries (MW, PRON, Apte, Wilson, …) all dispatch here —
+    // derivation treats the prefix opaquely and only reads parts[0].split('.')[1]
+    // as the stem, so any capitalized dictionary name works.
+    if (/^[A-Z][A-Za-z]+\./.test(parsed.parts[0]) && !parsed.parts[0].startsWith('DHATU.')) {
       return deriveMwPron(vidyut, slp1Form, parsed, type)
     }
     return null

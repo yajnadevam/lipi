@@ -250,7 +250,7 @@
   import lemmasCsv from '../../glossing.csv?raw'
   import inscriptionsCsv from '../assets/data/inscriptions.csv?raw'
   import mwJson from '../assets/data/mw.json'
-  import apteJson from '../assets/data/apte.json'
+  import lexicons from '../assets/data/lexicons.json'
   import dhatuJson from '../assets/data/dhatu.json'
   import synonymGroups from '../assets/data/synonym_groups.json'
   import initVidyut, { Vidyut } from '../vidyut/vidyut_prakriya.js'
@@ -262,7 +262,8 @@
   let lemmas = []
   let inscriptions = []
   let mwIndex = new Set()
-  let apteIndex = new Set()
+  // Per-source stem indexes built from lexicons.json (e.g. lexiconIndex.Apte).
+  const lexiconIndex = {}
   let initError = null
 
   try {
@@ -280,7 +281,12 @@
     lemmas = csv2json(lemmasCsv.replace(/\r\n/g, '\n'))
       .filter(row => !excludedIds.has(row.id))
     mwIndex = new Set(Object.keys(mwJson))
-    apteIndex = new Set(Object.keys(apteJson))
+    for (const [stem, entries] of Object.entries(lexicons)) {
+      for (const entry of entries) {
+        if (!lexiconIndex[entry.source]) lexiconIndex[entry.source] = new Set()
+        lexiconIndex[entry.source].add(stem)
+      }
+    }
   } catch (e) {
     console.error('Failed to initialize data:', e)
     initError = e.message
@@ -413,7 +419,7 @@
       const analysis = row.analysis || ''
       const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
       if (apteMatch) {
-        if (apteIndex.has(apteMatch[1])) valid++
+        if (lexiconIndex.Apte && lexiconIndex.Apte.has(apteMatch[1])) valid++
         else invalid++
         continue
       }
@@ -630,16 +636,16 @@
         continue
       }
 
-      // Apte entries validate against apte.json (simple gloss list, no IDs).
+      // Apte entries validate against lexicons.json filtered by source.
       // The translation_lexeme must match one of the stored glosses directly.
       const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
       if (apteMatch) {
         const apteStem = apteMatch[1]
-        const glosses = apteJson[apteStem]
+        const glosses = (lexicons[apteStem] || []).filter(e => e.source === 'Apte').map(e => e.gloss)
         const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
-        if (!glosses || glosses.length === 0) {
+        if (glosses.length === 0) {
           invalid++
-          invalidList.push({ ...row, issue: `"${apteStem}" not in apte.json` })
+          invalidList.push({ ...row, issue: `"${apteStem}" not in lexicons.json (Apte)` })
           continue
         }
         if (!lexeme) {
