@@ -1219,9 +1219,13 @@ export default {
         return '--'
       }
       if (lemma.analysis.startsWith('MW.') || lemma.analysis.startsWith('INDC.')) {
-        const parts = lemma.analysis.split('.')
+        // ID may be integer or decimal sub-ID (e.g. 22015.20) referencing a
+        // CDSL <H1A> continuation entry; split on the first space to keep the
+        // decimal intact.
+        const head = lemma.analysis.split(' ')[0]
+        const parts = head.split('.')
         const mwKey = parts[1]
-        const mwId = parts[2] ? parts[2].split(' ')[0] : null
+        const mwId = parts.length > 2 ? parts.slice(2).join('.') : null
         // If key has prefix (e.g. A-dA), look up the root (dA) in MW
         const lookupKey = mwKey.includes('-') ? mwKey.split('-').pop() : mwKey
         const ref = this.findMwLineById(lookupKey, mwId) ||
@@ -1239,7 +1243,7 @@ export default {
         //   MW.stem.id   — fully qualified (e.g., `MW.jana.76735`)
         //   MW.id        — bare ID, implicitly tied to the DHATU stem
         //                  (e.g., `MW.104757` paired with `DHATU.naSa~.Bhvadi`)
-        const mwRefFull = lemma.analysis.match(/\bMW\.([a-zA-Z~^\\][^.\s]*)(?:\.(\d+))?/);
+        const mwRefFull = lemma.analysis.match(/\bMW\.([a-zA-Z~^\\][^.\s]*)(?:\.(\d+(?:\.\d+)?))?/);
         if (mwRefFull) {
           const mwKey = mwRefFull[1];
           const mwId = mwRefFull[2];

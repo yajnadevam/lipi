@@ -100,7 +100,10 @@ function generateMwMap() {
         if (keyMatch) {
             const key1 = keyMatch[1];
             const bodyMatch = line.match(/<body>(.*?)<\/body>/);
-            const linkMatch = line.match(/<L>(\d+)<\/L>/);
+            // <H1A> continuation entries use decimal sub-IDs (e.g. 22015.20),
+            // capturing nuanced senses under the parent <H1> headword. The
+            // earlier integer-only regex silently dropped them.
+            const linkMatch = line.match(/<L>(\d+(?:\.\d+)?)<\/L>/);
 
             if(bodyMatch) {
                 let bodyContent = renderBody(bodyMatch[1])
@@ -155,8 +158,20 @@ async function getUniqueWords(): Promise<Set<string>> {
             for(let j = 0; j < sanskritWords.length; j++) {
                 if(sanskritWords[j].startsWith('ref:') || sanskritWords[j].length == 0) continue;
                 words.add(sanskritWords[j])
-            }            
-        }        
+            }
+        }
+    }
+
+    // Also harvest MW lemma stems from glossing.csv. Inscription tokens are
+    // inflected (e.g. anDaH) but lemma references in the gloss layer cite the
+    // bare stem (anDas) — without this pass those stems silently drop out of
+    // mw.json and the validator reports phantom "stem not found" errors.
+    const glossing: any[] = await readCSV('./glossing.csv')
+    for (const row of glossing) {
+        const analysis = row['analysis']
+        if (!analysis) continue
+        const m = analysis.match(/\b(?:MW|INDC|PRON)\.([^.\s]+)/)
+        if (m) words.add(m[1])
     }
 
     for(let i = 0; i < ADDITIONAL_WORDS.length; i++) {

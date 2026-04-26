@@ -332,6 +332,15 @@
 
     if (dictLower.includes(lexLower)) return true
 
+    // Full-phrase synonym lookup. Per-word synonym checks below can't reach
+    // multi-word keys like "at the end", since lexWords splits on whitespace.
+    const phraseGroups = synonymMap.get(lexLower)
+    if (phraseGroups) {
+      for (const group of phraseGroups) {
+        for (const syn of group) if (dictLower.includes(syn.toLowerCase())) return true
+      }
+    }
+
     // IAST transliterated terms (e.g. "Prāṇa") → check Devanagari in dictionary
     const iastRe = /[āīūṛṝḷḹṃḥñṅṇṭḍśṣ]/i
     if (iastRe.test(lexemeMeaning)) {
@@ -665,7 +674,9 @@
       }
 
       // Extract stem and MW ID from analysis: MW.stem.id, PRON.stem.id, INDC.stem.id
-      const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+))?/)
+      // ID may be an integer (22015) or a decimal sub-ID (22015.20) referencing
+      // a CDSL <H1A> continuation entry.
+      const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+(?:\.\d+)?))?/)
       if (!mwMatch) continue
 
       const stem = mwMatch[1]
@@ -733,7 +744,14 @@
         /(?:See|=|in\s+comp\.\s+for|ifc\.\s+for|w\.r\.\s+for|metrically\s+for|formed\s+to\s+explain)\s+\d*\.?\s*(\S+)/,
       )
       if (seeTarget) {
-        const target = seeTarget[1].replace(/[\/.,;]+$/, '').replace(/-/g, '')
+        let target = seeTarget[1].replace(/[\/.,;]+$/, '').replace(/-/g, '')
+        // Generator transliterates <s>X</s> to Devanagari when rendering the
+        // body, so cross-reference targets typically arrive in Devanagari
+        // (e.g. "in comp. for सत्"). mwJson is keyed by SLP1, so transliterate
+        // back before lookup.
+        if (/[\u0900-\u097F]/.test(target)) {
+          try { target = Sanscript.t(target, 'devanagari', 'slp1') } catch (_) { /* keep raw */ }
+        }
         if (mwJson[target]) {
           seeEntries = mwJson[target]
         } else {
@@ -774,7 +792,12 @@
           matched = true
         }
       }
-      if (!matched) {
+      // Last-resort fallback: scan every entry under the stem.
+      // Only when no specific dictDef was resolved — otherwise an MW.X.<id>
+      // pointer that doesn't actually match its own entry would silently pass
+      // by matching some other sense of the stem (e.g. dama.90249 "house"
+      // vs. dama.90250 "subduing").
+      if (!matched && !dictDef) {
         matched = allEntries.some(e => meaningInDictionary(meaning, e) || (hasNeg && meaningInDictionary(baseMeaning, e)))
       }
 
