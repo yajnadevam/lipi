@@ -140,6 +140,26 @@
                       </div>
                     </div>
 
+                    <!-- TIN (Verb Conjugation) Validation -->
+                    <div class="validation-row" @click="toggleInvalid('tin')">
+                      <div class="validation-label">Valid TIN ({{ stats.totalTinCount }} checked)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validTinPercent + '%' }"
+                        >
+                          {{ stats.validTinCount }} ({{ stats.validTinPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validTinPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validTinPercent) + '%' }"
+                        >
+                          {{ stats.invalidTinCount }} ({{ (100 - stats.validTinPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- Meanings Validation -->
                     <div class="validation-row" @click="toggleInvalid('meanings')">
                       <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} checked)</div>
@@ -449,15 +469,19 @@
     let invalidDerived = 0
     let validDecl = 0
     let invalidDecl = 0
+    let validTin = 0
+    let invalidTin = 0
     const invalidDerivedList = []
     const invalidDeclList = []
+    const invalidTinList = []
     const derivablePattern = /\bDHATU\.|\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/
 
     for (const row of rows) {
-      const analysis = row.analysis || ''
+      const analysis = (row.analysis || '').replace(/^USER\|/, '')
       const form = row.form || ''
       const hasDhatu = analysis.startsWith('DHATU.')
       const hasKrt = analysis.includes('KRT.')
+      const hasTin = analysis.includes('TIN.')
       const hasTad = analysis.includes('TAD.')
       const mwMatch = analysis.match(/MW\.([^.\s]+)/)
       const isDerivable = analysis && form && derivablePattern.test(analysis)
@@ -476,7 +500,14 @@
             invalidDerived++
             invalidDerivedList.push({ ...row, issue: result ? `got "${result.text}"` : 'no derivation' })
           }
-        } else if (caseMatch || (hasDhatu && analysis.includes('TIN.'))) {
+        } else if (hasDhatu && hasTin) {
+          if (result?.match) {
+            validTin++
+          } else {
+            invalidTin++
+            invalidTinList.push({ ...row, issue: `vidyut: got "${result?.text || 'no derivation'}"` })
+          }
+        } else if (caseMatch) {
           if (result?.match) {
             validDecl++
           } else {
@@ -505,7 +536,7 @@
         }
       }
     }
-    return { validDerived, invalidDerived, validDecl, invalidDecl, invalidDerivedList, invalidDeclList }
+    return { validDerived, invalidDerived, validDecl, invalidDecl, validTin, invalidTin, invalidDerivedList, invalidDeclList, invalidTinList }
   }
 
   function normalizeSibilants (str) {
@@ -607,7 +638,7 @@
     }
 
     for (const row of rows) {
-      const analysis = row.analysis || ''
+      const analysis = (row.analysis || '').replace(/^USER\|/, '')
       // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
       // form correctness is already validated by vidyut in validateDerivations
       if (analysis.startsWith('PRON.')) continue
@@ -615,7 +646,7 @@
       // DHATU meaning validation is temporarily disabled — flip
       // DHATU_VALIDATION_ENABLED to true to re-enable. All lookup logic below
       // is retained so nothing needs to be re-derived when we switch it back on.
-      const DHATU_VALIDATION_ENABLED = false
+      const DHATU_VALIDATION_ENABLED = true
       if (analysis.startsWith('DHATU.') && !DHATU_VALIDATION_ENABLED) continue
 
       // DHATU entries: validate against dhatu.json (composed dhātu meanings)
@@ -638,10 +669,40 @@
         const dhatuText = dhatuMeanings.replace(/\bto\s+/g, '')
         if (meaningInDictionary(meaning, dhatuText)) {
           valid++
-        } else {
-          invalid++
-          invalidList.push({ ...row, issue: `"${lexeme}" not in dhātu glosses: "${dhatuText.substring(0, 80).trim()}…"` })
+          continue
         }
+        // Fallback: if the analysis also carries an MW citation, accept the
+        // row when the cited MW entry covers the lexeme. Translators sometimes
+        // pick a krt-derivative sense that's recorded in MW under the root but
+        // isn't part of dhatu.json's terse gloss (e.g. Kanu~ "dig"
+        // → MW.Kan.61265 "pierce"). Citations may be either MW.<stem>.<id>
+        // or MW.<id> (id-only) — handle both.
+        let dhatuMwDef = null
+        const mwCite = analysis.match(/\bMW\.([^.\s]+)\.(\d+(?:\.\d+)?)/)
+        if (mwCite) {
+          const entries = mwJson[mwCite[1]]
+          dhatuMwDef = entries && entries.find(e => e.includes(`[ID=${mwCite[2]}]`))
+        } else {
+          const idOnly = analysis.match(/\bMW\.(\d+(?:\.\d+)?)\b/)
+          if (idOnly) dhatuMwDef = mwById.get(Number(idOnly[1]))
+        }
+        if (dhatuMwDef && meaningInDictionary(meaning, dhatuMwDef)) {
+          valid++
+          continue
+        }
+        // Apte citation fallback. DHATU rows often carry Apte.<stem> for the
+        // krdanta sense — if that stem has a matching gloss in lexicons.json,
+        // accept the row.
+        const apteCite = analysis.match(/\bApte\.([^.\s]+)/)
+        if (apteCite) {
+          const apteGlosses = (lexicons[apteCite[1]] || []).filter(e => e.source === 'Apte').map(e => e.gloss.toLowerCase())
+          if (apteGlosses.includes(meaning.toLowerCase())) {
+            valid++
+            continue
+          }
+        }
+        invalid++
+        invalidList.push({ ...row, issue: `"${lexeme}" not in dhātu glosses: "${dhatuText.substring(0, 80).trim()}…"` })
         continue
       }
 
@@ -831,6 +892,7 @@
         validationCache: null,
         invalidDerivedStemsList: [],
         invalidDeclensionsList: [],
+        invalidTinList: [],
         invalidMeaningsList: [],
         invalidCoverageList: [],
         invalidLexemeList: [],
@@ -849,6 +911,8 @@
           } else if (this.invalidType === 'derivedStems') {
             uniqueValues.add(entry.analysis)
           } else if (this.invalidType === 'declensions') {
+            uniqueValues.add(entry.form)
+          } else if (this.invalidType === 'tin') {
             uniqueValues.add(entry.form)
           } else if (this.invalidType === 'meanings') {
             uniqueValues.add(entry.form)
@@ -875,6 +939,7 @@
             validStemsPercent: 100,
             validDerivedStemsPercent: 100,
             validDeclensionsPercent: 100,
+            validTinPercent: 100,
             validMeaningsPercent: 100,
             validCoveragePercent: 100,
             validLexemePercent: 100,
@@ -968,6 +1033,10 @@
           validDeclensionsCount: 0,
           invalidDeclensionsCount: 0,
           totalDeclensionsCount: 0,
+          validTinPercent: 0,
+          validTinCount: 0,
+          invalidTinCount: 0,
+          totalTinCount: 0,
           validMeaningsCount: 0,
           invalidMeaningsCount: 0,
           totalMeaningsCount: 0,
@@ -995,6 +1064,7 @@
 
         this.invalidDerivedStemsList = derivations.invalidDerivedList
         this.invalidDeclensionsList = derivations.invalidDeclList
+        this.invalidTinList = derivations.invalidTinList
         this.invalidMeaningsList = meanings.invalidList
         this.invalidCoverageList = coverage.invalidCoverageList
         this.invalidLexemeList = coverage.invalidLexemeList
@@ -1002,6 +1072,7 @@
         const totalStems = stems.valid + stems.invalid
         const totalDerivedStems = derivations.validDerived + derivations.invalidDerived
         const totalDeclensions = derivations.validDecl + derivations.invalidDecl
+        const totalTin = derivations.validTin + derivations.invalidTin
         const totalMeanings = meanings.valid + meanings.invalid
         const totalCoverage = coverage.validCoverage + coverage.invalidCoverage
         const totalLexeme = coverage.validLexeme + coverage.invalidLexeme
@@ -1019,6 +1090,7 @@
           validStemsPercent: totalStems > 0 ? (stems.valid / totalStems) * 100 : 100,
           validDerivedStemsPercent: totalDerivedStems > 0 ? (derivations.validDerived / totalDerivedStems) * 100 : 100,
           validDeclensionsPercent: totalDeclensions > 0 ? (derivations.validDecl / totalDeclensions) * 100 : 100,
+          validTinPercent: totalTin > 0 ? (derivations.validTin / totalTin) * 100 : 100,
           validMeaningsPercent: totalMeanings > 0 ? (meanings.valid / totalMeanings) * 100 : 100,
           validCoveragePercent: totalCoverage > 0 ? (coverage.validCoverage / totalCoverage) * 100 : 100,
           validLexemePercent: totalLexeme > 0 ? (coverage.validLexeme / totalLexeme) * 100 : 100,
@@ -1031,6 +1103,9 @@
           validDeclensionsCount: derivations.validDecl,
           invalidDeclensionsCount: derivations.invalidDecl,
           totalDeclensionsCount: totalDeclensions,
+          validTinCount: derivations.validTin,
+          invalidTinCount: derivations.invalidTin,
+          totalTinCount: totalTin,
           validMeaningsCount: meanings.valid,
           invalidMeaningsCount: meanings.invalid,
           totalMeaningsCount: totalMeanings,
@@ -1051,6 +1126,8 @@
           entries = this.invalidDerivedStemsList || []
         } else if (type === 'declensions') {
           entries = this.invalidDeclensionsList || []
+        } else if (type === 'tin') {
+          entries = this.invalidTinList || []
         } else if (type === 'meanings') {
           entries = this.invalidMeaningsList || []
         } else if (type === 'coverage') {
