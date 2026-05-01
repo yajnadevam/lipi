@@ -801,11 +801,14 @@
       let seeEntries = null
       let seeDeadEnd = false
       const dictText = (dictDef || allEntries[0] || '').replace(/<[^>]+>/g, ' ')
-      const seeTarget = dictText.match(
+      let seeTarget = dictText.match(
         /(?:See|=|in\s+comp\.\s+for|ifc\.\s+for|w\.r\.\s+for|metrically\s+for|formed\s+to\s+explain)\s+\d*\.?\s*(\S+)/,
       )
+      // Also follow "(in comp. -X)" — MW's bare-hyphen pointer form, e.g.
+      // ara → "(in comp. -अरम्)" which sends the reader to the अरम् entry.
+      if (!seeTarget) seeTarget = dictText.match(/\(\s*in\s+comp\.\s+-([^\s)]+)\)/)
       if (seeTarget) {
-        let target = seeTarget[1].replace(/[\/.,;]+$/, '').replace(/-/g, '')
+        let target = seeTarget[1].replace(/[\/.,;)]+$/, '').replace(/-/g, '')
         // Generator transliterates <s>X</s> to Devanagari when rendering the
         // body, so cross-reference targets typically arrive in Devanagari
         // (e.g. "in comp. for सत्"). mwJson is keyed by SLP1, so transliterate

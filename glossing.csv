@@ -678,7 +678,7 @@ id,form,type,translation_lexeme,analysis,translation
 1069.1,Aca,word,seek,MW.Aca.22858 Voc.M.S,O Destroyer; I seek a splendorous gift
 1071.1,babada,word,steadied,DHATU.bada~. MW.bad.142418 TIN.liw.1.S,I steadied[√बद् लिट् 1s] the horse[RV] driver[√वल् र Śis]
 1071.1,aSva,stem,horse,MW.aSva.20089,I steadied[√बद् लिट् 1s] the horse[RV] driver[√वल् र Śis]
-1071.1,vala,stem,drive,DHATU.vala~\.1 KRT.ac Voc.M.S,I steadied[√बद् लिट् 1s] the horse[RV] driver[√वल् र Śis]
+1071.1,vala,stem,drive,DHATU.vala~\.Bhvadi MW.val.188075 KRT.ac Voc.M.S,I steadied[√बद् लिट् 1s] the horse[RV] driver[√वल् र Śis]
 1071.1,ram,word,effecting,MW.ra.173017 Acc.M.S,I steadied[√बद् लिट् 1s] the horse[RV] driver[√वल् र Śis]
 1073.1,rava,word,roarer,MW.rava.175305 Voc.M.S,O Roarer; a powerful great sacrifice (to you)
 1073.1,amam,word,powerful,MW.ama.13749 Acc.M.S,O Roarer; a powerful great sacrifice (to you)
@@ -690,7 +690,7 @@ id,form,type,translation_lexeme,analysis,translation
 1075.1,maTram,word,stormy,MW.maTra.155217 Acc.M.S,The swiftest[DaivBr] vigorous[RV 8.46.23] one
 1077.1,asama,stem,unequalled,MW.asama.20662,O unequalled[RV] ever meditator[√मन् यङि अच्]
 1077.1,mammana,word,ever meditating,DHATU.manu~\. MW.man.156626 KRT.yaN.ac Voc.M.S,O unequalled[RV] ever meditator[√मन् यङि अच्]
-1080.1,aSma,stem,vajra,MW.aSma.19721,Mokṣa[MBh] is (he) who bears[MBh] the vajra[RV]
+1080.1,aSma,stem,thunderbolt,MW.aSman.19721,Mokṣa[MBh] is (he) who bears[MBh] the vajra[RV]
 1080.1,saham,word,bear,MW.saha.239971 Acc.M.S,Mokṣa[MBh] is (he) who bears[MBh] the vajra[RV]
 1080.1,mokzam,word,mokṣa,MW.mokza.168320 Acc.M.S,Mokṣa[MBh] is (he) who bears[MBh] the vajra[RV]
 1081.1,ravasa,stem,roaring,MW.ravasa.175333 Voc.M.S,O roaring[RV] mighty[RV] great[RV] stormy one[RV]
@@ -918,7 +918,7 @@ id,form,type,translation_lexeme,analysis,translation
 1294.1,Sastam,word,praised,MW.Sasta.210873 Acc.M.S,May I salute[√नम् लिट् 1s] the praised[RV] destroyer[√जष् अच्]
 1294.1,jazam,word,destroyer,DHATU.jaza~.Bhvadi KRT.ac Acc.M.S,May I salute[√नम् लिट् 1s] the praised[RV] destroyer[√जष् अच्]
 1295.1,anDa,stem,darkness,MW.anDa.8413,"O one who drives away[√यु अच्] the darkness[R; Sun in RV 1.62.5, SR: Rising Sun]"
-1295.1,yava,word,who,MW.yava.170654 Voc.M.S,"O one who drives away[√यु अच्] the darkness[R; Sun in RV 1.62.5, SR: Rising Sun]"
+1295.1,yava,word,warding off,MW.yava.170647 Voc.M.S,"O one who drives away[√यु अच्] the darkness[R; Sun in RV 1.62.5, SR: Rising Sun]"
 1296.1,Aha,word,Interjection,INDC.Aha.28277,Indeed O cutting[Nalod] mighty[RV] roarer[√भण् अच्]
 1296.1,lava,stem,cutting,MW.lava.181833,Indeed O cutting[Nalod] mighty[RV] roarer[√भण् अच्]
 1296.1,maha,stem,mighty,MW.maha.159155,Indeed O cutting[Nalod] mighty[RV] roarer[√भण् अच्]
@@ -1116,7 +1116,7 @@ id,form,type,translation_lexeme,analysis,translation
 1649.1,Ahana,stem,Killer,DHATU.A-han.Adadi KRT.ac,the greatest[RV] killer[आ-√हन् अच्]
 1649.1,para,word,supreme,MW.para.116012 Voc.M.S,the greatest[RV] killer[आ-√हन् अच्]
 1656.1,ananan,word,breathing,DHATU.ana~.Adadi KRT.Satf NEG Voc.M.S,[न अनन् √अन् शतृ] The unbreathing one[RV 10.129.2]
-1656.2,radan,word,piercer,DHATU.rada~. KRT.Satf Nom.M.S,O piercer[√रद् शतृ] [SR: vivyādhini]
+1656.2,radan,word,split,DHATU.rada~. KRT.Satf Nom.M.S,O one who splits[√रद् शतृ] [SR: avabhindate]
 1662.1,tad,word,That,INDC.tad.82048,The rising sun rays[YV; SR: tviṣīmat]
 1662.1,ayaH,word,The,MW.aya.14667 Nom.M.S,The rising sun rays[YV; SR: tviṣīmat]
 1663.1,dahaH,word,burns,DHATU.daha~.Bhvadi KRT.ac Nom.M.S,The one who burns[√दह् अच् RV]
@@ -1273,7 +1273,7 @@ id,form,type,translation_lexeme,analysis,translation
 1981.1,dAna,stem,gift,MW.dAna.91247,O fiery Roarer; help the giver (of sacrifice)
 1981.1,ram,word,giver,MW.ra.173017 Acc.M.S,O fiery Roarer; help the giver (of sacrifice)
 1984.1,A,stem,fully,MW.A.22015.40almighty[आ-√तु] measurer[√माह् अच्]
-1984.1,tava,stem,almighty,DHATU.tu. KRT.ac Voc.M.S,O almighty[आ-√तु] measurer[√माह् अच्]
+1984.1,tava,stem,mighty,DHATU.tu.Adadi MW.tu.85705 KRT.ac Voc.M.S,O almighty[आ-√तु] measurer[√माह् अच्]
 1984.1,mAham,word,measurer,MW.mAh.163970 Acc.M.S,O almighty[आ-√तु] measurer[√माह् अच्]
 1986.1,A,stem,fully,MW.A.22015.40braided[√मव् अच्] meditating one[√मान् अच्]
 1986.1,mavamAna,stem,braided,DHATU.mUN. KRT.SAnac Voc.M.S,O braided[√मव् अच्] meditating one[√मान् अच्]
@@ -1298,8 +1298,8 @@ id,form,type,translation_lexeme,analysis,translation
 2009.1,jaya,word,victor,MW.jaya.77323 Voc.M.S,O my bearer[VS] and victor[AV]
 2010.1,rara,word,give,DHATU.rA. TIN.liw.2.P,"May you give[√रा लिट् 2p], O bearers[धा]"
 2010.1,DAH,word,bearer,MW.DA.100609 Abl.M.S,"May you give[√रा लिट् 2p], O bearers[धा]"
-2012.1,rara,word,give,DHATU.rA. TIN.liw.2.P,May you all give[√रा लिट् 2p] us our home[√वस् ल्युट्]
-2012.1,vasanam,word,home,DHATU.vasa~\. KRT.lyuw Acc.M.S,May you all give[√रा लिट् 2p] us our home[√वस् ल्युट्]
+2012.1,rara,word,give,DHATU.rA. TIN.liw.2.P,May you all give[√रा लिट् 2p] us our dwelling[√वस् ल्युट्]
+2012.1,vasanam,word,dwelling,MW.vasana.189112 Acc.M.S,May you all give[√रा लिट् 2p] us our home[√वस् ल्युट्]
 2015.1,ravya,word,roared,DHATU.ru.Adadi MW.ru.178213 KRT.yat Voc.M.S,to be roared[√रु यत्]
 2016.1,tanA,stem,eternal,MW.tanA.82250.2,Worshipper[MBh] of the eternal[RV] mighty[RV] one's sign[RV]
 2016.1,ama,stem,mighty,MW.ama.13749,Worshipper[MBh] of the eternal[RV] mighty[RV] one's sign[RV]
@@ -1336,7 +1336,7 @@ id,form,type,translation_lexeme,analysis,translation
 2046.1,han,word,Killer,MW.han.260297 Voc.M.S,O Roaring[MBh] darkness[RV] destroyer[RV]
 2052.1,saha,stem,mighty,MW.saha.239969,O mighty[RV] soul[RV]
 2052.1,tman,word,spirit,MW.tman.87332.1 Voc.M.S,O mighty[RV] soul[RV]
-2053.1,tasa,word,destroying,DHATU.tasu~. KRT.ac Voc.M.S,O destroying[√तस् अच्] roarer[√रण् घञ् ; śis]
+2053.1,tasa,word,throw,DHATU.tasu~.Divadi MW.tas.83653 KRT.ac Voc.M.S,O destroying[√तस् अच्] roarer[√रण् घञ् ; śis]
 2053.1,rARa,stem,resound,DHATU.raRa~.Bhvadi MW.raR.174197 KRT.GaY,O destroying[√तस् अच्] roarer[√रण् घञ् ; śis]
 2053.1,ra,word,giving,MW.ra.173017 Voc.M.S,O destroying[√तस् अच्] roarer[√रण् घञ् ; śis]
 2054.1,paya,word,wander,DHATU.paya~\. KRT.ac Voc.M.S,O wanderer[√पय् अच्]
@@ -1485,7 +1485,7 @@ id,form,type,translation_lexeme,analysis,translation
 2244.1,DarI,word,mountains,MW.Dara.99750 TAD.ini Nom.M.S,The one who is in the mountains[धर इनि; SR: गिरिश]
 2248.1,maMhanI,word,gift,MW.maMhana.153893 TAD.ini Nom.M.S,The gift bearer[RV][+इनि; SR: Śībhi]
 2249.1,damana,stem,Subduing,MW.damana.90271,The Subduing[MBh] Destroyer[√तस्+णिजि अच्]
-2249.1,tAsa,word,Destroyer,DHATU.tasu~. KRT.Ric.ac Voc.M.S,The Subduing[MBh] Destroyer[√तस्+णिजि अच्]
+2249.1,tAsam,word,perish,DHATU.tasu~.Divadi MW.tas.83653 KRT.Ric.ac Acc.M.S,The Subduing[MBh] Destroyer[√तस्+णिजि अच्]
 2250.1,anyI,word,inexhaustible,MW.anya.8560 TAD.ini Nom.M.S,"The inexhaustible one[RV 8.1.10, AV 12.1.4 अन्य इनि]"
 2251.1,rava,stem,roaring,MW.rava.175308,The Rudra[√रु अच्] who is the eternal spirit(Prāṇa)[MBh]
 2251.1,naram,word,spirit,MW.nara.104032 Acc.M.S,The Rudra[√रु अच्] who is the eternal spirit(Prāṇa)[MBh]
@@ -1640,7 +1640,7 @@ id,form,type,translation_lexeme,analysis,translation
 2375.1,vaDasna,word,thunderbolt,MW.vaDasna.185627 Voc.M.S,O one whose favorite[Kāv] (weapon) is vajra[RV 9.52.3]
 2377.1,Sasta,stem,praised,MW.Sasta.210873,The praised[RV] Killer[Rājat]
 2377.1,mAram,word,Killer,MW.mAra.163215 Acc.M.S,The praised[RV] Killer[Rājat]
-2378.1,rala,stem,wailing,USER|MW.ralarola. |Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś]
+2378.1,rala,stem,wailing,USER|MW.ralarola. Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś]
 2378.1,ra,word,giver,MW.ra.173017 Voc.M.S,O Roar[cf रलरोल:HPariś; cf:रल VarBṛS] giver[śiś]
 2380.1,aka,stem,wander,DHATU.aki~.Bhvadi KRT.ac,"O wanderer[√अक् अच्] with a splendid[RV; =Shiva, Bhp] form[RV]"
 2380.1,vAma,stem,splendid,MW.vAma.190969,"O wanderer[√अक् अच्] with a splendid[RV; =Shiva, Bhp] form[RV]"
@@ -1709,9 +1709,9 @@ id,form,type,translation_lexeme,analysis,translation
 2428.1,namanam,word,salutations,MW.namana.103837 Acc.M.S,Salutations[MārkP] to the excellent[śbr] mighty one[RV]
 2429.1,nanama,word,bow,DHATU.Ra\ma~. TIN.liw.1.S,"May I bow to you[√नम् लिट् 1s], O wanderer[MBh]"
 2429.1,cara,word,wanderer,MW.cara.72174 Voc.M.S,"May I bow to you[√नम् लिट् 1s], O wanderer[MBh]"
-2431.1,tanana,stem,faith,DHATU.tanu~^.Tanadi KRT.lyuw Voc.M.S,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
-2431.1,manA,stem,devotion,MW.manA.156839,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
-2431.1,ra,word,giver,MW.ra.173017 Voc.M.S,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
+2431.1,tanan,word,roar,DHATU.tanu~^.Curadi MW.tan.82220 KRT.Satf Nom.M.S,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
+2431.1,namana,stem,saluting,MW.namana.103839,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
+2431.1,ara,word,suitably,MW.ara.15173 Voc.M.S,O giver[śis] of faith[√तन् ल्युट्] and devotion[RV]
 2432.1,mada,stem,passion,MW.mada.155334,O dispeller[RV] of passion[MBh]
 2432.1,han,word,destroyer,MW.han.260297 Voc.M.S,O dispeller[RV] of passion[MBh]
 2435.1,ravavAn,word,roar,DHATU.ru.Adadi MW.ru.178213 KRT.ac TAD.matup Nom.M.S,The roar bearer[√रु अच् मतुप्]
@@ -1734,7 +1734,7 @@ id,form,type,translation_lexeme,analysis,translation
 2455.1,kam,word,Excellent,MW.kam.43756.1 Nom.M.S,O excellent[ŚBr] Destroyer[√नभ् अच्]
 2455.1,A,stem,fully,MW.A.22015.40,O excellent[ŚBr] Destroyer[√नभ् अच्]
 2455.1,naBa,word,Destroyer,MW.naBa.103701 Voc.M.S,O excellent[ŚBr] Destroyer[√नभ् अच्]
-2460.1,udDana,word,uplift,DHATU.ud-Dana~.Juhotyadi KRT.ac Voc.M.S,O who uplifts[उद्-√धन् अच्; Sri Rudram:andhasaspati]
+2460.1,udDana,word,uplift,DHATU.udDana~. MW.udDan.33060 KRT.ac Voc.M.S,O who uplifts[उद्-√धन् अच्; Sri Rudram:andhasaspati]
 2461.1,pattra,stem,leafy,MW.pattra.114852,O one who is in[-श VS; cf. giri-śa] leafy places[VS][SR: Parṇya]
 2461.1,Sa,word,leafy,MW.Sa.210837 Voc.M.S,O one who is in[-श VS; cf. giri-śa] leafy places[VS][SR: Parṇya]
 2463.1,dada,stem,Giving,MW.dada.89875,Giving and regiving; O creator[√जन् क्विप्] as fire[AgP] (Agni)
@@ -1878,7 +1878,7 @@ id,form,type,translation_lexeme,analysis,translation
 2559.1,tAna,word,roarer,DHATU.tana~.Curadi MW.tan.82220 KRT.ac Voc.M.S,"O calmed[MBh,RV] Roarer[आ-तन्]"
 2561.1,Anavam,word,beneficent,MW.Anava.24487 Acc.M.S,The shining one[√भास्] kind to men[RV]
 2561.1,BAsam,word,shining,MW.BAsa.150601 Acc.M.S,The shining one[√भास्] kind to men[RV]
-2562.1,tsara,stem,stealthy,DHATU.tsara~. KRT.ac,O disguised one [stealthy:RV clothes:RV][SR: uṣṇīṣin]
+2562.1,tsara,stem,stealthy,DHATU.tsara~.Bhvadi MW.tsar.89175 KRT.ac,O disguised one [stealthy:RV clothes:RV][SR: uṣṇīṣin]
 2562.1,vasman,word,clothes,MW.vasman.189235 Voc.M.S,O disguised one [stealthy:RV clothes:RV][SR: uṣṇīṣin]
 2563.1,avamam,word,intimate,MW.avama.17762 Acc.M.S,The dearest[RV] excellent[RV] one
 2563.1,varam,word,excellent,MW.varam.186779.16 Nom.M.S,The dearest[RV] excellent[RV] one
@@ -2061,7 +2061,7 @@ id,form,type,translation_lexeme,analysis,translation
 2644.1,aYjan,word,anointer,DHATU.anjU~.Rudhadi KRT.Satf Voc.M.S,O Roaring[√रु] bringer[RV 1.92.1] of water[Naigh]
 2645.1,ravaH,word,roarer,DHATU.ru.Adadi MW.ru.178213 KRT.ac Nom.M.S,The roarer[√रु अच्] who resounds[√मञ्ज् अच्] beyond[√तॄ शतृँ]
 2645.1,maYja,word,resounds,DHATU.maYja~. KRT.ac Voc.M.S,The roarer[√रु अच्] who resounds[√मञ्ज् अच्] beyond[√तॄ शतृँ]
-2645.1,taran,word,beyond,DHATU.tF. KRT.Satf Nom.M.S,The roarer[√रु अच्] who resounds[√मञ्ज् अच्] beyond[√तॄ शतृँ]
+2645.1,taran,word,transcend,DHATU.tF. KRT.Satf Nom.M.S,The roarer[√रु अच्] who resounds[√मञ्ज् अच्] beyond[√तॄ शतृँ]
 2646.1,dA,word,giver,MW.dA.91212 Ins.M.S,By the giver; bearing a hundred streams
 2646.1,Sata,stem,hundred,MW.Sata.211813,By the giver; bearing a hundred streams
 2646.1,DAra,stem,streams,MW.DAra.101038,By the giver; bearing a hundred streams
@@ -2105,7 +2105,7 @@ id,form,type,translation_lexeme,analysis,translation
 2667.1,mava,stem,binding,DHATU.mava~. KRT.ac Voc.M.S,O curse[AV] binding[√मव् अच्] meditator[√मान् अच्][avś 11.002.17]
 2667.1,mAna,word,meditator,MW.mAna.162719 Voc.M.S,O curse[AV] binding[√मव् अच्] meditator[√मान् अच्][avś 11.002.17]
 2669.1,rava,stem,Roaring,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,O Roaring[√रु अच्] protector[√तय् अच्]
-2669.1,taya,word,protector,DHATU.taya~\. KRT.ac Voc.M.S,O Roaring[√रु अच्] protector[√तय् अच्]
+2669.1,taya,word,protect,DHATU.taya~\.Bhvadi MW.tay.83018 KRT.ac Voc.M.S,O Roaring[√रु अच्] protector[√तय् अच्]
 2670.1,daDa,stem,giving,MW.daDa.89900,"O sacrifice[ĀśvŚr] bearer[RV](Agni), O Killer[आ-√हन्]"
 2670.1,vaha,word,bearer,MW.vaha.189254 Voc.M.S,"O sacrifice[ĀśvŚr] bearer[RV](Agni), O Killer[आ-√हन्]"
 2670.1,Ahana,word,Killer,DHATU.A-hana~.Adadi MW.han.178213 KRT.ac Voc.M.S,"O sacrifice[ĀśvŚr] bearer[RV](Agni), O Killer[आ-√हन्]"
@@ -2147,7 +2147,7 @@ id,form,type,translation_lexeme,analysis,translation
 2696.1,mAntra,word,mantra,MW.mAntra.163009 Voc.M.S,Of the (Soma) cup's mantras
 2697.1,rara,word,give,DHATU.rA. TIN.liw.2.P,May you all give[√रा लिट् 2p] us the māsara gruel[VS]
 2697.1,mAsaram,word,māsara,MW.mAsara.163965 Acc.N.S,May you all give[√रा लिट् 2p] us the māsara gruel[VS]
-2698.1,samAvan,word,equable,MW.sama.233011 TAD.matup Voc.M.S,O equable one[TS]
+2698.1,samAvan,word,season,MW.samA.233278 TAD.matup Voc.M.S,O equable one[TS]
 2699.1,ravasa,stem,roaring,MW.ravasa.175333,O one with roaring[RV] form[RV]
 2699.1,mAna,word,form,MW.mAna.162841 Voc.M.S,O one with roaring[RV] form[RV]
 2702.1,sva,stem,self,MW.sva.257778,O one who wanders[√चर् अच्] on his own accord[RV]
@@ -2173,7 +2173,7 @@ id,form,type,translation_lexeme,analysis,translation
 2723.1,aha,stem,day,MW.aha.21632,"The Roarer[√रु], the bearer[MBh] of the day[RV]"
 2723.1,Daram,word,bearer,MW.Dara.99748 Acc.M.S,"The Roarer[√रु], the bearer[MBh] of the day[RV]"
 2725.1,rava,word,Roarer,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,O Roarer[√रु अच्] may they bow (to you)[लेट् 3p Subjunctive]
-2725.1,namAn,word,bow,USER|DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,O Roarer[√रु अच्] may they bow (to you)[लेट् 3p Subjunctive]
+2725.1,namAn,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,O Roarer[√रु अच्] may they bow (to you)[लेट् 3p Subjunctive]
 2727.1,rama,stem,beloved,MW.rama.175087 Voc.M.S,The calm[√रम् अच्] one with the unbent bow[नमन इनि][SR: śiva vijyaṃ dhanuḥ]
 2727.1,anamanI,word,bent,MW.namana.24466 TAD.ini NEG Nom.M.S,The calm[√रम् अच्] one with the unbent bow[नमन इनि][SR: śiva vijyaṃ dhanuḥ]
 2728.1,maha,stem,great,MW.maha.159155,The great[RV] excellent[RV] one
@@ -2192,7 +2192,7 @@ id,form,type,translation_lexeme,analysis,translation
 2745.1,sama,stem,constant,MW.sama.232988,"O Roarer[√रु], O constant[RV] killer[√मॄ शतृ]"
 2745.1,mfRan,word,killer,DHATU.mF. KRT.Satf Nom.M.S,"O Roarer[√रु], O constant[RV] killer[√मॄ शतृ]"
 2746.1,mayaH,word,horse,MW.maya.158000 Nom.M.S,The horse[VS; SR: aśva]
-2750.1,tayanam,word,Protection,DHATU.taya~\. KRT.lyuw Acc.M.S,Protection[√तय् ल्युट्]
+2750.1,tayanam,word,Protect,DHATU.taya~\.Bhvadi MW.tay.83018 KRT.lyuw Acc.M.S,Protection[√तय् ल्युट्]
 2754.1,maha,stem,great,MW.maha.159155,O great[RV] Prāṇa(breath)[T]
 2754.1,Ana,word,breath,MW.Ana.24316 Voc.M.S,O great[RV] Prāṇa(breath)[T]
 2756.1,anarva,stem,O,MW.anarva.5239,O unstoppable[RV] form[RV]
@@ -2235,7 +2235,7 @@ id,form,type,translation_lexeme,analysis,translation
 2774.1,A,stem,fully,MW.A.22015.40,O Destroyer[√छद् अच्] with[RV] the thunderbolt[RV]
 2774.1,vajra,word,thunderbolt,MW.vajra.184795 Voc.M.S,O Destroyer[√छद् अच्] with[RV] the thunderbolt[RV]
 2775.1,ama,stem,mighty,MW.ama.13749,The mighty[RV] one with yajna facilitating[√यज् णिचि ल्युट्] conduct[MBh नय इनि]
-2775.1,yAjana,stem,facilitating,DHATU.yaja~. KRT.Ric.lyuw,The mighty[RV] one with yajna facilitating[√यज् णिचि ल्युट्] conduct[MBh नय इनि]
+2775.1,yAjana,stem,consecrate,DHATU.yaja~.Bhvadi MW.yaj.169114 KRT.Ric.lyuw,The mighty[RV] one with yajna consecrating[√यज् णिचि ल्युट्] conduct[MBh नय इनि]
 2775.1,nayI,word,conduct,MW.naya.103921 TAD.ini Nom.M.S,The mighty[RV] one with yajna facilitating[√यज् णिचि ल्युट्] conduct[MBh नय इनि]
 2776.1,ama,stem,mighty,MW.ama.13749,The mighty[RV] praiseworthy one[√नु अप्; Kālid]
 2776.1,nava,stem,praiseworthy,MW.nava.104614,The mighty[RV] praiseworthy one[√नु अप्; Kālid]
@@ -2304,9 +2304,9 @@ id,form,type,translation_lexeme,analysis,translation
 2826.1,asama,stem,unequalled,MW.asama.20660,The unequalled[RV] destroyer[Gaut]
 2826.1,hAna,word,destroying,MW.hAna.262516 Voc.M.S,The unequalled[RV] destroyer[Gaut]
 2827.1,saha,stem,endure,MW.saha.239971,O who exudes[√वम् शतृ] endurance[RV]
-2827.1,vaman,word,exudes,DHATU.wuvama~. KRT.Satf Voc.M.S,O who exudes[√वम् शतृ] endurance[RV]
+2827.1,vaman,word,exude,DHATU.wuvama~. KRT.Satf Voc.M.S,O who exudes[√वम् शतृ] endurance[RV]
 2828.1,ravatam,word,roarer,MW.ravata.175329 Acc.M.S,May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
-2828.1,namA,word,bow,USER|DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.2.S namA=short variant of namAni (McDonnel),May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
+2828.1,namA,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.2.S namA=short variant of namAni (McDonnel),May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
 2829.1,ASAsanam,word,prayer,MW.ASAsana.27454 Acc.N.S,The punisher[√शास्+शतृ]
 2830.1,BaRa,stem,Roaring,DHATU.BaRa~. KRT.ac,Fond of the Roarer[√भण् Pāṇ;RV]
 2830.1,vIH,word,fond of,MW.vI.203330 Nom.M.S,Fond of the Roarer[√भण् Pāṇ;RV]
@@ -2336,7 +2336,7 @@ id,form,type,translation_lexeme,analysis,translation
 2840.1,rama,stem,Pleasing,MW.rama.175086,Pleasing[RV रम् अच्] Roarer[√तन् अच्]
 2840.1,tana,stem,roarer,DHATU.tanu~.Curadi KRT.ac Voc.M.S,Pleasing[RV रम् अच्] Roarer[√तन् अच्]
 2841.1,ama,stem,mighty,MW.ama.13749,O mighty[RV] ātman[RV]
-2841.1,tman,word,mighty,MW.tman.87332 Voc.M.S,O mighty[RV] ātman[RV]
+2841.1,tman,word,ātman,MW.tman.87332 Voc.M.S,O mighty[RV] ātman[RV]
 2842.1,yAna,word,leading,MW.yAna.171103 Voc.M.S,O leading one[RV]
 2843.1,arvaSa,stem,swift,MW.arvaSa.16421,salutating[MārkP] the swift one[RV 10.92.6]
 2843.1,naman,word,saluting,DHATU.Ra\ma~. KRT.Satf  Nom.M.S,salutating[MārkP] the swift one[RV 10.92.6]
@@ -2497,11 +2497,11 @@ id,form,type,translation_lexeme,analysis,translation
 2965.1,hanAH,word,killing,MW.hana.260420 Nom.M.P,the Subduing[Mbh] killers[RV]
 2966.1,SaniH,word,Saturn,MW.Sani.212498 Nom.M.S,śiva[R]
 2969.3,nAna,word,Nāna,MW.nAna.105506 Voc.M.S,Nāna (proper Name )
-2971.1,tayI,word,protector,DHATU.taya~\. KRT.ac TAD.ini Nom.M.S,The protector[√तय् अच् इनि] Shiva[R]
+2971.1,tayI,word,protect,DHATU.taya~\.Bhvadi MW.tay.83018 KRT.ac TAD.ini Nom.M.S,The protector[√तय् अच् इनि] Shiva[R]
 2971.1,mohanaH,word,śiva,MW.mohana.168605 Nom.M.S,The protector[√तय् अच् इनि] Shiva[R]
 2972.1,sat,stem,existence,MW.sat.229490,O bringer[MBh] and transcender[MBh] of existence[RV]
 2972.1,vaha,stem,bringer,MW.vaha.189254,O bringer[MBh] and transcender[MBh] of existence[RV]
-2972.1,tara,word,transcender,MW.tara.83027 Voc.M.S,O bringer[MBh] and transcender[MBh] of existence[RV]
+2972.1,tara,word,transcend,MW.tara.83027 Voc.M.S,O bringer[MBh] and transcender[MBh] of existence[RV]
 2974.2,maha,stem,mighty,MW.maha.159155,O mighty[RV] Roarer[√भण् अच्]
 2974.2,BaRa,word,roarer,DHATU.BaRa~. KRT.ac Voc.M.S,O mighty[RV] Roarer[√भण् अच्]
 2975.1,sahasAna,stem,mighty,MW.sahasAna.240021,O driver[√ऋ अच्] of mighty[RV] ships/vehicles[RV]
@@ -2557,11 +2557,11 @@ id,form,type,translation_lexeme,analysis,translation
 3041.1,sa,stem,with,MW.sa.225596,with the stormy one[RV][SR: reṣmiya]
 3041.1,maTram,word,stormy,MW.maTra.155217 Acc.M.S,with the stormy one[RV][SR: reṣmiya]
 3042.1,amam,word,mighty,MW.ama.13749 Acc.M.S,May they bow[√नम् लेट् 3p] to the mighty one[RV]
-3042.1,namAn,word,bow,USER|DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,May they bow[√नम् लेट् 3p] to the mighty one[RV]
+3042.1,namAn,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,May they bow[√नम् लेट् 3p] to the mighty one[RV]
 3043.1,raRa,stem,pleased,MW.raRa.174076,O one with the pleased[√रण्] face[R][SR: śantamayā]; May they bow[√नम् लेट् 3p] to the mighty one[RV]
 3043.1,Anana,word,face,MW.Anana.24319 Voc.M.S,O one with the pleased[√रण्] face[R][SR: śantamayā]; May they bow[√नम् लेट् 3p] to the mighty one[RV]
 3043.1,Amam,word,O,MW.Ama.25437 Acc.M.S,O one with the pleased[√रण्] face[R][SR: śantamayā]; May they bow[√नम् लेट् 3p] to the mighty one[RV]
-3043.1,namAn,word,bow,USER|DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,O one with the pleased[√रण्] face[R][SR: śantamayā]; May they bow[√नम् लेट् 3p] to the mighty one[RV]
+3043.1,namAn,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.3.P,O one with the pleased[√रण्] face[R][SR: śantamayā]; May they bow[√नम् लेट् 3p] to the mighty one[RV]
 3044.1,raRa,stem,pleased,MW.raRa.174076,O one with the pleased[√रण्] face[R][SR: śantamayā]
 3044.1,Anana,word,face,MW.Anana.24319 Voc.M.S,O one with the pleased[√रण्] face[R][SR: śantamayā]
 3045.1,naSa,word,destroyer,MW.naSa Voc.M.S,O destroyer[√नश् अच्] whose face[R] is turned away[RV][SR: parācīnā mukhā]
@@ -2827,7 +2827,7 @@ id,form,type,translation_lexeme,analysis,translation
 3259.1,jAn,word,creator,DHATU.jana~. MW.jan.76735 KRT.kvip Voc.M.S,O creator[RV] of wisdom[RV]
 3260.1,sadAra,word,wife,MW.sadAra.230703 Voc.M.S,"With wife[ĀpŚr; =with sadhī, wife of Rudra-Manyu, BhP]"
 3261.1,naH,word,us,INDC.nas.104827,The (prayer) to be said for us[RV]
-3261.1,vacya,word,to be said,DHATU.brUY. KRT.yat Voc.M.S,The (prayer) to be said for us[RV]
+3261.1,vacya,word,speak,DHATU.brUY.Adadi MW.brU.33778 KRT.yat Voc.M.S,The (prayer) to be said for us[RV]
 3263.1,rava,stem,roaring,MW.rava.175305,The Roarer's[√रु अच्] color[RV](blueish red)
 3263.1,varRam,word,color,MW.varRa.187292 Acc.M.S,The Roarer's[√रु अच्] color[RV](blueish red)
 3264.1,ucca,stem,loudly,MW.ucca.30227,O one who repeats[अनु-√वद् अच्] loudly[R][SR: uccairghoṣa][Sāy on AV 7.38.4 maduktameva anuvada]
@@ -2899,7 +2899,7 @@ id,form,type,translation_lexeme,analysis,translation
 3326.1,rama,word,beloved,MW.rama.175087 Voc.M.S,O calm[√रम् अच्] tranquil one[MBh][SR: śiva śantamayā]
 3326.1,Samana,word,tranquil,MW.Samana.212955 Voc.M.S,O calm[√रम् अच्] tranquil one[MBh][SR: śiva śantamayā]
 3327.1,rama,word,delightful,MW.rama.175086 Voc.M.S,O one who rises[उन्-√नम् Pañcat] Delightfully[√रम् णिचि अच्][SR: sumaṅgala]
-3327.1,unnama,word,Delightfully,DHATU.ut-Ra\ma~. KRT.ac Voc.M.S,O one who rises[उन्-√नम् Pañcat] Delightfully[√रम् णिचि अच्][SR: sumaṅgala]
+3327.1,unnama,word,rise,DHATU.unnama~. MW.unnam.33778 KRT.ac Voc.M.S,O one who rises[उन्-√नम् Pañcat] Delightfully[√रम् णिचि अच्][SR: sumaṅgala]
 3328.1,rarARa,stem,bountiful,MW.rarARa.175295 Voc.M.S,The bountiful[RV] excellent one[RV]
 3328.1,varam,word,excellent,MW.varam.186779.16 Nom.M.S,The bountiful[RV] excellent one[RV]
 3332.1,nAva,stem,praise-inspiring,DHATU.Ru. KRT.Ric.ac,O praise-inspiring[√नु णिचि अप्] consumer[RV]
@@ -2993,7 +2993,7 @@ id,form,type,translation_lexeme,analysis,translation
 3468.1,ama,stem,mighty,MW.ama.13749,O powerful[RV] mighty one[RV]
 3468.1,mahan,word,great,MW.mahan.159265 Voc.M.S,O powerful[RV] mighty one[RV]
 3469.1,tamata,word,desirous,MW.tamata.82889 Voc.M.S,"O desirous one[Uṇ; =prajāpati, PañcavBr]"
-3473.1,tatanaH,word,Expand,USER|DHATU.tanu~.Tanadi TIN.lew.2.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]"
+3473.1,tatanaH,word,Expand,DHATU.tanu~.Tanadi TIN.lew.2.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]"
 3473.1,Arava,word,howling,MW.Arava.26217 Voc.M.S,"Pervade/Expand[RV 1.38.14 √तन् subj.], O Roarer[आ-√रु अच्]"
 3474.1,tat,word,that,INDC.tat.81779,In that excellent[MBh] man[TS][=Indra RV 8.40.2 śaviṣṭham nṛṇām]
 3474.1,naravare,word,excellent man,MW.naravara.104121 Loc.M.S,In that excellent[MBh] man[TS][=Indra RV 8.40.2 śaviṣṭham nṛṇām]
@@ -3015,7 +3015,7 @@ id,form,type,translation_lexeme,analysis,translation
 3489.1,namana,word,Saluting,MW.namana.103839 Voc.M.S,Saluting[MārkP]
 3490.1,anarva,stem,Unstoppable,MW.anarva.5239,O unstoppable[RV] killer[RV]
 3490.1,han,word,killer,MW.han.260418 Voc.M.S,O unstoppable[RV] killer[RV]
-3494.1,ralara,word,Roaring,USER|rala-ra| Voc.M.S,O Roaring[cf रलरोल:HPariś; cf:रल VarBṛS] Swift[Kāv] one
+3494.1,ralara,word,Roaring,USER|rala-ra Voc.M.S,O Roaring[cf रलरोल:HPariś; cf:रल VarBṛS] Swift[Kāv] one
 3494.1,raya,word,Swift,MW.raya.175252 Voc.M.S,O Roaring[cf रलरोल:HPariś; cf:रल VarBṛS] Swift[Kāv] one
 3496.1,vawa,stem,banyan tree,MW.vawa.185176,O Well[RV] extended[आ-√तन् घञ्] Banyan tree[MBh]
 3496.1,A,stem,fully,MW.A.22015.40,O Well[RV] extended[आ-√तन् घञ्] Banyan tree[MBh]
@@ -3067,7 +3067,7 @@ id,form,type,translation_lexeme,analysis,translation
 3552.2,A,stem,fully,MW.A.22015.40,O fully killing one[आ-उप]
 3552.2,upa,word,killing,MW.upa.34067.5 Voc.M.S,O fully killing one[आ-उप]
 3553.2,tAna,word,roarer,DHATU.tana~.Curadi MW.tan.82220 KRT.ac Voc.M.S,The destroying[√तन् अच्] one who ties[√यु अच्] (braids)
-3553.2,yava,word,ties,MW.yava.170654 Voc.M.S,The destroying[√तन् अच्] one who ties[√यु अच्] (braids)
+3553.2,yava,word,warding off,MW.yava.3553.2 Voc.M.S,The destroying[√तन् अच्] one who wards off[√यु अच्][SR: yātudhānya]
 3554.1,mama,word,my,PRON.asmad. Gen.M.S,mine certainly[Ved]
 3554.1,aTA,word,certainly,MW.aTA.3531.1 Nom.F.S,mine certainly[Ved]
 3556.2,rava,stem,Roarer,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,The Roarer[√रु अच्] oblation[Hariv]
@@ -3261,8 +3261,8 @@ id,form,type,translation_lexeme,analysis,translation
 3892.1,va,word,as,MW.va.184158 Voc.M.S,O one as a protector[Dharmaś]
 3894.1,rava,stem,roaring,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,The roaring[√रु अच्] great one[RV]
 3894.1,maha,word,great,MW.maha.159155 Voc.M.S,The roaring[√रु अच्] great one[RV]
-3895.1,rava,stem,Roaring,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,O Roaring[√रु अच्] destroyer[√तन् शतृ]
-3895.1,tanan,word,destroyer,DHATU.tanu~^. KRT.Satf Nom.M.S,O Roaring[√रु अच्] destroyer[√तन् शतृ]
+3895.1,rava,stem,Roar,MW.rava.175305,O Roaring[√रु अच्] destroyer[√तन् शतृ]
+3895.1,tanan,word,resound,DHATU.tanu~^.Divadi MW.tan.82220 KRT.Satf Nom.M.S,O Roaring[√रु अच्] destroyer[√तन् शतृ]
 3896.1,rava,word,Roarer,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,"O Roarer[√रु अच्], O beneficent[TS] honored one[MBh]"
 3896.1,Amana,stem,Sickness,MW.Amana.25438,"O Roarer[√रु अच्], O beneficent[TS] honored one[MBh]"
 3896.1,mAna,word,honor,MW.mAna.162722 Voc.M.S,"O Roarer[√रु अच्], O beneficent[TS] honored one[MBh]"
@@ -3427,7 +3427,7 @@ id,form,type,translation_lexeme,analysis,translation
 4287.1,aSma,stem,thunderbolt,MW.aSma,O who kills[RV] by throwing[√तन् घञ्] thunderbolts[RV]
 4287.1,tAna,stem,direct,DHATU.tana~.Curadi MW.tan.82226 KRT.GaY,O who kills[RV] by throwing[√तन् घञ्] thunderbolts[RV]
 4287.1,han,word,killer,MW.han.260297 Voc.M.S,O who kills[RV] by throwing[√तन् घञ्] thunderbolts[RV]
-4302.1,tAva,stem,giving,DHATU.tu. KRT.Ric.ac,O strength giving[√तु णिचि अच्] mighty one[Nir]
+4302.1,tAva,stem,strength,DHATU.tu.Adadi MW.tu.85705 KRT.Ric.ac,O strength giving[√तु णिचि अच्] mighty one[Nir]
 4302.1,sahana,word,mighty,MW.sahana.239999 Voc.M.S,O strength giving[√तु णिचि अच्] mighty one[Nir]
 4676.1,jaga,word,wandering,MW.jaga.76203 Voc.M.S,The wandering one[KauṣUp]
 4894.1,devAnAm,word,god,MW.deva.96384 Gen.M.P,Of the gods
