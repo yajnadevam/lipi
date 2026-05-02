@@ -8924,5 +8924,11 @@
     "samA/-vat ¦ &c., see <ab>col.</ab> 2.<info hui=\"a\"/><L>[ID=233258]</L>",
     "samA/vat ¦ <lex>mfn.</lex> similar, equally great or much, <ls>TS.</ls>; <ls>Br.</ls><info lex=\"m:f:n\"/><info hui=\"b\"/><L>[ID=233292]</L>",
     "samA/vat ¦ <lex>ind.</lex> equally much, <ls>TS.</ls>; <ls>Kāṭh.</ls>; <ls>ĀśvŚr.</ls><info lex=\"ind\"/><L>[ID=233293]</L>"
+  ],
+  "anAtman": [
+    "an-Atman ¦ <lex>m.</lex> not self, another<info lex=\"m\"/><listinfo n=\"sup\"/><L>[ID=5490]</L>",
+    "¦ something different from spirit or soul<info lex=\"inh\"/><L>[ID=5491]</L>",
+    "an-Atma/n ¦ <lex>mfn.</lex> not spiritual, corporeal, destitute of spirit or mind, <ls>ŚBr.</ls><info lex=\"m:f:n\"/><L>[ID=5492]</L>",
+    "¦ unreal, <ls>Divyāv.</ls><info n=\"sup\"/><L>[ID=5492.1]</L>"
   ]
 }

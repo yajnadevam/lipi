@@ -555,7 +555,7 @@
       glossingById.get(id).add(normalizeSibilants(row.form || ''))
       if (!glossingLexemes.has(id)) glossingLexemes.set(id, [])
       const lex = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
-      if (lex) glossingLexemes.get(id).push({ form: row.form, lexeme: lex })
+      if (lex) glossingLexemes.get(id).push({ form: row.form, lexeme: lex, analysis: row.analysis || '' })
     }
 
     let validCoverage = 0
@@ -564,6 +564,18 @@
     let validLexeme = 0
     let invalidLexeme = 0
     const invalidLexemeList = []
+
+    // Standalone upasarga particles (in SLP1). When a row's form is one of
+    // these and the analysis cites it as MW.<form>.<id>, skip the
+    // lex-in-translation check — upasargas don't have an independent English
+    // realization; their force is absorbed into the verb they modify, so
+    // requiring the gloss (e.g. "fully" for आ) to appear in the translation
+    // is linguistically incorrect.
+    const UPASARGAS = new Set([
+      'pra', 'parA', 'apa', 'sam', 'anu', 'ava', 'nis', 'nir', 'dus', 'dur',
+      'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
+      'pari', 'upa',
+    ])
 
     for (const insc of inscriptionRows) {
       const id = insc.id
@@ -598,9 +610,12 @@
 
       // --- Lexeme-in-Translation: each lexeme appears in the inscription translation ---
       const lexemes = glossingLexemes.get(id) || []
-      for (const { form, lexeme } of lexemes) {
+      for (const { form, lexeme, analysis } of lexemes) {
         const meaning = extractMeaning(lexeme)
         if (!meaning || meaning.length < 2) continue
+        // Skip standalone upasargas — their meaning is absorbed into the verb.
+        const cleanAnalysis = (analysis || '').replace(/^USER\|/, '')
+        if (UPASARGAS.has(form) && new RegExp(`^MW\\.${form}\\.`).test(cleanAnalysis)) continue
         // Strip bracketed refs from translation for matching
         const cleanTranslation = translation.replace(/\[[^\]]*\]/g, ' ')
         if (meaningInDictionary(meaning, cleanTranslation)) {
