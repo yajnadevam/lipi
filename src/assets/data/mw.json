@@ -8930,5 +8930,27 @@
     "¦ something different from spirit or soul<info lex=\"inh\"/><L>[ID=5491]</L>",
     "an-Atma/n ¦ <lex>mfn.</lex> not spiritual, corporeal, destitute of spirit or mind, <ls>ŚBr.</ls><info lex=\"m:f:n\"/><L>[ID=5492]</L>",
     "¦ unreal, <ls>Divyāv.</ls><info n=\"sup\"/><L>[ID=5492.1]</L>"
+  ],
+  "sahat": [
+    "sa/hat ¦ <lex>mfn.</lex> mighty, strong, <ls>RV. viii, 40, 1</ls><info lex=\"m:f:n\"/><L>[ID=239996]</L>",
+    "¦ lasting, solid, <ls>ib.</ls> <ls n=\"RV.\">v, 23, 1.</ls><info lex=\"inh\"/><L>[ID=239997]</L>"
+  ],
+  "janaDA": [
+    "ja/na—DA ¦ (ja/n°), <lex>mfn.</lex> (√ DA) nourishing creatures, <ls>TBr. i, 1, 1, 1 f.</ls> (-DAya, <ls>TāṇḍyaBr. i, 4</ls>; -DAyas, <ls>MaitrS. i, 3, 12</ls> and <ls n=\"MaitrS. i, 3,\">27</ls>). <info lex=\"m:f:n\"/><L>[ID=76759]</L>"
+  ],
+  "Baya": [
+    "Baya/ ¦ <lex>n.</lex> (√ BI) fear, alarm, dread apprehension<info lex=\"n\"/><L>[ID=148577]</L>",
+    "¦ fear of (<ab>abl.</ab> <ab>gen.</ab> or <ab>comp.</ab>) or for (<ab>comp.</ab>), <ls>RV.</ls> &c. &c. (°yAt <lex type=\"phw\">ind.</lex> ‘from fear’; BayaM-√ kf with <ab>abl.</ab> ‘to have fear of’; BayaM-√ dA, ‘to cause fear, terrify’)<info phwchild=\"148583.1\"/><info lex=\"inh\"/><L>[ID=148578]</L>",
+    "¦ <ab>sg.</ab> and <ab>pl.</ab> terror, dismay, danger, peril, distress<info lex=\"inh\"/><L>[ID=148579]</L>",
+    "¦ danger from (<ab>abl.</ab> or <ab>comp.</ab>) or to, (<ab>comp.</ab>), <ls>ib.</ls><info lex=\"inh\"/><L>[ID=148580]</L>",
+    "¦ the blossom of <bot>Trapa Bispinosa</bot>, <ls>L.</ls><info lex=\"inh\"/><L>[ID=148581]</L>",
+    "Baya/ ¦ <lex>m.</lex> sickness, disease, <ls>L.</ls><info lex=\"m\"/><L>[ID=148582]</L>",
+    "Baya/ ¦ <lex>m.</lex> Fear personified (as a <s1>Vasu</s1>, a son of <s1>Nir-ṛti</s1> or <s1>Ni-kṛti</s1>, a prince of the <s1>Yavana</s1>s and husband of the daughter of Time), <ls>Pur.</ls> (also <lex type=\"hwalt\">n.</lex>; and <lex type=\"hwalt\">f(A). </lex> as a daughter of <s1>Kāla</s1> or <s1>Vaivasvata</s1>, and wife of the <s1>Rākṣasa</s1> <s1>Heti</s1>). <info lex=\"m:f#A:n\"/><L>[ID=148583]</L>"
+  ],
+  "dal": [
+    "dal ¦ (= √ dF) <ab>cl.</ab> 1. °lati (<ab>pf.</ab> dadAla, <ls>Bhaṭṭ. xiv</ls>; <ab>aor.</ab> <ab>pl.</ab> adAlizur, <ls n=\"Bhaṭṭ.\">xv</ls>)\n<div n=\"to\"/>to crack, fly open, split, open (as a bud), <ls>Suśr. ii, 16</ls>; <ls>Śiś. ix, 15</ls>; <ls>Bhām. i, 4</ls>; <ls>Amar.</ls>; <ls>Gīt.</ls>; <ls>Dhūrtas.</ls> :\n<div n=\"vp\"/><ab>Caus.</ab> dAlayati, to cause to burst, <ls>Suśr.</ls>; <ls>Bhaṭṭ.</ls> : dal° <ab>id.</ab>, <ls>Anargh.</ls>, <ls>Gīt. i, 8</ls>, <ab>Sch.</ab> <pb n=\"471,2\"/>;\n<div n=\"to\"/>to expel, <ls>Mālatīm. viii, 1</ls>; <ls>Kathās. lviii, 8</ls>;\n<div n=\"vp\"/> <ls n=\"Kathās.\">cii, 58</ls>;\n<div n=\"vp\"/> <ab>cf.</ab> ava-, ud-, vi-.<info whitneyroots=\"dal,70\"/><info verb=\"genuineroot\" cp=\"1\"/><L>[ID=90700]</L>"
+  ],
+  "@id/90699": [
+    "da/rSya ¦ <lex>mfn.</lex> worthy of being seen, <ls>RV. v, 52, 11</ls><info lex=\"m:f:n\"/><L>[ID=90699]</L>"
   ]
 }
