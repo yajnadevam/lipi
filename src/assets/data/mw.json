@@ -8952,5 +8952,18 @@
   ],
   "@id/90699": [
     "da/rSya ¦ <lex>mfn.</lex> worthy of being seen, <ls>RV. v, 52, 11</ls><info lex=\"m:f:n\"/><L>[ID=90699]</L>"
+  ],
+  "mAnin": [
+    "<hom>1.</hom> mAnin ¦ <lex>mfn.</lex> (<ab>fr.</ab> √ man or <ab>fr.</ab> <hom>1.</hom> mAna) thinking, being of opinion, <ls>KaṭhUp.</ls><info lex=\"m:f:n\"/><L>[ID=162815]</L>",
+    "¦ high-minded, haughty, proud towards (prati) or of (-tas), <ls>MBh.</ls>; <ls>Kāv.</ls> &c.<info lex=\"inh\"/><L>[ID=162816]</L>",
+    "¦ highly honoured or esteemed, <ls>ib.</ls><info lex=\"inh\"/><L>[ID=162817]</L>",
+    "¦ (<ab>ifc.</ab>) thinking (<ab>esp.</ab> one's self) to be or have, appearing as or passing for (see darSanIya-, paRqita-m° &c.)<info lex=\"inh\"/><L>[ID=162818]</L>",
+    "¦ highly esteeming or honouring (see <lex type=\"hwinfo\">f.</lex>)<info lex=\"inh\"/><L>[ID=162819]</L>",
+    "mAnin ¦ <lex>m.</lex> <bot>Marsilia Dentata</bot>, <ls>L.</ls><info lex=\"m\"/><L>[ID=162820]</L>",
+    "<hom>2.</hom> mAnin ¦ <lex>mfn.</lex> measuring, applying a measure, measurable, <ls>VP.</ls><info lex=\"m:f:n\"/><L>[ID=162873]</L>"
+  ],
+  "vraR": [
+    "<hom>1.</hom> vraR ¦ (also written braR) <ab>cl.</ab> 1. <ab>P.</ab> vraRati, to sound, <ls>Dhātup. xiii, 8.</ls><info westergaard=\"vraRa,13.8,01.0297\"/><info whitneyroots=\"vran,167\"/><info verb=\"root\" cp=\"1P\"/><L>[ID=210509]</L>",
+    "<hom>2.</hom> vraR ¦ (rather <ab>Nom.</ab> <ab>fr.</ab> vraRa below) <ab>cl.</ab> 1. <ab>P.</ab> vraRati, to wound, <ls>Suśr.</ls>;\n<div n=\"vp\"/> <ab>cl.</ab> 10. <ab>P.</ab> (<ls>Dhātup. xxxv, 82</ls>) vraRayati <ab>id.</ab>, <ls>Kāv.</ls>; <ls>Kathās.</ls> &c.<info westergaard=\"vraRa,35.82,10.0321\"/><info verb=\"root\" cp=\"1P,10P\"/><L>[ID=210510]</L>"
   ]
 }
