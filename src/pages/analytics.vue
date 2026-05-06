@@ -336,6 +336,73 @@
               </v-col>
             </v-row>
 
+            <!-- Agreement Summary -->
+            <v-row v-if="agreementSummary" class="mt-4">
+              <v-col cols="12">
+                <v-card class="pa-4">
+                  <v-card-title>Syntactic Agreement Summary</v-card-title>
+                  <v-card-subtitle class="agreement-subtitle">
+                    {{ stats.totalAgreementCount }} multi-word inscriptions ·
+                    {{ agreementSummary.distinctTags }} distinct case·gender·number tags ·
+                    {{ agreementSummary.distinctPatterns }} distinct patterns
+                  </v-card-subtitle>
+                  <div class="agreement-tables">
+                    <div class="agreement-table">
+                      <div class="agreement-th" @click="toggleAgreementTable('caseGroups')">
+                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('caseGroups') }">mdi-chevron-right</v-icon>
+                        Case-groups per inscription
+                      </div>
+                      <table v-if="expandedAgreement.has('caseGroups')">
+                        <thead>
+                          <tr><th>groups</th><th class="num">count</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="r in agreementSummary.caseGroups" :key="r.groups">
+                            <td>{{ r.groups }}</td>
+                            <td class="num">{{ r.count }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="agreement-table">
+                      <div class="agreement-th" @click="toggleAgreementTable('cgnTags')">
+                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('cgnTags') }">mdi-chevron-right</v-icon>
+                        CGN tag frequencies
+                      </div>
+                      <table v-if="expandedAgreement.has('cgnTags')">
+                        <thead>
+                          <tr><th>tag</th><th class="num">count</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="r in agreementSummary.cgnTags" :key="r.tag">
+                            <td>{{ r.tag }}</td>
+                            <td class="num">{{ r.count }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="agreement-table agreement-patterns">
+                      <div class="agreement-th" @click="toggleAgreementTable('patterns')">
+                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('patterns') }">mdi-chevron-right</v-icon>
+                        Inscription patterns (top 25)
+                      </div>
+                      <table v-if="expandedAgreement.has('patterns')">
+                        <thead>
+                          <tr><th class="num">count</th><th>pattern</th></tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="r in agreementSummary.patterns.slice(0, 25)" :key="r.pattern">
+                            <td class="num">{{ r.count }}</td>
+                            <td>{{ r.pattern }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </v-card>
+              </v-col>
+            </v-row>
+
             <!-- Invalid Entries Dialog -->
             <v-dialog v-model="showInvalidDialog" max-width="900">
               <v-card>
@@ -545,11 +612,13 @@
     for (const insc of inscriptionRows) {
       const sk = resolve(insc.id)
       if (!sk) continue
-      for (const raw of sk.split(/[\s\-_]+/)) {
-        if (!raw) continue
-        // Strip word-final visarga (H) and anusvāra (M) — sandhi-conditioned
-        // endings that don't change the underlying lexeme.
-        const w = raw.replace(/[HM]$/, '')
+      const tokens = sk.split(/[\s\-_]+/).filter(w => w)
+      if (!tokens.length) continue
+      // Strip inscription-final visarga (H), anusvāra (M), and -m. These are
+      // routinely omitted in IVC inscriptions — normalizing them here corrects
+      // for an epigraphic convention rather than merging morphologically distinct forms.
+      tokens[tokens.length - 1] = tokens[tokens.length - 1].replace(/[HMm]$/, '')
+      for (const w of tokens) {
         if (!w) continue
         counts.set(w, (counts.get(w) || 0) + 1)
       }
@@ -706,8 +775,16 @@
     let valid = 0
     let invalid = 0
     const invalidList = []
+    const cgnCount = new Map()
+    const caseGroupCount = new Map()
+    const patternCount = new Map()
     for (const [id, words] of byId) {
       if (words.length < 2) continue
+      for (const w of words) cgnCount.set(w.cgn, (cgnCount.get(w.cgn) || 0) + 1)
+      const cases = new Set(words.map(w => w.case))
+      caseGroupCount.set(cases.size, (caseGroupCount.get(cases.size) || 0) + 1)
+      const pat = words.map(w => w.cgn).sort().join(' + ')
+      patternCount.set(pat, (patternCount.get(pat) || 0) + 1)
       const byCase = new Map()
       for (const w of words) {
         if (!byCase.has(w.case)) byCase.set(w.case, [])
@@ -731,7 +808,17 @@
         valid++
       }
     }
-    return { valid, invalid, invalidList }
+    const summary = {
+      caseGroups: [...caseGroupCount.entries()].sort((a, b) => a[0] - b[0])
+        .map(([n, c]) => ({ groups: n, count: c })),
+      cgnTags: [...cgnCount.entries()].sort((a, b) => b[1] - a[1])
+        .map(([tag, count]) => ({ tag, count })),
+      patterns: [...patternCount.entries()].sort((a, b) => b[1] - a[1])
+        .map(([pattern, count]) => ({ pattern, count })),
+      distinctTags: cgnCount.size,
+      distinctPatterns: patternCount.size,
+    }
+    return { valid, invalid, invalidList, summary }
   }
 
   function validateCoverage (glossingRows, inscriptionRows) {
@@ -1107,6 +1194,8 @@
         invalidCoverageList: [],
         invalidLexemeList: [],
         invalidAgreementList: [],
+        agreementSummary: null,
+        expandedAgreement: new Set(),
       }
     },
     computed: {
@@ -1383,6 +1472,7 @@
         this.invalidCoverageList = coverage.invalidCoverageList
         this.invalidLexemeList = coverage.invalidLexemeList
         this.invalidAgreementList = agreement.invalidList
+        this.agreementSummary = agreement.summary
 
         const totalStems = stems.valid + stems.invalid
         const totalDerivedStems = derivations.validDerived + derivations.invalidDerived
@@ -1436,6 +1526,13 @@
           invalidAgreementCount: agreement.invalid,
           totalAgreementCount: totalAgreement,
         }
+      },
+
+      toggleAgreementTable(name) {
+        const next = new Set(this.expandedAgreement)
+        if (next.has(name)) next.delete(name)
+        else next.add(name)
+        this.expandedAgreement = next
       },
 
       toggleInvalid(type) {
@@ -1620,6 +1717,82 @@
 .zipf-stat b {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+}
+
+.agreement-subtitle {
+  white-space: normal;
+  opacity: 0.7;
+}
+
+.agreement-tables {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 24px;
+  padding: 12px 16px 4px;
+}
+
+.agreement-table {
+  min-width: 0;
+}
+
+.agreement-th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  opacity: 0.85;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.agreement-th:hover {
+  opacity: 1;
+}
+
+.agreement-th .v-icon {
+  transition: transform 0.15s;
+}
+
+.agreement-th .v-icon.rotated {
+  transform: rotate(90deg);
+}
+
+.agreement-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.agreement-table th,
+.agreement-table td {
+  padding: 4px 8px;
+  text-align: left;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
+}
+
+.agreement-table th {
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.agreement-table td.num,
+.agreement-table th.num {
+  text-align: right;
+  width: 70px;
+}
+
+.agreement-patterns table tbody tr td:last-child {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 900px) {
+  .agreement-tables {
+    grid-template-columns: 1fr;
+  }
 }
 
 .zipf-chart-container {
