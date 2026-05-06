@@ -289,6 +289,26 @@
                       </div>
                     </div>
 
+                    <!-- Syntactic Agreement Validation -->
+                    <div class="validation-row" @click="toggleInvalid('agreement')">
+                      <div class="validation-label">Syntactic Agreement ({{ stats.totalAgreementCount }} multi-word inscriptions)</div>
+                      <div class="validation-bar-container">
+                        <div
+                          class="validation-bar valid"
+                          :style="{ width: stats.validAgreementPercent + '%' }"
+                        >
+                          {{ stats.validAgreementCount }} ({{ stats.validAgreementPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.validAgreementPercent < 100"
+                          class="validation-bar invalid"
+                          :style="{ width: (100 - stats.validAgreementPercent) + '%' }"
+                        >
+                          {{ stats.invalidAgreementCount }} ({{ (100 - stats.validAgreementPercent).toFixed(1) }}%)
+                        </div>
+                      </div>
+                    </div>
+
                     <!-- Lexeme in Translation Validation -->
                     <div class="validation-row" @click="toggleInvalid('lexemes')">
                       <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} checked)</div>
@@ -586,7 +606,11 @@
         } else {
           invalid++
         }
+        continue
       }
+      // USER.<stem> entries are user-supplied lexemes not yet in any dictionary;
+      // count them as invalid stems so they surface in the Valid MW Stems bar.
+      if (/\bUSER\.[^.\s]+/.test(analysis)) invalid++
     }
     return { valid, invalid }
   }
@@ -661,6 +685,53 @@
 
   function normalizeSibilants (str) {
     return str.replace(/[sSzhH]/g, 's').replace(/M/g, 'm')
+  }
+
+  // Test B from the agreement scoping: within each Case-group of an inscription's
+  // case-marked words, all members must share Gender+Number. Sanskrit allows
+  // different cases to coexist in one phrase (subject + object, head + possessor),
+  // but words sharing a case are typically coordinated or modifier-head and must agree.
+  function validateAgreement (glossingRows) {
+    const cgnRe = /\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.([MFN])\.([SDP])\b/
+    const byId = new Map()
+    for (const r of glossingRows) {
+      if (r.type !== 'word') continue
+      const m = (r.analysis || '').match(cgnRe)
+      if (!m) continue
+      const id = String(r.id)
+      if (!byId.has(id)) byId.set(id, [])
+      byId.get(id).push({ form: r.form, analysis: r.analysis, case: m[1], gn: `${m[2]}.${m[3]}`, cgn: m[0] })
+    }
+
+    let valid = 0
+    let invalid = 0
+    const invalidList = []
+    for (const [id, words] of byId) {
+      if (words.length < 2) continue
+      const byCase = new Map()
+      for (const w of words) {
+        if (!byCase.has(w.case)) byCase.set(w.case, [])
+        byCase.get(w.case).push(w)
+      }
+      let conflictCase = null
+      let conflictWords = null
+      for (const [c, wlist] of byCase) {
+        const gns = new Set(wlist.map(w => w.gn))
+        if (gns.size > 1) { conflictCase = c; conflictWords = wlist; break }
+      }
+      if (conflictCase) {
+        invalid++
+        invalidList.push({
+          id,
+          form: words.map(w => w.form).join(' '),
+          analysis: words.map(w => w.cgn).join(', '),
+          issue: `case "${conflictCase}" mixes ${conflictWords.map(w => `${w.form}(${w.gn})`).join(' / ')}`,
+        })
+      } else {
+        valid++
+      }
+    }
+    return { valid, invalid, invalidList }
   }
 
   function validateCoverage (glossingRows, inscriptionRows) {
@@ -1035,6 +1106,7 @@
         invalidMeaningsList: [],
         invalidCoverageList: [],
         invalidLexemeList: [],
+        invalidAgreementList: [],
       }
     },
     computed: {
@@ -1059,6 +1131,8 @@
             uniqueValues.add(entry.id)
           } else if (this.invalidType === 'lexemes') {
             uniqueValues.add(entry.id + ':' + entry.form)
+          } else if (this.invalidType === 'agreement') {
+            uniqueValues.add(entry.id)
           }
         }
         return uniqueValues.size
@@ -1082,6 +1156,7 @@
             validMeaningsPercent: 100,
             validCoveragePercent: 100,
             validLexemePercent: 100,
+            validAgreementPercent: 100,
           }
         }
         return this.validationCache
@@ -1281,6 +1356,10 @@
           validLexemeCount: 0,
           invalidLexemeCount: 0,
           totalLexemeCount: 0,
+          validAgreementPercent: 0,
+          validAgreementCount: 0,
+          invalidAgreementCount: 0,
+          totalAgreementCount: 0,
           error: `Failed to initialize Vidyut: ${e.message}`
         }
       }
@@ -1294,6 +1373,7 @@
         const derivations = validateDerivations(lemmas)
         const meanings = validateMeanings(lemmas)
         const coverage = validateCoverage(lemmas, inscriptions)
+        const agreement = validateAgreement(lemmas)
 
         this.zipfWords = computeZipf(inscriptions)
         this.invalidDerivedStemsList = derivations.invalidDerivedList
@@ -1302,6 +1382,7 @@
         this.invalidMeaningsList = meanings.invalidList
         this.invalidCoverageList = coverage.invalidCoverageList
         this.invalidLexemeList = coverage.invalidLexemeList
+        this.invalidAgreementList = agreement.invalidList
 
         const totalStems = stems.valid + stems.invalid
         const totalDerivedStems = derivations.validDerived + derivations.invalidDerived
@@ -1310,6 +1391,7 @@
         const totalMeanings = meanings.valid + meanings.invalid
         const totalCoverage = coverage.validCoverage + coverage.invalidCoverage
         const totalLexeme = coverage.validLexeme + coverage.invalidLexeme
+        const totalAgreement = agreement.valid + agreement.invalid
 
         this.validationCache = {
           totalWords: total,
@@ -1349,6 +1431,10 @@
           validLexemeCount: coverage.validLexeme,
           invalidLexemeCount: coverage.invalidLexeme,
           totalLexemeCount: totalLexeme,
+          validAgreementPercent: totalAgreement > 0 ? (agreement.valid / totalAgreement) * 100 : 100,
+          validAgreementCount: agreement.valid,
+          invalidAgreementCount: agreement.invalid,
+          totalAgreementCount: totalAgreement,
         }
       },
 
@@ -1368,6 +1454,8 @@
           entries = this.invalidCoverageList || []
         } else if (type === 'lexemes') {
           entries = this.invalidLexemeList || []
+        } else if (type === 'agreement') {
+          entries = this.invalidAgreementList || []
         } else {
           for (const row of lemmas) {
             const analysis = row.analysis || ''
@@ -1382,6 +1470,14 @@
                     issue: `MW stem "${stem}" not found in dictionary`,
                   })
                 }
+                continue
+              }
+              const userMatch = analysis.match(/\bUSER\.([^.\s]+)/)
+              if (userMatch) {
+                entries.push({
+                  ...row,
+                  issue: `USER stem "${userMatch[1]}" not in dictionary`,
+                })
               }
             }
           }
