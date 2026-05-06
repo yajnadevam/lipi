@@ -73,6 +73,95 @@
                     </div>
                   </div>
                 </v-card>
+
+                <!-- Zipf Chart: Word Frequency Distribution -->
+                <v-card class="pa-4 mt-4">
+                  <v-card-title>Word Frequency (Zipf, log–log)</v-card-title>
+                  <v-card-subtitle class="zipf-subtitle">
+                    {{ zipfChart.totalTokens }} tokens, {{ zipfChart.uniqueWords }} unique
+                  </v-card-subtitle>
+                  <div class="zipf-stats">
+                    <span class="zipf-stat">slope = <b>{{ zipfChart.slope.toFixed(3) }}</b></span>
+                    <span class="zipf-stat">R² = <b>{{ zipfChart.r2.toFixed(3) }}</b></span>
+                  </div>
+                  <div class="zipf-chart-container">
+                    <svg :viewBox="`0 0 ${zipfChart.width} ${zipfChart.height}`" class="zipf-chart">
+                      <line
+                        :x1="zipfChart.padL" :y1="zipfChart.padT"
+                        :x2="zipfChart.padL" :y2="zipfChart.height - zipfChart.padB"
+                        :stroke="isDark ? '#888' : '#444'" stroke-width="1"
+                      />
+                      <line
+                        :x1="zipfChart.padL" :y1="zipfChart.height - zipfChart.padB"
+                        :x2="zipfChart.width - zipfChart.padR" :y2="zipfChart.height - zipfChart.padB"
+                        :stroke="isDark ? '#888' : '#444'" stroke-width="1"
+                      />
+                      <g v-for="t in zipfChart.xTicks" :key="`xt-${t.value}`">
+                        <line
+                          :x1="t.x" :y1="zipfChart.height - zipfChart.padB"
+                          :x2="t.x" :y2="zipfChart.height - zipfChart.padB + 5"
+                          :stroke="isDark ? '#888' : '#444'"
+                        />
+                        <text
+                          :x="t.x" :y="zipfChart.height - zipfChart.padB + 18"
+                          text-anchor="middle" font-size="11"
+                          :fill="isDark ? '#bbb' : '#333'"
+                        >{{ t.value }}</text>
+                      </g>
+                      <g v-for="t in zipfChart.yTicks" :key="`yt-${t.value}`">
+                        <line
+                          :x1="zipfChart.padL - 5" :y1="t.y"
+                          :x2="zipfChart.padL" :y2="t.y"
+                          :stroke="isDark ? '#888' : '#444'"
+                        />
+                        <text
+                          :x="zipfChart.padL - 8" :y="t.y + 4"
+                          text-anchor="end" font-size="11"
+                          :fill="isDark ? '#bbb' : '#333'"
+                        >{{ t.value }}</text>
+                      </g>
+                      <text
+                        :x="zipfChart.padL + (zipfChart.width - zipfChart.padL - zipfChart.padR) / 2"
+                        :y="zipfChart.height - 8"
+                        text-anchor="middle" font-size="12"
+                        :fill="isDark ? '#bbb' : '#333'"
+                      >rank</text>
+                      <text
+                        :x="14"
+                        :y="zipfChart.padT + (zipfChart.height - zipfChart.padT - zipfChart.padB) / 2"
+                        text-anchor="middle" font-size="12"
+                        :fill="isDark ? '#bbb' : '#333'"
+                        :transform="`rotate(-90 14 ${zipfChart.padT + (zipfChart.height - zipfChart.padT - zipfChart.padB) / 2})`"
+                      >frequency</text>
+                      <line
+                        :x1="zipfChart.refLine.x1" :y1="zipfChart.refLine.y1"
+                        :x2="zipfChart.refLine.x2" :y2="zipfChart.refLine.y2"
+                        :stroke="isDark ? '#666' : '#999'"
+                        stroke-width="1" stroke-dasharray="4 4"
+                      />
+                      <line
+                        :x1="zipfChart.fitLine.x1" :y1="zipfChart.fitLine.y1"
+                        :x2="zipfChart.fitLine.x2" :y2="zipfChart.fitLine.y2"
+                        :stroke="isDark ? '#FF8A65' : '#D84315'"
+                        stroke-width="1.5"
+                      />
+                      <polyline
+                        :points="zipfChart.points"
+                        fill="none"
+                        :stroke="isDark ? '#64B5F6' : '#1976D2'"
+                        stroke-width="1.5"
+                      />
+                      <g v-for="lbl in zipfChart.topLabels" :key="`tl-${lbl.word}`">
+                        <circle :cx="lbl.x" :cy="lbl.y" r="3" :fill="isDark ? '#64B5F6' : '#1976D2'" />
+                        <text
+                          :x="lbl.x + 6" :y="lbl.y - 4"
+                          font-size="11"
+                          :fill="isDark ? '#ddd' : '#222'"
+                        >{{ lbl.word }} ({{ lbl.freq }})</text>
+                      </g>
+                    </svg>
+                  </div>
+                </v-card>
               </v-col>
 
               <!-- Validation Bars -->
@@ -293,7 +382,7 @@
     for (const row of allInscriptions) {
       const text = (row.text || '').trim()
       if (!text) continue
-      if (text.startsWith(']') || text.endsWith('[') || text.includes('000')) {
+      if (text.includes('[') || text.includes(']') || text.includes('000')) {
         excludedIds.add(row.id)
       }
     }
@@ -411,6 +500,44 @@
     }
 
     return false
+  }
+
+  function computeZipf (inscriptionRows) {
+    // Keys are stringified — csv2json parses numeric ids like 2.1 as JS numbers,
+    // but `ref:1.1` carries the target as a string, so Map lookups would miss.
+    const sanskritById = new Map()
+    for (const insc of inscriptionRows) {
+      if (insc.id != null) sanskritById.set(String(insc.id), (insc.sanskrit || '').trim())
+    }
+
+    // Resolve ref:X.Y indirection. Each reference counts independently —
+    // if 23.1 and 405.1 both ref:11.1, the words of 11.1 are tallied twice.
+    function resolve (id, seen = new Set()) {
+      const key = String(id)
+      if (seen.has(key)) return ''
+      seen.add(key)
+      const sk = sanskritById.get(key) || ''
+      if (sk.startsWith('ref:')) return resolve(sk.slice(4).trim(), seen)
+      return sk
+    }
+
+    const counts = new Map()
+    for (const insc of inscriptionRows) {
+      const sk = resolve(insc.id)
+      if (!sk) continue
+      for (const raw of sk.split(/[\s\-_]+/)) {
+        if (!raw) continue
+        // Strip word-final visarga (H) and anusvāra (M) — sandhi-conditioned
+        // endings that don't change the underlying lexeme.
+        const w = raw.replace(/[HM]$/, '')
+        if (!w) continue
+        counts.set(w, (counts.get(w) || 0) + 1)
+      }
+    }
+
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([word, freq], i) => ({ word, freq, rank: i + 1 }))
   }
 
   // Vidyut instance (set after initialization)
@@ -901,6 +1028,7 @@
         ],
         // Cached validation results
         validationCache: null,
+        zipfWords: [],
         invalidDerivedStemsList: [],
         invalidDeclensionsList: [],
         invalidTinList: [],
@@ -995,6 +1123,100 @@
           }
         })
       },
+      zipfChart() {
+        const words = this.zipfWords || []
+        const width = 800
+        const height = 360
+        const padL = 60; const padR = 30; const padT = 20; const padB = 40
+        const empty = {
+          width, height, padL, padR, padT, padB,
+          totalTokens: 0, uniqueWords: 0,
+          slope: 0, intercept: 0, r2: 0,
+          xTicks: [], yTicks: [], points: '', topLabels: [],
+          refLine: { x1: padL, y1: padT, x2: padL, y2: height - padB },
+          fitLine: { x1: padL, y1: padT, x2: padL, y2: height - padB },
+        }
+        if (!words.length) return empty
+
+        const maxRank = words.length
+        const maxFreq = words[0].freq
+        const totalTokens = words.reduce((s, w) => s + w.freq, 0)
+
+        // Linear regression on log10(rank) vs log10(freq)
+        const n = words.length
+        let sumX = 0; let sumY = 0
+        for (const w of words) {
+          sumX += Math.log10(w.rank)
+          sumY += Math.log10(w.freq)
+        }
+        const meanX = sumX / n
+        const meanY = sumY / n
+        let sxy = 0; let sxx = 0; let syy = 0
+        for (const w of words) {
+          const dx = Math.log10(w.rank) - meanX
+          const dy = Math.log10(w.freq) - meanY
+          sxy += dx * dy
+          sxx += dx * dx
+          syy += dy * dy
+        }
+        const slope = sxx > 0 ? sxy / sxx : 0
+        const intercept = meanY - slope * meanX
+        // R² from explained-vs-total variance, equivalent to (sxy²/(sxx*syy)).
+        const r2 = sxx > 0 && syy > 0 ? (sxy * sxy) / (sxx * syy) : 0
+
+        const plotW = width - padL - padR
+        const plotH = height - padT - padB
+        const logMaxX = Math.log10(maxRank) || 1
+        const logMaxY = Math.log10(maxFreq) || 1
+        const xAt = rank => padL + (Math.log10(rank) / logMaxX) * plotW
+        const yAt = freq => (height - padB) - (Math.log10(freq) / logMaxY) * plotH
+
+        // Powers-of-10 ticks; always include 1 and the max bound.
+        const xTicks = []
+        for (let p = 0; Math.pow(10, p) <= maxRank; p++) {
+          const v = Math.pow(10, p)
+          xTicks.push({ value: v, x: xAt(v) })
+        }
+        const yTicks = []
+        for (let p = 0; Math.pow(10, p) <= maxFreq; p++) {
+          const v = Math.pow(10, p)
+          yTicks.push({ value: v, y: yAt(v) })
+        }
+
+        // Sample to keep the polyline small but faithful: every word for
+        // the first 200 ranks, then logarithmic stride beyond.
+        const pts = []
+        for (let i = 0; i < words.length; i++) {
+          const w = words[i]
+          if (i < 200 || i === words.length - 1 || i % Math.max(1, Math.floor(i / 100)) === 0) {
+            pts.push(`${xAt(w.rank).toFixed(2)},${yAt(w.freq).toFixed(2)}`)
+          }
+        }
+
+        // Ideal Zipf: freq = maxFreq / rank → straight line slope -1 on log-log.
+        const refLine = {
+          x1: xAt(1), y1: yAt(maxFreq),
+          x2: xAt(maxRank), y2: yAt(Math.max(1, maxFreq / maxRank)),
+        }
+
+        // Fitted line from regression: log10(freq) = slope*log10(rank) + intercept.
+        const fitFreqAt = r => Math.pow(10, slope * Math.log10(r) + intercept)
+        const fitLine = {
+          x1: xAt(1), y1: yAt(Math.max(0.1, fitFreqAt(1))),
+          x2: xAt(maxRank), y2: yAt(Math.max(0.1, fitFreqAt(maxRank))),
+        }
+
+        const topLabels = words.slice(0, 5).map(w => ({
+          word: w.word, freq: w.freq, x: xAt(w.rank), y: yAt(w.freq),
+        }))
+
+        return {
+          width, height, padL, padR, padT, padB,
+          totalTokens, uniqueWords: words.length,
+          slope, intercept, r2,
+          xTicks, yTicks, points: pts.join(' '), topLabels, refLine, fitLine,
+        }
+      },
     },
     async mounted() {
       // Initialize theme
@@ -1073,6 +1295,7 @@
         const meanings = validateMeanings(lemmas)
         const coverage = validateCoverage(lemmas, inscriptions)
 
+        this.zipfWords = computeZipf(inscriptions)
         this.invalidDerivedStemsList = derivations.invalidDerivedList
         this.invalidDeclensionsList = derivations.invalidDeclList
         this.invalidTinList = derivations.invalidTinList
@@ -1275,6 +1498,43 @@
 
 .validation-bar.invalid {
   background-color: #FF9800;
+}
+
+.zipf-subtitle {
+  white-space: normal;
+  opacity: 0.7;
+}
+
+.zipf-stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 8px 16px 0;
+}
+
+.zipf-stat {
+  font-size: 1.05rem;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background-color: rgba(255, 138, 101, 0.18);
+  color: #FF8A65;
+  border: 1px solid rgba(255, 138, 101, 0.4);
+}
+
+.zipf-stat b {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.zipf-chart-container {
+  width: 100%;
+  padding: 12px;
+}
+
+.zipf-chart {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
 }
 
 @media (max-width: 600px) {
