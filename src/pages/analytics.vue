@@ -493,7 +493,7 @@
           result = derive(vidyut, analysis, form, { dhatuIndex })
         } catch (_) { /* derivation error */ }
 
-        if (hasDhatu && hasKrt && !caseMatch) {
+        if (hasDhatu && hasKrt) {
           if (result?.match) {
             validDerived++
           } else {
@@ -513,13 +513,6 @@
           } else {
             invalidDecl++
             invalidDeclList.push({ ...row, issue: `vidyut: got "${result?.text || 'no derivation'}"` })
-          }
-        } else if (hasDhatu && hasKrt) {
-          if (result?.match) {
-            validDerived++
-          } else {
-            invalidDerived++
-            invalidDerivedList.push({ ...row, issue: result ? `got "${result.text}"` : 'no derivation' })
           }
         }
       } else if (mwMatch && hasTad && !caseMatch) {
@@ -574,7 +567,7 @@
     const UPASARGAS = new Set([
       'pra', 'parA', 'apa', 'sam', 'anu', 'ava', 'nis', 'nir', 'dus', 'dur',
       'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
-      'pari', 'upa',
+      'pari', 'upa', 'sa',
     ])
 
     for (const insc of inscriptionRows) {
