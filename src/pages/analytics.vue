@@ -74,15 +74,41 @@
                   </div>
                 </v-card>
 
-                <!-- Zipf Chart: Word Frequency Distribution -->
+                <!-- Zipf Chart: Word/Lemma Frequency Distribution -->
                 <v-card class="pa-4 mt-4">
-                  <v-card-title>Word Frequency (Zipf, log–log)</v-card-title>
+                  <div class="zipf-header">
+                    <v-card-title class="pa-0">
+                      {{ zipfMode === 'lemmas' ? 'Lemma' : zipfMode === 'random' ? 'Random null' : 'Word-form' }}
+                      Frequency (Zipf, log–log)
+                    </v-card-title>
+                    <v-btn-toggle
+                      v-model="zipfMode" mandatory density="compact"
+                      color="primary" variant="outlined" class="zipf-toggle"
+                    >
+                      <v-btn value="words" size="small">Word-forms</v-btn>
+                      <v-btn value="lemmas" size="small">Lemmas</v-btn>
+                      <v-btn value="random" size="small">Random null</v-btn>
+                    </v-btn-toggle>
+                  </div>
                   <v-card-subtitle class="zipf-subtitle">
                     {{ zipfChart.totalTokens }} tokens, {{ zipfChart.uniqueWords }} unique
                   </v-card-subtitle>
                   <div class="zipf-stats">
-                    <span class="zipf-stat">slope = <b>{{ zipfChart.slope.toFixed(3) }}</b></span>
-                    <span class="zipf-stat">R² = <b>{{ zipfChart.r2.toFixed(3) }}</b></span>
+                    <span class="zipf-stat" :class="{ active: zipfMode === 'words' }">
+                      <span class="zipf-stat-label">word-forms:</span>
+                      slope = <b>{{ zipfAllStats.words.slope.toFixed(3) }}</b>
+                      · R² = <b>{{ zipfAllStats.words.r2.toFixed(3) }}</b>
+                    </span>
+                    <span class="zipf-stat" :class="{ active: zipfMode === 'lemmas' }">
+                      <span class="zipf-stat-label">lemmas:</span>
+                      slope = <b>{{ zipfAllStats.lemmas.slope.toFixed(3) }}</b>
+                      · R² = <b>{{ zipfAllStats.lemmas.r2.toFixed(3) }}</b>
+                    </span>
+                    <span class="zipf-stat zipf-stat-null" :class="{ active: zipfMode === 'random' }">
+                      <span class="zipf-stat-label">random null:</span>
+                      slope = <b>{{ zipfAllStats.random.slope.toFixed(3) }}</b>
+                      · R² = <b>{{ zipfAllStats.random.r2.toFixed(3) }}</b>
+                    </span>
                   </div>
                   <div class="zipf-chart-container">
                     <svg :viewBox="`0 0 ${zipfChart.width} ${zipfChart.height}`" class="zipf-chart">
@@ -136,23 +162,69 @@
                       <line
                         :x1="zipfChart.refLine.x1" :y1="zipfChart.refLine.y1"
                         :x2="zipfChart.refLine.x2" :y2="zipfChart.refLine.y2"
-                        :stroke="isDark ? '#666' : '#999'"
+                        :stroke="isDark ? '#888' : '#666'"
                         stroke-width="1" stroke-dasharray="4 4"
                       />
+                      <!-- crossing annotation: where slope-(-1) reference hits freq=1 -->
+                      <line
+                        :x1="zipfChart.refCrossing.x" :y1="zipfChart.height - zipfChart.padB"
+                        :x2="zipfChart.refCrossing.x" :y2="zipfChart.height - zipfChart.padB + 5"
+                        :stroke="isDark ? '#888' : '#666'"
+                      />
+                      <text
+                        :x="zipfChart.refCrossing.x" :y="zipfChart.height - zipfChart.padB + 18"
+                        text-anchor="middle" font-size="11" font-weight="600"
+                        :fill="isDark ? '#bbb' : '#444'"
+                      >{{ zipfChart.refCrossing.rank }}</text>
                       <line
                         :x1="zipfChart.fitLine.x1" :y1="zipfChart.fitLine.y1"
                         :x2="zipfChart.fitLine.x2" :y2="zipfChart.fitLine.y2"
-                        :stroke="isDark ? '#FF8A65' : '#D84315'"
+                        :stroke="zipfMode === 'random' ? (isDark ? '#EF5350' : '#C62828') : (isDark ? '#FF8A65' : '#D84315')"
                         stroke-width="1.5"
                       />
+                      <!-- Ghost polylines for inactive modes — context for the active line -->
                       <polyline
-                        :points="zipfChart.points"
+                        v-if="zipfMode !== 'words'"
+                        :points="zipfChart.polylines.words"
                         fill="none"
                         :stroke="isDark ? '#64B5F6' : '#1976D2'"
+                        stroke-width="1" stroke-opacity="0.25"
+                      />
+                      <polyline
+                        v-if="zipfMode !== 'lemmas'"
+                        :points="zipfChart.polylines.lemmas"
+                        fill="none"
+                        :stroke="isDark ? '#9575CD' : '#5E35B1'"
+                        stroke-width="1" stroke-opacity="0.25"
+                      />
+                      <polyline
+                        v-if="zipfMode !== 'random'"
+                        :points="zipfChart.polylines.random"
+                        fill="none"
+                        :stroke="isDark ? '#EF5350' : '#C62828'"
+                        stroke-width="1" stroke-opacity="0.25"
+                      />
+                      <!-- Active dataset polyline (full opacity, mode-colored) -->
+                      <polyline
+                        :points="
+                          zipfMode === 'lemmas' ? zipfChart.polylines.lemmas
+                          : zipfMode === 'random' ? zipfChart.polylines.random
+                          : zipfChart.polylines.words"
+                        fill="none"
+                        :stroke="
+                          zipfMode === 'lemmas' ? (isDark ? '#9575CD' : '#5E35B1')
+                          : zipfMode === 'random' ? (isDark ? '#EF5350' : '#C62828')
+                          : (isDark ? '#64B5F6' : '#1976D2')"
                         stroke-width="1.5"
                       />
                       <g v-for="lbl in zipfChart.topLabels" :key="`tl-${lbl.word}`">
-                        <circle :cx="lbl.x" :cy="lbl.y" r="3" :fill="isDark ? '#64B5F6' : '#1976D2'" />
+                        <circle
+                          :cx="lbl.x" :cy="lbl.y" r="3"
+                          :fill="
+                            zipfMode === 'lemmas' ? (isDark ? '#9575CD' : '#5E35B1')
+                            : zipfMode === 'random' ? (isDark ? '#EF5350' : '#C62828')
+                            : (isDark ? '#64B5F6' : '#1976D2')"
+                        />
                         <text
                           :x="lbl.x + 6" :y="lbl.y - 4"
                           font-size="11"
@@ -332,73 +404,6 @@
                   <v-card-text class="text-caption text-center mt-2">
                     Click any bar to see invalid entries
                   </v-card-text>
-                </v-card>
-              </v-col>
-            </v-row>
-
-            <!-- Agreement Summary -->
-            <v-row v-if="agreementSummary" class="mt-4">
-              <v-col cols="12">
-                <v-card class="pa-4">
-                  <v-card-title>Syntactic Agreement Summary</v-card-title>
-                  <v-card-subtitle class="agreement-subtitle">
-                    {{ stats.totalAgreementCount }} multi-word inscriptions ·
-                    {{ agreementSummary.distinctTags }} distinct case·gender·number tags ·
-                    {{ agreementSummary.distinctPatterns }} distinct patterns
-                  </v-card-subtitle>
-                  <div class="agreement-tables">
-                    <div class="agreement-table">
-                      <div class="agreement-th" @click="toggleAgreementTable('caseGroups')">
-                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('caseGroups') }">mdi-chevron-right</v-icon>
-                        Case-groups per inscription
-                      </div>
-                      <table v-if="expandedAgreement.has('caseGroups')">
-                        <thead>
-                          <tr><th>groups</th><th class="num">count</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="r in agreementSummary.caseGroups" :key="r.groups">
-                            <td>{{ r.groups }}</td>
-                            <td class="num">{{ r.count }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="agreement-table">
-                      <div class="agreement-th" @click="toggleAgreementTable('cgnTags')">
-                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('cgnTags') }">mdi-chevron-right</v-icon>
-                        CGN tag frequencies
-                      </div>
-                      <table v-if="expandedAgreement.has('cgnTags')">
-                        <thead>
-                          <tr><th>tag</th><th class="num">count</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="r in agreementSummary.cgnTags" :key="r.tag">
-                            <td>{{ r.tag }}</td>
-                            <td class="num">{{ r.count }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div class="agreement-table agreement-patterns">
-                      <div class="agreement-th" @click="toggleAgreementTable('patterns')">
-                        <v-icon size="20" :class="{ rotated: expandedAgreement.has('patterns') }">mdi-chevron-right</v-icon>
-                        Inscription patterns (top 25)
-                      </div>
-                      <table v-if="expandedAgreement.has('patterns')">
-                        <thead>
-                          <tr><th class="num">count</th><th>pattern</th></tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="r in agreementSummary.patterns.slice(0, 25)" :key="r.pattern">
-                            <td class="num">{{ r.count }}</td>
-                            <td>{{ r.pattern }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                 </v-card>
               </v-col>
             </v-row>
@@ -629,6 +634,104 @@
       .map(([word, freq], i) => ({ word, freq, rank: i + 1 }))
   }
 
+  // Random-letter null: matches the methodology in ~/analysis/zipf_30runs.py.
+  // Generates N letters from the alphabet with constrained-length word breaks,
+  // averaged over multiple seeds to suppress per-run variance. Reference numbers
+  // from the Python script (30 runs): slope ≈ −0.26, R² ≈ 0.70 — far from
+  // any natural language. Browser-side reproduction so reviewers can audit.
+  function computeZipfRandomNull (totalChars = 20000, runs = 10) {
+    const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    const MIN_LEN = 2, MAX_LEN = 10, SPACE_PROB = 0.3
+
+    function lcg (seed) {
+      let s = seed >>> 0
+      return () => {
+        s = (Math.imul(s, 1103515245) + 12345) >>> 0
+        return s / 0x100000000
+      }
+    }
+
+    function generate (seed) {
+      const rng = lcg(seed)
+      const out = []
+      let cur = 0
+      while (out.length < totalChars) {
+        if (cur >= MAX_LEN) { out.push(' '); cur = 0 }
+        else if (cur >= MIN_LEN && rng() < SPACE_PROB) { out.push(' '); cur = 0 }
+        else { out.push(LETTERS[Math.floor(rng() * 26)]); cur++ }
+      }
+      return out.join('').split(' ').filter(w => w.length >= MIN_LEN && w.length <= MAX_LEN)
+    }
+
+    // Aggregate counts across runs so the Zipf is on the union frequency table —
+    // this matches taking the "mean curve" across seeds in the reference script.
+    const counts = new Map()
+    for (let seed = 1; seed <= runs; seed++) {
+      for (const w of generate(seed)) counts.set(w, (counts.get(w) || 0) + 1)
+    }
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([word, freq], i) => ({ word, freq, rank: i + 1 }))
+  }
+
+  function computeZipfLemma (inscriptionRows, glossingRows) {
+    const sanskritById = new Map()
+    for (const insc of inscriptionRows) {
+      if (insc.id != null) sanskritById.set(String(insc.id), (insc.sanskrit || '').trim())
+    }
+    function resolveTarget (id, seen = new Set()) {
+      const key = String(id)
+      if (seen.has(key)) return null
+      seen.add(key)
+      const sk = sanskritById.get(key) || ''
+      if (sk.startsWith('ref:')) return resolveTarget(sk.slice(4).trim(), seen)
+      return key
+    }
+
+    // For each kept inscription, accumulate a multiplier on its ref-target.
+    const multiplier = new Map()
+    for (const insc of inscriptionRows) {
+      const target = resolveTarget(insc.id)
+      if (!target) continue
+      multiplier.set(target, (multiplier.get(target) || 0) + 1)
+    }
+
+    // Group glossing rows by id.
+    const glossingByT = new Map()
+    for (const r of glossingRows) {
+      const id = String(r.id)
+      if (!glossingByT.has(id)) glossingByT.set(id, [])
+      glossingByT.get(id).push(r)
+    }
+
+    // Extract canonical lemma identifier from analysis (no .id suffix, no case).
+    function extractLemma (analysis) {
+      if (!analysis) return null
+      const a = analysis.replace(/^USER\|/, '')
+      const m =
+        a.match(/\bMW\.([^.\s]+)/) ||
+        a.match(/\bApte\.([^.\s]+)/) ||
+        a.match(/\bINDC\.([^.\s]+)/) ||
+        a.match(/\bPRON\.([^.\s]+)/) ||
+        a.match(/\bUSER\.([^.\s]+)/) ||
+        a.match(/\bDHATU\.([^.\s]+)/)
+      return m ? m[1] : null
+    }
+
+    const counts = new Map()
+    for (const [target, mult] of multiplier) {
+      const rows = glossingByT.get(target) || []
+      for (const r of rows) {
+        const lemma = extractLemma(r.analysis)
+        if (!lemma) continue
+        counts.set(lemma, (counts.get(lemma) || 0) + mult)
+      }
+    }
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .map(([word, freq], i) => ({ word, freq, rank: i + 1 }))
+  }
+
   // Vidyut instance (set after initialization)
   let vidyut = null
 
@@ -775,16 +878,8 @@
     let valid = 0
     let invalid = 0
     const invalidList = []
-    const cgnCount = new Map()
-    const caseGroupCount = new Map()
-    const patternCount = new Map()
     for (const [id, words] of byId) {
       if (words.length < 2) continue
-      for (const w of words) cgnCount.set(w.cgn, (cgnCount.get(w.cgn) || 0) + 1)
-      const cases = new Set(words.map(w => w.case))
-      caseGroupCount.set(cases.size, (caseGroupCount.get(cases.size) || 0) + 1)
-      const pat = words.map(w => w.cgn).sort().join(' + ')
-      patternCount.set(pat, (patternCount.get(pat) || 0) + 1)
       const byCase = new Map()
       for (const w of words) {
         if (!byCase.has(w.case)) byCase.set(w.case, [])
@@ -808,17 +903,7 @@
         valid++
       }
     }
-    const summary = {
-      caseGroups: [...caseGroupCount.entries()].sort((a, b) => a[0] - b[0])
-        .map(([n, c]) => ({ groups: n, count: c })),
-      cgnTags: [...cgnCount.entries()].sort((a, b) => b[1] - a[1])
-        .map(([tag, count]) => ({ tag, count })),
-      patterns: [...patternCount.entries()].sort((a, b) => b[1] - a[1])
-        .map(([pattern, count]) => ({ pattern, count })),
-      distinctTags: cgnCount.size,
-      distinctPatterns: patternCount.size,
-    }
-    return { valid, invalid, invalidList, summary }
+    return { valid, invalid, invalidList }
   }
 
   function validateCoverage (glossingRows, inscriptionRows) {
@@ -1186,7 +1271,10 @@
         ],
         // Cached validation results
         validationCache: null,
+        zipfMode: 'words',
         zipfWords: [],
+        zipfLemmas: [],
+        zipfRandomNull: [],
         invalidDerivedStemsList: [],
         invalidDeclensionsList: [],
         invalidTinList: [],
@@ -1194,8 +1282,6 @@
         invalidCoverageList: [],
         invalidLexemeList: [],
         invalidAgreementList: [],
-        agreementSummary: null,
-        expandedAgreement: new Set(),
       }
     },
     computed: {
@@ -1287,98 +1373,146 @@
           }
         })
       },
+      zipfAllStats() {
+        const summarize = (words) => {
+          if (!words || !words.length) return { tokens: 0, unique: 0, slope: 0, r2: 0 }
+          const n = words.length
+          const tokens = words.reduce((s, w) => s + w.freq, 0)
+          let sx = 0, sy = 0
+          for (const w of words) { sx += Math.log10(w.rank); sy += Math.log10(w.freq) }
+          const mx = sx / n, my = sy / n
+          let sxy = 0, sxx = 0, syy = 0
+          for (const w of words) {
+            const dx = Math.log10(w.rank) - mx, dy = Math.log10(w.freq) - my
+            sxy += dx * dy; sxx += dx * dx; syy += dy * dy
+          }
+          const slope = sxx > 0 ? sxy / sxx : 0
+          const r2 = sxx > 0 && syy > 0 ? (sxy * sxy) / (sxx * syy) : 0
+          return { tokens, unique: n, slope, r2 }
+        }
+        return {
+          words: summarize(this.zipfWords),
+          lemmas: summarize(this.zipfLemmas),
+          random: summarize(this.zipfRandomNull),
+        }
+      },
       zipfChart() {
-        const words = this.zipfWords || []
+        // All three datasets are plotted on a unified log-log axis so the eye
+        // can see absolute differences in token frequency / vocabulary size.
+        // The active mode gets full color + fit line + labels; the others are
+        // drawn as ghost polylines for context. Reference dashed line is slope -1
+        // anchored at the global max freq so it serves as a constant Zipf target
+        // regardless of which mode is active.
+        const stats = this.zipfAllStats
+        const datasets = {
+          words: this.zipfWords || [],
+          lemmas: this.zipfLemmas || [],
+          random: this.zipfRandomNull || [],
+        }
         const width = 800
         const height = 360
         const padL = 60; const padR = 30; const padT = 20; const padB = 40
         const empty = {
           width, height, padL, padR, padT, padB,
           totalTokens: 0, uniqueWords: 0,
-          slope: 0, intercept: 0, r2: 0,
-          xTicks: [], yTicks: [], points: '', topLabels: [],
+          slope: 0, r2: 0,
+          xTicks: [], yTicks: [],
+          polylines: { words: '', lemmas: '', random: '' },
+          topLabels: [],
           refLine: { x1: padL, y1: padT, x2: padL, y2: height - padB },
           fitLine: { x1: padL, y1: padT, x2: padL, y2: height - padB },
         }
-        if (!words.length) return empty
+        const active = datasets[this.zipfMode] || datasets.words
+        if (!active.length) return empty
 
-        const maxRank = words.length
-        const maxFreq = words[0].freq
-        const totalTokens = words.reduce((s, w) => s + w.freq, 0)
-
-        // Linear regression on log10(rank) vs log10(freq)
-        const n = words.length
-        let sumX = 0; let sumY = 0
-        for (const w of words) {
-          sumX += Math.log10(w.rank)
-          sumY += Math.log10(w.freq)
-        }
-        const meanX = sumX / n
-        const meanY = sumY / n
-        let sxy = 0; let sxx = 0; let syy = 0
-        for (const w of words) {
-          const dx = Math.log10(w.rank) - meanX
-          const dy = Math.log10(w.freq) - meanY
-          sxy += dx * dy
-          sxx += dx * dx
-          syy += dy * dy
-        }
-        const slope = sxx > 0 ? sxy / sxx : 0
-        const intercept = meanY - slope * meanX
-        // R² from explained-vs-total variance, equivalent to (sxy²/(sxx*syy)).
-        const r2 = sxx > 0 && syy > 0 ? (sxy * sxy) / (sxx * syy) : 0
+        // Unified axis bounds across all datasets.
+        const allMaxRank = Math.max(
+          datasets.words.length || 1,
+          datasets.lemmas.length || 1,
+          datasets.random.length || 1,
+        )
+        const allMaxFreq = Math.max(
+          datasets.words.length ? datasets.words[0].freq : 1,
+          datasets.lemmas.length ? datasets.lemmas[0].freq : 1,
+          datasets.random.length ? datasets.random[0].freq : 1,
+        )
 
         const plotW = width - padL - padR
         const plotH = height - padT - padB
-        const logMaxX = Math.log10(maxRank) || 1
-        const logMaxY = Math.log10(maxFreq) || 1
+        const logMaxX = Math.log10(allMaxRank) || 1
+        const logMaxY = Math.log10(allMaxFreq) || 1
         const xAt = rank => padL + (Math.log10(rank) / logMaxX) * plotW
         const yAt = freq => (height - padB) - (Math.log10(freq) / logMaxY) * plotH
 
-        // Powers-of-10 ticks; always include 1 and the max bound.
         const xTicks = []
-        for (let p = 0; Math.pow(10, p) <= maxRank; p++) {
+        for (let p = 0; Math.pow(10, p) <= allMaxRank; p++) {
           const v = Math.pow(10, p)
           xTicks.push({ value: v, x: xAt(v) })
         }
         const yTicks = []
-        for (let p = 0; Math.pow(10, p) <= maxFreq; p++) {
+        for (let p = 0; Math.pow(10, p) <= allMaxFreq; p++) {
           const v = Math.pow(10, p)
           yTicks.push({ value: v, y: yAt(v) })
         }
 
-        // Sample to keep the polyline small but faithful: every word for
-        // the first 200 ranks, then logarithmic stride beyond.
-        const pts = []
-        for (let i = 0; i < words.length; i++) {
-          const w = words[i]
-          if (i < 200 || i === words.length - 1 || i % Math.max(1, Math.floor(i / 100)) === 0) {
-            pts.push(`${xAt(w.rank).toFixed(2)},${yAt(w.freq).toFixed(2)}`)
+        const buildPolyline = (words) => {
+          const pts = []
+          for (let i = 0; i < words.length; i++) {
+            const w = words[i]
+            if (i < 200 || i === words.length - 1 || i % Math.max(1, Math.floor(i / 100)) === 0) {
+              pts.push(`${xAt(w.rank).toFixed(2)},${yAt(w.freq).toFixed(2)}`)
+            }
           }
+          return pts.join(' ')
         }
 
-        // Ideal Zipf: freq = maxFreq / rank → straight line slope -1 on log-log.
+        const polylines = {
+          words: buildPolyline(datasets.words),
+          lemmas: buildPolyline(datasets.lemmas),
+          random: buildPolyline(datasets.random),
+        }
+
+        // Ideal Zipf reference (slope -1) anchored at the *active* dataset's
+        // head, so each mode's dashed line shows what slope-(-1) would predict
+        // for that distribution. Random null's reference will sit at freq~29,
+        // word-forms' at freq~259 — the gap visible from the polyline anchors.
+        const activeMaxFreq = active[0].freq
+        const refRankEnd = Math.min(allMaxRank, activeMaxFreq)
         const refLine = {
-          x1: xAt(1), y1: yAt(maxFreq),
-          x2: xAt(maxRank), y2: yAt(Math.max(1, maxFreq / maxRank)),
+          x1: xAt(1), y1: yAt(activeMaxFreq),
+          x2: xAt(refRankEnd), y2: yAt(activeMaxFreq / refRankEnd),
         }
 
-        // Fitted line from regression: log10(freq) = slope*log10(rank) + intercept.
-        const fitFreqAt = r => Math.pow(10, slope * Math.log10(r) + intercept)
+        // Fit line for the active mode (regression intercept already in stats).
+        const activeStat = (
+          this.zipfMode === 'lemmas' ? stats.lemmas
+            : this.zipfMode === 'random' ? stats.random
+              : stats.words
+        )
+        // Re-derive intercept from active dataset for the line endpoints.
+        let intercept = 0
+        {
+          const n = active.length
+          let sumX = 0, sumY = 0
+          for (const w of active) { sumX += Math.log10(w.rank); sumY += Math.log10(w.freq) }
+          intercept = (sumY / n) - activeStat.slope * (sumX / n)
+        }
+        const fitFreqAt = r => Math.pow(10, activeStat.slope * Math.log10(r) + intercept)
         const fitLine = {
           x1: xAt(1), y1: yAt(Math.max(0.1, fitFreqAt(1))),
-          x2: xAt(maxRank), y2: yAt(Math.max(0.1, fitFreqAt(maxRank))),
+          x2: xAt(active.length), y2: yAt(Math.max(0.1, fitFreqAt(active.length))),
         }
 
-        const topLabels = words.slice(0, 5).map(w => ({
+        const topLabels = active.slice(0, 5).map(w => ({
           word: w.word, freq: w.freq, x: xAt(w.rank), y: yAt(w.freq),
         }))
 
         return {
           width, height, padL, padR, padT, padB,
-          totalTokens, uniqueWords: words.length,
-          slope, intercept, r2,
-          xTicks, yTicks, points: pts.join(' '), topLabels, refLine, fitLine,
+          totalTokens: activeStat.tokens, uniqueWords: activeStat.unique,
+          slope: activeStat.slope, r2: activeStat.r2,
+          xTicks, yTicks, polylines, topLabels, refLine, fitLine,
+          refCrossing: { rank: refRankEnd, x: xAt(refRankEnd), y: yAt(activeMaxFreq / refRankEnd) },
         }
       },
     },
@@ -1465,6 +1599,8 @@
         const agreement = validateAgreement(lemmas)
 
         this.zipfWords = computeZipf(inscriptions)
+        this.zipfLemmas = computeZipfLemma(inscriptions, lemmas)
+        this.zipfRandomNull = computeZipfRandomNull()
         this.invalidDerivedStemsList = derivations.invalidDerivedList
         this.invalidDeclensionsList = derivations.invalidDeclList
         this.invalidTinList = derivations.invalidTinList
@@ -1472,7 +1608,6 @@
         this.invalidCoverageList = coverage.invalidCoverageList
         this.invalidLexemeList = coverage.invalidLexemeList
         this.invalidAgreementList = agreement.invalidList
-        this.agreementSummary = agreement.summary
 
         const totalStems = stems.valid + stems.invalid
         const totalDerivedStems = derivations.validDerived + derivations.invalidDerived
@@ -1526,13 +1661,6 @@
           invalidAgreementCount: agreement.invalid,
           totalAgreementCount: totalAgreement,
         }
-      },
-
-      toggleAgreementTable(name) {
-        const next = new Set(this.expandedAgreement)
-        if (next.has(name)) next.delete(name)
-        else next.add(name)
-        this.expandedAgreement = next
       },
 
       toggleInvalid(type) {
@@ -1693,6 +1821,19 @@
   background-color: #FF9800;
 }
 
+.zipf-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 16px 0;
+  flex-wrap: wrap;
+}
+
+.zipf-toggle {
+  flex-shrink: 0;
+}
+
 .zipf-subtitle {
   white-space: normal;
   opacity: 0.7;
@@ -1706,93 +1847,44 @@
 }
 
 .zipf-stat {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   padding: 4px 12px;
   border-radius: 6px;
+  background-color: rgba(120, 120, 120, 0.12);
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  opacity: 0.55;
+  transition: all 0.15s;
+}
+
+.zipf-stat.active {
   background-color: rgba(255, 138, 101, 0.18);
   color: #FF8A65;
-  border: 1px solid rgba(255, 138, 101, 0.4);
+  border-color: rgba(255, 138, 101, 0.4);
+  font-size: 1.05rem;
+  opacity: 1;
+}
+
+.zipf-stat-null {
+  background-color: rgba(120, 120, 120, 0.08);
+  border-style: dashed;
+}
+
+.zipf-stat-null.active {
+  background-color: rgba(244, 67, 54, 0.15);
+  color: #EF5350;
+  border-color: rgba(244, 67, 54, 0.45);
+  border-style: solid;
+}
+
+.zipf-stat-label {
+  opacity: 0.75;
+  font-size: 0.85em;
+  margin-right: 4px;
 }
 
 .zipf-stat b {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
-}
-
-.agreement-subtitle {
-  white-space: normal;
-  opacity: 0.7;
-}
-
-.agreement-tables {
-  display: grid;
-  grid-template-columns: 1fr 1fr 2fr;
-  gap: 24px;
-  padding: 12px 16px 4px;
-}
-
-.agreement-table {
-  min-width: 0;
-}
-
-.agreement-th {
-  font-weight: 600;
-  font-size: 0.85rem;
-  margin-bottom: 6px;
-  opacity: 0.85;
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.agreement-th:hover {
-  opacity: 1;
-}
-
-.agreement-th .v-icon {
-  transition: transform 0.15s;
-}
-
-.agreement-th .v-icon.rotated {
-  transform: rotate(90deg);
-}
-
-.agreement-table table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.85rem;
-  font-variant-numeric: tabular-nums;
-}
-
-.agreement-table th,
-.agreement-table td {
-  padding: 4px 8px;
-  text-align: left;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.18);
-}
-
-.agreement-table th {
-  font-weight: 600;
-  opacity: 0.7;
-}
-
-.agreement-table td.num,
-.agreement-table th.num {
-  text-align: right;
-  width: 70px;
-}
-
-.agreement-patterns table tbody tr td:last-child {
-  font-family: ui-monospace, "SF Mono", Menlo, monospace;
-  font-size: 0.8rem;
-}
-
-@media (max-width: 900px) {
-  .agreement-tables {
-    grid-template-columns: 1fr;
-  }
 }
 
 .zipf-chart-container {
