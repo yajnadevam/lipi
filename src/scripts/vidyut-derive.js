@@ -210,6 +210,7 @@ function deriveTinanta (vidyut, slp1Form, root, gana, lakara, vacana, purusha, u
             pada,
             sanadi,
             upasarga: dhatu.prefixes,
+            skip_at_agama: false,
           })
           for (const r of results) {
             if (r.text === slp1Form) return makeResult(r.history, r.text, slp1Form)

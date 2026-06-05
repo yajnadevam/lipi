@@ -2026,7 +2026,7 @@ id,form,type,translation_lexeme,analysis,translation
 2628.1,ara,word,rising,DHATU.f. KRT.ac Voc.M.S,O rising[√ऋ अच्] Roarer[रव मतुप्]
 2629.1,dada,stem,generous,MW.dada.89875,O generous[Pāṇ] Undefeated one[RV]
 2629.1,ajaya,word,Unconquered,MW.ajaya.2077 Voc.M.S,O generous[Pāṇ] Unconquered one[RV]
-2631.1,u,word,Indeed,MW.U.37942 Voc.M.S,Indeed[RV] O mighty[RV] honored one[MBh]
+2631.1,u,word,Indeed,INDC.U.37942,Indeed[RV] O mighty[RV] honored one[MBh]
 2631.1,ama,stem,mighty,MW.ama.13749,Indeed[RV] O mighty[RV] honored one[MBh]
 2631.1,mAna,word,honor,MW.mAna.162722 Voc.M.S,Indeed[RV] O mighty[RV] honored one[MBh]
 2634.1,tAtam,word,Father's,MW.tAta.83763 Acc.M.S,"Father's favor, O presiding one[√अस् शानच्]"
@@ -2155,14 +2155,14 @@ id,form,type,translation_lexeme,analysis,translation
 2707.1,han,word,killer,MW.han.260297 Voc.M.S,O cutting[√लु अच्] killer[RV]
 2708.1,lap,stem,wail,DHATU.lapa~. MW.lap.181338 KRT.kvip,O wailing[√लप् क्विप्] meditating one[√मन् अच्]
 2708.1,mana,word,meditate,DHATU.manu~.Tanadi KRT.ac Voc.M.S,O wailing[√लप् क्विप्] meditating one[√मन् अच्]
-2709.1,u,word,Indeed,MW.U.37942 Voc.M.S,Indeed[RV] O prāṇa[Praśna Up. 2.9]
+2709.1,u,word,Indeed,INDC.U.37942,Indeed[RV] O prāṇa[Praśna Up. 2.9]
 2709.1,Ana,word,breath,MW.Ana.24316 Voc.M.S,Indeed[RV] O prāṇa[Praśna Up. 2.9]
 2714.1,sana,word,giver,DHATU.zaRu~^. KRT.ac Voc.M.S,O giver[√सन् अच्]
 2715.1,sadasya,word,priest,MW.sadasya.230576 Voc.M.S,O Sadasya (yajna priest)[TS; Rudra as yajna presider]
 2716.1,DA,word,run,DHATU.Dana~.Juhotyadi MW.Dan.99257 KRT.kvip Nom.M.S,The swift one[nms of धन्]
 2717.1,antan,word,one who binds,DHATU.ati~. MW.ant.7900 KRT.Satf Voc.M.S,O one who ties(braids)[√अन्त् शतृ]
 2719.1,pAna,word,protector,DHATU.pA.Adadi MW.pA.120868 KRT.cAnaS Voc.M.S,O ever protecting one[√पा चानश्]
-2720.1,u,word,Indeed,MW.U.37942 Voc.M.S,"Indeed[RV], O horse[RV] rider[MBh चल=move] [SR: aśvapati]"
+2720.1,u,word,Indeed,INDC.U.37942,"Indeed[RV], O horse[RV] rider[MBh चल=move] [SR: aśvapati]"
 2720.1,aSva,stem,horse,MW.aSva.19869,"Indeed[RV], O horse[RV] rider[MBh चल=move] [SR: aśvapati]"
 2720.1,cala,word,move,MW.cala.72588 Voc.M.S,"Indeed[RV], O horse[RV] rider[MBh चल=move] [SR: aśvapati]"
 2721.1,anta,stem,end,MW.anta.7903,O ender[RV] of men[Mn]
@@ -2304,7 +2304,7 @@ id,form,type,translation_lexeme,analysis,translation
 2827.1,saha,stem,endure,MW.saha.239971,O who exudes[√वम् शतृ] endurance[RV]
 2827.1,vaman,word,exude,DHATU.wuvama~. KRT.Satf Voc.M.S,O who exudes[√वम् शतृ] endurance[RV]
 2828.1,ravatam,word,roarer,MW.ravata.175329 Acc.M.S,May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
-2828.1,namA,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.2.S namA=short variant of namAni (McDonnel),May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
+2828.1,namA,word,bow,DHATU.Rama~.Bhvadi MW.nam.103825 TIN.lew.1.S namA=short variant of namAni (McDonnel),May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
 2829.1,ASAsanam,word,prayer,MW.ASAsana.27454 Acc.N.S,The punisher[√शास्+शतृ]
 2830.1,BaRa,stem,Roaring,DHATU.BaRa~. KRT.ac,Fond of the Roarer[√भण् Pāṇ;RV]
 2830.1,vIH,word,fond of,MW.vI.203330 Nom.M.S,Fond of the Roarer[√भण् Pāṇ;RV]
@@ -2662,7 +2662,7 @@ id,form,type,translation_lexeme,analysis,translation
 3116.1,Avaha,stem,bearer,MW.Avaha.27052,Offering[MBh] in the name[RV] of the Bearer[Mn]
 3116.1,nAman,stem,name,MW.nAman.105826,Offering[MBh] in the name[RV] of the Bearer[Mn]
 3116.1,Aharam,word,Offering,MW.Ahara.28380 Acc.M.S,Offering[MBh] in the name[RV] of the Bearer[Mn]
-3118.1,u,word,O,MW.U.37942.1 Voc.M.S,O consuming[जम् शतृ] darkness[RV] destroyer[RV]
+3118.1,u,word,O,INDC.U.37942,O consuming[जम् शतृ] darkness[RV] destroyer[RV]
 3118.1,jama,stem,consume,DHATU.jamu~.Bhvadi KRT.ac Voc.M.S,O consuming[जम् शतृ] darkness[RV] destroyer[RV]
 3118.1,tama,stem,darkness,MW.tama.82871,O consuming[जम् शतृ] darkness[RV] destroyer[RV]
 3118.1,han,word,killing,MW.han.260297 Voc.M.S,O consuming[जम् शतृ] darkness[RV] destroyer[RV]

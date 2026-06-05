@@ -1625,6 +1625,7 @@ export default {
           pada,
           sanadi: [],
           upasarga: dhatu.prefixes,
+          skip_at_agama: false,
         })
         .map((result) => ({
           steps: result.history,

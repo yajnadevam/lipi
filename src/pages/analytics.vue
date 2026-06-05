@@ -94,20 +94,12 @@
                     {{ zipfChart.totalTokens }} tokens, {{ zipfChart.uniqueWords }} unique
                   </v-card-subtitle>
                   <div class="zipf-stats">
-                    <span class="zipf-stat" :class="{ active: zipfMode === 'words' }">
-                      <span class="zipf-stat-label">word-forms:</span>
-                      slope = <b>{{ zipfAllStats.words.slope.toFixed(3) }}</b>
-                      · R² = <b>{{ zipfAllStats.words.r2.toFixed(3) }}</b>
-                    </span>
-                    <span class="zipf-stat" :class="{ active: zipfMode === 'lemmas' }">
-                      <span class="zipf-stat-label">lemmas:</span>
-                      slope = <b>{{ zipfAllStats.lemmas.slope.toFixed(3) }}</b>
-                      · R² = <b>{{ zipfAllStats.lemmas.r2.toFixed(3) }}</b>
-                    </span>
-                    <span class="zipf-stat zipf-stat-null" :class="{ active: zipfMode === 'random' }">
-                      <span class="zipf-stat-label">random null:</span>
-                      slope = <b>{{ zipfAllStats.random.slope.toFixed(3) }}</b>
-                      · R² = <b>{{ zipfAllStats.random.r2.toFixed(3) }}</b>
+                    <span class="zipf-stat active" :class="{ 'zipf-stat-null': zipfMode === 'random' }">
+                      <span class="zipf-stat-label">
+                        {{ zipfMode === 'lemmas' ? 'lemmas' : zipfMode === 'random' ? 'random null' : 'word-forms' }}:
+                      </span>
+                      slope = <b>{{ zipfAllStats[zipfMode].slope.toFixed(3) }}</b>
+                      · R² = <b>{{ zipfAllStats[zipfMode].r2.toFixed(3) }}</b>
                     </span>
                   </div>
                   <div class="zipf-chart-container">
@@ -181,28 +173,6 @@
                         :x2="zipfChart.fitLine.x2" :y2="zipfChart.fitLine.y2"
                         :stroke="zipfMode === 'random' ? (isDark ? '#EF5350' : '#C62828') : (isDark ? '#FF8A65' : '#D84315')"
                         stroke-width="1.5"
-                      />
-                      <!-- Ghost polylines for inactive modes — context for the active line -->
-                      <polyline
-                        v-if="zipfMode !== 'words'"
-                        :points="zipfChart.polylines.words"
-                        fill="none"
-                        :stroke="isDark ? '#64B5F6' : '#1976D2'"
-                        stroke-width="1" stroke-opacity="0.25"
-                      />
-                      <polyline
-                        v-if="zipfMode !== 'lemmas'"
-                        :points="zipfChart.polylines.lemmas"
-                        fill="none"
-                        :stroke="isDark ? '#9575CD' : '#5E35B1'"
-                        stroke-width="1" stroke-opacity="0.25"
-                      />
-                      <polyline
-                        v-if="zipfMode !== 'random'"
-                        :points="zipfChart.polylines.random"
-                        fill="none"
-                        :stroke="isDark ? '#EF5350' : '#C62828'"
-                        stroke-width="1" stroke-opacity="0.25"
                       />
                       <!-- Active dataset polyline (full opacity, mode-colored) -->
                       <polyline
