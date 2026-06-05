@@ -79,7 +79,7 @@
           v-for="sign in visibleSigns"
           :key="sign.sign"
           class="glyph-cell"
-          :title="`${sign.sign}  ·  ${sign.xlit || '?'}  ·  freq ${frequency[sign.sign] ?? 0}`"
+          :title="`${sign.sign}  ·  ${sign.xlit || '?'}  ·  canonical ${sign.canonical}  ·  freq ${frequency[sign.sign] ?? 0}`"
           @click="handleSignClick(sign.characterizedSign)"
         >
           <span v-if="sign.xlit" class="glyph-xlit">{{ sign.xlit }}</span>
