@@ -9,7 +9,7 @@
 
   <v-layout>
     <v-main>
-      <!-- Filter bar: alphabet phonemes + ranges -->
+      <!-- Filter bar: alphabet phonemes + ranges + sign-number search -->
       <div class="filter-bar">
         <div class="filter-row">
           <span class="filter-label">Alphabet</span>
@@ -18,7 +18,8 @@
             :key="p"
             class="chip"
             :class="{ active: selectedPhonemes.includes(p) }"
-            @click="togglePhoneme(p)"
+            @click="onChipClick('phoneme', p)"
+            @dblclick="onChipDblClick('phoneme', p)"
           >
             {{ p }}
           </button>
@@ -31,7 +32,8 @@
             class="chip chip-range"
             :class="{ active: selectedRanges.includes(r.start) }"
             :title="`${r.start}–${r.endLabel}`"
-            @click="toggleRange(r.start)"
+            @click="onChipClick('range', r.start)"
+            @dblclick="onChipDblClick('range', r.start)"
           >
             <span
               class="indus-symbol chip-glyph"
@@ -40,12 +42,26 @@
             >
           </button>
           <button
-            v-if="selectedPhonemes.length || selectedRanges.length"
+            v-if="selectedPhonemes.length || selectedRanges.length || signSearch"
             class="chip chip-clear"
             @click="clearFilters"
           >
             clear filters
           </button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">Search</span>
+          <input
+            type="search"
+            v-model="signSearch"
+            placeholder="e.g. 123, 0.., [12].."
+            class="search-input"
+            spellcheck="false"
+            autocomplete="off"
+          />
+          <span v-if="signSearch && !signSearchValid" class="search-error">
+            invalid pattern
+          </span>
         </div>
       </div>
 
@@ -199,16 +215,36 @@ export default {
       ranges,
       selectedPhonemes: [],
       selectedRanges: [],
+      signSearch: "",
       clipboardBuffer: "",
       copied: false,
     };
   },
   computed: {
+    // Compile the search input into an anchored regex. Returns null if the
+    // field is empty; throws via try/catch is caught and surfaces a flag.
+    signSearchRegex() {
+      const term = (this.signSearch || "").trim();
+      if (!term) return null;
+      try {
+        return new RegExp(`^(?:${term})$`);
+      } catch (e) {
+        return false;
+      }
+    },
+    signSearchValid() {
+      return this.signSearchRegex !== false;
+    },
     visibleSigns() {
       const phon = this.selectedPhonemes;
       const rngs = this.selectedRanges;
       const activeRanges = this.ranges.filter((r) => rngs.includes(r.start));
+      const re = this.signSearchRegex;
+      // Invalid regex → match nothing so the user sees their error clearly.
+      if (re === false) return [];
       return this.signs.filter((s) => {
+        // Sign-number search: full-string regex against the sign id.
+        if (re && !re.test(s.sign)) return false;
         // Alphabet facet: substring match against any selected phoneme (OR).
         // The bare inherent vowel 'a' is special-cased: it appears in nearly
         // every reading as a connector, so substring is meaningless. Match it
@@ -258,19 +294,48 @@ export default {
       clearTimeout(this._resizeTimer);
       this._resizeTimer = setTimeout(() => this.fitGlyphs(), 150);
     },
-    togglePhoneme(p) {
-      const i = this.selectedPhonemes.indexOf(p);
-      if (i === -1) this.selectedPhonemes.push(p);
-      else this.selectedPhonemes.splice(i, 1);
+    // Chip selection model: single click/tap = radio (replace selection across
+    // both alphabet + ranges with just this chip; clicking the only-selected
+    // chip again deselects it). Double click / double tap = add-to-selection
+    // (toggle this chip in or out without disturbing the rest). The single-
+    // click action is deferred ~250 ms so a follow-up dblclick can cancel it.
+    onChipClick(kind, value) {
+      clearTimeout(this._chipTimer);
+      this._chipTimer = setTimeout(() => {
+        this.replaceSelection(kind, value);
+        this._chipTimer = null;
+      }, 250);
     },
-    toggleRange(start) {
-      const i = this.selectedRanges.indexOf(start);
-      if (i === -1) this.selectedRanges.push(start);
-      else this.selectedRanges.splice(i, 1);
+    onChipDblClick(kind, value) {
+      clearTimeout(this._chipTimer);
+      this._chipTimer = null;
+      this.toggleChipInPlace(kind, value);
+    },
+    toggleChipInPlace(kind, value) {
+      const list = kind === "phoneme" ? this.selectedPhonemes : this.selectedRanges;
+      const i = list.indexOf(value);
+      if (i === -1) list.push(value);
+      else list.splice(i, 1);
+    },
+    replaceSelection(kind, value) {
+      const totalSelected = this.selectedPhonemes.length + this.selectedRanges.length;
+      const onlyThis =
+        totalSelected === 1 &&
+        (kind === "phoneme"
+          ? this.selectedPhonemes[0] === value
+          : this.selectedRanges[0] === value);
+      if (onlyThis) {
+        this.selectedPhonemes = [];
+        this.selectedRanges = [];
+      } else {
+        this.selectedPhonemes = kind === "phoneme" ? [value] : [];
+        this.selectedRanges = kind === "range" ? [value] : [];
+      }
     },
     clearFilters() {
       this.selectedPhonemes = [];
       this.selectedRanges = [];
+      this.signSearch = "";
     },
     handleSignClick(characterizedSign) {
       this.clipboardBuffer += characterizedSign;
@@ -315,6 +380,7 @@ export default {
   beforeUnmount() {
     window.removeEventListener("resize", this.onResize);
     clearTimeout(this._resizeTimer);
+    clearTimeout(this._chipTimer);
   },
 };
 </script>
@@ -417,6 +483,26 @@ export default {
 .chip-clear {
   font-size: 12px;
   opacity: 0.75;
+}
+.search-input {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(127, 127, 127, 0.4);
+  border-radius: 16px;
+  background: transparent;
+  color: inherit;
+  font-size: 13px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  min-width: 160px;
+}
+.search-input:focus {
+  outline: none;
+  border-color: currentColor;
+}
+.search-error {
+  font-size: 11px;
+  color: #e57373;
+  opacity: 0.9;
 }
 
 /* Clipboard tray */
