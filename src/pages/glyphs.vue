@@ -65,15 +65,26 @@
         </div>
       </div>
 
-      <!-- Clipboard tray -->
+      <!-- Clipboard tray: collects glyphs on single click; Search button
+           navigates to the inscription view with the collected glyphs as
+           the search term. Double-click or shift-click on a glyph bypasses
+           the tray and goes straight to an exact `glyph:` search. -->
       <div class="tray">
         <span class="tray-label">Clipboard</span>
         <span class="indus-symbol tray-content">{{ clipboardBuffer }}</span>
         <span v-if="!clipboardBuffer" class="tray-hint"
-          >click glyphs to append</span
+          >click glyphs to append · double-click to search exact</span
         >
         <v-spacer />
         <span v-if="copied" class="tray-copied">copied ✓</span>
+        <button
+          v-if="clipboardBuffer"
+          class="chip chip-search"
+          title="Search inscriptions for these glyphs"
+          @click="searchClipboard"
+        >
+          search ↗
+        </button>
         <button
           v-if="clipboardBuffer"
           class="chip"
@@ -95,8 +106,9 @@
           v-for="sign in visibleSigns"
           :key="sign.sign"
           class="glyph-cell"
-          :title="`${sign.sign}  ·  ${sign.xlit || '?'}  ·  canonical ${sign.canonical}  ·  freq ${frequency[sign.sign] ?? 0}`"
-          @click="handleSignClick(sign.characterizedSign)"
+          :title="`${sign.sign}  ·  ${sign.xlit || '?'}  ·  canonical ${sign.canonical}  ·  freq ${frequency[sign.sign] ?? 0}  ·  click to append  ·  shift-click or double-click for exact glyph: search`"
+          @click="onGlyphClick(sign.characterizedSign, $event)"
+          @dblclick="onGlyphDblClick(sign.characterizedSign)"
         >
           <span v-if="sign.xlit" class="glyph-xlit">{{ sign.xlit }}</span>
           <span class="indus-symbol glyph-symbol">{{
@@ -337,9 +349,43 @@ export default {
       this.selectedRanges = [];
       this.signSearch = "";
     },
-    handleSignClick(characterizedSign) {
+    // Single click on a glyph appends it to the clipboard (collect-multiple).
+    // Shift-click or double-click skips the tray and goes straight to an
+    // exact `glyph:<char>` search on the inscription view. The plain-click
+    // append is deferred ~250 ms so a follow-up dblclick can cancel it and
+    // we don't leave stray chars in the buffer.
+    onGlyphClick(characterizedSign, event) {
+      clearTimeout(this._glyphTimer);
+      if (event && event.shiftKey) {
+        this.navigateGlyphSearch(characterizedSign);
+        return;
+      }
+      this._glyphTimer = setTimeout(() => {
+        this.appendToClipboard(characterizedSign);
+        this._glyphTimer = null;
+      }, 250);
+    },
+    onGlyphDblClick(characterizedSign) {
+      clearTimeout(this._glyphTimer);
+      this._glyphTimer = null;
+      this.navigateGlyphSearch(characterizedSign);
+    },
+    navigateGlyphSearch(characterizedSign) {
+      this.$router.push({
+        path: "/",
+        query: { search: `glyph:${characterizedSign}` },
+      });
+    },
+    appendToClipboard(characterizedSign) {
       this.clipboardBuffer += characterizedSign;
       this.writeClipboard();
+    },
+    searchClipboard() {
+      if (!this.clipboardBuffer) return;
+      this.$router.push({
+        path: "/",
+        query: { search: this.clipboardBuffer },
+      });
     },
     backspaceClipboard() {
       this.clipboardBuffer = Array.from(this.clipboardBuffer).slice(0, -1).join("");
@@ -381,6 +427,7 @@ export default {
     window.removeEventListener("resize", this.onResize);
     clearTimeout(this._resizeTimer);
     clearTimeout(this._chipTimer);
+    clearTimeout(this._glyphTimer);
   },
 };
 </script>
@@ -536,6 +583,10 @@ export default {
 .tray-copied {
   font-size: 12px;
   color: #4caf50;
+}
+.chip-search {
+  border-color: currentColor;
+  font-weight: 600;
 }
 
 /* Option A: dense reflow grid.
