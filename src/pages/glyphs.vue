@@ -62,6 +62,15 @@
           <span v-if="signSearch && !signSearchValid" class="search-error">
             invalid pattern
           </span>
+          <v-spacer />
+          <button
+            class="chip chip-zoom"
+            :class="{ active: zoomedOut }"
+            :title="zoomedOut ? 'Show details (xlit, codepoint, frequency)' : 'Zoom out — fit more glyphs, hide details'"
+            @click="toggleZoom"
+          >
+            {{ zoomedOut ? "↘ details" : "↖ zoom out" }}
+          </button>
         </div>
       </div>
 
@@ -101,7 +110,7 @@
         </button>
       </div>
 
-      <div class="glyph-wall">
+      <div class="glyph-wall" :class="{ 'zoomed-out': zoomedOut }">
         <button
           v-for="sign in visibleSigns"
           :key="sign.sign"
@@ -230,6 +239,9 @@ export default {
       signSearch: "",
       clipboardBuffer: "",
       copied: false,
+      // Compact view: hides xlit + codepoint + frequency metadata so the
+      // glyphs themselves can shrink and many more fit on screen.
+      zoomedOut: localStorage.getItem("glyphsZoomedOut") === "1",
     };
   },
   computed: {
@@ -348,6 +360,13 @@ export default {
       this.selectedPhonemes = [];
       this.selectedRanges = [];
       this.signSearch = "";
+    },
+    toggleZoom() {
+      this.zoomedOut = !this.zoomedOut;
+      localStorage.setItem("glyphsZoomedOut", this.zoomedOut ? "1" : "0");
+      // Cells changed size; re-run the wide-glyph scaleX pass so 697 etc.
+      // are re-measured against the new container width.
+      this.fitGlyphs();
     },
     // Single click on a glyph appends it to the clipboard (collect-multiple).
     // Shift-click or double-click skips the tray and goes straight to an
@@ -641,6 +660,31 @@ export default {
   text-align: center;
   padding: 40px;
   opacity: 0.6;
+}
+
+/* Zoom-out / compact view.
+   Drops the per-cell xlit and meta rows; shrinks cells to ~24-36px so the
+   entire ~700-glyph corpus fits in a single screen on most desktops. */
+.chip-zoom {
+  font-size: 12px;
+  opacity: 0.8;
+}
+.glyph-wall.zoomed-out {
+  grid-template-columns: repeat(auto-fill, minmax(clamp(24px, 3vmin, 36px), 1fr));
+  gap: 2px;
+  padding: 4px;
+}
+.glyph-wall.zoomed-out .glyph-cell {
+  min-height: 24px;
+  padding: 1px;
+  gap: 0;
+}
+.glyph-wall.zoomed-out .glyph-xlit,
+.glyph-wall.zoomed-out .glyph-meta {
+  display: none;
+}
+.glyph-wall.zoomed-out .glyph-symbol {
+  font-size: clamp(16px, 2.5vmin, 26px);
 }
 .v-toolbar-title {
   overflow: visible !important;
