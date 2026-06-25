@@ -832,6 +832,33 @@ export const Lakara = Object.freeze({
     Lrn: 10, "10": "Lrn",
 });
 /**
+ * Which stem to use under *leṬ*.
+ *
+ * Vedic *leṬ* (the subjunctive) is attested on three distinct stems:
+ * the present (*laṬ*) stem, the aorist (*luṄ*) stem, and the perfect
+ * (*liṬ*) stem. Pāṇini's sūtras do not name this distinction directly,
+ * but Vedic usage and traditional commentary recognize it. We expose
+ * the choice as a builder option on `Tinanta`.
+ *
+ * When unset, the derivation uses `Lat` (the present-stem path), which
+ * is vidyut's historical default and the most common stem in the corpus.
+ * @enum {0 | 1 | 2}
+ */
+export const LetStem = Object.freeze({
+    /**
+     * Build *leṬ* on the *laṬ* (present) stem. This is the default.
+     */
+    Lat: 0, "0": "Lat",
+    /**
+     * Build *leṬ* on the *luṄ* (aorist) stem.
+     */
+    Lun: 1, "1": "Lun",
+    /**
+     * Build *leṬ* on the *liṬ* (perfect / reduplicated) stem.
+     */
+    Lit: 2, "2": "Lit",
+});
+/**
  * The gender of some *subanta*.
  * @enum {0 | 1 | 2}
  */

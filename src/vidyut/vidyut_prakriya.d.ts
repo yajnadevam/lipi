@@ -661,6 +661,32 @@ export enum Lakara {
   Lrn = 10,
 }
 /**
+ * Which stem to use under *leṬ*.
+ *
+ * Vedic *leṬ* (the subjunctive) is attested on three distinct stems:
+ * the present (*laṬ*) stem, the aorist (*luṄ*) stem, and the perfect
+ * (*liṬ*) stem. Pāṇini's sūtras do not name this distinction directly,
+ * but Vedic usage and traditional commentary recognize it. We expose
+ * the choice as a builder option on `Tinanta`.
+ *
+ * When unset, the derivation uses `Lat` (the present-stem path), which
+ * is vidyut's historical default and the most common stem in the corpus.
+ */
+export enum LetStem {
+  /**
+   * Build *leṬ* on the *laṬ* (present) stem. This is the default.
+   */
+  Lat = 0,
+  /**
+   * Build *leṬ* on the *luṄ* (aorist) stem.
+   */
+  Lun = 1,
+  /**
+   * Build *leṬ* on the *liṬ* (perfect / reduplicated) stem.
+   */
+  Lit = 2,
+}
+/**
  * The gender of some *subanta*.
  */
 export enum Linga {
