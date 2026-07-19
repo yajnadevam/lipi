@@ -3327,7 +3327,8 @@ id,form,type,translation_lexeme,analysis,translation
 4030.1,svaDA,stem,self-powered,MW.svaDA.258481,O self-powered[RV] Roarer[√रु अच्]
 4030.1,rava,word,Roarer,DHATU.ru.Adadi MW.ru.178213 KRT.ac Voc.M.S,O self-powered[RV] Roarer[√रु अच्]
 4039.1,tagara,word,fragrant,MW.tagara.81582.2 Voc.M.S,O fragrant one(Tagara = fragrant plant)[MBh; SR: sugandhi]
-4047.1,navanAni,word,prayer,MW.navana.104615 Nom.N.P,Prayers[Nalod] (terminal /ni/ elided in Vedas)
+4047.1,nava,stem,praise,DHATU.nu.Adadi MW.nu.111762 KRT.ap,Prayers[Nalod] (terminal /ni/ elided in Vedas)
+4047.1,nA,word,hero,MW.nf.111809 Nom.M.S,Prayers[Nalod] (terminal /ni/ elided in Vedas)
 4059.1,rA,word,roarer,DHATU.rE. MW.rE.179534 KRT.ac Voc.M.S,O roarer[√रै अच्] O wanderer[√अत् शतृ]
 4059.1,atan,word,wander,DHATU.ata~. MW.at.2490 KRT.Satf Nom.M.S,O roarer[√रै अच्] O wanderer[√अत् शतृ]
 4075.1,ca,word,and,INDC.ca.70283,also[Pāṇ]
