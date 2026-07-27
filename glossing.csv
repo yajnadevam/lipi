@@ -873,8 +873,8 @@ id,form,type,translation_lexeme,analysis,translation
 1211.1,yajan,word,sacrificing,DHATU.yaja~. KRT.Satf Nom.M.S,O Roaring[√रु शतृ MBh] sacrificing[√यज् शतृ] one
 1214.1,naman,word,bowing,DHATU.Ra\ma~. KRT.Satf  Voc.M.S,O eminent[MBh] one who is drawing a bow[√नम् शतृ]
 1214.1,varya,word,eminent,MW.varya.187829 Voc.M.S,O eminent[MBh] one who is drawing a bow[√नम् शतृ]
-1216.1,dama,stem,subduer,MW.dama.90250,Servant[AV](f) of the Subduer[MBh]
-1216.1,dAsI,word,servant,MW.dAsI.91928 Nom.F.S,Servant[AV](f) of the Subduer[MBh]
+1216.1,dama,stem,home,MW.dama.90249,Servant[AV](f) of the Subduer[MBh]
+1216.1,dAhI,word,burning,MW.dAhin.92028 Nom.M.S,Servant[AV](f) of the Subduer[MBh]
 1219.1,daha,word,burns,DHATU.daha~.Bhvadi KRT.ac Voc.M.S,O one who burns[√दह् अच् RV]
 1220.1,adanI,word,food,MW.adana.3586 TAD.ini Nom.M.S,One who possesses food[आदन इनि; SR: andhasaspati]
 1224.1,Cada,stem,Coverer,MW.Cada.75459,"Coverer[=Vṛtr, BhP] killer[RV vṛtrahan]"
@@ -2300,8 +2300,8 @@ id,form,type,translation_lexeme,analysis,translation
 2823.1,mana,word,meditating,MW.mana.156714 Voc.M.S,O almighty[Nir] meditating one[√मान् अच्]
 2825.1,rAhaRa,stem,separate,DHATU.raha~. KRT.Ric.lyuw,The power[Nir] to separate[√रह् णिचि ल्युट्]
 2825.1,sahanam,word,power,MW.sahana.239999 Acc.M.S,The power[Nir] to separate[√रह् णिचि ल्युट्]
-2826.1,asama,stem,unequalled,MW.asama.20660,The unequalled[RV] destroyer[Gaut]
-2826.1,hAna,word,destroying,MW.hAna.262516 Voc.M.S,The unequalled[RV] destroyer[Gaut]
+2826.1,aSa,stem,master,DHATU.aS.19412 KRT.ac,The unequalled[RV] destroyer[Gaut]
+2826.1,mahAn,word,mighty,MW.maha.159155 Acc.M.P,The unequalled[RV] destroyer[Gaut]
 2827.1,saha,stem,endure,MW.saha.239971,O who exudes[√वम् शतृ] endurance[RV]
 2827.1,vaman,word,exude,DHATU.wuvama~. KRT.Satf Voc.M.S,O who exudes[√वम् शतृ] endurance[RV]
 2828.1,ravatam,word,roarer,MW.ravata.175329 Acc.M.S,May you pray[√नम् लेट् 2s] to the Roarer[ĀpŚr]
