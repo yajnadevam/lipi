@@ -2716,8 +2716,8 @@ id,cisi,region,site,area-section,block-house,room-grid,excavation-idno,time,peri
 1962.1,K-109,Inter-Riverine,Kalibangan,KLB-1-,--,ZA1-,KLB1 7146,-,-,-,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,3+?,1,,,,0,0,0,+877-000-000[
 1963.1,K-115,Inter-Riverine,Kalibangan,KLB-2-,--,XA10 Qd.4 (10)-,KLB2 12350,Period 3B,2,Early,- -,-,Clay,-,-,-,fragment,None,None,POT:T:g,1,Poor,N,-,??,3+?,1,,,,75,58,12 - 15,+070-000-000[
 1964.1,K-120,Inter-Riverine,Kalibangan,KLB-2-,--,A9 Qd.1-,KLB2 12871,Period 3C,2,Late,- -,-,Clay,-,-,-,complete,None,None,POT:T:p,1,Poor,Y,R/L,SS,3,3,,,,0,0,0,+390-832-003+,jawa-ra,"O twisted locks possessing one[MBh; SR:kapardin]"
-1965.1,K-121,Inter-Riverine,Kalibangan,KLB-2-,--,J7-,KLB2 16948,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,ROD,2,Fair,N,T/B,??,5,4,,,,12,235,8,+090-740-240-032-000+
-1965.2,K-121,Inter-Riverine,Kalibangan,KLB-2-,--,J7-,KLB2 16948,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,ROD,2,Fair,N,T/B,??,2,1,,,,12,235,8,+913-000+
+1965.1,K-121,Inter-Riverine,Kalibangan,KLB-2-,--,J7-,KLB2 16948,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,ROD,2,Fair,Y,T/B,??,5,4,,,,12,235,8,+090-740-240-032-440+,pavamAna,"O (great) Soma[RV]"
+1965.2,K-121,Inter-Riverine,Kalibangan,KLB-2-,--,J7-,KLB2 16948,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,ROD,2,Fair,Y,T/B,??,2,1,,,,12,235,8,+480-575+,maha,"O great[RV] (Soma)"
 1966.1,K-122,Inter-Riverine,Kalibangan,KLB-1-,--,XC8-,KLB 14983,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,IMPL,2,Poor,Y,T/B,SC,3,3,,,,65,145,5,+266-628-817+,fc-rata,"O one gratified[BhP] by praise[RV]"
 1966.2,K-122,Inter-Riverine,Kalibangan,KLB-1-,--,XC8-,KLB 14983,Period 3C,2,Late,- -,-,Copper,-,-,-,complete,None,None,IMPL,2,Poor,Y,NR,NU,1,1,,,,65,145,5,+005+,ref:1008.1
 1967.1,K-32,Inter-Riverine,Kalibangan,KLB-1-,--,ZC9-,KLB1 18150(2),Period 3C,2,Late,- -,PB,Steatite,Grey-White,square,rectangular,complete,Zebu,None,SEAL:S,1,Fine,Y,R/L,MT,2,2,,,,22.5,23,8,+520-231+,ref:743.1
