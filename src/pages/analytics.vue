@@ -68,7 +68,10 @@
                       >
                         <span class="legend-color" :style="{ backgroundColor: slice.color }"></span>
                         <span class="legend-label">{{ slice.label }}</span>
-                        <span class="legend-value">{{ slice.count }} ({{ slice.percent.toFixed(1) }}%)</span>
+                        <span class="legend-value">
+                          <span class="legend-count">{{ slice.count }}</span>
+                          <span class="legend-percent">({{ slice.percent.toFixed(1) }}%)</span>
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -435,6 +438,16 @@
   let mwIndex = new Set()
   // Per-source stem indexes built from lexicons.json (e.g. lexiconIndex.Apte).
   const lexiconIndex = {}
+  // Analyses cite non-MW dictionaries as `<Source>.<stem>` (Apte, Wilson, RV,
+  // Vaidya, Schmidt, …). Classification and validation match against whatever
+  // sources lexicons.json actually declares rather than naming one of them —
+  // hardcoding `Apte` silently dropped every other source from both.
+  let lexiconCiteRe = null
+  function matchLexiconCite (analysis) {
+    if (!lexiconCiteRe || !analysis) return null
+    const m = analysis.match(lexiconCiteRe)
+    return m ? { source: m[1], stem: m[2] } : null
+  }
   let initError = null
 
   try {
@@ -458,6 +471,8 @@
         lexiconIndex[entry.source].add(stem)
       }
     }
+    const sources = Object.keys(lexiconIndex).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+    if (sources.length > 0) lexiconCiteRe = new RegExp(`\\b(${sources.join('|')})\\.([^.\\s]+)`)
   } catch (e) {
     console.error('Failed to initialize data:', e)
     initError = e.message
@@ -677,13 +692,14 @@
     // Extract canonical lemma identifier from analysis (no .id suffix, no case).
     function extractLemma (analysis) {
       if (!analysis) return null
-      const a = analysis.replace(/^USER\|/, '')
+      const a = analysis.replace(/^MANUAL\|/, '')
+      const lexCite = matchLexiconCite(a)
       const m =
         a.match(/\bMW\.([^.\s]+)/) ||
-        a.match(/\bApte\.([^.\s]+)/) ||
+        (lexCite ? [null, lexCite.stem] : null) ||
         a.match(/\bINDC\.([^.\s]+)/) ||
         a.match(/\bPRON\.([^.\s]+)/) ||
-        a.match(/\bUSER\.([^.\s]+)/) ||
+        a.match(/\bMANUAL\.([^.\s]+)/) ||
         a.match(/\bDHATU\.([^.\s]+)/)
       return m ? m[1] : null
     }
@@ -708,26 +724,42 @@
   // Dhatu lookup index: maps simplified form (e.g., "Sad") to aupadeshika (e.g., "za\\dx~")
   let dhatuIndex = null
 
+  // A hand-adjusted reading is recorded as a `MANUAL:` note in glossing.csv.
+  // (The legacy `MANUAL.<stem>` analysis prefix still counts, for corpora that
+  // predate the notes column.)
+  function isManual (row) {
+    return /\bMANUAL\b/.test(row.notes || '') || (row.analysis || '').startsWith('MANUAL')
+  }
+
   function classifyTypes (rows) {
-    let mwCount = 0
+    let dictCount = 0
     let dhatuKrtCount = 0
     let tinCount = 0
-    let userCount = 0
+    let manualCount = 0
     for (const row of rows) {
       const analysis = row.analysis || ''
-      if (analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.') || analysis.startsWith('Apte.')) {
-        mwCount++
+      // MANUAL wins over the lexeme's source so the categories stay disjoint —
+      // otherwise a hand-adjusted MW row would be counted twice and the slices
+      // would exceed 100%.
+      if (isManual(row)) {
+        manualCount++
+      } else if (
+        analysis.startsWith('MW.') || analysis.startsWith('INDC.') || analysis.startsWith('PRON.')
+      ) {
+        dictCount++
       } else if (analysis.startsWith('DHATU.')) {
         if (analysis.includes('KRT.')) {
           dhatuKrtCount++
         } else if (analysis.includes('TIN.')) {
           tinCount++
         }
-      } else if (analysis.startsWith('USER')) {
-        userCount++
+      } else if (matchLexiconCite(analysis)) {
+        // Apte, Wilson, RV, Vaidya, Schmidt — non-MW dictionaries, but
+        // dictionary-sourced all the same, so they share the Dictionary slice.
+        dictCount++
       }
     }
-    return { mwCount, dhatuKrtCount, tinCount, userCount }
+    return { dictCount, dhatuKrtCount, tinCount, manualCount }
   }
 
   function validateStems (rows) {
@@ -735,9 +767,9 @@
     let invalid = 0
     for (const row of rows) {
       const analysis = row.analysis || ''
-      const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
-      if (apteMatch) {
-        if (lexiconIndex.Apte && lexiconIndex.Apte.has(apteMatch[1])) valid++
+      const lexCite = matchLexiconCite(analysis)
+      if (lexCite) {
+        if (lexiconIndex[lexCite.source] && lexiconIndex[lexCite.source].has(lexCite.stem)) valid++
         else invalid++
         continue
       }
@@ -750,9 +782,9 @@
         }
         continue
       }
-      // USER.<stem> entries are user-supplied lexemes not yet in any dictionary;
+      // MANUAL.<stem> entries are hand-supplied lexemes not yet in any dictionary;
       // count them as invalid stems so they surface in the Valid MW Stems bar.
-      if (/\bUSER\.[^.\s]+/.test(analysis)) invalid++
+      if (/\bMANUAL\.[^.\s]+/.test(analysis)) invalid++
     }
     return { valid, invalid }
   }
@@ -770,7 +802,7 @@
     const derivablePattern = /\bDHATU\.|\b(Nom|Acc|Ins|Dat|Abl|Gen|Loc|Voc)\.[MFN]\.[SDP]\b/
 
     for (const row of rows) {
-      const analysis = (row.analysis || '').replace(/^USER\|/, '')
+      const analysis = (row.analysis || '').replace(/^MANUAL\|/, '')
       const form = row.form || ''
       const hasDhatu = analysis.startsWith('DHATU.')
       const hasKrt = analysis.includes('KRT.')
@@ -947,7 +979,7 @@
         const meaning = extractMeaning(lexeme)
         if (!meaning || meaning.length < 2) continue
         // Skip standalone upasargas — their meaning is absorbed into the verb.
-        const cleanAnalysis = (analysis || '').replace(/^USER\|/, '')
+        const cleanAnalysis = (analysis || '').replace(/^MANUAL\|/, '')
         if (UPASARGAS.has(form) && new RegExp(`^MW\\.${form}\\.`).test(cleanAnalysis)) continue
         // Strip bracketed refs from translation for matching
         const cleanTranslation = translation.replace(/\[[^\]]*\]/g, ' ')
@@ -986,7 +1018,7 @@
     }
 
     for (const row of rows) {
-      const analysis = (row.analysis || '').replace(/^USER\|/, '')
+      const analysis = (row.analysis || '').replace(/^MANUAL\|/, '')
       // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
       // form correctness is already validated by vidyut in validateDerivations
       if (analysis.startsWith('PRON.')) continue
@@ -1038,13 +1070,13 @@
           valid++
           continue
         }
-        // Apte citation fallback. DHATU rows often carry Apte.<stem> for the
-        // krdanta sense — if that stem has a matching gloss in lexicons.json,
-        // accept the row.
-        const apteCite = analysis.match(/\bApte\.([^.\s]+)/)
-        if (apteCite) {
-          const apteGlosses = (lexicons[apteCite[1]] || []).filter(e => e.source === 'Apte').map(e => e.gloss.toLowerCase())
-          if (apteGlosses.includes(meaning.toLowerCase())) {
+        // Lexicon citation fallback. DHATU rows often carry <Source>.<stem> for
+        // the krdanta sense — if that stem has a matching gloss in
+        // lexicons.json, accept the row.
+        const lexCite = matchLexiconCite(analysis)
+        if (lexCite) {
+          const lexGlosses = (lexicons[lexCite.stem] || []).filter(e => e.source === lexCite.source).map(e => e.gloss.toLowerCase())
+          if (lexGlosses.includes(meaning.toLowerCase())) {
             valid++
             continue
           }
@@ -1054,16 +1086,16 @@
         continue
       }
 
-      // Apte entries validate against lexicons.json filtered by source.
+      // Lexicon entries validate against lexicons.json filtered by source.
       // The translation_lexeme must match one of the stored glosses directly.
-      const apteMatch = analysis.match(/\bApte\.([^.\s]+)/)
-      if (apteMatch) {
-        const apteStem = apteMatch[1]
-        const glosses = (lexicons[apteStem] || []).filter(e => e.source === 'Apte').map(e => e.gloss)
+      const lexiconMatch = matchLexiconCite(analysis)
+      if (lexiconMatch) {
+        const { source: lexSource, stem: lexStem } = lexiconMatch
+        const glosses = (lexicons[lexStem] || []).filter(e => e.source === lexSource).map(e => e.gloss)
         const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
         if (glosses.length === 0) {
           invalid++
-          invalidList.push({ ...row, issue: `"${apteStem}" not in lexicons.json (Apte)` })
+          invalidList.push({ ...row, issue: `"${lexStem}" not in lexicons.json (${lexSource})` })
           continue
         }
         if (!lexeme) {
@@ -1077,7 +1109,7 @@
           valid++
         } else {
           invalid++
-          invalidList.push({ ...row, issue: `"${lexeme}" not in Apte glosses: ${glosses.join(', ')}` })
+          invalidList.push({ ...row, issue: `"${lexeme}" not in ${lexSource} glosses: ${glosses.join(', ')}` })
         }
         continue
       }
@@ -1286,14 +1318,14 @@
         if (!this.validationCache) {
           return {
             totalWords: lemmas.length,
-            mwCount: 0,
+            dictCount: 0,
             dhatuKrtCount: 0,
             tinCount: 0,
-            userCount: 0,
-            mwPercent: 0,
+            manualCount: 0,
+            dictPercent: 0,
             dhatuKrtPercent: 0,
             tinPercent: 0,
-            userPercent: 0,
+            manualPercent: 0,
             validStemsPercent: 100,
             validDerivedStemsPercent: 100,
             validDeclensionsPercent: 100,
@@ -1308,12 +1340,14 @@
       },
       pieSlices() {
         const pieColors = ['#4CAF50', '#2196F3', '#FF9800', '#9C27B0', '#607D8B']
+        // Zero-count categories are dropped so the legend never shows a dead
+        // 0 (0.0%) row.
         const data = [
-          { label: 'MW Dictionary', percent: this.stats.mwPercent, count: this.stats.mwCount, color: pieColors[0] },
+          { label: 'Dictionary', percent: this.stats.dictPercent, count: this.stats.dictCount, color: pieColors[0] },
           { label: 'DHATU+KRT', percent: this.stats.dhatuKrtPercent, count: this.stats.dhatuKrtCount, color: pieColors[1] },
           { label: 'TIN', percent: this.stats.tinPercent, count: this.stats.tinCount, color: pieColors[2] },
-          { label: 'USER', percent: this.stats.userPercent, count: this.stats.userCount, color: pieColors[3] },
-        ]
+          { label: 'MANUAL', percent: this.stats.manualPercent, count: this.stats.manualCount, color: pieColors[3] },
+        ].filter(d => d.count > 0)
 
         // Generate SVG paths
         let startAngle = -90
@@ -1513,14 +1547,14 @@
         this.vidyutReady = true
         this.validationCache = {
           totalWords: lemmas.length,
-          mwCount: 0,
+          dictCount: 0,
           dhatuKrtCount: 0,
           tinCount: 0,
-          userCount: 0,
-          mwPercent: 0,
+          manualCount: 0,
+          dictPercent: 0,
           dhatuKrtPercent: 0,
           tinPercent: 0,
-          userPercent: 0,
+          manualPercent: 0,
           validStemsPercent: 0,
           validDerivedStemsPercent: 0,
           validDeclensionsPercent: 0,
@@ -1590,14 +1624,14 @@
 
         this.validationCache = {
           totalWords: total,
-          mwCount: types.mwCount,
+          dictCount: types.dictCount,
           dhatuKrtCount: types.dhatuKrtCount,
           tinCount: types.tinCount,
-          userCount: types.userCount,
-          mwPercent: (types.mwCount / total) * 100,
+          manualCount: types.manualCount,
+          dictPercent: (types.dictCount / total) * 100,
           dhatuKrtPercent: (types.dhatuKrtCount / total) * 100,
           tinPercent: (types.tinCount / total) * 100,
-          userPercent: (types.userCount / total) * 100,
+          manualPercent: (types.manualCount / total) * 100,
           validStemsPercent: totalStems > 0 ? (stems.valid / totalStems) * 100 : 100,
           validDerivedStemsPercent: totalDerivedStems > 0 ? (derivations.validDerived / totalDerivedStems) * 100 : 100,
           validDeclensionsPercent: totalDeclensions > 0 ? (derivations.validDecl / totalDeclensions) * 100 : 100,
@@ -1667,11 +1701,11 @@
                 }
                 continue
               }
-              const userMatch = analysis.match(/\bUSER\.([^.\s]+)/)
-              if (userMatch) {
+              const manualMatch = analysis.match(/\bMANUAL\.([^.\s]+)/)
+              if (manualMatch) {
                 entries.push({
                   ...row,
-                  issue: `USER stem "${userMatch[1]}" not in dictionary`,
+                  issue: `MANUAL stem "${manualMatch[1]}" not in dictionary`,
                 })
               }
             }
@@ -1742,7 +1776,25 @@
 }
 
 .legend-value {
+  display: flex;
+  gap: 6px;
   font-weight: bold;
+  /* Equal-width digits, so counts and percents line up row to row rather than
+     drifting with the width of whichever glyphs each number happens to use. */
+  font-variant-numeric: tabular-nums;
+}
+
+/* Fixed columns are what actually right-aligns these: in a flex row the spans
+   would otherwise shrink to their content and text-align would have no effect.
+   Widths are minimums, so longer counts or a 100.0% still fit. */
+.legend-count {
+  min-width: 4ch;
+  text-align: right;
+}
+
+.legend-percent {
+  min-width: 8ch;
+  text-align: right;
 }
 
 .validation-bars {

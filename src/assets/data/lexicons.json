@@ -11,9 +11,6 @@
   "ramra": [
     { "gloss": "Purple color of dawn", "source": "Wilson" }
   ],
-  "raSmA": [
-    { "gloss": "using reins", "source": "RV" }
-  ],
   "udDAna": [
     { "gloss": "uplifting", "source": "Apte" }
   ],
@@ -25,5 +22,8 @@
   ],
   "na_na": [
     { "gloss": "certainly", "source": "Vaidya" }
+  ],
+  "ralla": [
+    { "gloss": "deer", "source": "Schmidt"}
   ]
 }

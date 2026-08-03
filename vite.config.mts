@@ -14,43 +14,115 @@ import { fileURLToPath, URL } from 'node:url'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { parse } from 'csv-parse/sync'
 import { resolve as pathResolve } from 'node:path'
+import Sanscript from '@indic-transliteration/sanscript'
 
 // --- MW auto-sync: keeps mw.json in sync with glossing.csv ---
-const MW_DICT_PATH = '/Users/brr/analysis/mw.txt'
+// Reads the same Cologne MW source the offline generator uses
+// (dev-tools/ashtadhyayi/generate_explanations.ts), so entries appended here
+// are byte-identical to what a full regeneration would produce.
+const MW_XML_PATH = pathResolve(__dirname, 'dev-tools/ashtadhyayi/assets/mw.xml')
 const MW_JSON_PATH = pathResolve(__dirname, 'src/assets/data/mw.json')
 const CSV_PATH = pathResolve(__dirname, 'glossing.csv')
 
-let mwDictCache: Record<string, { lid: string, content: string }[]> | null = null
-let mwByLidCache: Record<string, { stem: string, content: string }> | null = null
+const DEVANAGARI = 'devanagari'
+const SLP1 = 'slp1'
 
-function loadMwDict () {
-  if (mwDictCache) return mwDictCache
-  if (!existsSync(MW_DICT_PATH)) {
-    console.warn('[mw-sync] MW dictionary not found at', MW_DICT_PATH)
-    return null
+// Tag lists and renderBody below are ported verbatim from
+// generate_explanations.ts — that file is the source of truth. Keep in sync.
+const INVISIBLE_TAGS = [
+  'info', 'listinfo', 'hwtype', 'vlex', 'srs', 'shortlong',
+  'pb', 'pc', 'pcol', 'lbinfo', 'mark', 'edit', 'root',
+  'sic', 'C', 'P', 'H', 'note', 'pic', 'br', 'lb',
+]
+
+const TRANSPARENT_TAGS = [
+  'ls', 'lex', 'hom', 'lang', 'etym', 'i', 'b', 'gk', 'heb', 'arab',
+  'rus', 'mong', 'tib', 'fr', 'ger', 'ed', 'ms', 'lat', 'toch', 'iw',
+  'div', 'span', 'bot', 'bio', 'zoo', 'old', 'new', 'chg', 'ns', 'nsi',
+  'is', 'cl', 'type', 'per', 'F', 'VN', 'alt', 'sup', 'Poem', 'symbol',
+]
+
+function stripTagAndContent (text: string, tag: string): string {
+  const selfClose = new RegExp(`<${tag}(\\s[^>]*)?/>`, 'g')
+  const paired = new RegExp(`<${tag}(\\s[^>]*)?>[\\s\\S]*?</${tag}>`, 'g')
+  return text.replace(selfClose, '').replace(paired, '')
+}
+
+function unwrapTag (text: string, tag: string): string {
+  const paired = new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, 'g')
+  return text.replace(paired, '$1')
+}
+
+function renderBody (raw: string): string {
+  let body = raw
+  for (const tag of INVISIBLE_TAGS) body = stripTagAndContent(body, tag)
+  body = body.replace(/<s>([\s\S]*?)<\/s>/g, (_m, content) => {
+    const cleaned = content.replace(/<[^>]+>/g, '').replace(/\//g, '')
+    return Sanscript.t(cleaned, SLP1, DEVANAGARI)
+  })
+  body = body.replace(
+    /<(ab|s1)\s+n\s*=\s*"([^"]*)"[^>]*>[\s\S]*?<\/\1>/g,
+    (_m, _tag, full) => full,
+  )
+  body = unwrapTag(body, 'ab')
+  body = unwrapTag(body, 's1')
+  for (const tag of TRANSPARENT_TAGS) body = unwrapTag(body, tag)
+  body = body.replace(/<[^>]+>/g, '')
+  body = body.replace(/&amp;/g, '&').replace(/\s+/g, ' ').trim()
+  return body
+}
+
+// Demand-driven, memoized lookup. mw.xml holds 286k entries; indexing all of
+// them costs ~600 MB resident, while re-reading the 67 MB file on every sync
+// costs ~400 ms per glossing.csv save. Instead, scan only for stems/LIDs we
+// haven't resolved yet and cache the outcome — including misses, so the large
+// standing set of unresolvable references doesn't trigger a rescan every time.
+// Bodies are cached raw and rendered at the point of use; renderBody over the
+// whole dictionary would take minutes.
+type MwEntry = { lid: string, raw: string }
+const mwStemCache = new Map<string, MwEntry[] | null>()
+const mwLidCache = new Map<string, { stem: string, raw: string } | null>()
+
+function loadMwEntries (wantStems: Set<string>, wantLids: Set<string>): boolean {
+  const stemsToFind = [...wantStems].filter(s => !mwStemCache.has(s))
+  const lidsToFind = [...wantLids].filter(l => !mwLidCache.has(l))
+  if (stemsToFind.length === 0 && lidsToFind.length === 0) return true
+
+  if (!existsSync(MW_XML_PATH)) {
+    console.warn('[mw-sync] MW dictionary not found at', MW_XML_PATH)
+    return false
   }
-  console.log('[mw-sync] Loading MW dictionary (one-time)...')
-  const mwTxt = readFileSync(MW_DICT_PATH, 'utf8')
-  const entries = mwTxt.split('<LEND>')
-  const dict: Record<string, { lid: string, content: string }[]> = {}
-  const byLid: Record<string, { stem: string, content: string }> = {}
-  for (const entry of entries) {
-    const k1Match = entry.match(/<k1>([^<]+)/)
-    if (!k1Match) continue
-    const k1 = k1Match[1]
-    const lines = entry.trim().split('\n')
-    if (lines.length < 2) continue
-    const content = lines.slice(1).join('\n').trim()
-    const lMatch = lines[0].match(/<L>([^<]+)/)
-    const lid = lMatch ? lMatch[1] : ''
-    if (!dict[k1]) dict[k1] = []
-    dict[k1].push({ lid, content })
-    if (lid) byLid[lid] = { stem: k1, content }
+  const pendingStems = new Set(stemsToFind)
+  const pendingLids = new Set(lidsToFind)
+  console.log(`[mw-sync] Scanning mw.xml (${pendingStems.size} stems, ${pendingLids.size} LIDs)`)
+
+  // Every <H*> entry occupies exactly one line, matching the generator's
+  // line-oriented parse.
+  const lines = readFileSync(MW_XML_PATH, 'utf8').split('\n')
+  for (const line of lines) {
+    const keyMatch = line.match(/<key1>(.*?)<\/key1>/)
+    if (!keyMatch) continue
+    const key1 = keyMatch[1]
+    // <H1A> continuation entries use decimal sub-IDs (e.g. 22015.20).
+    const linkMatch = line.match(/<L>(\d+(?:\.\d+)?)<\/L>/)
+    const lid = linkMatch ? linkMatch[1] : ''
+    const wantsStem = pendingStems.has(key1)
+    const wantsLid = lid !== '' && pendingLids.has(lid)
+    if (!wantsStem && !wantsLid) continue
+    const bodyMatch = line.match(/<body>(.*?)<\/body>/)
+    if (!bodyMatch) continue
+    if (wantsStem) {
+      const bucket = mwStemCache.get(key1)
+      if (bucket) bucket.push({ lid, raw: bodyMatch[1] })
+      else mwStemCache.set(key1, [{ lid, raw: bodyMatch[1] }])
+    }
+    if (wantsLid) mwLidCache.set(lid, { stem: key1, raw: bodyMatch[1] })
   }
-  console.log(`[mw-sync] Cached ${Object.keys(dict).length} MW stems, ${Object.keys(byLid).length} LIDs`)
-  mwDictCache = dict
-  mwByLidCache = byLid
-  return dict
+
+  // Record misses so a subsequent sync doesn't rescan for them.
+  for (const s of pendingStems) if (!mwStemCache.has(s)) mwStemCache.set(s, null)
+  for (const l of pendingLids) if (!mwLidCache.has(l)) mwLidCache.set(l, null)
+  return true
 }
 
 function syncMwEntries () {
@@ -87,38 +159,44 @@ function syncMwEntries () {
     }
   }
 
-  const dict = loadMwDict()
-  if (!dict) return false
+  // Fetch every stem we might touch in a single pass over mw.xml.
+  const wantStems = new Set<string>()
+  for (const stem of missingStems) wantStems.add(stem.replace(/,$/, ''))
+  for (const stem of missingIds.keys()) wantStems.add(stem.replace(/,$/, ''))
+
+  if (!loadMwEntries(wantStems, new Set())) return false
 
   let added = 0
   // Add entirely missing stems
   for (const stem of missingStems) {
     const cleanStem = stem.replace(/,$/, '')
-    if (!dict[cleanStem]) {
+    const entries = mwStemCache.get(cleanStem)
+    if (!entries) {
       console.warn(`[mw-sync] Stem "${cleanStem}" not found in MW dictionary`)
       continue
     }
-    mwJson[cleanStem] = dict[cleanStem].map(e => {
-      let c = e.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
+    mwJson[cleanStem] = entries.map(e => {
+      let c = renderBody(e.raw)
       if (e.lid) c += `<L>[ID=${e.lid}]</L>`
       return c
     })
-    added += dict[cleanStem].length
-    console.log(`[mw-sync] Added stem "${cleanStem}" (${dict[cleanStem].length} entries)`)
+    added += entries.length
+    console.log(`[mw-sync] Added stem "${cleanStem}" (${entries.length} entries)`)
   }
 
   // Add missing IDs to existing stems
   for (const [stem, ids] of missingIds) {
     const cleanStem = stem.replace(/,$/, '')
-    if (!dict[cleanStem]) continue
+    const entries = mwStemCache.get(cleanStem)
+    if (!entries) continue
     const existing = mwJson[cleanStem] as string[]
     for (const id of ids) {
-      const dictEntry = dict[cleanStem].find(e => e.lid === id)
+      const dictEntry = entries.find(e => e.lid === id)
       if (!dictEntry) {
         console.warn(`[mw-sync] ID ${id} for "${cleanStem}" not found in MW dictionary`)
         continue
       }
-      let c = dictEntry.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
+      let c = renderBody(dictEntry.raw)
       if (dictEntry.lid) c += `<L>[ID=${dictEntry.lid}]</L>`
       existing.push(c)
       added++
@@ -136,35 +214,32 @@ function syncMwEntries () {
   // under a synthetic `@id/<lid>` stem key to avoid colliding with genuine
   // stem entries — the analytics.vue lookup is purely by numeric ID, so the
   // stem key name doesn't matter for validation.
-  const mwByLid = mwByLidCache
-  if (mwByLid) {
-    const existingLids = new Set<string>()
-    for (const entries of Object.values(mwJson) as string[][]) {
-      for (const e of entries) {
-        const m = e.match(/\[ID=(\d+)\]/)
-        if (m) existingLids.add(m[1])
-      }
+  const existingLids = new Set<string>()
+  for (const entries of Object.values(mwJson) as string[][]) {
+    for (const e of entries) {
+      const m = e.match(/\[ID=(\d+)\]/)
+      if (m) existingLids.add(m[1])
     }
-    const idDefers: { lid: string, prevLid: string }[] = []
-    for (const entries of Object.values(mwJson) as string[][]) {
-      for (const e of entries) {
-        // Strip XML-ish tags before testing — raw entries contain `<ab>id.</ab>,`
-        // which would otherwise break the `id.\s*[,;.]` adjacency check.
-        const cleaned = e.replace(/<[^>]+>/g, ' ')
-        if (!/\bid\.\s*[,;.]/.test(cleaned)) continue
-        const m = e.match(/\[ID=(\d+)\]/)
-        if (!m) continue
-        const prev = String(Number(m[1]) - 1)
-        if (!existingLids.has(prev)) idDefers.push({ lid: m[1], prevLid: prev })
-      }
+  }
+  const wantPrevLids = new Set<string>()
+  for (const entries of Object.values(mwJson) as string[][]) {
+    for (const e of entries) {
+      // Strip XML-ish tags before testing — raw entries contain `<ab>id.</ab>,`
+      // which would otherwise break the `id.\s*[,;.]` adjacency check.
+      const cleaned = e.replace(/<[^>]+>/g, ' ')
+      if (!/\bid\.\s*[,;.]/.test(cleaned)) continue
+      const m = e.match(/\[ID=(\d+)\]/)
+      if (!m) continue
+      const prev = String(Number(m[1]) - 1)
+      if (!existingLids.has(prev)) wantPrevLids.add(prev)
     }
-    for (const { prevLid } of idDefers) {
-      const priorEntry = mwByLid[prevLid]
+  }
+  if (wantPrevLids.size > 0 && loadMwEntries(new Set(), wantPrevLids)) {
+    for (const prevLid of wantPrevLids) {
+      const priorEntry = mwLidCache.get(prevLid)
       if (!priorEntry) continue
-      let c = priorEntry.content.replace(/<s>/g, '').replace(/<\/s>/g, '')
-      c += `<L>[ID=${prevLid}]</L>`
-      const bucket = `@id/${prevLid}`
-      mwJson[bucket] = [c]
+      const c = renderBody(priorEntry.raw) + `<L>[ID=${prevLid}]</L>`
+      mwJson[`@id/${prevLid}`] = [c]
       existingLids.add(prevLid)
       added++
       console.log(`[mw-sync] Added prior-id ${prevLid} (from "${priorEntry.stem}") → @id/${prevLid}`)
