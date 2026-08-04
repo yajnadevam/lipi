@@ -28,5 +28,25 @@
   ],
   "ralla": [
     { "gloss": "deer", "source": "Schmidt"}
+  ],
+  "asmad": [
+    { "gloss": "my", "source": "Vidyut" },
+    { "gloss": "mine", "source": "Vidyut" },
+    { "gloss": "me", "source": "Vidyut" },
+    { "gloss": "us", "source": "Vidyut" }
+  ],
+  "yad": [
+    { "gloss": "who", "source": "Vidyut" },
+    { "gloss": "he", "source": "Vidyut" }
+  ],
+  "idam": [
+    { "gloss": "this", "source": "Vidyut" },
+    { "gloss": "by this", "source": "Vidyut" }
+  ],
+  "yuzmad": [
+    { "gloss": "your", "source": "Vidyut" }
+  ],
+  "tad": [
+    { "gloss": "that", "source": "Vidyut" }
   ]
 }

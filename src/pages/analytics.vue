@@ -364,7 +364,7 @@
 
                     <!-- Lexeme in Translation Validation -->
                     <div class="validation-row" @click="toggleInvalid('lexemes')">
-                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} prefixes skipped)</div>
+                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} आ- स- skipped)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
