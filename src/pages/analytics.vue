@@ -216,7 +216,7 @@
                   <div class="validation-bars">
                     <!-- Stems Validation -->
                     <div class="validation-row" @click="toggleInvalid('stems')">
-                      <div class="validation-label">Valid MW Stems ({{ stats.totalStemsCount }} checked)</div>
+                      <div class="validation-label">Valid stems+roots ({{ stats.totalStemsCount }} checked)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -296,7 +296,7 @@
 
                     <!-- Meanings Validation -->
                     <div class="validation-row" @click="toggleInvalid('meanings')">
-                      <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} checked)</div>
+                      <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} of {{ stats.scopeMeaningsCount }} checked, {{ stats.pronSkippedCount }} pronouns skipped)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -305,18 +305,26 @@
                           {{ stats.validMeaningsCount }} ({{ stats.validMeaningsPercent.toFixed(1) }}%)
                         </div>
                         <div
-                          v-if="stats.validMeaningsPercent < 100"
+                          v-if="stats.invalidMeaningsCount > 0"
                           class="validation-bar invalid"
-                          :style="{ width: (100 - stats.validMeaningsPercent) + '%' }"
+                          :style="{ width: stats.invalidMeaningsPercent + '%' }"
                         >
-                          {{ stats.invalidMeaningsCount }} ({{ (100 - stats.validMeaningsPercent).toFixed(1) }}%)
+                          {{ stats.invalidMeaningsCount }} ({{ stats.invalidMeaningsPercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.skippedMeaningsCount > 0"
+                          class="validation-bar skipped"
+                          :style="{ width: stats.skippedMeaningsPercent + '%' }"
+                          @click.stop="toggleInvalid('skippedMeanings')"
+                        >
+                          {{ stats.skippedMeaningsCount }} ({{ stats.skippedMeaningsPercent.toFixed(1) }}%)
                         </div>
                       </div>
                     </div>
 
                     <!-- Word Coverage Validation -->
                     <div class="validation-row" @click="toggleInvalid('coverage')">
-                      <div class="validation-label">Word Coverage ({{ stats.totalCoverageCount }} inscriptions)</div>
+                      <div class="validation-label">Word Coverage ({{ stats.totalCoverageCount }} dedup inscriptions)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -356,7 +364,7 @@
 
                     <!-- Lexeme in Translation Validation -->
                     <div class="validation-row" @click="toggleInvalid('lexemes')">
-                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} checked)</div>
+                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} prefixes skipped)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -365,11 +373,19 @@
                           {{ stats.validLexemeCount }} ({{ stats.validLexemePercent.toFixed(1) }}%)
                         </div>
                         <div
-                          v-if="stats.validLexemePercent < 100"
+                          v-if="stats.invalidLexemeCount > 0"
                           class="validation-bar invalid"
-                          :style="{ width: (100 - stats.validLexemePercent) + '%' }"
+                          :style="{ width: stats.invalidLexemePercent + '%' }"
                         >
-                          {{ stats.invalidLexemeCount }} ({{ (100 - stats.validLexemePercent).toFixed(1) }}%)
+                          {{ stats.invalidLexemeCount }} ({{ stats.invalidLexemePercent.toFixed(1) }}%)
+                        </div>
+                        <div
+                          v-if="stats.skippedLexemeCount > 0"
+                          class="validation-bar skipped"
+                          :style="{ width: stats.skippedLexemePercent + '%' }"
+                          @click.stop="toggleInvalid('skippedLexemes')"
+                        >
+                          {{ stats.skippedLexemeCount }} ({{ stats.skippedLexemePercent.toFixed(1) }}%)
                         </div>
                       </div>
                     </div>
@@ -385,7 +401,7 @@
             <v-dialog v-model="showInvalidDialog" max-width="900">
               <v-card>
                 <v-card-title class="d-flex justify-space-between align-center">
-                  <span>Invalid {{ invalidType }} ({{ invalidEntries.length }} entries, {{ uniqueInvalidCount }} unique)</span>
+                  <span>{{ invalidDialogTitle }} ({{ invalidEntries.length }} entries, {{ uniqueInvalidCount }} unique)</span>
                   <v-btn icon @click="showInvalidDialog = false">
                     <v-icon>mdi-close</v-icon>
                   </v-btn>
@@ -448,6 +464,47 @@
     const m = analysis.match(lexiconCiteRe)
     return m ? { source: m[1], stem: m[2] } : null
   }
+  // Parse a `DHATU.[<upasarga>-]<root>[.<gana>]` citation and resolve it against
+  // dhatu.json. Shared so the stems bar and the meanings bar can never disagree
+  // about whether a given root is known.
+  function resolveDhatu (analysis) {
+    const dhatuTok = analysis.substring(6).split(/\s+/)[0]
+    // Strip upasargas (everything before the last '-' segment)
+    const segs = dhatuTok.split('-')
+    const rootGana = segs[segs.length - 1]
+    const lastDot = rootGana.lastIndexOf('.')
+    const root = lastDot === -1 ? rootGana : rootGana.substring(0, lastDot)
+    const gana = lastDot === -1 ? '' : rootGana.substring(lastDot + 1)
+    return { root, gana, meaning: (gana && dhatuJson[`${root}.${gana}`]) || dhatuJson[root] || null }
+  }
+
+  // Standalone upasarga particles (in SLP1). When a row's form is one of these
+  // and the analysis cites it as MW.<form>.<id>, the row is a bare preverb.
+  // Upasargas have no independent English realization — their force is absorbed
+  // into the verb they modify (आ-√ज्ञा "to mind, perceive" vs √ज्ञा "to know") —
+  // so neither the lexeme-in-translation check nor the meaning check can fairly
+  // demand a gloss that matches a dictionary entry on its own.
+  // The traditional 22 upasargas.
+  const UPASARGAS = new Set([
+    'pra', 'parA', 'apa', 'sam', 'anu', 'ava', 'nis', 'nir', 'dus', 'dur',
+    'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
+    'pari', 'upa',
+  ])
+  // स- is NOT an upasarga — it is the bahuvrīhi prefix सह "with, possessing".
+  // Kept in its own set so the code stops misnaming it, but it behaves the same
+  // way for the translation check: English realises it as a possessive
+  // ("roar-bearing", "prowessful"), never as the bare word "with".
+  const BAHUVRIHI_PREFIXES = new Set(['sa'])
+
+  const citedAsPrefix = (form, analysis) =>
+    (analysis || '').replace(/^MANUAL\|/, '').startsWith(`MW.${form}.`)
+  function isStandaloneUpasarga (form, analysis) {
+    return !!form && UPASARGAS.has(form) && citedAsPrefix(form, analysis)
+  }
+  function isStandaloneBahuvrihi (form, analysis) {
+    return !!form && BAHUVRIHI_PREFIXES.has(form) && citedAsPrefix(form, analysis)
+  }
+
   let initError = null
 
   try {
@@ -516,7 +573,17 @@
     // Raw dictionary text (XML stripped but case preserved) for Devanagari matching
     const dictRaw = dictMeaning.replace(/<[^>]+>/g, '')
 
-    if (dictLower.includes(lexLower)) return true
+    // A single-character meaning must match as a whole word. Plain substring
+    // matching would let "o" hit almost any entry — the letter occurs in nearly
+    // all English text — so such a row would pass without anything being
+    // verified. Longer meanings keep substring matching, which is what lets
+    // "horse" legitimately match "horses".
+    if (lexLower.length < 2) {
+      const escaped = lexLower.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      if (new RegExp(`(^|[^a-z])${escaped}([^a-z]|$)`).test(dictLower)) return true
+    } else if (dictLower.includes(lexLower)) {
+      return true
+    }
 
     // Full-phrase synonym lookup. Per-word synonym checks below can't reach
     // multi-word keys like "at the end", since lexWords splits on whitespace.
@@ -767,13 +834,24 @@
     let invalid = 0
     for (const row of rows) {
       const analysis = row.analysis || ''
+      // A DHATU row's primary claim is its root, so resolve that rather than any
+      // corroborating MW citation it may also carry — checking the MW stem first
+      // would let 36 unresolved roots pass on the strength of a side reference.
+      if (analysis.startsWith('DHATU.')) {
+        if (resolveDhatu(analysis).meaning) valid++
+        else invalid++
+        continue
+      }
       const lexCite = matchLexiconCite(analysis)
       if (lexCite) {
         if (lexiconIndex[lexCite.source] && lexiconIndex[lexCite.source].has(lexCite.stem)) valid++
         else invalid++
         continue
       }
-      const mwMatch = analysis.match(/\bMW\.([^.\s]+)/)
+      // INDC. and PRON. cite a dictionary stem exactly as MW. does — matching
+      // only MW. here left 133 indeclinable/pronoun rows unchecked while
+      // validateMeanings below happily resolved the same citations.
+      const mwMatch = analysis.match(/\b(?:MW|INDC|PRON)\.([^.\s]+)/)
       if (mwMatch) {
         if (mwIndex.has(mwMatch[1])) {
           valid++
@@ -928,19 +1006,12 @@
     const invalidCoverageList = []
     let validLexeme = 0
     let invalidLexeme = 0
+    // Lexemes with nothing checkable in them. Standalone upasargas below are
+    // NOT counted here — those are a deliberate exclusion, not a gap.
+    let skippedLexeme = 0
+    const skippedLexemeList = []
+    let prefixSkipped = 0
     const invalidLexemeList = []
-
-    // Standalone upasarga particles (in SLP1). When a row's form is one of
-    // these and the analysis cites it as MW.<form>.<id>, skip the
-    // lex-in-translation check — upasargas don't have an independent English
-    // realization; their force is absorbed into the verb they modify, so
-    // requiring the gloss (e.g. "fully" for आ) to appear in the translation
-    // is linguistically incorrect.
-    const UPASARGAS = new Set([
-      'pra', 'parA', 'apa', 'sam', 'anu', 'ava', 'nis', 'nir', 'dus', 'dur',
-      'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
-      'pari', 'upa', 'sa',
-    ])
 
     for (const insc of inscriptionRows) {
       const id = insc.id
@@ -977,10 +1048,20 @@
       const lexemes = glossingLexemes.get(id) || []
       for (const { form, lexeme, analysis } of lexemes) {
         const meaning = extractMeaning(lexeme)
-        if (!meaning || meaning.length < 2) continue
-        // Skip standalone upasargas — their meaning is absorbed into the verb.
-        const cleanAnalysis = (analysis || '').replace(/^MANUAL\|/, '')
-        if (UPASARGAS.has(form) && new RegExp(`^MW\\.${form}\\.`).test(cleanAnalysis)) continue
+        if (!meaning || meaning.length < 1) {
+          skippedLexeme++
+          skippedLexemeList.push({ id, form, analysis: lexeme, issue: 'No checkable meaning in translation_lexeme' })
+          continue
+        }
+        // Exempt only आ and स-. आ's force is absorbed into the verb it modifies,
+        // and स- into an English possessive, so neither surfaces as its own word.
+        // The remaining upasargas do surface (16 of 17 pass), so they are checked.
+        const exemptPrefix = (form === 'A' && isStandaloneUpasarga(form, analysis)) ||
+          isStandaloneBahuvrihi(form, analysis)
+        if (exemptPrefix) {
+          prefixSkipped++
+          continue
+        }
         // Strip bracketed refs from translation for matching
         const cleanTranslation = translation.replace(/\[[^\]]*\]/g, ' ')
         if (meaningInDictionary(meaning, cleanTranslation)) {
@@ -998,6 +1079,9 @@
       invalidCoverageList,
       validLexeme,
       invalidLexeme,
+      skippedLexeme,
+      skippedLexemeList,
+      prefixSkipped,
       invalidLexemeList,
     }
   }
@@ -1005,6 +1089,14 @@
   function validateMeanings (rows) {
     let valid = 0
     let invalid = 0
+    // Rows the validator could not evaluate at all (no usable lexeme, stem
+    // absent from mw.json). Distinct from deliberate exclusions like PRON.,
+    // which are out of scope rather than unchecked.
+    let skipped = 0
+    const skippedList = []
+    // Deliberate exclusion, surfaced in the label tooltip so the shortfall
+    // between the bar's scope and the lemma total is explainable.
+    let pronSkipped = 0
     const invalidList = []
 
     // Build an ID → entry index so we can follow `id.` (idem) cross-references
@@ -1021,7 +1113,7 @@
       const analysis = (row.analysis || '').replace(/^MANUAL\|/, '')
       // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
       // form correctness is already validated by vidyut in validateDerivations
-      if (analysis.startsWith('PRON.')) continue
+      if (analysis.startsWith('PRON.')) { pronSkipped++; continue }
 
       // DHATU meaning validation is temporarily disabled — flip
       // DHATU_VALIDATION_ENABLED to true to re-enable. All lookup logic below
@@ -1032,19 +1124,20 @@
       // DHATU entries: validate against dhatu.json (composed dhātu meanings)
       // rather than MW (which doesn't gloss verbal roots in English).
       if (analysis.startsWith('DHATU.')) {
-        const dhatuTok = analysis.substring(6).split(/\s+/)[0]
-        // Strip upasargas (everything before the last '-' segment)
-        const segs = dhatuTok.split('-')
-        const rootGana = segs[segs.length - 1]
-        const lastDot = rootGana.lastIndexOf('.')
-        const root = lastDot === -1 ? rootGana : rootGana.substring(0, lastDot)
-        const gana = lastDot === -1 ? '' : rootGana.substring(lastDot + 1)
-        const dhatuMeanings = (gana && dhatuJson[`${root}.${gana}`]) || dhatuJson[root]
-        if (!dhatuMeanings) continue // unknown dhātu — skip rather than flag
+        const { root, meaning: dhatuMeanings } = resolveDhatu(analysis)
+        // Unknown dhātu: dhatu.json carries no gloss for this root, so the
+        // lexeme cannot be substantiated. Counted invalid and listed, rather
+        // than skipped — an unverifiable gloss is a gap to close, not a pass,
+        // and skipping would quietly shrink the bar's denominator.
+        if (!dhatuMeanings) {
+          invalid++
+          invalidList.push({ ...row, issue: `dhātu root "${root}" not in dhatu.json` })
+          continue
+        }
         const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
-        if (!lexeme) continue
+        if (!lexeme) { skipped++; skippedList.push({ ...row, issue: 'DHATU row has no translation_lexeme' }); continue }
         const meaning = extractMeaning(lexeme)
-        if (!meaning || meaning.length < 2) continue
+        if (!meaning || meaning.length < 1) { skipped++; skippedList.push({ ...row, issue: 'DHATU lexeme has no checkable meaning' }); continue }
         // Strip "to " prefixes from dhātu glosses to avoid spurious matches
         const dhatuText = dhatuMeanings.replace(/\bto\s+/g, '')
         if (meaningInDictionary(meaning, dhatuText)) {
@@ -1118,12 +1211,12 @@
       // ID may be an integer (22015) or a decimal sub-ID (22015.20) referencing
       // a CDSL <H1A> continuation entry.
       const mwMatch = analysis.match(/(?:MW|INDC|PRON)\.([^.\s]+)(?:\.(\d+(?:\.\d+)?))?/)
-      if (!mwMatch) continue
+      if (!mwMatch) { skipped++; skippedList.push({ ...row, issue: 'No MW/INDC/lexicon citation to check against' }); continue }
 
       const stem = mwMatch[1]
       const mwId = mwMatch[2]
       const allEntries = mwJson[stem]
-      if (!allEntries || allEntries.length === 0) continue
+      if (!allEntries || allEntries.length === 0) { skipped++; skippedList.push({ ...row, issue: `Cited stem "${stem}" is absent from mw.json` }); continue }
 
       const lexeme = row.translation_lexeme != null ? String(row.translation_lexeme).trim() : ''
       if (!lexeme) {
@@ -1133,7 +1226,7 @@
       }
 
       const meaning = extractMeaning(lexeme)
-      if (!meaning || meaning.length < 2) continue
+      if (!meaning || meaning.length < 1) { skipped++; skippedList.push({ ...row, issue: 'No checkable meaning in translation_lexeme' }); continue }
 
       // If the lexeme is the word itself (used as-is in translation), it's valid
       // Compare in both IAST and SLP1 since meanings may use either
@@ -1253,7 +1346,7 @@
         invalidList.push({ ...row, issue: `"${lexeme}" not found in: "${snippet}…"` })
       }
     }
-    return { valid, invalid, invalidList }
+    return { valid, invalid, invalidList, skipped, skippedList, pronSkipped }
   }
 
   export default {
@@ -1281,6 +1374,8 @@
         invalidDeclensionsList: [],
         invalidTinList: [],
         invalidMeaningsList: [],
+        skippedMeaningsList: [],
+        skippedLexemeList: [],
         invalidCoverageList: [],
         invalidLexemeList: [],
         invalidAgreementList: [],
@@ -1306,13 +1401,22 @@
             uniqueValues.add(entry.form)
           } else if (this.invalidType === 'coverage') {
             uniqueValues.add(entry.id)
-          } else if (this.invalidType === 'lexemes') {
+          } else if (this.invalidType === 'lexemes' || this.invalidType === 'skippedLexemes') {
             uniqueValues.add(entry.id + ':' + entry.form)
+          } else if (this.invalidType === 'skippedMeanings') {
+            uniqueValues.add(entry.form)
           } else if (this.invalidType === 'agreement') {
             uniqueValues.add(entry.id)
           }
         }
         return uniqueValues.size
+      },
+      invalidDialogTitle () {
+        // The grey segments open a list of rows that could not be evaluated,
+        // which are not "invalid" — label them accordingly.
+        if (this.invalidType === 'skippedMeanings') return 'Skipped meanings'
+        if (this.invalidType === 'skippedLexemes') return 'Skipped lexemes'
+        return `Invalid ${this.invalidType}`
       },
       stats() {
         if (!this.validationCache) {
@@ -1334,6 +1438,16 @@
             validCoveragePercent: 100,
             validLexemePercent: 100,
             validAgreementPercent: 100,
+            invalidMeaningsPercent: 0,
+            invalidLexemePercent: 0,
+            skippedMeaningsPercent: 0,
+            skippedLexemePercent: 0,
+            skippedMeaningsCount: 0,
+            skippedLexemeCount: 0,
+            scopeMeaningsCount: lemmas.length,
+            scopeLexemeCount: lemmas.length,
+            pronSkippedCount: 0,
+            prefixSkippedCount: 0,
           }
         }
         return this.validationCache
@@ -1587,6 +1701,16 @@
           validAgreementCount: 0,
           invalidAgreementCount: 0,
           totalAgreementCount: 0,
+          invalidMeaningsPercent: 0,
+          invalidLexemePercent: 0,
+          skippedMeaningsPercent: 0,
+          skippedLexemePercent: 0,
+          skippedMeaningsCount: 0,
+          skippedLexemeCount: 0,
+          scopeMeaningsCount: 0,
+          scopeLexemeCount: 0,
+          pronSkippedCount: 0,
+          prefixSkippedCount: 0,
           error: `Failed to initialize Vidyut: ${e.message}`
         }
       }
@@ -1609,6 +1733,8 @@
         this.invalidDeclensionsList = derivations.invalidDeclList
         this.invalidTinList = derivations.invalidTinList
         this.invalidMeaningsList = meanings.invalidList
+        this.skippedMeaningsList = meanings.skippedList
+        this.skippedLexemeList = coverage.skippedLexemeList
         this.invalidCoverageList = coverage.invalidCoverageList
         this.invalidLexemeList = coverage.invalidLexemeList
         this.invalidAgreementList = agreement.invalidList
@@ -1621,6 +1747,18 @@
         const totalCoverage = coverage.validCoverage + coverage.invalidCoverage
         const totalLexeme = coverage.validLexeme + coverage.invalidLexeme
         const totalAgreement = agreement.valid + agreement.invalid
+
+        // Grey "skipped" = rows the validator could not evaluate (no usable
+        // lexeme, stem absent from mw.json). It deliberately excludes rows that
+        // are simply out of scope: PRON. lemmas, standalone upasargas, `ref:`
+        // inscriptions whose words are glossed under the id they point at, and
+        // DHATU rows that carry no MW stem. Those aren't gaps, and counting
+        // them would bury the signal — `ref:` alone is over half the corpus.
+        // Only the two bars with genuine gaps get a third segment; the rest are
+        // scoped to a subset by definition and stay valid/invalid.
+        const scopeMeanings = totalMeanings + meanings.skipped
+        const scopeLexeme = totalLexeme + coverage.skippedLexeme
+        const pct = (n, d) => (d > 0 ? (n / d) * 100 : 0)
 
         this.validationCache = {
           totalWords: total,
@@ -1636,9 +1774,19 @@
           validDerivedStemsPercent: totalDerivedStems > 0 ? (derivations.validDerived / totalDerivedStems) * 100 : 100,
           validDeclensionsPercent: totalDeclensions > 0 ? (derivations.validDecl / totalDeclensions) * 100 : 100,
           validTinPercent: totalTin > 0 ? (derivations.validTin / totalTin) * 100 : 100,
-          validMeaningsPercent: totalMeanings > 0 ? (meanings.valid / totalMeanings) * 100 : 100,
+          validMeaningsPercent: pct(meanings.valid, scopeMeanings),
+          invalidMeaningsPercent: pct(meanings.invalid, scopeMeanings),
+          skippedMeaningsPercent: pct(meanings.skipped, scopeMeanings),
+          skippedMeaningsCount: meanings.skipped,
+          scopeMeaningsCount: scopeMeanings,
+          pronSkippedCount: meanings.pronSkipped,
           validCoveragePercent: totalCoverage > 0 ? (coverage.validCoverage / totalCoverage) * 100 : 100,
-          validLexemePercent: totalLexeme > 0 ? (coverage.validLexeme / totalLexeme) * 100 : 100,
+          validLexemePercent: pct(coverage.validLexeme, scopeLexeme),
+          invalidLexemePercent: pct(coverage.invalidLexeme, scopeLexeme),
+          skippedLexemePercent: pct(coverage.skippedLexeme, scopeLexeme),
+          skippedLexemeCount: coverage.skippedLexeme,
+          scopeLexemeCount: scopeLexeme,
+          prefixSkippedCount: coverage.prefixSkipped,
           validStemsCount: stems.valid,
           invalidStemsCount: stems.invalid,
           totalStemsCount: totalStems,
@@ -1683,6 +1831,10 @@
           entries = this.invalidCoverageList || []
         } else if (type === 'lexemes') {
           entries = this.invalidLexemeList || []
+        } else if (type === 'skippedMeanings') {
+          entries = this.skippedMeaningsList || []
+        } else if (type === 'skippedLexemes') {
+          entries = this.skippedLexemeList || []
         } else if (type === 'agreement') {
           entries = this.invalidAgreementList || []
         } else {
@@ -1690,13 +1842,33 @@
             const analysis = row.analysis || ''
 
             if (type === 'stems') {
-              const mwMatch = analysis.match(/MW\.([^.\s]+)/)
+              // This block mirrors validateStems — same checks, same order.
+              if (analysis.startsWith('DHATU.')) {
+                const dh = resolveDhatu(analysis)
+                if (!dh.meaning) {
+                  entries.push({ ...row, issue: `dhātu root "${dh.root}" not in dhatu.json` })
+                }
+                continue
+              }
+              // Any divergence shows up as a row counted invalid in the bar but
+              // missing from this drill-down list.
+              const lexCite = matchLexiconCite(analysis)
+              if (lexCite) {
+                if (!lexiconIndex[lexCite.source] || !lexiconIndex[lexCite.source].has(lexCite.stem)) {
+                  entries.push({
+                    ...row,
+                    issue: `${lexCite.source} stem "${lexCite.stem}" not in lexicons.json`,
+                  })
+                }
+                continue
+              }
+              const mwMatch = analysis.match(/\b(?:MW|INDC|PRON)\.([^.\s]+)/)
               if (mwMatch) {
                 const stem = mwMatch[1]
                 if (!mwIndex.has(stem)) {
                   entries.push({
                     ...row,
-                    issue: `MW stem "${stem}" not found in dictionary`,
+                    issue: `Stem "${stem}" not found in dictionary`,
                   })
                 }
                 continue
@@ -1841,6 +2013,12 @@
 
 .validation-bar.invalid {
   background-color: #FF9800;
+}
+
+/* Grey 600 rather than a lighter grey: the segment carries white label text,
+   and anything lighter drops below a readable contrast ratio. */
+.validation-bar.skipped {
+  background-color: #757575;
 }
 
 .zipf-header {

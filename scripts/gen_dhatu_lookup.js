@@ -27,6 +27,16 @@ for (const e of d.data) {
   };
 }
 
+// Undo the Dhātupāṭha's upadeśa spelling conventions. Roots that actually begin
+// with न्/स् are *taught* with ण्/ष् (णो नः, षः सः), so the dhātupāṭha lists
+// e.g. `Ra\ma~` and `Ra\Sa~` while glossing.csv cites the real initial —
+// `nama~`, `naSa~`. Emit both spellings so either resolves.
+const upadeshaVariant = (s) => {
+  if (s.startsWith("R")) return "n" + s.slice(1);
+  if (s.startsWith("z")) return "s" + s.slice(1);
+  return null;
+};
+
 // Generate loose-form variants — glossing.csv may omit some aupadeshika markers.
 // `\` and `^` are accent markers commonly dropped; `~` marks the nasal it-letter
 // and is more often retained. Emit both partially-stripped (keep `~`) and
@@ -39,6 +49,19 @@ const looseVariants = (s) => {
   return [...v];
 };
 
+// Upadeśa respellings are kept apart from looseVariants because they must not
+// vote in the bare-key ambiguity test below: `Rawa~` (Bhvadi) respells to
+// `nawa~`, which is also a real Curadi dhātu. Letting the variant count as a
+// second gana would suppress the genuine root's bare key.
+const upadeshaVariants = (s) => {
+  const v = new Set();
+  for (const base of [s, s.replace(/[\\^]/g, ""), s.replace(/[\\^~]/g, "")]) {
+    const up = upadeshaVariant(base);
+    if (up) v.add(up);
+  }
+  return [...v];
+};
+
 // Build lookup from dhatupatha.tsv (canonical aupadeshika forms).
 // We collect all entries per form key, then emit only when unambiguous.
 const lookup = {};
@@ -47,6 +70,7 @@ const tsv = readFileSync(
   "utf-8",
 );
 const byForm = {}; // form (canonical or loose) → [{ganaName, artha}]
+const byUpadesha = {}; // upadeśa respelling → [{ganaName, artha}]
 for (const line of tsv.trim().split("\n").slice(1)) {
   const [code, dhatu] = line.split("\t");
   const meta = metaByCode[code];
@@ -66,6 +90,16 @@ for (const line of tsv.trim().split("\n").slice(1)) {
     }
     (byForm[loose] = byForm[loose] || []).push({ ganaName: meta.ganaName, artha: meta.artha });
   }
+  // Same, for upadeśa respellings — tracked separately (see above).
+  for (const up of upadeshaVariants(dhatu)) {
+    const upKey = `${up}.${meta.ganaName}`;
+    if (!lookup[upKey]) lookup[upKey] = meta.artha;
+    if (ganaNum) {
+      const upNumKey = `${up}.${ganaNum}`;
+      if (!lookup[upNumKey]) lookup[upNumKey] = meta.artha;
+    }
+    (byUpadesha[up] = byUpadesha[up] || []).push({ ganaName: meta.ganaName, artha: meta.artha });
+  }
 }
 
 // Emit a bare-form key when all entries for that form share the same gana
@@ -73,6 +107,13 @@ for (const line of tsv.trim().split("\n").slice(1)) {
 // Skip if entries span multiple ganas — caller must specify the gana.
 const sameGana = (entries) => entries.every((e) => e.ganaName === entries[0].ganaName);
 for (const [form, entries] of Object.entries(byForm)) {
+  if (lookup[form]) continue;
+  if (sameGana(entries)) lookup[form] = entries[0].artha;
+}
+
+// Bare keys for upadeśa respellings, only where nothing already claims the key —
+// a genuine dhātu of that spelling always wins over a respelling of another.
+for (const [form, entries] of Object.entries(byUpadesha)) {
   if (lookup[form]) continue;
   if (sameGana(entries)) lookup[form] = entries[0].artha;
 }
