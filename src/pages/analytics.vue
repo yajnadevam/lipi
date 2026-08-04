@@ -296,7 +296,7 @@
 
                     <!-- Meanings Validation -->
                     <div class="validation-row" @click="toggleInvalid('meanings')">
-                      <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} of {{ stats.scopeMeaningsCount }} checked, {{ stats.pronSkippedCount }} pronouns skipped)</div>
+                      <div class="validation-label">Valid Meanings ({{ stats.totalMeaningsCount }} of {{ stats.scopeMeaningsCount }} checked)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -1096,7 +1096,6 @@
     const skippedList = []
     // Deliberate exclusion, surfaced in the label tooltip so the shortfall
     // between the bar's scope and the lemma total is explainable.
-    let pronSkipped = 0
     const invalidList = []
 
     // Build an ID → entry index so we can follow `id.` (idem) cross-references
@@ -1111,9 +1110,6 @@
 
     for (const row of rows) {
       const analysis = (row.analysis || '').replace(/^MANUAL\|/, '')
-      // Skip PRON entries — MW doesn't gloss pronoun lemmas with English;
-      // form correctness is already validated by vidyut in validateDerivations
-      if (analysis.startsWith('PRON.')) { pronSkipped++; continue }
 
       // DHATU meaning validation is temporarily disabled — flip
       // DHATU_VALIDATION_ENABLED to true to re-enable. All lookup logic below
@@ -1346,7 +1342,7 @@
         invalidList.push({ ...row, issue: `"${lexeme}" not found in: "${snippet}…"` })
       }
     }
-    return { valid, invalid, invalidList, skipped, skippedList, pronSkipped }
+    return { valid, invalid, invalidList, skipped, skippedList }
   }
 
   export default {
@@ -1446,7 +1442,6 @@
             skippedLexemeCount: 0,
             scopeMeaningsCount: lemmas.length,
             scopeLexemeCount: lemmas.length,
-            pronSkippedCount: 0,
             prefixSkippedCount: 0,
           }
         }
@@ -1709,7 +1704,6 @@
           skippedLexemeCount: 0,
           scopeMeaningsCount: 0,
           scopeLexemeCount: 0,
-          pronSkippedCount: 0,
           prefixSkippedCount: 0,
           error: `Failed to initialize Vidyut: ${e.message}`
         }
@@ -1779,7 +1773,6 @@
           skippedMeaningsPercent: pct(meanings.skipped, scopeMeanings),
           skippedMeaningsCount: meanings.skipped,
           scopeMeaningsCount: scopeMeanings,
-          pronSkippedCount: meanings.pronSkipped,
           validCoveragePercent: totalCoverage > 0 ? (coverage.validCoverage / totalCoverage) * 100 : 100,
           validLexemePercent: pct(coverage.validLexeme, scopeLexeme),
           invalidLexemePercent: pct(coverage.invalidLexeme, scopeLexeme),
