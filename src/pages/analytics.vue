@@ -364,7 +364,7 @@
 
                     <!-- Lexeme in Translation Validation -->
                     <div class="validation-row" @click="toggleInvalid('lexemes')">
-                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} आ- स- skipped)</div>
+                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} आ- skipped)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -490,19 +490,10 @@
     'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
     'pari', 'upa',
   ])
-  // स- is NOT an upasarga — it is the bahuvrīhi prefix सह "with, possessing".
-  // Kept in its own set so the code stops misnaming it, but it behaves the same
-  // way for the translation check: English realises it as a possessive
-  // ("roar-bearing", "prowessful"), never as the bare word "with".
-  const BAHUVRIHI_PREFIXES = new Set(['sa'])
-
   const citedAsPrefix = (form, analysis) =>
     (analysis || '').replace(/^MANUAL\|/, '').startsWith(`MW.${form}.`)
   function isStandaloneUpasarga (form, analysis) {
     return !!form && UPASARGAS.has(form) && citedAsPrefix(form, analysis)
-  }
-  function isStandaloneBahuvrihi (form, analysis) {
-    return !!form && BAHUVRIHI_PREFIXES.has(form) && citedAsPrefix(form, analysis)
   }
 
   let initError = null
@@ -1053,12 +1044,11 @@
           skippedLexemeList.push({ id, form, analysis: lexeme, issue: 'No checkable meaning in translation_lexeme' })
           continue
         }
-        // Exempt only आ and स-. आ's force is absorbed into the verb it modifies,
-        // and स- into an English possessive, so neither surfaces as its own word.
-        // The remaining upasargas do surface (16 of 17 pass), so they are checked.
-        const exemptPrefix = (form === 'A' && isStandaloneUpasarga(form, analysis)) ||
-          isStandaloneBahuvrihi(form, analysis)
-        if (exemptPrefix) {
+        // Exempt आ- alone: its force is absorbed into the verb it modifies, so it
+        // has no independent English realisation. Every other prefix does surface
+        // — including स- (the bahuvrīhi सह, not an upasarga), whose translations
+        // render it literally as "with" in 10 of 15 cases — so they are checked.
+        if (form === 'A' && isStandaloneUpasarga(form, analysis)) {
           prefixSkipped++
           continue
         }
