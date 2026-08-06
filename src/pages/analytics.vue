@@ -364,7 +364,7 @@
 
                     <!-- Lexeme in Translation Validation -->
                     <div class="validation-row" @click="toggleInvalid('lexemes')">
-                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked, {{ stats.prefixSkippedCount }} आ- skipped)</div>
+                      <div class="validation-label">Lexeme in Translation ({{ stats.totalLexemeCount }} of {{ stats.scopeLexemeCount }} checked)</div>
                       <div class="validation-bar-container">
                         <div
                           class="validation-bar valid"
@@ -484,17 +484,13 @@
   // into the verb they modify (आ-√ज्ञा "to mind, perceive" vs √ज्ञा "to know") —
   // so neither the lexeme-in-translation check nor the meaning check can fairly
   // demand a gloss that matches a dictionary entry on its own.
-  // The traditional 22 upasargas.
-  const UPASARGAS = new Set([
-    'pra', 'parA', 'apa', 'sam', 'anu', 'ava', 'nis', 'nir', 'dus', 'dur',
-    'vi', 'A', 'ni', 'aDi', 'api', 'ati', 'su', 'ud', 'aBi', 'prati',
-    'pari', 'upa',
-  ])
-  const citedAsPrefix = (form, analysis) =>
-    (analysis || '').replace(/^MANUAL\|/, '').startsWith(`MW.${form}.`)
-  function isStandaloneUpasarga (form, analysis) {
-    return !!form && UPASARGAS.has(form) && citedAsPrefix(form, analysis)
-  }
+  // Words the translations use to render an आ-intensified adjective. Deliberately
+  // NOT in synonym_groups.json: that map is symmetric, so membership there would
+  // also let a lexeme "mighty" be satisfied by a translation saying "fully".
+  const A_INTENSIVE_RENDERINGS = [
+    'mighty', 'might', 'great', 'greatest', 'most', 'excellent', 'almighty',
+    'everything', 'universal', 'always', 'ever', 'deeply', 'well',
+  ]
 
   let initError = null
 
@@ -1001,7 +997,6 @@
     // NOT counted here — those are a deliberate exclusion, not a gap.
     let skippedLexeme = 0
     const skippedLexemeList = []
-    let prefixSkipped = 0
     const invalidLexemeList = []
 
     for (const insc of inscriptionRows) {
@@ -1044,17 +1039,18 @@
           skippedLexemeList.push({ id, form, analysis: lexeme, issue: 'No checkable meaning in translation_lexeme' })
           continue
         }
-        // Exempt आ- alone: its force is absorbed into the verb it modifies, so it
-        // has no independent English realisation. Every other prefix does surface
-        // — including स- (the bahuvrīhi सह, not an upasarga), whose translations
-        // render it literally as "with" in 10 of 15 cases — so they are checked.
-        if (form === 'A' && isStandaloneUpasarga(form, analysis)) {
-          prefixSkipped++
-          continue
-        }
         // Strip bracketed refs from translation for matching
         const cleanTranslation = translation.replace(/\[[^\]]*\]/g, ' ')
-        if (meaningInDictionary(meaning, cleanTranslation)) {
+        // आ-intensive rows are glossed "fully", but the translations render the
+        // intensification with whatever word fits — "mighty", "greatest", "almighty".
+        // Accept those, one-directionally: the list is only ever read as "given this
+        // lexeme, is one of these in the text?", never indexed by the translation's
+        // words, so nothing here can validate a lexeme. Gated on 22015.90 so a row
+        // merely glossed "fully" (e.g. sam at 3529.1) does not inherit the leniency.
+        const intensiveA = (analysis || '').replace(/^MANUAL\|/, '').startsWith('MW.A.22015.90')
+        const renderedAsIntensifier = intensiveA &&
+          A_INTENSIVE_RENDERINGS.some(w => cleanTranslation.toLowerCase().includes(w))
+        if (meaningInDictionary(meaning, cleanTranslation) || renderedAsIntensifier) {
           validLexeme++
         } else {
           invalidLexeme++
@@ -1071,7 +1067,6 @@
       invalidLexeme,
       skippedLexeme,
       skippedLexemeList,
-      prefixSkipped,
       invalidLexemeList,
     }
   }
@@ -1432,7 +1427,6 @@
             skippedLexemeCount: 0,
             scopeMeaningsCount: lemmas.length,
             scopeLexemeCount: lemmas.length,
-            prefixSkippedCount: 0,
           }
         }
         return this.validationCache
@@ -1694,7 +1688,6 @@
           skippedLexemeCount: 0,
           scopeMeaningsCount: 0,
           scopeLexemeCount: 0,
-          prefixSkippedCount: 0,
           error: `Failed to initialize Vidyut: ${e.message}`
         }
       }
@@ -1769,7 +1762,6 @@
           skippedLexemePercent: pct(coverage.skippedLexeme, scopeLexeme),
           skippedLexemeCount: coverage.skippedLexeme,
           scopeLexemeCount: scopeLexeme,
-          prefixSkippedCount: coverage.prefixSkipped,
           validStemsCount: stems.valid,
           invalidStemsCount: stems.invalid,
           totalStemsCount: totalStems,
